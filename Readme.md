@@ -1,3 +1,5 @@
+<div align="center">
+
 [Abp Vnext Pro](https://github.com/WangJunZzz/abp-vnext-pro) 的 Vue 实现版本  
 开箱即用的中后台前端/设计解决方案
 
@@ -11,7 +13,7 @@
         <td><img src="./images/dic.png"/></td>
     </tr>
 </table>
-
+</div>
 ### 依赖
 
 - .Net Core5.0
@@ -64,3 +66,11 @@ $ git clone https://github.com/WangJunZzz/abp-vnext-pro
 ```bash
 dotnet new Zzz --name 你的项目名称(不支持名词xxx.xxx,只支持一级)
 ```
+
+#### 参与贡献
+
+非常欢迎你的贡献，你可以通过以下方式和我们一起共建 :star2:：
+
+- 通过 [Issue](https://github.com/WangJunZzz/abp-vnext-pro/issues) 报告:bug:或进行咨询。
+
+- 加入社群，与小伙伴们一同交流心得。QQ 群：686933575
