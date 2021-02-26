@@ -20,7 +20,7 @@
           <a-input
             autocomplete="autocomplete"
             size="large"
-            placeholder=""
+            placeholder="admin"
             v-decorator="[
               'name',
               {
@@ -40,7 +40,7 @@
         <a-form-item>
           <a-input
             size="large"
-            placeholder=""
+            placeholder="1q2w3E*"
             autocomplete="autocomplete"
             type="password"
             v-decorator="[
@@ -73,7 +73,7 @@
             >登录</a-button
           >
         </a-form-item>
-        <div>
+        <!-- <div>
           其他登录方式
           <a-icon class="icon" type="alipay-circle" />
           <a-icon class="icon" type="taobao-circle" />
@@ -81,7 +81,7 @@
           <router-link style="float: right" to="/dashboard/workplace"
             >注册账户</router-link
           >
-        </div>
+        </div> -->
       </a-form>
     </div>
   </common-layout>
