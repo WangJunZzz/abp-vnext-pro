@@ -1,0 +1,204 @@
+stages:
+  # - test
+  - build
+  - dockerimg
+  - review
+  - deploy
+
+before_script:
+  - export Namespace="$(echo "${CI_PROJECT_NAMESPACE}" | tr A-Z a-z)"
+  - export Namespace=${Namespace%%/*}
+  #镜像名称
+  # - export Image_Name="$(echo "${CI_PROJECT_PATH}" | tr A-Z a-z)"
+  # - export Image_Name=${Image_Name////.}
+  # - echo $Image_Name:$CI_COMMIT_SHORT_SHA
+  # - export Release_Name=${Image_Name//./-}
+  # - echo $Release_Name
+  - export Image_Name="oak.qps.messagecenter.ui"
+  - export Release_Name="oak-qps-messagecenter-ui"
+  - >
+    if [ ! $CI_BUILD_TAG ]; then
+      echo "IS NULL"
+      export Pro_Ver=$CI_COMMIT_SHORT_SHA
+    else
+      export Pro_Ver=$CI_BUILD_TAG
+    fi;
+
+# 测试: #test:
+#   stage: test
+#   image:
+#     name: microsoft/dotnet:2.2-sdk
+#   tags:
+#      - docker-runner
+#   script:
+#     - pwd
+#     - ls
+# - dotnet test
+
+编译:
+  stage: build
+  only:
+    - development
+    - tags
+    - ali
+  image:
+    name: node:12-alpine
+  tags:
+    - runner-19
+  script:
+    - printenv
+    - npm config set registry https://registry.npm.taobao.org
+    - yarn install --network-timeout 1000000
+    - npm run dev-build
+    - ls
+    - echo ${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
+  artifacts:
+    name: ${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
+    paths:
+      - dist/*
+    expire_in: 1 day
+
+生成镜像: #image_build:
+  stage: dockerimg
+  only:
+    - development
+    - tags
+    - ali
+  image:
+    name: docker:latest
+  tags:
+    - runner-19
+  script:
+    - export Dockerfile_Path=$(find / -name Dockerfile.ci)
+    - echo $Dockerfile_Path
+    - echo ${PWD}
+    - export Sub_Path=${Dockerfile_Path##*${PWD}/}
+    - echo $Sub_Path
+    - export Docker_Image=192.168.101.30/yhgit/$Image_Name:$Pro_Ver
+    - docker build -t $Docker_Image . -f $Sub_Path
+    - docker login $Harbor_AddRess -u $Harbor_User -p $Harbor_Pwd
+    - docker push $Docker_Image
+    - docker rmi $Docker_Image
+
+ZzzDev环境 1/2: #deploy_develop:
+  stage: review
+  dependencies: []
+  only:
+    - development
+    - tags
+    - ali
+  image:
+    name: $helm_deploy_image
+  tags:
+    - runner-19
+  variables:
+    KUBECONFIG: /root/.kube/config
+  script:
+    - mkdir /root/.kube
+    - echo ${kube_config_dev} | base64 -d > ${KUBECONFIG}
+    - helm repo add yhgit http://192.168.101.30/chartrepo/yhgit
+    - helm repo update
+    - helm pull yhgit/${Release_Name}
+    - tar -xf ${Release_Name}-*.tgz
+    - >
+      if [ $(kubectl get ns | grep $Namespace | wc -l)  -eq 0 ]; then
+        kubectl create ns $Namespace
+      fi;
+    - >
+      if [ $(helm list -n $Namespace | grep $Release_Name | wc -l)  -eq 0 ]; then
+        helm install $Release_Name  yhgit/${Release_Name} -n $Namespace -f ${Release_Name}/values-dev.yaml --set-string image.tag=$Pro_Ver
+      else
+        helm upgrade $Release_Name  ${Release_Name} -n $Namespace -f ${Release_Name}/values-dev.yaml --set-string image.tag=$Pro_Ver
+      fi;
+
+2ZzzStage环境: #deploy_staging:
+  stage: deploy
+  dependencies: []
+  only:
+    - tt
+    - tt
+  when: manual
+  image:
+    name: $helm_deploy_image
+  tags:
+    - runner-19
+  variables:
+    KUBECONFIG: /root/.kube/config
+  script:
+    - mkdir /root/.kube
+    - echo ${kube_config_stag} | base64 -d > ${KUBECONFIG}
+    - helm repo add yhgit http://192.168.101.30/chartrepo/yhgit
+    - helm repo update
+    - helm pull yhgit/${Release_Name}
+    - tar -xf ${Release_Name}-*.tgz
+    - >
+      if [ $(kubectl get ns | grep $Namespace | wc -l)  -eq 0 ]; then
+        kubectl create ns $Namespace
+      fi;
+    - >
+      if [ $(helm list -n $Namespace | grep $Release_Name | wc -l)  -eq 0 ]; then
+        helm install $Release_Name  yhgit/${Release_Name} -n $Namespace -f ${Release_Name}/values-stage.yaml --set-string image.tag=$Pro_Ver
+      else
+        helm upgrade $Release_Name  yhgit/${Release_Name} -n $Namespace -f ${Release_Name}/values-stage.yaml --set-string image.tag=$Pro_Ver
+      fi;
+
+3ZzzPro环境: #deploy_production:
+  stage: deploy
+  dependencies: []
+  only:
+    - ttt
+  when: manual
+  image:
+    name: $helm_deploy_image
+  tags:
+    - runner-19
+  variables:
+    KUBECONFIG: /root/.kube/config
+  script:
+    - mkdir /root/.kube
+    - echo ${kube_config_pro} | base64 -d > ${KUBECONFIG}
+    - helm repo add yhgit http://192.168.101.30/chartrepo/yhgit
+    - helm repo update
+    - helm pull yhgit/${Release_Name}
+    - tar -xf ${Release_Name}-*.tgz
+    - >
+      if [ $(kubectl get ns | grep $Namespace | wc -l)  -eq 0 ]; then
+        kubectl create ns $Namespace
+      fi;
+    - >
+      if [ $(helm list -n $Namespace | grep $Release_Name | wc -l)  -eq 0 ]; then
+        helm install $Release_Name  yhgit/${Release_Name} -n $Namespace -f ${Release_Name}/values-pro.yaml --set-string image.tag=$Pro_Ver
+      else
+        helm upgrade $Release_Name  yhgit/${Release_Name} -n $Namespace -f ${Release_Name}/values-pro.yaml --set-string image.tag=$Pro_Ver
+      fi;
+
+阿里云环境 2/2: #deploy_aliyun:
+  stage: deploy
+  dependencies: []
+  only:
+    - tags
+    - ali
+  when: manual
+  image:
+    name: $helm_deploy_image
+  tags:
+    - runner-19
+  variables:
+    KUBECONFIG: /root/.kube/config
+  script:
+    - mkdir /root/.kube
+    - echo ${kube_config_ali} | base64 -d > ${KUBECONFIG}
+    - helm repo add yhgit http://192.168.101.30/chartrepo/yhgit
+    - helm repo update
+    - helm pull yhgit/${Release_Name}
+    - tar -xf ${Release_Name}-*.tgz
+    - >
+      if [ $(kubectl get ns | grep $Namespace | wc -l)  -eq 0 ]; then
+        kubectl create ns $Namespace
+      fi;
+    - >
+      if [ $(helm list -n $Namespace | grep $Release_Name | wc -l)  -eq 0 ]; then
+        helm install $Release_Name  yhgit/${Release_Name} -n $Namespace -f ${Release_Name}/values-ali.yaml --set-string image.tag=$Pro_Ver
+      else
+        helm upgrade $Release_Name  yhgit/${Release_Name} -n $Namespace -f ${Release_Name}/values-ali.yaml --set-string image.tag=$Pro_Ver
+      fi;
