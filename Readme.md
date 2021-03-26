@@ -20,9 +20,10 @@
 - .Net Core5.0
 - Abp Vnext 4.x ,
 - Ant Design, Vue2.x
-- Mysql,Redis,Hangfire,ES(日志可选),Nocas(可选,未集成,计划中),RabbitMq(未集成,计划中)
+- Mysql,Redis,Hangfire,ES(日志可选),Nocas(可选,选择nocas分支),RabbitMq(未集成,计划中)
 - 微服务架构设计, DDD 实践
 - 容器化 CI CD
+- Xunit 单元测试
 
 ### 系统功能
 

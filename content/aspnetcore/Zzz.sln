@@ -39,6 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		common.props = common.props
 		NuGet.Config = NuGet.Config
+		..\..\Readme.md = ..\..\Readme.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zzz.PublicApi.Host", "src\Zzz.PublicApi.Host\Zzz.PublicApi.Host.csproj", "{AA3C1547-1A82-470E-9EB7-1C9E9AA50136}"
