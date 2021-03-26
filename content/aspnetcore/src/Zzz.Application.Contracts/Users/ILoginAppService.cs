@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Volo.Abp.Application.Services;
 using Zzz.DTOs.Public;
 using Zzz.DTOs.Users;
 
 namespace Zzz.Users
 {
-    public interface ILoginAppService
+    public interface ILoginAppService: IApplicationService
     {
         Task<ApiResult> PostAsync(LoginInputDto input);
     }

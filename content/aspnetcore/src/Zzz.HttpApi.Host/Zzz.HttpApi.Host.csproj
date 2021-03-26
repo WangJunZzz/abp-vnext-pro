@@ -25,8 +25,12 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="Hangfire.Redis.StackExchange.StrongName" Version="1.7.0" />
-		<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
+
+		<PackageReference Include="nacos-sdk-csharp" Version="1.0.0" />
+		<PackageReference Include="nacos-sdk-csharp.AspNetCore" Version="1.0.0" />
+		<PackageReference Include="nacos-sdk-csharp.Extensions.Configuration" Version="1.0.0" />
+
+		
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.*" />
 		<PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="$(AbpVersion)" />

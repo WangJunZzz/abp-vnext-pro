@@ -1,5 +1,4 @@
-﻿using Zzz.Localization;
-using Volo.Abp.AuditLogging;
+﻿using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -12,8 +11,7 @@ using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
-using Zzz.Options;
-using Microsoft.Extensions.DependencyInjection;
+using Zzz.Localization;
 
 namespace Zzz
 {

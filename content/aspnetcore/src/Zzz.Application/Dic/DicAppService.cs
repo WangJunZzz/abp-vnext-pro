@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Localization;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Caching;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Guids;
@@ -28,12 +30,14 @@ namespace Zzz.Dic
         private readonly ICurrentUser _currentUser;
         private readonly IGuidGenerator _guidGenerator;
         private readonly IStringLocalizer<ZzzResource> _localizer;
+      
         public DicAppService(IRepository<DataDictionary, Guid> dataDictionaryRepository, ICurrentUser currentUser, IGuidGenerator guidGenerator, IStringLocalizer<ZzzResource> localizer)
         {
             _dataDictionaryRepository = dataDictionaryRepository;
             _currentUser = currentUser;
             _guidGenerator = guidGenerator;
             _localizer = localizer;
+         
         }
 
         [SwaggerOperation(summary: "获取字典列表", Tags = new[] { "字典" })]
@@ -132,5 +136,7 @@ namespace Zzz.Dic
             await _dataDictionaryRepository.UpdateAsync(entity);
             return ApiResult.Ok();
         }
+
+  
     }
 }

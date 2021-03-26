@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\common.props" />
 
@@ -6,6 +6,10 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>Zzz</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\src\Zzz.HttpApi.Host\appsettings.json" Link="appsettings.json" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.TestBase" Version="$(AbpVersion)" />
@@ -22,5 +26,7 @@
     <PackageReference Include="xunit.extensibility.execution" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.2" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>
