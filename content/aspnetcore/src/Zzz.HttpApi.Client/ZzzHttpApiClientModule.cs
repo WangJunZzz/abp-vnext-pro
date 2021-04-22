@@ -18,7 +18,7 @@ namespace Zzz
     )]
     public class ZzzHttpApiClientModule : AbpModule
     {
-        public const string RemoteServiceName = "Zzz";
+        public const string RemoteServiceName = "Default";
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

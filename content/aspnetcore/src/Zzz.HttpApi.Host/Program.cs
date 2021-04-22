@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
@@ -31,10 +30,6 @@ namespace Zzz
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((context, builder) => {
-                    // 配置nacos
-                    builder.AddNacosConfiguration(builder.Build().GetSection("NacosConfig"));
-                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

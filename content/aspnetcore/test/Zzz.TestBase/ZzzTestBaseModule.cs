@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using Volo.Abp;
 using Volo.Abp.Authorization;
 using Volo.Abp.Autofac;
@@ -7,7 +8,6 @@ using Volo.Abp.Data;
 using Volo.Abp.IdentityServer;
 using Volo.Abp.Modularity;
 using Volo.Abp.Threading;
-using Zzz.Options;
 
 namespace Zzz
 {
@@ -39,7 +39,6 @@ namespace Zzz
                 options.IsJobExecutionEnabled = false;
             });
 
-            ConfigureOptions(context);
             context.Services.AddAlwaysAllowAuthorization();
         }
 
@@ -61,12 +60,6 @@ namespace Zzz
                         .SeedAsync();
                 }
             });
-        }
-
-
-        private void ConfigureOptions(ServiceConfigurationContext context)
-        {
-            context.Services.Configure<JwtOptions>(context.Services.GetConfiguration().GetSection("Jwt"));
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Volo.Abp.Modularity;
-using Zzz.EntityFrameworkCore;
+﻿using Zzz.EntityFrameworkCore;
+using Volo.Abp.Modularity;
 
 namespace Zzz
 {

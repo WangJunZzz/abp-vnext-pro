@@ -23,7 +23,6 @@ namespace Zzz.Users
         private readonly IdentityUserManager _userManager;
         private readonly JwtOptions _jwtOptions;
         private readonly Microsoft.AspNetCore.Identity.SignInManager<Volo.Abp.Identity.IdentityUser> _signInManager;
-
         public LoginAppService(
             IdentityUserManager userManager,
             IOptionsSnapshot<JwtOptions> jwtOptions,
@@ -39,6 +38,7 @@ namespace Zzz.Users
         public async Task<ApiResult> PostAsync(LoginInputDto input)
         {
             var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
+      
             if (!result.Succeeded) return ApiResult.Error();
 
             var user = await _userManager.FindByNameAsync(input.Name);
