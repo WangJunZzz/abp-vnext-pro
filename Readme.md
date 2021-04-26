@@ -18,7 +18,6 @@
 ### 说明
 
 - main分支为主要开发分支，后续都基于此分支维护，该分支前端基于vue3.0,Typescript,如果要使用Vue请切换到Vue2分支。
-
 - .Net Core5.0
 - Abp Vnext 4.2 ,
 - Ant Design, Vben Admin [前端文档](https://vvbin.cn/doc-next/)
@@ -26,6 +25,19 @@
 - 微服务架构设计, DDD 实践
 - 容器化 CI CD
 - Xunit 单元测试
+
+
+
+#### 前端特别说明
+
+- abp 有提供默认api为什么要重写user，role，permission接口?
+  - 因为前端的调用后台接口通过nswag生成了代理，api提供的接口地址导致生成代理冲突所以重写了
+  - 在后端有接口变化请在前端执行npm run nswag 重新生成代理
+  - 建议后端的方法设置为post，前端会生成typecript的接口
+  - 后端使用swagger的时候tag请不要用中文   [SwaggerOperation(summary: "获取所有角色", Tags = new[] { "Role" })]
+  - 前端代理生成在src/services下，如何使用请参考用户模块
+  
+  
 
 ### 对接思路
 
@@ -63,3 +75,4 @@
 非常欢迎你的贡献，你可以通过以下方式和我们一起共建 :star2:：
 
 - 通过 [Issue](https://github.com/WangJunZzz/abp-vnext-pro/issues) 报告:bug:或进行咨询。
+- QQ群：686933575
