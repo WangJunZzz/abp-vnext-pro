@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<Import Project="..\..\common.props" />
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<RootNamespace>CompanyNameProjectName</RootNamespace>
+		<PreserveCompilationReferences>true</PreserveCompilationReferences>
+		<UserSecretsId>CompanyNameProjectName-4681b4fd-151f-4221-84a4-929d86723e4c</UserSecretsId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <OutputPath>bin\Debug\net5.0\</OutputPath>
+	  <DocumentationFile>bin\Debug\net5.0\CompanyNameProjectName.HttpApi.Host.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <OutputPath>bin\Debug\net5.0\</OutputPath>
+	  <DocumentationFile>bin\Debug\net5.0\CompanyNameProjectName.HttpApi.Host.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<!--只要不是语言包文件夹名称就行-->
+		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+	</PropertyGroup>
+	
+	<ItemGroup>
+
+		<PackageReference Include="nacos-sdk-csharp" Version="1.0.0" />
+		<PackageReference Include="nacos-sdk-csharp.AspNetCore" Version="1.0.0" />
+		<PackageReference Include="nacos-sdk-csharp.Extensions.Configuration" Version="1.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.5" />
+		
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+
+		<PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="$(AbpVersion)" />
+		<PackageReference Include="Volo.Abp.Autofac" Version="$(AbpVersion)" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="$(AbpVersion)" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="$(AbpVersion)" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="$(AbpVersion)" />
+		<PackageReference Include="Volo.Abp.Swashbuckle" Version="$(AbpVersion)" />
+		<PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="$(AbpVersion)" />
+
+
+	</ItemGroup>
+
+
+
+	<ItemGroup>
+		<Compile Remove="App_Data\**" />
+		<Compile Remove="Logs\**" />
+		<Content Remove="App_Data\**" />
+		<Content Remove="Logs\**" />
+		<EmbeddedResource Remove="App_Data\**" />
+		<EmbeddedResource Remove="Logs\**" />
+		<None Remove="App_Data\**" />
+		<None Remove="Logs\**" />
+	</ItemGroup>
+
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\CompanyName.ProjectName.Application\CompanyName.ProjectName.Application.csproj" />
+	  <ProjectReference Include="..\..\src\CompanyName.ProjectName.EntityFrameworkCore.DbMigrations\CompanyName.ProjectName.EntityFrameworkCore.DbMigrations.csproj" />
+	  <ProjectReference Include="..\..\src\CompanyName.ProjectName.HttpApi\CompanyName.ProjectName.HttpApi.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Dockerfile">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+	<ProjectExtensions>
+		<VisualStudio>
+			<UserProperties appsettings_1json__JsonSchema="" />
+		</VisualStudio>
+	</ProjectExtensions>
+
+</Project>
