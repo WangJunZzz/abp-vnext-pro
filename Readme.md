@@ -24,7 +24,7 @@
 - Mysql,Redis,Hangfire,ES(日志可选)
 - 微服务架构设计, DDD 实践
 - 容器化 CI CD
-- Xunit 单元测试
+- Xunit 单元测试(提供sample单元测试)
 
 
 
