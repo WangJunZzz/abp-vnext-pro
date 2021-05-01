@@ -4,13 +4,11 @@
     :title="t('routes.admin.roleManagement_permission')"
     width="15%"
   >
-    <a-tree
+    <BasicTree
+      :treeData="allPermissionsRef"
       checkable
-      :tree-data="allPermissionsRef"
       v-model:checkedKeys="currentRolePermissionsRef"
-    >
-      <template #title0010><span style="color: #1890ff"></span></template>
-    </a-tree>
+    />
     <div
       :style="{
         position: 'absolute',
@@ -40,6 +38,7 @@
   import { getRolePermissionAsync, updateRolePermissionAsync, excludePermission } from './AbpRole';
   import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
   import { useI18n } from '/@/hooks/web/useI18n';
+  import { BasicTree } from '/@/components/Tree/index';
   import {
     UpdateRolePermissionsDto,
     UpdatePermissionDto,
@@ -48,7 +47,7 @@
 
   export default defineComponent({
     name: 'PermissionAbpRole',
-    components: { BasicDrawer },
+    components: { BasicDrawer, BasicTree },
     setup() {
       let roleName: string = '';
       const { t } = useI18n();
@@ -66,6 +65,7 @@
        */
       const getRolePermissions = async (roleName: string) => {
         setDrawerProps({ loading: true });
+        debugger;
         currentRolePermissionsRef.value.splice(0, currentRolePermissionsRef.value.length);
         allPermissionsRef.splice(0, allPermissionsRef.length);
         const permissions = await getRolePermissionAsync(roleName);
@@ -98,7 +98,7 @@
         let permisstions: UpdatePermissionDto[] = [];
         request.providerName = 'R';
         request.providerKey = roleName;
-
+        debugger;
         currentRolePermissionsRef.value.forEach((item) => {
           if (item.indexOf('.') > 0) {
             let permisstion = new UpdatePermissionDto();

@@ -54,7 +54,7 @@
         role.roleInfo = new IdentityRoleUpdateDto();
         role.roleInfo.name = request.name;
         role.roleInfo.isDefault = request.isDefault == 1 ? true : false;
-        role.roleInfo.isPublic = currentRoleInfo.isDefault;
+        role.roleInfo.isPublic = currentRoleInfo.isPublic;
         role.roleInfo.concurrencyStamp = currentRoleInfo.concurrencyStamp;
         await updateRoleAsync({ request: role, changeOkLoading, validate, closeModal });
         ctx.emit('reload');

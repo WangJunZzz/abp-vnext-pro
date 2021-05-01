@@ -30,7 +30,7 @@ namespace CompanyNameProjectName.Users
             var request = new GetIdentityUsersInput();
             request.Filter = input.filter?.Trim();
             request.MaxResultCount = input.PageSize;
-            request.SkipCount = (input.pageIndex - 1) * input.PageSize;
+            request.SkipCount = (input.PageIndex - 1) * input.PageSize;
             request.Sorting= " LastModificationTime desc";
             return await _identityUserAppService.GetListAsync(request);
         }

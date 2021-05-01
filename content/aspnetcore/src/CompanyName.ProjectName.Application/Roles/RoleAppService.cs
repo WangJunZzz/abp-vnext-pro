@@ -42,7 +42,7 @@ namespace CompanyNameProjectName.Roles
             var request = new GetIdentityRolesInput();
             request.Filter = input.filter?.Trim();
             request.MaxResultCount = input.PageSize;
-            request.SkipCount = (input.pageIndex - 1) * input.PageSize;
+            request.SkipCount = (input.PageIndex - 1) * input.PageSize;
             return await _identityRoleAppService.GetListAsync(request);
         }
 

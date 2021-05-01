@@ -70,7 +70,7 @@ namespace CompanyNameProjectName
             {
                 Authorization = new[] { new CustomHangfireAuthorizeFilter() }
             });
-            context.ServiceProvider.CreateRecurringJob();
+            //context.ServiceProvider.CreateRecurringJob();
         }
 
         public override void ConfigureServices(ServiceConfigurationContext context)
