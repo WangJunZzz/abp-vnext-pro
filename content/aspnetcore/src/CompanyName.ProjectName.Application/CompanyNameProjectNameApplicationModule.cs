@@ -15,8 +15,7 @@ namespace CompanyNameProjectName
         typeof(AbpIdentityApplicationModule),
         typeof(AbpPermissionManagementApplicationModule),
         typeof(AbpTenantManagementApplicationModule),
-        typeof(AbpFeatureManagementApplicationModule),
-        typeof(EasyAbp.Abp.SettingUi.SettingUiApplicationModule)
+        typeof(AbpFeatureManagementApplicationModule)
         )]
     public class CompanyNameProjectNameApplicationModule : AbpModule
     {

@@ -16,8 +16,7 @@ namespace CompanyNameProjectName
         typeof(AbpIdentityHttpApiModule),
         typeof(AbpPermissionManagementHttpApiModule),
         typeof(AbpTenantManagementHttpApiModule),
-        typeof(AbpFeatureManagementHttpApiModule),
-        typeof(EasyAbp.Abp.SettingUi.SettingUiHttpApiModule)
+        typeof(AbpFeatureManagementHttpApiModule)
         )]
     public class CompanyNameProjectNameHttpApiModule : AbpModule
     {

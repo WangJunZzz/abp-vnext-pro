@@ -27,7 +27,6 @@ namespace CompanyNameProjectName
         typeof(AbpPermissionManagementDomainIdentityServerModule),
         typeof(AbpSettingManagementDomainModule),
         typeof(AbpTenantManagementDomainModule),
-        typeof(EasyAbp.Abp.SettingUi.SettingUiDomainModule),
         typeof(AbpCachingModule)
     )]
     public class CompanyNameProjectNameDomainModule : AbpModule

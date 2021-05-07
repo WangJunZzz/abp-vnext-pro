@@ -10,7 +10,7 @@
 
 	<ItemGroup>
 
-		<PackageReference Include="EasyAbp.Abp.SettingUi.Domain.Shared" Version="1.3.1" />
+	
 
 		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="5.0.0" />
 

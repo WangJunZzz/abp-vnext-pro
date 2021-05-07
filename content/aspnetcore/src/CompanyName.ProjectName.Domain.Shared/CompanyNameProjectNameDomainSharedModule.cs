@@ -23,8 +23,7 @@ namespace CompanyNameProjectName
         typeof(AbpIdentityServerDomainSharedModule),
         typeof(AbpPermissionManagementDomainSharedModule),
         typeof(AbpSettingManagementDomainSharedModule),
-        typeof(AbpTenantManagementDomainSharedModule),
-        typeof(EasyAbp.Abp.SettingUi.SettingUiDomainSharedModule)
+        typeof(AbpTenantManagementDomainSharedModule)
         )]
     public class CompanyNameProjectNameDomainSharedModule : AbpModule
     {
