@@ -39,6 +39,7 @@
   import { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { BasicTree } from '/@/components/Tree/index';
+  import { usePermissionStore } from '/@/store/modules/permission';
   import {
     UpdateRolePermissionsDto,
     UpdatePermissionDto,
