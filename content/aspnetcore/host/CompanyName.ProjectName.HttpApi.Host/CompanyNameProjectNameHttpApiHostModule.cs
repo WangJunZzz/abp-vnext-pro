@@ -68,6 +68,7 @@ namespace CompanyNameProjectName
             {
                 Authorization = new[] { new CustomHangfireAuthorizeFilter() }
             });
+            // 定时任务
             //context.ServiceProvider.CreateRecurringJob();
         }
 
