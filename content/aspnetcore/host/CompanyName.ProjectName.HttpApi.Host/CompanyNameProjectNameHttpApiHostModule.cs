@@ -1,3 +1,7 @@
+using CompanyNameProjectName.EntityFrameworkCore;
+using CompanyNameProjectName.Extensions;
+using CompanyNameProjectName.Extensions.Filters;
+using CompanyNameProjectName.Options;
 using Hangfire;
 using Hangfire.Redis;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,7 +16,6 @@ using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using Volo.Abp;
@@ -29,18 +32,13 @@ using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Auditing;
 using Volo.Abp.Autofac;
 using Volo.Abp.BackgroundJobs;
-using Volo.Abp.Hangfire;
+using Volo.Abp.BackgroundJobs.Hangfire;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.Settings;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
-using CompanyNameProjectName.EntityFrameworkCore;
-using CompanyNameProjectName.Extensions;
-using CompanyNameProjectName.Extensions.Filters;
-using CompanyNameProjectName.Options;
-using Volo.Abp.Identity;
 
 namespace CompanyNameProjectName
 {
@@ -55,7 +53,7 @@ namespace CompanyNameProjectName
         typeof(AbpAccountWebIdentityServerModule),
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpSwashbuckleModule),
-        typeof(AbpHangfireModule)
+        typeof(AbpBackgroundJobsHangfireModule)
     )]
     public class CompanyNameProjectNameHttpApiHostModule : AbpModule
     {
@@ -364,7 +362,7 @@ namespace CompanyNameProjectName
         {
             Configure<AbpBackgroundJobOptions>(options =>
             {
-                options.IsJobExecutionEnabled = false;
+                options.IsJobExecutionEnabled = true;
             });
 
             var redisConnectionString = services.GetConfiguration().GetSection("Cache:Redis:ConnectionString").Value;
@@ -378,9 +376,6 @@ namespace CompanyNameProjectName
 
             JobStorage.Current = new RedisStorage(redisConnectionString, new RedisStorageOptions { Db = redisDatabaseId });
         }
-
-
-
         #endregion
 
     }
