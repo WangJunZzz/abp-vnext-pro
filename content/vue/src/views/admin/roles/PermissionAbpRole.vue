@@ -65,7 +65,6 @@
        */
       const getRolePermissions = async (roleName: string) => {
         setDrawerProps({ loading: true });
-        debugger;
         currentRolePermissionsRef.value.splice(0, currentRolePermissionsRef.value.length);
         allPermissionsRef.splice(0, allPermissionsRef.length);
         const permissions = await getRolePermissionAsync(roleName);
@@ -98,7 +97,6 @@
         let permisstions: UpdatePermissionDto[] = [];
         request.providerName = 'R';
         request.providerKey = roleName;
-        debugger;
         currentRolePermissionsRef.value.forEach((item) => {
           if (item.indexOf('.') > 0) {
             let permisstion = new UpdatePermissionDto();
@@ -109,6 +107,9 @@
         });
         request.updatePermissionsDto.permissions = permisstions;
         await updateRolePermissionAsync({ request, closeDrawer, setDrawerProps });
+        const permissionStore = usePermissionStore();
+        const grantPolicy = Object.values(currentRolePermissionsRef.value as object);
+        permissionStore.setPermCodeList(grantPolicy);
       };
       return {
         t,
