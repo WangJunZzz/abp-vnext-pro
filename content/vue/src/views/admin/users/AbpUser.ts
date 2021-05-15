@@ -6,7 +6,8 @@ import {
   UserServiceProxy,
   IdentityUserDtoPagedResultDto,
   IdentityRoleDtoListResultDto,
-  RoleServiceProxy
+  RoleServiceProxy,
+  LockUserInput
 } from '/@/services/ServiceProxies';
 import { message } from 'ant-design-vue';
 import { useLoading } from '/@/components/Loading';
@@ -39,6 +40,11 @@ export const tableColumns: BasicColumn[] = [
   //   dataIndex: 'phoneNumber',
 
   // },
+  {
+    title: t('routes.admin.userManagement_locked'),
+    dataIndex: 'lockoutEnabled',
+    slots: { customRender: 'lockoutEnabled' }
+  },
   {
     title: t('routes.admin.userManagement_createTime'),
     dataIndex: 'creationTime',
@@ -213,4 +219,14 @@ export async function updateUserAsync({ request, changeOkLoading, validate, clos
   message.success(t('common.operationSuccess'));
   closeModal();
 
+}
+
+/**
+ * 启用或者禁用用户
+ * @param isLock
+ * @returns
+ */
+export async function lockUserAsync(request: LockUserInput): Promise<void> {
+  const _userServiceProxy = new UserServiceProxy();
+  return _userServiceProxy.lock(request);
 }

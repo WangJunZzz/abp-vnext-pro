@@ -215,6 +215,210 @@ export class AbpApplicationConfigurationServiceProxy extends ServiceProxyBase {
     }
 }
 
+export class AuditServiceProxy extends ServiceProxyBase {
+    private instance: AxiosInstance;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, instance?: AxiosInstance) {
+        super();
+        this.instance = instance ? instance : axios.create();
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * 分页获取审计日志信息
+     * @param body (optional) 
+     * @return Success
+     */
+    list(body: QueryAuditLogInput | undefined , cancelToken?: CancelToken | undefined): Promise<QueryAuditLogOutputPagedResultDto> {
+        let url_ = this.baseUrl + "/api/app/audit/list";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processList(_response));
+        });
+    }
+
+    protected processList(response: AxiosResponse): Promise<QueryAuditLogOutputPagedResultDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = QueryAuditLogOutputPagedResultDto.fromJS(resultData200);
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<QueryAuditLogOutputPagedResultDto>(<any>null);
+    }
+
+    /**
+     * 获取审计日志详情
+     * @param body (optional) 
+     * @return Success
+     */
+    queryEntity(body: QueryEntityChangeInput | undefined , cancelToken?: CancelToken | undefined): Promise<QueryEntityChangeOutput[]> {
+        let url_ = this.baseUrl + "/api/app/audit/query-entity";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processQueryEntity(_response));
+        });
+    }
+
+    protected processQueryEntity(response: AxiosResponse): Promise<QueryEntityChangeOutput[]> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(QueryEntityChangeOutput.fromJS(item));
+            }
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<QueryEntityChangeOutput[]>(<any>null);
+    }
+}
+
 export class LoginServiceProxy extends ServiceProxyBase {
     private instance: AxiosInstance;
     private baseUrl: string;
@@ -1828,6 +2032,95 @@ export class UserServiceProxy extends ServiceProxyBase {
         }
         return Promise.resolve<boolean>(<any>null);
     }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    lock(body: LockUserInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/api/app/user/lock";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processLock(_response));
+        });
+    }
+
+    protected processLock(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(<any>null);
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(<any>null);
+    }
 }
 
 export class AbpLoginResult implements IAbpLoginResult {
@@ -2788,6 +3081,12 @@ export interface IDateTimeFormatDto {
     dateSeparator?: string | undefined;
     shortTimePattern?: string | undefined;
     longTimePattern?: string | undefined;
+}
+
+export enum EntityChangeType {
+    _0 = 0,
+    _1 = 1,
+    _2 = 2,
 }
 
 export class EntityExtensionDto implements IEntityExtensionDto {
@@ -4701,6 +5000,46 @@ export interface ILocalizableStringDto {
     resource?: string | undefined;
 }
 
+export class LockUserInput implements ILockUserInput {
+    userId!: string;
+    locked!: boolean;
+
+    constructor(data?: ILockUserInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.userId = _data["userId"];
+            this.locked = _data["locked"];
+        }
+    }
+
+    static fromJS(data: any): LockUserInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new LockUserInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["locked"] = this.locked;
+        return data; 
+    }
+}
+
+export interface ILockUserInput {
+    userId: string;
+    locked: boolean;
+}
+
 export class LoginInputDto implements ILoginInputDto {
     name?: string | undefined;
     password?: string | undefined;
@@ -5449,6 +5788,66 @@ export interface IPropertyApiDescriptionModel {
     isRequired?: boolean;
 }
 
+export class PropertyChangesDto implements IPropertyChangesDto {
+    id?: string;
+    tenantId?: string | undefined;
+    entityChangeId?: string;
+    newValue?: string | undefined;
+    originalValue?: string | undefined;
+    propertyName?: string | undefined;
+    propertyTypeFullName?: string | undefined;
+
+    constructor(data?: IPropertyChangesDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.tenantId = _data["tenantId"];
+            this.entityChangeId = _data["entityChangeId"];
+            this.newValue = _data["newValue"];
+            this.originalValue = _data["originalValue"];
+            this.propertyName = _data["propertyName"];
+            this.propertyTypeFullName = _data["propertyTypeFullName"];
+        }
+    }
+
+    static fromJS(data: any): PropertyChangesDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PropertyChangesDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["tenantId"] = this.tenantId;
+        data["entityChangeId"] = this.entityChangeId;
+        data["newValue"] = this.newValue;
+        data["originalValue"] = this.originalValue;
+        data["propertyName"] = this.propertyName;
+        data["propertyTypeFullName"] = this.propertyTypeFullName;
+        return data; 
+    }
+}
+
+export interface IPropertyChangesDto {
+    id?: string;
+    tenantId?: string | undefined;
+    entityChangeId?: string;
+    newValue?: string | undefined;
+    originalValue?: string | undefined;
+    propertyName?: string | undefined;
+    propertyTypeFullName?: string | undefined;
+}
+
 export class ProviderInfoDto implements IProviderInfoDto {
     providerName?: string | undefined;
     providerKey?: string | undefined;
@@ -5487,6 +5886,374 @@ export class ProviderInfoDto implements IProviderInfoDto {
 export interface IProviderInfoDto {
     providerName?: string | undefined;
     providerKey?: string | undefined;
+}
+
+export class QueryAuditLogInput implements IQueryAuditLogInput {
+    pageIndex?: number;
+    pageSize?: number;
+    userName?: string | undefined;
+    httpStatusCode?: number;
+    httpMethod?: string | undefined;
+    executionTime?: string | undefined;
+
+    constructor(data?: IQueryAuditLogInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.pageIndex = _data["pageIndex"];
+            this.pageSize = _data["pageSize"];
+            this.userName = _data["userName"];
+            this.httpStatusCode = _data["httpStatusCode"];
+            this.httpMethod = _data["httpMethod"];
+            this.executionTime = _data["executionTime"];
+        }
+    }
+
+    static fromJS(data: any): QueryAuditLogInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new QueryAuditLogInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["pageIndex"] = this.pageIndex;
+        data["pageSize"] = this.pageSize;
+        data["userName"] = this.userName;
+        data["httpStatusCode"] = this.httpStatusCode;
+        data["httpMethod"] = this.httpMethod;
+        data["executionTime"] = this.executionTime;
+        return data; 
+    }
+}
+
+export interface IQueryAuditLogInput {
+    pageIndex?: number;
+    pageSize?: number;
+    userName?: string | undefined;
+    httpStatusCode?: number;
+    httpMethod?: string | undefined;
+    executionTime?: string | undefined;
+}
+
+export class QueryAuditLogOutput implements IQueryAuditLogOutput {
+    id?: string;
+    applicationName?: string | undefined;
+    userId?: string | undefined;
+    userName?: string | undefined;
+    tenantId?: string | undefined;
+    tenantName?: string | undefined;
+    impersonatorUserId?: string | undefined;
+    impersonatorTenantId?: string | undefined;
+    executionTime?: Date;
+    executionDuration?: number;
+    clientIpAddress?: string | undefined;
+    clientName?: string | undefined;
+    clientId?: string | undefined;
+    correlationId?: string | undefined;
+    browserInfo?: string | undefined;
+    httpMethod?: string | undefined;
+    url?: string | undefined;
+    exceptions?: string | undefined;
+    comments?: string | undefined;
+    httpStatusCode?: number | undefined;
+    readonly entityChanges?: QueryEntityChangeOutput[] | undefined;
+    readonly actions?: PropertyChangesDto[] | undefined;
+
+    constructor(data?: IQueryAuditLogOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.applicationName = _data["applicationName"];
+            this.userId = _data["userId"];
+            this.userName = _data["userName"];
+            this.tenantId = _data["tenantId"];
+            this.tenantName = _data["tenantName"];
+            this.impersonatorUserId = _data["impersonatorUserId"];
+            this.impersonatorTenantId = _data["impersonatorTenantId"];
+            this.executionTime = _data["executionTime"] ? new Date(_data["executionTime"].toString()) : <any>undefined;
+            this.executionDuration = _data["executionDuration"];
+            this.clientIpAddress = _data["clientIpAddress"];
+            this.clientName = _data["clientName"];
+            this.clientId = _data["clientId"];
+            this.correlationId = _data["correlationId"];
+            this.browserInfo = _data["browserInfo"];
+            this.httpMethod = _data["httpMethod"];
+            this.url = _data["url"];
+            this.exceptions = _data["exceptions"];
+            this.comments = _data["comments"];
+            this.httpStatusCode = _data["httpStatusCode"];
+            if (Array.isArray(_data["entityChanges"])) {
+                (<any>this).entityChanges = [] as any;
+                for (let item of _data["entityChanges"])
+                    (<any>this).entityChanges!.push(QueryEntityChangeOutput.fromJS(item));
+            }
+            if (Array.isArray(_data["actions"])) {
+                (<any>this).actions = [] as any;
+                for (let item of _data["actions"])
+                    (<any>this).actions!.push(PropertyChangesDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): QueryAuditLogOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new QueryAuditLogOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["applicationName"] = this.applicationName;
+        data["userId"] = this.userId;
+        data["userName"] = this.userName;
+        data["tenantId"] = this.tenantId;
+        data["tenantName"] = this.tenantName;
+        data["impersonatorUserId"] = this.impersonatorUserId;
+        data["impersonatorTenantId"] = this.impersonatorTenantId;
+        data["executionTime"] = this.executionTime ? this.executionTime.toISOString() : <any>undefined;
+        data["executionDuration"] = this.executionDuration;
+        data["clientIpAddress"] = this.clientIpAddress;
+        data["clientName"] = this.clientName;
+        data["clientId"] = this.clientId;
+        data["correlationId"] = this.correlationId;
+        data["browserInfo"] = this.browserInfo;
+        data["httpMethod"] = this.httpMethod;
+        data["url"] = this.url;
+        data["exceptions"] = this.exceptions;
+        data["comments"] = this.comments;
+        data["httpStatusCode"] = this.httpStatusCode;
+        if (Array.isArray(this.entityChanges)) {
+            data["entityChanges"] = [];
+            for (let item of this.entityChanges)
+                data["entityChanges"].push(item.toJSON());
+        }
+        if (Array.isArray(this.actions)) {
+            data["actions"] = [];
+            for (let item of this.actions)
+                data["actions"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IQueryAuditLogOutput {
+    id?: string;
+    applicationName?: string | undefined;
+    userId?: string | undefined;
+    userName?: string | undefined;
+    tenantId?: string | undefined;
+    tenantName?: string | undefined;
+    impersonatorUserId?: string | undefined;
+    impersonatorTenantId?: string | undefined;
+    executionTime?: Date;
+    executionDuration?: number;
+    clientIpAddress?: string | undefined;
+    clientName?: string | undefined;
+    clientId?: string | undefined;
+    correlationId?: string | undefined;
+    browserInfo?: string | undefined;
+    httpMethod?: string | undefined;
+    url?: string | undefined;
+    exceptions?: string | undefined;
+    comments?: string | undefined;
+    httpStatusCode?: number | undefined;
+    entityChanges?: QueryEntityChangeOutput[] | undefined;
+    actions?: PropertyChangesDto[] | undefined;
+}
+
+export class QueryAuditLogOutputPagedResultDto implements IQueryAuditLogOutputPagedResultDto {
+    items?: QueryAuditLogOutput[] | undefined;
+    totalCount?: number;
+
+    constructor(data?: IQueryAuditLogOutputPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(QueryAuditLogOutput.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): QueryAuditLogOutputPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new QueryAuditLogOutputPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data; 
+    }
+}
+
+export interface IQueryAuditLogOutputPagedResultDto {
+    items?: QueryAuditLogOutput[] | undefined;
+    totalCount?: number;
+}
+
+export class QueryEntityChangeInput implements IQueryEntityChangeInput {
+    id?: string;
+
+    constructor(data?: IQueryEntityChangeInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): QueryEntityChangeInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new QueryEntityChangeInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IQueryEntityChangeInput {
+    id?: string;
+}
+
+export class QueryEntityChangeOutput implements IQueryEntityChangeOutput {
+    id?: string;
+    auditLogId?: string;
+    tenantId?: string | undefined;
+    changeTime?: Date;
+    changeType?: EntityChangeType;
+    entityTenantId?: string | undefined;
+    entityId?: string | undefined;
+    entityTypeFullName?: string | undefined;
+    propertyChanges?: PropertyChangesDto[] | undefined;
+    extraProperties?: { [key: string]: any; } | undefined;
+
+    constructor(data?: IQueryEntityChangeOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.auditLogId = _data["auditLogId"];
+            this.tenantId = _data["tenantId"];
+            this.changeTime = _data["changeTime"] ? new Date(_data["changeTime"].toString()) : <any>undefined;
+            this.changeType = _data["changeType"];
+            this.entityTenantId = _data["entityTenantId"];
+            this.entityId = _data["entityId"];
+            this.entityTypeFullName = _data["entityTypeFullName"];
+            if (Array.isArray(_data["propertyChanges"])) {
+                this.propertyChanges = [] as any;
+                for (let item of _data["propertyChanges"])
+                    this.propertyChanges!.push(PropertyChangesDto.fromJS(item));
+            }
+            if (_data["extraProperties"]) {
+                this.extraProperties = {} as any;
+                for (let key in _data["extraProperties"]) {
+                    if (_data["extraProperties"].hasOwnProperty(key))
+                        this.extraProperties![key] = _data["extraProperties"][key];
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): QueryEntityChangeOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new QueryEntityChangeOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["auditLogId"] = this.auditLogId;
+        data["tenantId"] = this.tenantId;
+        data["changeTime"] = this.changeTime ? this.changeTime.toISOString() : <any>undefined;
+        data["changeType"] = this.changeType;
+        data["entityTenantId"] = this.entityTenantId;
+        data["entityId"] = this.entityId;
+        data["entityTypeFullName"] = this.entityTypeFullName;
+        if (Array.isArray(this.propertyChanges)) {
+            data["propertyChanges"] = [];
+            for (let item of this.propertyChanges)
+                data["propertyChanges"].push(item.toJSON());
+        }
+        if (this.extraProperties) {
+            data["extraProperties"] = {};
+            for (let key in this.extraProperties) {
+                if (this.extraProperties.hasOwnProperty(key))
+                    data["extraProperties"][key] = this.extraProperties[key];
+            }
+        }
+        return data; 
+    }
+}
+
+export interface IQueryEntityChangeOutput {
+    id?: string;
+    auditLogId?: string;
+    tenantId?: string | undefined;
+    changeTime?: Date;
+    changeType?: EntityChangeType;
+    entityTenantId?: string | undefined;
+    entityId?: string | undefined;
+    entityTypeFullName?: string | undefined;
+    propertyChanges?: PropertyChangesDto[] | undefined;
+    extraProperties?: { [key: string]: any; } | undefined;
 }
 
 export class RegisterDto implements IRegisterDto {

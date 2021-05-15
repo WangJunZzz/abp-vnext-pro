@@ -12,9 +12,17 @@ const admin: MenuModule = {
       tag: {
         type: 'warn',
       },
-    }, {
+    },
+    {
       path: 'abpRole',
       name: t('routes.admin.roleManagement'),
+      tag: {
+        type: 'warn',
+      },
+    },
+    {
+      path: 'audit',
+      name: t('routes.admin.auditManagement'),
       tag: {
         type: 'warn',
       },

@@ -41,6 +41,7 @@ namespace CompanyNameProjectName.Users
             try
             {
                 var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
+                if (result.IsLockedOut) throw new Exception("当前用户已被锁定");
                 if (!result.Succeeded) throw new Exception("用户名或者密码错误");
                 var user = await _userManager.FindByNameAsync(input.Name);
                 var roles = await _userManager.GetRolesAsync(user);

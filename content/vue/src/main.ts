@@ -11,7 +11,7 @@ import { setupErrorHandle } from '/@/logics/error-handle';
 import { setupGlobDirectives } from '/@/directives';
 import { setupI18n } from '/@/locales/setupI18n';
 import { registerGlobComp } from '/@/components/registerGlobComp';
-
+import JsonViewer from "vue3-json-viewer"
 // Register icon Sprite
 import 'vite-plugin-svg-icons/register';
 
@@ -25,7 +25,7 @@ if (import.meta.env.DEV) {
 
 (async () => {
   const app = createApp(App);
-
+  app.use(JsonViewer);
   // Configure vuex store
   setupStore(app);
 

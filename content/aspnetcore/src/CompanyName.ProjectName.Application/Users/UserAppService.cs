@@ -35,14 +35,14 @@ namespace CompanyNameProjectName.Users
             request.Filter = input.filter?.Trim();
             request.MaxResultCount = input.PageSize;
             request.SkipCount = (input.PageIndex - 1) * input.PageSize;
-            request.Sorting= " LastModificationTime desc";
+            request.Sorting = " LastModificationTime desc";
             return await _identityUserAppService.GetListAsync(request);
         }
 
         [SwaggerOperation(summary: "创建用户", Tags = new[] { "User" })]
         [Authorize("AbpIdentity.Users.Create")]
         [HttpPost]
-        public  async Task<IdentityUserDto> CreateAsync(IdentityUserCreateDto input)
+        public async Task<IdentityUserDto> CreateAsync(IdentityUserCreateDto input)
         {
             return await _identityUserAppService.CreateAsync(input);
         }
@@ -52,20 +52,20 @@ namespace CompanyNameProjectName.Users
         [HttpPost]
         public virtual async Task<IdentityUserDto> UpdateAsync(UpdateUserInput input)
         {
-            return await _identityUserAppService.UpdateAsync(input.UserId,input.UserInfo);
+            return await _identityUserAppService.UpdateAsync(input.UserId, input.UserInfo);
         }
 
         [SwaggerOperation(summary: "删除用户", Tags = new[] { "User" })]
         [Authorize("AbpIdentity.Users.Delete")]
         public virtual async Task DeleteAsync(Guid id)
         {
-             await _identityUserAppService.DeleteAsync(id);
+            await _identityUserAppService.DeleteAsync(id);
         }
 
         [SwaggerOperation(summary: "获取用户角色", Tags = new[] { "User" })]
         [Authorize("AbpIdentity.Users")]
         [HttpPost("/api/app/user/role/{userId}")]
-        public  async Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(Guid userId)
+        public async Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(Guid userId)
         {
             return await _identityUserAppService.GetRolesAsync(userId);
         }
@@ -90,6 +90,26 @@ namespace CompanyNameProjectName.Users
 
             if (!result.Succeeded) throw new Exception(result.Errors.FirstOrDefault().Description);
             return result.Succeeded;
+        }
+
+        /// <summary>
+        /// 锁定用户
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task LockAsync(LockUserInput input)
+        {
+            var identityUser = await _userManager.GetByIdAsync(input.UserId);
+            await _userManager.SetLockoutEnabledAsync(identityUser, input.Locked);
+            if (input.Locked)
+            {
+                // 如果锁定用户，锁定100年
+                await _userManager.SetLockoutEndDateAsync(identityUser, DateTimeOffset.UtcNow.AddYears(100));
+            }
+            else {
+                await _userManager.SetLockoutEndDateAsync(identityUser, DateTimeOffset.UtcNow.AddDays(-1));
+            }
+           
         }
     }
 }

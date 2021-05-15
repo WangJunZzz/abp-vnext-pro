@@ -10,7 +10,11 @@
           {{ t('common.createText') }}
         </a-button>
       </template>
-
+      <template #lockoutEnabled="{ record }">
+        <Tag :color="record.lockoutEnabled ? 'red' : 'green'">
+          {{ record.lockoutEnabled ? '已锁定' : '未锁定' }}
+        </Tag>
+      </template>
       <template #action="{ record }">
         <a-button
           type="link"
@@ -28,6 +32,15 @@
           v-auth="'AbpIdentity.Users.Delete'"
         >
           {{ t('common.delText') }}
+        </a-button>
+
+        <a-button
+          type="link"
+          size="small"
+          @click="handleLock(record)"
+          v-auth="'AbpIdentity.User.Lock'"
+        >
+          {{ record.lockoutEnabled ? '启用' : '禁用' }}
         </a-button>
       </template>
     </BasicTable>
@@ -47,13 +60,20 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { tableColumns, searchFormSchema, getTableListAsync, deleteUserAsync } from './AbpUser';
+  import {
+    tableColumns,
+    searchFormSchema,
+    getTableListAsync,
+    deleteUserAsync,
+    lockUserAsync,
+  } from './AbpUser';
+  import { LockUserInput } from '/@/services/ServiceProxies';
   import { useModal } from '/@/components/Modal';
   import CreateAbpUser from './CreateAbpUser.vue';
   import EditAbpUser from './EditAbpUser.vue';
   import { message } from 'ant-design-vue';
   import { useI18n } from '/@/hooks/web/useI18n';
-
+  import { Tag } from 'ant-design-vue';
   export default defineComponent({
     name: 'AbpUser',
     components: {
@@ -61,6 +81,7 @@
       TableAction,
       CreateAbpUser,
       EditAbpUser,
+      Tag,
     },
     setup() {
       const { t } = useI18n();
@@ -108,6 +129,13 @@
         await deleteUserAsync({ userId: record.id, reload });
       };
 
+      const handleLock = async (record: Recordable) => {
+        let request = new LockUserInput();
+        request.userId = record.id;
+        request.locked = !record.lockoutEnabled;
+        await lockUserAsync(request);
+        reload();
+      };
       return {
         registerTable,
         handleEdit,
@@ -118,6 +146,7 @@
         registerEditAbpUserModal,
         t,
         reload,
+        handleLock,
       };
     },
   });

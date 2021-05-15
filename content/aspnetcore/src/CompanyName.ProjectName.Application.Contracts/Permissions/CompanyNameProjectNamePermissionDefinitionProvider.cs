@@ -8,11 +8,11 @@ namespace CompanyNameProjectName.Permissions
     {
         public override void Define(IPermissionDefinitionContext context)
         {
-
-
+            var abpIdentityGroup = context.GetGroup("AbpIdentity");
+            abpIdentityGroup.AddPermission("AbpIdentity.Users.Lock", L("Permission:Users:Enable"));
+            abpIdentityGroup.AddPermission("AbpIdentity.Users.AuditLog", L("Permission:Users:AuditLog"));
             //Define your own permissions here. Example:
             //myGroup.AddPermission(CompanyNameProjectNamePermissions.MyPermission1, L("Permission:MyPermission1"));
-
         }
 
         private static LocalizableString L(string name)

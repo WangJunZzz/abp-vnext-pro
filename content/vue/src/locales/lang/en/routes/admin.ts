@@ -6,6 +6,7 @@ export default {
   userManagement_userName: 'UserName',
   userManagement_name: "Name",
   userManagement_email: "Email",
+  userManagement_locked: "Locked",
   userManagement_phone: "phone",
   userManagement_createTime: "CreateTime",
   userManagement_create_user: 'Create User',
@@ -18,5 +19,18 @@ export default {
   roleManagement_default: "Default",
   roleManagement_edit: "Edit Role",
   roleManagement_create_role: "Create Role",
-  roleManagement_permission: "Permission"
+  roleManagement_permission: "Permission",
+
+  auditManagement: "Audit Log",
+  audit_executeTime: "ExecutionTime",
+  audit_endTime: "EndTime",
+  audit_userName: "UserName",
+  audit_httpMethod: "HttpMethod",
+  audit_httpStatusCode: "HttpStatusCode",
+  audit_httpRequest: "HttpRequest",
+  audit_ipAdrress: "IP Address",
+  audit_duration: "Execution Duration(ms)",
+  audit_url: "URL",
+  audit_entityInfo: "EntityInformation",
+  audit_message: "Entity Message",
 };

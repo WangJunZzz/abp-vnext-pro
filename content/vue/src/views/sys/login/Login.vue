@@ -35,9 +35,6 @@
           >
             <LoginForm />
             <ForgetPasswordForm />
-
-
-
           </div>
         </div>
       </div>
@@ -167,7 +164,7 @@
         display: flex;
         width: 60%;
         height: 80px;
-
+        margin-left: 85px;
         &__title {
           font-size: 24px;
           color: #fff;

@@ -159,7 +159,8 @@ namespace CompanyNameProjectName
         {
             Configure<AbpAuditingOptions>(options =>
             {
-                options.IsEnabled = false; //Disables the auditing system
+                options.IsEnabled = true; 
+                options.EntityHistorySelectors.AddAllEntities(); 
             });
         }
 

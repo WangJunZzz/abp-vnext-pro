@@ -13,7 +13,6 @@ export const tableColumns: BasicColumn[] = [
   {
     title: t('routes.admin.userManagement_roleName'),
     dataIndex: 'name',
-
   },
   {
     title: t('routes.admin.roleManagement_default'),

@@ -6,6 +6,7 @@ export default {
   userManagement_userName: '用户名称',
   userManagement_name: "名称",
   userManagement_email: "邮箱",
+  userManagement_locked: "锁定",
   userManagement_phone: "手机",
   userManagement_createTime: "创建时间",
   userManagement_password: "密码",
@@ -17,5 +18,17 @@ export default {
   roleManagement_default: "默认",
   roleManagement_edit: "编辑角色",
   roleManagement_create_role: "创建角色",
-  roleManagement_permission: "授权"
+  roleManagement_permission: "授权",
+
+  auditManagement: "审计日志",
+  audit_userName: "用户名",
+  audit_httpMethod: "Http方法",
+  audit_httpStatusCode: "Http状态码",
+  audit_httpRequest: "Http请求",
+  audit_ipAdrress: "IP地址",
+  audit_executeTime: "执行时间",
+  audit_duration: "持续时间(ms)",
+  audit_url: "Url地址",
+  audit_entityInfo: "实体信息",
+  audit_message: "实体信息",
 };

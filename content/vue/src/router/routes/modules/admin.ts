@@ -6,7 +6,6 @@ const admin: AppRouteModule = {
   path: '/admin',
   name: 'Admin',
   component: LAYOUT,
-  //redirect: '/admin/abpUser',
   meta: {
     icon: 'ion:grid-outline',
     title: t('routes.admin.systemManagement'),
@@ -30,6 +29,16 @@ const admin: AppRouteModule = {
         title: t('routes.admin.roleManagement'),
         policy: 'AbpIdentity.Roles',
         icon: 'ant-design:lock-outlined'
+      },
+    },
+    {
+      path: 'audit',
+      name: 'Audit',
+      component: () => import('/@/views/admin/audits/AuditLog.vue'),
+      meta: {
+        title: t('routes.admin.auditManagement'),
+        policy: "AbpIdentity.Users.AuditLog",
+        icon: 'ant-design:audit-outlined'
       },
     }
   ],

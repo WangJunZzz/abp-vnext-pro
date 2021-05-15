@@ -6,6 +6,10 @@
     "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io.",
     "DataExistence": "Existence",
     "DataNotExistence": "Not Existence",
-    "TestSettings": "TestSettings"
+    "TestSettings": "TestSettings",
+
+    "Permission:Users:Enable": "Enable|Disable",
+    "Permission:Users:AuditLog": "AuditLog"
+
   }
 }
