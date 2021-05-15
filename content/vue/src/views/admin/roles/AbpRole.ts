@@ -123,20 +123,18 @@ export async function deleleRoleAsync({ roleId, reload }) {
  * @param param0
  */
 export async function createRoleAsync({ request, changeOkLoading, validate, closeModal }) {
-  try {
-    changeOkLoading(true);
-    await validate();
-    let requestBody: IdentityRoleCreateDto = new IdentityRoleCreateDto();
-    requestBody.name = request.name;
-    request.isDefault == "1" ? requestBody.isDefault = true : requestBody.isDefault = false;
-    const _roleServiceProxy = new RoleServiceProxy();
-    await _roleServiceProxy.rolePost(requestBody);
-    changeOkLoading(false);
-    message.success(t('common.operationSuccess'));
-    closeModal();
-  } catch (error) {
-    changeOkLoading(false);
-  }
+
+  changeOkLoading(true);
+  await validate();
+  let requestBody: IdentityRoleCreateDto = new IdentityRoleCreateDto();
+  requestBody.name = request.name;
+  request.isDefault == "1" ? requestBody.isDefault = true : requestBody.isDefault = false;
+  const _roleServiceProxy = new RoleServiceProxy();
+  await _roleServiceProxy.rolePost(requestBody);
+  changeOkLoading(false);
+  message.success(t('common.operationSuccess'));
+  closeModal();
+
 }
 
 /**
@@ -167,18 +165,13 @@ export async function updateRolePermissionAsync({ request, closeDrawer, setDrawe
  * @param param0
  */
 export async function updateRoleAsync({ request, changeOkLoading, validate, closeModal }) {
-  try {
-
-    await validate();
-    changeOkLoading(true);
-    const _roleServiceProxy = new RoleServiceProxy();
-    await _roleServiceProxy.update(request);
-    changeOkLoading(false);
-    message.success(t('common.operationSuccess'));
-    closeModal();
-  } catch (error) {
-    changeOkLoading(false);
-  }
+  await validate();
+  changeOkLoading(true);
+  const _roleServiceProxy = new RoleServiceProxy();
+  await _roleServiceProxy.update(request);
+  changeOkLoading(false);
+  message.success(t('common.operationSuccess'));
+  closeModal();
 }
 
 

@@ -13,10 +13,24 @@
           <BasicForm @register="registerUserForm" />
         </TabPane>
         <TabPane tab="角色" key="2">
-          <a-checkbox-group @change="onRoleSelectedChange" v-model:value="defaultRolesRef">
+          <!-- <a-checkbox-group @change="onRoleSelectedChange" v-model:value="defaultRolesRef">
             <a-checkbox v-for="(item, index) in rolesRef" :key="index" :value="item.name">
               {{ item.name }}
             </a-checkbox>
+          </a-checkbox-group> -->
+
+          <a-checkbox-group v-model:value="defaultRolesRef" @change="onRoleSelectedChange">
+            <a-row justify="center">
+              <a-col :span="24">
+                <a-checkbox
+                  style="width: 150px"
+                  v-for="(item, index) in rolesRef"
+                  :key="index"
+                  :value="item.name"
+                  >{{ item.name }}</a-checkbox
+                >
+              </a-col>
+            </a-row>
           </a-checkbox-group>
         </TabPane>
       </Tabs>
@@ -75,7 +89,6 @@
       let defaultRolesRef = reactive(defaultRoles);
 
       const visibleChange = async (visible: boolean) => {
-        debugger;
         if (visible) {
           const roles = await getAllRoleAsync();
           const userRoles = await getRolesByUserIdAsync(currentUserInfo.id as string);
@@ -99,22 +112,25 @@
         });
       };
 
-      // 保存用户
       const submit = async () => {
-        let request = getFieldsValue();
-        let userInfo = new IdentityUserUpdateDto();
-        request.userId = currentUserInfo.id;
-        userInfo.userName = request.userName;
-        userInfo.name = request.name;
-        userInfo.surname = currentUserInfo.surname;
-        userInfo.email = request.email;
-        userInfo.phoneNumber = currentUserInfo.phoneNumber;
-        userInfo.lockoutEnabled = currentUserInfo.lockoutEnabled;
-        userInfo.concurrencyStamp = currentUserInfo.concurrencyStamp;
-        userInfo.roleNames = defaultRolesRef;
-        request.userInfo = userInfo;
-        await updateUserAsync({ request, changeOkLoading, validate, closeModal });
-        ctx.emit('reload');
+        try {
+          let request = getFieldsValue();
+          let userInfo = new IdentityUserUpdateDto();
+          request.userId = currentUserInfo.id;
+          userInfo.userName = request.userName;
+          userInfo.name = request.name;
+          userInfo.surname = currentUserInfo.surname;
+          userInfo.email = request.email;
+          userInfo.phoneNumber = currentUserInfo.phoneNumber;
+          userInfo.lockoutEnabled = currentUserInfo.lockoutEnabled;
+          userInfo.concurrencyStamp = currentUserInfo.concurrencyStamp;
+          userInfo.roleNames = defaultRolesRef;
+          request.userInfo = userInfo;
+          await updateUserAsync({ request, changeOkLoading, validate, closeModal });
+          ctx.emit('reload');
+        } catch (error) {
+          changeOkLoading(false);
+        }
       };
 
       return {
@@ -129,5 +145,8 @@
     },
   });
 </script>
-
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+  .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+    margin-left: 0px;
+  }
+</style>

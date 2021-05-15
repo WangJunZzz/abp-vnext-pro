@@ -38,23 +38,24 @@ namespace CompanyNameProjectName.Users
         [SwaggerOperation(summary: "登录", Tags = new[] { "Login" })]
         public async Task<LoginOutputDto> PostAsync(LoginInputDto input)
         {
-            var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
-            if (!result.Succeeded)  throw new BusinessException("Login Faild");
-
-            var user = await _userManager.FindByNameAsync(input.Name);
-            if (user != null)
+            try
             {
-              
-                if (user == null) throw new BusinessException("Login Faild");
+                var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
+                if (!result.Succeeded) throw new Exception("用户名或者密码错误");
+                var user = await _userManager.FindByNameAsync(input.Name);
                 var roles = await _userManager.GetRolesAsync(user);
-                if (roles == null || roles.Count == 0) throw new BusinessException("Login Faild");
+                if (roles == null || roles.Count == 0) throw new Exception("当前用户未分配角色");
                 var token = GenerateJwt(user, roles.ToList());
                 var loginOutputDto = ObjectMapper.Map<IdentityUser, LoginOutputDto>(user);
                 loginOutputDto.Token = token;
                 loginOutputDto.Expiration = DateTime.Now.AddHours(_jwtOptions.ExpirationTime);
                 return loginOutputDto;
             }
-            throw new BusinessException("Login Faild");
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
         }
 
         /// <summary>

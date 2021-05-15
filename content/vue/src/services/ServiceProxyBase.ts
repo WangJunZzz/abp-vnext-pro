@@ -23,15 +23,12 @@ export class ServiceProxyBase {
   protected transformResult(url: string, response: AxiosResponse, processor: (response: AxiosResponse) => Promise<any>): Promise<any> {
 
     const { t } = useI18n();
-    if (response.status == 401 || response.status == 403) {
+    if (response.status == 401 || response.status == 403 || response.status == 302) {
       message.error(t('common.authorityText'));
       router.replace(PageEnum.BASE_LOGIN)
-    } else if (response.status == 200 || response.status == 204) {
-
-    } else {
-      message.error(t('common.systemErrorText'));
+    } else if (response.status >= 500) {
+      message.error(response.data.error.message)
     }
-
     return processor(response);
   }
 
@@ -45,7 +42,7 @@ export class ServiceProxyBase {
 
     const userStore = useUserStoreWidthOut();
     const token = userStore.getToken;
-    const language = userStore.getLanguage;
+    const language = userStore.getLanguage == undefined ? 'zh-Hans' : userStore.getLanguage;
     return {
       token, language
     };

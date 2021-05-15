@@ -29,18 +29,24 @@
       const ctx = useContext();
 
       const { t } = useI18n();
-      const [registerModal, { changeOkLoading, closeModal }] = useModalInner();
-      const [registerUserForm, { getFieldsValue, validate }] = useForm({
+      const [registerUserForm, { getFieldsValue, validate, resetFields }] = useForm({
         labelWidth: 120,
         schemas: createFormSchema,
         showActionButtonGroup: false,
       });
 
+      const [registerModal, { changeOkLoading, closeModal }] = useModalInner();
+
       // 保存角色
       const submit = async () => {
-        const request = getFieldsValue();
-        await createRoleAsync({ request, changeOkLoading, validate, closeModal });
-        ctx.emit('reload');
+        try {
+          const request = getFieldsValue();
+          await createRoleAsync({ request, changeOkLoading, validate, closeModal });
+          resetFields();
+          ctx.emit('reload');
+        } catch (error) {
+          changeOkLoading(false);
+        }
       };
 
       const cancel = () => {

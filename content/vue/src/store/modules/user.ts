@@ -105,7 +105,6 @@ export const useUserStore = defineStore({
     async getAbpApplicationConfigurationAsync() {
       var application = await getAbpApplicationConfiguration();
       const permissionStore = usePermissionStore();
-      debugger;
       const grantPolicy = Object.keys(application.auth?.grantedPolicies as object);
       permissionStore.setPermCodeList(grantPolicy);
     },

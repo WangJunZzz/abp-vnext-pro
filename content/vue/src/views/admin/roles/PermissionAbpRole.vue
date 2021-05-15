@@ -2,8 +2,16 @@
   <BasicDrawer
     @register="registerDrawer"
     :title="t('routes.admin.roleManagement_permission')"
-    width="15%"
+    width="20%"
   >
+    <!-- <a-tree
+      checkable
+      :tree-data="allPermissionsRef"
+      v-model:checkedKeys="currentRolePermissionsRef"
+    >
+      <template #title0010><span style="color: #1890ff"></span></template>
+    </a-tree> -->
+
     <BasicTree
       :treeData="allPermissionsRef"
       checkable
@@ -88,6 +96,7 @@
           });
           allPermissionsRef.push(temp);
         });
+
         setDrawerProps({ loading: false });
       };
 
@@ -98,6 +107,7 @@
         let permisstions: UpdatePermissionDto[] = [];
         request.providerName = 'R';
         request.providerKey = roleName;
+
         currentRolePermissionsRef.value.forEach((item) => {
           if (item.indexOf('.') > 0) {
             let permisstion = new UpdatePermissionDto();

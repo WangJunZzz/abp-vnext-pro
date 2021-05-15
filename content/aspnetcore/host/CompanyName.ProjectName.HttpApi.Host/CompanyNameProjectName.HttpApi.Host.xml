@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CompanyName.ProjectName.HttpApi.Host</name>
+    </assembly>
+    <members>
+        <member name="M:CompanyNameProjectName.CompanyNameProjectNameHttpApiHostModule.ConfigureOptions(Volo.Abp.Modularity.ServiceConfigurationContext)">
+            <summary>
+            配置options
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:CompanyNameProjectName.CompanyNameProjectNameHttpApiHostModule.ConfigureAuditLog">
+            <summary>
+            审计日志
+            </summary>
+        </member>
+        <member name="M:CompanyNameProjectName.CompanyNameProjectNameHttpApiHostModule.ConfigureCache(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Redis缓存
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:CompanyNameProjectName.CompanyNameProjectNameHttpApiHostModule.ConfigureAbpExcepotions(Volo.Abp.Modularity.ServiceConfigurationContext)">
+            <summary>
+            异常处理
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:CompanyNameProjectName.CompanyNameProjectNameHttpApiHostModule.ConfigureVirtualFileSystem(Volo.Abp.Modularity.ServiceConfigurationContext)">
+            <summary>
+            配置虚拟文件系统
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:CompanyNameProjectName.CompanyNameProjectNameHttpApiHostModule.ConfigureConventionalControllers">
+            <summary>
+            映射Controller
+            </summary>
+        </member>
+        <member name="M:CompanyNameProjectName.CompanyNameProjectNameHttpApiHostModule.ConfigureJwtAuthentication(Volo.Abp.Modularity.ServiceConfigurationContext,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            配置JWT
+            </summary>
+            <param name="context"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:CompanyNameProjectName.CompanyNameProjectNameHttpApiHostModule.ConfigureSwaggerServices(Volo.Abp.Modularity.ServiceConfigurationContext)">
+            <summary>
+            配置SwaggerUI
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:CompanyNameProjectName.CompanyNameProjectNameHttpApiHostModule.ConfigureLocalization">
+             <summary>
+            配置本地化
+             </summary>
+        </member>
+        <member name="M:CompanyNameProjectName.CompanyNameProjectNameHttpApiHostModule.ConfigureCors(Volo.Abp.Modularity.ServiceConfigurationContext,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            配置跨域
+            </summary>
+            <param name="context"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:CompanyNameProjectName.CompanyNameProjectNameHttpApiHostModule.ConfigureHangfire(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置Hangfire服务
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:CompanyNameProjectName.Extensions.Filters.HiddenAbpDefaultApiFilter">
+            <summary>
+            在使用nswag的时候，原生默认的api导致生产的代理类存在问题
+            所有隐藏原生的api，重写路由
+            </summary>
+        </member>
+        <member name="T:CompanyNameProjectName.Extensions.Filters.SwaggerTagsFilter">
+            <summary>
+            把abp vnext 提供的api 归档
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -13,10 +13,24 @@
           <BasicForm @register="registerUserForm" />
         </TabPane>
         <TabPane :tab="t('routes.admin.userManagement_role')" key="2">
-          <a-checkbox-group @change="onRoleSelectedChange" v-model:value="defaultRolesRef">
+          <!-- <a-checkbox-group @change="onRoleSelectedChange" v-model:value="defaultRolesRef">
             <a-checkbox v-for="(item, index) in rolesRef" :key="index" :value="item.name">
               {{ item.name }}
             </a-checkbox>
+          </a-checkbox-group> -->
+
+          <a-checkbox-group @change="onRoleSelectedChange" v-model:value="defaultRolesRef">
+            <a-row justify="center">
+              <a-col :span="24">
+                <a-checkbox
+                  style="width: 150px"
+                  v-for="(item, index) in rolesRef"
+                  :key="index"
+                  :value="item.name"
+                  >{{ item.name }}</a-checkbox
+                >
+              </a-col>
+            </a-row>
           </a-checkbox-group>
         </TabPane>
       </Tabs>
@@ -81,17 +95,20 @@
 
       // 保存用户
       const submit = async () => {
-        debugger;
-        let request = getFieldsValue() as IdentityUserCreateDto;
-        request.roleNames = defaultRolesRef;
-        await createUserAsync({
-          request,
-          changeOkLoading,
-          validate,
-          closeModal,
-          resetFields,
-        });
-        ctx.emit('reload');
+        try {
+          let request = getFieldsValue() as IdentityUserCreateDto;
+          request.roleNames = defaultRolesRef;
+          await createUserAsync({
+            request,
+            changeOkLoading,
+            validate,
+            closeModal,
+            resetFields,
+          });
+          ctx.emit('reload');
+        } catch (error) {
+          changeOkLoading(false);
+        }
       };
       return {
         t,
@@ -106,5 +123,8 @@
     },
   });
 </script>
-
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+  .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+    margin-left: 0px;
+  }
+</style>

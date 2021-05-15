@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CompanyName.ProjectName.Application.Contracts</name>
+    </assembly>
+    <members>
+        <member name="M:CompanyNameProjectName.Jobs.IRecurringJob.ExecuteAsync">
+            <summary>
+            执行任务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CompanyNameProjectName.Pages.Dtos.CustomeRequestDto.PageIndex">
+            <summary>
+            当前页面
+            </summary>
+        </member>
+        <member name="P:CompanyNameProjectName.Pages.Dtos.CustomeRequestDto.PageSize">
+            <summary>
+            每页多少条
+            </summary>
+        </member>
+        <member name="T:CompanyNameProjectName.Dtos.Users.LoginInputDto">
+            <summary>
+            登录
+            </summary>
+        </member>
+        <member name="P:CompanyNameProjectName.Dtos.Users.LoginInputDto.Name">
+            <summary>
+            用户名或者邮箱
+            </summary>
+        </member>
+        <member name="P:CompanyNameProjectName.Dtos.Users.LoginInputDto.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:CompanyNameProjectName.Dtos.Users.LoginOutputDto.Expiration">
+            <summary>
+            过期时间
+            </summary>
+        </member>
+    </members>
+</doc>

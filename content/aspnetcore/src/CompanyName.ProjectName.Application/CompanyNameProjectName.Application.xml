@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CompanyName.ProjectName.Application</name>
+    </assembly>
+    <members>
+        <member name="T:CompanyNameProjectName.Jobs.CronTypeHelper">
+            <summary>
+            Cron类型
+            </summary>
+        </member>
+        <member name="M:CompanyNameProjectName.Jobs.CronTypeHelper.Minute(System.Int32)">
+            <summary>
+            周期性为分钟的任务
+            </summary>
+            <param name="interval">执行周期的间隔，默认为每分钟一次</param>
+            <returns></returns>
+        </member>
+        <member name="M:CompanyNameProjectName.Jobs.CronTypeHelper.Hour(System.Int32,System.Int32)">
+            <summary>
+            周期性为小时的任务
+            </summary>
+            <param name="minute">第几分钟开始，默认为第一分钟</param>
+            <param name="interval">执行周期的间隔，默认为每小时一次</param>
+            <returns></returns>
+        </member>
+        <member name="M:CompanyNameProjectName.Jobs.CronTypeHelper.Day(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            周期性为天的任务
+            </summary>
+            <param name="hour">第几小时开始，默认从1点开始</param>
+            <param name="minute">第几分钟开始，默认从第1分钟开始</param>
+            <param name="interval">执行周期的间隔，默认为每天一次</param>
+            <returns></returns>
+        </member>
+        <member name="M:CompanyNameProjectName.Jobs.CronTypeHelper.Week(System.DayOfWeek,System.Int32,System.Int32)">
+            <summary>
+            周期性为周的任务
+            </summary>
+            <param name="dayOfWeek">星期几开始，默认从星期一点开始</param>
+            <param name="hour">第几小时开始，默认从1点开始</param>
+            <param name="minute">第几分钟开始，默认从第1分钟开始</param>
+            <returns></returns>
+        </member>
+        <member name="M:CompanyNameProjectName.Jobs.CronTypeHelper.Month(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            周期性为月的任务
+            </summary>
+            <param name="day">几号开始，默认从一号开始</param>
+            <param name="hour">第几小时开始，默认从1点开始</param>
+            <param name="minute">第几分钟开始，默认从第1分钟开始</param>
+            <returns></returns>
+        </member>
+        <member name="M:CompanyNameProjectName.Jobs.CronTypeHelper.Year(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            周期性为年的任务
+            </summary>
+            <param name="month">几月开始，默认从一月开始</param>
+            <param name="day">几号开始，默认从一号开始</param>
+            <param name="hour">第几小时开始，默认从1点开始</param>
+            <param name="minute">第几分钟开始，默认从第1分钟开始</param>
+            <returns></returns>
+        </member>
+        <member name="M:CompanyNameProjectName.Users.LoginAppService.GenerateJwt(Volo.Abp.Identity.IdentityUser,System.Collections.Generic.List{System.String})">
+            <summary>
+            生成jwt token
+            </summary>
+            <param name="user"></param>
+            <param name="roles"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

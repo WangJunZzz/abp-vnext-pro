@@ -277,6 +277,42 @@ export class LoginServiceProxy extends ServiceProxyBase {
             let resultData200  = _responseText;
             result200 = LoginOutputDto.fromJS(resultData200);
             return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -342,6 +378,42 @@ export class RoleServiceProxy extends ServiceProxyBase {
             let resultData200  = _responseText;
             result200 = IdentityRoleDtoListResultDto.fromJS(resultData200);
             return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -400,6 +472,42 @@ export class RoleServiceProxy extends ServiceProxyBase {
             let resultData200  = _responseText;
             result200 = IdentityRoleDtoPagedResultDto.fromJS(resultData200);
             return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -458,6 +566,42 @@ export class RoleServiceProxy extends ServiceProxyBase {
             let resultData200  = _responseText;
             result200 = IdentityRoleDto.fromJS(resultData200);
             return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -516,6 +660,42 @@ export class RoleServiceProxy extends ServiceProxyBase {
             let resultData200  = _responseText;
             result200 = IdentityRoleDto.fromJS(resultData200);
             return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -568,6 +748,42 @@ export class RoleServiceProxy extends ServiceProxyBase {
         if (status === 200) {
             const _responseText = response.data;
             return Promise.resolve<void>(<any>null);
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -581,11 +797,15 @@ export class RoleServiceProxy extends ServiceProxyBase {
      * @param providerKey (optional) 
      * @return Success
      */
-    permission(providerName: string | null | undefined, providerKey: string | null | undefined , cancelToken?: CancelToken | undefined): Promise<GetPermissionListResultDto> {
+    permission(providerName: string | undefined, providerKey: string | undefined , cancelToken?: CancelToken | undefined): Promise<GetPermissionListResultDto> {
         let url_ = this.baseUrl + "/api/app/role/permission?";
-        if (providerName !== undefined && providerName !== null)
+        if (providerName === null)
+            throw new Error("The parameter 'providerName' cannot be null.");
+        else if (providerName !== undefined)
             url_ += "providerName=" + encodeURIComponent("" + providerName) + "&";
-        if (providerKey !== undefined && providerKey !== null)
+        if (providerKey === null)
+            throw new Error("The parameter 'providerKey' cannot be null.");
+        else if (providerKey !== undefined)
             url_ += "providerKey=" + encodeURIComponent("" + providerKey) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -627,6 +847,42 @@ export class RoleServiceProxy extends ServiceProxyBase {
             let resultData200  = _responseText;
             result200 = GetPermissionListResultDto.fromJS(resultData200);
             return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -681,6 +937,42 @@ export class RoleServiceProxy extends ServiceProxyBase {
         if (status === 200) {
             const _responseText = response.data;
             return Promise.resolve<void>(<any>null);
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -704,7 +996,7 @@ export class SettingUiServiceProxy extends ServiceProxyBase {
      * @return Success
      */
     settingUi(  cancelToken?: CancelToken | undefined): Promise<SettingGroup[]> {
-        let url_ = this.baseUrl + "/api/settingUi";
+        let url_ = this.baseUrl + "/api/setting-ui";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
@@ -796,8 +1088,8 @@ export class SettingUiServiceProxy extends ServiceProxyBase {
      * @param body (optional) 
      * @return Success
      */
-    setSettingValues(body: { [key: string]: string; } | null | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
-        let url_ = this.baseUrl + "/api/settingUi/setSettingValues";
+    setSettingValues(body: { [key: string]: string; } | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/api/setting-ui/set-setting-values";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -885,8 +1177,8 @@ export class SettingUiServiceProxy extends ServiceProxyBase {
      * @param body (optional) 
      * @return Success
      */
-    resetSettingValues(body: string[] | null | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
-        let url_ = this.baseUrl + "/api/settingUi/resetSettingValues";
+    resetSettingValues(body: string[] | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/api/setting-ui/reset-setting-values";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -1033,6 +1325,42 @@ export class UserServiceProxy extends ServiceProxyBase {
             let resultData200  = _responseText;
             result200 = IdentityUserDtoPagedResultDto.fromJS(resultData200);
             return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -1091,6 +1419,42 @@ export class UserServiceProxy extends ServiceProxyBase {
             let resultData200  = _responseText;
             result200 = IdentityUserDto.fromJS(resultData200);
             return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -1149,6 +1513,42 @@ export class UserServiceProxy extends ServiceProxyBase {
             let resultData200  = _responseText;
             result200 = IdentityUserDto.fromJS(resultData200);
             return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -1201,6 +1601,42 @@ export class UserServiceProxy extends ServiceProxyBase {
         if (status === 200) {
             const _responseText = response.data;
             return Promise.resolve<void>(<any>null);
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -1257,18 +1693,148 @@ export class UserServiceProxy extends ServiceProxyBase {
             let resultData200  = _responseText;
             result200 = IdentityRoleDtoListResultDto.fromJS(resultData200);
             return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
         return Promise.resolve<IdentityRoleDtoListResultDto>(<any>null);
     }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    changePassword(body: ChangePasswordInput | undefined , cancelToken?: CancelToken | undefined): Promise<boolean> {
+        let url_ = this.baseUrl + "/api/app/user/change-password";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processChangePassword(_response));
+        });
+    }
+
+    protected processChangePassword(response: AxiosResponse): Promise<boolean> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<boolean>(<any>null);
+    }
 }
 
-export class ControllerInterfaceApiDescriptionModel implements IControllerInterfaceApiDescriptionModel {
-    type?: string | undefined;
+export class AbpLoginResult implements IAbpLoginResult {
+    result?: LoginResultType;
+    readonly description?: string | undefined;
 
-    constructor(data?: IControllerInterfaceApiDescriptionModel) {
+    constructor(data?: IAbpLoginResult) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -1279,198 +1845,29 @@ export class ControllerInterfaceApiDescriptionModel implements IControllerInterf
 
     init(_data?: any) {
         if (_data) {
-            this.type = _data["type"];
+            this.result = _data["result"];
+            (<any>this).description = _data["description"];
         }
     }
 
-    static fromJS(data: any): ControllerInterfaceApiDescriptionModel {
+    static fromJS(data: any): AbpLoginResult {
         data = typeof data === 'object' ? data : {};
-        let result = new ControllerInterfaceApiDescriptionModel();
+        let result = new AbpLoginResult();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["type"] = this.type;
+        data["result"] = this.result;
+        data["description"] = this.description;
         return data; 
     }
 }
 
-export interface IControllerInterfaceApiDescriptionModel {
-    type?: string | undefined;
-}
-
-export class MethodParameterApiDescriptionModel implements IMethodParameterApiDescriptionModel {
-    name?: string | undefined;
-    typeAsString?: string | undefined;
-    type?: string | undefined;
-    typeSimple?: string | undefined;
-    isOptional?: boolean;
-    defaultValue?: any | undefined;
-
-    constructor(data?: IMethodParameterApiDescriptionModel) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.typeAsString = _data["typeAsString"];
-            this.type = _data["type"];
-            this.typeSimple = _data["typeSimple"];
-            this.isOptional = _data["isOptional"];
-            this.defaultValue = _data["defaultValue"];
-        }
-    }
-
-    static fromJS(data: any): MethodParameterApiDescriptionModel {
-        data = typeof data === 'object' ? data : {};
-        let result = new MethodParameterApiDescriptionModel();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["typeAsString"] = this.typeAsString;
-        data["type"] = this.type;
-        data["typeSimple"] = this.typeSimple;
-        data["isOptional"] = this.isOptional;
-        data["defaultValue"] = this.defaultValue;
-        return data; 
-    }
-}
-
-export interface IMethodParameterApiDescriptionModel {
-    name?: string | undefined;
-    typeAsString?: string | undefined;
-    type?: string | undefined;
-    typeSimple?: string | undefined;
-    isOptional?: boolean;
-    defaultValue?: any | undefined;
-}
-
-export class ParameterApiDescriptionModel implements IParameterApiDescriptionModel {
-    nameOnMethod?: string | undefined;
-    name?: string | undefined;
-    type?: string | undefined;
-    typeSimple?: string | undefined;
-    isOptional?: boolean;
-    defaultValue?: any | undefined;
-    constraintTypes?: string[] | undefined;
-    bindingSourceId?: string | undefined;
-    descriptorName?: string | undefined;
-
-    constructor(data?: IParameterApiDescriptionModel) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.nameOnMethod = _data["nameOnMethod"];
-            this.name = _data["name"];
-            this.type = _data["type"];
-            this.typeSimple = _data["typeSimple"];
-            this.isOptional = _data["isOptional"];
-            this.defaultValue = _data["defaultValue"];
-            if (Array.isArray(_data["constraintTypes"])) {
-                this.constraintTypes = [] as any;
-                for (let item of _data["constraintTypes"])
-                    this.constraintTypes!.push(item);
-            }
-            this.bindingSourceId = _data["bindingSourceId"];
-            this.descriptorName = _data["descriptorName"];
-        }
-    }
-
-    static fromJS(data: any): ParameterApiDescriptionModel {
-        data = typeof data === 'object' ? data : {};
-        let result = new ParameterApiDescriptionModel();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["nameOnMethod"] = this.nameOnMethod;
-        data["name"] = this.name;
-        data["type"] = this.type;
-        data["typeSimple"] = this.typeSimple;
-        data["isOptional"] = this.isOptional;
-        data["defaultValue"] = this.defaultValue;
-        if (Array.isArray(this.constraintTypes)) {
-            data["constraintTypes"] = [];
-            for (let item of this.constraintTypes)
-                data["constraintTypes"].push(item);
-        }
-        data["bindingSourceId"] = this.bindingSourceId;
-        data["descriptorName"] = this.descriptorName;
-        return data; 
-    }
-}
-
-export interface IParameterApiDescriptionModel {
-    nameOnMethod?: string | undefined;
-    name?: string | undefined;
-    type?: string | undefined;
-    typeSimple?: string | undefined;
-    isOptional?: boolean;
-    defaultValue?: any | undefined;
-    constraintTypes?: string[] | undefined;
-    bindingSourceId?: string | undefined;
-    descriptorName?: string | undefined;
-}
-
-export class ReturnValueApiDescriptionModel implements IReturnValueApiDescriptionModel {
-    type?: string | undefined;
-    typeSimple?: string | undefined;
-
-    constructor(data?: IReturnValueApiDescriptionModel) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.type = _data["type"];
-            this.typeSimple = _data["typeSimple"];
-        }
-    }
-
-    static fromJS(data: any): ReturnValueApiDescriptionModel {
-        data = typeof data === 'object' ? data : {};
-        let result = new ReturnValueApiDescriptionModel();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["type"] = this.type;
-        data["typeSimple"] = this.typeSimple;
-        return data; 
-    }
-}
-
-export interface IReturnValueApiDescriptionModel {
-    type?: string | undefined;
-    typeSimple?: string | undefined;
+export interface IAbpLoginResult {
+    result?: LoginResultType;
+    description?: string | undefined;
 }
 
 export class ActionApiDescriptionModel implements IActionApiDescriptionModel {
@@ -1561,266 +1958,6 @@ export interface IActionApiDescriptionModel {
     returnValue?: ReturnValueApiDescriptionModel;
 }
 
-export class ControllerApiDescriptionModel implements IControllerApiDescriptionModel {
-    controllerName?: string | undefined;
-    type?: string | undefined;
-    interfaces?: ControllerInterfaceApiDescriptionModel[] | undefined;
-    actions?: { [key: string]: ActionApiDescriptionModel; } | undefined;
-
-    constructor(data?: IControllerApiDescriptionModel) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.controllerName = _data["controllerName"];
-            this.type = _data["type"];
-            if (Array.isArray(_data["interfaces"])) {
-                this.interfaces = [] as any;
-                for (let item of _data["interfaces"])
-                    this.interfaces!.push(ControllerInterfaceApiDescriptionModel.fromJS(item));
-            }
-            if (_data["actions"]) {
-                this.actions = {} as any;
-                for (let key in _data["actions"]) {
-                    if (_data["actions"].hasOwnProperty(key))
-                        this.actions![key] = _data["actions"][key] ? ActionApiDescriptionModel.fromJS(_data["actions"][key]) : new ActionApiDescriptionModel();
-                }
-            }
-        }
-    }
-
-    static fromJS(data: any): ControllerApiDescriptionModel {
-        data = typeof data === 'object' ? data : {};
-        let result = new ControllerApiDescriptionModel();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["controllerName"] = this.controllerName;
-        data["type"] = this.type;
-        if (Array.isArray(this.interfaces)) {
-            data["interfaces"] = [];
-            for (let item of this.interfaces)
-                data["interfaces"].push(item.toJSON());
-        }
-        if (this.actions) {
-            data["actions"] = {};
-            for (let key in this.actions) {
-                if (this.actions.hasOwnProperty(key))
-                    data["actions"][key] = this.actions[key] ? this.actions[key].toJSON() : <any>undefined;
-            }
-        }
-        return data; 
-    }
-}
-
-export interface IControllerApiDescriptionModel {
-    controllerName?: string | undefined;
-    type?: string | undefined;
-    interfaces?: ControllerInterfaceApiDescriptionModel[] | undefined;
-    actions?: { [key: string]: ActionApiDescriptionModel; } | undefined;
-}
-
-export class ModuleApiDescriptionModel implements IModuleApiDescriptionModel {
-    rootPath?: string | undefined;
-    remoteServiceName?: string | undefined;
-    controllers?: { [key: string]: ControllerApiDescriptionModel; } | undefined;
-
-    constructor(data?: IModuleApiDescriptionModel) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.rootPath = _data["rootPath"];
-            this.remoteServiceName = _data["remoteServiceName"];
-            if (_data["controllers"]) {
-                this.controllers = {} as any;
-                for (let key in _data["controllers"]) {
-                    if (_data["controllers"].hasOwnProperty(key))
-                        this.controllers![key] = _data["controllers"][key] ? ControllerApiDescriptionModel.fromJS(_data["controllers"][key]) : new ControllerApiDescriptionModel();
-                }
-            }
-        }
-    }
-
-    static fromJS(data: any): ModuleApiDescriptionModel {
-        data = typeof data === 'object' ? data : {};
-        let result = new ModuleApiDescriptionModel();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["rootPath"] = this.rootPath;
-        data["remoteServiceName"] = this.remoteServiceName;
-        if (this.controllers) {
-            data["controllers"] = {};
-            for (let key in this.controllers) {
-                if (this.controllers.hasOwnProperty(key))
-                    data["controllers"][key] = this.controllers[key] ? this.controllers[key].toJSON() : <any>undefined;
-            }
-        }
-        return data; 
-    }
-}
-
-export interface IModuleApiDescriptionModel {
-    rootPath?: string | undefined;
-    remoteServiceName?: string | undefined;
-    controllers?: { [key: string]: ControllerApiDescriptionModel; } | undefined;
-}
-
-export class PropertyApiDescriptionModel implements IPropertyApiDescriptionModel {
-    name?: string | undefined;
-    type?: string | undefined;
-    typeSimple?: string | undefined;
-    isRequired?: boolean;
-
-    constructor(data?: IPropertyApiDescriptionModel) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.type = _data["type"];
-            this.typeSimple = _data["typeSimple"];
-            this.isRequired = _data["isRequired"];
-        }
-    }
-
-    static fromJS(data: any): PropertyApiDescriptionModel {
-        data = typeof data === 'object' ? data : {};
-        let result = new PropertyApiDescriptionModel();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["type"] = this.type;
-        data["typeSimple"] = this.typeSimple;
-        data["isRequired"] = this.isRequired;
-        return data; 
-    }
-}
-
-export interface IPropertyApiDescriptionModel {
-    name?: string | undefined;
-    type?: string | undefined;
-    typeSimple?: string | undefined;
-    isRequired?: boolean;
-}
-
-export class TypeApiDescriptionModel implements ITypeApiDescriptionModel {
-    baseType?: string | undefined;
-    isEnum?: boolean;
-    enumNames?: string[] | undefined;
-    enumValues?: any[] | undefined;
-    genericArguments?: string[] | undefined;
-    properties?: PropertyApiDescriptionModel[] | undefined;
-
-    constructor(data?: ITypeApiDescriptionModel) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.baseType = _data["baseType"];
-            this.isEnum = _data["isEnum"];
-            if (Array.isArray(_data["enumNames"])) {
-                this.enumNames = [] as any;
-                for (let item of _data["enumNames"])
-                    this.enumNames!.push(item);
-            }
-            if (Array.isArray(_data["enumValues"])) {
-                this.enumValues = [] as any;
-                for (let item of _data["enumValues"])
-                    this.enumValues!.push(item);
-            }
-            if (Array.isArray(_data["genericArguments"])) {
-                this.genericArguments = [] as any;
-                for (let item of _data["genericArguments"])
-                    this.genericArguments!.push(item);
-            }
-            if (Array.isArray(_data["properties"])) {
-                this.properties = [] as any;
-                for (let item of _data["properties"])
-                    this.properties!.push(PropertyApiDescriptionModel.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): TypeApiDescriptionModel {
-        data = typeof data === 'object' ? data : {};
-        let result = new TypeApiDescriptionModel();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["baseType"] = this.baseType;
-        data["isEnum"] = this.isEnum;
-        if (Array.isArray(this.enumNames)) {
-            data["enumNames"] = [];
-            for (let item of this.enumNames)
-                data["enumNames"].push(item);
-        }
-        if (Array.isArray(this.enumValues)) {
-            data["enumValues"] = [];
-            for (let item of this.enumValues)
-                data["enumValues"].push(item);
-        }
-        if (Array.isArray(this.genericArguments)) {
-            data["genericArguments"] = [];
-            for (let item of this.genericArguments)
-                data["genericArguments"].push(item);
-        }
-        if (Array.isArray(this.properties)) {
-            data["properties"] = [];
-            for (let item of this.properties)
-                data["properties"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface ITypeApiDescriptionModel {
-    baseType?: string | undefined;
-    isEnum?: boolean;
-    enumNames?: string[] | undefined;
-    enumValues?: any[] | undefined;
-    genericArguments?: string[] | undefined;
-    properties?: PropertyApiDescriptionModel[] | undefined;
-}
-
 export class ApplicationApiDescriptionModel implements IApplicationApiDescriptionModel {
     modules?: { [key: string]: ModuleApiDescriptionModel; } | undefined;
     types?: { [key: string]: TypeApiDescriptionModel; } | undefined;
@@ -1885,11 +2022,11 @@ export interface IApplicationApiDescriptionModel {
     types?: { [key: string]: TypeApiDescriptionModel; } | undefined;
 }
 
-export class RemoteServiceValidationErrorInfo implements IRemoteServiceValidationErrorInfo {
-    message?: string | undefined;
-    members?: string[] | undefined;
+export class ApplicationAuthConfigurationDto implements IApplicationAuthConfigurationDto {
+    policies?: { [key: string]: boolean; } | undefined;
+    grantedPolicies?: { [key: string]: boolean; } | undefined;
 
-    constructor(data?: IRemoteServiceValidationErrorInfo) {
+    constructor(data?: IApplicationAuthConfigurationDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -1900,115 +2037,68 @@ export class RemoteServiceValidationErrorInfo implements IRemoteServiceValidatio
 
     init(_data?: any) {
         if (_data) {
-            this.message = _data["message"];
-            if (Array.isArray(_data["members"])) {
-                this.members = [] as any;
-                for (let item of _data["members"])
-                    this.members!.push(item);
-            }
-        }
-    }
-
-    static fromJS(data: any): RemoteServiceValidationErrorInfo {
-        data = typeof data === 'object' ? data : {};
-        let result = new RemoteServiceValidationErrorInfo();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["message"] = this.message;
-        if (Array.isArray(this.members)) {
-            data["members"] = [];
-            for (let item of this.members)
-                data["members"].push(item);
-        }
-        return data; 
-    }
-}
-
-export interface IRemoteServiceValidationErrorInfo {
-    message?: string | undefined;
-    members?: string[] | undefined;
-}
-
-export class RemoteServiceErrorInfo implements IRemoteServiceErrorInfo {
-    code?: string | undefined;
-    message?: string | undefined;
-    details?: string | undefined;
-    data?: { [key: string]: any; } | undefined;
-    validationErrors?: RemoteServiceValidationErrorInfo[] | undefined;
-
-    constructor(data?: IRemoteServiceErrorInfo) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.code = _data["code"];
-            this.message = _data["message"];
-            this.details = _data["details"];
-            if (_data["data"]) {
-                this.data = {} as any;
-                for (let key in _data["data"]) {
-                    if (_data["data"].hasOwnProperty(key))
-                        this.data![key] = _data["data"][key];
+            if (_data["policies"]) {
+                this.policies = {} as any;
+                for (let key in _data["policies"]) {
+                    if (_data["policies"].hasOwnProperty(key))
+                        this.policies![key] = _data["policies"][key];
                 }
             }
-            if (Array.isArray(_data["validationErrors"])) {
-                this.validationErrors = [] as any;
-                for (let item of _data["validationErrors"])
-                    this.validationErrors!.push(RemoteServiceValidationErrorInfo.fromJS(item));
+            if (_data["grantedPolicies"]) {
+                this.grantedPolicies = {} as any;
+                for (let key in _data["grantedPolicies"]) {
+                    if (_data["grantedPolicies"].hasOwnProperty(key))
+                        this.grantedPolicies![key] = _data["grantedPolicies"][key];
+                }
             }
         }
     }
 
-    static fromJS(data: any): RemoteServiceErrorInfo {
+    static fromJS(data: any): ApplicationAuthConfigurationDto {
         data = typeof data === 'object' ? data : {};
-        let result = new RemoteServiceErrorInfo();
+        let result = new ApplicationAuthConfigurationDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["code"] = this.code;
-        data["message"] = this.message;
-        data["details"] = this.details;
-        if (this.data) {
-            data["data"] = {};
-            for (let key in this.data) {
-                if (this.data.hasOwnProperty(key))
-                    data["data"][key] = this.data[key];
+        if (this.policies) {
+            data["policies"] = {};
+            for (let key in this.policies) {
+                if (this.policies.hasOwnProperty(key))
+                    data["policies"][key] = this.policies[key];
             }
         }
-        if (Array.isArray(this.validationErrors)) {
-            data["validationErrors"] = [];
-            for (let item of this.validationErrors)
-                data["validationErrors"].push(item.toJSON());
+        if (this.grantedPolicies) {
+            data["grantedPolicies"] = {};
+            for (let key in this.grantedPolicies) {
+                if (this.grantedPolicies.hasOwnProperty(key))
+                    data["grantedPolicies"][key] = this.grantedPolicies[key];
+            }
         }
         return data; 
     }
 }
 
-export interface IRemoteServiceErrorInfo {
-    code?: string | undefined;
-    message?: string | undefined;
-    details?: string | undefined;
-    data?: { [key: string]: any; } | undefined;
-    validationErrors?: RemoteServiceValidationErrorInfo[] | undefined;
+export interface IApplicationAuthConfigurationDto {
+    policies?: { [key: string]: boolean; } | undefined;
+    grantedPolicies?: { [key: string]: boolean; } | undefined;
 }
 
-export class RemoteServiceErrorResponse implements IRemoteServiceErrorResponse {
-    error?: RemoteServiceErrorInfo;
+export class ApplicationConfigurationDto implements IApplicationConfigurationDto {
+    localization?: ApplicationLocalizationConfigurationDto;
+    auth?: ApplicationAuthConfigurationDto;
+    setting?: ApplicationSettingConfigurationDto;
+    currentUser?: CurrentUserDto;
+    features?: ApplicationFeatureConfigurationDto;
+    multiTenancy?: MultiTenancyInfoDto;
+    currentTenant?: CurrentTenantDto;
+    timing?: TimingDto;
+    clock?: ClockDto;
+    objectExtensions?: ObjectExtensionsDto;
 
-    constructor(data?: IRemoteServiceErrorResponse) {
+    constructor(data?: IApplicationConfigurationDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -2019,35 +2109,59 @@ export class RemoteServiceErrorResponse implements IRemoteServiceErrorResponse {
 
     init(_data?: any) {
         if (_data) {
-            this.error = _data["error"] ? RemoteServiceErrorInfo.fromJS(_data["error"]) : <any>undefined;
+            this.localization = _data["localization"] ? ApplicationLocalizationConfigurationDto.fromJS(_data["localization"]) : <any>undefined;
+            this.auth = _data["auth"] ? ApplicationAuthConfigurationDto.fromJS(_data["auth"]) : <any>undefined;
+            this.setting = _data["setting"] ? ApplicationSettingConfigurationDto.fromJS(_data["setting"]) : <any>undefined;
+            this.currentUser = _data["currentUser"] ? CurrentUserDto.fromJS(_data["currentUser"]) : <any>undefined;
+            this.features = _data["features"] ? ApplicationFeatureConfigurationDto.fromJS(_data["features"]) : <any>undefined;
+            this.multiTenancy = _data["multiTenancy"] ? MultiTenancyInfoDto.fromJS(_data["multiTenancy"]) : <any>undefined;
+            this.currentTenant = _data["currentTenant"] ? CurrentTenantDto.fromJS(_data["currentTenant"]) : <any>undefined;
+            this.timing = _data["timing"] ? TimingDto.fromJS(_data["timing"]) : <any>undefined;
+            this.clock = _data["clock"] ? ClockDto.fromJS(_data["clock"]) : <any>undefined;
+            this.objectExtensions = _data["objectExtensions"] ? ObjectExtensionsDto.fromJS(_data["objectExtensions"]) : <any>undefined;
         }
     }
 
-    static fromJS(data: any): RemoteServiceErrorResponse {
+    static fromJS(data: any): ApplicationConfigurationDto {
         data = typeof data === 'object' ? data : {};
-        let result = new RemoteServiceErrorResponse();
+        let result = new ApplicationConfigurationDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["error"] = this.error ? this.error.toJSON() : <any>undefined;
+        data["localization"] = this.localization ? this.localization.toJSON() : <any>undefined;
+        data["auth"] = this.auth ? this.auth.toJSON() : <any>undefined;
+        data["setting"] = this.setting ? this.setting.toJSON() : <any>undefined;
+        data["currentUser"] = this.currentUser ? this.currentUser.toJSON() : <any>undefined;
+        data["features"] = this.features ? this.features.toJSON() : <any>undefined;
+        data["multiTenancy"] = this.multiTenancy ? this.multiTenancy.toJSON() : <any>undefined;
+        data["currentTenant"] = this.currentTenant ? this.currentTenant.toJSON() : <any>undefined;
+        data["timing"] = this.timing ? this.timing.toJSON() : <any>undefined;
+        data["clock"] = this.clock ? this.clock.toJSON() : <any>undefined;
+        data["objectExtensions"] = this.objectExtensions ? this.objectExtensions.toJSON() : <any>undefined;
         return data; 
     }
 }
 
-export interface IRemoteServiceErrorResponse {
-    error?: RemoteServiceErrorInfo;
+export interface IApplicationConfigurationDto {
+    localization?: ApplicationLocalizationConfigurationDto;
+    auth?: ApplicationAuthConfigurationDto;
+    setting?: ApplicationSettingConfigurationDto;
+    currentUser?: CurrentUserDto;
+    features?: ApplicationFeatureConfigurationDto;
+    multiTenancy?: MultiTenancyInfoDto;
+    currentTenant?: CurrentTenantDto;
+    timing?: TimingDto;
+    clock?: ClockDto;
+    objectExtensions?: ObjectExtensionsDto;
 }
 
-export class LanguageInfo implements ILanguageInfo {
-    readonly cultureName?: string | undefined;
-    readonly uiCultureName?: string | undefined;
-    readonly displayName?: string | undefined;
-    flagIcon?: string | undefined;
+export class ApplicationFeatureConfigurationDto implements IApplicationFeatureConfigurationDto {
+    values?: { [key: string]: string; } | undefined;
 
-    constructor(data?: ILanguageInfo) {
+    constructor(data?: IApplicationFeatureConfigurationDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -2058,203 +2172,38 @@ export class LanguageInfo implements ILanguageInfo {
 
     init(_data?: any) {
         if (_data) {
-            (<any>this).cultureName = _data["cultureName"];
-            (<any>this).uiCultureName = _data["uiCultureName"];
-            (<any>this).displayName = _data["displayName"];
-            this.flagIcon = _data["flagIcon"];
-        }
-    }
-
-    static fromJS(data: any): LanguageInfo {
-        data = typeof data === 'object' ? data : {};
-        let result = new LanguageInfo();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["cultureName"] = this.cultureName;
-        data["uiCultureName"] = this.uiCultureName;
-        data["displayName"] = this.displayName;
-        data["flagIcon"] = this.flagIcon;
-        return data; 
-    }
-}
-
-export interface ILanguageInfo {
-    cultureName?: string | undefined;
-    uiCultureName?: string | undefined;
-    displayName?: string | undefined;
-    flagIcon?: string | undefined;
-}
-
-export class DateTimeFormatDto implements IDateTimeFormatDto {
-    calendarAlgorithmType?: string | undefined;
-    dateTimeFormatLong?: string | undefined;
-    shortDatePattern?: string | undefined;
-    fullDateTimePattern?: string | undefined;
-    dateSeparator?: string | undefined;
-    shortTimePattern?: string | undefined;
-    longTimePattern?: string | undefined;
-
-    constructor(data?: IDateTimeFormatDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
+            if (_data["values"]) {
+                this.values = {} as any;
+                for (let key in _data["values"]) {
+                    if (_data["values"].hasOwnProperty(key))
+                        this.values![key] = _data["values"][key];
+                }
             }
         }
     }
 
-    init(_data?: any) {
-        if (_data) {
-            this.calendarAlgorithmType = _data["calendarAlgorithmType"];
-            this.dateTimeFormatLong = _data["dateTimeFormatLong"];
-            this.shortDatePattern = _data["shortDatePattern"];
-            this.fullDateTimePattern = _data["fullDateTimePattern"];
-            this.dateSeparator = _data["dateSeparator"];
-            this.shortTimePattern = _data["shortTimePattern"];
-            this.longTimePattern = _data["longTimePattern"];
-        }
-    }
-
-    static fromJS(data: any): DateTimeFormatDto {
+    static fromJS(data: any): ApplicationFeatureConfigurationDto {
         data = typeof data === 'object' ? data : {};
-        let result = new DateTimeFormatDto();
+        let result = new ApplicationFeatureConfigurationDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["calendarAlgorithmType"] = this.calendarAlgorithmType;
-        data["dateTimeFormatLong"] = this.dateTimeFormatLong;
-        data["shortDatePattern"] = this.shortDatePattern;
-        data["fullDateTimePattern"] = this.fullDateTimePattern;
-        data["dateSeparator"] = this.dateSeparator;
-        data["shortTimePattern"] = this.shortTimePattern;
-        data["longTimePattern"] = this.longTimePattern;
-        return data; 
-    }
-}
-
-export interface IDateTimeFormatDto {
-    calendarAlgorithmType?: string | undefined;
-    dateTimeFormatLong?: string | undefined;
-    shortDatePattern?: string | undefined;
-    fullDateTimePattern?: string | undefined;
-    dateSeparator?: string | undefined;
-    shortTimePattern?: string | undefined;
-    longTimePattern?: string | undefined;
-}
-
-export class CurrentCultureDto implements ICurrentCultureDto {
-    displayName?: string | undefined;
-    englishName?: string | undefined;
-    threeLetterIsoLanguageName?: string | undefined;
-    twoLetterIsoLanguageName?: string | undefined;
-    isRightToLeft?: boolean;
-    cultureName?: string | undefined;
-    name?: string | undefined;
-    nativeName?: string | undefined;
-    dateTimeFormat?: DateTimeFormatDto;
-
-    constructor(data?: ICurrentCultureDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
+        if (this.values) {
+            data["values"] = {};
+            for (let key in this.values) {
+                if (this.values.hasOwnProperty(key))
+                    data["values"][key] = this.values[key];
             }
         }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.displayName = _data["displayName"];
-            this.englishName = _data["englishName"];
-            this.threeLetterIsoLanguageName = _data["threeLetterIsoLanguageName"];
-            this.twoLetterIsoLanguageName = _data["twoLetterIsoLanguageName"];
-            this.isRightToLeft = _data["isRightToLeft"];
-            this.cultureName = _data["cultureName"];
-            this.name = _data["name"];
-            this.nativeName = _data["nativeName"];
-            this.dateTimeFormat = _data["dateTimeFormat"] ? DateTimeFormatDto.fromJS(_data["dateTimeFormat"]) : <any>undefined;
-        }
-    }
-
-    static fromJS(data: any): CurrentCultureDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new CurrentCultureDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["displayName"] = this.displayName;
-        data["englishName"] = this.englishName;
-        data["threeLetterIsoLanguageName"] = this.threeLetterIsoLanguageName;
-        data["twoLetterIsoLanguageName"] = this.twoLetterIsoLanguageName;
-        data["isRightToLeft"] = this.isRightToLeft;
-        data["cultureName"] = this.cultureName;
-        data["name"] = this.name;
-        data["nativeName"] = this.nativeName;
-        data["dateTimeFormat"] = this.dateTimeFormat ? this.dateTimeFormat.toJSON() : <any>undefined;
         return data; 
     }
 }
 
-export interface ICurrentCultureDto {
-    displayName?: string | undefined;
-    englishName?: string | undefined;
-    threeLetterIsoLanguageName?: string | undefined;
-    twoLetterIsoLanguageName?: string | undefined;
-    isRightToLeft?: boolean;
-    cultureName?: string | undefined;
-    name?: string | undefined;
-    nativeName?: string | undefined;
-    dateTimeFormat?: DateTimeFormatDto;
-}
-
-export class NameValue implements INameValue {
-    name?: string | undefined;
-    value?: string | undefined;
-
-    constructor(data?: INameValue) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.value = _data["value"];
-        }
-    }
-
-    static fromJS(data: any): NameValue {
-        data = typeof data === 'object' ? data : {};
-        let result = new NameValue();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["value"] = this.value;
-        return data; 
-    }
-}
-
-export interface INameValue {
-    name?: string | undefined;
-    value?: string | undefined;
+export interface IApplicationFeatureConfigurationDto {
+    values?: { [key: string]: string; } | undefined;
 }
 
 export class ApplicationLocalizationConfigurationDto implements IApplicationLocalizationConfigurationDto {
@@ -2357,70 +2306,6 @@ export interface IApplicationLocalizationConfigurationDto {
     languageFilesMap?: { [key: string]: NameValue[]; } | undefined;
 }
 
-export class ApplicationAuthConfigurationDto implements IApplicationAuthConfigurationDto {
-    policies?: { [key: string]: boolean; } | undefined;
-    grantedPolicies?: { [key: string]: boolean; } | undefined;
-
-    constructor(data?: IApplicationAuthConfigurationDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (_data["policies"]) {
-                this.policies = {} as any;
-                for (let key in _data["policies"]) {
-                    if (_data["policies"].hasOwnProperty(key))
-                        this.policies![key] = _data["policies"][key];
-                }
-            }
-            if (_data["grantedPolicies"]) {
-                this.grantedPolicies = {} as any;
-                for (let key in _data["grantedPolicies"]) {
-                    if (_data["grantedPolicies"].hasOwnProperty(key))
-                        this.grantedPolicies![key] = _data["grantedPolicies"][key];
-                }
-            }
-        }
-    }
-
-    static fromJS(data: any): ApplicationAuthConfigurationDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ApplicationAuthConfigurationDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (this.policies) {
-            data["policies"] = {};
-            for (let key in this.policies) {
-                if (this.policies.hasOwnProperty(key))
-                    data["policies"][key] = this.policies[key];
-            }
-        }
-        if (this.grantedPolicies) {
-            data["grantedPolicies"] = {};
-            for (let key in this.grantedPolicies) {
-                if (this.grantedPolicies.hasOwnProperty(key))
-                    data["grantedPolicies"][key] = this.grantedPolicies[key];
-            }
-        }
-        return data; 
-    }
-}
-
-export interface IApplicationAuthConfigurationDto {
-    policies?: { [key: string]: boolean; } | undefined;
-    grantedPolicies?: { [key: string]: boolean; } | undefined;
-}
-
 export class ApplicationSettingConfigurationDto implements IApplicationSettingConfigurationDto {
     values?: { [key: string]: string; } | undefined;
 
@@ -2467,6 +2352,298 @@ export class ApplicationSettingConfigurationDto implements IApplicationSettingCo
 
 export interface IApplicationSettingConfigurationDto {
     values?: { [key: string]: string; } | undefined;
+}
+
+export class ChangePasswordInput implements IChangePasswordInput {
+    currentPassword?: string | undefined;
+    newPassword!: string;
+
+    constructor(data?: IChangePasswordInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.currentPassword = _data["currentPassword"];
+            this.newPassword = _data["newPassword"];
+        }
+    }
+
+    static fromJS(data: any): ChangePasswordInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ChangePasswordInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["currentPassword"] = this.currentPassword;
+        data["newPassword"] = this.newPassword;
+        return data; 
+    }
+}
+
+export interface IChangePasswordInput {
+    currentPassword?: string | undefined;
+    newPassword: string;
+}
+
+export class ClockDto implements IClockDto {
+    kind?: string | undefined;
+
+    constructor(data?: IClockDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.kind = _data["kind"];
+        }
+    }
+
+    static fromJS(data: any): ClockDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ClockDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["kind"] = this.kind;
+        return data; 
+    }
+}
+
+export interface IClockDto {
+    kind?: string | undefined;
+}
+
+export class ControllerApiDescriptionModel implements IControllerApiDescriptionModel {
+    controllerName?: string | undefined;
+    type?: string | undefined;
+    interfaces?: ControllerInterfaceApiDescriptionModel[] | undefined;
+    actions?: { [key: string]: ActionApiDescriptionModel; } | undefined;
+
+    constructor(data?: IControllerApiDescriptionModel) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.controllerName = _data["controllerName"];
+            this.type = _data["type"];
+            if (Array.isArray(_data["interfaces"])) {
+                this.interfaces = [] as any;
+                for (let item of _data["interfaces"])
+                    this.interfaces!.push(ControllerInterfaceApiDescriptionModel.fromJS(item));
+            }
+            if (_data["actions"]) {
+                this.actions = {} as any;
+                for (let key in _data["actions"]) {
+                    if (_data["actions"].hasOwnProperty(key))
+                        this.actions![key] = _data["actions"][key] ? ActionApiDescriptionModel.fromJS(_data["actions"][key]) : new ActionApiDescriptionModel();
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): ControllerApiDescriptionModel {
+        data = typeof data === 'object' ? data : {};
+        let result = new ControllerApiDescriptionModel();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["controllerName"] = this.controllerName;
+        data["type"] = this.type;
+        if (Array.isArray(this.interfaces)) {
+            data["interfaces"] = [];
+            for (let item of this.interfaces)
+                data["interfaces"].push(item.toJSON());
+        }
+        if (this.actions) {
+            data["actions"] = {};
+            for (let key in this.actions) {
+                if (this.actions.hasOwnProperty(key))
+                    data["actions"][key] = this.actions[key] ? this.actions[key].toJSON() : <any>undefined;
+            }
+        }
+        return data; 
+    }
+}
+
+export interface IControllerApiDescriptionModel {
+    controllerName?: string | undefined;
+    type?: string | undefined;
+    interfaces?: ControllerInterfaceApiDescriptionModel[] | undefined;
+    actions?: { [key: string]: ActionApiDescriptionModel; } | undefined;
+}
+
+export class ControllerInterfaceApiDescriptionModel implements IControllerInterfaceApiDescriptionModel {
+    type?: string | undefined;
+
+    constructor(data?: IControllerInterfaceApiDescriptionModel) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.type = _data["type"];
+        }
+    }
+
+    static fromJS(data: any): ControllerInterfaceApiDescriptionModel {
+        data = typeof data === 'object' ? data : {};
+        let result = new ControllerInterfaceApiDescriptionModel();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["type"] = this.type;
+        return data; 
+    }
+}
+
+export interface IControllerInterfaceApiDescriptionModel {
+    type?: string | undefined;
+}
+
+export class CurrentCultureDto implements ICurrentCultureDto {
+    displayName?: string | undefined;
+    englishName?: string | undefined;
+    threeLetterIsoLanguageName?: string | undefined;
+    twoLetterIsoLanguageName?: string | undefined;
+    isRightToLeft?: boolean;
+    cultureName?: string | undefined;
+    name?: string | undefined;
+    nativeName?: string | undefined;
+    dateTimeFormat?: DateTimeFormatDto;
+
+    constructor(data?: ICurrentCultureDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.displayName = _data["displayName"];
+            this.englishName = _data["englishName"];
+            this.threeLetterIsoLanguageName = _data["threeLetterIsoLanguageName"];
+            this.twoLetterIsoLanguageName = _data["twoLetterIsoLanguageName"];
+            this.isRightToLeft = _data["isRightToLeft"];
+            this.cultureName = _data["cultureName"];
+            this.name = _data["name"];
+            this.nativeName = _data["nativeName"];
+            this.dateTimeFormat = _data["dateTimeFormat"] ? DateTimeFormatDto.fromJS(_data["dateTimeFormat"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): CurrentCultureDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new CurrentCultureDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["displayName"] = this.displayName;
+        data["englishName"] = this.englishName;
+        data["threeLetterIsoLanguageName"] = this.threeLetterIsoLanguageName;
+        data["twoLetterIsoLanguageName"] = this.twoLetterIsoLanguageName;
+        data["isRightToLeft"] = this.isRightToLeft;
+        data["cultureName"] = this.cultureName;
+        data["name"] = this.name;
+        data["nativeName"] = this.nativeName;
+        data["dateTimeFormat"] = this.dateTimeFormat ? this.dateTimeFormat.toJSON() : <any>undefined;
+        return data; 
+    }
+}
+
+export interface ICurrentCultureDto {
+    displayName?: string | undefined;
+    englishName?: string | undefined;
+    threeLetterIsoLanguageName?: string | undefined;
+    twoLetterIsoLanguageName?: string | undefined;
+    isRightToLeft?: boolean;
+    cultureName?: string | undefined;
+    name?: string | undefined;
+    nativeName?: string | undefined;
+    dateTimeFormat?: DateTimeFormatDto;
+}
+
+export class CurrentTenantDto implements ICurrentTenantDto {
+    id?: string | undefined;
+    name?: string | undefined;
+    isAvailable?: boolean;
+
+    constructor(data?: ICurrentTenantDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.isAvailable = _data["isAvailable"];
+        }
+    }
+
+    static fromJS(data: any): CurrentTenantDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new CurrentTenantDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["isAvailable"] = this.isAvailable;
+        return data; 
+    }
+}
+
+export interface ICurrentTenantDto {
+    id?: string | undefined;
+    name?: string | undefined;
+    isAvailable?: boolean;
 }
 
 export class CurrentUserDto implements ICurrentUserDto {
@@ -2553,10 +2730,16 @@ export interface ICurrentUserDto {
     roles?: string[] | undefined;
 }
 
-export class ApplicationFeatureConfigurationDto implements IApplicationFeatureConfigurationDto {
-    values?: { [key: string]: string; } | undefined;
+export class DateTimeFormatDto implements IDateTimeFormatDto {
+    calendarAlgorithmType?: string | undefined;
+    dateTimeFormatLong?: string | undefined;
+    shortDatePattern?: string | undefined;
+    fullDateTimePattern?: string | undefined;
+    dateSeparator?: string | undefined;
+    shortTimePattern?: string | undefined;
+    longTimePattern?: string | undefined;
 
-    constructor(data?: IApplicationFeatureConfigurationDto) {
+    constructor(data?: IDateTimeFormatDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -2567,44 +2750,115 @@ export class ApplicationFeatureConfigurationDto implements IApplicationFeatureCo
 
     init(_data?: any) {
         if (_data) {
-            if (_data["values"]) {
-                this.values = {} as any;
-                for (let key in _data["values"]) {
-                    if (_data["values"].hasOwnProperty(key))
-                        this.values![key] = _data["values"][key];
+            this.calendarAlgorithmType = _data["calendarAlgorithmType"];
+            this.dateTimeFormatLong = _data["dateTimeFormatLong"];
+            this.shortDatePattern = _data["shortDatePattern"];
+            this.fullDateTimePattern = _data["fullDateTimePattern"];
+            this.dateSeparator = _data["dateSeparator"];
+            this.shortTimePattern = _data["shortTimePattern"];
+            this.longTimePattern = _data["longTimePattern"];
+        }
+    }
+
+    static fromJS(data: any): DateTimeFormatDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new DateTimeFormatDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["calendarAlgorithmType"] = this.calendarAlgorithmType;
+        data["dateTimeFormatLong"] = this.dateTimeFormatLong;
+        data["shortDatePattern"] = this.shortDatePattern;
+        data["fullDateTimePattern"] = this.fullDateTimePattern;
+        data["dateSeparator"] = this.dateSeparator;
+        data["shortTimePattern"] = this.shortTimePattern;
+        data["longTimePattern"] = this.longTimePattern;
+        return data; 
+    }
+}
+
+export interface IDateTimeFormatDto {
+    calendarAlgorithmType?: string | undefined;
+    dateTimeFormatLong?: string | undefined;
+    shortDatePattern?: string | undefined;
+    fullDateTimePattern?: string | undefined;
+    dateSeparator?: string | undefined;
+    shortTimePattern?: string | undefined;
+    longTimePattern?: string | undefined;
+}
+
+export class EntityExtensionDto implements IEntityExtensionDto {
+    properties?: { [key: string]: ExtensionPropertyDto; } | undefined;
+    configuration?: { [key: string]: any; } | undefined;
+
+    constructor(data?: IEntityExtensionDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (_data["properties"]) {
+                this.properties = {} as any;
+                for (let key in _data["properties"]) {
+                    if (_data["properties"].hasOwnProperty(key))
+                        this.properties![key] = _data["properties"][key] ? ExtensionPropertyDto.fromJS(_data["properties"][key]) : new ExtensionPropertyDto();
+                }
+            }
+            if (_data["configuration"]) {
+                this.configuration = {} as any;
+                for (let key in _data["configuration"]) {
+                    if (_data["configuration"].hasOwnProperty(key))
+                        this.configuration![key] = _data["configuration"][key];
                 }
             }
         }
     }
 
-    static fromJS(data: any): ApplicationFeatureConfigurationDto {
+    static fromJS(data: any): EntityExtensionDto {
         data = typeof data === 'object' ? data : {};
-        let result = new ApplicationFeatureConfigurationDto();
+        let result = new EntityExtensionDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        if (this.values) {
-            data["values"] = {};
-            for (let key in this.values) {
-                if (this.values.hasOwnProperty(key))
-                    data["values"][key] = this.values[key];
+        if (this.properties) {
+            data["properties"] = {};
+            for (let key in this.properties) {
+                if (this.properties.hasOwnProperty(key))
+                    data["properties"][key] = this.properties[key] ? this.properties[key].toJSON() : <any>undefined;
+            }
+        }
+        if (this.configuration) {
+            data["configuration"] = {};
+            for (let key in this.configuration) {
+                if (this.configuration.hasOwnProperty(key))
+                    data["configuration"][key] = this.configuration[key];
             }
         }
         return data; 
     }
 }
 
-export interface IApplicationFeatureConfigurationDto {
-    values?: { [key: string]: string; } | undefined;
+export interface IEntityExtensionDto {
+    properties?: { [key: string]: ExtensionPropertyDto; } | undefined;
+    configuration?: { [key: string]: any; } | undefined;
 }
 
-export class MultiTenancyInfoDto implements IMultiTenancyInfoDto {
-    isEnabled?: boolean;
+export class ExtensionEnumDto implements IExtensionEnumDto {
+    fields?: ExtensionEnumFieldDto[] | undefined;
+    localizationResource?: string | undefined;
 
-    constructor(data?: IMultiTenancyInfoDto) {
+    constructor(data?: IExtensionEnumDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -2615,34 +2869,44 @@ export class MultiTenancyInfoDto implements IMultiTenancyInfoDto {
 
     init(_data?: any) {
         if (_data) {
-            this.isEnabled = _data["isEnabled"];
+            if (Array.isArray(_data["fields"])) {
+                this.fields = [] as any;
+                for (let item of _data["fields"])
+                    this.fields!.push(ExtensionEnumFieldDto.fromJS(item));
+            }
+            this.localizationResource = _data["localizationResource"];
         }
     }
 
-    static fromJS(data: any): MultiTenancyInfoDto {
+    static fromJS(data: any): ExtensionEnumDto {
         data = typeof data === 'object' ? data : {};
-        let result = new MultiTenancyInfoDto();
+        let result = new ExtensionEnumDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["isEnabled"] = this.isEnabled;
+        if (Array.isArray(this.fields)) {
+            data["fields"] = [];
+            for (let item of this.fields)
+                data["fields"].push(item.toJSON());
+        }
+        data["localizationResource"] = this.localizationResource;
         return data; 
     }
 }
 
-export interface IMultiTenancyInfoDto {
-    isEnabled?: boolean;
+export interface IExtensionEnumDto {
+    fields?: ExtensionEnumFieldDto[] | undefined;
+    localizationResource?: string | undefined;
 }
 
-export class CurrentTenantDto implements ICurrentTenantDto {
-    id?: string | undefined;
+export class ExtensionEnumFieldDto implements IExtensionEnumFieldDto {
     name?: string | undefined;
-    isAvailable?: boolean;
+    value?: any | undefined;
 
-    constructor(data?: ICurrentTenantDto) {
+    constructor(data?: IExtensionEnumFieldDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -2653,241 +2917,14 @@ export class CurrentTenantDto implements ICurrentTenantDto {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["id"];
             this.name = _data["name"];
-            this.isAvailable = _data["isAvailable"];
+            this.value = _data["value"];
         }
     }
 
-    static fromJS(data: any): CurrentTenantDto {
+    static fromJS(data: any): ExtensionEnumFieldDto {
         data = typeof data === 'object' ? data : {};
-        let result = new CurrentTenantDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        data["name"] = this.name;
-        data["isAvailable"] = this.isAvailable;
-        return data; 
-    }
-}
-
-export interface ICurrentTenantDto {
-    id?: string | undefined;
-    name?: string | undefined;
-    isAvailable?: boolean;
-}
-
-export class IanaTimeZone implements IIanaTimeZone {
-    timeZoneName?: string | undefined;
-
-    constructor(data?: IIanaTimeZone) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.timeZoneName = _data["timeZoneName"];
-        }
-    }
-
-    static fromJS(data: any): IanaTimeZone {
-        data = typeof data === 'object' ? data : {};
-        let result = new IanaTimeZone();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["timeZoneName"] = this.timeZoneName;
-        return data; 
-    }
-}
-
-export interface IIanaTimeZone {
-    timeZoneName?: string | undefined;
-}
-
-export class WindowsTimeZone implements IWindowsTimeZone {
-    timeZoneId?: string | undefined;
-
-    constructor(data?: IWindowsTimeZone) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.timeZoneId = _data["timeZoneId"];
-        }
-    }
-
-    static fromJS(data: any): WindowsTimeZone {
-        data = typeof data === 'object' ? data : {};
-        let result = new WindowsTimeZone();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["timeZoneId"] = this.timeZoneId;
-        return data; 
-    }
-}
-
-export interface IWindowsTimeZone {
-    timeZoneId?: string | undefined;
-}
-
-export class TimeZone implements ITimeZone {
-    iana?: IanaTimeZone;
-    windows?: WindowsTimeZone;
-
-    constructor(data?: ITimeZone) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.iana = _data["iana"] ? IanaTimeZone.fromJS(_data["iana"]) : <any>undefined;
-            this.windows = _data["windows"] ? WindowsTimeZone.fromJS(_data["windows"]) : <any>undefined;
-        }
-    }
-
-    static fromJS(data: any): TimeZone {
-        data = typeof data === 'object' ? data : {};
-        let result = new TimeZone();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["iana"] = this.iana ? this.iana.toJSON() : <any>undefined;
-        data["windows"] = this.windows ? this.windows.toJSON() : <any>undefined;
-        return data; 
-    }
-}
-
-export interface ITimeZone {
-    iana?: IanaTimeZone;
-    windows?: WindowsTimeZone;
-}
-
-export class TimingDto implements ITimingDto {
-    timeZone?: TimeZone;
-
-    constructor(data?: ITimingDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.timeZone = _data["timeZone"] ? TimeZone.fromJS(_data["timeZone"]) : <any>undefined;
-        }
-    }
-
-    static fromJS(data: any): TimingDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new TimingDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["timeZone"] = this.timeZone ? this.timeZone.toJSON() : <any>undefined;
-        return data; 
-    }
-}
-
-export interface ITimingDto {
-    timeZone?: TimeZone;
-}
-
-export class ClockDto implements IClockDto {
-    kind?: string | undefined;
-
-    constructor(data?: IClockDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.kind = _data["kind"];
-        }
-    }
-
-    static fromJS(data: any): ClockDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ClockDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["kind"] = this.kind;
-        return data; 
-    }
-}
-
-export interface IClockDto {
-    kind?: string | undefined;
-}
-
-export class LocalizableStringDto implements ILocalizableStringDto {
-    readonly name?: string | undefined;
-    resource?: string | undefined;
-
-    constructor(data?: ILocalizableStringDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            (<any>this).name = _data["name"];
-            this.resource = _data["resource"];
-        }
-    }
-
-    static fromJS(data: any): LocalizableStringDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new LocalizableStringDto();
+        let result = new ExtensionEnumFieldDto();
         result.init(data);
         return result;
     }
@@ -2895,50 +2932,14 @@ export class LocalizableStringDto implements ILocalizableStringDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
-        data["resource"] = this.resource;
+        data["value"] = this.value;
         return data; 
     }
 }
 
-export interface ILocalizableStringDto {
+export interface IExtensionEnumFieldDto {
     name?: string | undefined;
-    resource?: string | undefined;
-}
-
-export class ExtensionPropertyApiGetDto implements IExtensionPropertyApiGetDto {
-    isAvailable?: boolean;
-
-    constructor(data?: IExtensionPropertyApiGetDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.isAvailable = _data["isAvailable"];
-        }
-    }
-
-    static fromJS(data: any): ExtensionPropertyApiGetDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ExtensionPropertyApiGetDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["isAvailable"] = this.isAvailable;
-        return data; 
-    }
-}
-
-export interface IExtensionPropertyApiGetDto {
-    isAvailable?: boolean;
+    value?: any | undefined;
 }
 
 export class ExtensionPropertyApiCreateDto implements IExtensionPropertyApiCreateDto {
@@ -2974,42 +2975,6 @@ export class ExtensionPropertyApiCreateDto implements IExtensionPropertyApiCreat
 }
 
 export interface IExtensionPropertyApiCreateDto {
-    isAvailable?: boolean;
-}
-
-export class ExtensionPropertyApiUpdateDto implements IExtensionPropertyApiUpdateDto {
-    isAvailable?: boolean;
-
-    constructor(data?: IExtensionPropertyApiUpdateDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.isAvailable = _data["isAvailable"];
-        }
-    }
-
-    static fromJS(data: any): ExtensionPropertyApiUpdateDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ExtensionPropertyApiUpdateDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["isAvailable"] = this.isAvailable;
-        return data; 
-    }
-}
-
-export interface IExtensionPropertyApiUpdateDto {
     isAvailable?: boolean;
 }
 
@@ -3057,10 +3022,10 @@ export interface IExtensionPropertyApiDto {
     onUpdate?: ExtensionPropertyApiUpdateDto;
 }
 
-export class ExtensionPropertyUiTableDto implements IExtensionPropertyUiTableDto {
-    isVisible?: boolean;
+export class ExtensionPropertyApiGetDto implements IExtensionPropertyApiGetDto {
+    isAvailable?: boolean;
 
-    constructor(data?: IExtensionPropertyUiTableDto) {
+    constructor(data?: IExtensionPropertyApiGetDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -3071,32 +3036,32 @@ export class ExtensionPropertyUiTableDto implements IExtensionPropertyUiTableDto
 
     init(_data?: any) {
         if (_data) {
-            this.isVisible = _data["isVisible"];
+            this.isAvailable = _data["isAvailable"];
         }
     }
 
-    static fromJS(data: any): ExtensionPropertyUiTableDto {
+    static fromJS(data: any): ExtensionPropertyApiGetDto {
         data = typeof data === 'object' ? data : {};
-        let result = new ExtensionPropertyUiTableDto();
+        let result = new ExtensionPropertyApiGetDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["isVisible"] = this.isVisible;
+        data["isAvailable"] = this.isAvailable;
         return data; 
     }
 }
 
-export interface IExtensionPropertyUiTableDto {
-    isVisible?: boolean;
+export interface IExtensionPropertyApiGetDto {
+    isAvailable?: boolean;
 }
 
-export class ExtensionPropertyUiFormDto implements IExtensionPropertyUiFormDto {
-    isVisible?: boolean;
+export class ExtensionPropertyApiUpdateDto implements IExtensionPropertyApiUpdateDto {
+    isAvailable?: boolean;
 
-    constructor(data?: IExtensionPropertyUiFormDto) {
+    constructor(data?: IExtensionPropertyApiUpdateDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -3107,126 +3072,26 @@ export class ExtensionPropertyUiFormDto implements IExtensionPropertyUiFormDto {
 
     init(_data?: any) {
         if (_data) {
-            this.isVisible = _data["isVisible"];
+            this.isAvailable = _data["isAvailable"];
         }
     }
 
-    static fromJS(data: any): ExtensionPropertyUiFormDto {
+    static fromJS(data: any): ExtensionPropertyApiUpdateDto {
         data = typeof data === 'object' ? data : {};
-        let result = new ExtensionPropertyUiFormDto();
+        let result = new ExtensionPropertyApiUpdateDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["isVisible"] = this.isVisible;
+        data["isAvailable"] = this.isAvailable;
         return data; 
     }
 }
 
-export interface IExtensionPropertyUiFormDto {
-    isVisible?: boolean;
-}
-
-export class ExtensionPropertyUiLookupDto implements IExtensionPropertyUiLookupDto {
-    url?: string | undefined;
-    resultListPropertyName?: string | undefined;
-    displayPropertyName?: string | undefined;
-    valuePropertyName?: string | undefined;
-    filterParamName?: string | undefined;
-
-    constructor(data?: IExtensionPropertyUiLookupDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.url = _data["url"];
-            this.resultListPropertyName = _data["resultListPropertyName"];
-            this.displayPropertyName = _data["displayPropertyName"];
-            this.valuePropertyName = _data["valuePropertyName"];
-            this.filterParamName = _data["filterParamName"];
-        }
-    }
-
-    static fromJS(data: any): ExtensionPropertyUiLookupDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ExtensionPropertyUiLookupDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["url"] = this.url;
-        data["resultListPropertyName"] = this.resultListPropertyName;
-        data["displayPropertyName"] = this.displayPropertyName;
-        data["valuePropertyName"] = this.valuePropertyName;
-        data["filterParamName"] = this.filterParamName;
-        return data; 
-    }
-}
-
-export interface IExtensionPropertyUiLookupDto {
-    url?: string | undefined;
-    resultListPropertyName?: string | undefined;
-    displayPropertyName?: string | undefined;
-    valuePropertyName?: string | undefined;
-    filterParamName?: string | undefined;
-}
-
-export class ExtensionPropertyUiDto implements IExtensionPropertyUiDto {
-    onTable?: ExtensionPropertyUiTableDto;
-    onCreateForm?: ExtensionPropertyUiFormDto;
-    onEditForm?: ExtensionPropertyUiFormDto;
-    lookup?: ExtensionPropertyUiLookupDto;
-
-    constructor(data?: IExtensionPropertyUiDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.onTable = _data["onTable"] ? ExtensionPropertyUiTableDto.fromJS(_data["onTable"]) : <any>undefined;
-            this.onCreateForm = _data["onCreateForm"] ? ExtensionPropertyUiFormDto.fromJS(_data["onCreateForm"]) : <any>undefined;
-            this.onEditForm = _data["onEditForm"] ? ExtensionPropertyUiFormDto.fromJS(_data["onEditForm"]) : <any>undefined;
-            this.lookup = _data["lookup"] ? ExtensionPropertyUiLookupDto.fromJS(_data["lookup"]) : <any>undefined;
-        }
-    }
-
-    static fromJS(data: any): ExtensionPropertyUiDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ExtensionPropertyUiDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["onTable"] = this.onTable ? this.onTable.toJSON() : <any>undefined;
-        data["onCreateForm"] = this.onCreateForm ? this.onCreateForm.toJSON() : <any>undefined;
-        data["onEditForm"] = this.onEditForm ? this.onEditForm.toJSON() : <any>undefined;
-        data["lookup"] = this.lookup ? this.lookup.toJSON() : <any>undefined;
-        return data; 
-    }
-}
-
-export interface IExtensionPropertyUiDto {
-    onTable?: ExtensionPropertyUiTableDto;
-    onCreateForm?: ExtensionPropertyUiFormDto;
-    onEditForm?: ExtensionPropertyUiFormDto;
-    lookup?: ExtensionPropertyUiLookupDto;
+export interface IExtensionPropertyApiUpdateDto {
+    isAvailable?: boolean;
 }
 
 export class ExtensionPropertyAttributeDto implements IExtensionPropertyAttributeDto {
@@ -3365,11 +3230,13 @@ export interface IExtensionPropertyDto {
     defaultValue?: any | undefined;
 }
 
-export class EntityExtensionDto implements IEntityExtensionDto {
-    properties?: { [key: string]: ExtensionPropertyDto; } | undefined;
-    configuration?: { [key: string]: any; } | undefined;
+export class ExtensionPropertyUiDto implements IExtensionPropertyUiDto {
+    onTable?: ExtensionPropertyUiTableDto;
+    onCreateForm?: ExtensionPropertyUiFormDto;
+    onEditForm?: ExtensionPropertyUiFormDto;
+    lookup?: ExtensionPropertyUiLookupDto;
 
-    constructor(data?: IEntityExtensionDto) {
+    constructor(data?: IExtensionPropertyUiDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -3380,60 +3247,41 @@ export class EntityExtensionDto implements IEntityExtensionDto {
 
     init(_data?: any) {
         if (_data) {
-            if (_data["properties"]) {
-                this.properties = {} as any;
-                for (let key in _data["properties"]) {
-                    if (_data["properties"].hasOwnProperty(key))
-                        this.properties![key] = _data["properties"][key] ? ExtensionPropertyDto.fromJS(_data["properties"][key]) : new ExtensionPropertyDto();
-                }
-            }
-            if (_data["configuration"]) {
-                this.configuration = {} as any;
-                for (let key in _data["configuration"]) {
-                    if (_data["configuration"].hasOwnProperty(key))
-                        this.configuration![key] = _data["configuration"][key];
-                }
-            }
+            this.onTable = _data["onTable"] ? ExtensionPropertyUiTableDto.fromJS(_data["onTable"]) : <any>undefined;
+            this.onCreateForm = _data["onCreateForm"] ? ExtensionPropertyUiFormDto.fromJS(_data["onCreateForm"]) : <any>undefined;
+            this.onEditForm = _data["onEditForm"] ? ExtensionPropertyUiFormDto.fromJS(_data["onEditForm"]) : <any>undefined;
+            this.lookup = _data["lookup"] ? ExtensionPropertyUiLookupDto.fromJS(_data["lookup"]) : <any>undefined;
         }
     }
 
-    static fromJS(data: any): EntityExtensionDto {
+    static fromJS(data: any): ExtensionPropertyUiDto {
         data = typeof data === 'object' ? data : {};
-        let result = new EntityExtensionDto();
+        let result = new ExtensionPropertyUiDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        if (this.properties) {
-            data["properties"] = {};
-            for (let key in this.properties) {
-                if (this.properties.hasOwnProperty(key))
-                    data["properties"][key] = this.properties[key] ? this.properties[key].toJSON() : <any>undefined;
-            }
-        }
-        if (this.configuration) {
-            data["configuration"] = {};
-            for (let key in this.configuration) {
-                if (this.configuration.hasOwnProperty(key))
-                    data["configuration"][key] = this.configuration[key];
-            }
-        }
+        data["onTable"] = this.onTable ? this.onTable.toJSON() : <any>undefined;
+        data["onCreateForm"] = this.onCreateForm ? this.onCreateForm.toJSON() : <any>undefined;
+        data["onEditForm"] = this.onEditForm ? this.onEditForm.toJSON() : <any>undefined;
+        data["lookup"] = this.lookup ? this.lookup.toJSON() : <any>undefined;
         return data; 
     }
 }
 
-export interface IEntityExtensionDto {
-    properties?: { [key: string]: ExtensionPropertyDto; } | undefined;
-    configuration?: { [key: string]: any; } | undefined;
+export interface IExtensionPropertyUiDto {
+    onTable?: ExtensionPropertyUiTableDto;
+    onCreateForm?: ExtensionPropertyUiFormDto;
+    onEditForm?: ExtensionPropertyUiFormDto;
+    lookup?: ExtensionPropertyUiLookupDto;
 }
 
-export class ModuleExtensionDto implements IModuleExtensionDto {
-    entities?: { [key: string]: EntityExtensionDto; } | undefined;
-    configuration?: { [key: string]: any; } | undefined;
+export class ExtensionPropertyUiFormDto implements IExtensionPropertyUiFormDto {
+    isVisible?: boolean;
 
-    constructor(data?: IModuleExtensionDto) {
+    constructor(data?: IExtensionPropertyUiFormDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -3444,60 +3292,36 @@ export class ModuleExtensionDto implements IModuleExtensionDto {
 
     init(_data?: any) {
         if (_data) {
-            if (_data["entities"]) {
-                this.entities = {} as any;
-                for (let key in _data["entities"]) {
-                    if (_data["entities"].hasOwnProperty(key))
-                        this.entities![key] = _data["entities"][key] ? EntityExtensionDto.fromJS(_data["entities"][key]) : new EntityExtensionDto();
-                }
-            }
-            if (_data["configuration"]) {
-                this.configuration = {} as any;
-                for (let key in _data["configuration"]) {
-                    if (_data["configuration"].hasOwnProperty(key))
-                        this.configuration![key] = _data["configuration"][key];
-                }
-            }
+            this.isVisible = _data["isVisible"];
         }
     }
 
-    static fromJS(data: any): ModuleExtensionDto {
+    static fromJS(data: any): ExtensionPropertyUiFormDto {
         data = typeof data === 'object' ? data : {};
-        let result = new ModuleExtensionDto();
+        let result = new ExtensionPropertyUiFormDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        if (this.entities) {
-            data["entities"] = {};
-            for (let key in this.entities) {
-                if (this.entities.hasOwnProperty(key))
-                    data["entities"][key] = this.entities[key] ? this.entities[key].toJSON() : <any>undefined;
-            }
-        }
-        if (this.configuration) {
-            data["configuration"] = {};
-            for (let key in this.configuration) {
-                if (this.configuration.hasOwnProperty(key))
-                    data["configuration"][key] = this.configuration[key];
-            }
-        }
+        data["isVisible"] = this.isVisible;
         return data; 
     }
 }
 
-export interface IModuleExtensionDto {
-    entities?: { [key: string]: EntityExtensionDto; } | undefined;
-    configuration?: { [key: string]: any; } | undefined;
+export interface IExtensionPropertyUiFormDto {
+    isVisible?: boolean;
 }
 
-export class ExtensionEnumFieldDto implements IExtensionEnumFieldDto {
-    name?: string | undefined;
-    value?: any | undefined;
+export class ExtensionPropertyUiLookupDto implements IExtensionPropertyUiLookupDto {
+    url?: string | undefined;
+    resultListPropertyName?: string | undefined;
+    displayPropertyName?: string | undefined;
+    valuePropertyName?: string | undefined;
+    filterParamName?: string | undefined;
 
-    constructor(data?: IExtensionEnumFieldDto) {
+    constructor(data?: IExtensionPropertyUiLookupDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -3508,36 +3332,44 @@ export class ExtensionEnumFieldDto implements IExtensionEnumFieldDto {
 
     init(_data?: any) {
         if (_data) {
-            this.name = _data["name"];
-            this.value = _data["value"];
+            this.url = _data["url"];
+            this.resultListPropertyName = _data["resultListPropertyName"];
+            this.displayPropertyName = _data["displayPropertyName"];
+            this.valuePropertyName = _data["valuePropertyName"];
+            this.filterParamName = _data["filterParamName"];
         }
     }
 
-    static fromJS(data: any): ExtensionEnumFieldDto {
+    static fromJS(data: any): ExtensionPropertyUiLookupDto {
         data = typeof data === 'object' ? data : {};
-        let result = new ExtensionEnumFieldDto();
+        let result = new ExtensionPropertyUiLookupDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["value"] = this.value;
+        data["url"] = this.url;
+        data["resultListPropertyName"] = this.resultListPropertyName;
+        data["displayPropertyName"] = this.displayPropertyName;
+        data["valuePropertyName"] = this.valuePropertyName;
+        data["filterParamName"] = this.filterParamName;
         return data; 
     }
 }
 
-export interface IExtensionEnumFieldDto {
-    name?: string | undefined;
-    value?: any | undefined;
+export interface IExtensionPropertyUiLookupDto {
+    url?: string | undefined;
+    resultListPropertyName?: string | undefined;
+    displayPropertyName?: string | undefined;
+    valuePropertyName?: string | undefined;
+    filterParamName?: string | undefined;
 }
 
-export class ExtensionEnumDto implements IExtensionEnumDto {
-    fields?: ExtensionEnumFieldDto[] | undefined;
-    localizationResource?: string | undefined;
+export class ExtensionPropertyUiTableDto implements IExtensionPropertyUiTableDto {
+    isVisible?: boolean;
 
-    constructor(data?: IExtensionEnumDto) {
+    constructor(data?: IExtensionPropertyUiTableDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -3548,629 +3380,26 @@ export class ExtensionEnumDto implements IExtensionEnumDto {
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["fields"])) {
-                this.fields = [] as any;
-                for (let item of _data["fields"])
-                    this.fields!.push(ExtensionEnumFieldDto.fromJS(item));
-            }
-            this.localizationResource = _data["localizationResource"];
+            this.isVisible = _data["isVisible"];
         }
     }
 
-    static fromJS(data: any): ExtensionEnumDto {
+    static fromJS(data: any): ExtensionPropertyUiTableDto {
         data = typeof data === 'object' ? data : {};
-        let result = new ExtensionEnumDto();
+        let result = new ExtensionPropertyUiTableDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        if (Array.isArray(this.fields)) {
-            data["fields"] = [];
-            for (let item of this.fields)
-                data["fields"].push(item.toJSON());
-        }
-        data["localizationResource"] = this.localizationResource;
+        data["isVisible"] = this.isVisible;
         return data; 
     }
 }
 
-export interface IExtensionEnumDto {
-    fields?: ExtensionEnumFieldDto[] | undefined;
-    localizationResource?: string | undefined;
-}
-
-export class ObjectExtensionsDto implements IObjectExtensionsDto {
-    modules?: { [key: string]: ModuleExtensionDto; } | undefined;
-    enums?: { [key: string]: ExtensionEnumDto; } | undefined;
-
-    constructor(data?: IObjectExtensionsDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (_data["modules"]) {
-                this.modules = {} as any;
-                for (let key in _data["modules"]) {
-                    if (_data["modules"].hasOwnProperty(key))
-                        this.modules![key] = _data["modules"][key] ? ModuleExtensionDto.fromJS(_data["modules"][key]) : new ModuleExtensionDto();
-                }
-            }
-            if (_data["enums"]) {
-                this.enums = {} as any;
-                for (let key in _data["enums"]) {
-                    if (_data["enums"].hasOwnProperty(key))
-                        this.enums![key] = _data["enums"][key] ? ExtensionEnumDto.fromJS(_data["enums"][key]) : new ExtensionEnumDto();
-                }
-            }
-        }
-    }
-
-    static fromJS(data: any): ObjectExtensionsDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ObjectExtensionsDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (this.modules) {
-            data["modules"] = {};
-            for (let key in this.modules) {
-                if (this.modules.hasOwnProperty(key))
-                    data["modules"][key] = this.modules[key] ? this.modules[key].toJSON() : <any>undefined;
-            }
-        }
-        if (this.enums) {
-            data["enums"] = {};
-            for (let key in this.enums) {
-                if (this.enums.hasOwnProperty(key))
-                    data["enums"][key] = this.enums[key] ? this.enums[key].toJSON() : <any>undefined;
-            }
-        }
-        return data; 
-    }
-}
-
-export interface IObjectExtensionsDto {
-    modules?: { [key: string]: ModuleExtensionDto; } | undefined;
-    enums?: { [key: string]: ExtensionEnumDto; } | undefined;
-}
-
-export class ApplicationConfigurationDto implements IApplicationConfigurationDto {
-    localization?: ApplicationLocalizationConfigurationDto;
-    auth?: ApplicationAuthConfigurationDto;
-    setting?: ApplicationSettingConfigurationDto;
-    currentUser?: CurrentUserDto;
-    features?: ApplicationFeatureConfigurationDto;
-    multiTenancy?: MultiTenancyInfoDto;
-    currentTenant?: CurrentTenantDto;
-    timing?: TimingDto;
-    clock?: ClockDto;
-    objectExtensions?: ObjectExtensionsDto;
-
-    constructor(data?: IApplicationConfigurationDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.localization = _data["localization"] ? ApplicationLocalizationConfigurationDto.fromJS(_data["localization"]) : <any>undefined;
-            this.auth = _data["auth"] ? ApplicationAuthConfigurationDto.fromJS(_data["auth"]) : <any>undefined;
-            this.setting = _data["setting"] ? ApplicationSettingConfigurationDto.fromJS(_data["setting"]) : <any>undefined;
-            this.currentUser = _data["currentUser"] ? CurrentUserDto.fromJS(_data["currentUser"]) : <any>undefined;
-            this.features = _data["features"] ? ApplicationFeatureConfigurationDto.fromJS(_data["features"]) : <any>undefined;
-            this.multiTenancy = _data["multiTenancy"] ? MultiTenancyInfoDto.fromJS(_data["multiTenancy"]) : <any>undefined;
-            this.currentTenant = _data["currentTenant"] ? CurrentTenantDto.fromJS(_data["currentTenant"]) : <any>undefined;
-            this.timing = _data["timing"] ? TimingDto.fromJS(_data["timing"]) : <any>undefined;
-            this.clock = _data["clock"] ? ClockDto.fromJS(_data["clock"]) : <any>undefined;
-            this.objectExtensions = _data["objectExtensions"] ? ObjectExtensionsDto.fromJS(_data["objectExtensions"]) : <any>undefined;
-        }
-    }
-
-    static fromJS(data: any): ApplicationConfigurationDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ApplicationConfigurationDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["localization"] = this.localization ? this.localization.toJSON() : <any>undefined;
-        data["auth"] = this.auth ? this.auth.toJSON() : <any>undefined;
-        data["setting"] = this.setting ? this.setting.toJSON() : <any>undefined;
-        data["currentUser"] = this.currentUser ? this.currentUser.toJSON() : <any>undefined;
-        data["features"] = this.features ? this.features.toJSON() : <any>undefined;
-        data["multiTenancy"] = this.multiTenancy ? this.multiTenancy.toJSON() : <any>undefined;
-        data["currentTenant"] = this.currentTenant ? this.currentTenant.toJSON() : <any>undefined;
-        data["timing"] = this.timing ? this.timing.toJSON() : <any>undefined;
-        data["clock"] = this.clock ? this.clock.toJSON() : <any>undefined;
-        data["objectExtensions"] = this.objectExtensions ? this.objectExtensions.toJSON() : <any>undefined;
-        return data; 
-    }
-}
-
-export interface IApplicationConfigurationDto {
-    localization?: ApplicationLocalizationConfigurationDto;
-    auth?: ApplicationAuthConfigurationDto;
-    setting?: ApplicationSettingConfigurationDto;
-    currentUser?: CurrentUserDto;
-    features?: ApplicationFeatureConfigurationDto;
-    multiTenancy?: MultiTenancyInfoDto;
-    currentTenant?: CurrentTenantDto;
-    timing?: TimingDto;
-    clock?: ClockDto;
-    objectExtensions?: ObjectExtensionsDto;
-}
-
-export class FindTenantResultDto implements IFindTenantResultDto {
-    success?: boolean;
-    tenantId?: string | undefined;
-    name?: string | undefined;
-
-    constructor(data?: IFindTenantResultDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.success = _data["success"];
-            this.tenantId = _data["tenantId"];
-            this.name = _data["name"];
-        }
-    }
-
-    static fromJS(data: any): FindTenantResultDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new FindTenantResultDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["success"] = this.success;
-        data["tenantId"] = this.tenantId;
-        data["name"] = this.name;
-        return data; 
-    }
-}
-
-export interface IFindTenantResultDto {
-    success?: boolean;
-    tenantId?: string | undefined;
-    name?: string | undefined;
-}
-
-export class RegisterDto implements IRegisterDto {
-    userName!: string;
-    emailAddress!: string;
-    password!: string;
-    appName!: string;
-
-    constructor(data?: IRegisterDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.userName = _data["userName"];
-            this.emailAddress = _data["emailAddress"];
-            this.password = _data["password"];
-            this.appName = _data["appName"];
-        }
-    }
-
-    static fromJS(data: any): RegisterDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new RegisterDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["userName"] = this.userName;
-        data["emailAddress"] = this.emailAddress;
-        data["password"] = this.password;
-        data["appName"] = this.appName;
-        return data; 
-    }
-}
-
-export interface IRegisterDto {
-    userName: string;
-    emailAddress: string;
-    password: string;
-    appName: string;
-}
-
-export class IdentityUserDto implements IIdentityUserDto {
-    readonly extraProperties?: { [key: string]: any; } | undefined;
-    id?: string;
-    creationTime?: Date;
-    creatorId?: string | undefined;
-    lastModificationTime?: Date | undefined;
-    lastModifierId?: string | undefined;
-    isDeleted?: boolean;
-    deleterId?: string | undefined;
-    deletionTime?: Date | undefined;
-    tenantId?: string | undefined;
-    userName?: string | undefined;
-    name?: string | undefined;
-    surname?: string | undefined;
-    email?: string | undefined;
-    emailConfirmed?: boolean;
-    phoneNumber?: string | undefined;
-    phoneNumberConfirmed?: boolean;
-    lockoutEnabled?: boolean;
-    lockoutEnd?: Date | undefined;
-    concurrencyStamp?: string | undefined;
-
-    constructor(data?: IIdentityUserDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (_data["extraProperties"]) {
-                (<any>this).extraProperties = {} as any;
-                for (let key in _data["extraProperties"]) {
-                    if (_data["extraProperties"].hasOwnProperty(key))
-                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
-                }
-            }
-            this.id = _data["id"];
-            this.creationTime = _data["creationTime"] ? new Date(_data["creationTime"].toString()) : <any>undefined;
-            this.creatorId = _data["creatorId"];
-            this.lastModificationTime = _data["lastModificationTime"] ? new Date(_data["lastModificationTime"].toString()) : <any>undefined;
-            this.lastModifierId = _data["lastModifierId"];
-            this.isDeleted = _data["isDeleted"];
-            this.deleterId = _data["deleterId"];
-            this.deletionTime = _data["deletionTime"] ? new Date(_data["deletionTime"].toString()) : <any>undefined;
-            this.tenantId = _data["tenantId"];
-            this.userName = _data["userName"];
-            this.name = _data["name"];
-            this.surname = _data["surname"];
-            this.email = _data["email"];
-            this.emailConfirmed = _data["emailConfirmed"];
-            this.phoneNumber = _data["phoneNumber"];
-            this.phoneNumberConfirmed = _data["phoneNumberConfirmed"];
-            this.lockoutEnabled = _data["lockoutEnabled"];
-            this.lockoutEnd = _data["lockoutEnd"] ? new Date(_data["lockoutEnd"].toString()) : <any>undefined;
-            this.concurrencyStamp = _data["concurrencyStamp"];
-        }
-    }
-
-    static fromJS(data: any): IdentityUserDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new IdentityUserDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (this.extraProperties) {
-            data["extraProperties"] = {};
-            for (let key in this.extraProperties) {
-                if (this.extraProperties.hasOwnProperty(key))
-                    data["extraProperties"][key] = this.extraProperties[key];
-            }
-        }
-        data["id"] = this.id;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        data["creatorId"] = this.creatorId;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
-        data["lastModifierId"] = this.lastModifierId;
-        data["isDeleted"] = this.isDeleted;
-        data["deleterId"] = this.deleterId;
-        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
-        data["tenantId"] = this.tenantId;
-        data["userName"] = this.userName;
-        data["name"] = this.name;
-        data["surname"] = this.surname;
-        data["email"] = this.email;
-        data["emailConfirmed"] = this.emailConfirmed;
-        data["phoneNumber"] = this.phoneNumber;
-        data["phoneNumberConfirmed"] = this.phoneNumberConfirmed;
-        data["lockoutEnabled"] = this.lockoutEnabled;
-        data["lockoutEnd"] = this.lockoutEnd ? this.lockoutEnd.toISOString() : <any>undefined;
-        data["concurrencyStamp"] = this.concurrencyStamp;
-        return data; 
-    }
-}
-
-export interface IIdentityUserDto {
-    extraProperties?: { [key: string]: any; } | undefined;
-    id?: string;
-    creationTime?: Date;
-    creatorId?: string | undefined;
-    lastModificationTime?: Date | undefined;
-    lastModifierId?: string | undefined;
-    isDeleted?: boolean;
-    deleterId?: string | undefined;
-    deletionTime?: Date | undefined;
-    tenantId?: string | undefined;
-    userName?: string | undefined;
-    name?: string | undefined;
-    surname?: string | undefined;
-    email?: string | undefined;
-    emailConfirmed?: boolean;
-    phoneNumber?: string | undefined;
-    phoneNumberConfirmed?: boolean;
-    lockoutEnabled?: boolean;
-    lockoutEnd?: Date | undefined;
-    concurrencyStamp?: string | undefined;
-}
-
-export class SendPasswordResetCodeDto implements ISendPasswordResetCodeDto {
-    email!: string;
-    appName!: string;
-    returnUrl?: string | undefined;
-    returnUrlHash?: string | undefined;
-
-    constructor(data?: ISendPasswordResetCodeDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.email = _data["email"];
-            this.appName = _data["appName"];
-            this.returnUrl = _data["returnUrl"];
-            this.returnUrlHash = _data["returnUrlHash"];
-        }
-    }
-
-    static fromJS(data: any): SendPasswordResetCodeDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new SendPasswordResetCodeDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["email"] = this.email;
-        data["appName"] = this.appName;
-        data["returnUrl"] = this.returnUrl;
-        data["returnUrlHash"] = this.returnUrlHash;
-        return data; 
-    }
-}
-
-export interface ISendPasswordResetCodeDto {
-    email: string;
-    appName: string;
-    returnUrl?: string | undefined;
-    returnUrlHash?: string | undefined;
-}
-
-export class ResetPasswordDto implements IResetPasswordDto {
-    userId?: string;
-    resetToken!: string;
-    password!: string;
-
-    constructor(data?: IResetPasswordDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.userId = _data["userId"];
-            this.resetToken = _data["resetToken"];
-            this.password = _data["password"];
-        }
-    }
-
-    static fromJS(data: any): ResetPasswordDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ResetPasswordDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["userId"] = this.userId;
-        data["resetToken"] = this.resetToken;
-        data["password"] = this.password;
-        return data; 
-    }
-}
-
-export interface IResetPasswordDto {
-    userId?: string;
-    resetToken: string;
-    password: string;
-}
-
-export class FeatureProviderDto implements IFeatureProviderDto {
-    name?: string | undefined;
-    key?: string | undefined;
-
-    constructor(data?: IFeatureProviderDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.key = _data["key"];
-        }
-    }
-
-    static fromJS(data: any): FeatureProviderDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new FeatureProviderDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["key"] = this.key;
-        return data; 
-    }
-}
-
-export interface IFeatureProviderDto {
-    name?: string | undefined;
-    key?: string | undefined;
-}
-
-export class IValueValidator implements IIValueValidator {
-    readonly name?: string | undefined;
-    readonly properties?: { [key: string]: any; } | undefined;
-
-    constructor(data?: IIValueValidator) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            (<any>this).name = _data["name"];
-            if (_data["properties"]) {
-                (<any>this).properties = {} as any;
-                for (let key in _data["properties"]) {
-                    if (_data["properties"].hasOwnProperty(key))
-                        (<any>this).properties![key] = _data["properties"][key];
-                }
-            }
-        }
-    }
-
-    static fromJS(data: any): IValueValidator {
-        data = typeof data === 'object' ? data : {};
-        let result = new IValueValidator();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        if (this.properties) {
-            data["properties"] = {};
-            for (let key in this.properties) {
-                if (this.properties.hasOwnProperty(key))
-                    data["properties"][key] = this.properties[key];
-            }
-        }
-        return data; 
-    }
-}
-
-export interface IIValueValidator {
-    name?: string | undefined;
-    properties?: { [key: string]: any; } | undefined;
-}
-
-export class IStringValueType implements IIStringValueType {
-    readonly name?: string | undefined;
-    readonly properties?: { [key: string]: any; } | undefined;
-    validator?: IValueValidator;
-
-    constructor(data?: IIStringValueType) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            (<any>this).name = _data["name"];
-            if (_data["properties"]) {
-                (<any>this).properties = {} as any;
-                for (let key in _data["properties"]) {
-                    if (_data["properties"].hasOwnProperty(key))
-                        (<any>this).properties![key] = _data["properties"][key];
-                }
-            }
-            this.validator = _data["validator"] ? IValueValidator.fromJS(_data["validator"]) : <any>undefined;
-        }
-    }
-
-    static fromJS(data: any): IStringValueType {
-        data = typeof data === 'object' ? data : {};
-        let result = new IStringValueType();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        if (this.properties) {
-            data["properties"] = {};
-            for (let key in this.properties) {
-                if (this.properties.hasOwnProperty(key))
-                    data["properties"][key] = this.properties[key];
-            }
-        }
-        data["validator"] = this.validator ? this.validator.toJSON() : <any>undefined;
-        return data; 
-    }
-}
-
-export interface IIStringValueType {
-    name?: string | undefined;
-    properties?: { [key: string]: any; } | undefined;
-    validator?: IValueValidator;
+export interface IExtensionPropertyUiTableDto {
+    isVisible?: boolean;
 }
 
 export class FeatureDto implements IFeatureDto {
@@ -4289,6 +3518,90 @@ export interface IFeatureGroupDto {
     features?: FeatureDto[] | undefined;
 }
 
+export class FeatureProviderDto implements IFeatureProviderDto {
+    name?: string | undefined;
+    key?: string | undefined;
+
+    constructor(data?: IFeatureProviderDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.key = _data["key"];
+        }
+    }
+
+    static fromJS(data: any): FeatureProviderDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new FeatureProviderDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["key"] = this.key;
+        return data; 
+    }
+}
+
+export interface IFeatureProviderDto {
+    name?: string | undefined;
+    key?: string | undefined;
+}
+
+export class FindTenantResultDto implements IFindTenantResultDto {
+    success?: boolean;
+    tenantId?: string | undefined;
+    name?: string | undefined;
+
+    constructor(data?: IFindTenantResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.success = _data["success"];
+            this.tenantId = _data["tenantId"];
+            this.name = _data["name"];
+        }
+    }
+
+    static fromJS(data: any): FindTenantResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new FindTenantResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["success"] = this.success;
+        data["tenantId"] = this.tenantId;
+        data["name"] = this.name;
+        return data; 
+    }
+}
+
+export interface IFindTenantResultDto {
+    success?: boolean;
+    tenantId?: string | undefined;
+    name?: string | undefined;
+}
+
 export class GetFeatureListResultDto implements IGetFeatureListResultDto {
     groups?: FeatureGroupDto[] | undefined;
 
@@ -4331,438 +3644,6 @@ export class GetFeatureListResultDto implements IGetFeatureListResultDto {
 
 export interface IGetFeatureListResultDto {
     groups?: FeatureGroupDto[] | undefined;
-}
-
-export class UpdateFeatureDto implements IUpdateFeatureDto {
-    name?: string | undefined;
-    value?: string | undefined;
-
-    constructor(data?: IUpdateFeatureDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.value = _data["value"];
-        }
-    }
-
-    static fromJS(data: any): UpdateFeatureDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new UpdateFeatureDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["value"] = this.value;
-        return data; 
-    }
-}
-
-export interface IUpdateFeatureDto {
-    name?: string | undefined;
-    value?: string | undefined;
-}
-
-export class UpdateFeaturesDto implements IUpdateFeaturesDto {
-    features?: UpdateFeatureDto[] | undefined;
-
-    constructor(data?: IUpdateFeaturesDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (Array.isArray(_data["features"])) {
-                this.features = [] as any;
-                for (let item of _data["features"])
-                    this.features!.push(UpdateFeatureDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): UpdateFeaturesDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new UpdateFeaturesDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (Array.isArray(this.features)) {
-            data["features"] = [];
-            for (let item of this.features)
-                data["features"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IUpdateFeaturesDto {
-    features?: UpdateFeatureDto[] | undefined;
-}
-
-export class UserLoginInfo implements IUserLoginInfo {
-    userNameOrEmailAddress!: string;
-    password!: string;
-    rememberMe?: boolean;
-
-    constructor(data?: IUserLoginInfo) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.userNameOrEmailAddress = _data["userNameOrEmailAddress"];
-            this.password = _data["password"];
-            this.rememberMe = _data["rememberMe"];
-        }
-    }
-
-    static fromJS(data: any): UserLoginInfo {
-        data = typeof data === 'object' ? data : {};
-        let result = new UserLoginInfo();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["userNameOrEmailAddress"] = this.userNameOrEmailAddress;
-        data["password"] = this.password;
-        data["rememberMe"] = this.rememberMe;
-        return data; 
-    }
-}
-
-export interface IUserLoginInfo {
-    userNameOrEmailAddress: string;
-    password: string;
-    rememberMe?: boolean;
-}
-
-export enum LoginResultType {
-    _1 = 1,
-    _2 = 2,
-    _3 = 3,
-    _4 = 4,
-    _5 = 5,
-}
-
-export class AbpLoginResult implements IAbpLoginResult {
-    result?: LoginResultType;
-    readonly description?: string | undefined;
-
-    constructor(data?: IAbpLoginResult) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.result = _data["result"];
-            (<any>this).description = _data["description"];
-        }
-    }
-
-    static fromJS(data: any): AbpLoginResult {
-        data = typeof data === 'object' ? data : {};
-        let result = new AbpLoginResult();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["result"] = this.result;
-        data["description"] = this.description;
-        return data; 
-    }
-}
-
-export interface IAbpLoginResult {
-    result?: LoginResultType;
-    description?: string | undefined;
-}
-
-export class LoginInputDto implements ILoginInputDto {
-    name?: string | undefined;
-    password?: string | undefined;
-
-    constructor(data?: ILoginInputDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.password = _data["password"];
-        }
-    }
-
-    static fromJS(data: any): LoginInputDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new LoginInputDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["password"] = this.password;
-        return data; 
-    }
-}
-
-export interface ILoginInputDto {
-    name?: string | undefined;
-    password?: string | undefined;
-}
-
-export class LoginOutputDto implements ILoginOutputDto {
-    id?: string;
-    name?: string | undefined;
-    userName?: string | undefined;
-    token?: string | undefined;
-    expiration?: Date;
-
-    constructor(data?: ILoginOutputDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.id = _data["id"];
-            this.name = _data["name"];
-            this.userName = _data["userName"];
-            this.token = _data["token"];
-            this.expiration = _data["expiration"] ? new Date(_data["expiration"].toString()) : <any>undefined;
-        }
-    }
-
-    static fromJS(data: any): LoginOutputDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new LoginOutputDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        data["name"] = this.name;
-        data["userName"] = this.userName;
-        data["token"] = this.token;
-        data["expiration"] = this.expiration ? this.expiration.toISOString() : <any>undefined;
-        return data; 
-    }
-}
-
-export interface ILoginOutputDto {
-    id?: string;
-    name?: string | undefined;
-    userName?: string | undefined;
-    token?: string | undefined;
-    expiration?: Date;
-}
-
-export class ProviderInfoDto implements IProviderInfoDto {
-    providerName?: string | undefined;
-    providerKey?: string | undefined;
-
-    constructor(data?: IProviderInfoDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.providerName = _data["providerName"];
-            this.providerKey = _data["providerKey"];
-        }
-    }
-
-    static fromJS(data: any): ProviderInfoDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ProviderInfoDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["providerName"] = this.providerName;
-        data["providerKey"] = this.providerKey;
-        return data; 
-    }
-}
-
-export interface IProviderInfoDto {
-    providerName?: string | undefined;
-    providerKey?: string | undefined;
-}
-
-export class PermissionGrantInfoDto implements IPermissionGrantInfoDto {
-    name?: string | undefined;
-    displayName?: string | undefined;
-    parentName?: string | undefined;
-    isGranted?: boolean;
-    allowedProviders?: string[] | undefined;
-    grantedProviders?: ProviderInfoDto[] | undefined;
-
-    constructor(data?: IPermissionGrantInfoDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.displayName = _data["displayName"];
-            this.parentName = _data["parentName"];
-            this.isGranted = _data["isGranted"];
-            if (Array.isArray(_data["allowedProviders"])) {
-                this.allowedProviders = [] as any;
-                for (let item of _data["allowedProviders"])
-                    this.allowedProviders!.push(item);
-            }
-            if (Array.isArray(_data["grantedProviders"])) {
-                this.grantedProviders = [] as any;
-                for (let item of _data["grantedProviders"])
-                    this.grantedProviders!.push(ProviderInfoDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): PermissionGrantInfoDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new PermissionGrantInfoDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["displayName"] = this.displayName;
-        data["parentName"] = this.parentName;
-        data["isGranted"] = this.isGranted;
-        if (Array.isArray(this.allowedProviders)) {
-            data["allowedProviders"] = [];
-            for (let item of this.allowedProviders)
-                data["allowedProviders"].push(item);
-        }
-        if (Array.isArray(this.grantedProviders)) {
-            data["grantedProviders"] = [];
-            for (let item of this.grantedProviders)
-                data["grantedProviders"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IPermissionGrantInfoDto {
-    name?: string | undefined;
-    displayName?: string | undefined;
-    parentName?: string | undefined;
-    isGranted?: boolean;
-    allowedProviders?: string[] | undefined;
-    grantedProviders?: ProviderInfoDto[] | undefined;
-}
-
-export class PermissionGroupDto implements IPermissionGroupDto {
-    name?: string | undefined;
-    displayName?: string | undefined;
-    permissions?: PermissionGrantInfoDto[] | undefined;
-
-    constructor(data?: IPermissionGroupDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.displayName = _data["displayName"];
-            if (Array.isArray(_data["permissions"])) {
-                this.permissions = [] as any;
-                for (let item of _data["permissions"])
-                    this.permissions!.push(PermissionGrantInfoDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): PermissionGroupDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new PermissionGroupDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["displayName"] = this.displayName;
-        if (Array.isArray(this.permissions)) {
-            data["permissions"] = [];
-            for (let item of this.permissions)
-                data["permissions"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IPermissionGroupDto {
-    name?: string | undefined;
-    displayName?: string | undefined;
-    permissions?: PermissionGrantInfoDto[] | undefined;
 }
 
 export class GetPermissionListResultDto implements IGetPermissionListResultDto {
@@ -4813,11 +3694,12 @@ export interface IGetPermissionListResultDto {
     groups?: PermissionGroupDto[] | undefined;
 }
 
-export class UpdatePermissionDto implements IUpdatePermissionDto {
-    name?: string | undefined;
-    isGranted?: boolean;
+export class GetRoleListInput implements IGetRoleListInput {
+    pageIndex?: number;
+    pageSize?: number;
+    filter?: string | undefined;
 
-    constructor(data?: IUpdatePermissionDto) {
+    constructor(data?: IGetRoleListInput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -4828,35 +3710,40 @@ export class UpdatePermissionDto implements IUpdatePermissionDto {
 
     init(_data?: any) {
         if (_data) {
-            this.name = _data["name"];
-            this.isGranted = _data["isGranted"];
+            this.pageIndex = _data["pageIndex"];
+            this.pageSize = _data["pageSize"];
+            this.filter = _data["filter"];
         }
     }
 
-    static fromJS(data: any): UpdatePermissionDto {
+    static fromJS(data: any): GetRoleListInput {
         data = typeof data === 'object' ? data : {};
-        let result = new UpdatePermissionDto();
+        let result = new GetRoleListInput();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["isGranted"] = this.isGranted;
+        data["pageIndex"] = this.pageIndex;
+        data["pageSize"] = this.pageSize;
+        data["filter"] = this.filter;
         return data; 
     }
 }
 
-export interface IUpdatePermissionDto {
-    name?: string | undefined;
-    isGranted?: boolean;
+export interface IGetRoleListInput {
+    pageIndex?: number;
+    pageSize?: number;
+    filter?: string | undefined;
 }
 
-export class UpdatePermissionsDto implements IUpdatePermissionsDto {
-    permissions?: UpdatePermissionDto[] | undefined;
+export class GetUserListInput implements IGetUserListInput {
+    pageIndex?: number;
+    pageSize?: number;
+    filter?: string | undefined;
 
-    constructor(data?: IUpdatePermissionsDto) {
+    constructor(data?: IGetUserListInput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -4867,47 +3754,77 @@ export class UpdatePermissionsDto implements IUpdatePermissionsDto {
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["permissions"])) {
-                this.permissions = [] as any;
-                for (let item of _data["permissions"])
-                    this.permissions!.push(UpdatePermissionDto.fromJS(item));
-            }
+            this.pageIndex = _data["pageIndex"];
+            this.pageSize = _data["pageSize"];
+            this.filter = _data["filter"];
         }
     }
 
-    static fromJS(data: any): UpdatePermissionsDto {
+    static fromJS(data: any): GetUserListInput {
         data = typeof data === 'object' ? data : {};
-        let result = new UpdatePermissionsDto();
+        let result = new GetUserListInput();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        if (Array.isArray(this.permissions)) {
-            data["permissions"] = [];
-            for (let item of this.permissions)
-                data["permissions"].push(item.toJSON());
-        }
+        data["pageIndex"] = this.pageIndex;
+        data["pageSize"] = this.pageSize;
+        data["filter"] = this.filter;
         return data; 
     }
 }
 
-export interface IUpdatePermissionsDto {
-    permissions?: UpdatePermissionDto[] | undefined;
+export interface IGetUserListInput {
+    pageIndex?: number;
+    pageSize?: number;
+    filter?: string | undefined;
 }
 
-export class ProfileDto implements IProfileDto {
+export class IanaTimeZone implements IIanaTimeZone {
+    timeZoneName?: string | undefined;
+
+    constructor(data?: IIanaTimeZone) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.timeZoneName = _data["timeZoneName"];
+        }
+    }
+
+    static fromJS(data: any): IanaTimeZone {
+        data = typeof data === 'object' ? data : {};
+        let result = new IanaTimeZone();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["timeZoneName"] = this.timeZoneName;
+        return data; 
+    }
+}
+
+export interface IIanaTimeZone {
+    timeZoneName?: string | undefined;
+}
+
+export class IdentityRoleCreateDto implements IIdentityRoleCreateDto {
     readonly extraProperties?: { [key: string]: any; } | undefined;
-    userName?: string | undefined;
-    email?: string | undefined;
-    name?: string | undefined;
-    surname?: string | undefined;
-    phoneNumber?: string | undefined;
-    isExternal?: boolean;
-    hasPassword?: boolean;
+    name!: string;
+    isDefault?: boolean;
+    isPublic?: boolean;
 
-    constructor(data?: IProfileDto) {
+    constructor(data?: IIdentityRoleCreateDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -4925,19 +3842,15 @@ export class ProfileDto implements IProfileDto {
                         (<any>this).extraProperties![key] = _data["extraProperties"][key];
                 }
             }
-            this.userName = _data["userName"];
-            this.email = _data["email"];
             this.name = _data["name"];
-            this.surname = _data["surname"];
-            this.phoneNumber = _data["phoneNumber"];
-            this.isExternal = _data["isExternal"];
-            this.hasPassword = _data["hasPassword"];
+            this.isDefault = _data["isDefault"];
+            this.isPublic = _data["isPublic"];
         }
     }
 
-    static fromJS(data: any): ProfileDto {
+    static fromJS(data: any): IdentityRoleCreateDto {
         data = typeof data === 'object' ? data : {};
-        let result = new ProfileDto();
+        let result = new IdentityRoleCreateDto();
         result.init(data);
         return result;
     }
@@ -4951,134 +3864,18 @@ export class ProfileDto implements IProfileDto {
                     data["extraProperties"][key] = this.extraProperties[key];
             }
         }
-        data["userName"] = this.userName;
-        data["email"] = this.email;
         data["name"] = this.name;
-        data["surname"] = this.surname;
-        data["phoneNumber"] = this.phoneNumber;
-        data["isExternal"] = this.isExternal;
-        data["hasPassword"] = this.hasPassword;
+        data["isDefault"] = this.isDefault;
+        data["isPublic"] = this.isPublic;
         return data; 
     }
 }
 
-export interface IProfileDto {
+export interface IIdentityRoleCreateDto {
     extraProperties?: { [key: string]: any; } | undefined;
-    userName?: string | undefined;
-    email?: string | undefined;
-    name?: string | undefined;
-    surname?: string | undefined;
-    phoneNumber?: string | undefined;
-    isExternal?: boolean;
-    hasPassword?: boolean;
-}
-
-export class UpdateProfileDto implements IUpdateProfileDto {
-    readonly extraProperties?: { [key: string]: any; } | undefined;
-    userName?: string | undefined;
-    email?: string | undefined;
-    name?: string | undefined;
-    surname?: string | undefined;
-    phoneNumber?: string | undefined;
-
-    constructor(data?: IUpdateProfileDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (_data["extraProperties"]) {
-                (<any>this).extraProperties = {} as any;
-                for (let key in _data["extraProperties"]) {
-                    if (_data["extraProperties"].hasOwnProperty(key))
-                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
-                }
-            }
-            this.userName = _data["userName"];
-            this.email = _data["email"];
-            this.name = _data["name"];
-            this.surname = _data["surname"];
-            this.phoneNumber = _data["phoneNumber"];
-        }
-    }
-
-    static fromJS(data: any): UpdateProfileDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new UpdateProfileDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (this.extraProperties) {
-            data["extraProperties"] = {};
-            for (let key in this.extraProperties) {
-                if (this.extraProperties.hasOwnProperty(key))
-                    data["extraProperties"][key] = this.extraProperties[key];
-            }
-        }
-        data["userName"] = this.userName;
-        data["email"] = this.email;
-        data["name"] = this.name;
-        data["surname"] = this.surname;
-        data["phoneNumber"] = this.phoneNumber;
-        return data; 
-    }
-}
-
-export interface IUpdateProfileDto {
-    extraProperties?: { [key: string]: any; } | undefined;
-    userName?: string | undefined;
-    email?: string | undefined;
-    name?: string | undefined;
-    surname?: string | undefined;
-    phoneNumber?: string | undefined;
-}
-
-export class ChangePasswordInput implements IChangePasswordInput {
-    currentPassword?: string | undefined;
-    newPassword!: string;
-
-    constructor(data?: IChangePasswordInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.currentPassword = _data["currentPassword"];
-            this.newPassword = _data["newPassword"];
-        }
-    }
-
-    static fromJS(data: any): ChangePasswordInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new ChangePasswordInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["currentPassword"] = this.currentPassword;
-        data["newPassword"] = this.newPassword;
-        return data; 
-    }
-}
-
-export interface IChangePasswordInput {
-    currentPassword?: string | undefined;
-    newPassword: string;
+    name: string;
+    isDefault?: boolean;
+    isPublic?: boolean;
 }
 
 export class IdentityRoleDto implements IIdentityRoleDto {
@@ -5245,66 +4042,6 @@ export interface IIdentityRoleDtoPagedResultDto {
     totalCount?: number;
 }
 
-export class IdentityRoleCreateDto implements IIdentityRoleCreateDto {
-    readonly extraProperties?: { [key: string]: any; } | undefined;
-    name!: string;
-    isDefault?: boolean;
-    isPublic?: boolean;
-
-    constructor(data?: IIdentityRoleCreateDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (_data["extraProperties"]) {
-                (<any>this).extraProperties = {} as any;
-                for (let key in _data["extraProperties"]) {
-                    if (_data["extraProperties"].hasOwnProperty(key))
-                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
-                }
-            }
-            this.name = _data["name"];
-            this.isDefault = _data["isDefault"];
-            this.isPublic = _data["isPublic"];
-        }
-    }
-
-    static fromJS(data: any): IdentityRoleCreateDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new IdentityRoleCreateDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (this.extraProperties) {
-            data["extraProperties"] = {};
-            for (let key in this.extraProperties) {
-                if (this.extraProperties.hasOwnProperty(key))
-                    data["extraProperties"][key] = this.extraProperties[key];
-            }
-        }
-        data["name"] = this.name;
-        data["isDefault"] = this.isDefault;
-        data["isPublic"] = this.isPublic;
-        return data; 
-    }
-}
-
-export interface IIdentityRoleCreateDto {
-    extraProperties?: { [key: string]: any; } | undefined;
-    name: string;
-    isDefault?: boolean;
-    isPublic?: boolean;
-}
-
 export class IdentityRoleUpdateDto implements IIdentityRoleUpdateDto {
     readonly extraProperties?: { [key: string]: any; } | undefined;
     name!: string;
@@ -5369,12 +4106,18 @@ export interface IIdentityRoleUpdateDto {
     concurrencyStamp?: string | undefined;
 }
 
-export class GetRoleListInput implements IGetRoleListInput {
-    pageIndex?: number;
-    pageSize?: number;
-    filter?: string | undefined;
+export class IdentityUserCreateDto implements IIdentityUserCreateDto {
+    readonly extraProperties?: { [key: string]: any; } | undefined;
+    userName!: string;
+    name?: string | undefined;
+    surname?: string | undefined;
+    email!: string;
+    phoneNumber?: string | undefined;
+    lockoutEnabled?: boolean;
+    roleNames?: string[] | undefined;
+    password!: string;
 
-    constructor(data?: IGetRoleListInput) {
+    constructor(data?: IIdentityUserCreateDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -5385,248 +4128,95 @@ export class GetRoleListInput implements IGetRoleListInput {
 
     init(_data?: any) {
         if (_data) {
-            this.pageIndex = _data["pageIndex"];
-            this.pageSize = _data["pageSize"];
-            this.filter = _data["filter"];
-        }
-    }
-
-    static fromJS(data: any): GetRoleListInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new GetRoleListInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["pageIndex"] = this.pageIndex;
-        data["pageSize"] = this.pageSize;
-        data["filter"] = this.filter;
-        return data; 
-    }
-}
-
-export interface IGetRoleListInput {
-    pageIndex?: number;
-    pageSize?: number;
-    filter?: string | undefined;
-}
-
-export class UpdateRoleInput implements IUpdateRoleInput {
-    roleId?: string;
-    roleInfo?: IdentityRoleUpdateDto;
-
-    constructor(data?: IUpdateRoleInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.roleId = _data["roleId"];
-            this.roleInfo = _data["roleInfo"] ? IdentityRoleUpdateDto.fromJS(_data["roleInfo"]) : <any>undefined;
-        }
-    }
-
-    static fromJS(data: any): UpdateRoleInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new UpdateRoleInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["roleId"] = this.roleId;
-        data["roleInfo"] = this.roleInfo ? this.roleInfo.toJSON() : <any>undefined;
-        return data; 
-    }
-}
-
-export interface IUpdateRoleInput {
-    roleId?: string;
-    roleInfo?: IdentityRoleUpdateDto;
-}
-
-export class UpdateRolePermissionsDto implements IUpdateRolePermissionsDto {
-    providerName!: string;
-    providerKey!: string;
-    updatePermissionsDto?: UpdatePermissionsDto;
-
-    constructor(data?: IUpdateRolePermissionsDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.providerName = _data["providerName"];
-            this.providerKey = _data["providerKey"];
-            this.updatePermissionsDto = _data["updatePermissionsDto"] ? UpdatePermissionsDto.fromJS(_data["updatePermissionsDto"]) : <any>undefined;
-        }
-    }
-
-    static fromJS(data: any): UpdateRolePermissionsDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new UpdateRolePermissionsDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["providerName"] = this.providerName;
-        data["providerKey"] = this.providerKey;
-        data["updatePermissionsDto"] = this.updatePermissionsDto ? this.updatePermissionsDto.toJSON() : <any>undefined;
-        return data; 
-    }
-}
-
-export interface IUpdateRolePermissionsDto {
-    providerName: string;
-    providerKey: string;
-    updatePermissionsDto?: UpdatePermissionsDto;
-}
-
-export class SettingInfo implements ISettingInfo {
-    readonly name?: string | undefined;
-    readonly displayName?: string | undefined;
-    readonly description?: string | undefined;
-    readonly value?: string | undefined;
-    readonly properties?: { [key: string]: any; } | undefined;
-    permission?: string | undefined;
-
-    constructor(data?: ISettingInfo) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            (<any>this).name = _data["name"];
-            (<any>this).displayName = _data["displayName"];
-            (<any>this).description = _data["description"];
-            (<any>this).value = _data["value"];
-            if (_data["properties"]) {
-                (<any>this).properties = {} as any;
-                for (let key in _data["properties"]) {
-                    if (_data["properties"].hasOwnProperty(key))
-                        (<any>this).properties![key] = _data["properties"][key];
+            if (_data["extraProperties"]) {
+                (<any>this).extraProperties = {} as any;
+                for (let key in _data["extraProperties"]) {
+                    if (_data["extraProperties"].hasOwnProperty(key))
+                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
                 }
             }
-            this.permission = _data["permission"];
+            this.userName = _data["userName"];
+            this.name = _data["name"];
+            this.surname = _data["surname"];
+            this.email = _data["email"];
+            this.phoneNumber = _data["phoneNumber"];
+            this.lockoutEnabled = _data["lockoutEnabled"];
+            if (Array.isArray(_data["roleNames"])) {
+                this.roleNames = [] as any;
+                for (let item of _data["roleNames"])
+                    this.roleNames!.push(item);
+            }
+            this.password = _data["password"];
         }
     }
 
-    static fromJS(data: any): SettingInfo {
+    static fromJS(data: any): IdentityUserCreateDto {
         data = typeof data === 'object' ? data : {};
-        let result = new SettingInfo();
+        let result = new IdentityUserCreateDto();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        if (this.extraProperties) {
+            data["extraProperties"] = {};
+            for (let key in this.extraProperties) {
+                if (this.extraProperties.hasOwnProperty(key))
+                    data["extraProperties"][key] = this.extraProperties[key];
+            }
+        }
+        data["userName"] = this.userName;
         data["name"] = this.name;
-        data["displayName"] = this.displayName;
-        data["description"] = this.description;
-        data["value"] = this.value;
-        if (this.properties) {
-            data["properties"] = {};
-            for (let key in this.properties) {
-                if (this.properties.hasOwnProperty(key))
-                    data["properties"][key] = this.properties[key];
-            }
+        data["surname"] = this.surname;
+        data["email"] = this.email;
+        data["phoneNumber"] = this.phoneNumber;
+        data["lockoutEnabled"] = this.lockoutEnabled;
+        if (Array.isArray(this.roleNames)) {
+            data["roleNames"] = [];
+            for (let item of this.roleNames)
+                data["roleNames"].push(item);
         }
-        data["permission"] = this.permission;
+        data["password"] = this.password;
         return data; 
     }
 }
 
-export interface ISettingInfo {
+export interface IIdentityUserCreateDto {
+    extraProperties?: { [key: string]: any; } | undefined;
+    userName: string;
     name?: string | undefined;
-    displayName?: string | undefined;
-    description?: string | undefined;
-    value?: string | undefined;
-    properties?: { [key: string]: any; } | undefined;
-    permission?: string | undefined;
+    surname?: string | undefined;
+    email: string;
+    phoneNumber?: string | undefined;
+    lockoutEnabled?: boolean;
+    roleNames?: string[] | undefined;
+    password: string;
 }
 
-export class SettingGroup implements ISettingGroup {
-    groupName?: string | undefined;
-    groupDisplayName?: string | undefined;
-    settingInfos?: SettingInfo[] | undefined;
-    permission?: string | undefined;
-
-    constructor(data?: ISettingGroup) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.groupName = _data["groupName"];
-            this.groupDisplayName = _data["groupDisplayName"];
-            if (Array.isArray(_data["settingInfos"])) {
-                this.settingInfos = [] as any;
-                for (let item of _data["settingInfos"])
-                    this.settingInfos!.push(SettingInfo.fromJS(item));
-            }
-            this.permission = _data["permission"];
-        }
-    }
-
-    static fromJS(data: any): SettingGroup {
-        data = typeof data === 'object' ? data : {};
-        let result = new SettingGroup();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["groupName"] = this.groupName;
-        data["groupDisplayName"] = this.groupDisplayName;
-        if (Array.isArray(this.settingInfos)) {
-            data["settingInfos"] = [];
-            for (let item of this.settingInfos)
-                data["settingInfos"].push(item.toJSON());
-        }
-        data["permission"] = this.permission;
-        return data; 
-    }
-}
-
-export interface ISettingGroup {
-    groupName?: string | undefined;
-    groupDisplayName?: string | undefined;
-    settingInfos?: SettingInfo[] | undefined;
-    permission?: string | undefined;
-}
-
-export class TenantDto implements ITenantDto {
+export class IdentityUserDto implements IIdentityUserDto {
     readonly extraProperties?: { [key: string]: any; } | undefined;
     id?: string;
+    creationTime?: Date;
+    creatorId?: string | undefined;
+    lastModificationTime?: Date | undefined;
+    lastModifierId?: string | undefined;
+    isDeleted?: boolean;
+    deleterId?: string | undefined;
+    deletionTime?: Date | undefined;
+    tenantId?: string | undefined;
+    userName?: string | undefined;
     name?: string | undefined;
+    surname?: string | undefined;
+    email?: string | undefined;
+    emailConfirmed?: boolean;
+    phoneNumber?: string | undefined;
+    phoneNumberConfirmed?: boolean;
+    lockoutEnabled?: boolean;
+    lockoutEnd?: Date | undefined;
+    concurrencyStamp?: string | undefined;
 
-    constructor(data?: ITenantDto) {
+    constructor(data?: IIdentityUserDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -5645,13 +4235,30 @@ export class TenantDto implements ITenantDto {
                 }
             }
             this.id = _data["id"];
+            this.creationTime = _data["creationTime"] ? new Date(_data["creationTime"].toString()) : <any>undefined;
+            this.creatorId = _data["creatorId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? new Date(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.lastModifierId = _data["lastModifierId"];
+            this.isDeleted = _data["isDeleted"];
+            this.deleterId = _data["deleterId"];
+            this.deletionTime = _data["deletionTime"] ? new Date(_data["deletionTime"].toString()) : <any>undefined;
+            this.tenantId = _data["tenantId"];
+            this.userName = _data["userName"];
             this.name = _data["name"];
+            this.surname = _data["surname"];
+            this.email = _data["email"];
+            this.emailConfirmed = _data["emailConfirmed"];
+            this.phoneNumber = _data["phoneNumber"];
+            this.phoneNumberConfirmed = _data["phoneNumberConfirmed"];
+            this.lockoutEnabled = _data["lockoutEnabled"];
+            this.lockoutEnd = _data["lockoutEnd"] ? new Date(_data["lockoutEnd"].toString()) : <any>undefined;
+            this.concurrencyStamp = _data["concurrencyStamp"];
         }
     }
 
-    static fromJS(data: any): TenantDto {
+    static fromJS(data: any): IdentityUserDto {
         data = typeof data === 'object' ? data : {};
-        let result = new TenantDto();
+        let result = new IdentityUserDto();
         result.init(data);
         return result;
     }
@@ -5666,74 +4273,56 @@ export class TenantDto implements ITenantDto {
             }
         }
         data["id"] = this.id;
+        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creatorId"] = this.creatorId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModifierId"] = this.lastModifierId;
+        data["isDeleted"] = this.isDeleted;
+        data["deleterId"] = this.deleterId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
+        data["tenantId"] = this.tenantId;
+        data["userName"] = this.userName;
         data["name"] = this.name;
+        data["surname"] = this.surname;
+        data["email"] = this.email;
+        data["emailConfirmed"] = this.emailConfirmed;
+        data["phoneNumber"] = this.phoneNumber;
+        data["phoneNumberConfirmed"] = this.phoneNumberConfirmed;
+        data["lockoutEnabled"] = this.lockoutEnabled;
+        data["lockoutEnd"] = this.lockoutEnd ? this.lockoutEnd.toISOString() : <any>undefined;
+        data["concurrencyStamp"] = this.concurrencyStamp;
         return data; 
     }
 }
 
-export interface ITenantDto {
+export interface IIdentityUserDto {
     extraProperties?: { [key: string]: any; } | undefined;
     id?: string;
+    creationTime?: Date;
+    creatorId?: string | undefined;
+    lastModificationTime?: Date | undefined;
+    lastModifierId?: string | undefined;
+    isDeleted?: boolean;
+    deleterId?: string | undefined;
+    deletionTime?: Date | undefined;
+    tenantId?: string | undefined;
+    userName?: string | undefined;
     name?: string | undefined;
+    surname?: string | undefined;
+    email?: string | undefined;
+    emailConfirmed?: boolean;
+    phoneNumber?: string | undefined;
+    phoneNumberConfirmed?: boolean;
+    lockoutEnabled?: boolean;
+    lockoutEnd?: Date | undefined;
+    concurrencyStamp?: string | undefined;
 }
 
-export class TenantUpdateDto implements ITenantUpdateDto {
-    readonly extraProperties?: { [key: string]: any; } | undefined;
-    name!: string;
-
-    constructor(data?: ITenantUpdateDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (_data["extraProperties"]) {
-                (<any>this).extraProperties = {} as any;
-                for (let key in _data["extraProperties"]) {
-                    if (_data["extraProperties"].hasOwnProperty(key))
-                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
-                }
-            }
-            this.name = _data["name"];
-        }
-    }
-
-    static fromJS(data: any): TenantUpdateDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new TenantUpdateDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (this.extraProperties) {
-            data["extraProperties"] = {};
-            for (let key in this.extraProperties) {
-                if (this.extraProperties.hasOwnProperty(key))
-                    data["extraProperties"][key] = this.extraProperties[key];
-            }
-        }
-        data["name"] = this.name;
-        return data; 
-    }
-}
-
-export interface ITenantUpdateDto {
-    extraProperties?: { [key: string]: any; } | undefined;
-    name: string;
-}
-
-export class TenantDtoPagedResultDto implements ITenantDtoPagedResultDto {
-    items?: TenantDto[] | undefined;
+export class IdentityUserDtoPagedResultDto implements IIdentityUserDtoPagedResultDto {
+    items?: IdentityUserDto[] | undefined;
     totalCount?: number;
 
-    constructor(data?: ITenantDtoPagedResultDto) {
+    constructor(data?: IIdentityUserDtoPagedResultDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -5747,15 +4336,15 @@ export class TenantDtoPagedResultDto implements ITenantDtoPagedResultDto {
             if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
                 for (let item of _data["items"])
-                    this.items!.push(TenantDto.fromJS(item));
+                    this.items!.push(IdentityUserDto.fromJS(item));
             }
             this.totalCount = _data["totalCount"];
         }
     }
 
-    static fromJS(data: any): TenantDtoPagedResultDto {
+    static fromJS(data: any): IdentityUserDtoPagedResultDto {
         data = typeof data === 'object' ? data : {};
-        let result = new TenantDtoPagedResultDto();
+        let result = new IdentityUserDtoPagedResultDto();
         result.init(data);
         return result;
     }
@@ -5772,69 +4361,9 @@ export class TenantDtoPagedResultDto implements ITenantDtoPagedResultDto {
     }
 }
 
-export interface ITenantDtoPagedResultDto {
-    items?: TenantDto[] | undefined;
+export interface IIdentityUserDtoPagedResultDto {
+    items?: IdentityUserDto[] | undefined;
     totalCount?: number;
-}
-
-export class TenantCreateDto implements ITenantCreateDto {
-    readonly extraProperties?: { [key: string]: any; } | undefined;
-    name!: string;
-    adminEmailAddress!: string;
-    adminPassword!: string;
-
-    constructor(data?: ITenantCreateDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (_data["extraProperties"]) {
-                (<any>this).extraProperties = {} as any;
-                for (let key in _data["extraProperties"]) {
-                    if (_data["extraProperties"].hasOwnProperty(key))
-                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
-                }
-            }
-            this.name = _data["name"];
-            this.adminEmailAddress = _data["adminEmailAddress"];
-            this.adminPassword = _data["adminPassword"];
-        }
-    }
-
-    static fromJS(data: any): TenantCreateDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new TenantCreateDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (this.extraProperties) {
-            data["extraProperties"] = {};
-            for (let key in this.extraProperties) {
-                if (this.extraProperties.hasOwnProperty(key))
-                    data["extraProperties"][key] = this.extraProperties[key];
-            }
-        }
-        data["name"] = this.name;
-        data["adminEmailAddress"] = this.adminEmailAddress;
-        data["adminPassword"] = this.adminPassword;
-        return data; 
-    }
-}
-
-export interface ITenantCreateDto {
-    extraProperties?: { [key: string]: any; } | undefined;
-    name: string;
-    adminEmailAddress: string;
-    adminPassword: string;
 }
 
 export class IdentityUserUpdateDto implements IIdentityUserUpdateDto {
@@ -5929,142 +4458,6 @@ export interface IIdentityUserUpdateDto {
     concurrencyStamp?: string | undefined;
 }
 
-export class IdentityUserDtoPagedResultDto implements IIdentityUserDtoPagedResultDto {
-    items?: IdentityUserDto[] | undefined;
-    totalCount?: number;
-
-    constructor(data?: IIdentityUserDtoPagedResultDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (Array.isArray(_data["items"])) {
-                this.items = [] as any;
-                for (let item of _data["items"])
-                    this.items!.push(IdentityUserDto.fromJS(item));
-            }
-            this.totalCount = _data["totalCount"];
-        }
-    }
-
-    static fromJS(data: any): IdentityUserDtoPagedResultDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new IdentityUserDtoPagedResultDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (Array.isArray(this.items)) {
-            data["items"] = [];
-            for (let item of this.items)
-                data["items"].push(item.toJSON());
-        }
-        data["totalCount"] = this.totalCount;
-        return data; 
-    }
-}
-
-export interface IIdentityUserDtoPagedResultDto {
-    items?: IdentityUserDto[] | undefined;
-    totalCount?: number;
-}
-
-export class IdentityUserCreateDto implements IIdentityUserCreateDto {
-    readonly extraProperties?: { [key: string]: any; } | undefined;
-    userName!: string;
-    name?: string | undefined;
-    surname?: string | undefined;
-    email!: string;
-    phoneNumber?: string | undefined;
-    lockoutEnabled?: boolean;
-    roleNames?: string[] | undefined;
-    password!: string;
-
-    constructor(data?: IIdentityUserCreateDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (_data["extraProperties"]) {
-                (<any>this).extraProperties = {} as any;
-                for (let key in _data["extraProperties"]) {
-                    if (_data["extraProperties"].hasOwnProperty(key))
-                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
-                }
-            }
-            this.userName = _data["userName"];
-            this.name = _data["name"];
-            this.surname = _data["surname"];
-            this.email = _data["email"];
-            this.phoneNumber = _data["phoneNumber"];
-            this.lockoutEnabled = _data["lockoutEnabled"];
-            if (Array.isArray(_data["roleNames"])) {
-                this.roleNames = [] as any;
-                for (let item of _data["roleNames"])
-                    this.roleNames!.push(item);
-            }
-            this.password = _data["password"];
-        }
-    }
-
-    static fromJS(data: any): IdentityUserCreateDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new IdentityUserCreateDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (this.extraProperties) {
-            data["extraProperties"] = {};
-            for (let key in this.extraProperties) {
-                if (this.extraProperties.hasOwnProperty(key))
-                    data["extraProperties"][key] = this.extraProperties[key];
-            }
-        }
-        data["userName"] = this.userName;
-        data["name"] = this.name;
-        data["surname"] = this.surname;
-        data["email"] = this.email;
-        data["phoneNumber"] = this.phoneNumber;
-        data["lockoutEnabled"] = this.lockoutEnabled;
-        if (Array.isArray(this.roleNames)) {
-            data["roleNames"] = [];
-            for (let item of this.roleNames)
-                data["roleNames"].push(item);
-        }
-        data["password"] = this.password;
-        return data; 
-    }
-}
-
-export interface IIdentityUserCreateDto {
-    extraProperties?: { [key: string]: any; } | undefined;
-    userName: string;
-    name?: string | undefined;
-    surname?: string | undefined;
-    email: string;
-    phoneNumber?: string | undefined;
-    lockoutEnabled?: boolean;
-    roleNames?: string[] | undefined;
-    password: string;
-}
-
 export class IdentityUserUpdateRolesDto implements IIdentityUserUpdateRolesDto {
     roleNames!: string[];
 
@@ -6112,12 +4505,12 @@ export interface IIdentityUserUpdateRolesDto {
     roleNames: string[];
 }
 
-export class GetUserListInput implements IGetUserListInput {
-    pageIndex?: number;
-    pageSize?: number;
-    filter?: string | undefined;
+export class IStringValueType implements IIStringValueType {
+    readonly name?: string | undefined;
+    readonly properties?: { [key: string]: any; } | undefined;
+    validator?: IValueValidator;
 
-    constructor(data?: IGetUserListInput) {
+    constructor(data?: IIStringValueType) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -6128,32 +4521,2148 @@ export class GetUserListInput implements IGetUserListInput {
 
     init(_data?: any) {
         if (_data) {
-            this.pageIndex = _data["pageIndex"];
-            this.pageSize = _data["pageSize"];
-            this.filter = _data["filter"];
+            (<any>this).name = _data["name"];
+            if (_data["properties"]) {
+                (<any>this).properties = {} as any;
+                for (let key in _data["properties"]) {
+                    if (_data["properties"].hasOwnProperty(key))
+                        (<any>this).properties![key] = _data["properties"][key];
+                }
+            }
+            this.validator = _data["validator"] ? IValueValidator.fromJS(_data["validator"]) : <any>undefined;
         }
     }
 
-    static fromJS(data: any): GetUserListInput {
+    static fromJS(data: any): IStringValueType {
         data = typeof data === 'object' ? data : {};
-        let result = new GetUserListInput();
+        let result = new IStringValueType();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["pageIndex"] = this.pageIndex;
-        data["pageSize"] = this.pageSize;
-        data["filter"] = this.filter;
+        data["name"] = this.name;
+        if (this.properties) {
+            data["properties"] = {};
+            for (let key in this.properties) {
+                if (this.properties.hasOwnProperty(key))
+                    data["properties"][key] = this.properties[key];
+            }
+        }
+        data["validator"] = this.validator ? this.validator.toJSON() : <any>undefined;
         return data; 
     }
 }
 
-export interface IGetUserListInput {
-    pageIndex?: number;
-    pageSize?: number;
-    filter?: string | undefined;
+export interface IIStringValueType {
+    name?: string | undefined;
+    properties?: { [key: string]: any; } | undefined;
+    validator?: IValueValidator;
+}
+
+export class IValueValidator implements IIValueValidator {
+    readonly name?: string | undefined;
+    readonly properties?: { [key: string]: any; } | undefined;
+
+    constructor(data?: IIValueValidator) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).name = _data["name"];
+            if (_data["properties"]) {
+                (<any>this).properties = {} as any;
+                for (let key in _data["properties"]) {
+                    if (_data["properties"].hasOwnProperty(key))
+                        (<any>this).properties![key] = _data["properties"][key];
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): IValueValidator {
+        data = typeof data === 'object' ? data : {};
+        let result = new IValueValidator();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        if (this.properties) {
+            data["properties"] = {};
+            for (let key in this.properties) {
+                if (this.properties.hasOwnProperty(key))
+                    data["properties"][key] = this.properties[key];
+            }
+        }
+        return data; 
+    }
+}
+
+export interface IIValueValidator {
+    name?: string | undefined;
+    properties?: { [key: string]: any; } | undefined;
+}
+
+export class LanguageInfo implements ILanguageInfo {
+    readonly cultureName?: string | undefined;
+    readonly uiCultureName?: string | undefined;
+    readonly displayName?: string | undefined;
+    flagIcon?: string | undefined;
+
+    constructor(data?: ILanguageInfo) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).cultureName = _data["cultureName"];
+            (<any>this).uiCultureName = _data["uiCultureName"];
+            (<any>this).displayName = _data["displayName"];
+            this.flagIcon = _data["flagIcon"];
+        }
+    }
+
+    static fromJS(data: any): LanguageInfo {
+        data = typeof data === 'object' ? data : {};
+        let result = new LanguageInfo();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["cultureName"] = this.cultureName;
+        data["uiCultureName"] = this.uiCultureName;
+        data["displayName"] = this.displayName;
+        data["flagIcon"] = this.flagIcon;
+        return data; 
+    }
+}
+
+export interface ILanguageInfo {
+    cultureName?: string | undefined;
+    uiCultureName?: string | undefined;
+    displayName?: string | undefined;
+    flagIcon?: string | undefined;
+}
+
+export class LocalizableStringDto implements ILocalizableStringDto {
+    readonly name?: string | undefined;
+    resource?: string | undefined;
+
+    constructor(data?: ILocalizableStringDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).name = _data["name"];
+            this.resource = _data["resource"];
+        }
+    }
+
+    static fromJS(data: any): LocalizableStringDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new LocalizableStringDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["resource"] = this.resource;
+        return data; 
+    }
+}
+
+export interface ILocalizableStringDto {
+    name?: string | undefined;
+    resource?: string | undefined;
+}
+
+export class LoginInputDto implements ILoginInputDto {
+    name?: string | undefined;
+    password?: string | undefined;
+
+    constructor(data?: ILoginInputDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.password = _data["password"];
+        }
+    }
+
+    static fromJS(data: any): LoginInputDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new LoginInputDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["password"] = this.password;
+        return data; 
+    }
+}
+
+export interface ILoginInputDto {
+    name?: string | undefined;
+    password?: string | undefined;
+}
+
+export class LoginOutputDto implements ILoginOutputDto {
+    id?: string;
+    name?: string | undefined;
+    userName?: string | undefined;
+    token?: string | undefined;
+    expiration?: Date;
+
+    constructor(data?: ILoginOutputDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.userName = _data["userName"];
+            this.token = _data["token"];
+            this.expiration = _data["expiration"] ? new Date(_data["expiration"].toString()) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): LoginOutputDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new LoginOutputDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["userName"] = this.userName;
+        data["token"] = this.token;
+        data["expiration"] = this.expiration ? this.expiration.toISOString() : <any>undefined;
+        return data; 
+    }
+}
+
+export interface ILoginOutputDto {
+    id?: string;
+    name?: string | undefined;
+    userName?: string | undefined;
+    token?: string | undefined;
+    expiration?: Date;
+}
+
+export enum LoginResultType {
+    _1 = 1,
+    _2 = 2,
+    _3 = 3,
+    _4 = 4,
+    _5 = 5,
+}
+
+export class MethodParameterApiDescriptionModel implements IMethodParameterApiDescriptionModel {
+    name?: string | undefined;
+    typeAsString?: string | undefined;
+    type?: string | undefined;
+    typeSimple?: string | undefined;
+    isOptional?: boolean;
+    defaultValue?: any | undefined;
+
+    constructor(data?: IMethodParameterApiDescriptionModel) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.typeAsString = _data["typeAsString"];
+            this.type = _data["type"];
+            this.typeSimple = _data["typeSimple"];
+            this.isOptional = _data["isOptional"];
+            this.defaultValue = _data["defaultValue"];
+        }
+    }
+
+    static fromJS(data: any): MethodParameterApiDescriptionModel {
+        data = typeof data === 'object' ? data : {};
+        let result = new MethodParameterApiDescriptionModel();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["typeAsString"] = this.typeAsString;
+        data["type"] = this.type;
+        data["typeSimple"] = this.typeSimple;
+        data["isOptional"] = this.isOptional;
+        data["defaultValue"] = this.defaultValue;
+        return data; 
+    }
+}
+
+export interface IMethodParameterApiDescriptionModel {
+    name?: string | undefined;
+    typeAsString?: string | undefined;
+    type?: string | undefined;
+    typeSimple?: string | undefined;
+    isOptional?: boolean;
+    defaultValue?: any | undefined;
+}
+
+export class ModuleApiDescriptionModel implements IModuleApiDescriptionModel {
+    rootPath?: string | undefined;
+    remoteServiceName?: string | undefined;
+    controllers?: { [key: string]: ControllerApiDescriptionModel; } | undefined;
+
+    constructor(data?: IModuleApiDescriptionModel) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.rootPath = _data["rootPath"];
+            this.remoteServiceName = _data["remoteServiceName"];
+            if (_data["controllers"]) {
+                this.controllers = {} as any;
+                for (let key in _data["controllers"]) {
+                    if (_data["controllers"].hasOwnProperty(key))
+                        this.controllers![key] = _data["controllers"][key] ? ControllerApiDescriptionModel.fromJS(_data["controllers"][key]) : new ControllerApiDescriptionModel();
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): ModuleApiDescriptionModel {
+        data = typeof data === 'object' ? data : {};
+        let result = new ModuleApiDescriptionModel();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["rootPath"] = this.rootPath;
+        data["remoteServiceName"] = this.remoteServiceName;
+        if (this.controllers) {
+            data["controllers"] = {};
+            for (let key in this.controllers) {
+                if (this.controllers.hasOwnProperty(key))
+                    data["controllers"][key] = this.controllers[key] ? this.controllers[key].toJSON() : <any>undefined;
+            }
+        }
+        return data; 
+    }
+}
+
+export interface IModuleApiDescriptionModel {
+    rootPath?: string | undefined;
+    remoteServiceName?: string | undefined;
+    controllers?: { [key: string]: ControllerApiDescriptionModel; } | undefined;
+}
+
+export class ModuleExtensionDto implements IModuleExtensionDto {
+    entities?: { [key: string]: EntityExtensionDto; } | undefined;
+    configuration?: { [key: string]: any; } | undefined;
+
+    constructor(data?: IModuleExtensionDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (_data["entities"]) {
+                this.entities = {} as any;
+                for (let key in _data["entities"]) {
+                    if (_data["entities"].hasOwnProperty(key))
+                        this.entities![key] = _data["entities"][key] ? EntityExtensionDto.fromJS(_data["entities"][key]) : new EntityExtensionDto();
+                }
+            }
+            if (_data["configuration"]) {
+                this.configuration = {} as any;
+                for (let key in _data["configuration"]) {
+                    if (_data["configuration"].hasOwnProperty(key))
+                        this.configuration![key] = _data["configuration"][key];
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): ModuleExtensionDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ModuleExtensionDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (this.entities) {
+            data["entities"] = {};
+            for (let key in this.entities) {
+                if (this.entities.hasOwnProperty(key))
+                    data["entities"][key] = this.entities[key] ? this.entities[key].toJSON() : <any>undefined;
+            }
+        }
+        if (this.configuration) {
+            data["configuration"] = {};
+            for (let key in this.configuration) {
+                if (this.configuration.hasOwnProperty(key))
+                    data["configuration"][key] = this.configuration[key];
+            }
+        }
+        return data; 
+    }
+}
+
+export interface IModuleExtensionDto {
+    entities?: { [key: string]: EntityExtensionDto; } | undefined;
+    configuration?: { [key: string]: any; } | undefined;
+}
+
+export class MultiTenancyInfoDto implements IMultiTenancyInfoDto {
+    isEnabled?: boolean;
+
+    constructor(data?: IMultiTenancyInfoDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.isEnabled = _data["isEnabled"];
+        }
+    }
+
+    static fromJS(data: any): MultiTenancyInfoDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new MultiTenancyInfoDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["isEnabled"] = this.isEnabled;
+        return data; 
+    }
+}
+
+export interface IMultiTenancyInfoDto {
+    isEnabled?: boolean;
+}
+
+export class NameValue implements INameValue {
+    name?: string | undefined;
+    value?: string | undefined;
+
+    constructor(data?: INameValue) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.value = _data["value"];
+        }
+    }
+
+    static fromJS(data: any): NameValue {
+        data = typeof data === 'object' ? data : {};
+        let result = new NameValue();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["value"] = this.value;
+        return data; 
+    }
+}
+
+export interface INameValue {
+    name?: string | undefined;
+    value?: string | undefined;
+}
+
+export class ObjectExtensionsDto implements IObjectExtensionsDto {
+    modules?: { [key: string]: ModuleExtensionDto; } | undefined;
+    enums?: { [key: string]: ExtensionEnumDto; } | undefined;
+
+    constructor(data?: IObjectExtensionsDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (_data["modules"]) {
+                this.modules = {} as any;
+                for (let key in _data["modules"]) {
+                    if (_data["modules"].hasOwnProperty(key))
+                        this.modules![key] = _data["modules"][key] ? ModuleExtensionDto.fromJS(_data["modules"][key]) : new ModuleExtensionDto();
+                }
+            }
+            if (_data["enums"]) {
+                this.enums = {} as any;
+                for (let key in _data["enums"]) {
+                    if (_data["enums"].hasOwnProperty(key))
+                        this.enums![key] = _data["enums"][key] ? ExtensionEnumDto.fromJS(_data["enums"][key]) : new ExtensionEnumDto();
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): ObjectExtensionsDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ObjectExtensionsDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (this.modules) {
+            data["modules"] = {};
+            for (let key in this.modules) {
+                if (this.modules.hasOwnProperty(key))
+                    data["modules"][key] = this.modules[key] ? this.modules[key].toJSON() : <any>undefined;
+            }
+        }
+        if (this.enums) {
+            data["enums"] = {};
+            for (let key in this.enums) {
+                if (this.enums.hasOwnProperty(key))
+                    data["enums"][key] = this.enums[key] ? this.enums[key].toJSON() : <any>undefined;
+            }
+        }
+        return data; 
+    }
+}
+
+export interface IObjectExtensionsDto {
+    modules?: { [key: string]: ModuleExtensionDto; } | undefined;
+    enums?: { [key: string]: ExtensionEnumDto; } | undefined;
+}
+
+export class ParameterApiDescriptionModel implements IParameterApiDescriptionModel {
+    nameOnMethod?: string | undefined;
+    name?: string | undefined;
+    jsonName?: string | undefined;
+    type?: string | undefined;
+    typeSimple?: string | undefined;
+    isOptional?: boolean;
+    defaultValue?: any | undefined;
+    constraintTypes?: string[] | undefined;
+    bindingSourceId?: string | undefined;
+    descriptorName?: string | undefined;
+
+    constructor(data?: IParameterApiDescriptionModel) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.nameOnMethod = _data["nameOnMethod"];
+            this.name = _data["name"];
+            this.jsonName = _data["jsonName"];
+            this.type = _data["type"];
+            this.typeSimple = _data["typeSimple"];
+            this.isOptional = _data["isOptional"];
+            this.defaultValue = _data["defaultValue"];
+            if (Array.isArray(_data["constraintTypes"])) {
+                this.constraintTypes = [] as any;
+                for (let item of _data["constraintTypes"])
+                    this.constraintTypes!.push(item);
+            }
+            this.bindingSourceId = _data["bindingSourceId"];
+            this.descriptorName = _data["descriptorName"];
+        }
+    }
+
+    static fromJS(data: any): ParameterApiDescriptionModel {
+        data = typeof data === 'object' ? data : {};
+        let result = new ParameterApiDescriptionModel();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["nameOnMethod"] = this.nameOnMethod;
+        data["name"] = this.name;
+        data["jsonName"] = this.jsonName;
+        data["type"] = this.type;
+        data["typeSimple"] = this.typeSimple;
+        data["isOptional"] = this.isOptional;
+        data["defaultValue"] = this.defaultValue;
+        if (Array.isArray(this.constraintTypes)) {
+            data["constraintTypes"] = [];
+            for (let item of this.constraintTypes)
+                data["constraintTypes"].push(item);
+        }
+        data["bindingSourceId"] = this.bindingSourceId;
+        data["descriptorName"] = this.descriptorName;
+        return data; 
+    }
+}
+
+export interface IParameterApiDescriptionModel {
+    nameOnMethod?: string | undefined;
+    name?: string | undefined;
+    jsonName?: string | undefined;
+    type?: string | undefined;
+    typeSimple?: string | undefined;
+    isOptional?: boolean;
+    defaultValue?: any | undefined;
+    constraintTypes?: string[] | undefined;
+    bindingSourceId?: string | undefined;
+    descriptorName?: string | undefined;
+}
+
+export class PermissionGrantInfoDto implements IPermissionGrantInfoDto {
+    name?: string | undefined;
+    displayName?: string | undefined;
+    parentName?: string | undefined;
+    isGranted?: boolean;
+    allowedProviders?: string[] | undefined;
+    grantedProviders?: ProviderInfoDto[] | undefined;
+
+    constructor(data?: IPermissionGrantInfoDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.displayName = _data["displayName"];
+            this.parentName = _data["parentName"];
+            this.isGranted = _data["isGranted"];
+            if (Array.isArray(_data["allowedProviders"])) {
+                this.allowedProviders = [] as any;
+                for (let item of _data["allowedProviders"])
+                    this.allowedProviders!.push(item);
+            }
+            if (Array.isArray(_data["grantedProviders"])) {
+                this.grantedProviders = [] as any;
+                for (let item of _data["grantedProviders"])
+                    this.grantedProviders!.push(ProviderInfoDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PermissionGrantInfoDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PermissionGrantInfoDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["displayName"] = this.displayName;
+        data["parentName"] = this.parentName;
+        data["isGranted"] = this.isGranted;
+        if (Array.isArray(this.allowedProviders)) {
+            data["allowedProviders"] = [];
+            for (let item of this.allowedProviders)
+                data["allowedProviders"].push(item);
+        }
+        if (Array.isArray(this.grantedProviders)) {
+            data["grantedProviders"] = [];
+            for (let item of this.grantedProviders)
+                data["grantedProviders"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPermissionGrantInfoDto {
+    name?: string | undefined;
+    displayName?: string | undefined;
+    parentName?: string | undefined;
+    isGranted?: boolean;
+    allowedProviders?: string[] | undefined;
+    grantedProviders?: ProviderInfoDto[] | undefined;
+}
+
+export class PermissionGroupDto implements IPermissionGroupDto {
+    name?: string | undefined;
+    displayName?: string | undefined;
+    permissions?: PermissionGrantInfoDto[] | undefined;
+
+    constructor(data?: IPermissionGroupDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.displayName = _data["displayName"];
+            if (Array.isArray(_data["permissions"])) {
+                this.permissions = [] as any;
+                for (let item of _data["permissions"])
+                    this.permissions!.push(PermissionGrantInfoDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PermissionGroupDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PermissionGroupDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["displayName"] = this.displayName;
+        if (Array.isArray(this.permissions)) {
+            data["permissions"] = [];
+            for (let item of this.permissions)
+                data["permissions"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPermissionGroupDto {
+    name?: string | undefined;
+    displayName?: string | undefined;
+    permissions?: PermissionGrantInfoDto[] | undefined;
+}
+
+export class ProfileDto implements IProfileDto {
+    readonly extraProperties?: { [key: string]: any; } | undefined;
+    userName?: string | undefined;
+    email?: string | undefined;
+    name?: string | undefined;
+    surname?: string | undefined;
+    phoneNumber?: string | undefined;
+    isExternal?: boolean;
+    hasPassword?: boolean;
+
+    constructor(data?: IProfileDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (_data["extraProperties"]) {
+                (<any>this).extraProperties = {} as any;
+                for (let key in _data["extraProperties"]) {
+                    if (_data["extraProperties"].hasOwnProperty(key))
+                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
+                }
+            }
+            this.userName = _data["userName"];
+            this.email = _data["email"];
+            this.name = _data["name"];
+            this.surname = _data["surname"];
+            this.phoneNumber = _data["phoneNumber"];
+            this.isExternal = _data["isExternal"];
+            this.hasPassword = _data["hasPassword"];
+        }
+    }
+
+    static fromJS(data: any): ProfileDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ProfileDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (this.extraProperties) {
+            data["extraProperties"] = {};
+            for (let key in this.extraProperties) {
+                if (this.extraProperties.hasOwnProperty(key))
+                    data["extraProperties"][key] = this.extraProperties[key];
+            }
+        }
+        data["userName"] = this.userName;
+        data["email"] = this.email;
+        data["name"] = this.name;
+        data["surname"] = this.surname;
+        data["phoneNumber"] = this.phoneNumber;
+        data["isExternal"] = this.isExternal;
+        data["hasPassword"] = this.hasPassword;
+        return data; 
+    }
+}
+
+export interface IProfileDto {
+    extraProperties?: { [key: string]: any; } | undefined;
+    userName?: string | undefined;
+    email?: string | undefined;
+    name?: string | undefined;
+    surname?: string | undefined;
+    phoneNumber?: string | undefined;
+    isExternal?: boolean;
+    hasPassword?: boolean;
+}
+
+export class PropertyApiDescriptionModel implements IPropertyApiDescriptionModel {
+    name?: string | undefined;
+    jsonName?: string | undefined;
+    type?: string | undefined;
+    typeSimple?: string | undefined;
+    isRequired?: boolean;
+
+    constructor(data?: IPropertyApiDescriptionModel) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.jsonName = _data["jsonName"];
+            this.type = _data["type"];
+            this.typeSimple = _data["typeSimple"];
+            this.isRequired = _data["isRequired"];
+        }
+    }
+
+    static fromJS(data: any): PropertyApiDescriptionModel {
+        data = typeof data === 'object' ? data : {};
+        let result = new PropertyApiDescriptionModel();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["jsonName"] = this.jsonName;
+        data["type"] = this.type;
+        data["typeSimple"] = this.typeSimple;
+        data["isRequired"] = this.isRequired;
+        return data; 
+    }
+}
+
+export interface IPropertyApiDescriptionModel {
+    name?: string | undefined;
+    jsonName?: string | undefined;
+    type?: string | undefined;
+    typeSimple?: string | undefined;
+    isRequired?: boolean;
+}
+
+export class ProviderInfoDto implements IProviderInfoDto {
+    providerName?: string | undefined;
+    providerKey?: string | undefined;
+
+    constructor(data?: IProviderInfoDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.providerName = _data["providerName"];
+            this.providerKey = _data["providerKey"];
+        }
+    }
+
+    static fromJS(data: any): ProviderInfoDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ProviderInfoDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["providerName"] = this.providerName;
+        data["providerKey"] = this.providerKey;
+        return data; 
+    }
+}
+
+export interface IProviderInfoDto {
+    providerName?: string | undefined;
+    providerKey?: string | undefined;
+}
+
+export class RegisterDto implements IRegisterDto {
+    readonly extraProperties?: { [key: string]: any; } | undefined;
+    userName!: string;
+    emailAddress!: string;
+    password!: string;
+    appName!: string;
+
+    constructor(data?: IRegisterDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (_data["extraProperties"]) {
+                (<any>this).extraProperties = {} as any;
+                for (let key in _data["extraProperties"]) {
+                    if (_data["extraProperties"].hasOwnProperty(key))
+                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
+                }
+            }
+            this.userName = _data["userName"];
+            this.emailAddress = _data["emailAddress"];
+            this.password = _data["password"];
+            this.appName = _data["appName"];
+        }
+    }
+
+    static fromJS(data: any): RegisterDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new RegisterDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (this.extraProperties) {
+            data["extraProperties"] = {};
+            for (let key in this.extraProperties) {
+                if (this.extraProperties.hasOwnProperty(key))
+                    data["extraProperties"][key] = this.extraProperties[key];
+            }
+        }
+        data["userName"] = this.userName;
+        data["emailAddress"] = this.emailAddress;
+        data["password"] = this.password;
+        data["appName"] = this.appName;
+        return data; 
+    }
+}
+
+export interface IRegisterDto {
+    extraProperties?: { [key: string]: any; } | undefined;
+    userName: string;
+    emailAddress: string;
+    password: string;
+    appName: string;
+}
+
+export class RemoteServiceErrorInfo implements IRemoteServiceErrorInfo {
+    code?: string | undefined;
+    message?: string | undefined;
+    details?: string | undefined;
+    data?: { [key: string]: any; } | undefined;
+    validationErrors?: RemoteServiceValidationErrorInfo[] | undefined;
+
+    constructor(data?: IRemoteServiceErrorInfo) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.code = _data["code"];
+            this.message = _data["message"];
+            this.details = _data["details"];
+            if (_data["data"]) {
+                this.data = {} as any;
+                for (let key in _data["data"]) {
+                    if (_data["data"].hasOwnProperty(key))
+                        this.data![key] = _data["data"][key];
+                }
+            }
+            if (Array.isArray(_data["validationErrors"])) {
+                this.validationErrors = [] as any;
+                for (let item of _data["validationErrors"])
+                    this.validationErrors!.push(RemoteServiceValidationErrorInfo.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): RemoteServiceErrorInfo {
+        data = typeof data === 'object' ? data : {};
+        let result = new RemoteServiceErrorInfo();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
+        data["message"] = this.message;
+        data["details"] = this.details;
+        if (this.data) {
+            data["data"] = {};
+            for (let key in this.data) {
+                if (this.data.hasOwnProperty(key))
+                    data["data"][key] = this.data[key];
+            }
+        }
+        if (Array.isArray(this.validationErrors)) {
+            data["validationErrors"] = [];
+            for (let item of this.validationErrors)
+                data["validationErrors"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IRemoteServiceErrorInfo {
+    code?: string | undefined;
+    message?: string | undefined;
+    details?: string | undefined;
+    data?: { [key: string]: any; } | undefined;
+    validationErrors?: RemoteServiceValidationErrorInfo[] | undefined;
+}
+
+export class RemoteServiceErrorResponse implements IRemoteServiceErrorResponse {
+    error?: RemoteServiceErrorInfo;
+
+    constructor(data?: IRemoteServiceErrorResponse) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.error = _data["error"] ? RemoteServiceErrorInfo.fromJS(_data["error"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): RemoteServiceErrorResponse {
+        data = typeof data === 'object' ? data : {};
+        let result = new RemoteServiceErrorResponse();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["error"] = this.error ? this.error.toJSON() : <any>undefined;
+        return data; 
+    }
+}
+
+export interface IRemoteServiceErrorResponse {
+    error?: RemoteServiceErrorInfo;
+}
+
+export class RemoteServiceValidationErrorInfo implements IRemoteServiceValidationErrorInfo {
+    message?: string | undefined;
+    members?: string[] | undefined;
+
+    constructor(data?: IRemoteServiceValidationErrorInfo) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.message = _data["message"];
+            if (Array.isArray(_data["members"])) {
+                this.members = [] as any;
+                for (let item of _data["members"])
+                    this.members!.push(item);
+            }
+        }
+    }
+
+    static fromJS(data: any): RemoteServiceValidationErrorInfo {
+        data = typeof data === 'object' ? data : {};
+        let result = new RemoteServiceValidationErrorInfo();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["message"] = this.message;
+        if (Array.isArray(this.members)) {
+            data["members"] = [];
+            for (let item of this.members)
+                data["members"].push(item);
+        }
+        return data; 
+    }
+}
+
+export interface IRemoteServiceValidationErrorInfo {
+    message?: string | undefined;
+    members?: string[] | undefined;
+}
+
+export class ResetPasswordDto implements IResetPasswordDto {
+    userId?: string;
+    resetToken!: string;
+    password!: string;
+
+    constructor(data?: IResetPasswordDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.userId = _data["userId"];
+            this.resetToken = _data["resetToken"];
+            this.password = _data["password"];
+        }
+    }
+
+    static fromJS(data: any): ResetPasswordDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ResetPasswordDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userId"] = this.userId;
+        data["resetToken"] = this.resetToken;
+        data["password"] = this.password;
+        return data; 
+    }
+}
+
+export interface IResetPasswordDto {
+    userId?: string;
+    resetToken: string;
+    password: string;
+}
+
+export class ReturnValueApiDescriptionModel implements IReturnValueApiDescriptionModel {
+    type?: string | undefined;
+    typeSimple?: string | undefined;
+
+    constructor(data?: IReturnValueApiDescriptionModel) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.type = _data["type"];
+            this.typeSimple = _data["typeSimple"];
+        }
+    }
+
+    static fromJS(data: any): ReturnValueApiDescriptionModel {
+        data = typeof data === 'object' ? data : {};
+        let result = new ReturnValueApiDescriptionModel();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["type"] = this.type;
+        data["typeSimple"] = this.typeSimple;
+        return data; 
+    }
+}
+
+export interface IReturnValueApiDescriptionModel {
+    type?: string | undefined;
+    typeSimple?: string | undefined;
+}
+
+export class SendPasswordResetCodeDto implements ISendPasswordResetCodeDto {
+    email!: string;
+    appName!: string;
+    returnUrl?: string | undefined;
+    returnUrlHash?: string | undefined;
+
+    constructor(data?: ISendPasswordResetCodeDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.email = _data["email"];
+            this.appName = _data["appName"];
+            this.returnUrl = _data["returnUrl"];
+            this.returnUrlHash = _data["returnUrlHash"];
+        }
+    }
+
+    static fromJS(data: any): SendPasswordResetCodeDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new SendPasswordResetCodeDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["email"] = this.email;
+        data["appName"] = this.appName;
+        data["returnUrl"] = this.returnUrl;
+        data["returnUrlHash"] = this.returnUrlHash;
+        return data; 
+    }
+}
+
+export interface ISendPasswordResetCodeDto {
+    email: string;
+    appName: string;
+    returnUrl?: string | undefined;
+    returnUrlHash?: string | undefined;
+}
+
+export class SettingGroup implements ISettingGroup {
+    groupName?: string | undefined;
+    groupDisplayName?: string | undefined;
+    settingInfos?: SettingInfo[] | undefined;
+    permission?: string | undefined;
+
+    constructor(data?: ISettingGroup) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.groupName = _data["groupName"];
+            this.groupDisplayName = _data["groupDisplayName"];
+            if (Array.isArray(_data["settingInfos"])) {
+                this.settingInfos = [] as any;
+                for (let item of _data["settingInfos"])
+                    this.settingInfos!.push(SettingInfo.fromJS(item));
+            }
+            this.permission = _data["permission"];
+        }
+    }
+
+    static fromJS(data: any): SettingGroup {
+        data = typeof data === 'object' ? data : {};
+        let result = new SettingGroup();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["groupName"] = this.groupName;
+        data["groupDisplayName"] = this.groupDisplayName;
+        if (Array.isArray(this.settingInfos)) {
+            data["settingInfos"] = [];
+            for (let item of this.settingInfos)
+                data["settingInfos"].push(item.toJSON());
+        }
+        data["permission"] = this.permission;
+        return data; 
+    }
+}
+
+export interface ISettingGroup {
+    groupName?: string | undefined;
+    groupDisplayName?: string | undefined;
+    settingInfos?: SettingInfo[] | undefined;
+    permission?: string | undefined;
+}
+
+export class SettingInfo implements ISettingInfo {
+    name?: string | undefined;
+    displayName?: string | undefined;
+    description?: string | undefined;
+    value?: string | undefined;
+    properties?: { [key: string]: any; } | undefined;
+    permission?: string | undefined;
+
+    constructor(data?: ISettingInfo) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.displayName = _data["displayName"];
+            this.description = _data["description"];
+            this.value = _data["value"];
+            if (_data["properties"]) {
+                this.properties = {} as any;
+                for (let key in _data["properties"]) {
+                    if (_data["properties"].hasOwnProperty(key))
+                        this.properties![key] = _data["properties"][key];
+                }
+            }
+            this.permission = _data["permission"];
+        }
+    }
+
+    static fromJS(data: any): SettingInfo {
+        data = typeof data === 'object' ? data : {};
+        let result = new SettingInfo();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["displayName"] = this.displayName;
+        data["description"] = this.description;
+        data["value"] = this.value;
+        if (this.properties) {
+            data["properties"] = {};
+            for (let key in this.properties) {
+                if (this.properties.hasOwnProperty(key))
+                    data["properties"][key] = this.properties[key];
+            }
+        }
+        data["permission"] = this.permission;
+        return data; 
+    }
+}
+
+export interface ISettingInfo {
+    name?: string | undefined;
+    displayName?: string | undefined;
+    description?: string | undefined;
+    value?: string | undefined;
+    properties?: { [key: string]: any; } | undefined;
+    permission?: string | undefined;
+}
+
+export class TenantCreateDto implements ITenantCreateDto {
+    readonly extraProperties?: { [key: string]: any; } | undefined;
+    name!: string;
+    adminEmailAddress!: string;
+    adminPassword!: string;
+
+    constructor(data?: ITenantCreateDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (_data["extraProperties"]) {
+                (<any>this).extraProperties = {} as any;
+                for (let key in _data["extraProperties"]) {
+                    if (_data["extraProperties"].hasOwnProperty(key))
+                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
+                }
+            }
+            this.name = _data["name"];
+            this.adminEmailAddress = _data["adminEmailAddress"];
+            this.adminPassword = _data["adminPassword"];
+        }
+    }
+
+    static fromJS(data: any): TenantCreateDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new TenantCreateDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (this.extraProperties) {
+            data["extraProperties"] = {};
+            for (let key in this.extraProperties) {
+                if (this.extraProperties.hasOwnProperty(key))
+                    data["extraProperties"][key] = this.extraProperties[key];
+            }
+        }
+        data["name"] = this.name;
+        data["adminEmailAddress"] = this.adminEmailAddress;
+        data["adminPassword"] = this.adminPassword;
+        return data; 
+    }
+}
+
+export interface ITenantCreateDto {
+    extraProperties?: { [key: string]: any; } | undefined;
+    name: string;
+    adminEmailAddress: string;
+    adminPassword: string;
+}
+
+export class TenantDto implements ITenantDto {
+    readonly extraProperties?: { [key: string]: any; } | undefined;
+    id?: string;
+    name?: string | undefined;
+
+    constructor(data?: ITenantDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (_data["extraProperties"]) {
+                (<any>this).extraProperties = {} as any;
+                for (let key in _data["extraProperties"]) {
+                    if (_data["extraProperties"].hasOwnProperty(key))
+                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
+                }
+            }
+            this.id = _data["id"];
+            this.name = _data["name"];
+        }
+    }
+
+    static fromJS(data: any): TenantDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new TenantDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (this.extraProperties) {
+            data["extraProperties"] = {};
+            for (let key in this.extraProperties) {
+                if (this.extraProperties.hasOwnProperty(key))
+                    data["extraProperties"][key] = this.extraProperties[key];
+            }
+        }
+        data["id"] = this.id;
+        data["name"] = this.name;
+        return data; 
+    }
+}
+
+export interface ITenantDto {
+    extraProperties?: { [key: string]: any; } | undefined;
+    id?: string;
+    name?: string | undefined;
+}
+
+export class TenantDtoPagedResultDto implements ITenantDtoPagedResultDto {
+    items?: TenantDto[] | undefined;
+    totalCount?: number;
+
+    constructor(data?: ITenantDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(TenantDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): TenantDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new TenantDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data; 
+    }
+}
+
+export interface ITenantDtoPagedResultDto {
+    items?: TenantDto[] | undefined;
+    totalCount?: number;
+}
+
+export class TenantUpdateDto implements ITenantUpdateDto {
+    readonly extraProperties?: { [key: string]: any; } | undefined;
+    name!: string;
+
+    constructor(data?: ITenantUpdateDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (_data["extraProperties"]) {
+                (<any>this).extraProperties = {} as any;
+                for (let key in _data["extraProperties"]) {
+                    if (_data["extraProperties"].hasOwnProperty(key))
+                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
+                }
+            }
+            this.name = _data["name"];
+        }
+    }
+
+    static fromJS(data: any): TenantUpdateDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new TenantUpdateDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (this.extraProperties) {
+            data["extraProperties"] = {};
+            for (let key in this.extraProperties) {
+                if (this.extraProperties.hasOwnProperty(key))
+                    data["extraProperties"][key] = this.extraProperties[key];
+            }
+        }
+        data["name"] = this.name;
+        return data; 
+    }
+}
+
+export interface ITenantUpdateDto {
+    extraProperties?: { [key: string]: any; } | undefined;
+    name: string;
+}
+
+export class TimeZone implements ITimeZone {
+    iana?: IanaTimeZone;
+    windows?: WindowsTimeZone;
+
+    constructor(data?: ITimeZone) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.iana = _data["iana"] ? IanaTimeZone.fromJS(_data["iana"]) : <any>undefined;
+            this.windows = _data["windows"] ? WindowsTimeZone.fromJS(_data["windows"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): TimeZone {
+        data = typeof data === 'object' ? data : {};
+        let result = new TimeZone();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["iana"] = this.iana ? this.iana.toJSON() : <any>undefined;
+        data["windows"] = this.windows ? this.windows.toJSON() : <any>undefined;
+        return data; 
+    }
+}
+
+export interface ITimeZone {
+    iana?: IanaTimeZone;
+    windows?: WindowsTimeZone;
+}
+
+export class TimingDto implements ITimingDto {
+    timeZone?: TimeZone;
+
+    constructor(data?: ITimingDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.timeZone = _data["timeZone"] ? TimeZone.fromJS(_data["timeZone"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): TimingDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new TimingDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["timeZone"] = this.timeZone ? this.timeZone.toJSON() : <any>undefined;
+        return data; 
+    }
+}
+
+export interface ITimingDto {
+    timeZone?: TimeZone;
+}
+
+export class TypeApiDescriptionModel implements ITypeApiDescriptionModel {
+    baseType?: string | undefined;
+    isEnum?: boolean;
+    enumNames?: string[] | undefined;
+    enumValues?: any[] | undefined;
+    genericArguments?: string[] | undefined;
+    properties?: PropertyApiDescriptionModel[] | undefined;
+
+    constructor(data?: ITypeApiDescriptionModel) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.baseType = _data["baseType"];
+            this.isEnum = _data["isEnum"];
+            if (Array.isArray(_data["enumNames"])) {
+                this.enumNames = [] as any;
+                for (let item of _data["enumNames"])
+                    this.enumNames!.push(item);
+            }
+            if (Array.isArray(_data["enumValues"])) {
+                this.enumValues = [] as any;
+                for (let item of _data["enumValues"])
+                    this.enumValues!.push(item);
+            }
+            if (Array.isArray(_data["genericArguments"])) {
+                this.genericArguments = [] as any;
+                for (let item of _data["genericArguments"])
+                    this.genericArguments!.push(item);
+            }
+            if (Array.isArray(_data["properties"])) {
+                this.properties = [] as any;
+                for (let item of _data["properties"])
+                    this.properties!.push(PropertyApiDescriptionModel.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): TypeApiDescriptionModel {
+        data = typeof data === 'object' ? data : {};
+        let result = new TypeApiDescriptionModel();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["baseType"] = this.baseType;
+        data["isEnum"] = this.isEnum;
+        if (Array.isArray(this.enumNames)) {
+            data["enumNames"] = [];
+            for (let item of this.enumNames)
+                data["enumNames"].push(item);
+        }
+        if (Array.isArray(this.enumValues)) {
+            data["enumValues"] = [];
+            for (let item of this.enumValues)
+                data["enumValues"].push(item);
+        }
+        if (Array.isArray(this.genericArguments)) {
+            data["genericArguments"] = [];
+            for (let item of this.genericArguments)
+                data["genericArguments"].push(item);
+        }
+        if (Array.isArray(this.properties)) {
+            data["properties"] = [];
+            for (let item of this.properties)
+                data["properties"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface ITypeApiDescriptionModel {
+    baseType?: string | undefined;
+    isEnum?: boolean;
+    enumNames?: string[] | undefined;
+    enumValues?: any[] | undefined;
+    genericArguments?: string[] | undefined;
+    properties?: PropertyApiDescriptionModel[] | undefined;
+}
+
+export class UpdateFeatureDto implements IUpdateFeatureDto {
+    name?: string | undefined;
+    value?: string | undefined;
+
+    constructor(data?: IUpdateFeatureDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.value = _data["value"];
+        }
+    }
+
+    static fromJS(data: any): UpdateFeatureDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateFeatureDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["value"] = this.value;
+        return data; 
+    }
+}
+
+export interface IUpdateFeatureDto {
+    name?: string | undefined;
+    value?: string | undefined;
+}
+
+export class UpdateFeaturesDto implements IUpdateFeaturesDto {
+    features?: UpdateFeatureDto[] | undefined;
+
+    constructor(data?: IUpdateFeaturesDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["features"])) {
+                this.features = [] as any;
+                for (let item of _data["features"])
+                    this.features!.push(UpdateFeatureDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): UpdateFeaturesDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateFeaturesDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.features)) {
+            data["features"] = [];
+            for (let item of this.features)
+                data["features"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IUpdateFeaturesDto {
+    features?: UpdateFeatureDto[] | undefined;
+}
+
+export class UpdatePermissionDto implements IUpdatePermissionDto {
+    name?: string | undefined;
+    isGranted?: boolean;
+
+    constructor(data?: IUpdatePermissionDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.isGranted = _data["isGranted"];
+        }
+    }
+
+    static fromJS(data: any): UpdatePermissionDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdatePermissionDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["isGranted"] = this.isGranted;
+        return data; 
+    }
+}
+
+export interface IUpdatePermissionDto {
+    name?: string | undefined;
+    isGranted?: boolean;
+}
+
+export class UpdatePermissionsDto implements IUpdatePermissionsDto {
+    permissions?: UpdatePermissionDto[] | undefined;
+
+    constructor(data?: IUpdatePermissionsDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["permissions"])) {
+                this.permissions = [] as any;
+                for (let item of _data["permissions"])
+                    this.permissions!.push(UpdatePermissionDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): UpdatePermissionsDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdatePermissionsDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.permissions)) {
+            data["permissions"] = [];
+            for (let item of this.permissions)
+                data["permissions"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IUpdatePermissionsDto {
+    permissions?: UpdatePermissionDto[] | undefined;
+}
+
+export class UpdateProfileDto implements IUpdateProfileDto {
+    readonly extraProperties?: { [key: string]: any; } | undefined;
+    userName?: string | undefined;
+    email?: string | undefined;
+    name?: string | undefined;
+    surname?: string | undefined;
+    phoneNumber?: string | undefined;
+
+    constructor(data?: IUpdateProfileDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (_data["extraProperties"]) {
+                (<any>this).extraProperties = {} as any;
+                for (let key in _data["extraProperties"]) {
+                    if (_data["extraProperties"].hasOwnProperty(key))
+                        (<any>this).extraProperties![key] = _data["extraProperties"][key];
+                }
+            }
+            this.userName = _data["userName"];
+            this.email = _data["email"];
+            this.name = _data["name"];
+            this.surname = _data["surname"];
+            this.phoneNumber = _data["phoneNumber"];
+        }
+    }
+
+    static fromJS(data: any): UpdateProfileDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateProfileDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (this.extraProperties) {
+            data["extraProperties"] = {};
+            for (let key in this.extraProperties) {
+                if (this.extraProperties.hasOwnProperty(key))
+                    data["extraProperties"][key] = this.extraProperties[key];
+            }
+        }
+        data["userName"] = this.userName;
+        data["email"] = this.email;
+        data["name"] = this.name;
+        data["surname"] = this.surname;
+        data["phoneNumber"] = this.phoneNumber;
+        return data; 
+    }
+}
+
+export interface IUpdateProfileDto {
+    extraProperties?: { [key: string]: any; } | undefined;
+    userName?: string | undefined;
+    email?: string | undefined;
+    name?: string | undefined;
+    surname?: string | undefined;
+    phoneNumber?: string | undefined;
+}
+
+export class UpdateRoleInput implements IUpdateRoleInput {
+    roleId?: string;
+    roleInfo?: IdentityRoleUpdateDto;
+
+    constructor(data?: IUpdateRoleInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.roleId = _data["roleId"];
+            this.roleInfo = _data["roleInfo"] ? IdentityRoleUpdateDto.fromJS(_data["roleInfo"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): UpdateRoleInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateRoleInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["roleId"] = this.roleId;
+        data["roleInfo"] = this.roleInfo ? this.roleInfo.toJSON() : <any>undefined;
+        return data; 
+    }
+}
+
+export interface IUpdateRoleInput {
+    roleId?: string;
+    roleInfo?: IdentityRoleUpdateDto;
+}
+
+export class UpdateRolePermissionsDto implements IUpdateRolePermissionsDto {
+    providerName!: string;
+    providerKey!: string;
+    updatePermissionsDto?: UpdatePermissionsDto;
+
+    constructor(data?: IUpdateRolePermissionsDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.providerName = _data["providerName"];
+            this.providerKey = _data["providerKey"];
+            this.updatePermissionsDto = _data["updatePermissionsDto"] ? UpdatePermissionsDto.fromJS(_data["updatePermissionsDto"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): UpdateRolePermissionsDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateRolePermissionsDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["providerName"] = this.providerName;
+        data["providerKey"] = this.providerKey;
+        data["updatePermissionsDto"] = this.updatePermissionsDto ? this.updatePermissionsDto.toJSON() : <any>undefined;
+        return data; 
+    }
+}
+
+export interface IUpdateRolePermissionsDto {
+    providerName: string;
+    providerKey: string;
+    updatePermissionsDto?: UpdatePermissionsDto;
 }
 
 export class UpdateUserInput implements IUpdateUserInput {
@@ -6306,6 +6815,86 @@ export class UserDataListResultDto implements IUserDataListResultDto {
 
 export interface IUserDataListResultDto {
     items?: UserData[] | undefined;
+}
+
+export class UserLoginInfo implements IUserLoginInfo {
+    userNameOrEmailAddress!: string;
+    password!: string;
+    rememberMe?: boolean;
+
+    constructor(data?: IUserLoginInfo) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.userNameOrEmailAddress = _data["userNameOrEmailAddress"];
+            this.password = _data["password"];
+            this.rememberMe = _data["rememberMe"];
+        }
+    }
+
+    static fromJS(data: any): UserLoginInfo {
+        data = typeof data === 'object' ? data : {};
+        let result = new UserLoginInfo();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["userNameOrEmailAddress"] = this.userNameOrEmailAddress;
+        data["password"] = this.password;
+        data["rememberMe"] = this.rememberMe;
+        return data; 
+    }
+}
+
+export interface IUserLoginInfo {
+    userNameOrEmailAddress: string;
+    password: string;
+    rememberMe?: boolean;
+}
+
+export class WindowsTimeZone implements IWindowsTimeZone {
+    timeZoneId?: string | undefined;
+
+    constructor(data?: IWindowsTimeZone) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.timeZoneId = _data["timeZoneId"];
+        }
+    }
+
+    static fromJS(data: any): WindowsTimeZone {
+        data = typeof data === 'object' ? data : {};
+        let result = new WindowsTimeZone();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["timeZoneId"] = this.timeZoneId;
+        return data; 
+    }
+}
+
+export interface IWindowsTimeZone {
+    timeZoneId?: string | undefined;
 }
 
 export class ApiException extends Error {

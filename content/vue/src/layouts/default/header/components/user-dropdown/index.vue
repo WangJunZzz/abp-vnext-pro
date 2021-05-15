@@ -17,6 +17,11 @@
           icon="ion:document-text-outline"
           v-if="getShowDoc"
         />
+        <MenuItem
+          key="password"
+          :text="t('layout.header.changePassword')"
+          icon="ant-design:info-circle-outlined"
+        />
         <MenuDivider v-if="getShowDoc" />
         <MenuItem
           key="lock"
@@ -32,6 +37,7 @@
     </template>
   </Dropdown>
   <LockAction @register="register" />
+  <PasswordAction @register="registerChangePasswordModal" />
 </template>
 <script lang="ts">
   // components
@@ -53,7 +59,7 @@
 
   import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
 
-  type MenuEvent = 'logout' | 'doc' | 'lock';
+  type MenuEvent = 'logout' | 'doc' | 'lock' | 'password';
 
   export default defineComponent({
     name: 'UserDropdown',
@@ -63,6 +69,7 @@
       MenuItem: createAsyncComponent(() => import('./DropMenuItem.vue')),
       MenuDivider: Menu.Divider,
       LockAction: createAsyncComponent(() => import('../lock/LockModal.vue')),
+      PasswordAction: createAsyncComponent(() => import('./ChangePassword.vue')),
     },
     props: {
       theme: propTypes.oneOf(['dark', 'light']),
@@ -79,7 +86,7 @@
       });
 
       const [register, { openModal }] = useModal();
-
+      const [registerChangePasswordModal, { openModal: openChangePasswordModal }] = useModal();
       function handleLock() {
         openModal(true);
       }
@@ -94,6 +101,10 @@
         openWindow(DOC_URL);
       }
 
+      function handleChangePassword() {
+        openChangePasswordModal(true);
+      }
+
       function handleMenuClick(e: { key: MenuEvent }) {
         switch (e.key) {
           case 'logout':
@@ -104,6 +115,9 @@
             break;
           case 'lock':
             handleLock();
+            break;
+          case 'password':
+            handleChangePassword();
             break;
         }
       }
@@ -116,6 +130,7 @@
         getShowDoc,
         headerImg,
         register,
+        registerChangePasswordModal,
       };
     },
   });

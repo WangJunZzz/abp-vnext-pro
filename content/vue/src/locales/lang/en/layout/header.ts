@@ -1,6 +1,6 @@
 export default {
   // user dropdown
-  dropdownItemDoc: 'Document',
+  dropdownItemDoc: 'Front Document',
   dropdownItemLoginOut: 'Login Out',
 
   tooltipErrorLog: 'Error log',
@@ -16,4 +16,7 @@ export default {
   lockScreenBtn: 'Locking',
 
   home: 'Home',
+  changePassword: "ChangePassword",
+  currentPassword: "CurrentPassword",
+  newPassword: "NewPassword"
 };

@@ -1,5 +1,6 @@
 ﻿using CompanyNameProjectName.Users.Dtos;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -10,16 +11,19 @@ using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Identity;
+using Volo.Abp.Users;
 
 namespace CompanyNameProjectName.Users
 {
+    [Authorize]
     public class UserAppService : ApplicationService
     {
         private readonly IIdentityUserAppService _identityUserAppService;
-
-        public UserAppService(IIdentityUserAppService identityUserAppService)
+        private readonly IdentityUserManager _userManager;
+        public UserAppService(IIdentityUserAppService identityUserAppService, IdentityUserManager userManager)
         {
             _identityUserAppService = identityUserAppService;
+            _userManager = userManager;
         }
 
         [SwaggerOperation(summary: "分页获取用户信息", Tags = new[] { "User" })]
@@ -64,6 +68,28 @@ namespace CompanyNameProjectName.Users
         public  async Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(Guid userId)
         {
             return await _identityUserAppService.GetRolesAsync(userId);
+        }
+
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<bool> ChangePasswordAsync(ChangePasswordInput input)
+        {
+            var identityUser = await _userManager.GetByIdAsync(base.CurrentUser.GetId());
+            IdentityResult result;
+            if (identityUser.PasswordHash == null)
+            {
+                result = await _userManager.AddPasswordAsync(identityUser, input.NewPassword);
+            }
+            else
+            {
+                result = await _userManager.ChangePasswordAsync(identityUser, input.CurrentPassword, input.NewPassword);
+            }
+
+            if (!result.Succeeded) throw new Exception(result.Errors.FirstOrDefault().Description);
+            return result.Succeeded;
         }
     }
 }

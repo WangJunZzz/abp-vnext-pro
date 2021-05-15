@@ -48,16 +48,20 @@
 
       // 保存角色
       const submit = async () => {
-        const request = getFieldsValue();
-        let role = new UpdateRoleInput();
-        role.roleId = currentRoleInfo.id;
-        role.roleInfo = new IdentityRoleUpdateDto();
-        role.roleInfo.name = request.name;
-        role.roleInfo.isDefault = request.isDefault == 1 ? true : false;
-        role.roleInfo.isPublic = currentRoleInfo.isPublic;
-        role.roleInfo.concurrencyStamp = currentRoleInfo.concurrencyStamp;
-        await updateRoleAsync({ request: role, changeOkLoading, validate, closeModal });
-        ctx.emit('reload');
+        try {
+          const request = getFieldsValue();
+          let role = new UpdateRoleInput();
+          role.roleId = currentRoleInfo.id;
+          role.roleInfo = new IdentityRoleUpdateDto();
+          role.roleInfo.name = request.name;
+          role.roleInfo.isDefault = request.isDefault == 1 ? true : false;
+          role.roleInfo.isPublic = currentRoleInfo.isPublic;
+          role.roleInfo.concurrencyStamp = currentRoleInfo.concurrencyStamp;
+          await updateRoleAsync({ request: role, changeOkLoading, validate, closeModal });
+          ctx.emit('reload');
+        } catch (error) {
+          changeOkLoading(false);
+        }
       };
 
       return {

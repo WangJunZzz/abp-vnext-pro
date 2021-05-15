@@ -170,18 +170,16 @@ export async function getAllRoleAsync(): Promise<IdentityRoleDtoListResultDto> {
  * @param param0
  */
 export async function createUserAsync({ request, changeOkLoading, validate, closeModal, resetFields }) {
-  try {
-    changeOkLoading(true);
-    await validate();
-    const _userServiceProxy = new UserServiceProxy();
-    await _userServiceProxy.userPost(request);
-    changeOkLoading(false);
-    message.success(t('common.operationSuccess'));
-    resetFields();
-    closeModal();
-  } catch (error) {
-    changeOkLoading(false);
-  }
+
+  changeOkLoading(true);
+  await validate();
+  const _userServiceProxy = new UserServiceProxy();
+  await _userServiceProxy.userPost(request);
+  changeOkLoading(false);
+  message.success(t('common.operationSuccess'));
+  resetFields();
+  closeModal();
+
 }
 
 /**
@@ -199,7 +197,6 @@ export async function deleteUserAsync({ userId, reload }) {
   } catch (error) {
     closeFullLoading();
   }
-
 }
 
 /**
@@ -207,15 +204,13 @@ export async function deleteUserAsync({ userId, reload }) {
  * @param param0
  */
 export async function updateUserAsync({ request, changeOkLoading, validate, closeModal }) {
-  try {
-    changeOkLoading(true);
-    await validate();
-    const _userServiceProxy = new UserServiceProxy();
-    await _userServiceProxy.update(request);
-    changeOkLoading(false);
-    message.success(t('common.operationSuccess'));
-    closeModal();
-  } catch (error) {
-    changeOkLoading(false);
-  }
+
+  changeOkLoading(true);
+  await validate();
+  const _userServiceProxy = new UserServiceProxy();
+  await _userServiceProxy.update(request);
+  changeOkLoading(false);
+  message.success(t('common.operationSuccess'));
+  closeModal();
+
 }

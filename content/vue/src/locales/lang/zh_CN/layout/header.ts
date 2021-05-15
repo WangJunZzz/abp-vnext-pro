@@ -1,6 +1,6 @@
 export default {
   // user dropdown
-  dropdownItemDoc: '文档',
+  dropdownItemDoc: '前端文档',
   dropdownItemLoginOut: '退出系统',
 
   // tooltip
@@ -17,4 +17,8 @@ export default {
   lockScreenBtn: '锁定',
 
   home: '首页',
+
+  changePassword: "修改密码",
+  currentPassword: "当前密码",
+  newPassword: "新密码"
 };
