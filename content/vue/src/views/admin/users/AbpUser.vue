@@ -38,7 +38,7 @@
           type="link"
           size="small"
           @click="handleLock(record)"
-          v-auth="'AbpIdentity.User.Lock'"
+          v-auth="'AbpIdentity.Users.Lock'"
         >
           {{ record.lockoutEnabled ? '启用' : '禁用' }}
         </a-button>

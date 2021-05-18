@@ -97,6 +97,7 @@ namespace CompanyNameProjectName.Users
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [Authorize("AbpIdentity.Users.Lock")]
         public async Task LockAsync(LockUserInput input)
         {
             var identityUser = await _userManager.GetByIdAsync(input.UserId);
@@ -111,5 +112,6 @@ namespace CompanyNameProjectName.Users
             }
            
         }
+
     }
 }
