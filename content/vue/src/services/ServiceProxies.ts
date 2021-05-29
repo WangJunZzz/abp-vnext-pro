@@ -1001,7 +1001,7 @@ export class RoleServiceProxy extends ServiceProxyBase {
      * @param providerKey (optional) 
      * @return Success
      */
-    permission(providerName: string | undefined, providerKey: string | undefined , cancelToken?: CancelToken | undefined): Promise<GetPermissionListResultDto> {
+    permission(providerName: string | undefined, providerKey: string | undefined , cancelToken?: CancelToken | undefined): Promise<PermissionOutput> {
         let url_ = this.baseUrl + "/api/app/role/permission?";
         if (providerName === null)
             throw new Error("The parameter 'providerName' cannot be null.");
@@ -1035,7 +1035,7 @@ export class RoleServiceProxy extends ServiceProxyBase {
         });
     }
 
-    protected processPermission(response: AxiosResponse): Promise<GetPermissionListResultDto> {
+    protected processPermission(response: AxiosResponse): Promise<PermissionOutput> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -1049,7 +1049,7 @@ export class RoleServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = GetPermissionListResultDto.fromJS(resultData200);
+            result200 = PermissionOutput.fromJS(resultData200);
             return result200;
         } else if (status === 403) {
             const _responseText = response.data;
@@ -1091,7 +1091,7 @@ export class RoleServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<GetPermissionListResultDto>(<any>null);
+        return Promise.resolve<PermissionOutput>(<any>null);
     }
 
     /**
@@ -5085,7 +5085,7 @@ export class LoginOutputDto implements ILoginOutputDto {
     name?: string | undefined;
     userName?: string | undefined;
     token?: string | undefined;
-    expiration?: Date;
+    roles?: string[] | undefined;
 
     constructor(data?: ILoginOutputDto) {
         if (data) {
@@ -5102,7 +5102,11 @@ export class LoginOutputDto implements ILoginOutputDto {
             this.name = _data["name"];
             this.userName = _data["userName"];
             this.token = _data["token"];
-            this.expiration = _data["expiration"] ? new Date(_data["expiration"].toString()) : <any>undefined;
+            if (Array.isArray(_data["roles"])) {
+                this.roles = [] as any;
+                for (let item of _data["roles"])
+                    this.roles!.push(item);
+            }
         }
     }
 
@@ -5119,7 +5123,11 @@ export class LoginOutputDto implements ILoginOutputDto {
         data["name"] = this.name;
         data["userName"] = this.userName;
         data["token"] = this.token;
-        data["expiration"] = this.expiration ? this.expiration.toISOString() : <any>undefined;
+        if (Array.isArray(this.roles)) {
+            data["roles"] = [];
+            for (let item of this.roles)
+                data["roles"].push(item);
+        }
         return data; 
     }
 }
@@ -5129,7 +5137,7 @@ export interface ILoginOutputDto {
     name?: string | undefined;
     userName?: string | undefined;
     token?: string | undefined;
-    expiration?: Date;
+    roles?: string[] | undefined;
 }
 
 export enum LoginResultType {
@@ -5660,6 +5668,126 @@ export interface IPermissionGroupDto {
     permissions?: PermissionGrantInfoDto[] | undefined;
 }
 
+export class PermissionOutput implements IPermissionOutput {
+    grants?: string[] | undefined;
+    allGrants?: string[] | undefined;
+    permissions?: PermissionTreeDto[] | undefined;
+
+    constructor(data?: IPermissionOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["grants"])) {
+                this.grants = [] as any;
+                for (let item of _data["grants"])
+                    this.grants!.push(item);
+            }
+            if (Array.isArray(_data["allGrants"])) {
+                this.allGrants = [] as any;
+                for (let item of _data["allGrants"])
+                    this.allGrants!.push(item);
+            }
+            if (Array.isArray(_data["permissions"])) {
+                this.permissions = [] as any;
+                for (let item of _data["permissions"])
+                    this.permissions!.push(PermissionTreeDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PermissionOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PermissionOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.grants)) {
+            data["grants"] = [];
+            for (let item of this.grants)
+                data["grants"].push(item);
+        }
+        if (Array.isArray(this.allGrants)) {
+            data["allGrants"] = [];
+            for (let item of this.allGrants)
+                data["allGrants"].push(item);
+        }
+        if (Array.isArray(this.permissions)) {
+            data["permissions"] = [];
+            for (let item of this.permissions)
+                data["permissions"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPermissionOutput {
+    grants?: string[] | undefined;
+    allGrants?: string[] | undefined;
+    permissions?: PermissionTreeDto[] | undefined;
+}
+
+export class PermissionTreeDto implements IPermissionTreeDto {
+    title?: string | undefined;
+    key?: string | undefined;
+    children?: PermissionTreeDto[] | undefined;
+
+    constructor(data?: IPermissionTreeDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.title = _data["title"];
+            this.key = _data["key"];
+            if (Array.isArray(_data["children"])) {
+                this.children = [] as any;
+                for (let item of _data["children"])
+                    this.children!.push(PermissionTreeDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PermissionTreeDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PermissionTreeDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        data["key"] = this.key;
+        if (Array.isArray(this.children)) {
+            data["children"] = [];
+            for (let item of this.children)
+                data["children"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPermissionTreeDto {
+    title?: string | undefined;
+    key?: string | undefined;
+    children?: PermissionTreeDto[] | undefined;
+}
+
 export class ProfileDto implements IProfileDto {
     readonly extraProperties?: { [key: string]: any; } | undefined;
     userName?: string | undefined;
@@ -5965,8 +6093,6 @@ export class QueryAuditLogOutput implements IQueryAuditLogOutput {
     exceptions?: string | undefined;
     comments?: string | undefined;
     httpStatusCode?: number | undefined;
-    readonly entityChanges?: QueryEntityChangeOutput[] | undefined;
-    readonly actions?: PropertyChangesDto[] | undefined;
 
     constructor(data?: IQueryAuditLogOutput) {
         if (data) {
@@ -5999,16 +6125,6 @@ export class QueryAuditLogOutput implements IQueryAuditLogOutput {
             this.exceptions = _data["exceptions"];
             this.comments = _data["comments"];
             this.httpStatusCode = _data["httpStatusCode"];
-            if (Array.isArray(_data["entityChanges"])) {
-                (<any>this).entityChanges = [] as any;
-                for (let item of _data["entityChanges"])
-                    (<any>this).entityChanges!.push(QueryEntityChangeOutput.fromJS(item));
-            }
-            if (Array.isArray(_data["actions"])) {
-                (<any>this).actions = [] as any;
-                for (let item of _data["actions"])
-                    (<any>this).actions!.push(PropertyChangesDto.fromJS(item));
-            }
         }
     }
 
@@ -6041,16 +6157,6 @@ export class QueryAuditLogOutput implements IQueryAuditLogOutput {
         data["exceptions"] = this.exceptions;
         data["comments"] = this.comments;
         data["httpStatusCode"] = this.httpStatusCode;
-        if (Array.isArray(this.entityChanges)) {
-            data["entityChanges"] = [];
-            for (let item of this.entityChanges)
-                data["entityChanges"].push(item.toJSON());
-        }
-        if (Array.isArray(this.actions)) {
-            data["actions"] = [];
-            for (let item of this.actions)
-                data["actions"].push(item.toJSON());
-        }
         return data; 
     }
 }
@@ -6076,8 +6182,6 @@ export interface IQueryAuditLogOutput {
     exceptions?: string | undefined;
     comments?: string | undefined;
     httpStatusCode?: number | undefined;
-    entityChanges?: QueryEntityChangeOutput[] | undefined;
-    actions?: PropertyChangesDto[] | undefined;
 }
 
 export class QueryAuditLogOutputPagedResultDto implements IQueryAuditLogOutputPagedResultDto {

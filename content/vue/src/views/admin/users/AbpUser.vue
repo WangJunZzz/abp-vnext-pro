@@ -11,8 +11,8 @@
         </a-button>
       </template>
       <template #lockoutEnabled="{ record }">
-        <Tag :color="record.lockoutEnabled && record.lockoutEnd!=null ? 'red' : 'green'">
-          {{ record.lockoutEnabled && record.lockoutEnd!=null ? t('common.enable') : t('common.disable')  }}
+        <Tag :color="!record.lockoutEnabled ? 'green' : 'red'">
+          {{ !record.lockoutEnabled  ? t('common.enable') : t('common.disable')  }}
         </Tag>
       </template>
       <template #action="{ record }">

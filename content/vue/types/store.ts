@@ -34,6 +34,7 @@ export interface UserInfo {
   username: string;
   realName: string;
   desc?: string;
+  roles:string[]
 }
 
 export interface BeforeMiniState {

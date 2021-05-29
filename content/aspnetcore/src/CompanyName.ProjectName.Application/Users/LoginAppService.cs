@@ -50,7 +50,7 @@ namespace CompanyNameProjectName.Users
                 var token = GenerateJwt(user, roles.ToList());
                 var loginOutputDto = ObjectMapper.Map<IdentityUser, LoginOutputDto>(user);
                 loginOutputDto.Token = token;
-                loginOutputDto.Expiration = DateTime.Now.AddHours(_jwtOptions.ExpirationTime);
+                loginOutputDto.Roles = roles.ToList();
                 return loginOutputDto;
             }
             catch(Exception ex)

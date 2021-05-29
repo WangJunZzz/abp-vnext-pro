@@ -7,9 +7,10 @@
     "DataExistence": "Existence",
     "DataNotExistence": "Not Existence",
     "TestSettings": "TestSettings",
-
+    "Permission:Query": "Query",
     "Permission:Users:Enable": "Enable|Disable",
-    "Permission:Users:AuditLog": "AuditLog"
+    "Permission:AuditLogMangament": "AuditLogMangament",
+    "Permission:AuditLogMangament:Query": "Query"
 
   }
 }

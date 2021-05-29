@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CompanyNameProjectName.Dtos.Users
 {
@@ -12,9 +13,6 @@ namespace CompanyNameProjectName.Dtos.Users
 
         public string Token { get; set; }
 
-        /// <summary>
-        /// 过期时间
-        /// </summary>
-        public DateTime Expiration { get; set; }
+        public List<string> Roles { get; set; } = new List<string>();
     }
 }

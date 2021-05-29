@@ -20,15 +20,17 @@ namespace CompanyNameProjectName.Users
     {
         private readonly IIdentityUserAppService _identityUserAppService;
         private readonly IdentityUserManager _userManager;
-        public UserAppService(IIdentityUserAppService identityUserAppService, IdentityUserManager userManager)
+        protected IIdentityUserRepository _userRepository;
+        public UserAppService(IIdentityUserAppService identityUserAppService, IdentityUserManager userManager, IIdentityUserRepository userRepository)
         {
             _identityUserAppService = identityUserAppService;
             _userManager = userManager;
+            _userRepository = userRepository;
         }
 
         [SwaggerOperation(summary: "分页获取用户信息", Tags = new[] { "User" })]
-        [Authorize("AbpIdentity.Users")]
         [HttpPost]
+        [Authorize("AbpIdentity.Users.Query")]
         public async Task<PagedResultDto<IdentityUserDto>> ListAsync(GetUserListInput input)
         {
             var request = new GetIdentityUsersInput();
@@ -36,7 +38,11 @@ namespace CompanyNameProjectName.Users
             request.MaxResultCount = input.PageSize;
             request.SkipCount = (input.PageIndex - 1) * input.PageSize;
             request.Sorting = " LastModificationTime desc";
-            return await _identityUserAppService.GetListAsync(request);
+            long count = await _userRepository.GetCountAsync(request.Filter).ConfigureAwait(continueOnCapturedContext: false);
+            List<Volo.Abp.Identity.IdentityUser> source = await _userRepository.GetListAsync(request.Sorting, request.MaxResultCount, request.SkipCount, request.Filter).ConfigureAwait(continueOnCapturedContext: false);
+
+            return new PagedResultDto<IdentityUserDto>(count, base.ObjectMapper.Map<List<Volo.Abp.Identity.IdentityUser>, List<IdentityUserDto>>(source));
+           // return await _identityUserAppService.GetListAsync(request);
         }
 
         [SwaggerOperation(summary: "创建用户", Tags = new[] { "User" })]

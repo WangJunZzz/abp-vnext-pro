@@ -14,7 +14,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace CompanyNameProjectName.Audits
 {
-    [Authorize("AbpIdentity.Users.AuditLog")]
+    [Authorize("AbpIdentity.AuditLog.Query")]
     public class AuditAppService : ApplicationService
     {
         private readonly IRepository<AuditLog, Guid> _auditLogRepository;

@@ -11,11 +11,10 @@ import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY, ABP_LOCALE_KEY } from '/@/enums/ca
 import { getAuthCache, setAuthCache } from '/@/utils/auth';
 import {
   GetUserInfoByUserIdModel,
-  GetUserInfoByUserIdParams,
   LoginParams,
 } from '/@/api/sys/model/userModel';
 import { usePermissionStore } from './permission'
-import { getUserInfoById, login, getAbpApplicationConfiguration } from '/@/api/sys/user';
+import {  login, getAbpApplicationConfiguration } from '/@/api/sys/user';
 import { LoginInputDto } from '/@/services/ServiceProxies'
 import { useI18n } from '/@/hooks/web/useI18n';
 import { useMessage } from '/@/hooks/web/useMessage';
@@ -93,7 +92,7 @@ export const useUserStore = defineStore({
         const data = await login(request);
 
         this.setToken(data.token as string);
-        this.setUserInfo({ userId: data.id as string, username: data.userName as string, realName: data.name as string });
+        this.setUserInfo({ userId: data.id as string, username: data.userName as string, realName: data.name as string,roles:data.roles as [] });
         await this.getAbpApplicationConfigurationAsync();
 
         goHome && (await router.replace(PageEnum.BASE_HOME));
@@ -109,14 +108,7 @@ export const useUserStore = defineStore({
       permissionStore.setPermCodeList(grantPolicy);
     },
 
-    async getUserInfoAction({ userId }: GetUserInfoByUserIdParams) {
-      const userInfo = await getUserInfoById({ userId });
-      const { roles } = userInfo;
-      const roleList = roles.map((item) => item.value) as RoleEnum[];
-      this.setUserInfo(userInfo);
-      this.setRoleList(roleList);
-      return userInfo;
-    },
+
 
 
     /**

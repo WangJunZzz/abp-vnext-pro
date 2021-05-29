@@ -17,7 +17,7 @@ const admin: AppRouteModule = {
       component: () => import('/@/views/admin/users/AbpUser.vue'),
       meta: {
         title: t('routes.admin.userManagement'),
-        policy: 'AbpIdentity.Users',
+        policy: 'AbpIdentity.Users.Query',
         icon: 'ant-design:skin-outlined'
       },
     },
@@ -27,7 +27,7 @@ const admin: AppRouteModule = {
       component: () => import('/@/views/admin/roles/AbpRole.vue'),
       meta: {
         title: t('routes.admin.roleManagement'),
-        policy: 'AbpIdentity.Roles',
+        policy: 'AbpIdentity.Roles.Query',
         icon: 'ant-design:lock-outlined'
       },
     },
@@ -37,7 +37,7 @@ const admin: AppRouteModule = {
       component: () => import('/@/views/admin/audits/AuditLog.vue'),
       meta: {
         title: t('routes.admin.auditManagement'),
-        policy: "AbpIdentity.Users.AuditLog",
+        policy: "AbpIdentity.AuditLog.Query",
         icon: 'ant-design:audit-outlined'
       },
     }

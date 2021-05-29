@@ -9,7 +9,7 @@ export class ServiceProxyBase {
 
   protected transformOptions(options: AxiosRequestConfig) {
 
-    options.baseURL = import.meta.env.VITE_API_URL as string; // 'http://localhost:50010'
+    options.baseURL = import.meta.env.VITE_API_URL as string;
     const guard: boolean = this.urlGuard(options.url as string);
     if (!guard) {
       const { token, language } = this.getHeaderInfo();

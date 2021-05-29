@@ -155,7 +155,7 @@ export async function updateRolePermissionAsync({ request, closeDrawer, setDrawe
   const _roleServiceProxy = new RoleServiceProxy();
   await _roleServiceProxy.updatePermission(request);
   setDrawerProps({ loading: false });
-  message.success(t('common.operationSuccess'));
+
   closeDrawer();
 }
 

@@ -14,11 +14,13 @@ using Volo.Abp.PermissionManagement;
 
 namespace CompanyNameProjectName.Roles
 {
+    [Authorize]
     public class RoleAppService : ApplicationService
     {
         private readonly IIdentityRoleAppService _identityRoleAppService;
         private readonly IPermissionAppService _permissionAppService;
-        protected IIdentityRoleRepository _roleRepository;
+        private readonly IIdentityRoleRepository _roleRepository;
+
         public RoleAppService(IIdentityRoleAppService identityRoleAppService, IPermissionAppService permissionAppService, IIdentityRoleRepository roleRepository)
         {
             _identityRoleAppService = identityRoleAppService;
@@ -37,13 +39,17 @@ namespace CompanyNameProjectName.Roles
 
         [HttpPost]
         [SwaggerOperation(summary: "分页获取角色列表", Tags = new[] { "Role" })]
+        [Authorize("AbpIdentity.Roles.Query")]
         public async Task<PagedResultDto<IdentityRoleDto>> ListAsync(GetRoleListInput input)
         {
             var request = new GetIdentityRolesInput();
             request.Filter = input.filter?.Trim();
             request.MaxResultCount = input.PageSize;
             request.SkipCount = (input.PageIndex - 1) * input.PageSize;
-            return await _identityRoleAppService.GetListAsync(request);
+            List<IdentityRole> list = await _roleRepository.GetListAsync(request.Sorting, request.MaxResultCount, request.SkipCount, request.Filter).ConfigureAwait(continueOnCapturedContext: false);
+            return new PagedResultDto<IdentityRoleDto>(await _roleRepository.GetCountAsync(request.Filter).ConfigureAwait(continueOnCapturedContext: false), base.ObjectMapper.Map<List<IdentityRole>, List<IdentityRoleDto>>(list));
+
+            //return await _identityRoleAppService.GetListAsync(request);
         }
 
         [Authorize("AbpIdentity.Roles.Create")]
@@ -70,9 +76,10 @@ namespace CompanyNameProjectName.Roles
         }
 
         [SwaggerOperation(summary: "获取角色权限", Tags = new[] { "Role" })]
-        public async Task<GetPermissionListResultDto> GetPermissionAsync(string providerName, string providerKey)
+        public async Task<PermissionOutput> GetPermissionAsync(string providerName, string providerKey)
         {
-            return await _permissionAppService.GetAsync(providerName, providerKey);
+            var permissions = await _permissionAppService.GetAsync(providerName, providerKey);
+            return BuildTreeData(permissions.Groups);
         }
 
         [SwaggerOperation(summary: "修改角色权限", Tags = new[] { "Role" })]
@@ -82,5 +89,70 @@ namespace CompanyNameProjectName.Roles
         {
             await _permissionAppService.UpdateAsync(input.ProviderName, input.ProviderKey, input.UpdatePermissionsDto);
         }
+
+        private PermissionOutput BuildTreeData(List<PermissionGroupDto> input)
+        {
+            var result = new PermissionOutput();
+            var excludes = new List<string> {
+                "AbpIdentity.Users.ManagePermissions",
+                "FeatureManagement",
+                "FeatureManagement.ManageHostFeatures",
+                "AbpTenantManagement",
+                "AbpTenantManagement.Tenants",
+                "AbpTenantManagement.Tenants.Create",
+                "AbpTenantManagement.Tenants.Update",
+                "AbpTenantManagement.Tenants.Delete",
+                "AbpTenantManagement.Tenants.ManageFeatures",
+                "AbpTenantManagement.Tenants.ManageConnectionStrings"
+            };
+
+            var permissions = new List<PermissionTreeDto>();
+
+            foreach (var group in input)
+            {
+                if (excludes.Any(e => e == group.Name)) continue;
+               
+                var groupPermission = new PermissionTreeDto();
+                groupPermission.Key = group.Name;
+                groupPermission.Title = group.DisplayName;
+                foreach (var item in group.Permissions)
+                {
+                    result.AllGrants.Add(item.Name);
+                    if (item.IsGranted)
+                    {
+                        result.Grants.Add(item.Name);
+                    }
+                    //获取ParentName=null的权限
+                    var management = group.Permissions.Where(e => e.ParentName.IsNullOrWhiteSpace()).ToList();
+
+                    foreach (var managementItem in management)
+                    {
+                        if (!groupPermission.Children.Any(e => e.Key == managementItem.Name))
+                        {
+                            var managementPermission = new PermissionTreeDto()
+                            {
+                                Key = managementItem.Name,
+                                Title = managementItem.DisplayName
+                            };
+                            // 获取management下权限
+                            var childrenPermission = group.Permissions.Where(e => e.ParentName==managementItem.Name).ToList();
+                            foreach (var childrenPermissionItem in childrenPermission)
+                            {
+                                managementPermission.Children.Add(new PermissionTreeDto()
+                                {
+                                    Key = childrenPermissionItem.Name,
+                                    Title = childrenPermissionItem.DisplayName
+                                });
+                            }
+                            groupPermission.Children.Add(managementPermission);
+                        }
+                    }
+                }
+                permissions.Add(groupPermission);
+            }
+            result.Permissions = permissions;
+            return result;
+        }
+
     }
 }
