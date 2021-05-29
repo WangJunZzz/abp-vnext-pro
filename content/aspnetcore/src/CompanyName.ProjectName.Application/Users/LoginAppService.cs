@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Identity;
+using Volo.Abp.Security.Claims;
 
 namespace CompanyNameProjectName.Users
 {
@@ -72,12 +73,13 @@ namespace CompanyNameProjectName.Users
             var key = Encoding.ASCII.GetBytes(_jwtOptions.SecurityKey);
 
             var claims = new List<Claim> {
-                    new Claim(JwtClaimTypes.Audience, _jwtOptions.Audience),
-                    new Claim(JwtClaimTypes.Issuer, _jwtOptions.Issuer),
-                    new Claim(JwtClaimTypes.Subject, user.Id.ToString()),
-                    new Claim(JwtClaimTypes.Name, user.Name),
-                    new Claim(JwtClaimTypes.Email, user.Email),
-                    new Claim("TenantId", user.TenantId.ToString())
+                new Claim(JwtClaimTypes.Audience, _jwtOptions.Audience),
+                new Claim(JwtClaimTypes.Issuer, _jwtOptions.Issuer),
+                new Claim(AbpClaimTypes.UserId, user.Id.ToString()),
+                new Claim(AbpClaimTypes.Name, user.Name),
+                new Claim(AbpClaimTypes.UserName, user.UserName),
+                new Claim(AbpClaimTypes.Email, user.Email),
+                new Claim(AbpClaimTypes.TenantId, user.TenantId.ToString())
             };
 
             foreach (var item in roles)

@@ -23,14 +23,12 @@
     "lint:eslint": "eslint \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
     "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
     "lint:pretty": "pretty-quick --staged",
     "test:gzip": "http-server dist --cors --gzip -c-1",
     "test:br": "http-server dist --cors --brotli -c-1",
     "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
-    "install:husky": "is-ci || husky install",
-    "gen:icon": "esno ./build/generate/icon/index.ts",
-    "postinstall": "npm run install:husky"
+    "gen:icon": "esno ./build/generate/icon/index.ts"
+
   },
   "dependencies": {
     "@iconify/iconify": "^2.0.0-rc.6",
@@ -90,7 +88,6 @@
     "esno": "^0.5.0",
     "fs-extra": "^9.1.0",
     "http-server": "^0.12.3",
-    "husky": "^6.0.0",
     "inquirer": "^8.0.0",
     "is-ci": "^3.0.0",
     "less": "^4.1.1",

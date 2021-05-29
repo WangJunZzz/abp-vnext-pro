@@ -31,4 +31,5 @@ export default {
   audit_url: "Url地址",
   audit_entityInfo: "实体信息",
   audit_message: "实体信息",
+  audit_applicationName:"应用名称"
 };

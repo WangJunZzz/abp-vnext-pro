@@ -7,7 +7,7 @@ export default {
   forgetFormTitle: '重置密码',
 
   signInTitle: 'Abp Vnext Pro',
-  signInDesc: '基于DotNet Core5.0,Abp Vnext 4.2的开箱即用的后台模板 ',
+  signInDesc: '基于DotNet Core5.0,Abp Vnext 4.3的开箱即用的后台模板 ',
   policy: '我同意xxx隐私政策',
   scanSign: `扫码后点击"确认"，即可完成登录`,
 

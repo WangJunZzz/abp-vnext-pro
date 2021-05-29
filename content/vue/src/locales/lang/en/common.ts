@@ -23,5 +23,7 @@ export default {
   operationSuccess: 'Operation Success',
   operationFail: 'Operation Fail',
   authorityText: 'Login expired',
-  systemErrorText: 'System Error'
+  systemErrorText: 'System Error',
+  enable:"Enable",
+  disable:"Disable"
 };

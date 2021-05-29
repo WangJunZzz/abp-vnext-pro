@@ -55,7 +55,7 @@
   </Header>
 </template>
 <script lang="ts">
-  import { defineComponent, unref, computed } from 'vue';
+  import { defineComponent, unref, computed,onMounted } from 'vue';
 
   import { propTypes } from '/@/utils/propTypes';
 
@@ -80,6 +80,8 @@
 
   import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
   import { useLocale } from '/@/locales/useLocale';
+  import { useUserStoreWidthOut } from '/@/store/modules/user';
+  import jwt_decode from 'jwt-decode';
 
   export default defineComponent({
     name: 'LayoutHeader',
@@ -173,6 +175,37 @@
         return unref(getSplit) ? MenuModeEnum.HORIZONTAL : null;
       });
 
+   function timestampToTime(timestamp) {
+      var date = new Date(timestamp * 1000); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+      var Y = date.getFullYear() + '-';
+      var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+      var D = date.getDate() + ' ';
+      var h = date.getHours() + ':';
+      var m = date.getMinutes() + ':';
+      var s = date.getSeconds();
+      return Y + M + D + h + m + s;
+    }
+
+    const checkLoginExpired = () => {
+      setInterval(() => {
+        const userStore = useUserStoreWidthOut();
+        const token = userStore.getToken;
+        if (!token) {
+          userStore.logout(true);
+        } else {
+          const decoded: any = jwt_decode(token);
+          let tokenExpiredTime = timestampToTime(decoded.exp);
+          var tokenExpiredTimeFormat = new Date(Date.parse(tokenExpiredTime));
+          const currentTime = new Date();
+          if (currentTime >= tokenExpiredTimeFormat) {
+            userStore.logout(true);
+          }
+        }
+      }, 1000 * 60);
+    };
+    onMounted(() => {
+      checkLoginExpired();
+    });
       return {
         prefixCls,
         getHeaderClass,

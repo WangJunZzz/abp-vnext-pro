@@ -11,8 +11,8 @@
         </a-button>
       </template>
       <template #lockoutEnabled="{ record }">
-        <Tag :color="record.lockoutEnabled ? 'red' : 'green'">
-          {{ record.lockoutEnabled ? '已锁定' : '未锁定' }}
+        <Tag :color="record.lockoutEnabled && record.lockoutEnd!=null ? 'red' : 'green'">
+          {{ record.lockoutEnabled && record.lockoutEnd!=null ? t('common.enable') : t('common.disable')  }}
         </Tag>
       </template>
       <template #action="{ record }">
@@ -40,7 +40,7 @@
           @click="handleLock(record)"
           v-auth="'AbpIdentity.Users.Lock'"
         >
-          {{ record.lockoutEnabled ? '启用' : '禁用' }}
+          {{ record.lockoutEnabled ? t('common.enable') : t('common.disable') }}
         </a-button>
       </template>
     </BasicTable>
@@ -103,7 +103,7 @@
         canResize: false,
         showIndexColumn: true,
         actionColumn: {
-          width: 150,
+          width: 200,
           title: t('common.action'),
           dataIndex: 'action',
           slots: {

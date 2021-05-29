@@ -33,4 +33,5 @@ export default {
   audit_url: "URL",
   audit_entityInfo: "EntityInformation",
   audit_message: "Entity Message",
+  audit_applicationName:"ApplicationName"
 };

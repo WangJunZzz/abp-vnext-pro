@@ -108,18 +108,11 @@ namespace CompanyNameProjectName
             }
 
             app.UseCorrelationId();
-            app.UseVirtualFiles();
+            app.UseStaticFiles();
             app.UseRouting();
             app.UseCors(DefaultCorsPolicyName);
             app.UseAuthentication();
             app.UseJwtTokenMiddleware();
-
-            //if (MultiTenancyConsts.IsEnabled)
-            //{
-            //    app.UseMultiTenancy();
-            //}
-
-            //app.UseIdentityServer();
             app.UseAuthorization();
 
             app.UseSwagger();
@@ -161,6 +154,7 @@ namespace CompanyNameProjectName
             {
                 options.IsEnabled = true; 
                 options.EntityHistorySelectors.AddAllEntities(); 
+                options.ApplicationName = "CompanyName.ProjectName";
             });
         }
 

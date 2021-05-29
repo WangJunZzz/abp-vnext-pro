@@ -7,7 +7,7 @@ export default {
   forgetFormTitle: 'Reset password',
 
   signInTitle: 'Abp Vnext Pro',
-  signInDesc: '基于DotNet Core5.0,Abp Vnext 4.2的开箱即用的后台模板 ',
+  signInDesc: '基于DotNet Core5.0,Abp Vnext 4.3的开箱即用的后台模板 ',
   policy: 'I agree to the xxx Privacy Policy',
   scanSign: `scanning the code to complete the login`,
 

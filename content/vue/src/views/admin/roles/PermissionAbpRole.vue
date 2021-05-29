@@ -101,6 +101,7 @@
       };
 
       const submitRolePermisstionAsync = async () => {
+        debugger;
         let request: UpdateRolePermissionsDto = new UpdateRolePermissionsDto();
         request.updatePermissionsDto = new UpdatePermissionsDto();
 

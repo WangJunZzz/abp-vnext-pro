@@ -22,5 +22,7 @@ export default {
   operationSuccess: '操作成功',
   operationFail: '操作失败',
   authorityText: '登陆过期',
-  systemErrorText: '系统异常'
+  systemErrorText: '系统异常',
+  enable:"启用",
+  disable:"禁用"
 };

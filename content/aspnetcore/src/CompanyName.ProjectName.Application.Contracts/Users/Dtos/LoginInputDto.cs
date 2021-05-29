@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Volo.Abp.Auditing;
 
 namespace CompanyNameProjectName.Dtos.Users
 {
@@ -17,6 +18,7 @@ namespace CompanyNameProjectName.Dtos.Users
         /// <summary>
         /// 密码
         /// </summary>
+        [DisableAuditing]
         public string Password { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

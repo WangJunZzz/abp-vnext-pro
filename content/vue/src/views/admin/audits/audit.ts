@@ -253,6 +253,10 @@ export const searchFormSchema: FormSchema[] = [
 ]
 export const tableColumns: BasicColumn[] = [
   {
+    title: t('routes.admin.audit_applicationName'),
+    dataIndex: 'applicationName',
+  },
+  {
     title: t('routes.admin.audit_httpRequest'),
     dataIndex: 'httpMethod',
     slots: { customRender: 'category' }

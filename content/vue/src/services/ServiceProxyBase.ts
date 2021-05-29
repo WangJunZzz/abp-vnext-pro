@@ -4,7 +4,7 @@ import { useUserStoreWidthOut } from '/@/store/modules/user';
 import router from '/@/router';
 import { PageEnum } from '/@/enums/pageEnum';
 import { useI18n } from '/@/hooks/web/useI18n';
-
+import { Modal } from 'ant-design-vue';
 export class ServiceProxyBase {
 
   protected transformOptions(options: AxiosRequestConfig) {
@@ -20,14 +20,16 @@ export class ServiceProxyBase {
 
     return Promise.resolve(options);
   }
-  protected transformResult(url: string, response: AxiosResponse, processor: (response: AxiosResponse) => Promise<any>): Promise<any> {
-
-    const { t } = useI18n();
+  protected transformResult(_url: string, response: AxiosResponse, processor: (response: AxiosResponse) => Promise<any>): Promise<any> {
     if (response.status == 401 || response.status == 403 || response.status == 302) {
+      const { t } = useI18n();
       message.error(t('common.authorityText'));
       router.replace(PageEnum.BASE_LOGIN)
     } else if (response.status >= 500) {
-      message.error(response.data.error.message)
+      Modal.error({
+        title: '请求异常',
+        content: response.data.error.message,
+      });
     }
     return processor(response);
   }
