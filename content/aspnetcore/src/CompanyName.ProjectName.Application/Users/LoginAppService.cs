@@ -95,7 +95,6 @@ namespace CompanyNameProjectName.Users
             var handler = new JwtSecurityTokenHandler();
             var token = handler.CreateToken(tokenDescriptor);
             return handler.WriteToken(token);
-
         }
     }
 }

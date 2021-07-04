@@ -25,9 +25,6 @@ using Volo.Abp.AspNetCore.ExceptionHandling;
 using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Auditing;
 using Volo.Abp.Autofac;
@@ -48,7 +45,6 @@ namespace CompanyNameProjectName
         typeof(AbpAspNetCoreMultiTenancyModule),
         typeof(CompanyNameProjectNameApplicationModule),
         typeof(CompanyNameProjectNameEntityFrameworkCoreDbMigrationsModule),
-        typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpAccountWebIdentityServerModule),
         typeof(AbpAspNetCoreSerilogModule),
@@ -76,7 +72,6 @@ namespace CompanyNameProjectName
         {
             var configuration = context.Services.GetConfiguration();
             ConfigureOptions(context);
-            ConfigureBundles();
             ConfigureUrls(configuration);
             ConfigureConventionalControllers();
             ConfigureJwtAuthentication(context, configuration);
@@ -88,6 +83,7 @@ namespace CompanyNameProjectName
             ConfigureCache(context.Services);
             ConfigureAuditLog();
             ConfigureHangfire(context.Services);
+            ConfigureHealthChecks(context);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -101,12 +97,6 @@ namespace CompanyNameProjectName
             }
 
             app.UseAbpRequestLocalization();
-
-            if (!env.IsDevelopment())
-            {
-                app.UseErrorPage();
-            }
-
             app.UseCorrelationId();
             app.UseStaticFiles();
             app.UseRouting();
@@ -114,7 +104,6 @@ namespace CompanyNameProjectName
             app.UseAuthentication();
             app.UseJwtTokenMiddleware();
             app.UseAuthorization();
-
             app.UseSwagger();
             app.UseAbpSwaggerUI(c =>
             {
@@ -131,10 +120,27 @@ namespace CompanyNameProjectName
             });
             app.UseConfiguredEndpoints();
 
-
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHealthChecks("/health");
+            });
         }
 
         #region 私有方法
+
+
+        private void ConfigureHealthChecks(ServiceConfigurationContext context)
+        {
+            
+            var redisConnectionString = 
+                context.Services.GetConfiguration().GetValue<string>("Cache:Redis:ConnectionString")
+                +",defaultdatabase=" 
+                + context.Services.GetConfiguration().GetValue<int>("Cache:Redis:DatabaseId", 1);
+
+            var mysqlConnectionString = context.Services.GetConfiguration().GetConnectionString("Default");
+            context.Services.AddHealthChecks().AddRedis(redisConnectionString).AddMySql(mysqlConnectionString);
+        }
+
         /// <summary>
         /// 配置options
         /// </summary>
@@ -152,8 +158,8 @@ namespace CompanyNameProjectName
         {
             Configure<AbpAuditingOptions>(options =>
             {
-                options.IsEnabled = true; 
-                options.EntityHistorySelectors.AddAllEntities(); 
+                options.IsEnabled = true;
+                options.EntityHistorySelectors.AddAllEntities();
                 options.ApplicationName = "CompanyName.ProjectName";
             });
         }
@@ -187,19 +193,16 @@ namespace CompanyNameProjectName
                     options.SendExceptionsDetailsToClients = true;
                 });
             }
-        }
-
-
-        private void ConfigureBundles()
-        {
-            Configure<AbpBundlingOptions>(options =>
+            // 如果要求返回值正确和异常格式一致添加次特性
+            context.Services.AddMvc(options =>
             {
-                options.StyleBundles.Configure(
-                    BasicThemeBundles.Styles.Global,
-                    bundle => { bundle.AddFiles("/global-styles.css"); }
-                );
+                options.Filters.Add(typeof(ResultExceptionFilter));
             });
+
         }
+
+
+
 
 
         private void ConfigureUrls(IConfiguration configuration)
@@ -231,7 +234,7 @@ namespace CompanyNameProjectName
             {
                 options.ConventionalControllers.Create(typeof(CompanyNameProjectNameApplicationModule).Assembly);
             });
-       
+
         }
 
         /// <summary>
@@ -362,7 +365,7 @@ namespace CompanyNameProjectName
             });
 
             var redisConnectionString = services.GetConfiguration().GetSection("Cache:Redis:ConnectionString").Value;
-            var redisDatabaseId = Convert.ToInt32(services.GetConfiguration().GetSection("Cache:Redis:DatabaseId").Value);
+            var redisDatabaseId = services.GetConfiguration().GetValue<int>("Cache:Redis:DatabaseId", 1);
 
             // 启用Hangfire 并使用Redis作为持久化
             services.AddHangfire(config =>

@@ -26,6 +26,12 @@
 	
 	<ItemGroup>
 
+		<PackageReference Include="AspNetCore.HealthChecks.MySql" Version="5.0.1" />
+
+		<PackageReference Include="AspNetCore.HealthChecks.Redis" Version="5.0.2" />
+
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="5.0.7" />
+
 		<PackageReference Include="nacos-sdk-csharp" Version="1.0.0" />
 		<PackageReference Include="nacos-sdk-csharp.AspNetCore" Version="1.0.0" />
 		<PackageReference Include="nacos-sdk-csharp.Extensions.Configuration" Version="1.0.0" />
@@ -35,7 +41,6 @@
 
 		<PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" Version="$(AbpVersion)" />
 		<PackageReference Include="Volo.Abp.Autofac" Version="$(AbpVersion)" />
-		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="$(AbpVersion)" />
 		<PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="$(AbpVersion)" />
 		<PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="$(AbpVersion)" />
 		<PackageReference Include="Volo.Abp.Swashbuckle" Version="$(AbpVersion)" />

@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:5.0
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim
 
 # ´´½¨Ä¿Â¼
 RUN mkdir /apps
