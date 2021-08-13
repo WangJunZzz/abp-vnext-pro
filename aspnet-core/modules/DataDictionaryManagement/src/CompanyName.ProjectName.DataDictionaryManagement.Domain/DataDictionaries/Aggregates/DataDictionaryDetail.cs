@@ -86,7 +86,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.Aggr
         public void SetDescription(string description)
         {
             Guard.Length(description, nameof(description), DataDictionaryMaxLengths.Description);
-            Description = description;
+            Description =  Description = description ?? string.Empty;
         }
     }
 }

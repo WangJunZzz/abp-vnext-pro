@@ -18,9 +18,11 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
         ///  如果是其他的操作全部通过对应manger进行操作
         /// </summary>
         private readonly IDataDictionaryRepository _dataDictionaryRepository;
-
         private readonly DataDictionaryManager _dataDictionaryManager;
-        public DataDictionaryAppService(IDataDictionaryRepository dataDictionaryRepository, DataDictionaryManager dataDictionaryManager)
+        
+        public DataDictionaryAppService(
+            IDataDictionaryRepository dataDictionaryRepository,
+            DataDictionaryManager dataDictionaryManager)
         {
             _dataDictionaryRepository = dataDictionaryRepository;
             _dataDictionaryManager = dataDictionaryManager;

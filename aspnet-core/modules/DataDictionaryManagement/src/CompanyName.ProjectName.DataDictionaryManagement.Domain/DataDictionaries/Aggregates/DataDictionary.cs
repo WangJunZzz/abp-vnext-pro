@@ -90,7 +90,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.Aggr
         private void SetDescription(string description)
         {
             Guard.Length(description, nameof(description), DataDictionaryMaxLengths.Description);
-            Description = description;
+            Description = description ?? string.Empty;
         }
 
         public void AddDetail(Guid dataDictionayDetailId, string code, string displayText, int order = 1,
