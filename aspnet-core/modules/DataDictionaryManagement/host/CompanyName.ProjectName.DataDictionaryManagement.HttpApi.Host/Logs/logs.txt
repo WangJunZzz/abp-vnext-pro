@@ -466,3 +466,214 @@ WHERE @__ef_filter__p_0 OR NOT (`d`.`IsDeleted`)
 2021-08-12 21:13:59.797 +08:00 [INF] Executed action CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.DataDictionaryController.GetPagingListAsync (CompanyName.ProjectName.DataDictionaryManagement.HttpApi) in 2351.164ms
 2021-08-12 21:13:59.799 +08:00 [INF] Executed endpoint 'CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.DataDictionaryController.GetPagingListAsync (CompanyName.ProjectName.DataDictionaryManagement.HttpApi)'
 2021-08-12 21:13:59.810 +08:00 [INF] Request finished HTTP/2 GET https://localhost:44333/api/app/data-dictionary/paging-list - - - 200 - application/json;+charset=utf-8 2427.1745ms
+2021-08-14 01:42:25.968 +08:00 [INF] Starting web host.
+2021-08-14 01:42:26.678 +08:00 [INF] User profile is available. Using 'C:\Users\wangjun\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-14 01:42:26.766 +08:00 [INF] Loaded ABP modules:
+2021-08-14 01:42:26.766 +08:00 [INF] - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementHttpApiHostModule
+2021-08-14 01:42:26.766 +08:00 [INF]   - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.Domain.AbpDddDomainModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.Auditing.AbpAuditingModule
+2021-08-14 01:42:26.766 +08:00 [INF]           - Volo.Abp.Data.AbpDataModule
+2021-08-14 01:42:26.766 +08:00 [INF]             - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2021-08-14 01:42:26.766 +08:00 [INF]               - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2021-08-14 01:42:26.766 +08:00 [INF]               - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2021-08-14 01:42:26.766 +08:00 [INF]             - Volo.Abp.Uow.AbpUnitOfWorkModule
+2021-08-14 01:42:26.766 +08:00 [INF]             - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2021-08-14 01:42:26.766 +08:00 [INF]           - Volo.Abp.Json.AbpJsonModule
+2021-08-14 01:42:26.766 +08:00 [INF]             - Volo.Abp.Timing.AbpTimingModule
+2021-08-14 01:42:26.766 +08:00 [INF]               - Volo.Abp.Localization.AbpLocalizationModule
+2021-08-14 01:42:26.766 +08:00 [INF]                 - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2021-08-14 01:42:26.766 +08:00 [INF]                 - Volo.Abp.Settings.AbpSettingsModule
+2021-08-14 01:42:26.766 +08:00 [INF]                   - Volo.Abp.Security.AbpSecurityModule
+2021-08-14 01:42:26.766 +08:00 [INF]                   - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2021-08-14 01:42:26.766 +08:00 [INF]           - Volo.Abp.Threading.AbpThreadingModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.EventBus.AbpEventBusModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.Guids.AbpGuidsModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.Specifications.AbpSpecificationsModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainSharedModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.Validation.AbpValidationModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationContractsModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.Application.AbpDddApplicationContractsModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.Authorization.AbpAuthorizationModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - Volo.Abp.Application.AbpDddApplicationModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.Http.AbpHttpAbstractionsModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.Features.AbpFeaturesModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2021-08-14 01:42:26.766 +08:00 [INF]   - CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore.DataDictionaryManagementEntityFrameworkCoreModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2021-08-14 01:42:26.766 +08:00 [INF]   - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementHttpApiModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.Http.AbpHttpModule
+2021-08-14 01:42:26.766 +08:00 [INF]           - Volo.Abp.Minify.AbpMinifyModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.UI.AbpUiModule
+2021-08-14 01:42:26.766 +08:00 [INF]   - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2021-08-14 01:42:26.766 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2021-08-14 01:42:26.766 +08:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2021-08-14 01:42:26.766 +08:00 [INF]   - Volo.Abp.Caching.StackExchangeRedis.AbpCachingStackExchangeRedisModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - Volo.Abp.Caching.AbpCachingModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.Serialization.AbpSerializationModule
+2021-08-14 01:42:26.766 +08:00 [INF]   - Volo.Abp.EntityFrameworkCore.MySQL.AbpEntityFrameworkCoreMySQLModule
+2021-08-14 01:42:26.766 +08:00 [INF]   - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2021-08-14 01:42:26.766 +08:00 [INF]   - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2021-08-14 01:42:26.766 +08:00 [INF]   - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2021-08-14 01:42:26.766 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2021-08-14 01:42:26.766 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2021-08-14 01:42:26.766 +08:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2021-08-14 01:42:26.766 +08:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2021-08-14 01:42:27.220 +08:00 [INF] Initialized all ABP modules.
+2021-08-14 01:42:27.307 +08:00 [INF] Now listening on: https://localhost:44333
+2021-08-14 01:42:27.307 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-14 01:42:27.307 +08:00 [INF] Hosting environment: Development
+2021-08-14 01:42:27.307 +08:00 [INF] Content root path: D:\abp\aspnet-core\modules\DataDictionaryManagement\host\CompanyName.ProjectName.DataDictionaryManagement.HttpApi.Host
+2021-08-14 01:42:27.600 +08:00 [INF] Request starting HTTP/2 GET https://localhost:44333/ - -
+2021-08-14 01:42:28.573 +08:00 [INF] Entity Framework Core 5.0.7 initialized 'SettingManagementDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: QuerySplittingBehavior=SplitQuery ServerVersion 8.0.25-mysql 
+2021-08-14 01:42:28.897 +08:00 [INF] Executed DbCommand (41ms) [Parameters=[@__providerName_0='?' (Size = 64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`Name`, `a`.`ProviderKey`, `a`.`ProviderName`, `a`.`Value`
+FROM `AbpSettings` AS `a`
+WHERE (`a`.`ProviderName` = @__providerName_0) AND `a`.`ProviderKey` IS NULL
+2021-08-14 01:42:29.069 +08:00 [INF] Entity Framework Core 5.0.7 initialized 'SettingManagementDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: QuerySplittingBehavior=SplitQuery ServerVersion 8.0.25-mysql 
+2021-08-14 01:42:29.085 +08:00 [INF] Executed DbCommand (4ms) [Parameters=[@__providerName_0='?' (Size = 64)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`Name`, `a`.`ProviderKey`, `a`.`ProviderName`, `a`.`Value`
+FROM `AbpSettings` AS `a`
+WHERE (`a`.`ProviderName` = @__providerName_0) AND `a`.`ProviderKey` IS NULL
+2021-08-14 01:42:29.150 +08:00 [INF] Executing endpoint 'CompanyName.ProjectName.DataDictionaryManagement.Controllers.HomeController.Index (CompanyName.ProjectName.DataDictionaryManagement.HttpApi.Host)'
+2021-08-14 01:42:29.190 +08:00 [INF] Route matched with {action = "Index", controller = "Home", area = "", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Index() on controller CompanyName.ProjectName.DataDictionaryManagement.Controllers.HomeController (CompanyName.ProjectName.DataDictionaryManagement.HttpApi.Host).
+2021-08-14 01:42:29.213 +08:00 [INF] Executing RedirectResult, redirecting to /swagger.
+2021-08-14 01:42:29.218 +08:00 [INF] Executed action CompanyName.ProjectName.DataDictionaryManagement.Controllers.HomeController.Index (CompanyName.ProjectName.DataDictionaryManagement.HttpApi.Host) in 24.0668ms
+2021-08-14 01:42:29.218 +08:00 [INF] Executed endpoint 'CompanyName.ProjectName.DataDictionaryManagement.Controllers.HomeController.Index (CompanyName.ProjectName.DataDictionaryManagement.HttpApi.Host)'
+2021-08-14 01:42:29.231 +08:00 [INF] Request finished HTTP/2 GET https://localhost:44333/ - - - 302 0 - 1630.4825ms
+2021-08-14 01:42:29.232 +08:00 [INF] Request starting HTTP/2 GET https://localhost:44333/swagger/index.html - -
+2021-08-14 01:42:29.278 +08:00 [INF] Request finished HTTP/2 GET https://localhost:44333/swagger/index.html - - - 200 - text/html;charset=utf-8 46.2011ms
+2021-08-14 01:42:29.589 +08:00 [INF] Request starting HTTP/2 GET https://localhost:44333/swagger/v1/swagger.json - -
+2021-08-14 01:42:29.685 +08:00 [INF] Request finished HTTP/2 GET https://localhost:44333/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 95.6514ms
+2021-08-14 01:42:49.533 +08:00 [INF] Request starting HTTP/2 GET https://localhost:44333/abp/Swashbuckle/SetCsrfCookie application/json -
+2021-08-14 01:42:49.535 +08:00 [INF] Executing endpoint 'Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle)'
+2021-08-14 01:42:49.537 +08:00 [INF] Route matched with {area = "Abp", action = "SetCsrfCookie", controller = "AbpSwashbuckle", page = ""}. Executing controller action with signature Void SetCsrfCookie() on controller Volo.Abp.Swashbuckle.AbpSwashbuckleController (Volo.Abp.Swashbuckle).
+2021-08-14 01:42:49.548 +08:00 [INF] Executed action Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle) in 10.9288ms
+2021-08-14 01:42:49.548 +08:00 [INF] Executed endpoint 'Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle)'
+2021-08-14 01:42:49.548 +08:00 [INF] Request finished HTTP/2 GET https://localhost:44333/abp/Swashbuckle/SetCsrfCookie application/json - - 204 - - 15.0188ms
+2021-08-14 01:42:49.597 +08:00 [INF] Request starting HTTP/2 POST https://localhost:44333/api/app/data-dictionary/get-paging-list application/json 2
+2021-08-14 01:42:49.600 +08:00 [INF] CORS policy execution failed.
+2021-08-14 01:42:49.600 +08:00 [INF] Request origin https://localhost:44333 does not have permission to access the resource.
+2021-08-14 01:42:49.602 +08:00 [INF] Executing endpoint 'CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.DataDictionaryController.GetPagingListAsync (CompanyName.ProjectName.DataDictionaryManagement.HttpApi)'
+2021-08-14 01:42:49.612 +08:00 [INF] Route matched with {action = "GetPagingList", controller = "DataDictionary", area = "", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Volo.Abp.Application.Dtos.PagedResultDto`1[CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.Dtos.PagingDataDictionaryOutput]] GetPagingListAsync(CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.Dtos.PagingDataDictionaryInput) on controller CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.DataDictionaryController (CompanyName.ProjectName.DataDictionaryManagement.HttpApi).
+2021-08-14 01:42:49.992 +08:00 [INF] Entity Framework Core 5.0.7 initialized 'DataDictionaryManagementDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: QuerySplittingBehavior=SplitQuery ServerVersion 8.0.25-mysql 
+2021-08-14 01:42:50.018 +08:00 [ERR] An error occurred using the connection to database 'DataDictionaryManagement' on server 'localhost'.
+2021-08-14 01:42:50.085 +08:00 [ERR] ---------- RemoteServiceErrorInfo ----------
+{
+  "code": null,
+  "message": "An internal error occurred during your request!",
+  "details": null,
+  "data": {
+    "Server Error Code": 1049,
+    "SqlState": "42000"
+  },
+  "validationErrors": null
+}
+
+2021-08-14 01:42:50.086 +08:00 [ERR] Unknown database 'DataDictionaryManagement'
+MySqlConnector.MySqlException (0x80004005): Unknown database 'DataDictionaryManagement'
+   at MySqlConnector.Core.ServerSession.SwitchAuthenticationAsync(ConnectionSettings cs, PayloadData payload, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 604
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, Int32 startTickCount, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 467
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 110
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 140
+   at MySqlConnector.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int32 startTickCount, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 846
+   at MySqlConnector.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 410
+   at MySqlConnector.MySqlConnection.Open() in /_/src/MySqlConnector/MySqlConnection.cs:line 376
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransaction(IsolationLevel isolationLevel)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransaction()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.BeginTransaction()
+   at Volo.Abp.Uow.EntityFrameworkCore.UnitOfWorkDbContextProvider`1.CreateDbContextWithTransaction(IUnitOfWork unitOfWork)
+   at Volo.Abp.Uow.EntityFrameworkCore.UnitOfWorkDbContextProvider`1.CreateDbContext(IUnitOfWork unitOfWork)
+   at Volo.Abp.Uow.EntityFrameworkCore.UnitOfWorkDbContextProvider`1.CreateDbContext(IUnitOfWork unitOfWork, String connectionStringName, String connectionString)
+   at Volo.Abp.Uow.EntityFrameworkCore.UnitOfWorkDbContextProvider`1.<>c__DisplayClass10_0.<GetDbContext>b__0()
+   at System.Collections.Generic.AbpDictionaryExtensions.<>c__DisplayClass6_0`2.<GetOrAdd>b__0(TKey k)
+   at System.Collections.Generic.AbpDictionaryExtensions.GetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Func`2 factory)
+   at System.Collections.Generic.AbpDictionaryExtensions.GetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Func`1 factory)
+   at Volo.Abp.Uow.UnitOfWork.GetOrAddDatabaseApi(String key, Func`1 factory)
+   at Volo.Abp.Uow.EntityFrameworkCore.UnitOfWorkDbContextProvider`1.GetDbContext()
+   at Volo.Abp.Domain.Repositories.EntityFrameworkCore.EfCoreRepository`2.GetDbContext()
+   at Volo.Abp.Domain.Repositories.EntityFrameworkCore.EfCoreRepository`2.get_DbContext()
+   at Volo.Abp.Domain.Repositories.EntityFrameworkCore.EfCoreRepository`2.get_DbSet()
+   at Volo.Abp.Domain.Repositories.EntityFrameworkCore.EfCoreRepository`2.GetQueryable()
+   at Volo.Abp.Domain.Repositories.RepositoryBase`1.get_Provider()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.CountAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.EfCoreDataDictionaryRepository.GetPagingCountAsync(String filter, CancellationToken cancellationToken) in D:\abp\aspnet-core\modules\DataDictionaryManagement\src\CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore\EntityFrameworkCore\DataDictionaries\EfCoreDataDictionaryRepository.cs:line 76
+   at Castle.DynamicProxy.AsyncInterceptorBase.ProceedAsynchronous[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpMethodInvocationAdapterWithReturnValue`1.ProceedAsync()
+   at Volo.Abp.Uow.UnitOfWorkInterceptor.InterceptAsync(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAsyncAbpInterceptorAdapter`1.InterceptAsync[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo, Func`3 proceed)
+   at CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.DataDictionaryAppService.GetPagingListAsync(PagingDataDictionaryInput input, CancellationToken cancellationToken) in D:\abp\aspnet-core\modules\DataDictionaryManagement\src\CompanyName.ProjectName.DataDictionaryManagement.Application\DataDictionaries\DataDictionaryAppService.cs:line 40
+   at Castle.DynamicProxy.AsyncInterceptorBase.ProceedAsynchronous[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpMethodInvocationAdapterWithReturnValue`1.ProceedAsync()
+   at Volo.Abp.GlobalFeatures.GlobalFeatureInterceptor.InterceptAsync(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAsyncAbpInterceptorAdapter`1.InterceptAsync[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo, Func`3 proceed)
+   at Castle.DynamicProxy.AsyncInterceptorBase.ProceedAsynchronous[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpMethodInvocationAdapterWithReturnValue`1.ProceedAsync()
+   at Volo.Abp.Validation.ValidationInterceptor.InterceptAsync(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAsyncAbpInterceptorAdapter`1.InterceptAsync[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo, Func`3 proceed)
+   at Castle.DynamicProxy.AsyncInterceptorBase.ProceedAsynchronous[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpMethodInvocationAdapterWithReturnValue`1.ProceedAsync()
+   at Volo.Abp.Auditing.AuditingInterceptor.ProceedByLoggingAsync(IAbpMethodInvocation invocation, IAuditingHelper auditingHelper, IAuditLogScope auditLogScope)
+   at Volo.Abp.Auditing.AuditingInterceptor.InterceptAsync(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAsyncAbpInterceptorAdapter`1.InterceptAsync[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo, Func`3 proceed)
+   at Castle.DynamicProxy.AsyncInterceptorBase.ProceedAsynchronous[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpMethodInvocationAdapterWithReturnValue`1.ProceedAsync()
+   at Volo.Abp.Uow.UnitOfWorkInterceptor.InterceptAsync(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAsyncAbpInterceptorAdapter`1.InterceptAsync[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo, Func`3 proceed)
+   at lambda_method1158(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2021-08-14 01:42:50.088 +08:00 [ERR] ---------- Exception Data ----------
+Server Error Code = 1049
+SqlState = 42000
+
+2021-08-14 01:42:50.093 +08:00 [INF] Executing ObjectResult, writing value of type 'Volo.Abp.Http.RemoteServiceErrorResponse'.
+2021-08-14 01:42:50.101 +08:00 [INF] Executed action CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.DataDictionaryController.GetPagingListAsync (CompanyName.ProjectName.DataDictionaryManagement.HttpApi) in 489.2002ms
+2021-08-14 01:42:50.101 +08:00 [INF] Executed endpoint 'CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.DataDictionaryController.GetPagingListAsync (CompanyName.ProjectName.DataDictionaryManagement.HttpApi)'
+2021-08-14 01:42:50.173 +08:00 [INF] Entity Framework Core 5.0.7 initialized 'AbpAuditLoggingDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: QuerySplittingBehavior=SplitQuery ServerVersion 8.0.25-mysql 
+2021-08-14 01:42:50.414 +08:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 96), @p2='?' (Size = 512), @p3='?' (Size = 64), @p4='?' (Size = 64), @p5='?' (Size = 128), @p6='?' (Size = 256), @p7='?' (Size = 40), @p8='?' (Size = 64), @p9='?' (Size = 4000), @p10='?' (DbType = Int32), @p11='?' (DbType = DateTime), @p12='?' (Size = 4000), @p13='?' (Size = 16), @p14='?' (DbType = Int32), @p15='?' (DbType = Guid), @p16='?' (DbType = Guid), @p17='?' (DbType = Guid), @p18='?' (Size = 4000), @p19='?' (Size = 256), @p20='?' (DbType = Guid), @p21='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `AbpAuditLogs` (`Id`, `ApplicationName`, `BrowserInfo`, `ClientId`, `ClientIpAddress`, `ClientName`, `Comments`, `ConcurrencyStamp`, `CorrelationId`, `Exceptions`, `ExecutionDuration`, `ExecutionTime`, `ExtraProperties`, `HttpMethod`, `HttpStatusCode`, `ImpersonatorTenantId`, `ImpersonatorUserId`, `TenantId`, `TenantName`, `Url`, `UserId`, `UserName`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21);
+2021-08-14 01:42:50.424 +08:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 128), @p6='?' (Size = 2000), @p7='?' (Size = 256), @p8='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `AbpAuditLogActions` (`Id`, `AuditLogId`, `ExecutionDuration`, `ExecutionTime`, `ExtraProperties`, `MethodName`, `Parameters`, `ServiceName`, `TenantId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2021-08-14 01:42:50.425 +08:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (Size = 128), @p6='?' (Size = 2000), @p7='?' (Size = 256), @p8='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `AbpAuditLogActions` (`Id`, `AuditLogId`, `ExecutionDuration`, `ExecutionTime`, `ExtraProperties`, `MethodName`, `Parameters`, `ServiceName`, `TenantId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2021-08-14 01:42:50.466 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-14 01:42:50.467 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-14 01:42:50.476 +08:00 [INF] Request finished HTTP/2 POST https://localhost:44333/api/app/data-dictionary/get-paging-list application/json 2 - 500 - application/json;+charset=utf-8 879.5256ms

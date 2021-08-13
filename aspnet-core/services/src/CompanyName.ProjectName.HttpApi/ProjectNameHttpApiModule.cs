@@ -1,4 +1,5 @@
-﻿using Localization.Resources.AbpUi;
+﻿using CompanyName.ProjectName.DataDictionaryManagement;
+using Localization.Resources.AbpUi;
 using CompanyName.ProjectName.Localization;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
@@ -18,7 +19,8 @@ namespace CompanyName.ProjectName
         typeof(AbpPermissionManagementHttpApiModule),
         typeof(AbpTenantManagementHttpApiModule),
         typeof(AbpFeatureManagementHttpApiModule),
-        typeof(AbpSettingManagementHttpApiModule)
+        typeof(AbpSettingManagementHttpApiModule),
+        typeof(DataDictionaryManagementHttpApiModule)
         )]
     public class ProjectNameHttpApiModule : AbpModule
     {

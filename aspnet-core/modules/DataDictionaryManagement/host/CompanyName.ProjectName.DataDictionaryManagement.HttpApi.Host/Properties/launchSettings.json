@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "CompanyName.ProjectName.DataDictionaryManagement.DemoApp": {
+    "CompanyName.ProjectName.DataDictionaryManagement.HttpApi.Host": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:44333",

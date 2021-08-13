@@ -46,7 +46,7 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
             builder.ConfigureProjectName();
 
             // 数据字典
-            builder.ConfigureDataDictionaryManagement();
+            //builder.ConfigureDataDictionaryManagement();
         }
     }
 }
