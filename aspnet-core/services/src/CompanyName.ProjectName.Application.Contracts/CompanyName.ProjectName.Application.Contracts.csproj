@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>CompanyName.ProjectName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\CompanyName.ProjectName.DataDictionaryManagement.Application.Contracts\CompanyName.ProjectName.DataDictionaryManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\CompanyName.ProjectName.Domain.Shared\CompanyName.ProjectName.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.ObjectExtending" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Account.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" Version="$(AbpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Users\Dtos" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="AuditLogs\Dto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="AuditLogs\Dto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="AuditLogs\Dto\**" />
+  </ItemGroup>
+
+</Project>

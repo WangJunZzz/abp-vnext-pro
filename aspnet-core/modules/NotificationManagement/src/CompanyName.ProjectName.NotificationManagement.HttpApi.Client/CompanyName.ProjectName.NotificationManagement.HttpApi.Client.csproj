@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+ <Import Project="../../../../common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>CompanyName.ProjectName.NotificationManagement</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Http.Client" Version="$(AbpPackageVersion)" />
+    <ProjectReference Include="..\CompanyName.ProjectName.NotificationManagement.Application.Contracts\CompanyName.ProjectName.NotificationManagement.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

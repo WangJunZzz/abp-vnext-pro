@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FreeSql" Version="2.5.200" />
+		<PackageReference Include="FreeSql.Provider.MySql" Version="2.5.200" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CompanyName.ProjectName.QueryManagement.Domain\CompanyName.ProjectName.QueryManagement.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,7 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <AbpPackageVersion>4.3.3</AbpPackageVersion>
+  </PropertyGroup>
+
+</Project>
