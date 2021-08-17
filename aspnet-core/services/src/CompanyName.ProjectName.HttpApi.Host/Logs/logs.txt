@@ -33929,3 +33929,1686 @@ System.InvalidOperationException: Cannot create a DbSet for 'Client' because thi
 2021-08-17 16:53:14.399 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/swagger/index.html - - - 200 - text/html;charset=utf-8 51.9429ms
 2021-08-17 16:53:14.712 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/swagger/v1/swagger.json - -
 2021-08-17 16:53:15.033 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 320.9162ms
+2021-08-17 17:36:29.538 +08:00 [INF] Starting CompanyName.ProjectName.HttpApi.Host.
+2021-08-17 17:36:33.627 +08:00 [INF] User profile is available. Using 'C:\Users\wangjun\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-17 17:36:33.745 +08:00 [INF] Loaded ABP modules:
+2021-08-17 17:36:33.745 +08:00 [INF] - CompanyName.ProjectName.ProjectNameHttpApiHostModule
+2021-08-17 17:36:33.745 +08:00 [INF]   - CompanyName.ProjectName.ProjectNameHttpApiModule
+2021-08-17 17:36:33.745 +08:00 [INF]     - CompanyName.ProjectName.ProjectNameApplicationContractsModule
+2021-08-17 17:36:33.745 +08:00 [INF]       - CompanyName.ProjectName.ProjectNameDomainSharedModule
+2021-08-17 17:36:33.745 +08:00 [INF]         - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2021-08-17 17:36:33.745 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2021-08-17 17:36:33.745 +08:00 [INF]         - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2021-08-17 17:36:33.745 +08:00 [INF]           - Volo.Abp.Validation.AbpValidationModule
+2021-08-17 17:36:33.745 +08:00 [INF]             - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2021-08-17 17:36:33.745 +08:00 [INF]             - Volo.Abp.Localization.AbpLocalizationModule
+2021-08-17 17:36:33.745 +08:00 [INF]               - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2021-08-17 17:36:33.745 +08:00 [INF]               - Volo.Abp.Settings.AbpSettingsModule
+2021-08-17 17:36:33.745 +08:00 [INF]                 - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2021-08-17 17:36:33.745 +08:00 [INF]                 - Volo.Abp.Security.AbpSecurityModule
+2021-08-17 17:36:33.745 +08:00 [INF]                 - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2021-08-17 17:36:33.745 +08:00 [INF]                   - Volo.Abp.Data.AbpDataModule
+2021-08-17 17:36:33.745 +08:00 [INF]                     - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2021-08-17 17:36:33.745 +08:00 [INF]                     - Volo.Abp.Uow.AbpUnitOfWorkModule
+2021-08-17 17:36:33.745 +08:00 [INF]                     - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2021-08-17 17:36:33.745 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2021-08-17 17:36:33.745 +08:00 [INF]           - Volo.Abp.Users.AbpUsersDomainSharedModule
+2021-08-17 17:36:33.745 +08:00 [INF]           - Volo.Abp.Features.AbpFeaturesModule
+2021-08-17 17:36:33.745 +08:00 [INF]             - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2021-08-17 17:36:33.745 +08:00 [INF]         - Volo.Abp.IdentityServer.AbpIdentityServerDomainSharedModule
+2021-08-17 17:36:33.745 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2021-08-17 17:36:33.745 +08:00 [INF]         - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2021-08-17 17:36:33.745 +08:00 [INF]         - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2021-08-17 17:36:33.745 +08:00 [INF]       - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2021-08-17 17:36:33.745 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2021-08-17 17:36:33.745 +08:00 [INF]           - Volo.Abp.Users.AbpUsersAbstractionModule
+2021-08-17 17:36:33.745 +08:00 [INF]             - Volo.Abp.EventBus.AbpEventBusModule
+2021-08-17 17:36:33.745 +08:00 [INF]           - Volo.Abp.Authorization.AbpAuthorizationModule
+2021-08-17 17:36:33.745 +08:00 [INF]           - Volo.Abp.Application.AbpDddApplicationModule
+2021-08-17 17:36:33.745 +08:00 [INF]             - Volo.Abp.Domain.AbpDddDomainModule
+2021-08-17 17:36:33.745 +08:00 [INF]               - Volo.Abp.Auditing.AbpAuditingModule
+2021-08-17 17:36:33.745 +08:00 [INF]                 - Volo.Abp.Json.AbpJsonModule
+2021-08-17 17:36:33.745 +08:00 [INF]                   - Volo.Abp.Timing.AbpTimingModule
+2021-08-17 17:36:33.745 +08:00 [INF]                 - Volo.Abp.Threading.AbpThreadingModule
+2021-08-17 17:36:33.746 +08:00 [INF]               - Volo.Abp.Guids.AbpGuidsModule
+2021-08-17 17:36:33.746 +08:00 [INF]               - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2021-08-17 17:36:33.746 +08:00 [INF]               - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2021-08-17 17:36:33.746 +08:00 [INF]               - Volo.Abp.Specifications.AbpSpecificationsModule
+2021-08-17 17:36:33.746 +08:00 [INF]             - Volo.Abp.Application.AbpDddApplicationContractsModule
+2021-08-17 17:36:33.746 +08:00 [INF]             - Volo.Abp.Http.AbpHttpAbstractionsModule
+2021-08-17 17:36:33.746 +08:00 [INF]             - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2021-08-17 17:36:33.746 +08:00 [INF]           - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementApplicationContractsModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationContractsModule
+2021-08-17 17:36:33.746 +08:00 [INF]         - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainSharedModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.Account.AbpAccountHttpApiModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityHttpApiModule
+2021-08-17 17:36:33.746 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2021-08-17 17:36:33.746 +08:00 [INF]           - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]             - Volo.Abp.Http.AbpHttpModule
+2021-08-17 17:36:33.746 +08:00 [INF]               - Volo.Abp.Minify.AbpMinifyModule
+2021-08-17 17:36:33.746 +08:00 [INF]           - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2021-08-17 17:36:33.746 +08:00 [INF]           - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2021-08-17 17:36:33.746 +08:00 [INF]           - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2021-08-17 17:36:33.746 +08:00 [INF]             - Volo.Abp.UI.AbpUiModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementHttpApiModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementHttpApiModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementHttpApiModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementHttpApiModule
+2021-08-17 17:36:33.746 +08:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]   - Volo.Abp.Caching.StackExchangeRedis.AbpCachingStackExchangeRedisModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.Caching.AbpCachingModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.Serialization.AbpSerializationModule
+2021-08-17 17:36:33.746 +08:00 [INF]   - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2021-08-17 17:36:33.746 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2021-08-17 17:36:33.746 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2021-08-17 17:36:33.746 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2021-08-17 17:36:33.746 +08:00 [INF]   - CompanyName.ProjectName.ProjectNameApplicationModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - CompanyName.ProjectName.ProjectNameDomainModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2021-08-17 17:36:33.746 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2021-08-17 17:36:33.746 +08:00 [INF]           - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2021-08-17 17:36:33.746 +08:00 [INF]           - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2021-08-17 17:36:33.746 +08:00 [INF]         - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityDomainModule
+2021-08-17 17:36:33.746 +08:00 [INF]         - Volo.Abp.Users.AbpUsersDomainModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2021-08-17 17:36:33.746 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.IdentityServer.AbpIdentityServerDomainModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.PermissionManagement.IdentityServer.AbpPermissionManagementDomainIdentityServerModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.Emailing.AbpEmailingModule
+2021-08-17 17:36:33.746 +08:00 [INF]         - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.Account.AbpAccountApplicationModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityApplicationModule
+2021-08-17 17:36:33.746 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementApplicationModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - CompanyName.ProjectName.QueryManagement.QueryManagementDomainModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - CompanyName.ProjectName.QueryManagement.QueryManagementDomainSharedModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationModule
+2021-08-17 17:36:33.746 +08:00 [INF]   - CompanyName.ProjectName.EntityFrameworkCore.ProjectNameEntityFrameworkCoreDbMigrationsModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - CompanyName.ProjectName.EntityFrameworkCore.ProjectNameEntityFrameworkCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]         - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]           - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.IdentityServer.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.EntityFrameworkCore.MySQL.AbpEntityFrameworkCoreMySQLModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - CompanyName.ProjectName.QueryManagement.FreeSqlMySql.QueryManagementFreeSqlMySqlModule
+2021-08-17 17:36:33.746 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore.DataDictionaryManagementEntityFrameworkCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2021-08-17 17:36:33.746 +08:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2021-08-17 17:36:33.746 +08:00 [INF]   - Volo.Abp.Account.Web.AbpAccountWebModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2021-08-17 17:36:33.746 +08:00 [INF]   - Volo.Abp.AspNetCore.Authentication.JwtBearer.AbpAspNetCoreAuthenticationJwtBearerModule
+2021-08-17 17:36:33.746 +08:00 [INF]   - Volo.Abp.BackgroundJobs.Hangfire.AbpBackgroundJobsHangfireModule
+2021-08-17 17:36:33.746 +08:00 [INF]     - Volo.Abp.Hangfire.AbpHangfireModule
+2021-08-17 17:36:33.829 +08:00 [DBG] Started background worker: Volo.Abp.BackgroundJobs.BackgroundJobWorker
+2021-08-17 17:36:33.831 +08:00 [DBG] Started background worker: Volo.Abp.IdentityServer.Tokens.TokenCleanupBackgroundWorker
+2021-08-17 17:36:33.867 +08:00 [FTL] Application startup exception
+Volo.Abp.AbpInitializationException: An error occurred during the initialize Volo.Abp.Modularity.OnApplicationInitializationModuleLifecycleContributor phase of the module Volo.Abp.Hangfire.AbpHangfireModule, Volo.Abp.HangFire, Version=4.3.3.0, Culture=neutral, PublicKeyToken=null: An exception was thrown while activating λ:Hangfire.JobStorage.. See the inner exception for details.
+ ---> Autofac.Core.DependencyResolutionException: An exception was thrown while activating λ:Hangfire.JobStorage.
+ ---> System.InvalidOperationException: JobStorage.Current property value has not been initialized. You must set it before using Hangfire Client or Server API.
+   at Hangfire.JobStorage.get_Current()
+   at Hangfire.HangfireServiceCollectionExtensions.<>c.<AddHangfire>b__1_0(IServiceProvider _)
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass7_0`1.<TryAddSingletonChecked>b__0(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.<>c__DisplayClass5_0.<Execute>b__0()
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid id, Func`1 creator)
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid primaryId, Nullable`1 qualifyingId, Func`1 creator)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.Hangfire.AbpHangfireOptions.CreateJobServer(IServiceProvider serviceProvider)
+   at Volo.Abp.Hangfire.AbpHangfireModule.OnApplicationInitialization(ApplicationInitializationContext context)
+   at Volo.Abp.Modularity.OnApplicationInitializationModuleLifecycleContributor.Initialize(ApplicationInitializationContext context, IAbpModule module)
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   --- End of inner exception stack trace ---
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   at Volo.Abp.AbpApplicationBase.InitializeModules()
+   at Volo.Abp.AbpApplicationWithExternalServiceProvider.Initialize(IServiceProvider serviceProvider)
+   at Microsoft.AspNetCore.Builder.AbpApplicationBuilderExtensions.InitializeApplication(IApplicationBuilder app)
+   at CompanyName.ProjectName.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\Startup.cs:line 17
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.MethodInfoExtensions.InvokeWithoutWrappingExceptions(MethodInfo methodInfo, Object obj, Object[] parameters)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass15_0.<UseStartup>b__1(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at CompanyName.ProjectName.Program.Main(String[] args) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\Program.cs:line 31
+2021-08-17 17:36:33.897 +08:00 [FTL] Host terminated unexpectedly!
+Volo.Abp.AbpInitializationException: An error occurred during the initialize Volo.Abp.Modularity.OnApplicationInitializationModuleLifecycleContributor phase of the module Volo.Abp.Hangfire.AbpHangfireModule, Volo.Abp.HangFire, Version=4.3.3.0, Culture=neutral, PublicKeyToken=null: An exception was thrown while activating λ:Hangfire.JobStorage.. See the inner exception for details.
+ ---> Autofac.Core.DependencyResolutionException: An exception was thrown while activating λ:Hangfire.JobStorage.
+ ---> System.InvalidOperationException: JobStorage.Current property value has not been initialized. You must set it before using Hangfire Client or Server API.
+   at Hangfire.JobStorage.get_Current()
+   at Hangfire.HangfireServiceCollectionExtensions.<>c.<AddHangfire>b__1_0(IServiceProvider _)
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass7_0`1.<TryAddSingletonChecked>b__0(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.<>c__DisplayClass5_0.<Execute>b__0()
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid id, Func`1 creator)
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid primaryId, Nullable`1 qualifyingId, Func`1 creator)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.Hangfire.AbpHangfireOptions.CreateJobServer(IServiceProvider serviceProvider)
+   at Volo.Abp.Hangfire.AbpHangfireModule.OnApplicationInitialization(ApplicationInitializationContext context)
+   at Volo.Abp.Modularity.OnApplicationInitializationModuleLifecycleContributor.Initialize(ApplicationInitializationContext context, IAbpModule module)
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   --- End of inner exception stack trace ---
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   at Volo.Abp.AbpApplicationBase.InitializeModules()
+   at Volo.Abp.AbpApplicationWithExternalServiceProvider.Initialize(IServiceProvider serviceProvider)
+   at Microsoft.AspNetCore.Builder.AbpApplicationBuilderExtensions.InitializeApplication(IApplicationBuilder app)
+   at CompanyName.ProjectName.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\Startup.cs:line 17
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.MethodInfoExtensions.InvokeWithoutWrappingExceptions(MethodInfo methodInfo, Object obj, Object[] parameters)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass15_0.<UseStartup>b__1(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at CompanyName.ProjectName.Program.Main(String[] args) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\Program.cs:line 31
+2021-08-17 17:37:22.583 +08:00 [INF] Starting CompanyName.ProjectName.HttpApi.Host.
+2021-08-17 17:37:26.691 +08:00 [INF] User profile is available. Using 'C:\Users\wangjun\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-17 17:37:26.807 +08:00 [INF] Loaded ABP modules:
+2021-08-17 17:37:26.807 +08:00 [INF] - CompanyName.ProjectName.ProjectNameHttpApiHostModule
+2021-08-17 17:37:26.807 +08:00 [INF]   - CompanyName.ProjectName.ProjectNameHttpApiModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - CompanyName.ProjectName.ProjectNameApplicationContractsModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - CompanyName.ProjectName.ProjectNameDomainSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.Validation.AbpValidationModule
+2021-08-17 17:37:26.807 +08:00 [INF]             - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2021-08-17 17:37:26.807 +08:00 [INF]             - Volo.Abp.Localization.AbpLocalizationModule
+2021-08-17 17:37:26.807 +08:00 [INF]               - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2021-08-17 17:37:26.807 +08:00 [INF]               - Volo.Abp.Settings.AbpSettingsModule
+2021-08-17 17:37:26.807 +08:00 [INF]                 - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2021-08-17 17:37:26.807 +08:00 [INF]                 - Volo.Abp.Security.AbpSecurityModule
+2021-08-17 17:37:26.807 +08:00 [INF]                 - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2021-08-17 17:37:26.807 +08:00 [INF]                   - Volo.Abp.Data.AbpDataModule
+2021-08-17 17:37:26.807 +08:00 [INF]                     - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2021-08-17 17:37:26.807 +08:00 [INF]                     - Volo.Abp.Uow.AbpUnitOfWorkModule
+2021-08-17 17:37:26.807 +08:00 [INF]                     - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.Users.AbpUsersDomainSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.Features.AbpFeaturesModule
+2021-08-17 17:37:26.807 +08:00 [INF]             - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.IdentityServer.AbpIdentityServerDomainSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.Users.AbpUsersAbstractionModule
+2021-08-17 17:37:26.807 +08:00 [INF]             - Volo.Abp.EventBus.AbpEventBusModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.Authorization.AbpAuthorizationModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.Application.AbpDddApplicationModule
+2021-08-17 17:37:26.807 +08:00 [INF]             - Volo.Abp.Domain.AbpDddDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]               - Volo.Abp.Auditing.AbpAuditingModule
+2021-08-17 17:37:26.807 +08:00 [INF]                 - Volo.Abp.Json.AbpJsonModule
+2021-08-17 17:37:26.807 +08:00 [INF]                   - Volo.Abp.Timing.AbpTimingModule
+2021-08-17 17:37:26.807 +08:00 [INF]                 - Volo.Abp.Threading.AbpThreadingModule
+2021-08-17 17:37:26.807 +08:00 [INF]               - Volo.Abp.Guids.AbpGuidsModule
+2021-08-17 17:37:26.807 +08:00 [INF]               - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2021-08-17 17:37:26.807 +08:00 [INF]               - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2021-08-17 17:37:26.807 +08:00 [INF]               - Volo.Abp.Specifications.AbpSpecificationsModule
+2021-08-17 17:37:26.807 +08:00 [INF]             - Volo.Abp.Application.AbpDddApplicationContractsModule
+2021-08-17 17:37:26.807 +08:00 [INF]             - Volo.Abp.Http.AbpHttpAbstractionsModule
+2021-08-17 17:37:26.807 +08:00 [INF]             - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementApplicationContractsModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationContractsModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - Volo.Abp.Account.AbpAccountHttpApiModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityHttpApiModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]             - Volo.Abp.Http.AbpHttpModule
+2021-08-17 17:37:26.807 +08:00 [INF]               - Volo.Abp.Minify.AbpMinifyModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2021-08-17 17:37:26.807 +08:00 [INF]             - Volo.Abp.UI.AbpUiModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementHttpApiModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementHttpApiModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementHttpApiModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementHttpApiModule
+2021-08-17 17:37:26.807 +08:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]   - Volo.Abp.Caching.StackExchangeRedis.AbpCachingStackExchangeRedisModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - Volo.Abp.Caching.AbpCachingModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.Serialization.AbpSerializationModule
+2021-08-17 17:37:26.807 +08:00 [INF]   - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2021-08-17 17:37:26.807 +08:00 [INF]   - CompanyName.ProjectName.ProjectNameApplicationModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - CompanyName.ProjectName.ProjectNameDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.Users.AbpUsersDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.IdentityServer.AbpIdentityServerDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.PermissionManagement.IdentityServer.AbpPermissionManagementDomainIdentityServerModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.Emailing.AbpEmailingModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - Volo.Abp.Account.AbpAccountApplicationModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityApplicationModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementApplicationModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - CompanyName.ProjectName.QueryManagement.QueryManagementDomainModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - CompanyName.ProjectName.QueryManagement.QueryManagementDomainSharedModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationModule
+2021-08-17 17:37:26.807 +08:00 [INF]   - CompanyName.ProjectName.EntityFrameworkCore.ProjectNameEntityFrameworkCoreDbMigrationsModule
+2021-08-17 17:37:26.807 +08:00 [INF]     - CompanyName.ProjectName.EntityFrameworkCore.ProjectNameEntityFrameworkCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]         - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]           - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.IdentityServer.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.EntityFrameworkCore.MySQL.AbpEntityFrameworkCoreMySQLModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - CompanyName.ProjectName.QueryManagement.FreeSqlMySql.QueryManagementFreeSqlMySqlModule
+2021-08-17 17:37:26.807 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore.DataDictionaryManagementEntityFrameworkCoreModule
+2021-08-17 17:37:26.807 +08:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2021-08-17 17:37:26.807 +08:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2021-08-17 17:37:26.807 +08:00 [INF]   - Volo.Abp.Account.Web.AbpAccountWebModule
+2021-08-17 17:37:26.808 +08:00 [INF]     - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2021-08-17 17:37:26.808 +08:00 [INF]   - Volo.Abp.AspNetCore.Authentication.JwtBearer.AbpAspNetCoreAuthenticationJwtBearerModule
+2021-08-17 17:37:26.808 +08:00 [INF]   - Volo.Abp.BackgroundJobs.Hangfire.AbpBackgroundJobsHangfireModule
+2021-08-17 17:37:26.808 +08:00 [INF]     - Volo.Abp.Hangfire.AbpHangfireModule
+2021-08-17 17:37:26.889 +08:00 [DBG] Started background worker: Volo.Abp.BackgroundJobs.BackgroundJobWorker
+2021-08-17 17:37:26.891 +08:00 [DBG] Started background worker: Volo.Abp.IdentityServer.Tokens.TokenCleanupBackgroundWorker
+2021-08-17 17:37:27.133 +08:00 [FTL] Application startup exception
+Volo.Abp.AbpInitializationException: An error occurred during the initialize Volo.Abp.Modularity.OnApplicationInitializationModuleLifecycleContributor phase of the module Volo.Abp.Hangfire.AbpHangfireModule, Volo.Abp.HangFire, Version=4.3.3.0, Culture=neutral, PublicKeyToken=null: An exception was thrown while activating λ:Hangfire.JobStorage -> λ:Hangfire.IGlobalConfiguration.. See the inner exception for details.
+ ---> Autofac.Core.DependencyResolutionException: An exception was thrown while activating λ:Hangfire.JobStorage -> λ:Hangfire.IGlobalConfiguration.
+ ---> MySqlConnector.MySqlException (0x80004005): Unknown database 'CompanyNameProjectNameHangfireDB'
+   at MySqlConnector.Core.ServerSession.SwitchAuthenticationAsync(ConnectionSettings cs, PayloadData payload, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 604
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, Int32 startTickCount, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 467
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 110
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 140
+   at MySqlConnector.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int32 startTickCount, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 846
+   at MySqlConnector.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 410
+   at MySqlConnector.MySqlConnection.Open() in /_/src/MySqlConnector/MySqlConnection.cs:line 376
+   at Hangfire.MySql.MySqlStorage.CreateAndOpenConnection()
+   at Hangfire.MySql.MySqlStorage..ctor(String connectionString, MySqlStorageOptions storageOptions)
+   at CompanyName.ProjectName.ProjectNameHttpApiHostModule.<>c__DisplayClass3_0.<ConfigureHangfireMysql>b__1(IGlobalConfiguration config) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\ProjectNameHttpApiHostModule.cs:line 134
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass0_0.<AddHangfire>b__0(IServiceProvider provider, IGlobalConfiguration config)
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass1_0.<AddHangfire>b__10(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.<>c__DisplayClass5_0.<Execute>b__0()
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid id, Func`1 creator)
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid primaryId, Nullable`1 qualifyingId, Func`1 creator)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.Hangfire.AbpHangfireOptions.CreateJobServer(IServiceProvider serviceProvider)
+   at Volo.Abp.Hangfire.AbpHangfireModule.OnApplicationInitialization(ApplicationInitializationContext context)
+   at Volo.Abp.Modularity.OnApplicationInitializationModuleLifecycleContributor.Initialize(ApplicationInitializationContext context, IAbpModule module)
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   --- End of inner exception stack trace ---
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   at Volo.Abp.AbpApplicationBase.InitializeModules()
+   at Volo.Abp.AbpApplicationWithExternalServiceProvider.Initialize(IServiceProvider serviceProvider)
+   at Microsoft.AspNetCore.Builder.AbpApplicationBuilderExtensions.InitializeApplication(IApplicationBuilder app)
+   at CompanyName.ProjectName.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\Startup.cs:line 17
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.MethodInfoExtensions.InvokeWithoutWrappingExceptions(MethodInfo methodInfo, Object obj, Object[] parameters)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass15_0.<UseStartup>b__1(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at CompanyName.ProjectName.Program.Main(String[] args) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\Program.cs:line 31
+2021-08-17 17:37:27.162 +08:00 [FTL] Host terminated unexpectedly!
+Volo.Abp.AbpInitializationException: An error occurred during the initialize Volo.Abp.Modularity.OnApplicationInitializationModuleLifecycleContributor phase of the module Volo.Abp.Hangfire.AbpHangfireModule, Volo.Abp.HangFire, Version=4.3.3.0, Culture=neutral, PublicKeyToken=null: An exception was thrown while activating λ:Hangfire.JobStorage -> λ:Hangfire.IGlobalConfiguration.. See the inner exception for details.
+ ---> Autofac.Core.DependencyResolutionException: An exception was thrown while activating λ:Hangfire.JobStorage -> λ:Hangfire.IGlobalConfiguration.
+ ---> MySqlConnector.MySqlException (0x80004005): Unknown database 'CompanyNameProjectNameHangfireDB'
+   at MySqlConnector.Core.ServerSession.SwitchAuthenticationAsync(ConnectionSettings cs, PayloadData payload, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 604
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, Int32 startTickCount, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 467
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 110
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 140
+   at MySqlConnector.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int32 startTickCount, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 846
+   at MySqlConnector.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 410
+   at MySqlConnector.MySqlConnection.Open() in /_/src/MySqlConnector/MySqlConnection.cs:line 376
+   at Hangfire.MySql.MySqlStorage.CreateAndOpenConnection()
+   at Hangfire.MySql.MySqlStorage..ctor(String connectionString, MySqlStorageOptions storageOptions)
+   at CompanyName.ProjectName.ProjectNameHttpApiHostModule.<>c__DisplayClass3_0.<ConfigureHangfireMysql>b__1(IGlobalConfiguration config) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\ProjectNameHttpApiHostModule.cs:line 134
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass0_0.<AddHangfire>b__0(IServiceProvider provider, IGlobalConfiguration config)
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass1_0.<AddHangfire>b__10(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.<>c__DisplayClass5_0.<Execute>b__0()
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid id, Func`1 creator)
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid primaryId, Nullable`1 qualifyingId, Func`1 creator)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.Hangfire.AbpHangfireOptions.CreateJobServer(IServiceProvider serviceProvider)
+   at Volo.Abp.Hangfire.AbpHangfireModule.OnApplicationInitialization(ApplicationInitializationContext context)
+   at Volo.Abp.Modularity.OnApplicationInitializationModuleLifecycleContributor.Initialize(ApplicationInitializationContext context, IAbpModule module)
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   --- End of inner exception stack trace ---
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   at Volo.Abp.AbpApplicationBase.InitializeModules()
+   at Volo.Abp.AbpApplicationWithExternalServiceProvider.Initialize(IServiceProvider serviceProvider)
+   at Microsoft.AspNetCore.Builder.AbpApplicationBuilderExtensions.InitializeApplication(IApplicationBuilder app)
+   at CompanyName.ProjectName.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\Startup.cs:line 17
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.MethodInfoExtensions.InvokeWithoutWrappingExceptions(MethodInfo methodInfo, Object obj, Object[] parameters)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass15_0.<UseStartup>b__1(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at CompanyName.ProjectName.Program.Main(String[] args) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\Program.cs:line 31
+2021-08-17 17:37:48.719 +08:00 [INF] Starting CompanyName.ProjectName.HttpApi.Host.
+2021-08-17 17:37:52.977 +08:00 [INF] User profile is available. Using 'C:\Users\wangjun\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-17 17:37:53.090 +08:00 [INF] Loaded ABP modules:
+2021-08-17 17:37:53.090 +08:00 [INF] - CompanyName.ProjectName.ProjectNameHttpApiHostModule
+2021-08-17 17:37:53.090 +08:00 [INF]   - CompanyName.ProjectName.ProjectNameHttpApiModule
+2021-08-17 17:37:53.090 +08:00 [INF]     - CompanyName.ProjectName.ProjectNameApplicationContractsModule
+2021-08-17 17:37:53.090 +08:00 [INF]       - CompanyName.ProjectName.ProjectNameDomainSharedModule
+2021-08-17 17:37:53.090 +08:00 [INF]         - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2021-08-17 17:37:53.090 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2021-08-17 17:37:53.090 +08:00 [INF]         - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2021-08-17 17:37:53.090 +08:00 [INF]           - Volo.Abp.Validation.AbpValidationModule
+2021-08-17 17:37:53.090 +08:00 [INF]             - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2021-08-17 17:37:53.090 +08:00 [INF]             - Volo.Abp.Localization.AbpLocalizationModule
+2021-08-17 17:37:53.090 +08:00 [INF]               - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2021-08-17 17:37:53.090 +08:00 [INF]               - Volo.Abp.Settings.AbpSettingsModule
+2021-08-17 17:37:53.090 +08:00 [INF]                 - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2021-08-17 17:37:53.090 +08:00 [INF]                 - Volo.Abp.Security.AbpSecurityModule
+2021-08-17 17:37:53.090 +08:00 [INF]                 - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2021-08-17 17:37:53.090 +08:00 [INF]                   - Volo.Abp.Data.AbpDataModule
+2021-08-17 17:37:53.090 +08:00 [INF]                     - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2021-08-17 17:37:53.090 +08:00 [INF]                     - Volo.Abp.Uow.AbpUnitOfWorkModule
+2021-08-17 17:37:53.090 +08:00 [INF]                     - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2021-08-17 17:37:53.090 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2021-08-17 17:37:53.090 +08:00 [INF]           - Volo.Abp.Users.AbpUsersDomainSharedModule
+2021-08-17 17:37:53.090 +08:00 [INF]           - Volo.Abp.Features.AbpFeaturesModule
+2021-08-17 17:37:53.090 +08:00 [INF]             - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2021-08-17 17:37:53.090 +08:00 [INF]         - Volo.Abp.IdentityServer.AbpIdentityServerDomainSharedModule
+2021-08-17 17:37:53.090 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2021-08-17 17:37:53.090 +08:00 [INF]         - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2021-08-17 17:37:53.090 +08:00 [INF]         - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2021-08-17 17:37:53.090 +08:00 [INF]       - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2021-08-17 17:37:53.090 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2021-08-17 17:37:53.090 +08:00 [INF]           - Volo.Abp.Users.AbpUsersAbstractionModule
+2021-08-17 17:37:53.090 +08:00 [INF]             - Volo.Abp.EventBus.AbpEventBusModule
+2021-08-17 17:37:53.090 +08:00 [INF]           - Volo.Abp.Authorization.AbpAuthorizationModule
+2021-08-17 17:37:53.091 +08:00 [INF]           - Volo.Abp.Application.AbpDddApplicationModule
+2021-08-17 17:37:53.091 +08:00 [INF]             - Volo.Abp.Domain.AbpDddDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]               - Volo.Abp.Auditing.AbpAuditingModule
+2021-08-17 17:37:53.091 +08:00 [INF]                 - Volo.Abp.Json.AbpJsonModule
+2021-08-17 17:37:53.091 +08:00 [INF]                   - Volo.Abp.Timing.AbpTimingModule
+2021-08-17 17:37:53.091 +08:00 [INF]                 - Volo.Abp.Threading.AbpThreadingModule
+2021-08-17 17:37:53.091 +08:00 [INF]               - Volo.Abp.Guids.AbpGuidsModule
+2021-08-17 17:37:53.091 +08:00 [INF]               - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2021-08-17 17:37:53.091 +08:00 [INF]               - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2021-08-17 17:37:53.091 +08:00 [INF]               - Volo.Abp.Specifications.AbpSpecificationsModule
+2021-08-17 17:37:53.091 +08:00 [INF]             - Volo.Abp.Application.AbpDddApplicationContractsModule
+2021-08-17 17:37:53.091 +08:00 [INF]             - Volo.Abp.Http.AbpHttpAbstractionsModule
+2021-08-17 17:37:53.091 +08:00 [INF]             - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2021-08-17 17:37:53.091 +08:00 [INF]           - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementApplicationContractsModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationContractsModule
+2021-08-17 17:37:53.091 +08:00 [INF]         - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainSharedModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.Account.AbpAccountHttpApiModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityHttpApiModule
+2021-08-17 17:37:53.091 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2021-08-17 17:37:53.091 +08:00 [INF]           - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]             - Volo.Abp.Http.AbpHttpModule
+2021-08-17 17:37:53.091 +08:00 [INF]               - Volo.Abp.Minify.AbpMinifyModule
+2021-08-17 17:37:53.091 +08:00 [INF]           - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2021-08-17 17:37:53.091 +08:00 [INF]           - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2021-08-17 17:37:53.091 +08:00 [INF]           - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2021-08-17 17:37:53.091 +08:00 [INF]             - Volo.Abp.UI.AbpUiModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementHttpApiModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementHttpApiModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementHttpApiModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementHttpApiModule
+2021-08-17 17:37:53.091 +08:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]   - Volo.Abp.Caching.StackExchangeRedis.AbpCachingStackExchangeRedisModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.Caching.AbpCachingModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.Serialization.AbpSerializationModule
+2021-08-17 17:37:53.091 +08:00 [INF]   - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2021-08-17 17:37:53.091 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2021-08-17 17:37:53.091 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2021-08-17 17:37:53.091 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2021-08-17 17:37:53.091 +08:00 [INF]   - CompanyName.ProjectName.ProjectNameApplicationModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - CompanyName.ProjectName.ProjectNameDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2021-08-17 17:37:53.091 +08:00 [INF]           - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2021-08-17 17:37:53.091 +08:00 [INF]           - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2021-08-17 17:37:53.091 +08:00 [INF]         - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]         - Volo.Abp.Users.AbpUsersDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2021-08-17 17:37:53.091 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.IdentityServer.AbpIdentityServerDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.PermissionManagement.IdentityServer.AbpPermissionManagementDomainIdentityServerModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.Emailing.AbpEmailingModule
+2021-08-17 17:37:53.091 +08:00 [INF]         - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.Account.AbpAccountApplicationModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityApplicationModule
+2021-08-17 17:37:53.091 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementApplicationModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - CompanyName.ProjectName.QueryManagement.QueryManagementDomainModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - CompanyName.ProjectName.QueryManagement.QueryManagementDomainSharedModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationModule
+2021-08-17 17:37:53.091 +08:00 [INF]   - CompanyName.ProjectName.EntityFrameworkCore.ProjectNameEntityFrameworkCoreDbMigrationsModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - CompanyName.ProjectName.EntityFrameworkCore.ProjectNameEntityFrameworkCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]         - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]           - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.IdentityServer.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.EntityFrameworkCore.MySQL.AbpEntityFrameworkCoreMySQLModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - CompanyName.ProjectName.QueryManagement.FreeSqlMySql.QueryManagementFreeSqlMySqlModule
+2021-08-17 17:37:53.091 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore.DataDictionaryManagementEntityFrameworkCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2021-08-17 17:37:53.091 +08:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2021-08-17 17:37:53.091 +08:00 [INF]   - Volo.Abp.Account.Web.AbpAccountWebModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2021-08-17 17:37:53.091 +08:00 [INF]   - Volo.Abp.AspNetCore.Authentication.JwtBearer.AbpAspNetCoreAuthenticationJwtBearerModule
+2021-08-17 17:37:53.091 +08:00 [INF]   - Volo.Abp.BackgroundJobs.Hangfire.AbpBackgroundJobsHangfireModule
+2021-08-17 17:37:53.091 +08:00 [INF]     - Volo.Abp.Hangfire.AbpHangfireModule
+2021-08-17 17:37:53.171 +08:00 [DBG] Started background worker: Volo.Abp.BackgroundJobs.BackgroundJobWorker
+2021-08-17 17:37:53.173 +08:00 [DBG] Started background worker: Volo.Abp.IdentityServer.Tokens.TokenCleanupBackgroundWorker
+2021-08-17 17:37:53.409 +08:00 [FTL] Application startup exception
+Volo.Abp.AbpInitializationException: An error occurred during the initialize Volo.Abp.Modularity.OnApplicationInitializationModuleLifecycleContributor phase of the module Volo.Abp.Hangfire.AbpHangfireModule, Volo.Abp.HangFire, Version=4.3.3.0, Culture=neutral, PublicKeyToken=null: An exception was thrown while activating λ:Hangfire.JobStorage -> λ:Hangfire.IGlobalConfiguration.. See the inner exception for details.
+ ---> Autofac.Core.DependencyResolutionException: An exception was thrown while activating λ:Hangfire.JobStorage -> λ:Hangfire.IGlobalConfiguration.
+ ---> MySqlConnector.MySqlException (0x80004005): Unknown database 'CompanyNameProjectNameHangfireDB'
+   at MySqlConnector.Core.ServerSession.SwitchAuthenticationAsync(ConnectionSettings cs, PayloadData payload, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 604
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, Int32 startTickCount, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 467
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 110
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 140
+   at MySqlConnector.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int32 startTickCount, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 846
+   at MySqlConnector.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 410
+   at MySqlConnector.MySqlConnection.Open() in /_/src/MySqlConnector/MySqlConnection.cs:line 376
+   at Hangfire.MySql.MySqlStorage.CreateAndOpenConnection()
+   at Hangfire.MySql.MySqlStorage..ctor(String connectionString, MySqlStorageOptions storageOptions)
+   at CompanyName.ProjectName.ProjectNameHttpApiHostModule.<>c__DisplayClass3_0.<ConfigureHangfireMysql>b__1(IGlobalConfiguration config) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\ProjectNameHttpApiHostModule.cs:line 134
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass0_0.<AddHangfire>b__0(IServiceProvider provider, IGlobalConfiguration config)
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass1_0.<AddHangfire>b__10(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.<>c__DisplayClass5_0.<Execute>b__0()
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid id, Func`1 creator)
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid primaryId, Nullable`1 qualifyingId, Func`1 creator)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.Hangfire.AbpHangfireOptions.CreateJobServer(IServiceProvider serviceProvider)
+   at Volo.Abp.Hangfire.AbpHangfireModule.OnApplicationInitialization(ApplicationInitializationContext context)
+   at Volo.Abp.Modularity.OnApplicationInitializationModuleLifecycleContributor.Initialize(ApplicationInitializationContext context, IAbpModule module)
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   --- End of inner exception stack trace ---
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   at Volo.Abp.AbpApplicationBase.InitializeModules()
+   at Volo.Abp.AbpApplicationWithExternalServiceProvider.Initialize(IServiceProvider serviceProvider)
+   at Microsoft.AspNetCore.Builder.AbpApplicationBuilderExtensions.InitializeApplication(IApplicationBuilder app)
+   at CompanyName.ProjectName.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\Startup.cs:line 17
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.MethodInfoExtensions.InvokeWithoutWrappingExceptions(MethodInfo methodInfo, Object obj, Object[] parameters)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass15_0.<UseStartup>b__1(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at CompanyName.ProjectName.Program.Main(String[] args) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\Program.cs:line 31
+2021-08-17 17:37:53.435 +08:00 [FTL] Host terminated unexpectedly!
+Volo.Abp.AbpInitializationException: An error occurred during the initialize Volo.Abp.Modularity.OnApplicationInitializationModuleLifecycleContributor phase of the module Volo.Abp.Hangfire.AbpHangfireModule, Volo.Abp.HangFire, Version=4.3.3.0, Culture=neutral, PublicKeyToken=null: An exception was thrown while activating λ:Hangfire.JobStorage -> λ:Hangfire.IGlobalConfiguration.. See the inner exception for details.
+ ---> Autofac.Core.DependencyResolutionException: An exception was thrown while activating λ:Hangfire.JobStorage -> λ:Hangfire.IGlobalConfiguration.
+ ---> MySqlConnector.MySqlException (0x80004005): Unknown database 'CompanyNameProjectNameHangfireDB'
+   at MySqlConnector.Core.ServerSession.SwitchAuthenticationAsync(ConnectionSettings cs, PayloadData payload, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 604
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, Int32 startTickCount, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 467
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 110
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 140
+   at MySqlConnector.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int32 startTickCount, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 846
+   at MySqlConnector.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 410
+   at MySqlConnector.MySqlConnection.Open() in /_/src/MySqlConnector/MySqlConnection.cs:line 376
+   at Hangfire.MySql.MySqlStorage.CreateAndOpenConnection()
+   at Hangfire.MySql.MySqlStorage..ctor(String connectionString, MySqlStorageOptions storageOptions)
+   at CompanyName.ProjectName.ProjectNameHttpApiHostModule.<>c__DisplayClass3_0.<ConfigureHangfireMysql>b__1(IGlobalConfiguration config) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\ProjectNameHttpApiHostModule.cs:line 134
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass0_0.<AddHangfire>b__0(IServiceProvider provider, IGlobalConfiguration config)
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass1_0.<AddHangfire>b__10(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.<>c__DisplayClass5_0.<Execute>b__0()
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid id, Func`1 creator)
+   at Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(Guid primaryId, Nullable`1 qualifyingId, Func`1 creator)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.Hangfire.AbpHangfireOptions.CreateJobServer(IServiceProvider serviceProvider)
+   at Volo.Abp.Hangfire.AbpHangfireModule.OnApplicationInitialization(ApplicationInitializationContext context)
+   at Volo.Abp.Modularity.OnApplicationInitializationModuleLifecycleContributor.Initialize(ApplicationInitializationContext context, IAbpModule module)
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   --- End of inner exception stack trace ---
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   at Volo.Abp.AbpApplicationBase.InitializeModules()
+   at Volo.Abp.AbpApplicationWithExternalServiceProvider.Initialize(IServiceProvider serviceProvider)
+   at Microsoft.AspNetCore.Builder.AbpApplicationBuilderExtensions.InitializeApplication(IApplicationBuilder app)
+   at CompanyName.ProjectName.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\Startup.cs:line 17
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.MethodInfoExtensions.InvokeWithoutWrappingExceptions(MethodInfo methodInfo, Object obj, Object[] parameters)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass15_0.<UseStartup>b__1(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at CompanyName.ProjectName.Program.Main(String[] args) in D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host\Program.cs:line 31
+2021-08-17 17:41:00.464 +08:00 [INF] Starting CompanyName.ProjectName.HttpApi.Host.
+2021-08-17 17:41:04.762 +08:00 [INF] User profile is available. Using 'C:\Users\wangjun\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-17 17:41:04.891 +08:00 [INF] Loaded ABP modules:
+2021-08-17 17:41:04.891 +08:00 [INF] - CompanyName.ProjectName.ProjectNameHttpApiHostModule
+2021-08-17 17:41:04.891 +08:00 [INF]   - CompanyName.ProjectName.ProjectNameHttpApiModule
+2021-08-17 17:41:04.891 +08:00 [INF]     - CompanyName.ProjectName.ProjectNameApplicationContractsModule
+2021-08-17 17:41:04.891 +08:00 [INF]       - CompanyName.ProjectName.ProjectNameDomainSharedModule
+2021-08-17 17:41:04.891 +08:00 [INF]         - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2021-08-17 17:41:04.891 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2021-08-17 17:41:04.891 +08:00 [INF]         - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2021-08-17 17:41:04.891 +08:00 [INF]           - Volo.Abp.Validation.AbpValidationModule
+2021-08-17 17:41:04.891 +08:00 [INF]             - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2021-08-17 17:41:04.891 +08:00 [INF]             - Volo.Abp.Localization.AbpLocalizationModule
+2021-08-17 17:41:04.891 +08:00 [INF]               - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2021-08-17 17:41:04.891 +08:00 [INF]               - Volo.Abp.Settings.AbpSettingsModule
+2021-08-17 17:41:04.891 +08:00 [INF]                 - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2021-08-17 17:41:04.891 +08:00 [INF]                 - Volo.Abp.Security.AbpSecurityModule
+2021-08-17 17:41:04.891 +08:00 [INF]                 - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2021-08-17 17:41:04.891 +08:00 [INF]                   - Volo.Abp.Data.AbpDataModule
+2021-08-17 17:41:04.891 +08:00 [INF]                     - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2021-08-17 17:41:04.891 +08:00 [INF]                     - Volo.Abp.Uow.AbpUnitOfWorkModule
+2021-08-17 17:41:04.891 +08:00 [INF]                     - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2021-08-17 17:41:04.891 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2021-08-17 17:41:04.891 +08:00 [INF]           - Volo.Abp.Users.AbpUsersDomainSharedModule
+2021-08-17 17:41:04.891 +08:00 [INF]           - Volo.Abp.Features.AbpFeaturesModule
+2021-08-17 17:41:04.891 +08:00 [INF]             - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2021-08-17 17:41:04.891 +08:00 [INF]         - Volo.Abp.IdentityServer.AbpIdentityServerDomainSharedModule
+2021-08-17 17:41:04.891 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2021-08-17 17:41:04.891 +08:00 [INF]         - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2021-08-17 17:41:04.891 +08:00 [INF]         - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2021-08-17 17:41:04.891 +08:00 [INF]       - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2021-08-17 17:41:04.891 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2021-08-17 17:41:04.891 +08:00 [INF]           - Volo.Abp.Users.AbpUsersAbstractionModule
+2021-08-17 17:41:04.891 +08:00 [INF]             - Volo.Abp.EventBus.AbpEventBusModule
+2021-08-17 17:41:04.891 +08:00 [INF]           - Volo.Abp.Authorization.AbpAuthorizationModule
+2021-08-17 17:41:04.891 +08:00 [INF]           - Volo.Abp.Application.AbpDddApplicationModule
+2021-08-17 17:41:04.892 +08:00 [INF]             - Volo.Abp.Domain.AbpDddDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]               - Volo.Abp.Auditing.AbpAuditingModule
+2021-08-17 17:41:04.892 +08:00 [INF]                 - Volo.Abp.Json.AbpJsonModule
+2021-08-17 17:41:04.892 +08:00 [INF]                   - Volo.Abp.Timing.AbpTimingModule
+2021-08-17 17:41:04.892 +08:00 [INF]                 - Volo.Abp.Threading.AbpThreadingModule
+2021-08-17 17:41:04.892 +08:00 [INF]               - Volo.Abp.Guids.AbpGuidsModule
+2021-08-17 17:41:04.892 +08:00 [INF]               - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2021-08-17 17:41:04.892 +08:00 [INF]               - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2021-08-17 17:41:04.892 +08:00 [INF]               - Volo.Abp.Specifications.AbpSpecificationsModule
+2021-08-17 17:41:04.892 +08:00 [INF]             - Volo.Abp.Application.AbpDddApplicationContractsModule
+2021-08-17 17:41:04.892 +08:00 [INF]             - Volo.Abp.Http.AbpHttpAbstractionsModule
+2021-08-17 17:41:04.892 +08:00 [INF]             - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2021-08-17 17:41:04.892 +08:00 [INF]           - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementApplicationContractsModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationContractsModule
+2021-08-17 17:41:04.892 +08:00 [INF]         - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainSharedModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.Account.AbpAccountHttpApiModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityHttpApiModule
+2021-08-17 17:41:04.892 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2021-08-17 17:41:04.892 +08:00 [INF]           - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]             - Volo.Abp.Http.AbpHttpModule
+2021-08-17 17:41:04.892 +08:00 [INF]               - Volo.Abp.Minify.AbpMinifyModule
+2021-08-17 17:41:04.892 +08:00 [INF]           - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2021-08-17 17:41:04.892 +08:00 [INF]           - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2021-08-17 17:41:04.892 +08:00 [INF]           - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2021-08-17 17:41:04.892 +08:00 [INF]             - Volo.Abp.UI.AbpUiModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementHttpApiModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementHttpApiModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementHttpApiModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementHttpApiModule
+2021-08-17 17:41:04.892 +08:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]   - Volo.Abp.Caching.StackExchangeRedis.AbpCachingStackExchangeRedisModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.Caching.AbpCachingModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.Serialization.AbpSerializationModule
+2021-08-17 17:41:04.892 +08:00 [INF]   - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2021-08-17 17:41:04.892 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2021-08-17 17:41:04.892 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2021-08-17 17:41:04.892 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2021-08-17 17:41:04.892 +08:00 [INF]   - CompanyName.ProjectName.ProjectNameApplicationModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - CompanyName.ProjectName.ProjectNameDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2021-08-17 17:41:04.892 +08:00 [INF]           - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2021-08-17 17:41:04.892 +08:00 [INF]           - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2021-08-17 17:41:04.892 +08:00 [INF]         - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]         - Volo.Abp.Users.AbpUsersDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2021-08-17 17:41:04.892 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.IdentityServer.AbpIdentityServerDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.PermissionManagement.IdentityServer.AbpPermissionManagementDomainIdentityServerModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.Emailing.AbpEmailingModule
+2021-08-17 17:41:04.892 +08:00 [INF]         - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.Account.AbpAccountApplicationModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityApplicationModule
+2021-08-17 17:41:04.892 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementApplicationModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - CompanyName.ProjectName.QueryManagement.QueryManagementDomainModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - CompanyName.ProjectName.QueryManagement.QueryManagementDomainSharedModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationModule
+2021-08-17 17:41:04.892 +08:00 [INF]   - CompanyName.ProjectName.EntityFrameworkCore.ProjectNameEntityFrameworkCoreDbMigrationsModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - CompanyName.ProjectName.EntityFrameworkCore.ProjectNameEntityFrameworkCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]         - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]           - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.IdentityServer.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.EntityFrameworkCore.MySQL.AbpEntityFrameworkCoreMySQLModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - CompanyName.ProjectName.QueryManagement.FreeSqlMySql.QueryManagementFreeSqlMySqlModule
+2021-08-17 17:41:04.892 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore.DataDictionaryManagementEntityFrameworkCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2021-08-17 17:41:04.892 +08:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2021-08-17 17:41:04.892 +08:00 [INF]   - Volo.Abp.Account.Web.AbpAccountWebModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2021-08-17 17:41:04.892 +08:00 [INF]   - Volo.Abp.AspNetCore.Authentication.JwtBearer.AbpAspNetCoreAuthenticationJwtBearerModule
+2021-08-17 17:41:04.892 +08:00 [INF]   - Volo.Abp.BackgroundJobs.Hangfire.AbpBackgroundJobsHangfireModule
+2021-08-17 17:41:04.892 +08:00 [INF]     - Volo.Abp.Hangfire.AbpHangfireModule
+2021-08-17 17:41:04.975 +08:00 [DBG] Started background worker: Volo.Abp.BackgroundJobs.BackgroundJobWorker
+2021-08-17 17:41:04.978 +08:00 [DBG] Started background worker: Volo.Abp.IdentityServer.Tokens.TokenCleanupBackgroundWorker
+2021-08-17 17:41:05.121 +08:00 [INF] Start installing Hangfire SQL objects...
+2021-08-17 17:41:05.397 +08:00 [INF] Hangfire SQL objects installed.
+2021-08-17 17:41:05.412 +08:00 [INF] Starting Hangfire Server using job storage: 'Server: localhost@CompanyNameProjectNameHangfireDB'
+2021-08-17 17:41:05.412 +08:00 [INF] Using the following options for SQL Server job storage:
+2021-08-17 17:41:05.412 +08:00 [INF]     Queue poll interval: 00:00:15.
+2021-08-17 17:41:05.413 +08:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-08-17 17:41:05.438 +08:00 [DBG] Execution loop BackgroundServerProcess:2bd1d20b has started in 6.4941 ms
+2021-08-17 17:41:05.557 +08:00 [INF] Server szqh003802a:33504:3f74a4ba successfully announced in 110.8626 ms
+2021-08-17 17:41:05.562 +08:00 [INF] Server szqh003802a:33504:3f74a4ba is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-08-17 17:41:05.562 +08:00 [DBG] Execution loop ServerHeartbeatProcess:04654f11 has started in 3.641 ms
+2021-08-17 17:41:05.564 +08:00 [DBG] Execution loop ServerWatchdog:637b076c has started in 2.3698 ms
+2021-08-17 17:41:05.566 +08:00 [DBG] Execution loop ServerJobCancellationWatcher:5ad29dcb has started in 3.7337 ms
+2021-08-17 17:41:05.570 +08:00 [DBG] Execution loop ExpirationManager:cd060b25 has started in 4.4494 ms
+2021-08-17 17:41:05.571 +08:00 [DBG] Execution loop CountersAggregator:65725665 has started in 4.2001 ms
+2021-08-17 17:41:05.572 +08:00 [DBG] Aggregating records in 'Counter' table...
+2021-08-17 17:41:05.572 +08:00 [DBG] Removing outdated records from table 'AggregatedCounter'...
+2021-08-17 17:41:05.574 +08:00 [DBG] Execution loop Worker:80d51dd7 has started in 4.785 ms
+2021-08-17 17:41:05.576 +08:00 [DBG] Execution loop Worker:526c5255 has started in 6.0582 ms
+2021-08-17 17:41:05.578 +08:00 [DBG] Execution loop Worker:da1a1940 has started in 8.4326 ms
+2021-08-17 17:41:05.583 +08:00 [DBG] Execution loop Worker:8628ccb5 has started in 13.7439 ms
+2021-08-17 17:41:05.587 +08:00 [DBG] Execution loop Worker:9a227970 has started in 17.2681 ms
+2021-08-17 17:41:05.587 +08:00 [DBG] Execution loop Worker:6274b84c has started in 17.267 ms
+2021-08-17 17:41:05.588 +08:00 [DBG] delete from `AggregatedCounter` where ExpireAt < @now limit @count;
+2021-08-17 17:41:05.588 +08:00 [DBG] Execution loop Worker:512fcdc0 has started in 18.3398 ms
+2021-08-17 17:41:05.591 +08:00 [DBG] Execution loop Worker:9fe33df6 has started in 21.5877 ms
+2021-08-17 17:41:05.593 +08:00 [DBG] Execution loop Worker:7767563f has started in 23.4188 ms
+2021-08-17 17:41:05.599 +08:00 [DBG] Execution loop Worker:a46a8468 has started in 29.2176 ms
+2021-08-17 17:41:05.605 +08:00 [DBG] Execution loop Worker:49b73af8 has started in 35.5898 ms
+2021-08-17 17:41:05.611 +08:00 [DBG] Execution loop Worker:836362be has started in 41.1796 ms
+2021-08-17 17:41:05.615 +08:00 [DBG] Execution loop Worker:709d9f36 has started in 44.5779 ms
+2021-08-17 17:41:05.619 +08:00 [DBG] Execution loop Worker:83e448e6 has started in 49.7938 ms
+2021-08-17 17:41:05.624 +08:00 [DBG] Execution loop Worker:77ca4a35 has started in 54.0408 ms
+2021-08-17 17:41:05.632 +08:00 [DBG] Execution loop Worker:5168c4e3 has started in 61.6824 ms
+2021-08-17 17:41:05.636 +08:00 [DBG] removed records count=0
+2021-08-17 17:41:05.636 +08:00 [DBG] Removing outdated records from table 'Job'...
+2021-08-17 17:41:05.636 +08:00 [DBG] Execution loop Worker:6631f334 has started in 66.906 ms
+2021-08-17 17:41:05.639 +08:00 [DBG] Execution loop Worker:545d4a5f has started in 69.2851 ms
+2021-08-17 17:41:05.641 +08:00 [DBG] delete from `Job` where ExpireAt < @now limit @count;
+2021-08-17 17:41:05.643 +08:00 [DBG] Execution loop Worker:f5d913b7 has started in 73.8975 ms
+2021-08-17 17:41:05.646 +08:00 [DBG] Execution loop Worker:c537f45c has started in 76.5859 ms
+2021-08-17 17:41:05.655 +08:00 [INF] Server szqh003802a:33504:3f74a4ba all the dispatchers started
+2021-08-17 17:41:05.656 +08:00 [DBG] Execution loop DelayedJobScheduler:095eb186 has started in 13.53 ms
+2021-08-17 17:41:05.659 +08:00 [DBG] Execution loop RecurringJobScheduler:b505dec1 has started in 11.8168 ms
+2021-08-17 17:41:05.710 +08:00 [DBG] removed records count=0
+2021-08-17 17:41:05.710 +08:00 [DBG] Removing outdated records from table 'List'...
+2021-08-17 17:41:05.717 +08:00 [DBG] delete from `List` where ExpireAt < @now limit @count;
+2021-08-17 17:41:05.736 +08:00 [DBG] removed records count=0
+2021-08-17 17:41:05.736 +08:00 [DBG] Removing outdated records from table 'Set'...
+2021-08-17 17:41:05.738 +08:00 [DBG] delete from `Set` where ExpireAt < @now limit @count;
+2021-08-17 17:41:05.754 +08:00 [DBG] removed records count=0
+2021-08-17 17:41:05.754 +08:00 [DBG] Removing outdated records from table 'Hash'...
+2021-08-17 17:41:05.762 +08:00 [DBG] delete from `Hash` where ExpireAt < @now limit @count;
+2021-08-17 17:41:05.775 +08:00 [DBG] removed records count=0
+2021-08-17 17:41:06.151 +08:00 [INF] Initialized all ABP modules.
+2021-08-17 17:41:06.231 +08:00 [INF] Now listening on: http://localhost:44315
+2021-08-17 17:41:06.232 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-17 17:41:06.232 +08:00 [INF] Hosting environment: Development
+2021-08-17 17:41:06.232 +08:00 [INF] Content root path: D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host
+2021-08-17 17:41:06.450 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/ - -
+2021-08-17 17:41:08.691 +08:00 [INF] Executing endpoint 'CompanyName.ProjectName.Controllers.HomeController.Index (CompanyName.ProjectName.HttpApi.Host)'
+2021-08-17 17:41:08.762 +08:00 [INF] Route matched with {action = "Index", controller = "Home", area = "", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Index() on controller CompanyName.ProjectName.Controllers.HomeController (CompanyName.ProjectName.HttpApi.Host).
+2021-08-17 17:41:08.801 +08:00 [INF] Executing RedirectResult, redirecting to /swagger.
+2021-08-17 17:41:08.808 +08:00 [INF] Executed action CompanyName.ProjectName.Controllers.HomeController.Index (CompanyName.ProjectName.HttpApi.Host) in 42.3885ms
+2021-08-17 17:41:08.808 +08:00 [INF] Executed endpoint 'CompanyName.ProjectName.Controllers.HomeController.Index (CompanyName.ProjectName.HttpApi.Host)'
+2021-08-17 17:41:08.827 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/ - - - 302 0 - 2381.0482ms
+2021-08-17 17:41:08.841 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/swagger/index.html - -
+2021-08-17 17:41:08.892 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/swagger/index.html - - - 200 - text/html;charset=utf-8 50.2769ms
+2021-08-17 17:41:09.048 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/swagger/v1/swagger.json - -
+2021-08-17 17:41:09.362 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 314.6549ms
+2021-08-17 17:41:12.918 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire - -
+2021-08-17 17:41:13.071 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire - - - 200 - text/html 152.7614ms
+2021-08-17 17:41:13.096 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:41:13.099 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:41:13.134 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 37.5991ms
+2021-08-17 17:41:13.142 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 42.7838ms
+2021-08-17 17:41:13.239 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:41:13.245 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:41:13.246 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:41:13.255 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 16.0355ms
+2021-08-17 17:41:13.275 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/favicon.ico - -
+2021-08-17 17:41:13.279 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/favicon.ico - - - 404 0 - 4.1422ms
+2021-08-17 17:41:14.409 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/servers - -
+2021-08-17 17:41:14.476 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/servers - - - 200 - text/html 66.8027ms
+2021-08-17 17:41:14.493 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:41:14.494 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:41:14.504 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 10.4683ms
+2021-08-17 17:41:14.516 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 22.0168ms
+2021-08-17 17:41:14.562 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:41:14.562 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:41:14.562 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:41:14.566 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 4.2787ms
+2021-08-17 17:41:14.969 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/jobs/enqueued - -
+2021-08-17 17:41:14.998 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/jobs/enqueued - - - 200 - text/html 29.3258ms
+2021-08-17 17:41:15.015 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:41:15.015 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:41:15.025 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 10.0542ms
+2021-08-17 17:41:15.038 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 22.0079ms
+2021-08-17 17:41:15.078 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:41:15.079 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:41:15.079 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:41:15.083 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 4.1640ms
+2021-08-17 17:41:15.609 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/servers - -
+2021-08-17 17:41:15.632 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/servers - - - 200 - text/html 23.6307ms
+2021-08-17 17:41:15.648 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:41:15.649 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:41:15.658 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 9.8839ms
+2021-08-17 17:41:15.671 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 22.4901ms
+2021-08-17 17:41:15.709 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:41:15.709 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:41:15.709 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:41:15.713 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 4.1260ms
+2021-08-17 17:41:17.822 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2021-08-17 17:41:17.822 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:41:17.822 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:41:18.183 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:41:18.183 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:41:18.187 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 364.7206ms
+2021-08-17 17:48:51.714 +08:00 [INF] Starting CompanyName.ProjectName.HttpApi.Host.
+2021-08-17 17:48:56.963 +08:00 [INF] User profile is available. Using 'C:\Users\wangjun\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-17 17:48:57.077 +08:00 [INF] Loaded ABP modules:
+2021-08-17 17:48:57.077 +08:00 [INF] - CompanyName.ProjectName.ProjectNameHttpApiHostModule
+2021-08-17 17:48:57.077 +08:00 [INF]   - CompanyName.ProjectName.ProjectNameHttpApiModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - CompanyName.ProjectName.ProjectNameApplicationContractsModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - CompanyName.ProjectName.ProjectNameDomainSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.Validation.AbpValidationModule
+2021-08-17 17:48:57.077 +08:00 [INF]             - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2021-08-17 17:48:57.077 +08:00 [INF]             - Volo.Abp.Localization.AbpLocalizationModule
+2021-08-17 17:48:57.077 +08:00 [INF]               - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2021-08-17 17:48:57.077 +08:00 [INF]               - Volo.Abp.Settings.AbpSettingsModule
+2021-08-17 17:48:57.077 +08:00 [INF]                 - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2021-08-17 17:48:57.077 +08:00 [INF]                 - Volo.Abp.Security.AbpSecurityModule
+2021-08-17 17:48:57.077 +08:00 [INF]                 - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2021-08-17 17:48:57.077 +08:00 [INF]                   - Volo.Abp.Data.AbpDataModule
+2021-08-17 17:48:57.077 +08:00 [INF]                     - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2021-08-17 17:48:57.077 +08:00 [INF]                     - Volo.Abp.Uow.AbpUnitOfWorkModule
+2021-08-17 17:48:57.077 +08:00 [INF]                     - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.Users.AbpUsersDomainSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.Features.AbpFeaturesModule
+2021-08-17 17:48:57.077 +08:00 [INF]             - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.IdentityServer.AbpIdentityServerDomainSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.Users.AbpUsersAbstractionModule
+2021-08-17 17:48:57.077 +08:00 [INF]             - Volo.Abp.EventBus.AbpEventBusModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.Authorization.AbpAuthorizationModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.Application.AbpDddApplicationModule
+2021-08-17 17:48:57.077 +08:00 [INF]             - Volo.Abp.Domain.AbpDddDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]               - Volo.Abp.Auditing.AbpAuditingModule
+2021-08-17 17:48:57.077 +08:00 [INF]                 - Volo.Abp.Json.AbpJsonModule
+2021-08-17 17:48:57.077 +08:00 [INF]                   - Volo.Abp.Timing.AbpTimingModule
+2021-08-17 17:48:57.077 +08:00 [INF]                 - Volo.Abp.Threading.AbpThreadingModule
+2021-08-17 17:48:57.077 +08:00 [INF]               - Volo.Abp.Guids.AbpGuidsModule
+2021-08-17 17:48:57.077 +08:00 [INF]               - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2021-08-17 17:48:57.077 +08:00 [INF]               - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2021-08-17 17:48:57.077 +08:00 [INF]               - Volo.Abp.Specifications.AbpSpecificationsModule
+2021-08-17 17:48:57.077 +08:00 [INF]             - Volo.Abp.Application.AbpDddApplicationContractsModule
+2021-08-17 17:48:57.077 +08:00 [INF]             - Volo.Abp.Http.AbpHttpAbstractionsModule
+2021-08-17 17:48:57.077 +08:00 [INF]             - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementApplicationContractsModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationContractsModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.Account.AbpAccountHttpApiModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityHttpApiModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]             - Volo.Abp.Http.AbpHttpModule
+2021-08-17 17:48:57.077 +08:00 [INF]               - Volo.Abp.Minify.AbpMinifyModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2021-08-17 17:48:57.077 +08:00 [INF]             - Volo.Abp.UI.AbpUiModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementHttpApiModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementHttpApiModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementHttpApiModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementHttpApiModule
+2021-08-17 17:48:57.077 +08:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]   - Volo.Abp.Caching.StackExchangeRedis.AbpCachingStackExchangeRedisModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.Caching.AbpCachingModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.Serialization.AbpSerializationModule
+2021-08-17 17:48:57.077 +08:00 [INF]   - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2021-08-17 17:48:57.077 +08:00 [INF]   - CompanyName.ProjectName.ProjectNameApplicationModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - CompanyName.ProjectName.ProjectNameDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.Users.AbpUsersDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.IdentityServer.AbpIdentityServerDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.PermissionManagement.IdentityServer.AbpPermissionManagementDomainIdentityServerModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.Emailing.AbpEmailingModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.Account.AbpAccountApplicationModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityApplicationModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementApplicationModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - CompanyName.ProjectName.QueryManagement.QueryManagementDomainModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - CompanyName.ProjectName.QueryManagement.QueryManagementDomainSharedModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationModule
+2021-08-17 17:48:57.077 +08:00 [INF]   - CompanyName.ProjectName.EntityFrameworkCore.ProjectNameEntityFrameworkCoreDbMigrationsModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - CompanyName.ProjectName.EntityFrameworkCore.ProjectNameEntityFrameworkCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]         - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]           - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.IdentityServer.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.EntityFrameworkCore.MySQL.AbpEntityFrameworkCoreMySQLModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - CompanyName.ProjectName.QueryManagement.FreeSqlMySql.QueryManagementFreeSqlMySqlModule
+2021-08-17 17:48:57.077 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore.DataDictionaryManagementEntityFrameworkCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2021-08-17 17:48:57.077 +08:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2021-08-17 17:48:57.077 +08:00 [INF]   - Volo.Abp.Account.Web.AbpAccountWebModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2021-08-17 17:48:57.077 +08:00 [INF]   - Volo.Abp.AspNetCore.Authentication.JwtBearer.AbpAspNetCoreAuthenticationJwtBearerModule
+2021-08-17 17:48:57.077 +08:00 [INF]   - Volo.Abp.BackgroundJobs.Hangfire.AbpBackgroundJobsHangfireModule
+2021-08-17 17:48:57.077 +08:00 [INF]     - Volo.Abp.Hangfire.AbpHangfireModule
+2021-08-17 17:48:57.160 +08:00 [DBG] Started background worker: Volo.Abp.BackgroundJobs.BackgroundJobWorker
+2021-08-17 17:48:57.163 +08:00 [DBG] Started background worker: Volo.Abp.IdentityServer.Tokens.TokenCleanupBackgroundWorker
+2021-08-17 17:48:57.309 +08:00 [INF] DB tables already exist. Exit install
+2021-08-17 17:48:57.322 +08:00 [INF] Starting Hangfire Server using job storage: 'Server: localhost@CompanyNameProjectNameHangfireDB'
+2021-08-17 17:48:57.322 +08:00 [INF] Using the following options for SQL Server job storage:
+2021-08-17 17:48:57.323 +08:00 [INF]     Queue poll interval: 00:00:15.
+2021-08-17 17:48:57.323 +08:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-08-17 17:48:57.344 +08:00 [DBG] Execution loop BackgroundServerProcess:27b56b04 has started in 5.6809 ms
+2021-08-17 17:48:57.460 +08:00 [INF] Server szqh003802a:22964:7390f16c successfully announced in 108.0907 ms
+2021-08-17 17:48:57.474 +08:00 [DBG] Execution loop ServerHeartbeatProcess:efd7cfe8 has started in 12.8686 ms
+2021-08-17 17:48:57.475 +08:00 [INF] Server szqh003802a:22964:7390f16c is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-08-17 17:48:57.478 +08:00 [DBG] Execution loop ServerWatchdog:e60dcb8b has started in 2.7873 ms
+2021-08-17 17:48:57.481 +08:00 [DBG] Execution loop ServerJobCancellationWatcher:bf5c5d15 has started in 5.745 ms
+2021-08-17 17:48:57.488 +08:00 [DBG] Execution loop ExpirationManager:c5b9a5f2 has started in 11.0339 ms
+2021-08-17 17:48:57.490 +08:00 [DBG] Removing outdated records from table 'AggregatedCounter'...
+2021-08-17 17:48:57.491 +08:00 [DBG] Execution loop CountersAggregator:e1604c73 has started in 9.8336 ms
+2021-08-17 17:48:57.492 +08:00 [DBG] Aggregating records in 'Counter' table...
+2021-08-17 17:48:57.493 +08:00 [DBG] Execution loop Worker:e8369b98 has started in 4.7442 ms
+2021-08-17 17:48:57.494 +08:00 [DBG] Execution loop Worker:b7a19ddf has started in 5.8981 ms
+2021-08-17 17:48:57.519 +08:00 [INF] 1 servers were removed due to timeout
+2021-08-17 17:48:57.519 +08:00 [DBG] Execution loop Worker:0aa4dfec has started in 30.7364 ms
+2021-08-17 17:48:57.519 +08:00 [DBG] Execution loop Worker:93d48923 has started in 30.7364 ms
+2021-08-17 17:48:57.519 +08:00 [DBG] Execution loop Worker:b10ad393 has started in 30.7387 ms
+2021-08-17 17:48:57.529 +08:00 [DBG] Execution loop Worker:79cc3b5e has started in 40.9001 ms
+2021-08-17 17:48:57.531 +08:00 [DBG] Execution loop Worker:6cbeac75 has started in 42.7485 ms
+2021-08-17 17:48:57.532 +08:00 [DBG] delete from `AggregatedCounter` where ExpireAt < @now limit @count;
+2021-08-17 17:48:57.535 +08:00 [DBG] Execution loop Worker:21f54976 has started in 46.931 ms
+2021-08-17 17:48:57.537 +08:00 [DBG] Execution loop Worker:2e9b0a02 has started in 48.8973 ms
+2021-08-17 17:48:57.541 +08:00 [DBG] Execution loop Worker:54660748 has started in 52.8684 ms
+2021-08-17 17:48:57.544 +08:00 [DBG] Execution loop Worker:25286f73 has started in 55.9657 ms
+2021-08-17 17:48:57.548 +08:00 [DBG] Execution loop Worker:003a35de has started in 59.0862 ms
+2021-08-17 17:48:57.553 +08:00 [DBG] Execution loop Worker:268ec2a2 has started in 64.1941 ms
+2021-08-17 17:48:57.553 +08:00 [DBG] Execution loop Worker:0cced428 has started in 64.4117 ms
+2021-08-17 17:48:57.557 +08:00 [DBG] Execution loop Worker:0f1546d4 has started in 68.5952 ms
+2021-08-17 17:48:57.566 +08:00 [DBG] Execution loop Worker:2ee67a31 has started in 75.9911 ms
+2021-08-17 17:48:57.571 +08:00 [DBG] Execution loop Worker:4a3cc124 has started in 82.2652 ms
+2021-08-17 17:48:57.577 +08:00 [DBG] Execution loop Worker:f2a66a69 has started in 88.0623 ms
+2021-08-17 17:48:57.581 +08:00 [DBG] Execution loop Worker:8f868b9a has started in 92.4925 ms
+2021-08-17 17:48:57.586 +08:00 [DBG] removed records count=0
+2021-08-17 17:48:57.586 +08:00 [DBG] Removing outdated records from table 'Job'...
+2021-08-17 17:48:57.586 +08:00 [DBG] Execution loop Worker:1ff9b6fd has started in 96.5442 ms
+2021-08-17 17:48:57.588 +08:00 [DBG] Execution loop DelayedJobScheduler:822c7cf7 has started in 7.4212 ms
+2021-08-17 17:48:57.589 +08:00 [INF] Server szqh003802a:22964:7390f16c all the dispatchers started
+2021-08-17 17:48:57.591 +08:00 [DBG] delete from `Job` where ExpireAt < @now limit @count;
+2021-08-17 17:48:57.593 +08:00 [DBG] Execution loop RecurringJobScheduler:bfd150df has started in 7.8946 ms
+2021-08-17 17:48:57.621 +08:00 [DBG] removed records count=0
+2021-08-17 17:48:57.621 +08:00 [DBG] Removing outdated records from table 'List'...
+2021-08-17 17:48:57.625 +08:00 [DBG] delete from `List` where ExpireAt < @now limit @count;
+2021-08-17 17:48:57.634 +08:00 [DBG] removed records count=0
+2021-08-17 17:48:57.634 +08:00 [DBG] Removing outdated records from table 'Set'...
+2021-08-17 17:48:57.636 +08:00 [DBG] delete from `Set` where ExpireAt < @now limit @count;
+2021-08-17 17:48:57.648 +08:00 [DBG] removed records count=0
+2021-08-17 17:48:57.648 +08:00 [DBG] Removing outdated records from table 'Hash'...
+2021-08-17 17:48:57.649 +08:00 [DBG] delete from `Hash` where ExpireAt < @now limit @count;
+2021-08-17 17:48:57.659 +08:00 [DBG] removed records count=0
+2021-08-17 17:48:58.044 +08:00 [INF] Initialized all ABP modules.
+2021-08-17 17:48:58.125 +08:00 [INF] Now listening on: http://localhost:44315
+2021-08-17 17:48:58.126 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-17 17:48:58.126 +08:00 [INF] Hosting environment: Development
+2021-08-17 17:48:58.126 +08:00 [INF] Content root path: D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host
+2021-08-17 17:48:58.358 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/ - -
+2021-08-17 17:48:59.934 +08:00 [INF] Executing endpoint 'CompanyName.ProjectName.Controllers.HomeController.Index (CompanyName.ProjectName.HttpApi.Host)'
+2021-08-17 17:49:00.002 +08:00 [INF] Route matched with {action = "Index", controller = "Home", area = "", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Index() on controller CompanyName.ProjectName.Controllers.HomeController (CompanyName.ProjectName.HttpApi.Host).
+2021-08-17 17:49:00.041 +08:00 [INF] Executing RedirectResult, redirecting to /swagger.
+2021-08-17 17:49:00.048 +08:00 [INF] Executed action CompanyName.ProjectName.Controllers.HomeController.Index (CompanyName.ProjectName.HttpApi.Host) in 42.2531ms
+2021-08-17 17:49:00.048 +08:00 [INF] Executed endpoint 'CompanyName.ProjectName.Controllers.HomeController.Index (CompanyName.ProjectName.HttpApi.Host)'
+2021-08-17 17:49:00.067 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/ - - - 302 0 - 1712.6215ms
+2021-08-17 17:49:00.083 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/swagger/index.html - -
+2021-08-17 17:49:00.143 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/swagger/index.html - - - 200 - text/html;charset=utf-8 60.6359ms
+2021-08-17 17:49:00.301 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/swagger/v1/swagger.json - -
+2021-08-17 17:49:00.627 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 325.6500ms
+2021-08-17 17:49:01.430 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/servers - -
+2021-08-17 17:49:01.545 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/servers - - - 200 - text/html 114.7250ms
+2021-08-17 17:49:01.569 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:49:01.570 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:49:01.581 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 11.9835ms
+2021-08-17 17:49:01.602 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 31.4550ms
+2021-08-17 17:49:01.678 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:49:01.687 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:01.688 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:01.700 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 21.6261ms
+2021-08-17 17:49:02.888 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/recurring - -
+2021-08-17 17:49:02.966 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/recurring - - - 200 - text/html 77.7291ms
+2021-08-17 17:49:02.982 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:49:02.983 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:49:02.993 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 10.3828ms
+2021-08-17 17:49:03.008 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 24.9946ms
+2021-08-17 17:49:03.052 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:49:03.052 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:03.053 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:03.057 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 4.7869ms
+2021-08-17 17:49:05.052 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2021-08-17 17:49:05.053 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:05.053 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:05.141 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/recurring/trigger application/x-www-form-urlencoded;+charset=UTF-8 32
+2021-08-17 17:49:05.141 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:05.141 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:05.436 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:05.436 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:05.436 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:05.436 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:05.440 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/recurring/trigger application/x-www-form-urlencoded;+charset=UTF-8 32 - 204 - - 298.8284ms
+2021-08-17 17:49:05.440 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 387.5120ms
+2021-08-17 17:49:05.451 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/recurring - -
+2021-08-17 17:49:05.580 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/recurring - - - 200 - text/html 129.1156ms
+2021-08-17 17:49:05.597 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:49:05.597 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:49:05.608 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 10.7800ms
+2021-08-17 17:49:05.622 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 24.8314ms
+2021-08-17 17:49:05.660 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:49:05.660 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:05.660 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:05.664 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 3.9361ms
+2021-08-17 17:49:07.671 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2021-08-17 17:49:07.671 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:07.671 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:07.715 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:07.715 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:07.715 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 44.2637ms
+2021-08-17 17:49:09.720 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2021-08-17 17:49:09.720 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:09.720 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:09.755 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:09.755 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:09.755 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 35.2579ms
+2021-08-17 17:49:09.912 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/jobs/enqueued - -
+2021-08-17 17:49:09.958 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/jobs/enqueued - - - 200 - text/html 45.7400ms
+2021-08-17 17:49:09.976 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:49:09.977 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:49:09.986 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 8.8707ms
+2021-08-17 17:49:09.988 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 10.7836ms
+2021-08-17 17:49:10.036 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:49:10.036 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:10.036 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:10.040 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 4.1866ms
+2021-08-17 17:49:12.034 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2021-08-17 17:49:12.035 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:12.035 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:12.075 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:12.075 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:12.075 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 40.4018ms
+2021-08-17 17:49:14.081 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2021-08-17 17:49:14.081 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:14.081 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:14.120 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:14.120 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:14.120 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 39.5825ms
+2021-08-17 17:49:14.415 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/jobs/enqueued/default - -
+2021-08-17 17:49:14.445 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/jobs/enqueued/default - - - 200 - text/html 29.8386ms
+2021-08-17 17:49:14.463 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:49:14.463 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:49:14.473 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 10.5216ms
+2021-08-17 17:49:14.486 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 22.5075ms
+2021-08-17 17:49:14.529 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:49:14.530 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:14.530 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:14.534 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 4.1126ms
+2021-08-17 17:49:15.378 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/jobs/succeeded - -
+2021-08-17 17:49:15.417 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/jobs/succeeded - - - 200 - text/html 39.7756ms
+2021-08-17 17:49:15.435 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:49:15.436 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:49:15.443 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 7.5480ms
+2021-08-17 17:49:15.460 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 24.1690ms
+2021-08-17 17:49:15.506 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:49:15.507 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:15.507 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:15.511 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 4.3954ms
+2021-08-17 17:49:17.497 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2021-08-17 17:49:17.497 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:17.497 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:17.537 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:17.537 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:17.537 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 40.2023ms
+2021-08-17 17:49:19.542 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2021-08-17 17:49:19.542 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:19.542 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:19.583 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:19.583 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:19.583 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 41.2644ms
+2021-08-17 17:49:20.163 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/jobs/details/1 - -
+2021-08-17 17:49:20.211 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/jobs/details/1 - - - 200 - text/html 48.3491ms
+2021-08-17 17:49:20.229 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:49:20.229 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:49:20.240 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 10.7487ms
+2021-08-17 17:49:20.253 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 23.0571ms
+2021-08-17 17:49:20.312 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:49:20.312 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:20.312 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:20.316 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 4.2646ms
+2021-08-17 17:49:22.312 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2021-08-17 17:49:22.312 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:49:22.312 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:49:22.359 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:22.359 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:49:22.359 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 47.5813ms
+2021-08-17 17:51:18.870 +08:00 [INF] Starting CompanyName.ProjectName.HttpApi.Host.
+2021-08-17 17:51:23.016 +08:00 [INF] User profile is available. Using 'C:\Users\wangjun\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-08-17 17:51:23.129 +08:00 [INF] Loaded ABP modules:
+2021-08-17 17:51:23.129 +08:00 [INF] - CompanyName.ProjectName.ProjectNameHttpApiHostModule
+2021-08-17 17:51:23.129 +08:00 [INF]   - CompanyName.ProjectName.ProjectNameHttpApiModule
+2021-08-17 17:51:23.129 +08:00 [INF]     - CompanyName.ProjectName.ProjectNameApplicationContractsModule
+2021-08-17 17:51:23.129 +08:00 [INF]       - CompanyName.ProjectName.ProjectNameDomainSharedModule
+2021-08-17 17:51:23.129 +08:00 [INF]         - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2021-08-17 17:51:23.129 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2021-08-17 17:51:23.129 +08:00 [INF]         - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2021-08-17 17:51:23.129 +08:00 [INF]           - Volo.Abp.Validation.AbpValidationModule
+2021-08-17 17:51:23.129 +08:00 [INF]             - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2021-08-17 17:51:23.129 +08:00 [INF]             - Volo.Abp.Localization.AbpLocalizationModule
+2021-08-17 17:51:23.129 +08:00 [INF]               - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2021-08-17 17:51:23.129 +08:00 [INF]               - Volo.Abp.Settings.AbpSettingsModule
+2021-08-17 17:51:23.129 +08:00 [INF]                 - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2021-08-17 17:51:23.129 +08:00 [INF]                 - Volo.Abp.Security.AbpSecurityModule
+2021-08-17 17:51:23.129 +08:00 [INF]                 - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2021-08-17 17:51:23.129 +08:00 [INF]                   - Volo.Abp.Data.AbpDataModule
+2021-08-17 17:51:23.129 +08:00 [INF]                     - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2021-08-17 17:51:23.129 +08:00 [INF]                     - Volo.Abp.Uow.AbpUnitOfWorkModule
+2021-08-17 17:51:23.129 +08:00 [INF]                     - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2021-08-17 17:51:23.129 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2021-08-17 17:51:23.129 +08:00 [INF]           - Volo.Abp.Users.AbpUsersDomainSharedModule
+2021-08-17 17:51:23.129 +08:00 [INF]           - Volo.Abp.Features.AbpFeaturesModule
+2021-08-17 17:51:23.129 +08:00 [INF]             - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2021-08-17 17:51:23.129 +08:00 [INF]         - Volo.Abp.IdentityServer.AbpIdentityServerDomainSharedModule
+2021-08-17 17:51:23.129 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2021-08-17 17:51:23.129 +08:00 [INF]         - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2021-08-17 17:51:23.129 +08:00 [INF]         - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2021-08-17 17:51:23.129 +08:00 [INF]       - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2021-08-17 17:51:23.129 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2021-08-17 17:51:23.129 +08:00 [INF]           - Volo.Abp.Users.AbpUsersAbstractionModule
+2021-08-17 17:51:23.129 +08:00 [INF]             - Volo.Abp.EventBus.AbpEventBusModule
+2021-08-17 17:51:23.129 +08:00 [INF]           - Volo.Abp.Authorization.AbpAuthorizationModule
+2021-08-17 17:51:23.129 +08:00 [INF]           - Volo.Abp.Application.AbpDddApplicationModule
+2021-08-17 17:51:23.129 +08:00 [INF]             - Volo.Abp.Domain.AbpDddDomainModule
+2021-08-17 17:51:23.129 +08:00 [INF]               - Volo.Abp.Auditing.AbpAuditingModule
+2021-08-17 17:51:23.129 +08:00 [INF]                 - Volo.Abp.Json.AbpJsonModule
+2021-08-17 17:51:23.129 +08:00 [INF]                   - Volo.Abp.Timing.AbpTimingModule
+2021-08-17 17:51:23.129 +08:00 [INF]                 - Volo.Abp.Threading.AbpThreadingModule
+2021-08-17 17:51:23.129 +08:00 [INF]               - Volo.Abp.Guids.AbpGuidsModule
+2021-08-17 17:51:23.129 +08:00 [INF]               - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2021-08-17 17:51:23.129 +08:00 [INF]               - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2021-08-17 17:51:23.129 +08:00 [INF]               - Volo.Abp.Specifications.AbpSpecificationsModule
+2021-08-17 17:51:23.129 +08:00 [INF]             - Volo.Abp.Application.AbpDddApplicationContractsModule
+2021-08-17 17:51:23.129 +08:00 [INF]             - Volo.Abp.Http.AbpHttpAbstractionsModule
+2021-08-17 17:51:23.129 +08:00 [INF]             - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2021-08-17 17:51:23.129 +08:00 [INF]           - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2021-08-17 17:51:23.129 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2021-08-17 17:51:23.129 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementApplicationContractsModule
+2021-08-17 17:51:23.129 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2021-08-17 17:51:23.129 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationContractsModule
+2021-08-17 17:51:23.129 +08:00 [INF]         - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainSharedModule
+2021-08-17 17:51:23.129 +08:00 [INF]     - Volo.Abp.Account.AbpAccountHttpApiModule
+2021-08-17 17:51:23.129 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityHttpApiModule
+2021-08-17 17:51:23.129 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2021-08-17 17:51:23.129 +08:00 [INF]           - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]             - Volo.Abp.Http.AbpHttpModule
+2021-08-17 17:51:23.130 +08:00 [INF]               - Volo.Abp.Minify.AbpMinifyModule
+2021-08-17 17:51:23.130 +08:00 [INF]           - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2021-08-17 17:51:23.130 +08:00 [INF]           - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2021-08-17 17:51:23.130 +08:00 [INF]           - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2021-08-17 17:51:23.130 +08:00 [INF]             - Volo.Abp.UI.AbpUiModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.PermissionManagement.HttpApi.AbpPermissionManagementHttpApiModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementHttpApiModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementHttpApiModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementHttpApiModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementHttpApiModule
+2021-08-17 17:51:23.130 +08:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]   - Volo.Abp.Caching.StackExchangeRedis.AbpCachingStackExchangeRedisModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.Caching.AbpCachingModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.Serialization.AbpSerializationModule
+2021-08-17 17:51:23.130 +08:00 [INF]   - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2021-08-17 17:51:23.130 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2021-08-17 17:51:23.130 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2021-08-17 17:51:23.130 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2021-08-17 17:51:23.130 +08:00 [INF]   - CompanyName.ProjectName.ProjectNameApplicationModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - CompanyName.ProjectName.ProjectNameDomainModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2021-08-17 17:51:23.130 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2021-08-17 17:51:23.130 +08:00 [INF]           - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2021-08-17 17:51:23.130 +08:00 [INF]           - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2021-08-17 17:51:23.130 +08:00 [INF]         - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityDomainModule
+2021-08-17 17:51:23.130 +08:00 [INF]         - Volo.Abp.Users.AbpUsersDomainModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2021-08-17 17:51:23.130 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.IdentityServer.AbpIdentityServerDomainModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.PermissionManagement.IdentityServer.AbpPermissionManagementDomainIdentityServerModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.Emailing.AbpEmailingModule
+2021-08-17 17:51:23.130 +08:00 [INF]         - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementDomainModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.Account.AbpAccountApplicationModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityApplicationModule
+2021-08-17 17:51:23.130 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementApplicationModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - CompanyName.ProjectName.QueryManagement.QueryManagementDomainModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - CompanyName.ProjectName.QueryManagement.QueryManagementDomainSharedModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - CompanyName.ProjectName.DataDictionaryManagement.DataDictionaryManagementApplicationModule
+2021-08-17 17:51:23.130 +08:00 [INF]   - CompanyName.ProjectName.EntityFrameworkCore.ProjectNameEntityFrameworkCoreDbMigrationsModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - CompanyName.ProjectName.EntityFrameworkCore.ProjectNameEntityFrameworkCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]         - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]           - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.IdentityServer.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.EntityFrameworkCore.MySQL.AbpEntityFrameworkCoreMySQLModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - CompanyName.ProjectName.QueryManagement.FreeSqlMySql.QueryManagementFreeSqlMySqlModule
+2021-08-17 17:51:23.130 +08:00 [INF]       - CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore.DataDictionaryManagementEntityFrameworkCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2021-08-17 17:51:23.130 +08:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2021-08-17 17:51:23.130 +08:00 [INF]   - Volo.Abp.Account.Web.AbpAccountWebModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2021-08-17 17:51:23.130 +08:00 [INF]   - Volo.Abp.AspNetCore.Authentication.JwtBearer.AbpAspNetCoreAuthenticationJwtBearerModule
+2021-08-17 17:51:23.130 +08:00 [INF]   - Volo.Abp.BackgroundJobs.Hangfire.AbpBackgroundJobsHangfireModule
+2021-08-17 17:51:23.130 +08:00 [INF]     - Volo.Abp.Hangfire.AbpHangfireModule
+2021-08-17 17:51:23.210 +08:00 [DBG] Started background worker: Volo.Abp.BackgroundJobs.BackgroundJobWorker
+2021-08-17 17:51:23.213 +08:00 [DBG] Started background worker: Volo.Abp.IdentityServer.Tokens.TokenCleanupBackgroundWorker
+2021-08-17 17:51:23.351 +08:00 [INF] DB tables already exist. Exit install
+2021-08-17 17:51:23.364 +08:00 [INF] Starting Hangfire Server using job storage: 'Server: localhost@CompanyNameProjectNameHangfireDB'
+2021-08-17 17:51:23.364 +08:00 [INF] Using the following options for SQL Server job storage:
+2021-08-17 17:51:23.365 +08:00 [INF]     Queue poll interval: 00:00:15.
+2021-08-17 17:51:23.365 +08:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-08-17 17:51:23.420 +08:00 [DBG] Execution loop BackgroundServerProcess:87c5540a has started in 5.486 ms
+2021-08-17 17:51:23.528 +08:00 [INF] Server szqh003802a:18800:84de19f0 successfully announced in 106.0123 ms
+2021-08-17 17:51:23.541 +08:00 [DBG] Execution loop ServerHeartbeatProcess:877fc007 has started in 11.7716 ms
+2021-08-17 17:51:23.542 +08:00 [INF] Server szqh003802a:18800:84de19f0 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-08-17 17:51:23.545 +08:00 [DBG] Execution loop ServerWatchdog:5a4e99ab has started in 2.3604 ms
+2021-08-17 17:51:23.579 +08:00 [DBG] Execution loop ExpirationManager:193df4f2 has started in 33.6729 ms
+2021-08-17 17:51:23.579 +08:00 [DBG] Execution loop ServerJobCancellationWatcher:832acbf7 has started in 36.1539 ms
+2021-08-17 17:51:23.581 +08:00 [DBG] Removing outdated records from table 'AggregatedCounter'...
+2021-08-17 17:51:23.581 +08:00 [DBG] Execution loop CountersAggregator:d6d3aa50 has started in 2.5991 ms
+2021-08-17 17:51:23.583 +08:00 [DBG] Aggregating records in 'Counter' table...
+2021-08-17 17:51:23.584 +08:00 [DBG] Execution loop Worker:34e25150 has started in 4.5788 ms
+2021-08-17 17:51:23.585 +08:00 [DBG] Execution loop Worker:c594d327 has started in 5.5421 ms
+2021-08-17 17:51:23.587 +08:00 [DBG] Execution loop Worker:3ccd9c46 has started in 8.258 ms
+2021-08-17 17:51:23.592 +08:00 [DBG] Execution loop Worker:504d7d89 has started in 12.5765 ms
+2021-08-17 17:51:23.593 +08:00 [DBG] Execution loop Worker:2c866823 has started in 13.9937 ms
+2021-08-17 17:51:23.627 +08:00 [DBG] Execution loop Worker:ba774d27 has started in 47.8103 ms
+2021-08-17 17:51:23.627 +08:00 [DBG] Execution loop Worker:8439d545 has started in 47.8013 ms
+2021-08-17 17:51:23.627 +08:00 [DBG] Execution loop Worker:ed3f34bc has started in 47.8012 ms
+2021-08-17 17:51:23.630 +08:00 [DBG] Execution loop Worker:2f4eb372 has started in 50.609 ms
+2021-08-17 17:51:23.631 +08:00 [DBG] Execution loop Worker:a930359c has started in 51.745 ms
+2021-08-17 17:51:23.633 +08:00 [DBG] Execution loop Worker:2f26dd32 has started in 54.0039 ms
+2021-08-17 17:51:23.635 +08:00 [DBG] Execution loop Worker:4740d30e has started in 55.8712 ms
+2021-08-17 17:51:23.637 +08:00 [DBG] Execution loop Worker:47bdc89f has started in 57.9802 ms
+2021-08-17 17:51:23.641 +08:00 [DBG] Execution loop Worker:5af6b31c has started in 62.2596 ms
+2021-08-17 17:51:23.642 +08:00 [DBG] delete from `AggregatedCounter` where ExpireAt < @now limit @count;
+2021-08-17 17:51:23.648 +08:00 [DBG] Execution loop Worker:73b2b3c7 has started in 68.9092 ms
+2021-08-17 17:51:23.655 +08:00 [DBG] Execution loop Worker:099a3154 has started in 76.2634 ms
+2021-08-17 17:51:23.655 +08:00 [DBG] Execution loop Worker:123d6b46 has started in 76.2645 ms
+2021-08-17 17:51:23.660 +08:00 [DBG] Execution loop Worker:c3379430 has started in 80.4694 ms
+2021-08-17 17:51:23.665 +08:00 [DBG] Execution loop Worker:491666ee has started in 85.8693 ms
+2021-08-17 17:51:23.676 +08:00 [DBG] Execution loop Worker:96ae51a9 has started in 96.7143 ms
+2021-08-17 17:51:23.680 +08:00 [DBG] Execution loop DelayedJobScheduler:c98f2d10 has started in 14.3613 ms
+2021-08-17 17:51:23.682 +08:00 [INF] Server szqh003802a:18800:84de19f0 all the dispatchers started
+2021-08-17 17:51:23.690 +08:00 [DBG] Execution loop RecurringJobScheduler:e6160dc4 has started in 10.0536 ms
+2021-08-17 17:51:23.691 +08:00 [DBG] removed records count=0
+2021-08-17 17:51:23.691 +08:00 [DBG] Removing outdated records from table 'Job'...
+2021-08-17 17:51:23.701 +08:00 [DBG] delete from `Job` where ExpireAt < @now limit @count;
+2021-08-17 17:51:23.715 +08:00 [DBG] removed records count=0
+2021-08-17 17:51:23.715 +08:00 [DBG] Removing outdated records from table 'List'...
+2021-08-17 17:51:23.717 +08:00 [DBG] delete from `List` where ExpireAt < @now limit @count;
+2021-08-17 17:51:23.738 +08:00 [DBG] removed records count=0
+2021-08-17 17:51:23.738 +08:00 [DBG] Removing outdated records from table 'Set'...
+2021-08-17 17:51:23.740 +08:00 [DBG] delete from `Set` where ExpireAt < @now limit @count;
+2021-08-17 17:51:23.749 +08:00 [DBG] removed records count=0
+2021-08-17 17:51:23.749 +08:00 [DBG] Removing outdated records from table 'Hash'...
+2021-08-17 17:51:23.750 +08:00 [DBG] delete from `Hash` where ExpireAt < @now limit @count;
+2021-08-17 17:51:23.762 +08:00 [DBG] removed records count=0
+2021-08-17 17:51:23.937 +08:00 [DBG] 1 recurring job(s) processed by scheduler.
+2021-08-17 17:51:24.062 +08:00 [INF] Initialized all ABP modules.
+2021-08-17 17:51:24.129 +08:00 [INF] Now listening on: http://localhost:44315
+2021-08-17 17:51:24.130 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-08-17 17:51:24.130 +08:00 [INF] Hosting environment: Development
+2021-08-17 17:51:24.130 +08:00 [INF] Content root path: D:\abp\aspnet-core\services\src\CompanyName.ProjectName.HttpApi.Host
+2021-08-17 17:51:24.335 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/ - -
+2021-08-17 17:51:25.795 +08:00 [INF] Executing endpoint 'CompanyName.ProjectName.Controllers.HomeController.Index (CompanyName.ProjectName.HttpApi.Host)'
+2021-08-17 17:51:25.863 +08:00 [INF] Route matched with {action = "Index", controller = "Home", area = "", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Index() on controller CompanyName.ProjectName.Controllers.HomeController (CompanyName.ProjectName.HttpApi.Host).
+2021-08-17 17:51:25.897 +08:00 [INF] Executing RedirectResult, redirecting to /swagger.
+2021-08-17 17:51:25.903 +08:00 [INF] Executed action CompanyName.ProjectName.Controllers.HomeController.Index (CompanyName.ProjectName.HttpApi.Host) in 36.1052ms
+2021-08-17 17:51:25.903 +08:00 [INF] Executed endpoint 'CompanyName.ProjectName.Controllers.HomeController.Index (CompanyName.ProjectName.HttpApi.Host)'
+2021-08-17 17:51:25.923 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/ - - - 302 0 - 1590.5540ms
+2021-08-17 17:51:25.935 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/swagger/index.html - -
+2021-08-17 17:51:25.991 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/swagger/index.html - - - 200 - text/html;charset=utf-8 55.8350ms
+2021-08-17 17:51:26.143 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/swagger/v1/swagger.json - -
+2021-08-17 17:51:26.490 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 346.0684ms
+2021-08-17 17:51:32.150 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire - -
+2021-08-17 17:51:32.350 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire - - - 200 - text/html 199.8053ms
+2021-08-17 17:51:32.370 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:51:32.371 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:51:32.383 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 12.4637ms
+2021-08-17 17:51:32.406 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 35.2955ms
+2021-08-17 17:51:32.480 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:51:32.486 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:51:32.486 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:51:32.495 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 14.4265ms
+2021-08-17 17:51:33.635 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/jobs/enqueued - -
+2021-08-17 17:51:33.687 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/jobs/enqueued - - - 200 - text/html 51.8466ms
+2021-08-17 17:51:33.703 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - -
+2021-08-17 17:51:33.704 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - -
+2021-08-17 17:51:33.714 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/css17230 - - - 200 - text/css 10.4632ms
+2021-08-17 17:51:33.728 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/js17230 - - - 200 - application/javascript 23.9485ms
+2021-08-17 17:51:33.777 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2021-08-17 17:51:33.778 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:51:33.778 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:51:33.781 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44315/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 4.1042ms
+2021-08-17 17:51:35.760 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2021-08-17 17:51:35.760 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:51:35.760 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:51:36.132 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:51:36.132 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:51:36.135 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 375.6853ms
+2021-08-17 17:51:38.143 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2021-08-17 17:51:38.143 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:51:38.143 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:51:38.184 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:51:38.184 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:51:38.184 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 41.2262ms
+2021-08-17 17:51:40.200 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2021-08-17 17:51:40.200 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:51:40.200 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:51:40.237 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:51:40.237 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:51:40.237 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 37.0177ms
+2021-08-17 17:51:42.253 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2021-08-17 17:51:42.253 +08:00 [INF] CORS policy execution failed.
+2021-08-17 17:51:42.253 +08:00 [INF] Request origin http://localhost:44315 does not have permission to access the resource.
+2021-08-17 17:51:42.289 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:51:42.289 +08:00 [DBG] Added 0 entity changes to the current audit log
+2021-08-17 17:51:42.289 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44315/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 36.3855ms

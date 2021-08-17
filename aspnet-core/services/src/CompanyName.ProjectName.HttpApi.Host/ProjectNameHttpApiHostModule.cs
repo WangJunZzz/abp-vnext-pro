@@ -15,7 +15,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CompanyName.ProjectName.EntityFrameworkCore;
 using CompanyName.ProjectName.Extensions.Filters;
+using CompanyName.ProjectName.Jobs;
 using CompanyName.ProjectName.MultiTenancy;
+using CompanyNameProjectName.Extensions.Filters;
+using Hangfire;
+using Hangfire.MySql;
 using Microsoft.IdentityModel.Tokens;
 using StackExchange.Redis;
 using Microsoft.OpenApi.Models;
@@ -27,6 +31,8 @@ using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
+using Volo.Abp.BackgroundJobs;
+using Volo.Abp.BackgroundJobs.Hangfire;
 using Volo.Abp.Caching;
 using Volo.Abp.Caching.StackExchangeRedis;
 using Volo.Abp.Identity.AspNetCore;
@@ -47,12 +53,18 @@ namespace CompanyName.ProjectName
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpSwashbuckleModule),
         typeof(AbpAccountWebModule),
-        typeof(AbpAspNetCoreAuthenticationJwtBearerModule)
-        
+        typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
+        typeof(AbpBackgroundJobsHangfireModule)
     )]
     public class ProjectNameHttpApiHostModule : AbpModule
     {
         private const string DefaultCorsPolicyName = "Default";
+
+        public override void OnPostApplicationInitialization(ApplicationInitializationContext context)
+        {
+            context.CreateRecurringJob();
+            base.OnPostApplicationInitialization(context);
+        }
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
@@ -70,9 +82,78 @@ namespace CompanyName.ProjectName
             ConfigureOptions(context);
             ConfigureHealthChecks(context);
             ConfigureJwtAuthentication(context, configuration);
+            ConfigureHangfireMysql(context);
         }
 
-        
+        public override void OnApplicationInitialization(ApplicationInitializationContext context)
+        {
+            var app = context.GetApplicationBuilder();
+            var env = context.GetEnvironment();
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseAbpRequestLocalization();
+
+            if (!env.IsDevelopment())
+            {
+                app.UseErrorPage();
+            }
+
+            app.UseCorrelationId();
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.UseCors(DefaultCorsPolicyName);
+            app.UseAuthentication();
+
+            if (MultiTenancyConsts.IsEnabled)
+            {
+                app.UseMultiTenancy();
+            }
+
+            app.UseAuthorization();
+
+            app.UseSwagger();
+            app.UseAbpSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectName API");
+
+                var configuration = context.GetConfiguration();
+                options.OAuthClientId(configuration["AuthServer:SwaggerClientId"]);
+                options.OAuthClientSecret(configuration["AuthServer:SwaggerClientSecret"]);
+                options.OAuthScopes("ProjectName");
+            });
+
+            app.UseAuditing();
+            app.UseAbpSerilogEnrichers();
+            app.UseUnitOfWork();
+            app.UseConfiguredEndpoints();
+            app.UseEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions()
+            {
+                Authorization = new[] {new CustomHangfireAuthorizeFilter()}
+            });
+        }
+
+        public void ConfigureHangfireMysql(ServiceConfigurationContext context)
+        {
+            Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = true; });
+            context.Services.AddHangfire(config =>
+            {
+                config.UseStorage(new MySqlStorage(context.Services.GetConfiguration().GetConnectionString("Hangfire"),
+                    new MySqlStorageOptions()
+                    {
+                        //CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                        //SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                        //QueuePollInterval = TimeSpan.Zero,
+                        //UseRecommendedIsolationLevel = true,
+                        //DisableGlobalLocks = true
+                    }));
+            });
+        }
+
         /// <summary>
         /// 配置JWT
         /// </summary>
@@ -97,10 +178,12 @@ namespace CompanyName.ProjectName
                         //ClockSkew = TimeSpan.Zero,
                         ValidIssuer = configuration["Jwt:Issuer"],
                         ValidAudience = configuration["Jwt:Audience"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration["Jwt:SecurityKey"]))
+                        IssuerSigningKey =
+                            new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration["Jwt:SecurityKey"]))
                     };
                 });
         }
+
         /// <summary>
         /// 配置options
         /// </summary>
@@ -147,7 +230,6 @@ namespace CompanyName.ProjectName
             });
         }
 
-   
 
         /// <summary>
         /// 健康检查
@@ -155,10 +237,9 @@ namespace CompanyName.ProjectName
         /// <param name="context"></param>
         private void ConfigureHealthChecks(ServiceConfigurationContext context)
         {
-       
-            var redisConnectionString = 
+            var redisConnectionString =
                 context.Services.GetConfiguration().GetValue<string>("Redis:Configuration")
-                +",defaultdatabase=" 
+                + ",defaultdatabase="
                 + context.Services.GetConfiguration().GetValue<int>("Redis:DatabaseId", 1);
             var mysqlConnectionString = context.Services.GetConfiguration().GetConnectionString("Default");
             context.Services.AddHealthChecks().AddRedis(redisConnectionString).AddMySql(mysqlConnectionString);
@@ -246,9 +327,9 @@ namespace CompanyName.ProjectName
         {
             if (!hostingEnvironment.IsDevelopment())
             {
-                var redisConnectionString = 
+                var redisConnectionString =
                     context.Services.GetConfiguration().GetValue<string>("Redis:Configuration")
-                    +",defaultdatabase=" 
+                    + ",defaultdatabase="
                     + context.Services.GetConfiguration().GetValue<int>("Redis:DatabaseId", 1);
                 var redis = ConnectionMultiplexer.Connect(redisConnectionString);
                 context.Services
@@ -276,57 +357,6 @@ namespace CompanyName.ProjectName
                         .AllowAnyMethod()
                         .AllowCredentials();
                 });
-            });
-        }
-
-        public override void OnApplicationInitialization(ApplicationInitializationContext context)
-        {
-            var app = context.GetApplicationBuilder();
-            var env = context.GetEnvironment();
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseAbpRequestLocalization();
-
-            if (!env.IsDevelopment())
-            {
-                app.UseErrorPage();
-            }
-
-            app.UseCorrelationId();
-            app.UseStaticFiles();
-            app.UseRouting();
-            app.UseCors(DefaultCorsPolicyName);
-            app.UseAuthentication();
-
-            if (MultiTenancyConsts.IsEnabled)
-            {
-                app.UseMultiTenancy();
-            }
-
-            app.UseAuthorization();
-
-            app.UseSwagger();
-            app.UseAbpSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectName API");
-
-                var configuration = context.GetConfiguration();
-                options.OAuthClientId(configuration["AuthServer:SwaggerClientId"]);
-                options.OAuthClientSecret(configuration["AuthServer:SwaggerClientSecret"]);
-                options.OAuthScopes("ProjectName");
-            });
-
-            app.UseAuditing();
-            app.UseAbpSerilogEnrichers();
-            app.UseUnitOfWork();
-            app.UseConfiguredEndpoints();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapHealthChecks("/health");
             });
         }
     }
