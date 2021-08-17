@@ -8,7 +8,7 @@ namespace CompanyName.ProjectName.IdentityServers.ApiScopes
 {
     public interface IApiScopeAppService : IApplicationService
     {
-        Task<PagedResultDto<ApiScopeOutput>> GetListAsync(PagingApiScopeListInput input);
+        Task<PagedResultDto<PagingApiScopeListOutput>> GetListAsync(PagingApiScopeListInput input);
 
         Task CreateAsync(CreateApiScopeInput input);
 

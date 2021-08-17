@@ -17,7 +17,7 @@ namespace CompanyName.ProjectName.IdentityServers.ApiScopes
             _idenityServerApiScopeManager = idenityServerApiScopeManager;
         }
 
-        public async Task<PagedResultDto<ApiScopeOutput>> GetListAsync(PagingApiScopeListInput input)
+        public async Task<PagedResultDto<PagingApiScopeListOutput>> GetListAsync(PagingApiScopeListInput input)
         {
             var list = await _idenityServerApiScopeManager.GetListAsync(
                 input.SkipCount,
@@ -25,8 +25,8 @@ namespace CompanyName.ProjectName.IdentityServers.ApiScopes
                 input.Filter,
                 false);
             var totalCount = await _idenityServerApiScopeManager.GetCountAsync(input.Filter);
-            return new PagedResultDto<ApiScopeOutput>(totalCount,
-                ObjectMapper.Map<List<ApiScope>, List<ApiScopeOutput>>(list));
+            return new PagedResultDto<PagingApiScopeListOutput>(totalCount,
+                ObjectMapper.Map<List<ApiScope>, List<PagingApiScopeListOutput>>(list));
         }
 
         public Task CreateAsync(CreateApiScopeInput input)

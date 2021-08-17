@@ -19,7 +19,7 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
 
         [HttpPost("page")]
         [SwaggerOperation(summary: "分页获取Client信息", Tags = new[] {"IdentityServers"})]
-        public Task<PagedResultDto<ClientOutput>> GetListAsync(PagingClientListInput input)
+        public Task<PagedResultDto<PagingClientListOutput>> GetListAsync(PagingClientListInput input)
         {
             return _identityServerClientAppService.GetListAsync(input);
         }

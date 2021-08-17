@@ -20,7 +20,7 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
 
         [HttpPost("page")]
         [SwaggerOperation(summary: "分页获取ApiScope信息", Tags = new[] {"IdentityServers"})]
-        public Task<PagedResultDto<ApiScopeOutput>> GetListAsync(PagingApiScopeListInput input)
+        public Task<PagedResultDto<PagingApiScopeListOutput>> GetListAsync(PagingApiScopeListInput input)
         {
             return _apiScopeAppService.GetListAsync(input);
         }

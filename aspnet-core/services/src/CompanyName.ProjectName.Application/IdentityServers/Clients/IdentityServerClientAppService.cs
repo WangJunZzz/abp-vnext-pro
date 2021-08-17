@@ -17,7 +17,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         }
 
 
-        public async Task<PagedResultDto<ClientOutput>> GetListAsync(PagingClientListInput input)
+        public async Task<PagedResultDto<PagingClientListOutput>> GetListAsync(PagingClientListInput input)
         {
             var list = await _idenityServerClientManager.GetListAsync(
                 input.SkipCount,
@@ -25,8 +25,8 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
                 input.Filter,
                 true);
             var totalCount = await _idenityServerClientManager.GetCountAsync(input.Filter);
-            return new PagedResultDto<ClientOutput>(totalCount,
-                ObjectMapper.Map<List<Client>, List<ClientOutput>>(list));
+            return new PagedResultDto<PagingClientListOutput>(totalCount,
+                ObjectMapper.Map<List<Client>, List<PagingClientListOutput>>(list));
         }
 
         /// <summary>

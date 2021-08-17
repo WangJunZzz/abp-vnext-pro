@@ -11,7 +11,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// 分页查询Client
         /// </summary>
         /// <returns></returns>
-        Task<PagedResultDto<ClientOutput>> GetListAsync(PagingClientListInput input);
+        Task<PagedResultDto<PagingClientListOutput>> GetListAsync(PagingClientListInput input);
 
         /// <summary>
         /// 创建Client
