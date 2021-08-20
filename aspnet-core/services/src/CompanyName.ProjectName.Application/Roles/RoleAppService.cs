@@ -89,12 +89,11 @@ namespace CompanyName.ProjectName.Roles
         /// <summary>
         /// 获取所有权限
         /// </summary>
-        /// <param name="providerName"></param>
-        /// <param name="providerKey"></param>
+        /// <param name="GetPermissionInput"></param>
         /// <returns></returns>
-        public async Task<PermissionOutput> GetPermissionAsync(string providerName, string providerKey)
+        public async Task<PermissionOutput> GetPermissionAsync(GetPermissionInput input)
         {
-            var permissions = await _permissionAppService.GetAsync(providerName, providerKey);
+            var permissions = await _permissionAppService.GetAsync(input.ProviderName, input.ProviderKey);
             return BuildTreeData(permissions.Groups);
         }
 

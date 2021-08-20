@@ -23,7 +23,7 @@ namespace CompanyName.ProjectName.Controllers.Systems
         [SwaggerOperation(summary: "获取角色权限", Tags = new[] { "Permissions" })]
         public Task<PermissionOutput> GetPermissionAsync(GetPermissionInput input)
         {
-            return _roleAppService.GetPermissionAsync(input.ProviderName, input.ProviderKey);
+            return _roleAppService.GetPermissionAsync(input);
         }
 
         [HttpPost("update")]

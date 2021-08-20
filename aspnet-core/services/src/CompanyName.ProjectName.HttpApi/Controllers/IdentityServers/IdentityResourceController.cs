@@ -19,7 +19,7 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
         }
 
         [HttpPost("page")]
-        [SwaggerOperation(summary: "分页获取IdentityResource信息", Tags = new[] {"IdentityServers"})]
+        [SwaggerOperation(summary: "分页获取IdentityResource信息", Tags = new[] {"IdentityResource"})]
         public Task<PagedResultDto<PagingIdentityResourceListOutput>> GetListAsync(
             PagingIdentityResourceListInput input)
         {
@@ -27,21 +27,21 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
         }
 
         [HttpPost("create")]
-        [SwaggerOperation(summary: "创建IdentityResource", Tags = new[] {"IdentityServers"})]
+        [SwaggerOperation(summary: "创建IdentityResource", Tags = new[] {"IdentityResource"})]
         public Task CreateAsync(CreateIdentityResourceInput input)
         {
             return _identityResourceAppService.CreateAsync(input);
         }
 
         [HttpPost("update")]
-        [SwaggerOperation(summary: "更新IdentityResource", Tags = new[] {"IdentityServers"})]
+        [SwaggerOperation(summary: "更新IdentityResource", Tags = new[] {"IdentityResource"})]
         public Task UpdateAsync(UpdateIdentityResourceInput input)
         {
             return _identityResourceAppService.UpdateAsync(input);
         }
 
         [HttpPost("delete")]
-        [SwaggerOperation(summary: "删除IdentityResource", Tags = new[] {"IdentityServers"})]
+        [SwaggerOperation(summary: "删除IdentityResource", Tags = new[] {"IdentityResource"})]
         public Task DeleteAsync(IdInput input)
         {
             return _identityResourceAppService.DeleteAsync(input);

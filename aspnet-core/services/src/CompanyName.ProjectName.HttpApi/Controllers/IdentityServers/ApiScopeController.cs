@@ -19,28 +19,28 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
         }
 
         [HttpPost("page")]
-        [SwaggerOperation(summary: "分页获取ApiScope信息", Tags = new[] {"IdentityServers"})]
+        [SwaggerOperation(summary: "分页获取ApiScope信息", Tags = new[] {"ApiScope"})]
         public Task<PagedResultDto<PagingApiScopeListOutput>> GetListAsync(PagingApiScopeListInput input)
         {
             return _apiScopeAppService.GetListAsync(input);
         }
 
         [HttpPost("create")]
-        [SwaggerOperation(summary: "创建ApiScope", Tags = new[] {"IdentityServers"})]
+        [SwaggerOperation(summary: "创建ApiScope", Tags = new[] {"ApiScope"})]
         public Task CreateAsync(CreateApiScopeInput input)
         {
             return _apiScopeAppService.CreateAsync(input);
         }
 
         [HttpPost("update")]
-        [SwaggerOperation(summary: "更新ApiScope", Tags = new[] {"IdentityServers"})]
+        [SwaggerOperation(summary: "更新ApiScope", Tags = new[] {"ApiScope"})]
         public Task UpdateAsync(UpdateCreateApiScopeInput input)
         {
             return _apiScopeAppService.UpdateAsync(input);
         }
 
         [HttpPost("delete")]
-        [SwaggerOperation(summary: "删除ApiScope", Tags = new[] {"IdentityServers"})]
+        [SwaggerOperation(summary: "删除ApiScope", Tags = new[] {"ApiScope"})]
         public Task DeleteAsync(IdInput input)
         {
             return _apiScopeAppService.DeleteAsync(input);

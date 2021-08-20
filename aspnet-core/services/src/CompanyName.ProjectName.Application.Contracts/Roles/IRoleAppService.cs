@@ -19,7 +19,7 @@ namespace CompanyName.ProjectName.Roles
 
         Task DeleteAsync(Guid id);
 
-        Task<PermissionOutput> GetPermissionAsync(string providerName, string providerKey);
+        Task<PermissionOutput> GetPermissionAsync(GetPermissionInput input);
 
         Task UpdatePermissionAsync(UpdateRolePermissionsInput input);
     }

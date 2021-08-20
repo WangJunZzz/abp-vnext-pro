@@ -40,7 +40,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
             return _dataDictionaryAppService.CreateAsync(input);
         }
 
-        [HttpPost("create/detail")]
+        [HttpPost("createDetail")]
         [SwaggerOperation(summary: "创建字典明细", Tags = new[] { "DataDictionary" })]
         public  Task CreateDetailAsync(CreateDataDictinaryDetailInput input)
         {
