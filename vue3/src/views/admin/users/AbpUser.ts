@@ -239,10 +239,6 @@ export async function getAllRoleAsync(): Promise<IdentityRoleDtoListResultDto> {
 export async function createUserAsync({ request, changeOkLoading, validate, closeModal, resetFields }) {
   changeOkLoading(true);
   await validate();
-  if (!request.password && !request.confirmPassword) {
-    request.password = 'Yh@123456';
-    request.confirmPassword = 'Yh@123456';
-  }
   if (request.password != request.confirmPassword) {
     message.error('两次密码输入不一致');
     throw new Error('两次密码输入不一致');

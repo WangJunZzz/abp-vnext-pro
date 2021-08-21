@@ -130,7 +130,7 @@ export function useYHStsLogin() {
   let currentHost = `${protocol}//${hostname}${port ? `:${port}` : ''}`;
   const settings: any = {
     authority: import.meta.env.VITE_AUTH_URL,
-    client_id: 'yhwms',
+    client_id: 'CompanyName.ProjectName',
     redirect_uri: currentHost + '/sts/callback',
     post_logout_redirect_uri: import.meta.env.VITE_AUTH_URL,
     response_type: `id_token token`,
