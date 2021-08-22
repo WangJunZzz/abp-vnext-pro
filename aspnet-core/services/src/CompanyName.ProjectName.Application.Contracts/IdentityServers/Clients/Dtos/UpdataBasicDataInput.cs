@@ -79,5 +79,8 @@
         public string UserCodeType { get; set; }
 
         public int DeviceCodeLifetime { get; set; } = 300;
+        
+        public string Secret { get; set; }
+        public  string SecretType { get; set; }
     }
 }

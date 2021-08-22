@@ -119,7 +119,17 @@ namespace CompanyName.ProjectName.IdentityServer
             apiResource.ShowInDiscoveryDocument = showInDiscoveryDocument;
             secrets?.Distinct().ToList().ForEach(item =>
             {
-                apiResource.AddSecret(item.Value.ToSha256(), item.Expiration, item.Type, item.Description);
+                var secret = apiResource.Secrets.FirstOrDefault(e => e.Value == item.Value.ToSha256() && e.Type==item.Type);
+                if (secret != null)
+                {
+                    secret.Expiration = item.Expiration;
+                    secret.Description = item.Description;
+                }
+                else
+                {
+                    apiResource.AddSecret(item.Value.ToSha256(), item.Expiration, item.Type, item.Description);
+                }
+
             });
 
             scopes?.Distinct().ToList().ForEach(item => { apiResource.AddScope(item.Scope); });

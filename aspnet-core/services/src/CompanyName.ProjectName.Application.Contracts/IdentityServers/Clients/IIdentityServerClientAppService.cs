@@ -67,5 +67,12 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// 删除cors
         /// </summary>
         Task RemoveCorsAsync(RemoveCorsInput input);
+
+        /// <summary>
+        /// 禁用client
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task EnabledAsync(EnabledInput input);
     }
 }

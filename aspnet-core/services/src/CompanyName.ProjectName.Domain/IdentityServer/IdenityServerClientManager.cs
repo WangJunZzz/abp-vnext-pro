@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using IdentityModel;
 using Volo.Abp;
 using Volo.Abp.Domain.Services;
 using Volo.Abp.IdentityServer.Clients;
@@ -44,7 +45,9 @@ namespace CompanyName.ProjectName.IdentityServer
 
         public async Task<Client> CreateAsync(string clientId, string clientName, string description)
         {
-            var entity = new Client(GuidGenerator.Create(), clientId)
+            var entity = await _clientRepository.FindByClientIdAsync(clientId);
+            if (null != entity) throw new UserFriendlyException(message: "当前ClientId已存在");
+            entity = new Client(GuidGenerator.Create(), clientId)
             {
                 ClientName = clientName, Description = description
             };
@@ -90,7 +93,10 @@ namespace CompanyName.ProjectName.IdentityServer
             int? userSsoLifetime,
             string userCodeType,
             int deviceCodeLifetime,
-            int slidingRefreshTokenLifetime
+            int slidingRefreshTokenLifetime,
+            string secret,
+            string secretType
+            
         )
         {
             var client = await _clientRepository.FindByClientIdAsync(clientId);
@@ -138,6 +144,8 @@ namespace CompanyName.ProjectName.IdentityServer
             client.UserSsoLifetime = userSsoLifetime;
             client.UserCodeType = userCodeType;
             client.EnableLocalLogin = enableLocalLogin;
+            client.ClientSecrets.Clear();
+            client.AddSecret(secret.ToSha256(), null, secretType, String.Empty);
             return await _clientRepository.UpdateAsync(client);
         }
 
@@ -255,6 +263,14 @@ namespace CompanyName.ProjectName.IdentityServer
             }
 
             return client;
+        }
+
+        public async Task<Client> EnabledAsync(string clientId, bool enabled)
+        {
+            var client = await _clientRepository.FindByClientIdAsync(clientId);
+            if (client == null) throw new UserFriendlyException(message: "Client不存在");
+            client.Enabled = enabled;
+            return await _clientRepository.UpdateAsync(client);
         }
     }
 }

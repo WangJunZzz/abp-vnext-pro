@@ -1,6 +1,9 @@
-﻿namespace CompanyName.ProjectName.IdentityServers.IdentityResources.Dtos
+﻿using System;
+using Volo.Abp.Application.Dtos;
+
+namespace CompanyName.ProjectName.IdentityServers.IdentityResources.Dtos
 {
-    public class PagingIdentityResourceListOutput
+    public class PagingIdentityResourceListOutput:EntityDto<Guid>
     {
         public string Name { get; set; }
 

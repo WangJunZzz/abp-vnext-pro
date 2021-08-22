@@ -93,7 +93,9 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
                 input.UserSsoLifetime,
                 input.UserCodeType,
                 input.DeviceCodeLifetime,
-                input.SlidingRefreshTokenLifetime
+                input.SlidingRefreshTokenLifetime,
+                input.Secret,
+                input.SecretType
             );
         }
 
@@ -152,6 +154,16 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         public Task RemoveCorsAsync(RemoveCorsInput input)
         {
             return _idenityServerClientManager.RemoveCorsAsync(input.ClientId, input.Origin);
+        }
+
+        /// <summary>
+        /// 禁用client
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public Task EnabledAsync(EnabledInput input)
+        {
+            return _idenityServerClientManager.EnabledAsync(input.ClientId, input.Enabled);
         }
     }
 }

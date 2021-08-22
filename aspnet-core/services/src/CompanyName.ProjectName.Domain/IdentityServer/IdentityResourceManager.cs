@@ -57,7 +57,7 @@ namespace CompanyName.ProjectName.IdentityServer
             bool showInDiscoveryDocument)
         {
             var identityResource = await _identityResourceRepository.FindByNameAsync(name, false);
-            if (null == identityResource) throw new UserFriendlyException(message: $"{name}不存在");
+            if (null != identityResource) throw new UserFriendlyException(message: $"{name}已存在");
             identityResource = new IdentityResource(GuidGenerator.Create(), name, displayName, description, required,
                 emphasize,
                 showInDiscoveryDocument, enabled);

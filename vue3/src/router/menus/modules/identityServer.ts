@@ -1,5 +1,4 @@
 import type { MenuModule } from '/@/router/types';
-import { t } from '/@/hooks/web/useI18n';
 
 const identityServer: MenuModule = {
   orderNo: 20,

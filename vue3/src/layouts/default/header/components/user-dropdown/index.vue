@@ -18,7 +18,7 @@
     </template>
   </Dropdown>
   <LockAction @register="register" />
-  <WarehouseAction @register="registerWarehouseModal" />
+
   <PasswordAction @register="registerChangePasswordModal" />
 </template>
 <script lang="ts">

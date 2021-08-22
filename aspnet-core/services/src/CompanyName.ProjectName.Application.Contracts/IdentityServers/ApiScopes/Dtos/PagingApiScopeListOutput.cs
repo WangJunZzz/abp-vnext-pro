@@ -1,6 +1,9 @@
-﻿namespace CompanyName.ProjectName.IdentityServers.ApiScopes.Dtos
+﻿using System;
+using Volo.Abp.Application.Dtos;
+
+namespace CompanyName.ProjectName.IdentityServers.ApiScopes.Dtos
 {
-    public class PagingApiScopeListOutput
+    public class PagingApiScopeListOutput : EntityDto<Guid>
     {
         public bool Enabled { get; set; }
 

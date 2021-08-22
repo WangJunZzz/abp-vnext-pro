@@ -1,6 +1,5 @@
 import type { AppRouteModule } from '/@/router/types';
 import { LAYOUT } from '/@/router/constant';
-import { t } from '/@/hooks/web/useI18n';
 
 const identityServer: AppRouteModule = {
   path: '/identityServer',
@@ -35,7 +34,7 @@ const identityServer: AppRouteModule = {
       name: 'ApiScopes',
       component: () => import('/@/views/identityServers/apiScopes/ApiScopes.vue'),
       meta: {
-        title: 'ApiResources',
+        title: 'ApiScopes',
         icon: 'ant-design:skin-outlined',
       },
     },
@@ -44,7 +43,7 @@ const identityServer: AppRouteModule = {
       name: 'IdentityResources',
       component: () => import('/@/views/identityServers/identityResources/IdentityResources.vue'),
       meta: {
-        title: 'ApiResources',
+        title: 'IdentityResources',
         icon: 'ant-design:skin-outlined',
       },
     },

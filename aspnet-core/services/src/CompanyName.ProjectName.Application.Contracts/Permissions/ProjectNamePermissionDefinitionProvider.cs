@@ -17,9 +17,7 @@ namespace CompanyName.ProjectName.Permissions
 
             var roleManagement = abpIdentityGroup.GetPermissionOrNull(ProjectNamePermissions.AbpIdentityExtend.Roles);
             roleManagement.AddChild(ProjectNamePermissions.AbpIdentityExtend.RoleQuery, L("Permissions:Query"));
-
-            var auditManagement = abpIdentityGroup.AddPermission(ProjectNamePermissions.AbpIdentityExtend.AuditLogs, L("Permissions:AuditLogManagement"));
-            auditManagement.AddChild(ProjectNamePermissions.AbpIdentityExtend.AuditLogQuery, L("Permissions:Query"));
+            
 
         }
 

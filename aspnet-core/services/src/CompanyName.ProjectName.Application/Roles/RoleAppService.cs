@@ -89,7 +89,6 @@ namespace CompanyName.ProjectName.Roles
         /// <summary>
         /// 获取所有权限
         /// </summary>
-        /// <param name="GetPermissionInput"></param>
         /// <returns></returns>
         public async Task<PermissionOutput> GetPermissionAsync(GetPermissionInput input)
         {

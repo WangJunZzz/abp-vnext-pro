@@ -94,5 +94,12 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
         {
             return _identityServerClientAppService.RemoveCorsAsync(input);
         }
+
+        [HttpPost("enabled")]
+        [SwaggerOperation(summary: "禁用client", Tags = new[] {"Client"})]
+        public Task EnabledAsync(EnabledInput input)
+        {
+            return _identityServerClientAppService.EnabledAsync(input);
+        }
     }
 }
