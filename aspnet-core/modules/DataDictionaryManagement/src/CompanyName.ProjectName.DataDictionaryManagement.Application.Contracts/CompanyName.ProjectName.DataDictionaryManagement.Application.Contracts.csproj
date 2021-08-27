@@ -3,13 +3,13 @@
   <Import Project="../../../../common.props" />
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>CompanyName.ProjectName.DataDictionaryManagement</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="4.3.3" />
-    <PackageReference Include="Volo.Abp.Authorization" Version="4.3.3" />
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="4.4.0" />
+    <PackageReference Include="Volo.Abp.Authorization" Version="4.4.0" />
     <ProjectReference Include="..\CompanyName.ProjectName.DataDictionaryManagement.Domain.Shared\CompanyName.ProjectName.DataDictionaryManagement.Domain.Shared.csproj" />
   </ItemGroup>
 

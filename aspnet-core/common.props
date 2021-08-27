@@ -5,6 +5,6 @@
 		<NoWarn>$(NoWarn);CS1591;CS0436</NoWarn>
 		<AbpProjectType>app</AbpProjectType>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<AbpPackageVersion1>4.3.3</AbpPackageVersion1>
+		<AbpPackageVersion1>4.4.0</AbpPackageVersion1>
 	</PropertyGroup>
 </Project>
