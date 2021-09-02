@@ -67,7 +67,6 @@ export const createFormSchema: FormSchema[] = [
     field: 'enabled',
     label: 'enabled',
     component: 'Switch',
-    required: true,
     labelWidth: 200,
     colProps: { span: 20 },
   },
@@ -124,7 +123,6 @@ export const editFormSchema: FormSchema[] = [
     field: 'enabled',
     label: 'enabled',
     component: 'Switch',
-    required: true,
     labelWidth: 200,
     colProps: { span: 20 },
   },
@@ -186,15 +184,17 @@ export async function deleteApiScopeAsync({ id, reload }) {
   await _apiScopeServiceProxy.delete(request);
   reload();
 }
-/**
- * 删除
- * @param param0
- */
+
 export async function editApiScopeAsync({ request, changeOkLoading, validate, closeModal }) {
-  await validate();
-  changeOkLoading(true);
-  const _apiScopeServiceProxy = new ApiScopeServiceProxy();
-  await _apiScopeServiceProxy.update(request);
-  changeOkLoading(false);
-  closeModal();
+  try {
+    await validate();
+    changeOkLoading(true);
+    const _apiScopeServiceProxy = new ApiScopeServiceProxy();
+    await _apiScopeServiceProxy.update(request);
+    changeOkLoading(false);
+    closeModal();
+  } catch (error) {
+  } finally {
+    changeOkLoading(false);
+  }
 }

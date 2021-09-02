@@ -1,6 +1,14 @@
 import { FormSchema } from '/@/components/Table';
 import { BasicColumn } from '/@/components/Table';
-import { ClientServiceProxy, EnabledInput, IdInput, PagingClientListInput } from '/@/services/ServiceProxies';
+import { message } from 'ant-design-vue';
+import { useI18n } from '/@/hooks/web/useI18n';
+const { t } = useI18n();
+import {
+  ClientServiceProxy,
+  EnabledInput,
+  IdInput,
+  PagingClientListInput,
+} from '/@/services/ServiceProxies';
 
 export const searchFormSchema: FormSchema[] = [
   {
@@ -301,6 +309,19 @@ export async function createClientAsync({ request, changeOkLoading, validate, cl
   closeModal();
 }
 
+export async function updateClientAsync({ request, changeOkLoading, closeModal }) {
+  try {
+    changeOkLoading(true);
+    const _clientServiceProxy = new ClientServiceProxy();
+    await _clientServiceProxy.updateBasic(request);
+    message.success(t('common.operationSuccess'));
+    closeModal();
+  } catch (error) {
+  } finally {
+    changeOkLoading(false);
+  }
+}
+
 /**
  * 删除
  * @param param0
@@ -313,7 +334,7 @@ export async function deleteClientAsync({ id, reload }) {
   reload();
 }
 /**
- * 删除
+ * 启用禁用
  * @param param0
  */
 export async function enabledClientAsync({ clientId, enabled, reload }) {

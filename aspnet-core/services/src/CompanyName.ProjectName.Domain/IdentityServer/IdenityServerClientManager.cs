@@ -28,7 +28,7 @@ namespace CompanyName.ProjectName.IdentityServer
             bool includeDetails = false,
             CancellationToken cancellationToken = default)
         {
-            return _clientRepository.GetListAsync("CreationTime", skipCount, maxResultCount, filter, includeDetails,
+            return _clientRepository.GetListAsync("CreationTime desc", skipCount, maxResultCount, filter, includeDetails,
                 cancellationToken);
         }
 
@@ -96,13 +96,12 @@ namespace CompanyName.ProjectName.IdentityServer
             int slidingRefreshTokenLifetime,
             string secret,
             string secretType
-            
         )
         {
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client != null)
+            if (client == null)
             {
-                throw new UserFriendlyException(message: "当前ClientId已存在");
+                throw new UserFriendlyException(message: $"{clientId}不存在");
             }
 
             client.ClientName = clientName;
@@ -130,7 +129,7 @@ namespace CompanyName.ProjectName.IdentityServer
             client.SlidingRefreshTokenLifetime = slidingRefreshTokenLifetime;
             client.RefreshTokenExpiration = refreshTokenExpiration;
             client.DeviceCodeLifetime = deviceCodeLifetime;
-            client.ProtocolType = protocolType;
+            //client.ProtocolType = protocolType;
             client.AlwaysIncludeUserClaimsInIdToken = alwaysIncludeUserClaimsInIdToken;
             client.AllowPlainTextPkce = allowPlainTextPkce;
             client.AllowOfflineAccess = allowOfflineAccess;
@@ -144,8 +143,16 @@ namespace CompanyName.ProjectName.IdentityServer
             client.UserSsoLifetime = userSsoLifetime;
             client.UserCodeType = userCodeType;
             client.EnableLocalLogin = enableLocalLogin;
-            client.ClientSecrets.Clear();
-            client.AddSecret(secret.ToSha256(), null, secretType, String.Empty);
+
+            if (secret.IsNotNullOrWhiteSpace())
+            {
+                if (client.ClientSecrets.Any(e => e.Value != secret))
+                {
+                    client.ClientSecrets.Clear();
+                    client.AddSecret(secret.ToSha256(), null, secretType, String.Empty);
+                }
+            }
+
             return await _clientRepository.UpdateAsync(client);
         }
 
@@ -170,7 +177,7 @@ namespace CompanyName.ProjectName.IdentityServer
         {
             uri = uri.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: "Client不存在");
+            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
             if (client.RedirectUris.Any(e => e.RedirectUri != uri.Trim()))
             {
                 client.AddRedirectUri(uri);
@@ -187,7 +194,7 @@ namespace CompanyName.ProjectName.IdentityServer
         {
             uri = uri.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: "Client不存在");
+            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
             if (client.RedirectUris.Any(e => e.RedirectUri == uri.Trim()))
             {
                 client.RemoveRedirectUri(uri);
@@ -204,7 +211,7 @@ namespace CompanyName.ProjectName.IdentityServer
         {
             uri = uri.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: "Client不存在");
+            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
             if (client.PostLogoutRedirectUris.Any(e => e.PostLogoutRedirectUri != uri))
             {
                 client.AddPostLogoutRedirectUri(uri);
@@ -221,7 +228,7 @@ namespace CompanyName.ProjectName.IdentityServer
         {
             uri = uri.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: "Client不存在");
+            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
             if (client.PostLogoutRedirectUris.Any(e => e.PostLogoutRedirectUri == uri))
             {
                 client.RemovePostLogoutRedirectUri(uri);
@@ -238,7 +245,7 @@ namespace CompanyName.ProjectName.IdentityServer
         {
             origin = origin.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: "Client不存在");
+            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
             if (client.AllowedCorsOrigins.Any(e => e.Origin != origin))
             {
                 client.AddCorsOrigin(origin);
@@ -255,7 +262,7 @@ namespace CompanyName.ProjectName.IdentityServer
         {
             origin = origin.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: "Client不存在");
+            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
             if (client.AllowedCorsOrigins.Any(e => e.Origin == origin))
             {
                 client.RemoveCorsOrigin(origin);
@@ -268,7 +275,7 @@ namespace CompanyName.ProjectName.IdentityServer
         public async Task<Client> EnabledAsync(string clientId, bool enabled)
         {
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: "Client不存在");
+            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
             client.Enabled = enabled;
             return await _clientRepository.UpdateAsync(client);
         }

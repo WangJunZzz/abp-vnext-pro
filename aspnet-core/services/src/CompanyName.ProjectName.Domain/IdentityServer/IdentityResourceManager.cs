@@ -25,7 +25,7 @@ namespace CompanyName.ProjectName.IdentityServer
             CancellationToken cancellationToken = default)
         {
             return _identityResourceRepository.GetListAsync(
-                "CreationTime",
+                "CreationTime desc",
                 skipCount,
                 maxResultCount,
                 filter,

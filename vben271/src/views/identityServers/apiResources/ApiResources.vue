@@ -17,26 +17,39 @@
         </Tag>
       </template>
       <template #action="{ record }">
-        <!-- <a-button type="link" size="small" @click="handleEdit(record)">
+        <a-button type="link" size="small" @click="handleEdit(record)">
           {{ t('common.editText') }}
-        </a-button> -->
+        </a-button>
 
         <a-button type="link" size="small" @click="handleDelete(record)">
           {{ t('common.delText') }}
         </a-button>
       </template>
     </BasicTable>
-    <CreateApiResource @register="registerCreateApiResourceModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }"
+    <CreateApiResource
+      @register="registerCreateApiResourceModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }" />
+    <EditApiResources
+      @register="registerEditApiResourceModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
   /></div>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { tableColumns, searchFormSchema, getTableListAsync, deleteApiResourceAsync } from './ApiResources';
+  import {
+    tableColumns,
+    searchFormSchema,
+    getTableListAsync,
+    deleteApiResourceAsync,
+  } from './ApiResources';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { Tag } from 'ant-design-vue';
   import CreateApiResource from './CreateApiResource.vue';
+  import EditApiResources from './EditApiResources.vue';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { useModal } from '/@/components/Modal';
   export default defineComponent({
@@ -46,6 +59,7 @@
       TableAction,
       Tag,
       CreateApiResource,
+      EditApiResources,
     },
     setup() {
       const { t } = useI18n();
@@ -73,8 +87,11 @@
           fixed: 'right',
         },
       });
-      const [registerCreateApiResourceModal, { openModal: openCreateApiResourceModal }] = useModal();
+      const [registerCreateApiResourceModal, { openModal: openCreateApiResourceModal }] =
+        useModal();
+      const [registerEditApiResourceModal, { openModal: openEditApiResourceModal }] = useModal();
       const handleDelete = async (record: Recordable) => {
+        debugger;
         let msg = '是否确认删除';
         createConfirm({
           iconType: 'warning',
@@ -85,7 +102,21 @@
           },
         });
       };
-      return { reload, t, registerTable, handleDelete, registerCreateApiResourceModal, openCreateApiResourceModal };
+      const handleEdit = (record: Recordable) => {
+        openEditApiResourceModal(true, {
+          record: record,
+        });
+      };
+      return {
+        reload,
+        t,
+        registerTable,
+        handleDelete,
+        handleEdit,
+        registerCreateApiResourceModal,
+        openCreateApiResourceModal,
+        registerEditApiResourceModal,
+      };
     },
   });
 </script>

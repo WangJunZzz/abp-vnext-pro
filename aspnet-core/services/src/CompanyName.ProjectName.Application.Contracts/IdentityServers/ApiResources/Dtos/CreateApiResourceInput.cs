@@ -16,20 +16,7 @@ namespace CompanyName.ProjectName.IdentityServers.Dtos
 
         public bool ShowInDiscoveryDocument { get; set; } = true;
 
-        public List<ApiResourceSecretOutput> Secrets { get; set; }
+        public string Secret { get; set; }
 
-        public List<ApiResourceScopeOutput> Scopes { get; set; }
-
-        public List<ApiResourceClaimOutput> UserClaims { get; set; }
-
-        public List<ApiResourcePropertyOutput> Properties { get; set; }
-
-        public CreateApiResourceInput()
-        {
-            Secrets = new List<ApiResourceSecretOutput>();
-            Scopes = new List<ApiResourceScopeOutput>();
-            UserClaims = new List<ApiResourceClaimOutput>();
-            Properties = new List<ApiResourcePropertyOutput>();
-        }
     }
 }

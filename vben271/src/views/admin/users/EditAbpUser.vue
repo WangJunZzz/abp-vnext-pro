@@ -26,7 +26,13 @@
           <a-checkbox-group v-model:value="defaultRolesRef">
             <a-row justify="center">
               <a-col :span="24">
-                <a-checkbox style="width: 150px" v-for="(item, index) in rolesRef" :key="index" :value="item.name">{{ item.name }}</a-checkbox>
+                <a-checkbox
+                  style="width: 150px"
+                  v-for="(item, index) in rolesRef"
+                  :key="index"
+                  :value="item.name"
+                  >{{ item.name }}</a-checkbox
+                >
               </a-col>
             </a-row>
           </a-checkbox-group>
@@ -37,12 +43,22 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref, useContext, defineEmit } from 'vue';
+  import { defineComponent, ref } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
   import { Tabs } from 'ant-design-vue';
-  import { editFormSchema, getAllRoleAsync, updateUserAsync, getRolesByUserIdAsync } from './AbpUser';
-  import { IdentityRoleDto, IdentityUserDto, UpdateUserInput, IdentityUserUpdateDto } from '/@/services/ServiceProxies';
+  import {
+    editFormSchema,
+    getAllRoleAsync,
+    updateUserAsync,
+    getRolesByUserIdAsync,
+  } from './AbpUser';
+  import {
+    IdentityRoleDto,
+    IdentityUserDto,
+    UpdateUserInput,
+    IdentityUserUpdateDto,
+  } from '/@/services/ServiceProxies';
   import { message } from 'ant-design-vue';
   export default defineComponent({
     name: 'EditAbpUser',
@@ -54,15 +70,13 @@
     },
     emits: ['reload'],
     setup(_, { emit }) {
-      // 加载父组件方法
-      // defineEmit(['reload']);
-      // const ctx = useContext();
-
-      const [registerUserForm, { getFieldsValue, validate, setFieldsValue, resetFields }] = useForm({
-        labelWidth: 120,
+      const [registerUserForm, { getFieldsValue, validate, setFieldsValue, resetFields }] = useForm(
+        {
+          labelWidth: 120,
           schemas: editFormSchema,
           showActionButtonGroup: false,
-      });
+        }
+      );
       let currentUserInfo = new IdentityUserDto();
       const [registerModal, { changeOkLoading, closeModal }] = useModalInner((data) => {
         currentUserInfo = data.record;
@@ -126,7 +140,13 @@
 
           updateUserInput.userId = currentUserInfo.id;
           updateUserInput.userInfo = userInfo;
-          await updateUserAsync({ request: updateUserInput, changeOkLoading, validate, closeModal, resetFields });
+          await updateUserAsync({
+            request: updateUserInput,
+            changeOkLoading,
+            validate,
+            closeModal,
+            resetFields,
+          });
           emit('reload');
         } catch (error) {
           changeOkLoading(false);

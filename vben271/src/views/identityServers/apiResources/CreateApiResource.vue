@@ -1,11 +1,17 @@
 <template>
-  <BasicModal title="创建ApiResource" :canFullscreen="false" @ok="submit" @cancel="cancel" @register="registerModal">
+  <BasicModal
+    title="创建ApiResource"
+    :canFullscreen="false"
+    @ok="submit"
+    @cancel="cancel"
+    @register="registerModal"
+  >
     <BasicForm @register="registerApiResourceForm" />
   </BasicModal>
 </template>
 
 <script lang="ts">
-  import { defineComponent, useContext, defineEmit } from 'vue';
+  import { defineComponent } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
   import { createFormSchema, createApiResourceAsync } from './ApiResources';

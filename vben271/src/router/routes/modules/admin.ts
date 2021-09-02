@@ -1,6 +1,10 @@
 import type { AppRouteModule } from '/@/router/types';
 import { LAYOUT } from '/@/router/constant';
 import { t } from '/@/hooks/web/useI18n';
+const IFrame = () => import('/@/views/sys/iframe/FrameBlank.vue');
+import { useUserStoreWithOut } from '/@/store/modules/user';
+const userStore = useUserStoreWithOut();
+const token = userStore.getToken;
 
 const admin: AppRouteModule = {
   path: '/admin',
@@ -31,6 +35,17 @@ const admin: AppRouteModule = {
         title: t('routes.admin.roleManagement'),
         //policy: 'AbpIdentity.Roles.Query',
         icon: 'ant-design:lock-outlined',
+      },
+    },
+    {
+      path: 'hangfire',
+      name: '后台任务',
+      component: IFrame,
+      meta: {
+        frameSrc: import.meta.env.VITE_API_URL + '/hangfire?access_token=' + token,
+        title: '后台任务',
+        //policy: 'AbpIdentity.Hangfire.Dashboard',
+        icon: 'ant-design:clock-circle-outlined',
       },
     },
   ],

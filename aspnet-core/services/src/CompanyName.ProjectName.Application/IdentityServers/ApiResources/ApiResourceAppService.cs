@@ -53,10 +53,7 @@ namespace CompanyName.ProjectName.IdentityServers.ApiResources
                 input.Enabled,
                 input.AllowedAccessTokenSigningAlgorithms,
                 input.ShowInDiscoveryDocument,
-                input.Secrets,
-                input.Scopes,
-                input.UserClaims,
-                input.Properties
+                input.Secret
             );
         }
 
@@ -82,10 +79,8 @@ namespace CompanyName.ProjectName.IdentityServers.ApiResources
                 input.Enabled,
                 input.AllowedAccessTokenSigningAlgorithms,
                 input.ShowInDiscoveryDocument,
-                input.Secrets,
-                input.Scopes,
-                input.UserClaims,
-                input.Properties
+                input.Secret,
+                input.ApiScopes
             );
         }
     }

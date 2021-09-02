@@ -1,11 +1,17 @@
 <template>
-  <BasicModal :title="t('routes.admin.roleManagement_create_role')" :canFullscreen="false" @ok="submit" @cancel="cancel" @register="registerModal">
+  <BasicModal
+    :title="t('routes.admin.roleManagement_create_role')"
+    :canFullscreen="false"
+    @ok="submit"
+    @cancel="cancel"
+    @register="registerModal"
+  >
     <BasicForm @register="registerUserForm" />
   </BasicModal>
 </template>
 
 <script lang="ts">
-  import { defineComponent, useContext, defineEmit } from 'vue';
+  import { defineComponent } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
   import { createFormSchema, createRoleAsync } from './AbpRole';

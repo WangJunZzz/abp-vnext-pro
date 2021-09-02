@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using CompanyName.ProjectName.Extensions.Customs.Dtos;
 using CompanyName.ProjectName.IdentityServers.ApiScopes.Dtos;
 using CompanyName.ProjectName.Publics.Dtos;
 using Volo.Abp.Application.Dtos;
@@ -15,5 +18,7 @@ namespace CompanyName.ProjectName.IdentityServers.ApiScopes
         Task UpdateAsync(UpdateCreateApiScopeInput input);
         
         Task DeleteAsync(IdInput input);
+
+        Task<List<FromSelector<string, string>>> FindAllAsync();
     }
 }

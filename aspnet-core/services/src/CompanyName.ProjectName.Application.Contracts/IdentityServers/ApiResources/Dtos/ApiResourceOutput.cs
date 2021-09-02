@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Volo.Abp.Application.Dtos;
 
 namespace CompanyName.ProjectName.IdentityServers.Dtos
 {
-    public class ApiResourceOutput
+    public class ApiResourceOutput : EntityDto<Guid>
     {
         public string Name { get; set; }
 

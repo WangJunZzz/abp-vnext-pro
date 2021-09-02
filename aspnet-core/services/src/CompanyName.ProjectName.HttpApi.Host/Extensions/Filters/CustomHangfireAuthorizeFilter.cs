@@ -8,9 +8,8 @@ namespace CompanyNameProjectName.Extensions.Filters
     {
         public bool Authorize(DashboardContext context)
         {
-            //var currentUser = context.GetHttpContext().RequestServices.GetRequiredService<ICurrentUser>();
-            //return currentUser.IsAuthenticated;
-            return true;
+            var _currentUser = context.GetHttpContext().RequestServices.GetRequiredService<ICurrentUser>();
+            return _currentUser.IsAuthenticated;
         }
     }
 }

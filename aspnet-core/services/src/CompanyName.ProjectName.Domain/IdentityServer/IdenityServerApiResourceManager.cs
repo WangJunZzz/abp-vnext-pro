@@ -27,7 +27,7 @@ namespace CompanyName.ProjectName.IdentityServer
             bool includeDetails = false,
             CancellationToken cancellationToken = default)
         {
-            return _apiResourceRepository.GetListAsync("CreationTime", skipCount, maxResultCount, filter,
+            return _apiResourceRepository.GetListAsync("CreationTime desc", skipCount, maxResultCount, filter,
                 includeDetails,
                 cancellationToken);
         }
@@ -57,15 +57,16 @@ namespace CompanyName.ProjectName.IdentityServer
             bool enabled,
             string allowedAccessTokenSigningAlgorithms,
             bool showInDiscoveryDocument,
-            List<ApiResourceSecretOutput> secrets = null,
-            List<ApiResourceScopeOutput> scopes = null,
-            List<ApiResourceClaimOutput> claims = null,
-            List<ApiResourcePropertyOutput> properties = null,
+            string secret,
             CancellationToken cancellationToken = default)
         {
             var apiResource =
                 await _apiResourceRepository.FindByNameAsync(name.Trim(), false, cancellationToken);
-            if (null != apiResource) throw new UserFriendlyException(message: "ApiResource已存在");
+            if (null != apiResource)
+            {
+                throw new UserFriendlyException(message: "ApiResource已存在");
+            }
+
             apiResource = new ApiResource(id, name, displayName, description)
             {
                 AllowedAccessTokenSigningAlgorithms = allowedAccessTokenSigningAlgorithms,
@@ -73,16 +74,13 @@ namespace CompanyName.ProjectName.IdentityServer
                 Enabled = enabled
             };
 
-            secrets?.Distinct().ToList().ForEach(item =>
-            {
-                apiResource.AddSecret(item.Value.ToSha256(), item.Expiration, item.Type, item.Description);
-            });
+            apiResource.AddSecret(secret.ToSha256());
 
-            scopes?.Distinct().ToList().ForEach(item => { apiResource.AddScope(item.Scope); });
-
-            claims?.Distinct().ToList().ForEach(item => { apiResource.AddUserClaim(item.Type); });
-
-            properties?.Distinct().ToList().ForEach(item => { apiResource.AddProperty(item.Key, item.Value); });
+            // scopes?.Distinct().ToList().ForEach(item => { apiResource.AddScope(item.Scope); });
+            //
+            // claims?.Distinct().ToList().ForEach(item => { apiResource.AddUserClaim(item.Type); });
+            //
+            // properties?.Distinct().ToList().ForEach(item => { apiResource.AddProperty(item.Key, item.Value); });
 
             return await _apiResourceRepository.InsertAsync(apiResource, cancellationToken: cancellationToken);
         }
@@ -102,41 +100,37 @@ namespace CompanyName.ProjectName.IdentityServer
             bool enabled,
             string allowedAccessTokenSigningAlgorithms,
             bool showInDiscoveryDocument,
-            List<ApiResourceSecretOutput> secrets = null,
-            List<ApiResourceScopeOutput> scopes = null,
-            List<ApiResourceClaimOutput> claims = null,
-            List<ApiResourcePropertyOutput> properties = null,
+            string secret ,
+            List<string> scopes ,
             CancellationToken cancellationToken = default
         )
         {
             var apiResource =
-                await _apiResourceRepository.FindByNameAsync(name.Trim(), false, cancellationToken);
-            if (null == apiResource) throw new UserFriendlyException(message: "ApiResource不存在");
+                await _apiResourceRepository.FindByNameAsync(name.Trim(), true, cancellationToken);
+            if (null == apiResource)
+            {
+                throw new UserFriendlyException(message: "ApiResource不存在");
+            }
+
             apiResource.DisplayName = displayName;
             apiResource.Description = description;
             apiResource.Enabled = enabled;
             apiResource.AllowedAccessTokenSigningAlgorithms = allowedAccessTokenSigningAlgorithms;
             apiResource.ShowInDiscoveryDocument = showInDiscoveryDocument;
-            secrets?.Distinct().ToList().ForEach(item =>
+            if (secret.IsNotNullOrWhiteSpace())
             {
-                var secret = apiResource.Secrets.FirstOrDefault(e => e.Value == item.Value.ToSha256() && e.Type==item.Type);
-                if (secret != null)
+                if (apiResource.Secrets.Any(e=>e.Value!=secret))
                 {
-                    secret.Expiration = item.Expiration;
-                    secret.Description = item.Description;
+                    apiResource.Secrets.Clear();
+                    apiResource.AddSecret(secret.ToSha256());
                 }
-                else
-                {
-                    apiResource.AddSecret(item.Value.ToSha256(), item.Expiration, item.Type, item.Description);
-                }
+            }
 
-            });
+            apiResource.Scopes.Clear();
+            
+            scopes?.Distinct().ToList().ForEach(item => { apiResource.AddScope(item); });
 
-            scopes?.Distinct().ToList().ForEach(item => { apiResource.AddScope(item.Scope); });
-
-            claims?.Distinct().ToList().ForEach(item => { apiResource.AddUserClaim(item.Type); });
-
-            properties?.Distinct().ToList().ForEach(item => { apiResource.AddProperty(item.Key, item.Value); });
+          
             return await _apiResourceRepository.UpdateAsync(apiResource, cancellationToken: cancellationToken);
         }
     }

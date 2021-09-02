@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using CompanyName.ProjectName.Extensions.Customs.Dtos;
 using CompanyName.ProjectName.IdentityServers.ApiScopes;
 using CompanyName.ProjectName.IdentityServers.ApiScopes.Dtos;
 using CompanyName.ProjectName.Publics.Dtos;
@@ -44,6 +47,12 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
         public Task DeleteAsync(IdInput input)
         {
             return _apiScopeAppService.DeleteAsync(input);
+        }
+        [HttpPost("all")]
+        [SwaggerOperation(summary: "获取所有ApiScope", Tags = new[] {"ApiScope"})]
+        public  Task<List<FromSelector<string, string>>> FindAllAsync()
+        {
+            return _apiScopeAppService.FindAllAsync();
         }
     }
 }

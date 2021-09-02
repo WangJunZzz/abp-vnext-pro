@@ -1,7 +1,13 @@
 import { FormSchema } from '/@/components/Table';
 import { BasicColumn } from '/@/components/Table';
-import { IdentityResourceServiceProxy, PagingIdentityResourceListInput, IdInput } from '/@/services/ServiceProxies';
-
+import {
+  IdentityResourceServiceProxy,
+  PagingIdentityResourceListInput,
+  IdInput,
+} from '/@/services/ServiceProxies';
+import { message } from 'ant-design-vue';
+import { useI18n } from '/@/hooks/web/useI18n';
+const { t } = useI18n();
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'filter',
@@ -98,6 +104,7 @@ export const createFormSchema: FormSchema[] = [
     colProps: { span: 20 },
   },
 ];
+
 export const editFormSchema: FormSchema[] = [
   {
     field: 'name',
@@ -154,6 +161,7 @@ export const editFormSchema: FormSchema[] = [
     colProps: { span: 20 },
   },
 ];
+
 /**
  * 分页列表
  * @param params
@@ -163,7 +171,12 @@ export async function getTableListAsync(params: PagingIdentityResourceListInput)
   const _identityResourceServiceProxy = new IdentityResourceServiceProxy();
   return _identityResourceServiceProxy.page(params);
 }
-export async function createIdentityResourcesAsync({ request, changeOkLoading, validate, closeModal }) {
+export async function createIdentityResourcesAsync({
+  request,
+  changeOkLoading,
+  validate,
+  closeModal,
+}) {
   changeOkLoading(true);
   await validate();
   const _identityResourceServiceProxy = new IdentityResourceServiceProxy();
@@ -181,4 +194,18 @@ export async function deleteIdentityResourcesAsync({ id, reload }) {
   request.id = id;
   await _identityResourceServiceProxy.delete(request);
   reload();
+}
+
+export async function editIdentityResourceAsync({ request, changeOkLoading, closeModal }) {
+  try {
+    changeOkLoading(true);
+    const _identityResourceServiceProxy = new IdentityResourceServiceProxy();
+    await _identityResourceServiceProxy.update(request);
+    changeOkLoading(false);
+    message.success(t('common.operationSuccess'));
+    closeModal();
+  } catch (error) {
+  } finally {
+    changeOkLoading(false);
+  }
 }

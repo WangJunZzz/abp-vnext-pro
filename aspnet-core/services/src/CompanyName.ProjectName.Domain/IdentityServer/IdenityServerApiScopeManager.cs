@@ -25,7 +25,7 @@ namespace CompanyName.ProjectName.IdentityServer
             CancellationToken cancellationToken = default)
         {
             return _apiScopeRepository.GetListAsync(
-                "CreationTime",
+                "CreationTime desc",
                 skipCount,
                 maxResultCount,
                 filter,
@@ -76,9 +76,14 @@ namespace CompanyName.ProjectName.IdentityServer
         }
 
         public Task DeleteAsync(Guid id, bool autoSave = false,
-            CancellationToken cancellationToken = new CancellationToken())
+            CancellationToken cancellationToken = default)
         {
             return _apiScopeRepository.DeleteAsync(id, autoSave, cancellationToken);
+        }
+
+        public async Task<List<ApiScope>> FindAllAsync(CancellationToken cancellationToken = default)
+        {
+            return await _apiScopeRepository.GetListAsync(e => e.Enabled == true, false, cancellationToken);
         }
     }
 }

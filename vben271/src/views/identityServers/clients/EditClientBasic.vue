@@ -4,25 +4,22 @@
     :width="700"
     :canFullscreen="false"
     @ok="submit"
-    @cancel="cancel"
     @register="registerModal"
-    @visible-change="visibleChange"
     :bodyStyle="{ 'padding-top': '0' }"
     :destroyOnClose="true"
-    :maskClosable="false"
   >
     <div>
       <Tabs>
         <TabPane tab="基本信息" key="1">
           <BasicForm @register="registerDetailForm" />
         </TabPane>
-        <TabPane tab="Options" key="2">
+        <TabPane tab="Options" key="2" forceRender>
           <BasicForm @register="registerOptionForm" />
         </TabPane>
-        <TabPane tab="Tokens" key="3">
+        <TabPane tab="Tokens" key="3" forceRender>
           <BasicForm @register="registerTokenForm" />
         </TabPane>
-        <TabPane tab="Secret" key="4">
+        <TabPane tab="Secret" key="4" forceRender>
           <BasicForm @register="registerSecretForm" />
         </TabPane>
       </Tabs>
@@ -31,11 +28,17 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, defineEmit } from 'vue';
+  import { defineComponent } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
   import { Tabs } from 'ant-design-vue';
-  import { editBasicDetailSchema, editBasicOptionSchema, editBasicTokenSchema, editBasicSecretSchema } from './Clients';
+  import {
+    editBasicDetailSchema,
+    editBasicOptionSchema,
+    editBasicTokenSchema,
+    editBasicSecretSchema,
+    updateClientAsync,
+  } from './Clients';
 
   export default defineComponent({
     name: 'EditAbpUser',
@@ -45,32 +48,59 @@
       Tabs,
       TabPane: Tabs.TabPane,
     },
-    setup() {
+    emits: ['reload'],
+    setup(_, { emit }) {
       // 加载父组件方法
       // defineEmit(['reload']);
 
-      const [registerDetailForm, { getFieldsValue: getFieldsDetailValue, validate: detailValidate, setFieldsValue: setDetailFieldsValue }] = useForm({
+      const [
+        registerDetailForm,
+        {
+          getFieldsValue: getFieldsDetailValue,
+          validate: detailValidate,
+          setFieldsValue: setDetailFieldsValue,
+        },
+      ] = useForm({
         labelWidth: 120,
         schemas: editBasicDetailSchema,
         showActionButtonGroup: false,
       });
-      const [registerOptionForm, { getFieldsValue: getFieldsOptionValue, validate: optionValidate, setFieldsValue: setOptionFieldsValue }] = useForm({
+      const [
+        registerOptionForm,
+        {
+          getFieldsValue: getFieldsOptionValue,
+          validate: optionValidate,
+          setFieldsValue: setOptionFieldsValue,
+        },
+      ] = useForm({
         labelWidth: 120,
         schemas: editBasicOptionSchema,
         showActionButtonGroup: false,
       });
-      const [registerTokenForm, { getFieldsValue: getFieldsTokenValue, validate: tokenValidate, setFieldsValue: setTokenFieldsValue }] = useForm({
+      const [
+        registerTokenForm,
+        {
+          getFieldsValue: getFieldsTokenValue,
+          validate: tokenValidate,
+          setFieldsValue: setTokenFieldsValue,
+        },
+      ] = useForm({
         labelWidth: 120,
         schemas: editBasicTokenSchema,
         showActionButtonGroup: false,
       });
-      const [registerSecretForm, { getFieldsValue: getFieldsSecretnValue, validate: secretValidate, setFieldsValue: setSecretFieldsValue }] = useForm(
+      const [
+        registerSecretForm,
         {
-          labelWidth: 120,
-          schemas: editBasicSecretSchema,
-          showActionButtonGroup: false,
-        }
-      );
+          getFieldsValue: getFieldsSecretValue,
+          validate: secretValidate,
+          setFieldsValue: setSecretFieldsValue,
+        },
+      ] = useForm({
+        labelWidth: 120,
+        schemas: editBasicSecretSchema,
+        showActionButtonGroup: false,
+      });
       let currentClient: any;
       const [registerModal, { changeOkLoading, closeModal }] = useModalInner((data) => {
         currentClient = data.record;
@@ -116,26 +146,32 @@
         }
       });
 
-      const visibleChange = async (visible: boolean) => {
-        if (visible) {
-          detailValidate();
-          optionValidate();
-          tokenValidate();
-          secretValidate();
-          getFieldsTokenValue();
-          getFieldsSecretnValue();
-          getFieldsOptionValue();
-          getFieldsDetailValue();
-          changeOkLoading(true);
-        } else {
-        }
-      };
+      // const visibleChange = async (visible: boolean) => {
+      //   if (visible) {
+      //     detailValidate();
+      //     optionValidate();
+      //     tokenValidate();
+      //     secretValidate();
+      //     getFieldsTokenValue();
+      //     getFieldsSecretValue();
+      //     getFieldsOptionValue();
+      //     getFieldsDetailValue();
+      //   }
+      // };
 
-      const submit = async () => {};
-      const cancel = () => {
-        closeModal();
+      const submit = async () => {
+        await detailValidate();
+        await optionValidate();
+        await tokenValidate();
+        await secretValidate();
+        var detailRequest = getFieldsDetailValue();
+        var optionRequest = getFieldsOptionValue();
+        var tokenRequest = getFieldsTokenValue();
+        var secretRequest = getFieldsSecretValue();
+        var request = Object.assign(detailRequest, optionRequest, tokenRequest, secretRequest);
+        await updateClientAsync({ request, changeOkLoading, closeModal });
+        emit('reload');
       };
-
       return {
         registerModal,
         registerDetailForm,
@@ -143,8 +179,6 @@
         registerTokenForm,
         registerSecretForm,
         submit,
-        visibleChange,
-        cancel,
       };
     },
   });

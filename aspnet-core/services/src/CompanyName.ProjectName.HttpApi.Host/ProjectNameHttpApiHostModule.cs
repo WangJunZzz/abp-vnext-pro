@@ -40,6 +40,7 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.VirtualFileSystem;
+using System.Threading.Tasks;
 
 namespace CompanyName.ProjectName
 {
@@ -154,6 +155,7 @@ namespace CompanyName.ProjectName
             });
         }
 
+
         /// <summary>
         /// 配置JWT
         /// </summary>
@@ -180,6 +182,44 @@ namespace CompanyName.ProjectName
                         ValidAudience = configuration["Jwt:Audience"],
                         IssuerSigningKey =
                             new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration["Jwt:SecurityKey"]))
+                    };
+
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = currentContext =>
+                        {
+                            var accessToken = currentContext.Request.Query["access_token"];
+                            // 如果请求来自signalr
+                            var path = currentContext.HttpContext.Request.Path;
+                            if (path.StartsWithSegments("/signalr"))
+                            {
+                                currentContext.Token = accessToken;
+                            }
+
+                            // 如果请求来自hangfire
+                            if (!path.ToString().StartsWith("/hangfire"))
+                            {
+                                return Task.CompletedTask;
+                            }
+
+                            currentContext.HttpContext.Response.Headers.Remove("X-Frame-Options");
+                            if (!string.IsNullOrEmpty(accessToken))
+                            {
+                                currentContext.Token = accessToken;
+                                currentContext.HttpContext.Response.Cookies
+                                    .Append("HangfireCookie", accessToken);
+                            }
+                            else
+                            {
+                                var cookies = currentContext.Request.Cookies;
+                                if (cookies.ContainsKey("HangfireCookie"))
+                                {
+                                    currentContext.Token = cookies["HangfireCookie"];
+                                }
+                            }
+
+                            return Task.CompletedTask;
+                        }
                     };
                 });
         }
@@ -340,6 +380,7 @@ namespace CompanyName.ProjectName
 
         private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
         {
+            context.Services.AddAntiforgery(o => o.SuppressXFrameOptionsHeader = true);
             context.Services.AddCors(options =>
             {
                 options.AddPolicy(DefaultCorsPolicyName, builder =>

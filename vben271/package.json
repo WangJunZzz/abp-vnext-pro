@@ -24,14 +24,12 @@
     "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
     "lint:pretty": "pretty-quick --staged",
     "test:unit": "jest",
     "test:unit-coverage": "jest --coverage",
     "test:gzip": "http-server dist --cors --gzip -c-1",
     "test:br": "http-server dist --cors --brotli -c-1",
     "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
-    "prepare": "husky install",
     "gen:icon": "esno ./build/generate/icon/index.ts"
   },
   "dependencies": {
