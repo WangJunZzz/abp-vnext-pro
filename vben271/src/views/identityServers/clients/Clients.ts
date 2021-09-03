@@ -8,6 +8,10 @@ import {
   EnabledInput,
   IdInput,
   PagingClientListInput,
+  AddRedirectUriInput,
+  RemoveRedirectUriInput,
+  AddCorsInput,
+  RemoveCorsInput,
 } from '/@/services/ServiceProxies';
 
 export const searchFormSchema: FormSchema[] = [
@@ -344,4 +348,50 @@ export async function enabledClientAsync({ clientId, enabled, reload }) {
   request.enabled = enabled;
   await _clientServiceProxy.enabled(request);
   reload();
+}
+
+export async function addRedirectUriAsync({ clientId, uri }) {
+  const _clientServiceProxy = new ClientServiceProxy();
+  let request = new AddRedirectUriInput();
+  request.clientId = clientId;
+  request.uri = uri;
+  return await _clientServiceProxy.addRedirectUri(request);
+}
+
+export async function removeRedirectUriAsync({ clientId, uri }) {
+  const _clientServiceProxy = new ClientServiceProxy();
+  let request = new RemoveRedirectUriInput();
+  request.clientId = clientId;
+  request.uri = uri;
+  return await _clientServiceProxy.removeRedirectUri(request);
+}
+
+export async function addLogoutRedirectUriAsync({ clientId, uri }) {
+  const _clientServiceProxy = new ClientServiceProxy();
+  let request = new RemoveRedirectUriInput();
+  request.clientId = clientId;
+  request.uri = uri;
+  return await _clientServiceProxy.addLogoutRedirectUri(request);
+}
+export async function removeLogoutRedirectUriAsync({ clientId, uri }) {
+  const _clientServiceProxy = new ClientServiceProxy();
+  let request = new RemoveRedirectUriInput();
+  request.clientId = clientId;
+  request.uri = uri;
+  return await _clientServiceProxy.removeLogoutRedirectUri(request);
+}
+export async function addCorsAsync({ clientId, origin }) {
+  const _clientServiceProxy = new ClientServiceProxy();
+  let request = new AddCorsInput();
+  request.clientId = clientId;
+  request.origin = origin;
+  return await _clientServiceProxy.addCors(request);
+}
+
+export async function removeCorsAsync({ clientId, origin }) {
+  const _clientServiceProxy = new ClientServiceProxy();
+  let request = new RemoveCorsInput();
+  request.clientId = clientId;
+  request.origin = origin;
+  return await _clientServiceProxy.removeCors(request);
 }

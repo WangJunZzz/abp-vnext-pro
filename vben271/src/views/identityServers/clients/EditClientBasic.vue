@@ -50,9 +50,6 @@
     },
     emits: ['reload'],
     setup(_, { emit }) {
-      // 加载父组件方法
-      // defineEmit(['reload']);
-
       const [
         registerDetailForm,
         {
@@ -145,19 +142,6 @@
           });
         }
       });
-
-      // const visibleChange = async (visible: boolean) => {
-      //   if (visible) {
-      //     detailValidate();
-      //     optionValidate();
-      //     tokenValidate();
-      //     secretValidate();
-      //     getFieldsTokenValue();
-      //     getFieldsSecretValue();
-      //     getFieldsOptionValue();
-      //     getFieldsDetailValue();
-      //   }
-      // };
 
       const submit = async () => {
         await detailValidate();

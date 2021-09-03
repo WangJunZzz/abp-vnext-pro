@@ -20,26 +20,45 @@
         <a-button type="link" size="small" @click="handleEnabled(record)">
           {{ record.enabled ? '禁用' : '启用' }}
         </a-button>
+        <a-button type="link" size="small" @click="handleUri(record)"> Uri </a-button>
         <a-button type="link" size="small" @click="handleDelete(record)">
           {{ t('common.delText') }}
         </a-button>
       </template>
     </BasicTable>
-    <CreateClient @register="registerCreateClientModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
-    <EditClientBasic @register="registerEditClientModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
+    <CreateClient
+      @register="registerCreateClientModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
+    />
+    <EditClientBasic
+      @register="registerEditClientModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
+    />
+    <ClientUri @register="registerUriDrawer" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
   </div>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { tableColumns, searchFormSchema, getTableListAsync, deleteClientAsync, enabledClientAsync } from './Clients';
+  import {
+    tableColumns,
+    searchFormSchema,
+    getTableListAsync,
+    deleteClientAsync,
+    enabledClientAsync,
+  } from './Clients';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { Tag } from 'ant-design-vue';
   import CreateClient from './CreateClient.vue';
   import EditClientBasic from './EditClientBasic.vue';
+  import ClientUri from './ClientUri.vue';
   import { useModal } from '/@/components/Modal';
   import { useMessage } from '/@/hooks/web/useMessage';
+  import { useDrawer } from '/@/components/Drawer';
+
   export default defineComponent({
     name: 'Clients',
     components: {
@@ -48,6 +67,7 @@
       Tag,
       CreateClient,
       EditClientBasic,
+      ClientUri,
     },
     setup() {
       const { t } = useI18n();
@@ -66,7 +86,7 @@
         canResize: true,
         showIndexColumn: true,
         actionColumn: {
-          width: 150,
+          width: 300,
           title: t('common.action'),
           dataIndex: 'action',
           slots: {
@@ -97,6 +117,10 @@
       const handleEnabled = async (record: Recordable) => {
         await enabledClientAsync({ clientId: record.clientId, enabled: !record.enabled, reload });
       };
+      const [registerUriDrawer, { openDrawer: openUriDrawer }] = useDrawer();
+      const handleUri = async (record: Recordable) => {
+        openUriDrawer(true, { record: record });
+      };
       return {
         registerTable,
         registerCreateClientModal,
@@ -108,6 +132,8 @@
         handleEdit,
         handleDelete,
         handleEnabled,
+        handleUri,
+        registerUriDrawer,
       };
     },
   });

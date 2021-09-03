@@ -127,8 +127,12 @@ namespace CompanyName.ProjectName.IdentityServer
             }
 
             apiResource.Scopes.Clear();
-            
-            scopes?.Distinct().ToList().ForEach(item => { apiResource.AddScope(item); });
+
+            foreach (var item in scopes)
+            {
+                apiResource.AddScope(item);
+            }
+          
 
           
             return await _apiResourceRepository.UpdateAsync(apiResource, cancellationToken: cancellationToken);

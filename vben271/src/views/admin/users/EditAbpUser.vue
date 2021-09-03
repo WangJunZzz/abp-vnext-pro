@@ -17,12 +17,6 @@
           <BasicForm @register="registerUserForm" />
         </TabPane>
         <TabPane tab="角色" key="2">
-          <!-- <a-checkbox-group @change="onRoleSelectedChange" v-model:value="defaultRolesRef">
-            <a-checkbox v-for="(item, index) in rolesRef" :key="index" :value="item.name">
-              {{ item.name }}
-            </a-checkbox>
-          </a-checkbox-group> -->
-
           <a-checkbox-group v-model:value="defaultRolesRef">
             <a-row justify="center">
               <a-col :span="24">

@@ -163,7 +163,7 @@ namespace CompanyName.ProjectName.IdentityServer
         public async Task<Client> UpdateScopesAsync(string clientId, List<string> scopes)
         {
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: "Client不存在");
+            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
             client.RemoveAllScopes();
             scopes.ForEach(item => { client.AddScope(item.Trim()); });
 
@@ -178,13 +178,15 @@ namespace CompanyName.ProjectName.IdentityServer
             uri = uri.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
             if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
-            if (client.RedirectUris.Any(e => e.RedirectUri != uri.Trim()))
+            if (client.RedirectUris.Any(e => e.RedirectUri == uri.Trim()))
+            {
+                return client;
+            }
+            else
             {
                 client.AddRedirectUri(uri);
                 return await _clientRepository.UpdateAsync(client);
             }
-
-            return client;
         }
 
         /// <summary>
@@ -200,8 +202,10 @@ namespace CompanyName.ProjectName.IdentityServer
                 client.RemoveRedirectUri(uri);
                 return await _clientRepository.UpdateAsync(client);
             }
-
-            return client;
+            else
+            {
+                return client;
+            }
         }
 
         /// <summary>
@@ -212,13 +216,13 @@ namespace CompanyName.ProjectName.IdentityServer
             uri = uri.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
             if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
-            if (client.PostLogoutRedirectUris.Any(e => e.PostLogoutRedirectUri != uri))
+            if (client.PostLogoutRedirectUris.Any(e => e.PostLogoutRedirectUri == uri))
             {
-                client.AddPostLogoutRedirectUri(uri);
-                await _clientRepository.UpdateAsync(client);
+                return client;
             }
 
-            return client;
+            client.AddPostLogoutRedirectUri(uri);
+          return  await _clientRepository.UpdateAsync(client);
         }
 
         /// <summary>
@@ -246,13 +250,15 @@ namespace CompanyName.ProjectName.IdentityServer
             origin = origin.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
             if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
-            if (client.AllowedCorsOrigins.Any(e => e.Origin != origin))
+            if (client.AllowedCorsOrigins.Any(e => e.Origin == origin))
+            {
+                return client;
+            }
+            else
             {
                 client.AddCorsOrigin(origin);
                 return await _clientRepository.UpdateAsync(client);
             }
-
-            return client;
         }
 
         /// <summary>

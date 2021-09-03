@@ -13,8 +13,20 @@
         <TabPane tab="基本信息" key="1">
           <BasicForm @register="registerBasicInfoForm" />
         </TabPane>
-        <TabPane tab="ApiScopes" key="2" forceRender>
-          <BasicForm @register="registerApiScopeForm" />
+        <TabPane tab="ApiScopes" key="2">
+          <a-checkbox-group v-model:value="defaultApiScope">
+            <a-row justify="center">
+              <a-col :span="24">
+                <a-checkbox
+                  style="width: 150px"
+                  v-for="(item, index) in apiScopes"
+                  :key="index"
+                  :value="item.value"
+                  >{{ item.label }}</a-checkbox
+                >
+              </a-col>
+            </a-row>
+          </a-checkbox-group>
         </TabPane>
       </Tabs>
     </div>
@@ -22,17 +34,12 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
+  import { defineComponent, reactive, toRefs } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
   import { Tabs } from 'ant-design-vue';
-  import {
-    editFormSchema,
-    editApiScopeSchema,
-    getAllApiScopeAsync,
-    updateApiResourceAsync,
-  } from './ApiResources';
-
+  import { editFormSchema, getAllApiScopeAsync, updateApiResourceAsync } from './ApiResources';
+  import { StringStringFromSelector } from '/@/services/ServiceProxies';
   export default defineComponent({
     name: 'EditApiResources',
     components: {
@@ -55,19 +62,16 @@
         schemas: editFormSchema,
         showActionButtonGroup: false,
       });
-      const [
-        registerApiScopeForm,
-        {
-          getFieldsValue: getFieldsApiScopeValue,
-          validate: apiScopeValidate,
-          updateSchema: updateApiScopeSchema,
-        },
-      ] = useForm({
-        labelWidth: 120,
-        schemas: editApiScopeSchema,
-        showActionButtonGroup: false,
+
+      let currentApiResuource: any;
+      let apiScopes: StringStringFromSelector[] = [];
+      const state = reactive({
+        defaultApiScope: [],
+        apiScopes,
       });
       const [registerModal, { changeOkLoading, closeModal }] = useModalInner(async (data) => {
+        currentApiResuource = data;
+
         setBasicInfoFieldsValue({
           name: data.record.name,
           displayName: data.record.displayName,
@@ -77,32 +81,23 @@
           showInDiscoveryDocument: data.record.showInDiscoveryDocument,
         });
 
-        let apiScopes = await getAllApiScopeAsync();
-        const defaultApiScopes = data.record.scopes.map((e) => e.scope);
-        console.log(defaultApiScopes);
-        updateApiScopeSchema([
-          {
-            field: 'apiScopes',
-            defaultValue: defaultApiScopes,
-            componentProps: { options: apiScopes },
-          },
-        ]);
+        state.apiScopes = await getAllApiScopeAsync();
+        state.defaultApiScope = data.record.scopes.map((e) => e.scope);
       });
 
       const submit = async () => {
         await basicInfoValidate();
-        await apiScopeValidate();
         var basicInfo = getFieldsBasicInfoValue();
-        var apiScope = getFieldsApiScopeValue();
-        var request = Object.assign(basicInfo, apiScope);
+        let requestScope = { apiScopes: state.defaultApiScope };
+        var request = Object.assign(basicInfo, requestScope);
         await updateApiResourceAsync({ request, changeOkLoading, closeModal });
         emit('reload');
       };
       return {
         registerModal,
         registerBasicInfoForm,
-        registerApiScopeForm,
         submit,
+        ...toRefs(state),
       };
     },
   });
