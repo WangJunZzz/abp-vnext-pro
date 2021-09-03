@@ -25,8 +25,8 @@ namespace CompanyName.ProjectName.AuditLogs
                 input.Sorting,
                 input.PageSize,
                 input.SkipCount,
-                input.StartTime,
-                input.EndTime,
+                input.StartTime?.Date,
+                input.EndTime?.Date,
                 input.HttpMethod,
                 input.Url,
                 null,
@@ -38,8 +38,8 @@ namespace CompanyName.ProjectName.AuditLogs
                 input.HasException,
                 input.HttpStatusCode);
             var totalCount = await _auditLogRepository.GetCountAsync(
-                input.StartTime,
-                input.EndTime,
+                input.StartTime?.Date,
+                input.EndTime?.Date,
                 input.HttpMethod,
                 input.Url,
                 null,

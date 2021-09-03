@@ -11,7 +11,7 @@ using Volo.Abp.Identity;
 namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("AuditLogs")]
-    [Authorize]
+    //[Authorize]
     public class AuditLogController:ProjectNameController
     {
         private readonly IAuditLogAppService _auditLogAppService;
@@ -22,7 +22,7 @@ namespace CompanyName.ProjectName.Controllers.Systems
         }
         
         [HttpPost("page")]
-        [Authorize(ProjectNamePermissions.AbpIdentityExtend.AuditLogQuery)]
+        //[Authorize(ProjectNamePermissions.AbpIdentityExtend.AuditLogQuery)]
         [SwaggerOperation(summary: "分页获取用户信息", Tags = new[] { "AuditLogs" })]
         public Task<PagedResultDto<GetAuditLogPageListOutput>> ListAsync(PagingAuditLogListInput input)
         {

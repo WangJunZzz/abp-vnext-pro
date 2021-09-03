@@ -27,15 +27,10 @@ namespace CompanyName.ProjectName.Extensions.Customs
         /// </summary>
         public int SkipCount => (PageIndex - 1) * PageSize;
 
-        public PagingBase()
+        protected PagingBase()
         {
         }
-
-        /// <summary>
-        /// 实例化 <see cref="BeeQueryPagingInput"/> 对象
-        /// </summary>
-        /// <param name="pageIndex">当前页面</param>
-        /// <param name="pageSize">每页多少条</param>
+        
         public PagingBase(int pageIndex = 1, int pageSize = 10)
         {
             PageIndex = pageIndex;

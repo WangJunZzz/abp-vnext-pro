@@ -38,6 +38,16 @@ const admin: AppRouteModule = {
       },
     },
     {
+      path: 'abpAuditLogs',
+      name: 'AuditLogs',
+      component: () => import('/@/views/admin/auditLog/AuditLog.vue'),
+      meta: {
+        title: '审计日志',
+        //policy: 'AbpIdentity.Roles.Query',
+        icon: 'ant-design:snippets-twotone',
+      },
+    },
+    {
       path: 'hangfire',
       name: '后台任务',
       component: IFrame,

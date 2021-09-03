@@ -63,7 +63,7 @@ namespace CompanyName.ProjectName
 
         public override void OnPostApplicationInitialization(ApplicationInitializationContext context)
         {
-            context.CreateRecurringJob();
+           // context.CreateRecurringJob();
             base.OnPostApplicationInitialization(context);
         }
 

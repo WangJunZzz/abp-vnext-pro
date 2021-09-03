@@ -27,6 +27,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement
             /* Instead of returning the Task.CompletedTask, you can insert your test data
              * at this point!
              */
+            await  Task.CompletedTask;
         }
     }
 }
