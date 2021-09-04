@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore\CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\modules\NotificationManagement\src\CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore\CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\..\modules\QueryManagement\src\CompanyName.ProjectName.QueryManagement.FreeSqlMySql\CompanyName.ProjectName.QueryManagement.FreeSqlMySql.csproj" />
     <ProjectReference Include="..\CompanyName.ProjectName.Domain\CompanyName.ProjectName.Domain.csproj" />
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(AbpPackageVersion)" />

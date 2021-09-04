@@ -2,49 +2,74 @@
   <div>
     <BasicTable @register="registerTable" size="small">
       <template #toolbar>
-        <a-button type="primary" @click="openCreateApiScopeModal">
+        <a-button
+          type="primary"
+          @click="openCreateApiScopeModal"
+          v-auth="'IdentityServerManagement.ApiScope.Create'"
+        >
           {{ t('common.createText') }}
         </a-button>
       </template>
       <template #enabled="{ record }">
         <Tag :color="record.enabled ? 'green' : 'red'">
-          {{ record.enabled ? '是' : '否' }}
+          {{ record.enabled ? t('common.true') : t('common.false') }}
         </Tag>
       </template>
       <template #required="{ record }">
         <Tag :color="record.required ? 'green' : 'red'">
-          {{ record.required ? '是' : '否' }}
+          {{ record.required ? t('common.true') : t('common.false') }}
         </Tag>
       </template>
       <template #emphasize="{ record }">
         <Tag :color="record.emphasize ? 'green' : 'red'">
-          {{ record.emphasize ? '是' : '否' }}
+          {{ record.emphasize ? t('common.true') : t('common.false') }}
         </Tag>
       </template>
       <template #showInDiscoveryDocument="{ record }">
         <Tag :color="record.showInDiscoveryDocument ? 'green' : 'red'">
-          {{ record.showInDiscoveryDocument ? '是' : '否' }}
+          {{ record.showInDiscoveryDocument ? t('common.true') : t('common.false') }}
         </Tag>
       </template>
       <template #action="{ record }">
-        <a-button type="link" size="small" @click="handleEdit(record)">
+        <a-button
+          type="link"
+          size="small"
+          @click="handleEdit(record)"
+          v-auth="'IdentityServerManagement.ApiScope.Update'"
+        >
           {{ t('common.editText') }}
         </a-button>
 
-        <a-button type="link" size="small" @click="handleDelete(record)">
+        <a-button
+          type="link"
+          size="small"
+          @click="handleDelete(record)"
+          v-auth="'IdentityServerManagement.ApiScope.Delete'"
+        >
           {{ t('common.delText') }}
         </a-button>
       </template>
     </BasicTable>
-    <CreateApiScope @register="registerCreateApiScopeModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
-    <EditApiScope @register="registerEditApiScopeModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }"
+    <CreateApiScope
+      @register="registerCreateApiScopeModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }" />
+    <EditApiScope
+      @register="registerEditApiScopeModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
   /></div>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { tableColumns, searchFormSchema, getTableListAsync, deleteApiScopeAsync } from './ApiScopes';
+  import {
+    tableColumns,
+    searchFormSchema,
+    getTableListAsync,
+    deleteApiScopeAsync,
+  } from './ApiScopes';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { Tag } from 'ant-design-vue';
   import CreateApiScope from './CreateApiScope.vue';
@@ -92,10 +117,10 @@
         openEditApiScopeModal(true, { record: record });
       };
       const handleDelete = (record: Recordable) => {
-        let msg = '是否确认删除';
+        let msg = t('common.askDelete');
         createConfirm({
           iconType: 'warning',
-          title: '提示',
+          title: t('common.tip'),
           content: msg,
           onOk: async () => {
             await deleteApiScopeAsync({ id: record.id, reload });

@@ -1,6 +1,16 @@
 <template>
-  <BasicDrawer @register="registerDrawer" :title="t('routes.admin.roleManagement_permission')" width="20%">
-    <BasicTree :treeData="allPermissionsRef" checkable ref="treeRef" style="margin-bottom: 50px" />
+  <BasicDrawer
+    @register="registerDrawer"
+    :title="t('routes.admin.roleManagement_permission')"
+    width="20%"
+  >
+    <BasicTree
+      :treeData="allPermissionsRef"
+      checkable
+      checkStrictly
+      ref="treeRef"
+      style="margin-bottom: 50px"
+    />
     <div
       :style="{
         position: 'absolute',
@@ -14,7 +24,9 @@
         zIndex: 1,
       }"
     >
-      <a-button :style="{ marginRight: '8px' }" @click="closeDrawer">{{ t('common.cancelText') }} </a-button>
+      <a-button :style="{ marginRight: '8px' }" @click="closeDrawer"
+        >{{ t('common.cancelText') }}
+      </a-button>
       <a-button type="primary" @click="submitRolePermisstionAsync">
         {{ t('common.saveText') }}
       </a-button>
@@ -29,7 +41,11 @@
   import { useI18n } from '/@/hooks/web/useI18n';
   import { BasicTree, TreeActionType } from '/@/components/Tree/index';
   import { useUserStoreWithOut } from '/@/store/modules/user';
-  import { UpdateRolePermissionsInput, UpdatePermissionDto, UpdatePermissionsDto } from '/@/services/ServiceProxies';
+  import {
+    UpdateRolePermissionsInput,
+    UpdatePermissionDto,
+    UpdatePermissionsDto,
+  } from '/@/services/ServiceProxies';
   import { message } from 'ant-design-vue';
   export default defineComponent({
     name: 'PermissionAbpRole',
@@ -75,10 +91,10 @@
         let permisstions: UpdatePermissionDto[] = [];
         request.providerName = 'R';
         request.providerKey = roleName;
-        const keys = toRaw(getTree().getCheckedKeys()) as [];
-
+        const { checked } = toRaw(getTree().getCheckedKeys()) as [];
+        debugger;
         const noSelectedPermissions = totalRolePermissionsRef.filter((e) => {
-          return !(keys.indexOf(e) > -1);
+          return !(checked.indexOf(e) > -1);
         });
         noSelectedPermissions.forEach((item: string) => {
           if (item.includes('.')) {
@@ -88,7 +104,7 @@
             permisstions.push(permisstion);
           }
         });
-        keys.forEach((item: string) => {
+        checked.forEach((item: string) => {
           if (item.includes('.')) {
             let permisstion = new UpdatePermissionDto();
             permisstion.name = item;

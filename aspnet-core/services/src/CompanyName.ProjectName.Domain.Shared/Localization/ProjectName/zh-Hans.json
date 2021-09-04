@@ -3,6 +3,21 @@
     "texts": {
       "Menu:Home": "首页",
       "Welcome": "欢迎",
-      "LongWelcomeMessage": "欢迎来到该应用程序. 这是一个基于ABP框架的启动项目. 有关更多信息, 请访问 abp.io."
+      "LongWelcomeMessage": "欢迎来到该应用程序. 这是一个基于ABP框架的启动项目. 有关更多信息, 请访问 abp.io.",
+
+      "Permission:Query": "查询",
+      "Permission:Create": "创建",
+      "Permission:Update": "编辑",
+      "Permission:Delete": "删除",
+      "Permission:Enable": "启用|禁用",
+      "Permission:AuditLogManagement": "审计日志",
+      "Permission:SystemManagement": "系统管理",
+      "Permission:HangfireManagement": "后台任务",
+      "Permission:CapManagement": "集成事件",
+      "Permission:IdentityServerManagement": "IdentityServer",
+      "Permission:IdentityServerManagement:Client": "客户端",
+      "Permission:IdentityServerManagement:ApiResource": "Api资源",
+      "Permission:IdentityServerManagement:ApiScope": "ApiScope",
+      "Permission:IdentityServerManagement:IdentityResources": "Identity资源"
     }
   }

@@ -2,31 +2,62 @@
   <div>
     <BasicTable @register="registerTable" size="small">
       <template #toolbar>
-        <a-button type="primary" @click="openCreateAbpUserModal">
+        <a-button
+          type="primary"
+          @click="openCreateAbpUserModal"
+          v-auth="'AbpIdentity.Users.Create'"
+        >
           {{ t('common.createText') }}
         </a-button>
       </template>
       <template #lockoutEnabled="{ record }">
         <Tag :color="record.lockoutEnabled ? 'red' : 'green'">
-          {{ record.lockoutEnabled ? '已锁定' : '未锁定' }}
+          {{ record.lockoutEnabled ? t('common.locked') : t('common.unLocked') }}
         </Tag>
       </template>
       <template #action="{ record }">
-        <a-button type="link" size="small" @click="handleEdit(record)">
+        <a-button
+          type="link"
+          size="small"
+          @click="handleEdit(record)"
+          v-auth="'AbpIdentity.Users.Update'"
+        >
           {{ t('common.editText') }}
         </a-button>
 
-        <a-button type="link" size="small" @click="handleDelete(record)">
+        <a-button
+          type="link"
+          size="small"
+          @click="handleDelete(record)"
+          v-auth="'AbpIdentity.Users.Delete'"
+        >
           {{ t('common.delText') }}
         </a-button>
-        <a-button type="link" size="small" @click="handleLock(record)">
-          {{ record.lockoutEnabled ? '启用' : '禁用' }}
+        <a-button
+          type="link"
+          size="small"
+          @click="handleLock(record)"
+          v-auth="'System.Users.Enable'"
+        >
+          {{ record.lockoutEnabled ? t('common.enabled') : t('common.disEnabled') }}
         </a-button>
       </template>
     </BasicTable>
-    <CreateAbpUser @register="registerCreateAbpUserModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
-    <EditAbpUser @register="registerEditAbpUserModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
-    <Warehouse @register="registerWarehosueModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
+    <CreateAbpUser
+      @register="registerCreateAbpUserModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
+    />
+    <EditAbpUser
+      @register="registerEditAbpUserModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
+    />
+    <Warehouse
+      @register="registerWarehosueModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
+    />
   </div>
 </template>
 
@@ -34,7 +65,13 @@
   import { defineComponent } from 'vue';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { tableColumns, searchFormSchema, getTableListAsync, deleteUserAsync, lockUserAsync } from './AbpUser';
+  import {
+    tableColumns,
+    searchFormSchema,
+    getTableListAsync,
+    deleteUserAsync,
+    lockUserAsync,
+  } from './AbpUser';
   import { useModal } from '/@/components/Modal';
   import CreateAbpUser from './CreateAbpUser.vue';
   import EditAbpUser from './EditAbpUser.vue';
@@ -99,10 +136,10 @@
           message.error('admin not delete');
           return;
         } else {
-          let msg = '是否确认删除';
+          let msg = t('common.askDelete');
           createConfirm({
             iconType: 'warning',
-            title: '提示',
+            title: t('common.tip'),
             content: msg,
             onOk: async () => {
               await deleteUserAsync({ userId: record.id, reload });
@@ -115,8 +152,8 @@
         if (!record.lockoutEnabled && currentUserId === record.id) {
           createConfirm({
             iconType: 'warning',
-            title: '提示',
-            content: '当前用户本身不能禁用自己',
+            title: t('common.tip'),
+            content: t('common.disEnabledSelf'),
           });
           return;
         }
@@ -124,7 +161,7 @@
         request.userId = record.id;
         request.locked = !record.lockoutEnabled;
         await lockUserAsync(request);
-        message.success('操作成功');
+        message.success(t('common.operationSuccess'));
         reload();
       };
       return {

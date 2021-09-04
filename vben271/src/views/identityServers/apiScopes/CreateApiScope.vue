@@ -1,11 +1,17 @@
 <template>
-  <BasicModal title="创建ApiScope" :canFullscreen="false" @ok="submit" @cancel="cancel" @register="registerModal">
+  <BasicModal
+    :title="t('common.createText')"
+    :canFullscreen="false"
+    @ok="submit"
+    @cancel="cancel"
+    @register="registerModal"
+  >
     <BasicForm @register="registerApiScopeForm" />
   </BasicModal>
 </template>
 
 <script lang="ts">
-  import { defineComponent, useContext, defineEmit } from 'vue';
+  import { defineComponent } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
   import { createFormSchema, createApiScopeAsync } from './ApiScopes';
@@ -19,10 +25,6 @@
     },
     emits: ['reload'],
     setup(_, { emit }) {
-      // 加载父组件方法
-      // defineEmit(['reload']);
-      // const ctx = useContext();
-
       const { t } = useI18n();
       const [registerApiScopeForm, { getFieldsValue, validate, resetFields }] = useForm({
         labelWidth: 120,

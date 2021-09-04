@@ -1,6 +1,6 @@
 <template>
   <BasicModal
-    title="编辑ApiResources"
+    :title="t('common.editText')"
     :width="700"
     :canFullscreen="false"
     @ok="submit"
@@ -10,7 +10,7 @@
   >
     <div>
       <Tabs>
-        <TabPane tab="基本信息" key="1">
+        <TabPane tab="Basic" key="1">
           <BasicForm @register="registerBasicInfoForm" />
         </TabPane>
         <TabPane tab="ApiScopes" key="2">
@@ -40,6 +40,7 @@
   import { Tabs } from 'ant-design-vue';
   import { editFormSchema, getAllApiScopeAsync, updateApiResourceAsync } from './ApiResources';
   import { StringStringFromSelector } from '/@/services/ServiceProxies';
+  import { useI18n } from '/@/hooks/web/useI18n';
   export default defineComponent({
     name: 'EditApiResources',
     components: {
@@ -50,6 +51,7 @@
     },
     emits: ['reload'],
     setup(_, { emit }) {
+      const { t } = useI18n();
       const [
         registerBasicInfoForm,
         {
@@ -63,15 +65,12 @@
         showActionButtonGroup: false,
       });
 
-      let currentApiResuource: any;
       let apiScopes: StringStringFromSelector[] = [];
       const state = reactive({
         defaultApiScope: [],
         apiScopes,
       });
       const [registerModal, { changeOkLoading, closeModal }] = useModalInner(async (data) => {
-        currentApiResuource = data;
-
         setBasicInfoFieldsValue({
           name: data.record.name,
           displayName: data.record.displayName,
@@ -97,6 +96,7 @@
         registerModal,
         registerBasicInfoForm,
         submit,
+        t,
         ...toRefs(state),
       };
     },

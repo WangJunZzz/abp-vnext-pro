@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using CompanyName.ProjectName.Users;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
@@ -53,6 +54,8 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
             /* Configure your own tables/entities inside the ConfigureProjectName method */
 
             builder.ConfigureProjectName();
+            
+      
         }
     }
 }

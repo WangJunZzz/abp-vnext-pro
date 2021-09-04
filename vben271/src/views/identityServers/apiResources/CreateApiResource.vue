@@ -1,6 +1,6 @@
 <template>
   <BasicModal
-    title="创建ApiResource"
+    :title="t('common.createText')"
     :canFullscreen="false"
     @ok="submit"
     @cancel="cancel"
@@ -25,10 +25,6 @@
     },
     emits: ['reload'],
     setup(_, { emit }) {
-      // 加载父组件方法
-      // defineEmit(['reload']);
-      // const ctx = useContext();
-
       const { t } = useI18n();
       const [registerApiResourceForm, { getFieldsValue, validate, resetFields }] = useForm({
         labelWidth: 120,

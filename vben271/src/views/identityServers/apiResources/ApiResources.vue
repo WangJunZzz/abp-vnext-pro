@@ -2,26 +2,40 @@
   <div>
     <BasicTable @register="registerTable" size="small">
       <template #toolbar>
-        <a-button type="primary" @click="openCreateApiResourceModal">
+        <a-button
+          type="primary"
+          @click="openCreateApiResourceModal"
+          v-auth="'IdentityServerManagement.ApiResource.Create'"
+        >
           {{ t('common.createText') }}
         </a-button>
       </template>
       <template #enabled="{ record }">
         <Tag :color="record.enabled ? 'green' : 'red'">
-          {{ record.enabled ? '是' : '否' }}
+          {{ record.enabled ? t('common.enabled') : t('common.disEnabled') }}
         </Tag>
       </template>
       <template #showInDiscoveryDocument="{ record }">
         <Tag :color="record.showInDiscoveryDocument ? 'green' : 'red'">
-          {{ record.showInDiscoveryDocument ? '是' : '否' }}
+          {{ record.showInDiscoveryDocument ? t('common.enabled') : t('common.disEnabled') }}
         </Tag>
       </template>
       <template #action="{ record }">
-        <a-button type="link" size="small" @click="handleEdit(record)">
+        <a-button
+          type="link"
+          size="small"
+          @click="handleEdit(record)"
+          v-auth="'IdentityServerManagement.ApiResource.Update'"
+        >
           {{ t('common.editText') }}
         </a-button>
 
-        <a-button type="link" size="small" @click="handleDelete(record)">
+        <a-button
+          type="link"
+          size="small"
+          @click="handleDelete(record)"
+          v-auth="'IdentityServerManagement.ApiResource.Delete'"
+        >
           {{ t('common.delText') }}
         </a-button>
       </template>
@@ -91,11 +105,10 @@
         useModal();
       const [registerEditApiResourceModal, { openModal: openEditApiResourceModal }] = useModal();
       const handleDelete = async (record: Recordable) => {
-        debugger;
-        let msg = '是否确认删除';
+        let msg = t('common.askDelete');
         createConfirm({
           iconType: 'warning',
-          title: '提示',
+          title: t('common.tip'),
           content: msg,
           onOk: async () => {
             await deleteApiResourceAsync({ id: record.id, reload });

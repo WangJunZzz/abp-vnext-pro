@@ -12,5 +12,13 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         /// <param name="input"></param>
         /// <returns></returns>
         Task SetReadAsync(SetReadInput input);
+        
+        /// <summary>
+        /// 创建一个消息
+        /// 测试使用
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task CreateAsync(CreateNotificationInput input);
     }
 }

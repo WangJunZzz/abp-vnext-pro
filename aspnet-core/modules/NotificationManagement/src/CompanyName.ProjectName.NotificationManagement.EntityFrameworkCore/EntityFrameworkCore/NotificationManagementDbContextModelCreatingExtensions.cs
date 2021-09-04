@@ -43,21 +43,16 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore
 
             builder.Entity<Notification>(b =>
             {
-                builder.Entity<Notification>(b =>
-                {
-                    b.ToTable(NotificationManagementDbProperties.DbTablePrefix + nameof(Notification),
-                        NotificationManagementDbProperties.DbSchema);
-                    b.ConfigureByConvention();
-                });
+                b.ToTable(NotificationManagementDbProperties.DbTablePrefix + nameof(Notification),
+                    NotificationManagementDbProperties.DbSchema);
+                b.ConfigureByConvention();
             });
+            
             builder.Entity<NotificationSubscription>(b =>
             {
-                builder.Entity<NotificationSubscription>(b =>
-                {
-                    b.ToTable(NotificationManagementDbProperties.DbTablePrefix + nameof(NotificationSubscription),
-                        NotificationManagementDbProperties.DbSchema);
-                    b.ConfigureByConvention();
-                });
+                b.ToTable(NotificationManagementDbProperties.DbTablePrefix + nameof(NotificationSubscription),
+                    NotificationManagementDbProperties.DbSchema);
+                b.ConfigureByConvention();
             });
         }
     }

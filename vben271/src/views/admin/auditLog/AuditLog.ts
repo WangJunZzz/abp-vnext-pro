@@ -7,14 +7,14 @@ import { AuditLogsServiceProxy, PagingAuditLogListInput } from '/@/services/Serv
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'userName',
-    label: '用户',
+    label: t('routes.admin.userManagement_userName'),
     component: 'Input',
     colProps: { span: 8 },
   },
   {
     field: 'time',
     component: 'RangePicker',
-    label: '执行时间',
+    label: t('routes.admin.audit_executeTime'),
     colProps: {
       span: 6,
     },
@@ -23,12 +23,12 @@ export const searchFormSchema: FormSchema[] = [
 
 export const tableColumns: BasicColumn[] = [
   {
-    title: '租户',
+    title: t('routes.admin.tenant'),
     dataIndex: 'tenantName',
     width: 100,
   },
   {
-    title: '用户',
+    title: t('routes.admin.userManagement_userName'),
     dataIndex: 'userName',
     width: 100,
   },

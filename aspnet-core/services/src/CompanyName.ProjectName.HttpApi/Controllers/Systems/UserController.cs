@@ -13,7 +13,7 @@ using Volo.Abp.Identity;
 namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("Users")]
-    [Authorize]
+    [Authorize(Policy = IdentityPermissions.Users.Default)]
     public class UserContoller:ProjectNameController
     {
         private readonly IUserAppService _userAppService;
@@ -24,7 +24,6 @@ namespace CompanyName.ProjectName.Controllers.Systems
         }
 
         [HttpPost("page")]
-        [Authorize(IdentityPermissions.Users.Default)]
         [SwaggerOperation(summary: "分页获取用户信息", Tags = new[] { "Users" })]
         public Task<PagedResultDto<IdentityUserDto>> ListAsync(PagingUserListInput input)
         {
@@ -56,7 +55,6 @@ namespace CompanyName.ProjectName.Controllers.Systems
         }
 
         [HttpPost("role")]
-        [Authorize(IdentityPermissions.Users.Default)]
         [SwaggerOperation(summary: "获取用户角色信息", Tags = new[] { "Users" })]
         public Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(IdInput input)
         {
@@ -64,7 +62,6 @@ namespace CompanyName.ProjectName.Controllers.Systems
         }
 
         [HttpPost("changePassword")]
-        [Authorize(IdentityPermissions.Users.Default)]
         [SwaggerOperation(summary: "修改当前用户密码", Tags = new[] { "Users" })]
         public Task<bool> ChangePasswordAsync(ChangePasswordInput input)
         {
@@ -72,7 +69,7 @@ namespace CompanyName.ProjectName.Controllers.Systems
         }
 
         [HttpPost("lock")]
-        [Authorize(ProjectNamePermissions.AbpIdentityExtend.UserEnable)]
+        [Authorize(ProjectNamePermissions.SystemManagement.UserEnable)]
         [SwaggerOperation(summary: "锁定用户", Tags = new[] { "Users" })]
         public Task LockAsync(LockUserInput input)
         {

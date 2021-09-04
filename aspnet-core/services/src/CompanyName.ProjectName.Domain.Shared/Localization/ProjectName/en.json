@@ -9,6 +9,14 @@
     "Permission:Update": "Update",
     "Permission:Delete": "Delete",
     "Permission:Enable": "Enable|Disable",
-    "Permission:AuditLogManagement": "AuditLog"
+    "Permission:SystemManagement": "SystemManagement",
+    "Permission:AuditLogManagement": "AuditLog",
+    "Permission:HangfireManagement": "BackgroundTask",
+    "Permission:CapManagement": "IntegratedEvent",
+    "Permission:IdentityServerManagement": "IdentityServer",
+    "Permission:IdentityServerManagement:Client": "Client",
+    "Permission:IdentityServerManagement:ApiResource": "ApiResource",
+    "Permission:IdentityServerManagement:ApiScope": "ApiScope",
+    "Permission:IdentityServerManagement:IdentityResources": "IdentityResources"
   }
 }

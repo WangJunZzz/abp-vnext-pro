@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Authorization" Version="$(AbpPackageVersion)" />
-    <ProjectReference Include="..\..\..\QueryManagement\src\CompanyName.ProjectName.QueryManagement.Domain.Shared\CompanyName.ProjectName.QueryManagement.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\frameworks\Extensions\src\CompanyName.ProjectName.Extensions\CompanyName.ProjectName.Extensions.csproj" />
     <ProjectReference Include="..\CompanyName.ProjectName.NotificationManagement.Domain.Shared\CompanyName.ProjectName.NotificationManagement.Domain.Shared.csproj" />
   </ItemGroup>
 

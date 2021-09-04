@@ -41,6 +41,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.VirtualFileSystem;
 using System.Threading.Tasks;
+using CompanyName.ProjectName.CAP;
 
 namespace CompanyName.ProjectName
 {
@@ -55,7 +56,8 @@ namespace CompanyName.ProjectName
         typeof(AbpSwashbuckleModule),
         typeof(AbpAccountWebModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
-        typeof(AbpBackgroundJobsHangfireModule)
+        typeof(AbpBackgroundJobsHangfireModule),
+        typeof(AbpCapModule)
     )]
     public class ProjectNameHttpApiHostModule : AbpModule
     {
@@ -75,7 +77,7 @@ namespace CompanyName.ProjectName
             //ConfigureConventionalControllers();
             //ConfigureAuthentication(context, configuration);
             ConfigureLocalization();
-            ConfigureCache(configuration);
+            ConfigureCache(context);
             ConfigureVirtualFileSystem(context);
             ConfigureRedis(context, configuration, hostingEnvironment);
             ConfigureCors(context, configuration);
@@ -84,6 +86,7 @@ namespace CompanyName.ProjectName
             ConfigureHealthChecks(context);
             ConfigureJwtAuthentication(context, configuration);
             ConfigureHangfireMysql(context);
+            ConfigurationCap(context);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -134,7 +137,8 @@ namespace CompanyName.ProjectName
             app.UseEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
             app.UseHangfireDashboard("/hangfire", new DashboardOptions()
             {
-                Authorization = new[] {new CustomHangfireAuthorizeFilter()}
+                Authorization = new[] {new CustomHangfireAuthorizeFilter()},
+                IgnoreAntiforgeryToken = true
             });
         }
 
@@ -143,7 +147,7 @@ namespace CompanyName.ProjectName
             Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = true; });
             context.Services.AddHangfire(config =>
             {
-                config.UseStorage(new MySqlStorage(context.Services.GetConfiguration().GetConnectionString("Hangfire"),
+                config.UseStorage(new MySqlStorage(context.Services.GetConfiguration().GetConnectionString("Default"),
                     new MySqlStorageOptions()
                     {
                         //CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
@@ -196,25 +200,23 @@ namespace CompanyName.ProjectName
                                 currentContext.Token = accessToken;
                             }
 
-                            // 如果请求来自hangfire
-                            if (!path.ToString().StartsWith("/hangfire"))
+                            // 如果请求来自hangfire 或者cap
+                            if (path.ToString().StartsWith("/hangfire") || path.ToString().StartsWith("/cap"))
                             {
-                                return Task.CompletedTask;
-                            }
-
-                            currentContext.HttpContext.Response.Headers.Remove("X-Frame-Options");
-                            if (!string.IsNullOrEmpty(accessToken))
-                            {
-                                currentContext.Token = accessToken;
-                                currentContext.HttpContext.Response.Cookies
-                                    .Append("HangfireCookie", accessToken);
-                            }
-                            else
-                            {
-                                var cookies = currentContext.Request.Cookies;
-                                if (cookies.ContainsKey("HangfireCookie"))
+                                currentContext.HttpContext.Response.Headers.Remove("X-Frame-Options");
+                                if (!string.IsNullOrEmpty(accessToken))
                                 {
-                                    currentContext.Token = cookies["HangfireCookie"];
+                                    currentContext.Token = accessToken;
+                                    currentContext.HttpContext.Response.Cookies
+                                        .Append("ProjectNameCookie", accessToken);
+                                }
+                                else
+                                {
+                                    var cookies = currentContext.Request.Cookies;
+                                    if (cookies.ContainsKey("ProjectNameCookie"))
+                                    {
+                                        currentContext.Token = cookies["ProjectNameCookie"];
+                                    }
                                 }
                             }
 
@@ -233,33 +235,44 @@ namespace CompanyName.ProjectName
             context.Services.Configure<JwtOptions>(context.Services.GetConfiguration().GetSection("Jwt"));
         }
 
-        private void ConfigureCache(IConfiguration configuration)
+        /// <summary>
+        /// Redis缓存
+        /// </summary>
+        private void ConfigureCache(ServiceConfigurationContext context)
         {
-            Configure<AbpDistributedCacheOptions>(options => { options.KeyPrefix = "ProjectName:"; });
+            var redisConnectionString =
+                context.Services.GetConfiguration().GetValue<string>("Cache:Redis:ConnectionString");
+            var redisDatabaseId = context.Services.GetConfiguration().GetValue<int>("Cache:Redis:DatabaseId");
+            var password = context.Services.GetConfiguration().GetValue<string>("Cache:Redis:Password");
+            var connectString = $"{redisConnectionString},password={password},defaultdatabase={redisDatabaseId}";
+            var redis = ConnectionMultiplexer.Connect(connectString);
+            context.Services.AddStackExchangeRedisCache(options => { options.Configuration = connectString; });
         }
 
         private void ConfigureVirtualFileSystem(ServiceConfigurationContext context)
         {
-            var hostingEnvironment = context.Services.GetHostingEnvironment();
-
-            if (hostingEnvironment.IsDevelopment())
-            {
-                Configure<AbpVirtualFileSystemOptions>(options =>
-                {
-                    options.FileSets.ReplaceEmbeddedByPhysical<ProjectNameDomainSharedModule>(
-                        Path.Combine(hostingEnvironment.ContentRootPath,
-                            $"..{Path.DirectorySeparatorChar}CompanyName.ProjectName.Domain.Shared"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<ProjectNameDomainModule>(
-                        Path.Combine(hostingEnvironment.ContentRootPath,
-                            $"..{Path.DirectorySeparatorChar}CompanyName.ProjectName.Domain"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<ProjectNameApplicationContractsModule>(
-                        Path.Combine(hostingEnvironment.ContentRootPath,
-                            $"..{Path.DirectorySeparatorChar}CompanyName.ProjectName.Application.Contracts"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<ProjectNameApplicationModule>(
-                        Path.Combine(hostingEnvironment.ContentRootPath,
-                            $"..{Path.DirectorySeparatorChar}CompanyName.ProjectName.Application"));
-                });
-            }
+            Configure<AbpVirtualFileSystemOptions>(options => { options.FileSets.AddEmbedded<ProjectNameHttpApiHostModule>(); });
+            
+            // var hostingEnvironment = context.Services.GetHostingEnvironment();
+            //
+            // if (hostingEnvironment.IsDevelopment())
+            // {
+            //     Configure<AbpVirtualFileSystemOptions>(options =>
+            //     {
+            //         options.FileSets.ReplaceEmbeddedByPhysical<ProjectNameDomainSharedModule>(
+            //             Path.Combine(hostingEnvironment.ContentRootPath,
+            //                 $"..{Path.DirectorySeparatorChar}CompanyName.ProjectName.Domain.Shared"));
+            //         options.FileSets.ReplaceEmbeddedByPhysical<ProjectNameDomainModule>(
+            //             Path.Combine(hostingEnvironment.ContentRootPath,
+            //                 $"..{Path.DirectorySeparatorChar}CompanyName.ProjectName.Domain"));
+            //         options.FileSets.ReplaceEmbeddedByPhysical<ProjectNameApplicationContractsModule>(
+            //             Path.Combine(hostingEnvironment.ContentRootPath,
+            //                 $"..{Path.DirectorySeparatorChar}CompanyName.ProjectName.Application.Contracts"));
+            //         options.FileSets.ReplaceEmbeddedByPhysical<ProjectNameApplicationModule>(
+            //             Path.Combine(hostingEnvironment.ContentRootPath,
+            //                 $"..{Path.DirectorySeparatorChar}CompanyName.ProjectName.Application"));
+            //     });
+            // }
         }
 
         private void ConfigureConventionalControllers()
@@ -278,11 +291,11 @@ namespace CompanyName.ProjectName
         private void ConfigureHealthChecks(ServiceConfigurationContext context)
         {
             var redisConnectionString =
-                context.Services.GetConfiguration().GetValue<string>("Redis:Configuration")
-                + ",defaultdatabase="
-                + context.Services.GetConfiguration().GetValue<int>("Redis:DatabaseId", 1);
-            var mysqlConnectionString = context.Services.GetConfiguration().GetConnectionString("Default");
-            context.Services.AddHealthChecks().AddRedis(redisConnectionString).AddMySql(mysqlConnectionString);
+                context.Services.GetConfiguration().GetValue<string>("Cache:Redis:ConnectionString");
+            var redisDatabaseId = context.Services.GetConfiguration().GetValue<int>("Cache:Redis:DatabaseId");
+            var password = context.Services.GetConfiguration().GetValue<string>("Cache:Redis:Password");
+            var connectString = $"{redisConnectionString},password={password},defaultdatabase={redisDatabaseId}";
+            context.Services.AddHealthChecks().AddRedis(redisConnectionString).AddMySql(connectString);
         }
 
         private static void ConfigureSwaggerServices(ServiceConfigurationContext context, IConfiguration configuration)
@@ -368,9 +381,10 @@ namespace CompanyName.ProjectName
             if (!hostingEnvironment.IsDevelopment())
             {
                 var redisConnectionString =
-                    context.Services.GetConfiguration().GetValue<string>("Redis:Configuration")
-                    + ",defaultdatabase="
-                    + context.Services.GetConfiguration().GetValue<int>("Redis:DatabaseId", 1);
+                    context.Services.GetConfiguration().GetValue<string>("Cache:Redis:ConnectionString");
+                var redisDatabaseId = context.Services.GetConfiguration().GetValue<int>("Cache:Redis:DatabaseId");
+                var password = context.Services.GetConfiguration().GetValue<string>("Cache:Redis:Password");
+                var connectString = $"{redisConnectionString},password={password},defaultdatabase={redisDatabaseId}";
                 var redis = ConnectionMultiplexer.Connect(redisConnectionString);
                 context.Services
                     .AddDataProtection()
@@ -398,6 +412,28 @@ namespace CompanyName.ProjectName
                         .AllowAnyMethod()
                         .AllowCredentials();
                 });
+            });
+        }
+        
+        private void ConfigurationCap(ServiceConfigurationContext context)
+        {
+            var configuration = context.Services.GetConfiguration();
+            context.AddAbpCap(capOptions =>
+            {
+                capOptions.UseEntityFramework<ProjectNameDbContext>();
+                capOptions.UseRabbitMQ(option =>
+                {
+                    option.HostName = configuration.GetValue<string>("RabbitMq:HostName");
+                    option.UserName = configuration.GetValue<string>("RabbitMq:UserName");
+                    option.Password = configuration.GetValue<string>("RabbitMq:Password");
+                }); 
+              
+                var hostingEnvironment = context.Services.GetHostingEnvironment();
+                bool auth = !hostingEnvironment.IsDevelopment();
+                capOptions.UseDashboard(options =>
+                {
+                    options.UseAuth = auth;
+                }); 
             });
         }
     }

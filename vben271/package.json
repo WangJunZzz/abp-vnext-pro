@@ -33,6 +33,7 @@
     "gen:icon": "esno ./build/generate/icon/index.ts"
   },
   "dependencies": {
+    "@microsoft/signalr": "^5.0.8",
     "@iconify/iconify": "^2.0.3",
     "@logicflow/core": "^0.6.9",
     "@logicflow/extension": "^0.6.9",

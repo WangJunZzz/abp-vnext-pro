@@ -7,14 +7,14 @@
           style="width: 470px"
           v-model:value="redirectUriValue"
         />
-        <a-button type="primary" @click="handleAddRedirectUri" style="margin-bottom: 10px"
-          >新增</a-button
-        >
+        <a-button type="primary" @click="handleAddRedirectUri" style="margin-bottom: 10px">{{
+          t('common.createText')
+        }}</a-button>
         <div v-for="item in currentClient.redirectUris">
           <a-input placeholder="" style="width: 470px" :defaultValue="item.redirectUri" disabled />
-          <a-button type="primary" @click="handleRemoveRedirectUri(item.redirectUri)" danger
-            >删除</a-button
-          >
+          <a-button type="primary" @click="handleRemoveRedirectUri(item.redirectUri)" danger>{{
+            t('common.delText')
+          }}</a-button>
         </div>
       </TabPane>
       <TabPane tab="LogoutRedirectUri" key="2" forceRender>
@@ -23,9 +23,9 @@
           style="width: 470px"
           v-model:value="postLogoutRedirectUriValue"
         />
-        <a-button type="primary" @click="handleAddLogoutRedirectUri" style="margin-bottom: 10px"
-          >新增</a-button
-        >
+        <a-button type="primary" @click="handleAddLogoutRedirectUri" style="margin-bottom: 10px">{{
+          t('common.createText')
+        }}</a-button>
         <div v-for="item in currentClient.postLogoutRedirectUris">
           <a-input
             placeholder=""
@@ -37,16 +37,20 @@
             type="primary"
             @click="handleRemoveLogoutRedirectUri(item.postLogoutRedirectUris)"
             danger
-            >删除</a-button
+            >{{ t('common.delText') }}</a-button
           >
         </div>
       </TabPane>
       <TabPane tab="CORS" key="3" forceRender>
         <a-input placeholder="Please Enter Uri" style="width: 470px" v-model:value="originValue" />
-        <a-button type="primary" @click="handleAddCors" style="margin-bottom: 10px">新增</a-button>
+        <a-button type="primary" @click="handleAddCors" style="margin-bottom: 10px">{{
+          t('common.createText')
+        }}</a-button>
         <div v-for="item in currentClient.allowedCorsOrigins">
           <a-input placeholder="" style="width: 470px" :defaultValue="item.origin" disabled />
-          <a-button type="primary" @click="handleRemoveCors(item.origin)" danger>删除</a-button>
+          <a-button type="primary" @click="handleRemoveCors(item.origin)" danger>{{
+            t('common.delText')
+          }}</a-button>
         </div>
       </TabPane>
     </Tabs>
@@ -56,6 +60,7 @@
   import { defineComponent, reactive, toRefs } from 'vue';
   import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
   import { Tabs } from 'ant-design-vue';
+  import { useI18n } from '/@/hooks/web/useI18n';
   import {
     addRedirectUriAsync,
     removeRedirectUriAsync,
@@ -70,6 +75,7 @@
     components: { BasicDrawer, Tabs, TabPane: Tabs.TabPane },
     emits: ['reload'],
     setup(_, { emit }) {
+      const { t } = useI18n();
       let currentClient: PagingClientListOutput = new PagingClientListOutput();
       const state = reactive({
         redirectUriValue: '',
@@ -149,6 +155,7 @@
         handleAddCors,
         handleRemoveCors,
         ...toRefs(state),
+        t,
       };
     },
   });

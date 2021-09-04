@@ -13,7 +13,7 @@ import {
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'filter',
-    label: '关键字',
+    label: t('common.key'),
     component: 'Input',
     colProps: { span: 8 },
   },
@@ -21,24 +21,24 @@ export const searchFormSchema: FormSchema[] = [
 
 export const tableColumns: BasicColumn[] = [
   {
-    title: 'name',
+    title: 'Name',
     dataIndex: 'name',
   },
   {
-    title: 'displayName',
+    title: 'DisplayName',
     dataIndex: 'displayName',
   },
   {
-    title: '是否启用',
+    title: t('common.enabled'),
     dataIndex: 'enabled',
     slots: { customRender: 'enabled' },
   },
   {
-    title: 'description',
+    title: 'Description',
     dataIndex: 'description',
   },
   {
-    title: 'showInDiscoveryDocument',
+    title: 'ShowInDiscoveryDocument',
     dataIndex: 'showInDiscoveryDocument',
     slots: { customRender: 'showInDiscoveryDocument' },
   },
@@ -47,7 +47,7 @@ export const tableColumns: BasicColumn[] = [
 export const createFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: 'name',
+    label: 'Name',
     component: 'Input',
     required: true,
     labelWidth: 200,
@@ -55,7 +55,7 @@ export const createFormSchema: FormSchema[] = [
   },
   {
     field: 'displayName',
-    label: 'displayName',
+    label: 'DisplayName',
     component: 'Input',
     required: true,
     labelWidth: 200,
@@ -63,7 +63,7 @@ export const createFormSchema: FormSchema[] = [
   },
   {
     field: 'secret',
-    label: 'secret',
+    label: 'Secret',
     component: 'Input',
     required: true,
     labelWidth: 200,
@@ -71,21 +71,21 @@ export const createFormSchema: FormSchema[] = [
   },
   {
     field: 'description',
-    label: 'description',
+    label: 'Description',
     component: 'Input',
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'enabled',
-    label: 'enabled',
+    label: 'Enabled',
     component: 'Switch',
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'showInDiscoveryDocument',
-    label: 'showInDiscoveryDocument',
+    label: 'ShowInDiscoveryDocument',
     labelWidth: 200,
     component: 'Switch',
     colProps: { span: 20 },
@@ -101,7 +101,7 @@ export const createFormSchema: FormSchema[] = [
 export const editFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: 'name',
+    label: 'Name',
     component: 'Input',
     required: true,
     labelWidth: 200,
@@ -109,7 +109,7 @@ export const editFormSchema: FormSchema[] = [
   },
   {
     field: 'displayName',
-    label: 'displayName',
+    label: 'DisplayName',
     component: 'Input',
     required: true,
     labelWidth: 200,
@@ -117,29 +117,29 @@ export const editFormSchema: FormSchema[] = [
   },
   {
     field: 'secret',
-    label: 'secret',
+    label: 'Secret',
     component: 'InputPassword',
-    required: true,
+    required: false,
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'description',
-    label: 'description',
+    label: 'Description',
     component: 'Input',
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'enabled',
-    label: 'enabled',
+    label: 'Enabled',
     component: 'Switch',
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'showInDiscoveryDocument',
-    label: 'showInDiscoveryDocument',
+    label: 'ShowInDiscoveryDocument',
     labelWidth: 200,
     component: 'Switch',
     colProps: { span: 20 },

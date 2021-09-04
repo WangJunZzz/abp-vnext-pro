@@ -5,6 +5,7 @@ import { router } from '/@/router';
 import { PageEnum } from '/@/enums/pageEnum';
 import { useI18n } from '/@/hooks/web/useI18n';
 import { Modal } from 'ant-design-vue';
+import { useLocale } from '/@/locales/useLocale';
 export class ServiceProxyBase {
   protected transformOptions(options: AxiosRequestConfig) {
     options.baseURL = import.meta.env.VITE_API_URL as string;
@@ -56,7 +57,8 @@ export class ServiceProxyBase {
   private buildRequestMessage(): any {
     const userStore = useUserStoreWithOut();
     const token = userStore.getToken;
-    const language = userStore.getLanguage == undefined ? 'zh-Hans' : userStore.getLanguage;
+    const { getLocale } = useLocale();
+    const language = getLocale.value == 'en' ? getLocale.value : 'zh-Hans';
     return {
       token,
       language,

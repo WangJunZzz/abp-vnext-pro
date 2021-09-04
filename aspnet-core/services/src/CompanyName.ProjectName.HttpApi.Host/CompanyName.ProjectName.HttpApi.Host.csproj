@@ -36,9 +36,13 @@
     <PackageReference Include="AspNetCore.HealthChecks.MySql" Version="5.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="5.0.2" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="5.0.7" />
+    <PackageReference Include="DotNetCore.CAP.MySql" Version="5.1.1" />
+    <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.1.1" />
+    <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.1.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\frameworks\CAP\src\CompanyName.ProjectName.CAP\CompanyName.ProjectName.CAP.csproj" />
     <ProjectReference Include="..\CompanyName.ProjectName.Application\CompanyName.ProjectName.Application.csproj" />
     <ProjectReference Include="..\CompanyName.ProjectName.EntityFrameworkCore.DbMigrations\CompanyName.ProjectName.EntityFrameworkCore.DbMigrations.csproj" />
     <ProjectReference Include="..\CompanyName.ProjectName.HttpApi\CompanyName.ProjectName.HttpApi.csproj" />

@@ -14,7 +14,7 @@ namespace CompanyName.ProjectName.CAP
             Action<CapOptions> capAction)
         {
             context.Services.AddCap(capAction);
-            context.Services.AddSingleton<IConsumerServiceSelector, BeeAbpCapConsumerServiceSelector>();
+            context.Services.AddSingleton<IConsumerServiceSelector, AbpCapConsumerServiceSelector>();
             context.Services.AddSingleton<IDistributedEventBus, AbpCapDistributedEventBus>();
             return context;
         }

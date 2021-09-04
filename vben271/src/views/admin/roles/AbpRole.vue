@@ -8,31 +8,62 @@
       </template>
 
       <template #toolbar>
-        <a-button type="primary" @click="openCreateAbpRoleModal">
+        <a-button
+          type="primary"
+          @click="openCreateAbpRoleModal"
+          v-auth="'AbpIdentity.Roles.Create'"
+        >
           {{ t('common.createText') }}
         </a-button>
       </template>
 
       <template #action="{ record }">
-        <a-button type="link" size="small" @click="handlePermission(record)">
+        <a-button
+          type="link"
+          size="small"
+          @click="handlePermission(record)"
+          v-auth="'AbpIdentity.Roles.ManagePermissions'"
+        >
           {{ t('routes.admin.roleManagement_permission') }}
         </a-button>
 
-        <a-button type="link" size="small" @click="handleEdit(record)">
+        <a-button
+          type="link"
+          size="small"
+          @click="handleEdit(record)"
+          v-auth="'AbpIdentity.Roles.Update'"
+        >
           {{ t('common.editText') }}
         </a-button>
 
-        <a-button type="link" size="small" @click="handleDelete(record)">
+        <a-button
+          type="link"
+          size="small"
+          @click="handleDelete(record)"
+          v-auth="'AbpIdentity.Roles.Delete'"
+        >
           {{ t('common.delText') }}
         </a-button>
       </template>
     </BasicTable>
 
-    <CreateAbpRole @register="registerCreateAbpRoleModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
+    <CreateAbpRole
+      @register="registerCreateAbpRoleModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
+    />
 
-    <PermissionAbpRole @register="registerPermissionAbpRoleModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
+    <PermissionAbpRole
+      @register="registerPermissionAbpRoleModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
+    />
 
-    <EditAbpRole @register="registerEditAbpRoleModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
+    <EditAbpRole
+      @register="registerEditAbpRoleModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
+    />
   </div>
 </template>
 
@@ -61,7 +92,8 @@
     setup() {
       const { createConfirm } = useMessage();
       const { t } = useI18n();
-      const [registerPermissionAbpRoleModal, { openDrawer: openPermissionAbpRoleDrawer }] = useDrawer();
+      const [registerPermissionAbpRoleModal, { openDrawer: openPermissionAbpRoleDrawer }] =
+        useDrawer();
 
       const [registerCreateAbpRoleModal, { openModal: openCreateAbpRoleModal }] = useModal();
 
@@ -81,7 +113,7 @@
         canResize: true,
         showIndexColumn: true,
         actionColumn: {
-          width: 150,
+          width: 200,
           title: t('common.action'),
           dataIndex: 'action',
           slots: {
@@ -107,10 +139,10 @@
 
       // 删除角色
       const handleDelete = async (record: Recordable) => {
-        let msg = '是否确认删除';
+        let msg = t('common.askDelete');
         createConfirm({
           iconType: 'warning',
-          title: '提示',
+          title: t('common.tip'),
           content: msg,
           onOk: async () => {
             await deleleRoleAsync({ roleId: record.id, reload });

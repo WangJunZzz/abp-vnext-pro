@@ -10,7 +10,7 @@ using Volo.Abp.PermissionManagement;
 
 namespace CompanyName.ProjectName.Roles
 {
-    public class RoleAppService : ApplicationService, IRoleAppService
+    public class RoleAppService : ProjectNameAppService, IRoleAppService
     {
         private readonly IIdentityRoleAppService _identityRoleAppService;
         private readonly IPermissionAppService _permissionAppService;
@@ -124,7 +124,9 @@ namespace CompanyName.ProjectName.Roles
                 "AbpTenantManagement.Tenants.Update",
                 "AbpTenantManagement.Tenants.Delete",
                 "AbpTenantManagement.Tenants.ManageFeatures",
-                "AbpTenantManagement.Tenants.ManageConnectionStrings"
+                "AbpTenantManagement.Tenants.ManageConnectionStrings",
+                "SettingManagement",
+                "SettingManagement.Emailing"
             };
 
             var permissions = new List<PermissionTreeDto>();
@@ -137,6 +139,9 @@ namespace CompanyName.ProjectName.Roles
                 }
 
                 var groupPermission = new PermissionTreeDto {Key = @group.Name, Title = @group.DisplayName};
+                groupPermission.Key = group.Name;
+                groupPermission.Title =
+                    group.Name == "AbpIdentity" ? L["Permission:SystemManagement"] : group.DisplayName;
                 foreach (var item in group.Permissions)
                 {
                     result.AllGrants.Add(item.Name);

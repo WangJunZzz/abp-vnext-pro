@@ -1,50 +1,37 @@
 <template>
-  <a-list :class="prefixCls" bordered :pagination="getPagination">
-    <template v-for="item in getData" :key="item.id">
+  <a-list :class="prefixCls" bordered>
+    <template v-for="item in list" :key="item.id">
       <a-list-item class="list-item">
         <a-list-item-meta>
           <template #title>
             <div class="title">
               <a-typography-paragraph
-                @click="handleTitleClick(item)"
                 style="width: 100%; margin-bottom: 0 !important"
-                :style="{ cursor: isTitleClickable ? 'pointer' : '' }"
-                :delete="!!item.titleDelete"
-                :ellipsis="
-                  $props.titleRows && $props.titleRows > 0
-                    ? { rows: $props.titleRows, tooltip: !!item.title }
-                    : false
-                "
+                :ellipsis="titleRows > 0 ? { rows: titleRows, tooltip: item.title } : false"
                 :content="item.title"
               />
-              <div class="extra" v-if="item.extra">
-                <a-tag class="tag" :color="item.color">
-                  {{ item.extra }}
+              <div>
+                <a-tag class="tag" :color="item.read ? 'green' : 'red'">
+                  {{ item.read ? '已读' : '未读' }}
+                </a-tag>
+                <a-tag v-if="!item.read" class="tag" color="green" @click="onSetRead(item)">
+                  {{ '标记为已读' }}
                 </a-tag>
               </div>
             </div>
           </template>
 
-          <template #avatar>
-            <a-avatar v-if="item.avatar" class="avatar" :src="item.avatar" />
-            <span v-else> {{ item.avatar }}</span>
-          </template>
-
           <template #description>
             <div>
-              <div class="description" v-if="item.description">
+              <div class="description">
                 <a-typography-paragraph
                   style="width: 100%; margin-bottom: 0 !important"
-                  :ellipsis="
-                    $props.descRows && $props.descRows > 0
-                      ? { rows: $props.descRows, tooltip: !!item.description }
-                      : false
-                  "
-                  :content="item.description"
+                  :ellipsis="descRows > 0 ? { rows: descRows, tooltip: item.content } : false"
+                  :content="item.content"
                 />
               </div>
               <div class="datetime">
-                {{ item.datetime }}
+                {{ dateFormat(item.creationTime) }}
               </div>
             </div>
           </template>
@@ -54,14 +41,14 @@
   </a-list>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, PropType, ref, watch, unref } from 'vue';
-  import { ListItem } from './data';
+  import { defineComponent, PropType } from 'vue';
+  import { setReadAsync } from './data';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { List, Avatar, Tag, Typography } from 'ant-design-vue';
-  import { isNumber } from '/@/utils/is';
+  import { List, Tag, Typography } from 'ant-design-vue';
+  import { PagingNotificationListOutput, SetReadInput } from '/@/services/ServiceProxies';
+  import { useUserStoreWithOut } from '/@/store/modules/user';
   export default defineComponent({
     components: {
-      [Avatar.name]: Avatar,
       [List.name]: List,
       [List.Item.name]: List.Item,
       AListItemMeta: List.Item.Meta,
@@ -70,16 +57,8 @@
     },
     props: {
       list: {
-        type: Array as PropType<ListItem[]>,
+        type: Array as PropType<PagingNotificationListOutput[]>,
         default: () => [],
-      },
-      pageSize: {
-        type: [Boolean, Number] as PropType<Boolean | Number>,
-        default: 5,
-      },
-      currentPage: {
-        type: Number,
-        default: 1,
       },
       titleRows: {
         type: Number,
@@ -87,52 +66,34 @@
       },
       descRows: {
         type: Number,
-        default: 2,
-      },
-      onTitleClick: {
-        type: Function as PropType<(Recordable) => void>,
+        default: 1,
       },
     },
-    emits: ['update:currentPage'],
-    setup(props, { emit }) {
+    setup() {
+      const userStore = useUserStoreWithOut();
+      const userInfo = userStore.getUserInfo;
+
+      const onSetRead = async (record: PagingNotificationListOutput) => {
+        let request = new SetReadInput();
+        request.id = record.id;
+        request.receiveId = userInfo.userId as string;
+        await setReadAsync(request);
+        record.read = true;
+        console.log(record);
+      };
+      const dateFormat = (time) => {
+        let date = new Date(time);
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
+        let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+        let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+        let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+        let seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+        // 拼接
+        return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+      };
       const { prefixCls } = useDesign('header-notify-list');
-      const current = ref(props.currentPage || 1);
-      const getData = computed(() => {
-        const { pageSize, list } = props;
-        if (pageSize === false) return [];
-        let size = isNumber(pageSize) ? pageSize : 5;
-        return list.slice(size * (unref(current) - 1), size * unref(current));
-      });
-      watch(
-        () => props.currentPage,
-        (v) => {
-          current.value = v;
-        }
-      );
-      const isTitleClickable = computed(() => !!props.onTitleClick);
-      const getPagination = computed(() => {
-        const { list, pageSize } = props;
-        if (pageSize > 0 && list && list.length > pageSize) {
-          return {
-            total: list.length,
-            pageSize,
-            //size: 'small',
-            current: unref(current),
-            onChange(page) {
-              current.value = page;
-              emit('update:currentPage', page);
-            },
-          };
-        } else {
-          return false;
-        }
-      });
-
-      function handleTitleClick(item: ListItem) {
-        props.onTitleClick && props.onTitleClick(item);
-      }
-
-      return { prefixCls, getPagination, getData, handleTitleClick, isTitleClickable };
+      return { prefixCls, dateFormat, onSetRead };
     },
   });
 </script>
@@ -165,10 +126,9 @@
           font-weight: normal;
 
           .tag {
-            margin-right: 0;
+            font-weight: normal;
           }
         }
-
         .avatar {
           margin-top: 4px;
         }

@@ -49,7 +49,7 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         /// <param name="sendNotificationDto"></param>
         /// <param name="users"></param>
         /// <returns></returns>
-        public async Task SendMessageToClientByUserIdAsync(SendNotificationDto sendNotificationDto,
+        private async Task SendMessageToClientByUserIdAsync(SendNotificationDto sendNotificationDto,
             List<string> users)
         {
             if (users is {Count: > 0})
@@ -65,16 +65,10 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         /// 广播消息
         /// </summary>
         /// <param name="sendNotificationDto"></param>
-        public async Task SendMessageToAllClientAsync(SendNotificationDto sendNotificationDto)
+        private async Task SendMessageToAllClientAsync(SendNotificationDto sendNotificationDto)
         {
             await _hubContext.Clients.All.ReceiveBroadCastMessageAsync(sendNotificationDto);
         }
-
-
-        public async Task CreateAsync(CreateNotificationInput input)
-        {
-            await _notificationManager.CreateAsync(input.Title, input.Content, _currentUser.Id.Value, input.ReceiveIds,
-                input.MessageType);
-        }
+        
     }
 }

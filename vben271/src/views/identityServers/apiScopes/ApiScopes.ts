@@ -1,11 +1,12 @@
 import { FormSchema } from '/@/components/Table';
 import { BasicColumn } from '/@/components/Table';
 import { ApiScopeServiceProxy, PagingApiScopeListInput, IdInput } from '/@/services/ServiceProxies';
-
+import { useI18n } from '/@/hooks/web/useI18n';
+const { t } = useI18n();
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'filter',
-    label: '关键字',
+    label: t('common.key'),
     component: 'Input',
     colProps: { span: 8 },
   },
@@ -13,34 +14,34 @@ export const searchFormSchema: FormSchema[] = [
 
 export const tableColumns: BasicColumn[] = [
   {
-    title: 'name',
+    title: 'Name',
     dataIndex: 'name',
   },
   {
-    title: 'displayName',
+    title: 'DisplayName',
     dataIndex: 'displayName',
   },
   {
-    title: '是否启用',
+    title: t('common.enabled'),
     dataIndex: 'enabled',
     slots: { customRender: 'enabled' },
   },
   {
-    title: 'description',
+    title: 'Description',
     dataIndex: 'description',
   },
   {
-    title: 'required',
+    title: 'Required',
     dataIndex: 'required',
     slots: { customRender: 'required' },
   },
   {
-    title: 'emphasize',
+    title: 'Emphasize',
     dataIndex: 'emphasize',
     slots: { customRender: 'emphasize' },
   },
   {
-    title: 'showInDiscoveryDocument',
+    title: 'ShowInDiscoveryDocument',
     dataIndex: 'showInDiscoveryDocument',
     slots: { customRender: 'showInDiscoveryDocument' },
   },
@@ -49,7 +50,7 @@ export const tableColumns: BasicColumn[] = [
 export const createFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: 'name',
+    label: 'Name',
     component: 'Input',
     required: true,
     labelWidth: 200,
@@ -57,7 +58,7 @@ export const createFormSchema: FormSchema[] = [
   },
   {
     field: 'displayName',
-    label: 'displayName',
+    label: 'DisplayName',
     component: 'Input',
     required: true,
     labelWidth: 200,
@@ -65,35 +66,35 @@ export const createFormSchema: FormSchema[] = [
   },
   {
     field: 'enabled',
-    label: 'enabled',
+    label: 'Enabled',
     component: 'Switch',
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'description',
-    label: 'description',
+    label: 'Description',
     component: 'Input',
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'required',
-    label: 'required',
+    label: 'Required',
     component: 'Switch',
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'emphasize',
-    label: 'emphasize',
+    label: 'Emphasize',
     component: 'Switch',
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'showInDiscoveryDocument',
-    label: 'showInDiscoveryDocument',
+    label: 'ShowInDiscoveryDocument',
     labelWidth: 200,
     component: 'Switch',
     colProps: { span: 20 },
@@ -102,7 +103,7 @@ export const createFormSchema: FormSchema[] = [
 export const editFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: 'name',
+    label: 'Name',
     component: 'Input',
     required: true,
     labelWidth: 200,
@@ -113,7 +114,7 @@ export const editFormSchema: FormSchema[] = [
   },
   {
     field: 'displayName',
-    label: 'displayName',
+    label: 'DisplayName',
     component: 'Input',
     required: true,
     labelWidth: 200,
@@ -121,35 +122,35 @@ export const editFormSchema: FormSchema[] = [
   },
   {
     field: 'enabled',
-    label: 'enabled',
+    label: 'Enabled',
     component: 'Switch',
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'description',
-    label: 'description',
+    label: 'Description',
     component: 'Input',
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'required',
-    label: 'required',
+    label: 'Required',
     component: 'Switch',
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'emphasize',
-    label: 'emphasize',
+    label: 'Emphasize',
     component: 'Switch',
     labelWidth: 200,
     colProps: { span: 20 },
   },
   {
     field: 'showInDiscoveryDocument',
-    label: 'showInDiscoveryDocument',
+    label: 'ShowInDiscoveryDocument',
     labelWidth: 200,
     component: 'Switch',
     colProps: { span: 20 },

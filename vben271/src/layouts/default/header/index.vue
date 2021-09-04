@@ -33,11 +33,14 @@
 
     <!-- action  -->
     <div :class="`${prefixCls}-action`">
-      <AppSearch :class="`${prefixCls}-action__item `" v-if="getShowSearch" />
-
       <ErrorAction v-if="getUseErrorHandle" :class="`${prefixCls}-action__item error-action`" />
 
-      <Notify v-if="getShowNotice" :class="`${prefixCls}-action__item notify-item`" />
+      <Notify
+        :class="`${prefixCls}-action__item notify-item`"
+        :textMessage="textMessage"
+        :broadCastMessage="broadCastMessage"
+        @click="clickNotify"
+      />
 
       <FullScreen v-if="getShowFullScreen" :class="`${prefixCls}-action__item fullscreen-item`" />
 
@@ -55,7 +58,7 @@
   </Header>
 </template>
 <script lang="ts">
-  import { defineComponent, unref, computed } from 'vue';
+  import { defineComponent, unref, computed, onMounted, reactive, toRefs } from 'vue';
 
   import { propTypes } from '/@/utils/propTypes';
 
@@ -80,7 +83,12 @@
 
   import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
   import { useLocale } from '/@/locales/useLocale';
-
+  import { useSignalR } from '/@/hooks/web/useSignalR';
+  import { PagingNotificationListOutput } from '/@/services/ServiceProxies';
+  import {
+    getTextAsync,
+    getBroadCastAsync,
+  } from '/@/layouts/default/header/components/notify/data';
   export default defineComponent({
     name: 'LayoutHeader',
     components: {
@@ -169,7 +177,25 @@
       const getMenuMode = computed(() => {
         return unref(getSplit) ? MenuModeEnum.HORIZONTAL : null;
       });
-
+      const { startConnect } = useSignalR();
+      onMounted(() => {
+        startConnect();
+      });
+      let textMessage: PagingNotificationListOutput[] = [];
+      let broadCastMessage: PagingNotificationListOutput[] = [];
+      const notifiData = reactive({
+        textMessage,
+        broadCastMessage,
+      });
+      const clickNotify = async () => {
+        notifiData.textMessage = (await (
+          await getTextAsync()
+        ).items) as PagingNotificationListOutput[];
+        notifiData.broadCastMessage = (await (
+          await getBroadCastAsync()
+        ).items) as PagingNotificationListOutput[];
+        console.log(notifiData);
+      };
       return {
         prefixCls,
         getHeaderClass,
@@ -192,6 +218,8 @@
         getShowSettingButton,
         getShowSetting,
         getShowSearch,
+        clickNotify,
+        ...toRefs(notifiData),
       };
     },
   });

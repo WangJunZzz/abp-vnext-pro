@@ -2,26 +2,52 @@
   <div>
     <BasicTable @register="registerTable" size="small">
       <template #toolbar>
-        <a-button type="primary" @click="openCreateClientModal">
+        <a-button
+          type="primary"
+          @click="openCreateClientModal"
+          v-auth="'IdentityServerManagement.Client.Create'"
+        >
           {{ t('common.createText') }}
         </a-button>
       </template>
 
       <template #enabled="{ record }">
         <Tag :color="record.enabled ? 'green' : 'red'">
-          {{ record.enabled ? '是' : '否' }}
+          {{ record.enabled ? t('common.true') : t('common.false') }}
         </Tag>
       </template>
 
       <template #action="{ record }">
-        <a-button type="link" size="small" @click="handleEdit(record)">
+        <a-button
+          type="link"
+          size="small"
+          @click="handleEdit(record)"
+          v-auth="'IdentityServerManagement.Client.Update'"
+        >
           {{ t('common.editText') }}
         </a-button>
-        <a-button type="link" size="small" @click="handleEnabled(record)">
-          {{ record.enabled ? '禁用' : '启用' }}
+        <a-button
+          type="link"
+          size="small"
+          @click="handleEnabled(record)"
+          v-auth="'IdentityServerManagement.Client.Enable'"
+        >
+          {{ record.enabled ? t('common.enabled') : t('common.disEnabled') }}
         </a-button>
-        <a-button type="link" size="small" @click="handleUri(record)"> Uri </a-button>
-        <a-button type="link" size="small" @click="handleDelete(record)">
+        <a-button
+          type="link"
+          size="small"
+          @click="handleUri(record)"
+          v-auth="'IdentityServerManagement.Client.Update'"
+        >
+          Uri
+        </a-button>
+        <a-button
+          type="link"
+          size="small"
+          @click="handleDelete(record)"
+          v-auth="'IdentityServerManagement.Client.Delete'"
+        >
           {{ t('common.delText') }}
         </a-button>
       </template>
@@ -104,10 +130,10 @@
         });
       };
       const handleDelete = (record: Recordable) => {
-        let msg = '是否确认删除';
+        let msg = t('common.askDelete');
         createConfirm({
           iconType: 'warning',
-          title: '提示',
+          title: t('common.tip'),
           content: msg,
           onOk: async () => {
             await deleteClientAsync({ id: record.id, reload });

@@ -2,7 +2,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
-using CompanyName.ProjectName.QueryManagement;
 using Microsoft.Extensions.Configuration;
 using Volo.Abp.AspNetCore.SignalR;
 
@@ -13,7 +12,6 @@ namespace CompanyName.ProjectName.NotificationManagement
         typeof(NotificationManagementApplicationContractsModule),
         typeof(AbpDddApplicationModule),
         typeof(AbpAutoMapperModule),
-        typeof(QueryManagementDomainModule),
         typeof(AbpAspNetCoreSignalRModule)
         )]
     public class NotificationManagementApplicationModule : AbpModule

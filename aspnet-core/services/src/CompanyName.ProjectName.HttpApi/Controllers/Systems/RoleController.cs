@@ -13,6 +13,7 @@ using Volo.Abp.Identity;
 namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("Roles")]
+    [Authorize(Policy = IdentityPermissions.Roles.Default)]
     public class RoleController : ProjectNameController
     {
         private readonly IRoleAppService _roleAppService;
@@ -23,7 +24,6 @@ namespace CompanyName.ProjectName.Controllers.Systems
         }
         
         [HttpPost("all")]
-        [Authorize(IdentityPermissions.Roles.Default)]
         [SwaggerOperation(summary: "获取所有角色", Tags = new[] { "Roles" })]
         public Task<ListResultDto<IdentityRoleDto>> AllListAsync()
         {
@@ -31,7 +31,6 @@ namespace CompanyName.ProjectName.Controllers.Systems
         }
 
         [HttpPost("page")]
-        [Authorize(IdentityPermissions.Roles.Default)]
         [SwaggerOperation(summary: "分页获取角色", Tags = new[] { "Roles" })]
         public Task<PagedResultDto<IdentityRoleDto>> ListAsync(PagingRoleListInput input)
         {

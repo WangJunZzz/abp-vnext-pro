@@ -1,11 +1,17 @@
 <template>
-  <BasicModal title="创建Client" :canFullscreen="false" @ok="submit" @cancel="cancel" @register="registerModal">
+  <BasicModal
+    :title="t('common.createText')"
+    :canFullscreen="false"
+    @ok="submit"
+    @cancel="cancel"
+    @register="registerModal"
+  >
     <BasicForm @register="registerClientForm" />
   </BasicModal>
 </template>
 
 <script lang="ts">
-  import { defineComponent, useContext, defineEmit } from 'vue';
+  import { defineComponent } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
   import { createFormSchema, createClientAsync } from './Clients';
@@ -17,12 +23,8 @@
       BasicModal,
       BasicForm,
     },
-   emits: ['reload'],
+    emits: ['reload'],
     setup(_, { emit }) {
-      // 加载父组件方法
-      // defineEmit(['reload']);
-      // const ctx = useContext();
-
       const { t } = useI18n();
       const [registerClientForm, { getFieldsValue, validate, resetFields }] = useForm({
         labelWidth: 120,

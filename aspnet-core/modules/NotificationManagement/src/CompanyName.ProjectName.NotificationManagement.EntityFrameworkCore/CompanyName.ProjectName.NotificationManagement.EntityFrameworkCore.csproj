@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+     <PackageReference Include="Volo.Abp.Dapper" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
     <ProjectReference Include="..\CompanyName.ProjectName.NotificationManagement.Domain\CompanyName.ProjectName.NotificationManagement.Domain.csproj" />
   </ItemGroup>

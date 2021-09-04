@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\CompanyName.ProjectName.DataDictionaryManagement.HttpApi\CompanyName.ProjectName.DataDictionaryManagement.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\modules\NotificationManagement\src\CompanyName.ProjectName.NotificationManagement.HttpApi\CompanyName.ProjectName.NotificationManagement.HttpApi.csproj" />
     <ProjectReference Include="..\CompanyName.ProjectName.Application.Contracts\CompanyName.ProjectName.Application.Contracts.csproj" />
   </ItemGroup>
 

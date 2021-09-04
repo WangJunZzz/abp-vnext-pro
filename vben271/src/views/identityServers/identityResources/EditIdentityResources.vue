@@ -1,6 +1,6 @@
 <template>
   <BasicModal
-    title="创建IdentityResource"
+    :title="t('common.editText')"
     :canFullscreen="false"
     @ok="submit"
     @cancel="cancel"

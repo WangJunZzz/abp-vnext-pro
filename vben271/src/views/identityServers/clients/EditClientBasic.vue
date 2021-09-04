@@ -1,6 +1,6 @@
 <template>
   <BasicModal
-    title="编辑Client"
+    :title="t('common.editText')"
     :width="700"
     :canFullscreen="false"
     @ok="submit"
@@ -10,7 +10,7 @@
   >
     <div>
       <Tabs>
-        <TabPane tab="基本信息" key="1">
+        <TabPane tab="Basic" key="1">
           <BasicForm @register="registerDetailForm" />
         </TabPane>
         <TabPane tab="Options" key="2" forceRender>
@@ -32,6 +32,7 @@
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
   import { Tabs } from 'ant-design-vue';
+  import { useI18n } from '/@/hooks/web/useI18n';
   import {
     editBasicDetailSchema,
     editBasicOptionSchema,
@@ -50,6 +51,7 @@
     },
     emits: ['reload'],
     setup(_, { emit }) {
+      const { t } = useI18n();
       const [
         registerDetailForm,
         {
@@ -163,6 +165,7 @@
         registerTokenForm,
         registerSecretForm,
         submit,
+        t,
       };
     },
   });

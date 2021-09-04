@@ -14,7 +14,7 @@ namespace CompanyName.ProjectName.CAP
 {
     [Dependency(ServiceLifetime.Singleton, ReplaceServices = true)]
     [ExposeServices(typeof(IConsumerServiceSelector))]
-    public class BeeAbpCapConsumerServiceSelector : ConsumerServiceSelector
+    public class AbpCapConsumerServiceSelector : ConsumerServiceSelector
     {
         protected AbpDistributedEventBusOptions AbpDistributedEventBusOptions { get; }
         protected IServiceProvider ServiceProvider { get; }
@@ -22,7 +22,7 @@ namespace CompanyName.ProjectName.CAP
         /// <summary>
         /// Creates a new <see cref="T:DotNetCore.CAP.Internal.ConsumerServiceSelector" />.
         /// </summary>
-        public BeeAbpCapConsumerServiceSelector(
+        public AbpCapConsumerServiceSelector(
             IServiceProvider serviceProvider, 
             IOptions<AbpDistributedEventBusOptions> distributedEventBusOptions) 
             : base(serviceProvider)

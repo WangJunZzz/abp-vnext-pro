@@ -2,7 +2,9 @@
 using System.Threading.Tasks;
 using CompanyName.ProjectName.IdentityServers;
 using CompanyName.ProjectName.IdentityServers.Dtos;
+using CompanyName.ProjectName.Permissions;
 using CompanyName.ProjectName.Publics.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Volo.Abp.Application.Dtos;
@@ -10,6 +12,7 @@ using Volo.Abp.Application.Dtos;
 namespace CompanyName.ProjectName.Controllers.IdentityServers
 {
     [Route("IdentityServer/ApiResource")]
+    [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiResource.Default)]
     public class ApiResourceController : ProjectNameController
     {
         private readonly IApiResourceAppService _apiResourceAppService;
@@ -36,6 +39,7 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
 
         [HttpPost("create")]
         [SwaggerOperation(summary: "新增ApiResource", Tags = new[] {"ApiResource"})]
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiResource.Create)]
         public Task CreateAsync(CreateApiResourceInput input)
         {
             return _apiResourceAppService.CreateAsync(input);
@@ -44,6 +48,7 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
 
         [HttpPost("delete")]
         [SwaggerOperation(summary: "删除ApiResource", Tags = new[] {"ApiResource"})]
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiResource.Delete)]
         public async Task DeleteAsync(IdInput input)
         {
             await _apiResourceAppService.DeleteAsync(input);
@@ -51,6 +56,7 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
 
         [HttpPost("update")]
         [SwaggerOperation(summary: "删除ApiResource", Tags = new[] {"ApiResource"})]
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiResource.Update)]
         public Task UpdateAsync(UpdateApiResourceInput input)
         {
             return _apiResourceAppService.UpdateAsync(input);

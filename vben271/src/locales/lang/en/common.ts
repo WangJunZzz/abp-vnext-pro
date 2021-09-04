@@ -8,13 +8,24 @@ export default {
   resetText: 'Reset',
   searchText: 'Search',
   queryText: 'Search',
-
+  editText: 'Edit',
   inputText: 'Please enter',
   chooseText: 'Please choose',
-
   redo: 'Refresh',
   back: 'Back',
-
   light: 'Light',
   dark: 'Dark',
+  enabled: 'Enabled',
+  disEnabled: 'DisEnabled',
+  locked: 'Locked',
+  unLocked: 'UnLocked',
+  createText: 'Create',
+  tip: 'Tip',
+  askDelete: 'Are you sure you want to delete',
+  operationSuccess: 'Operation Success',
+  disEnabledSelf: "You can't disable yourself",
+  true: 'True',
+  false: 'False',
+  key: 'Key',
+  action: 'Action',
 };

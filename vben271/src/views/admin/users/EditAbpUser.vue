@@ -1,6 +1,6 @@
 <template>
   <BasicModal
-    title="编辑用户"
+    :title="t('routes.admin.userManagement_edit_user')"
     :width="600"
     :canFullscreen="false"
     @ok="submit"
@@ -13,10 +13,10 @@
   >
     <div>
       <Tabs>
-        <TabPane tab="用户信息" key="1">
+        <TabPane :tab="t('routes.admin.userManagement_userInfo')" key="1">
           <BasicForm @register="registerUserForm" />
         </TabPane>
-        <TabPane tab="角色" key="2">
+        <TabPane :tab="t('routes.admin.userManagement_role')" key="2">
           <a-checkbox-group v-model:value="defaultRolesRef">
             <a-row justify="center">
               <a-col :span="24">
@@ -54,6 +54,7 @@
     IdentityUserUpdateDto,
   } from '/@/services/ServiceProxies';
   import { message } from 'ant-design-vue';
+  import { useI18n } from '/@/hooks/web/useI18n';
   export default defineComponent({
     name: 'EditAbpUser',
     components: {
@@ -71,6 +72,7 @@
           showActionButtonGroup: false,
         }
       );
+      const { t } = useI18n();
       let currentUserInfo = new IdentityUserDto();
       const [registerModal, { changeOkLoading, closeModal }] = useModalInner((data) => {
         currentUserInfo = data.record;
@@ -102,14 +104,6 @@
           defaultRolesRef.value.splice(0, defaultRolesRef.value.length);
         }
       };
-
-      // // 选择角色
-      // const onRoleSelectedChange = (value: string[]) => {
-      //   defaultRolesRef.splice(0, defaultRolesRef.length);
-      //   value.forEach((e) => {
-      //     defaultRolesRef.push(e);
-      //   });
-      // };
 
       const submit = async () => {
         try {
@@ -159,6 +153,7 @@
         visibleChange,
         defaultRolesRef,
         cancel,
+        t,
       };
     },
   });

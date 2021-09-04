@@ -12,7 +12,6 @@
     <PackageReference Include="Volo.Abp.AspNetCore.SignalR" Version="4.4.0" />
     <PackageReference Include="Volo.Abp.AutoMapper" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="$(AbpPackageVersion)" />
-    <ProjectReference Include="..\..\..\QueryManagement\src\CompanyName.ProjectName.QueryManagement.Domain\CompanyName.ProjectName.QueryManagement.Domain.csproj" />
     <ProjectReference Include="..\CompanyName.ProjectName.NotificationManagement.Application.Contracts\CompanyName.ProjectName.NotificationManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\CompanyName.ProjectName.NotificationManagement.Domain\CompanyName.ProjectName.NotificationManagement.Domain.csproj" />
   </ItemGroup>

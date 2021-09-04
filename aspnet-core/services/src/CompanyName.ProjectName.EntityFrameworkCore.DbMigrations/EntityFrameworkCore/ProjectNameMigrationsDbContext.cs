@@ -1,4 +1,5 @@
 ﻿using CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore;
+using CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -20,10 +21,9 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
      */
     public class ProjectNameMigrationsDbContext : AbpDbContext<ProjectNameMigrationsDbContext>
     {
-        public ProjectNameMigrationsDbContext(DbContextOptions<ProjectNameMigrationsDbContext> options) 
+        public ProjectNameMigrationsDbContext(DbContextOptions<ProjectNameMigrationsDbContext> options)
             : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -46,7 +46,9 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
             builder.ConfigureProjectName();
 
             // 数据字典
-            //builder.ConfigureDataDictionaryManagement();
+            builder.ConfigureDataDictionaryManagement();
+
+            builder.ConfigureNotificationManagement();
         }
     }
 }

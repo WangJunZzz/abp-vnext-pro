@@ -21,11 +21,11 @@ const [openFullLoading, closeFullLoading] = useLoading({
 
 export const tableColumns: BasicColumn[] = [
   {
-    title: t('routes.admin.userManagement_name'),
+    title: t('routes.admin.userManagement_userName'),
     dataIndex: 'name',
   },
   {
-    title: t('routes.admin.userManagement_userName'),
+    title: t('routes.admin.userManagement_name'),
     dataIndex: 'userName',
   },
   {
@@ -63,8 +63,8 @@ export const createFormSchema: FormSchema[] = [
   {
     field: 'userName',
     component: 'Input',
-    label: '账户',
-    labelWidth: 70,
+    label: t('routes.admin.userManagement_userName'),
+    labelWidth: 85,
     required: true,
     colProps: {
       span: 12,
@@ -76,8 +76,8 @@ export const createFormSchema: FormSchema[] = [
   {
     field: 'name',
     component: 'Input',
-    label: '用户姓名',
-    labelWidth: 110,
+    label: t('routes.admin.roleManagement_name'),
+    labelWidth: 130,
     required: true,
     colProps: {
       span: 12,
@@ -91,7 +91,7 @@ export const createFormSchema: FormSchema[] = [
     component: 'Input',
     label: t('routes.admin.userManagement_email'),
     required: true,
-    labelWidth: 70,
+    labelWidth: 85,
     colProps: {
       span: 12,
     },
@@ -99,9 +99,9 @@ export const createFormSchema: FormSchema[] = [
   {
     field: 'phoneNumber',
     component: 'Input',
-    label: '手机号码',
+    label: t('routes.admin.userManagement_phone'),
     required: false,
-    labelWidth: 110,
+    labelWidth: 130,
     colProps: {
       span: 12,
     },
@@ -110,8 +110,8 @@ export const createFormSchema: FormSchema[] = [
     field: 'password',
     component: 'InputPassword',
     label: t('routes.admin.userManagement_password'),
-    required: false,
-    labelWidth: 70,
+    required: true,
+    labelWidth: 85,
     colProps: {
       span: 12,
     },
@@ -125,9 +125,9 @@ export const createFormSchema: FormSchema[] = [
     componentProps: {
       autocomplete: 'off',
     },
-    label: '密码(再次确认)',
-    required: false,
-    labelWidth: 110,
+    label: t('routes.admin.userManagement_comfirm_password'),
+    required: true,
+    labelWidth: 130,
     colProps: {
       span: 12,
     },
@@ -138,8 +138,8 @@ export const editFormSchema: FormSchema[] = [
   {
     field: 'userName',
     component: 'Input',
-    label: '账户',
-    labelWidth: 70,
+    label: t('routes.admin.roleManagement_name'),
+    labelWidth: 85,
     required: true,
     colProps: {
       span: 12,
@@ -152,8 +152,8 @@ export const editFormSchema: FormSchema[] = [
   {
     field: 'name',
     component: 'Input',
-    label: '用户姓名',
-    labelWidth: 110,
+    label: t('routes.admin.roleManagement_name'),
+    labelWidth: 130,
     required: true,
     colProps: {
       span: 12,
@@ -164,7 +164,7 @@ export const editFormSchema: FormSchema[] = [
     component: 'Input',
     label: t('routes.admin.userManagement_email'),
     required: true,
-    labelWidth: 70,
+    labelWidth: 85,
     colProps: {
       span: 12,
     },
@@ -172,9 +172,9 @@ export const editFormSchema: FormSchema[] = [
   {
     field: 'phoneNumber',
     component: 'Input',
-    label: '手机号码',
+    label: t('routes.admin.userManagement_phone'),
     required: false,
-    labelWidth: 110,
+    labelWidth: 130,
     colProps: {
       span: 12,
     },
@@ -184,7 +184,7 @@ export const editFormSchema: FormSchema[] = [
     component: 'InputPassword',
     label: t('routes.admin.userManagement_password'),
     required: false,
-    labelWidth: 70,
+    labelWidth: 85,
     colProps: {
       span: 12,
     },
@@ -192,9 +192,9 @@ export const editFormSchema: FormSchema[] = [
   {
     field: 'confirmPassword',
     component: 'InputPassword',
-    label: '密码(再次确认)',
+    label: t('routes.admin.userManagement_comfirm_password'),
     required: false,
-    labelWidth: 110,
+    labelWidth: 130,
     colProps: {
       span: 12,
     },
@@ -206,7 +206,9 @@ export const editFormSchema: FormSchema[] = [
  * @param params
  * @returns
  */
-export async function getTableListAsync(params: PagingUserListInput): Promise<IdentityUserDtoPagedResultDto> {
+export async function getTableListAsync(
+  params: PagingUserListInput
+): Promise<IdentityUserDtoPagedResultDto> {
   const _userServiceProxy = new UsersServiceProxy();
   return _userServiceProxy.page(params);
 }
@@ -236,7 +238,13 @@ export async function getAllRoleAsync(): Promise<IdentityRoleDtoListResultDto> {
  * 创建用户
  * @param param0
  */
-export async function createUserAsync({ request, changeOkLoading, validate, closeModal, resetFields }) {
+export async function createUserAsync({
+  request,
+  changeOkLoading,
+  validate,
+  closeModal,
+  resetFields,
+}) {
   changeOkLoading(true);
   await validate();
   if (request.password != request.confirmPassword) {
@@ -274,7 +282,13 @@ export async function deleteUserAsync({ userId, reload }) {
  * 编辑用户
  * @param param0
  */
-export async function updateUserAsync({ request, changeOkLoading, validate, closeModal, resetFields }) {
+export async function updateUserAsync({
+  request,
+  changeOkLoading,
+  validate,
+  closeModal,
+  resetFields,
+}) {
   changeOkLoading(true);
   await validate();
 

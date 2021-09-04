@@ -119,7 +119,11 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         /// <param name="receiveId"></param>
         public void AddBroadCastNotificationSubscription(Guid notificationSubscriptionId, Guid receiveId)
         {
-            if (NotificationSubscriptions.Any(e => e.ReceiveId != receiveId))
+            if (NotificationSubscriptions.Any(e => e.ReceiveId == receiveId))
+            {
+                return;
+            }
+            else
             {
                 var temp = new NotificationSubscription(notificationSubscriptionId, receiveId);
                 temp.SetRead();
