@@ -262,3 +262,4 @@ content/src/Zzz.DbMigrator/Logs/*
 /aspnet-core/services/src/CompanyName.ProjectName.HttpApi.Host/Logs
 /aspnet-core/services/src/CompanyName.ProjectName.IdentityServer/appsettings.Production.json
 /aspnet-core/services/src/CompanyName.ProjectName.HttpApi.Host/appsettings.Production.json
+/aspnet-core/services/host/CompanyName.ProjectName.HttpApi.Host/appsettings.Production.json
