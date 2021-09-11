@@ -23,8 +23,6 @@
 
 基于ABP Vnext4.4.0的微服务架构，基于DDD思想开发，基于vue3.0,Typescript,Antd 的后台管理框架，适用于大型分布式业务系统和企业后台。
 
-[预览地址](https://vvbin.cn/doc-next/)  用户名:admin 密码: 1q2w3E*
-
 #### 系统功能
 
 - [x] 用户管理
