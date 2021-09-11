@@ -12,7 +12,7 @@ import { createStateGuard } from './stateGuard';
 import nProgress from 'nprogress';
 import projectSetting from '/@/settings/projectSetting';
 import { createParamMenuGuard } from './paramMenuGuard';
-
+import { PageEnum } from '/@/enums/pageEnum';
 // Don't change the order of creation
 export function setupRouterGuard(router: Router) {
   createPageGuard(router);
@@ -37,7 +37,11 @@ function createPageGuard(router: Router) {
     to.meta.loaded = !!loadedPageMap.get(to.path);
     // Notify routing changes
     setRouteChange(to);
-    console.log(1);
+    if (to.path.includes('Error')) {
+      router.replace(PageEnum.BASE_LOGIN);
+      return;
+    }
+
     return true;
   });
 

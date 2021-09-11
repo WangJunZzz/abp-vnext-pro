@@ -265,3 +265,7 @@ content/src/Zzz.DbMigrator/Logs/*
 /aspnet-core/services/host/CompanyName.ProjectName.HttpApi.Host/appsettings.Production.json
 /aspnet-core/services/host/CompanyName.ProjectName.HttpApi.Host/Logs
 /aspnet-core/services/host/CompanyName.ProjectName.IdentityServer/Logs
+/vben271/dist.zip
+/aspnet-core/services/host/CompanyName.ProjectName.HttpApi.Host/publish.zip
+/aspnet-core/services/host/CompanyName.ProjectName.IdentityServer/appsettings.Production.json
+/aspnet-core/services/host/CompanyName.ProjectName.IdentityServer/publish.zip

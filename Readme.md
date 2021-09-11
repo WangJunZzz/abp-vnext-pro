@@ -4,27 +4,48 @@
 
 <table>
     <tr>
-        <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/login.png"/></td>
-        <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/user.png"/></td>
+        <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4login.png"/></td>
+        <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4roole.png"/></td>
     </tr>
     <tr>
-         <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/role.png"/></td>
-        <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/settings.png"/></td>
+         <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4hangfire.png"/></td>
+        <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4cap.png"/></td>
+    </tr>
+        <tr>
+         <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4client.png"/></td>
+        <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4identity.png"/></td>
     </tr>
 </table>
 
 </div>
 
-### 说明
+#### 项目简介
 
-- main分支为主要开发分支，后续都基于此分支维护，该分支前端基于vue3.0,Typescript,如果要使用Vue请切换到Vue2分支。
-- .Net Core5.0
-- Abp Vnext 4.2 ,
-- Ant Design, Vben Admin [前端文档](https://vvbin.cn/doc-next/)
-- Mysql,Redis,Hangfire,ES(日志可选)
-- 微服务架构设计, DDD 实践
-- 容器化 CI CD
-- Xunit 单元测试(提供sample单元测试)
+基于ABP Vnext4.4.0的微服务架构，基于DDD思想开发，基于vue3.0,Typescript,Antd 的后台管理框架，适用于大型分布式业务系统和企业后台。
+
+[预览地址](https://vvbin.cn/doc-next/)  用户名:admin 密码: 1q2w3E*
+
+#### 系统功能
+
+- [x] 用户管理
+- [x] 角色管理
+- [x] 审计日志
+- [x] 后台任务(hangfire)
+- [x] 集成事件(dotnetcore.cap)
+- [x] IdentityServer4
+  	- [x] 客户端管理
+  	- [x] Api资源管理
+  	- [x] ApiScope管理
+  	- [x] Identity资源管理
+- [x] SinglaR消息通知
+- [x] 多语言
+- [x] FreeSql
+- [x] 数据字典(UI暂时没有)
+- [x] 容器化部署
+- [x] 单元测试
+- [x] ES日志
+- [ ] 多租户
+- [ ] 组织机构
 
 
 
@@ -37,18 +58,11 @@
   - 后端使用swagger的时候tag请不要用中文   [SwaggerOperation(summary: "获取所有角色", Tags = new[] { "Role" })]
   - 前端代理生成在src/services下，如何使用请参考用户模块
   
-  
-
-### 对接思路
 
 - 前端
-  - 通过 token 调用 /api/abp/application-configuration 获取应用级别信息，包括权限，多语言，保存在 Store 中;
   - 多语言基于前端，后端 Api 的多语言基于 abp 自带的;
   - 配置菜单,属性 meta.policy 不传代表不验证权限
   - 按钮权限，v-auth 例如：v-auth=('AbpIdentity.Roles.Create')
-- 后端
-  - 项目不一定要基于 IdentityServer4,所以新增了一个登陆方法,生成 Token.
-  - IdentityServer4的已经独立出来,也会开源。
 
 ### 使用
 
@@ -56,19 +70,17 @@
 
   ![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/gui.png)
 
-- 下载模板之后再当前项目src\AbpVnextPro.GUI\bin\Debug\net5.0-windows\decompression可以看到生成的源码
 - 启动
   - 前端yarn
   
   - 后端修改mysql和redis连接字符串
   
-  - 执行tools下的迁移控制台程序
+  - 执行迁移控制台程序
   
-  - 启动host下httpapi.host即可
-  
-  - host下的public可以忽略，这个用来做暴露第三方接口的，通过id4授权。
+  - 启动HttpApi.Host和IdentityServer4
   
     
+  
 
 #### 参与贡献
 

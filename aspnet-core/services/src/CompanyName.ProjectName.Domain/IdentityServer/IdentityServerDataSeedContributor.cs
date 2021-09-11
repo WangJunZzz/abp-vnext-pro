@@ -20,7 +20,7 @@ using Client = Volo.Abp.IdentityServer.Clients.Client;
 
 namespace CompanyName.ProjectName.IdentityServer
 {
-   public class IdentityServerDataSeedContributor : IDataSeedContributor, ITransientDependency
+    public class IdentityServerDataSeedContributor : IDataSeedContributor, ITransientDependency
     {
         private readonly IApiResourceRepository _apiResourceRepository;
         private readonly IApiScopeRepository _apiScopeRepository;
@@ -86,10 +86,10 @@ namespace CompanyName.ProjectName.IdentityServer
         private async Task<ApiResource> CreateApiResourceAsync(IEnumerable<string> claims)
         {
             var apiResource = new ApiResource(
-                                _guidGenerator.Create(),
-                                "Identity.Api",
-                                "身份认证中心Api"
-                                );
+                _guidGenerator.Create(),
+                "Identity.Api",
+                "身份认证中心Api"
+            );
 
             //foreach (var claim in claims)
             //{
@@ -99,31 +99,28 @@ namespace CompanyName.ProjectName.IdentityServer
             //    }
             //}
 
-          
 
             return await _apiResourceRepository.InsertAsync(apiResource);
         }
 
         private async Task CreateApiScopeAsync()
         {
+            await _apiScopeRepository.InsertAsync(
+                new ApiScope(
+                    _guidGenerator.Create(),
+                    "Api_Read"
+                ),
+                autoSave: true
+            );
+
 
             await _apiScopeRepository.InsertAsync(
-               new ApiScope(
-                   _guidGenerator.Create(),
-                   "Api_Read"
-               ),
-               autoSave: true
-           );
-
-
-            await _apiScopeRepository.InsertAsync(
-               new ApiScope(
-                   _guidGenerator.Create(),
-                   "Api_Write"
-               ),
-               autoSave: true
-           );
-
+                new ApiScope(
+                    _guidGenerator.Create(),
+                    "Api_Write"
+                ),
+                autoSave: true
+            );
         }
 
         private async Task CreateClientsAsync()
@@ -142,15 +139,14 @@ namespace CompanyName.ProjectName.IdentityServer
                 name: "Vue3",
                 description: "Vue3-UI",
                 scopes: commonScopes,
-                grantTypes: new[] { "implicit" },
+                grantTypes: new[] {"implicit"},
                 secret: "1q2w3E*".Sha256(),
                 redirectUri: "http://localhost:4200/oidc",
-                postLogoutRedirectUri: "http://localhost:4200/oidc",
+                postLogoutRedirectUri: "http://localhost:4200/oidc,http://120.24.194.14:8012/oidc",
                 frontChannelLogoutUri: "http://localhost:4200/oidc",
-                corsOrigins: new[] { "https://localhost:4200",  "http://localhost:4200" },
+                corsOrigins: new[] {"https://localhost:4200", "http://localhost:4200", "http://120.24.194.14:8012"},
                 requireClientSecret: false
             );
-
         }
 
         private async Task<Client> CreateClientAsync(
@@ -167,28 +163,26 @@ namespace CompanyName.ProjectName.IdentityServer
             IEnumerable<string> permissions = null,
             IEnumerable<string> corsOrigins = null)
         {
-
             var client = new Client(
-                        _guidGenerator.Create(),
-                         name
-                        )
-                   {
-                       ClientName = name,
-                       ProtocolType = "oidc",
-                       Description = description,
-                       AlwaysIncludeUserClaimsInIdToken = true,
-                       AllowOfflineAccess = true,
-                       AbsoluteRefreshTokenLifetime = 31536000, //365 days
-                       AccessTokenLifetime = 31536000, //365 days
-                       AuthorizationCodeLifetime = 300,
-                       IdentityTokenLifetime = 300,
-                       RequireConsent = false,
-                       FrontChannelLogoutUri = frontChannelLogoutUri,
-                       RequireClientSecret = requireClientSecret,
-                       RequirePkce = requirePkce,
-                       AllowAccessTokensViaBrowser = true,
-                   };
-               
+                _guidGenerator.Create(),
+                name
+            )
+            {
+                ClientName = name,
+                ProtocolType = "oidc",
+                Description = description,
+                AlwaysIncludeUserClaimsInIdToken = true,
+                AllowOfflineAccess = true,
+                AbsoluteRefreshTokenLifetime = 31536000, //365 days
+                AccessTokenLifetime = 31536000, //365 days
+                AuthorizationCodeLifetime = 300,
+                IdentityTokenLifetime = 300,
+                RequireConsent = false,
+                FrontChannelLogoutUri = frontChannelLogoutUri,
+                RequireClientSecret = requireClientSecret,
+                RequirePkce = requirePkce,
+                AllowAccessTokensViaBrowser = true,
+            };
 
 
             foreach (var scope in scopes)
