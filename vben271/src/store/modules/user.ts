@@ -13,6 +13,7 @@ import {
   //loginApi,
   login,
   getAbpApplicationConfiguration,
+  stsLogin,
 } from '/@/api/sys/user';
 import { useI18n } from '/@/hooks/web/useI18n';
 import { useMessage } from '/@/hooks/web/useMessage';
@@ -20,7 +21,7 @@ import { router } from '/@/router';
 import { usePermissionStore } from '/@/store/modules/permission';
 import { RouteRecordRaw } from 'vue-router';
 import { PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
-import { LoginInput } from '/@/services/ServiceProxies';
+import { LoginInput, AccountServiceProxy } from '/@/services/ServiceProxies';
 interface UserState {
   userInfo: Nullable<UserInfo>;
   token?: string;
@@ -152,6 +153,7 @@ export const useUserStore = defineStore({
         return null;
       } catch (error) {
         console.log(error);
+        router.replace(PageEnum.BASE_LOGIN);
         return null;
       }
     },
@@ -161,14 +163,25 @@ export const useUserStore = defineStore({
       const grantPolicy = Object.keys(application.auth?.grantedPolicies as object);
       permissionStore.setPermCodeList(grantPolicy);
     },
-    // async getUserInfoAction(): Promise<UserInfo> {
-    //   const userInfo = await getUserInfo();
-    //   const { roles } = userInfo;
-    //   const roleList = roles.map((item) => item.value) as RoleEnum[];
-    //   this.setUserInfo(userInfo);
-    //   this.setRoleList(roleList);
-    //   return userInfo;
-    // },
+
+    async stsLogin(token: string) {
+      try {
+        const data = await stsLogin(token);
+        this.setToken(data.token as string);
+        this.setUserInfo({
+          userId: data.id as string,
+          username: data.userName as string,
+          realName: data.name as string,
+          roles: data.roles as [],
+          avatar: '',
+        });
+        await this.getAbpApplicationConfigurationAsync();
+        await router.replace(PageEnum.BASE_HOME);
+      } catch (error) {
+        router.replace(PageEnum.BASE_LOGIN);
+      }
+    },
+
     /**
      * @description: logout
      */

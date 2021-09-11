@@ -22,11 +22,11 @@ export const searchFormSchema: FormSchema[] = [
 ];
 
 export const tableColumns: BasicColumn[] = [
-  {
-    title: t('routes.admin.tenant'),
-    dataIndex: 'tenantName',
-    width: 100,
-  },
+  // {
+  //   title: t('routes.admin.tenant'),
+  //   dataIndex: 'tenantName',
+  //   width: 100,
+  // },
   {
     title: t('routes.admin.userManagement_userName'),
     dataIndex: 'userName',
@@ -45,7 +45,7 @@ export const tableColumns: BasicColumn[] = [
   {
     title: 'Url',
     dataIndex: 'url',
-    width: 250,
+    width: 350,
   },
   {
     title: 'ExecutionTime',

@@ -259,3 +259,6 @@ content/src/Zzz.HttpApi.Host/Logs/*
 content/src/Zzz.HttpApi.Host/Logs/*
 content/src/Zzz.DbMigrator/Logs/*
 /content/aspnetcore/src/Zzz.HttpApi.Host/App_Data
+/aspnet-core/services/src/CompanyName.ProjectName.HttpApi.Host/Logs
+/aspnet-core/services/src/CompanyName.ProjectName.IdentityServer/appsettings.Production.json
+/aspnet-core/services/src/CompanyName.ProjectName.HttpApi.Host/appsettings.Production.json

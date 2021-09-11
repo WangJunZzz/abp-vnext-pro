@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using CompanyName.ProjectName.IdentityServers.IdentityResources;
 using CompanyName.ProjectName.IdentityServers.IdentityResources.Dtos;
 using CompanyName.ProjectName.Permissions;
@@ -27,6 +28,12 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
             PagingIdentityResourceListInput input)
         {
             return _identityResourceAppService.GetListAsync(input);
+        }
+        [HttpPost("all")]
+        [SwaggerOperation(summary: "获取所有IdentityResource信息", Tags = new[] {"IdentityResource"})]
+        public Task<List<PagingIdentityResourceListOutput>> GetAllAsync()
+        {
+            return _identityResourceAppService.GetAllAsync();
         }
 
         [HttpPost("create")]

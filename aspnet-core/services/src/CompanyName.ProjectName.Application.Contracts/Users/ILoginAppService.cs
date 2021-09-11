@@ -10,5 +10,7 @@ namespace CompanyName.ProjectName.Users
     public interface ILoginAppService: IApplicationService
     {
         Task<LoginOutput> LoginAsync(LoginInput input);
+
+        Task<LoginOutput> StsLoginAsync(string accessToken);
     }
 }

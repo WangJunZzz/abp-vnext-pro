@@ -82,5 +82,7 @@
         
         public string Secret { get; set; }
         public  string SecretType { get; set; }
+        
+        public string AllowedGrantTypes { get; set; }
     }
 }

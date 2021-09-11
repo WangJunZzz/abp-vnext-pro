@@ -2,7 +2,7 @@ import type { ValidationRule } from 'ant-design-vue/lib/form/Form';
 import type { RuleObject } from 'ant-design-vue/lib/form/interface';
 import { ref, computed, unref, Ref } from 'vue';
 import { useI18n } from '/@/hooks/web/useI18n';
-
+import Oidc from 'oidc-client';
 export enum LoginStateEnum {
   LOGIN,
   REGISTER,
@@ -105,6 +105,25 @@ export function useFormRules(formData?: Recordable) {
     }
   });
   return { getFormRules };
+}
+
+export function useOidcLogin() {
+  const { protocol, hostname, port } = window.location;
+  let currentHost = `${protocol}//${hostname}${port ? `:${port}` : ''}`;
+  const settings: any = {
+    authority: import.meta.env.VITE_AUTH_URL,
+    client_id: 'Vue3',
+    redirect_uri: currentHost + '/oidc',
+    post_logout_redirect_uri: import.meta.env.VITE_AUTH_URL,
+    response_type: `id_token token`,
+    scope: 'openid email profile',
+    //silent_redirect_uri: currentHost + '/oidc-silent-renew',
+    automaticSilentRenew: true, // If true oidc-client will try to renew your token when it is about to expire
+    automaticSilentSignin: true, // If true vuex-oidc will try to silently signin unauthenticated users on public routes. Defaults to true
+  };
+
+  const mgr = new Oidc.UserManager(settings);
+  mgr.signinRedirect();
 }
 
 function createRule(message: string) {

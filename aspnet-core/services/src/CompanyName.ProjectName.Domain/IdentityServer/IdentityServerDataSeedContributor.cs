@@ -20,7 +20,7 @@ using Client = Volo.Abp.IdentityServer.Clients.Client;
 
 namespace CompanyName.ProjectName.IdentityServer
 {
-    public class IdentityServerDataSeedContributor : IDataSeedContributor, ITransientDependency
+   public class IdentityServerDataSeedContributor : IDataSeedContributor, ITransientDependency
     {
         private readonly IApiResourceRepository _apiResourceRepository;
         private readonly IApiScopeRepository _apiScopeRepository;
@@ -57,15 +57,15 @@ namespace CompanyName.ProjectName.IdentityServer
             using (_currentTenant.Change(context?.TenantId))
             {
                 await _identityResourceDataSeeder.CreateStandardResourcesAsync();
-                await CreateApiResourcesAsync();
-                await CreateApiScopesAsync();
+                // await CreateApiResourcesAsync();
+                // await CreateApiScopesAsync();
                 await CreateClientsAsync();
             }
         }
 
         private async Task CreateApiScopesAsync()
         {
-            await CreateApiScopeAsync("ProjectName");
+            await CreateApiScopeAsync();
         }
 
         private async Task CreateApiResourcesAsync()
@@ -80,51 +80,50 @@ namespace CompanyName.ProjectName.IdentityServer
                 "role"
             };
 
-            await CreateApiResourceAsync("ProjectName", commonApiUserClaims);
+            await CreateApiResourceAsync(commonApiUserClaims);
         }
 
-        private async Task<ApiResource> CreateApiResourceAsync(string name, IEnumerable<string> claims)
+        private async Task<ApiResource> CreateApiResourceAsync(IEnumerable<string> claims)
         {
-            var apiResource = await _apiResourceRepository.FindByNameAsync(name);
-            if (apiResource == null)
-            {
-                apiResource = await _apiResourceRepository.InsertAsync(
-                    new ApiResource(
-                        _guidGenerator.Create(),
-                        name,
-                        name + " API"
-                    ),
-                    autoSave: true
-                );
-            }
+            var apiResource = new ApiResource(
+                                _guidGenerator.Create(),
+                                "Identity.Api",
+                                "身份认证中心Api"
+                                );
 
-            foreach (var claim in claims)
-            {
-                if (apiResource.FindClaim(claim) == null)
-                {
-                    apiResource.AddUserClaim(claim);
-                }
-            }
+            //foreach (var claim in claims)
+            //{
+            //    if (apiResource.FindClaim(claim) == null)
+            //    {
+            //        apiResource.AddUserClaim(claim);
+            //    }
+            //}
 
-            return await _apiResourceRepository.UpdateAsync(apiResource);
+          
+
+            return await _apiResourceRepository.InsertAsync(apiResource);
         }
 
-        private async Task<ApiScope> CreateApiScopeAsync(string name)
+        private async Task CreateApiScopeAsync()
         {
-            var apiScope = await _apiScopeRepository.GetByNameAsync(name);
-            if (apiScope == null)
-            {
-                apiScope = await _apiScopeRepository.InsertAsync(
-                    new ApiScope(
-                        _guidGenerator.Create(),
-                        name,
-                        name + " API"
-                    ),
-                    autoSave: true
-                );
-            }
 
-            return apiScope;
+            await _apiScopeRepository.InsertAsync(
+               new ApiScope(
+                   _guidGenerator.Create(),
+                   "Api_Read"
+               ),
+               autoSave: true
+           );
+
+
+            await _apiScopeRepository.InsertAsync(
+               new ApiScope(
+                   _guidGenerator.Create(),
+                   "Api_Write"
+               ),
+               autoSave: true
+           );
+
         }
 
         private async Task CreateClientsAsync()
@@ -137,52 +136,26 @@ namespace CompanyName.ProjectName.IdentityServer
                 "role",
                 "phone",
                 "address",
-                "ProjectName"
             };
 
-            var configurationSection = _configuration.GetSection("IdentityServer:Clients");
+            await CreateClientAsync(
+                name: "Vue3",
+                description: "Vue3-UI",
+                scopes: commonScopes,
+                grantTypes: new[] { "implicit" },
+                secret: "1q2w3E*".Sha256(),
+                redirectUri: "http://localhost:4200/oidc",
+                postLogoutRedirectUri: "http://localhost:4200/oidc",
+                frontChannelLogoutUri: "http://localhost:4200/oidc",
+                corsOrigins: new[] { "https://localhost:4200",  "http://localhost:4200" },
+                requireClientSecret: false
+            );
 
-
-            //Console Test / Angular Client
-            var consoleAndAngularClientId = configurationSection["ProjectName_App:ClientId"];
-            if (!consoleAndAngularClientId.IsNullOrWhiteSpace())
-            {
-                var webClientRootUrl = configurationSection["ProjectName_App:RootUrl"]?.TrimEnd('/');
-
-                await CreateClientAsync(
-                    name: consoleAndAngularClientId,
-                    scopes: commonScopes,
-                    grantTypes: new[] { "password", "client_credentials", "authorization_code" },
-                    secret: (configurationSection["ProjectName_App:ClientSecret"] ?? "1q2w3e*").Sha256(),
-                    requireClientSecret: false,
-                    redirectUri: webClientRootUrl,
-                    postLogoutRedirectUri: webClientRootUrl,
-                    corsOrigins: new[] { webClientRootUrl.RemovePostFix("/") }
-                );
-            }
-            
-            
-            
-            // Swagger Client
-            var swaggerClientId = configurationSection["ProjectName_Swagger:ClientId"];
-            if (!swaggerClientId.IsNullOrWhiteSpace())
-            {
-                var swaggerRootUrl = configurationSection["ProjectName_Swagger:RootUrl"].TrimEnd('/');
-
-                await CreateClientAsync(
-                    name: swaggerClientId,
-                    scopes: commonScopes,
-                    grantTypes: new[] { "authorization_code" },
-                    secret: configurationSection["ProjectName_Swagger:ClientSecret"]?.Sha256(),
-                    requireClientSecret: false,
-                    redirectUri: $"{swaggerRootUrl}/swagger/oauth2-redirect.html",
-                    corsOrigins: new[] { swaggerRootUrl.RemovePostFix("/") }
-                );
-            }
         }
 
         private async Task<Client> CreateClientAsync(
             string name,
+            string description,
             IEnumerable<string> scopes,
             IEnumerable<string> grantTypes,
             string secret = null,
@@ -194,32 +167,29 @@ namespace CompanyName.ProjectName.IdentityServer
             IEnumerable<string> permissions = null,
             IEnumerable<string> corsOrigins = null)
         {
-            var client = await _clientRepository.FindByClientIdAsync(name);
-            if (client == null)
-            {
-                client = await _clientRepository.InsertAsync(
-                    new Client(
+
+            var client = new Client(
                         _guidGenerator.Create(),
-                        name
-                    )
-                    {
-                        ClientName = name,
-                        ProtocolType = "oidc",
-                        Description = name,
-                        AlwaysIncludeUserClaimsInIdToken = true,
-                        AllowOfflineAccess = true,
-                        AbsoluteRefreshTokenLifetime = 31536000, //365 days
-                        AccessTokenLifetime = 31536000, //365 days
-                        AuthorizationCodeLifetime = 300,
-                        IdentityTokenLifetime = 300,
-                        RequireConsent = false,
-                        FrontChannelLogoutUri = frontChannelLogoutUri,
-                        RequireClientSecret = requireClientSecret,
-                        RequirePkce = requirePkce
-                    },
-                    autoSave: true
-                );
-            }
+                         name
+                        )
+                   {
+                       ClientName = name,
+                       ProtocolType = "oidc",
+                       Description = description,
+                       AlwaysIncludeUserClaimsInIdToken = true,
+                       AllowOfflineAccess = true,
+                       AbsoluteRefreshTokenLifetime = 31536000, //365 days
+                       AccessTokenLifetime = 31536000, //365 days
+                       AuthorizationCodeLifetime = 300,
+                       IdentityTokenLifetime = 300,
+                       RequireConsent = false,
+                       FrontChannelLogoutUri = frontChannelLogoutUri,
+                       RequireClientSecret = requireClientSecret,
+                       RequirePkce = requirePkce,
+                       AllowAccessTokensViaBrowser = true,
+                   };
+               
+
 
             foreach (var scope in scopes)
             {
@@ -282,7 +252,7 @@ namespace CompanyName.ProjectName.IdentityServer
                 }
             }
 
-            return await _clientRepository.UpdateAsync(client);
+            return await _clientRepository.InsertAsync(client);
         }
     }
 }

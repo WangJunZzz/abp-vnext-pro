@@ -321,6 +321,100 @@ export class AccountServiceProxy extends ServiceProxyBase {
         }
         return Promise.resolve<LoginOutput>(<any>null);
     }
+
+    /**
+     * 登录
+     * @param accessToken (optional) 
+     * @return Success
+     */
+    sts(accessToken: string | undefined , cancelToken?: CancelToken | undefined): Promise<LoginOutput> {
+        let url_ = this.baseUrl + "/api/app/account/login/Sts?";
+        if (accessToken === null)
+            throw new Error("The parameter 'accessToken' cannot be null.");
+        else if (accessToken !== undefined)
+            url_ += "accessToken=" + encodeURIComponent("" + accessToken) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <AxiosRequestConfig>{
+            method: "POST",
+            url: url_,
+            headers: {
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processSts(_response));
+        });
+    }
+
+    protected processSts(response: AxiosResponse): Promise<LoginOutput> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = LoginOutput.fromJS(resultData200);
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<LoginOutput>(<any>null);
+    }
 }
 
 export class ApiResourceServiceProxy extends ServiceProxyBase {
@@ -3042,6 +3136,102 @@ export class IdentityResourceServiceProxy extends ServiceProxyBase {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
         return Promise.resolve<PagingIdentityResourceListOutputPagedResultDto>(<any>null);
+    }
+
+    /**
+     * 获取所有IdentityResource信息
+     * @return Success
+     */
+    all(  cancelToken?: CancelToken | undefined): Promise<PagingIdentityResourceListOutput[]> {
+        let url_ = this.baseUrl + "/IdentityServer/IdentityResource/all";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <AxiosRequestConfig>{
+            method: "POST",
+            url: url_,
+            headers: {
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processAll(_response));
+        });
+    }
+
+    protected processAll(response: AxiosResponse): Promise<PagingIdentityResourceListOutput[]> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(PagingIdentityResourceListOutput.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<PagingIdentityResourceListOutput[]>(<any>null);
     }
 
     /**
@@ -6834,6 +7024,7 @@ export class CreateClientInput implements ICreateClientInput {
     clientId!: string;
     clientName!: string;
     description!: string | undefined;
+    allowedGrantTypes!: string | undefined;
 
     constructor(data?: ICreateClientInput) {
         if (data) {
@@ -6849,6 +7040,7 @@ export class CreateClientInput implements ICreateClientInput {
             this.clientId = _data["clientId"];
             this.clientName = _data["clientName"];
             this.description = _data["description"];
+            this.allowedGrantTypes = _data["allowedGrantTypes"];
         }
     }
 
@@ -6864,6 +7056,7 @@ export class CreateClientInput implements ICreateClientInput {
         data["clientId"] = this.clientId;
         data["clientName"] = this.clientName;
         data["description"] = this.description;
+        data["allowedGrantTypes"] = this.allowedGrantTypes;
         return data; 
     }
 }
@@ -6872,6 +7065,7 @@ export interface ICreateClientInput {
     clientId: string;
     clientName: string;
     description: string | undefined;
+    allowedGrantTypes: string | undefined;
 }
 
 export class CreateDataDictinaryDetailInput implements ICreateDataDictinaryDetailInput {
@@ -12956,6 +13150,7 @@ export class UpdataBasicDataInput implements IUpdataBasicDataInput {
     deviceCodeLifetime!: number;
     secret!: string | undefined;
     secretType!: string | undefined;
+    allowedGrantTypes!: string | undefined;
 
     constructor(data?: IUpdataBasicDataInput) {
         if (data) {
@@ -13009,6 +13204,7 @@ export class UpdataBasicDataInput implements IUpdataBasicDataInput {
             this.deviceCodeLifetime = _data["deviceCodeLifetime"];
             this.secret = _data["secret"];
             this.secretType = _data["secretType"];
+            this.allowedGrantTypes = _data["allowedGrantTypes"];
         }
     }
 
@@ -13062,6 +13258,7 @@ export class UpdataBasicDataInput implements IUpdataBasicDataInput {
         data["deviceCodeLifetime"] = this.deviceCodeLifetime;
         data["secret"] = this.secret;
         data["secretType"] = this.secretType;
+        data["allowedGrantTypes"] = this.allowedGrantTypes;
         return data; 
     }
 }
@@ -13108,6 +13305,7 @@ export interface IUpdataBasicDataInput {
     deviceCodeLifetime: number;
     secret: string | undefined;
     secretType: string | undefined;
+    allowedGrantTypes: string | undefined;
 }
 
 export class UpdateApiResourceInput implements IUpdateApiResourceInput {

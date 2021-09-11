@@ -32,7 +32,7 @@
           @click="handleEnabled(record)"
           v-auth="'IdentityServerManagement.Client.Enable'"
         >
-          {{ record.enabled ? t('common.enabled') : t('common.disEnabled') }}
+          {{ record.enabled ? t('common.disEnabled') : t('common.enabled') }}
         </a-button>
         <a-button
           type="link"
@@ -50,6 +50,14 @@
         >
           {{ t('common.delText') }}
         </a-button>
+        <a-button
+          type="link"
+          size="small"
+          @click="handleIdenityResource(record)"
+          v-auth="'IdentityServerManagement.Client.Delete'"
+        >
+          Scopes
+        </a-button>
       </template>
     </BasicTable>
     <CreateClient
@@ -63,6 +71,11 @@
       :bodyStyle="{ 'padding-top': '0' }"
     />
     <ClientUri @register="registerUriDrawer" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
+    <EditClientIdentityResource
+      @register="registerIdentityResourceDrawer"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
+    />
   </div>
 </template>
 
@@ -84,6 +97,7 @@
   import { useModal } from '/@/components/Modal';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { useDrawer } from '/@/components/Drawer';
+  import EditClientIdentityResource from './EditClientIdentityResource.vue';
 
   export default defineComponent({
     name: 'Clients',
@@ -94,6 +108,7 @@
       CreateClient,
       EditClientBasic,
       ClientUri,
+      EditClientIdentityResource,
     },
     setup() {
       const { t } = useI18n();
@@ -144,8 +159,14 @@
         await enabledClientAsync({ clientId: record.clientId, enabled: !record.enabled, reload });
       };
       const [registerUriDrawer, { openDrawer: openUriDrawer }] = useDrawer();
+      const [registerIdentityResourceDrawer, { openDrawer: openIdentityResourceDrawer }] =
+        useDrawer();
       const handleUri = async (record: Recordable) => {
         openUriDrawer(true, { record: record });
+      };
+
+      const handleIdenityResource = async (record: Recordable) => {
+        openIdentityResourceDrawer(true, { record: record });
       };
       return {
         registerTable,
@@ -160,6 +181,8 @@
         handleEnabled,
         handleUri,
         registerUriDrawer,
+        registerIdentityResourceDrawer,
+        handleIdenityResource,
       };
     },
   });

@@ -26,6 +26,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
             if (gender == null)
             {
                 var id = DataDictionaryManagementConsts.SeedDataDictionaryId;//_guidGenerator.Create();
+              
                 var entity = new DataDictionary(id, "Gender", "性别", "单元测试");
                 entity.AddDetail(_guidGenerator.Create(), "Man", "男", 1, "单元测试");
                 entity.AddDetail(_guidGenerator.Create(), "WoMan", "女", 2, "单元测试");

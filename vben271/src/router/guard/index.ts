@@ -37,7 +37,7 @@ function createPageGuard(router: Router) {
     to.meta.loaded = !!loadedPageMap.get(to.path);
     // Notify routing changes
     setRouteChange(to);
-
+    console.log(1);
     return true;
   });
 

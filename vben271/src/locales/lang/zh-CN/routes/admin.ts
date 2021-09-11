@@ -3,8 +3,8 @@ export default {
   userManagement: '用户管理',
   roleManagement: '角色管理',
 
-  userManagement_userName: '账户',
-  userManagement_name: '用户姓名',
+  userManagement_userName: '用户名',
+  userManagement_name: '真实名称',
   userManagement_email: '邮箱',
   userManagement_phone: '手机号码',
   userManagement_createTime: '创建时间',

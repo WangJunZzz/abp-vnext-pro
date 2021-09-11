@@ -43,7 +43,7 @@ namespace CompanyName.ProjectName.IdentityServer
             return _clientRepository.DeleteAsync(id, autoSave, default);
         }
 
-        public async Task<Client> CreateAsync(string clientId, string clientName, string description)
+        public async Task<Client> CreateAsync(string clientId, string clientName, string description, string allowedGrantTypes)
         {
             var entity = await _clientRepository.FindByClientIdAsync(clientId);
             if (null != entity) throw new UserFriendlyException(message: "当前ClientId已存在");
@@ -51,6 +51,8 @@ namespace CompanyName.ProjectName.IdentityServer
             {
                 ClientName = clientName, Description = description
             };
+            entity.ClientClaimsPrefix="client_";
+            entity.AddGrantType(allowedGrantTypes);
             return await _clientRepository.InsertAsync(entity);
         }
 
@@ -95,7 +97,8 @@ namespace CompanyName.ProjectName.IdentityServer
             int deviceCodeLifetime,
             int slidingRefreshTokenLifetime,
             string secret,
-            string secretType
+            string secretType,
+            string allowGrantType
         )
         {
             var client = await _clientRepository.FindByClientIdAsync(clientId);
@@ -146,12 +149,24 @@ namespace CompanyName.ProjectName.IdentityServer
 
             if (secret.IsNotNullOrWhiteSpace())
             {
-                if (client.ClientSecrets.Any(e => e.Value != secret))
+                if (client.ClientSecrets.Count == 0)
                 {
-                    client.ClientSecrets.Clear();
+
                     client.AddSecret(secret.ToSha256(), null, secretType, String.Empty);
                 }
+                else
+                {
+                    if (!client.ClientSecrets.All(e => e.Value == secret && e.Type == secretType))
+                    {
+                        client.ClientSecrets.Clear();
+                        client.AddSecret(secret.ToSha256(), null, secretType, String.Empty);
+                    }
+
+                }
             }
+
+            client.RemoveAllAllowedGrantTypes();
+            client.AddGrantType(allowGrantType);
 
             return await _clientRepository.UpdateAsync(client);
         }
@@ -222,7 +237,7 @@ namespace CompanyName.ProjectName.IdentityServer
             }
 
             client.AddPostLogoutRedirectUri(uri);
-          return  await _clientRepository.UpdateAsync(client);
+            return await _clientRepository.UpdateAsync(client);
         }
 
         /// <summary>

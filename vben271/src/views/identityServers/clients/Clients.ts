@@ -12,6 +12,8 @@ import {
   RemoveRedirectUriInput,
   AddCorsInput,
   RemoveCorsInput,
+  ApiScopeServiceProxy,
+  UpdateScopeInput,
 } from '/@/services/ServiceProxies';
 
 export const searchFormSchema: FormSchema[] = [
@@ -67,6 +69,33 @@ export const createFormSchema: FormSchema[] = [
     colProps: { span: 20 },
   },
   {
+    field: 'allowedGrantTypes',
+    label: 'GrantType',
+    component: 'Select',
+    required: true,
+    colProps: { span: 20 },
+    componentProps: {
+      options: [
+        {
+          label: 'Implicit',
+          value: 'implicit',
+        },
+        {
+          label: 'AuthorizationCode',
+          value: 'authorization_code',
+        },
+        {
+          label: 'Hybrid',
+          value: 'hybrid',
+        },
+        {
+          label: 'ResourceOwnerPassword',
+          value: 'password',
+        },
+      ],
+    },
+  },
+  {
     field: 'description',
     label: 'Description',
     component: 'Input',
@@ -100,6 +129,34 @@ export const editBasicDetailSchema: FormSchema[] = [
     component: 'Input',
     labelWidth: 200,
     colProps: { span: 20 },
+  },
+  {
+    field: 'allowedGrantTypes',
+    label: 'GrantType',
+    component: 'Select',
+    required: true,
+    labelWidth: 200,
+    colProps: { span: 20 },
+    componentProps: {
+      options: [
+        {
+          label: 'Implicit',
+          value: 'implicit',
+        },
+        {
+          label: 'AuthorizationCode',
+          value: 'authorization_code',
+        },
+        {
+          label: 'Hybrid',
+          value: 'hybrid',
+        },
+        {
+          label: 'ResourceOwnerPassword',
+          value: 'password',
+        },
+      ],
+    },
   },
   {
     field: 'clientUri',
@@ -224,6 +281,12 @@ export const editBasicTokenSchema: FormSchema[] = [
   {
     field: 'accessTokenLifetime',
     label: 'AccessTokenLifetime',
+    labelWidth: 200,
+    component: 'Input',
+  },
+  {
+    field: 'identityTokenLifetime',
+    label: 'IdentityTokenLifetime',
     labelWidth: 200,
     component: 'Input',
   },
@@ -394,4 +457,17 @@ export async function removeCorsAsync({ clientId, origin }) {
   request.clientId = clientId;
   request.origin = origin;
   return await _clientServiceProxy.removeCors(request);
+}
+
+export async function getAllScopeAsync() {
+  const _apiScopeServiceProxy = new ApiScopeServiceProxy();
+  return _apiScopeServiceProxy.all();
+}
+
+export async function updateScopesAsync({ clientId, scopes }) {
+  const _clientServiceProxy = new ClientServiceProxy();
+  let request = new UpdateScopeInput();
+  request.clientId = clientId;
+  request.scopes = scopes;
+  return await _clientServiceProxy.updateScopes(request);
 }

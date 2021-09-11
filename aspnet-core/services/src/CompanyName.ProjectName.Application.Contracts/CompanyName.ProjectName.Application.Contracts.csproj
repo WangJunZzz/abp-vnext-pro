@@ -23,10 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Users\Dtos" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="AuditLogs\Dto\**" />
   </ItemGroup>
 

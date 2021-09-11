@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using CompanyName.ProjectName.IdentityServers.IdentityResources.Dtos;
 using CompanyName.ProjectName.Publics.Dtos;
 using Volo.Abp.Application.Dtos;
@@ -15,6 +16,8 @@ namespace CompanyName.ProjectName.IdentityServers.IdentityResources
         /// <returns></returns>
         Task<PagedResultDto<PagingIdentityResourceListOutput>> GetListAsync(
             PagingIdentityResourceListInput input);
+
+        Task<List<PagingIdentityResourceListOutput>> GetAllAsync();
 
         /// <summary>
         /// 创建IdentityResource

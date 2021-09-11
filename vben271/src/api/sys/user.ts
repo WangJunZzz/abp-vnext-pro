@@ -31,6 +31,17 @@ export function login(input: LoginInput): Promise<LoginOutput> {
   const _loginServiceProxy = new AccountServiceProxy();
   return _loginServiceProxy.login(input);
 }
+
+/**
+ * sts登录
+ * @param token
+ * @returns
+ */
+export function stsLogin(token: string): Promise<LoginOutput> {
+  const _accountServiceProxy = new AccountServiceProxy();
+  return _accountServiceProxy.sts(token);
+}
+
 /**
  * 获取应用程序配置
  * @returns

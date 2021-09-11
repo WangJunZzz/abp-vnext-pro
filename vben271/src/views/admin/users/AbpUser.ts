@@ -22,12 +22,13 @@ const [openFullLoading, closeFullLoading] = useLoading({
 export const tableColumns: BasicColumn[] = [
   {
     title: t('routes.admin.userManagement_userName'),
-    dataIndex: 'name',
+    dataIndex: 'userName',
   },
   {
     title: t('routes.admin.userManagement_name'),
-    dataIndex: 'userName',
+    dataIndex: 'name',
   },
+
   {
     title: t('routes.admin.userManagement_email'),
     dataIndex: 'email',
@@ -138,7 +139,7 @@ export const editFormSchema: FormSchema[] = [
   {
     field: 'userName',
     component: 'Input',
-    label: t('routes.admin.roleManagement_name'),
+    label: t('routes.admin.userManagement_userName'),
     labelWidth: 85,
     required: true,
     colProps: {
@@ -152,7 +153,7 @@ export const editFormSchema: FormSchema[] = [
   {
     field: 'name',
     component: 'Input',
-    label: t('routes.admin.roleManagement_name'),
+    label: t('routes.admin.userManagement_name'),
     labelWidth: 130,
     required: true,
     colProps: {

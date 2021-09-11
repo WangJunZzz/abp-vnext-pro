@@ -100,15 +100,13 @@
         schemas: editBasicSecretSchema,
         showActionButtonGroup: false,
       });
-      let currentClient: any;
-      const [registerModal, { changeOkLoading, closeModal }] = useModalInner((data) => {
-        currentClient = data.record;
-        console.log(currentClient);
 
+      const [registerModal, { changeOkLoading, closeModal }] = useModalInner((data) => {
         setDetailFieldsValue({
           clientId: data.record.clientId,
           clientName: data.record.clientName,
           description: data.record.description,
+          allowedGrantTypes: data.record.allowedGrantTypes[0].grantType,
           clientUri: data.record.clientUri,
           logoUri: data.record.logoUri,
           frontChannelLogoutUri: data.record.frontChannelLogoutUri,
@@ -130,6 +128,7 @@
         });
         setTokenFieldsValue({
           accessTokenLifetime: data.record.accessTokenLifetime,
+          identityTokenLifetime: data.record.identityTokenLifetime,
           authorizationCodeLifetime: data.record.authorizationCodeLifetime,
           absoluteRefreshTokenLifetime: data.record.absoluteRefreshTokenLifetime,
           slidingRefreshTokenLifetime: data.record.slidingRefreshTokenLifetime,

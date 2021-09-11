@@ -33,6 +33,11 @@ namespace CompanyName.ProjectName.IdentityServer
                 cancellationToken);
         }
 
+        public Task<List<IdentityResource>> GetAllAsync(CancellationToken cancellationToken = default)
+        {
+            return _identityResourceRepository.GetListAsync(true, cancellationToken);
+        }
+
         public Task<long> GetCountAsync(string filter = null, CancellationToken cancellationToken = default)
         {
             return _identityResourceRepository.GetCountAsync(filter, cancellationToken);
@@ -83,7 +88,7 @@ namespace CompanyName.ProjectName.IdentityServer
             identityResource.ShowInDiscoveryDocument = showInDiscoveryDocument;
             return await _identityResourceRepository.UpdateAsync(identityResource);
         }
-        
+
         public Task DeleteAsync(Guid id, bool autoSave = false,
             CancellationToken cancellationToken = new CancellationToken())
         {

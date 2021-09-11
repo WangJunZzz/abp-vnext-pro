@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.IdentityServer;
 using CompanyName.ProjectName.IdentityServers.IdentityResources;
@@ -34,6 +35,12 @@ namespace CompanyName.ProjectName.IdentityServers.Mappers.IdentityResources
             var totalCount = await _identityResourceManager.GetCountAsync(input.Filter);
             return new PagedResultDto<PagingIdentityResourceListOutput>(totalCount,
                 ObjectMapper.Map<List<IdentityResource>, List<PagingIdentityResourceListOutput>>(list));
+        }
+
+        public async Task<List<PagingIdentityResourceListOutput>> GetAllAsync()
+        {
+            var list = await _identityResourceManager.GetAllAsync();
+            return ObjectMapper.Map<List<IdentityResource>, List<PagingIdentityResourceListOutput>>(list);
         }
 
         /// <summary>

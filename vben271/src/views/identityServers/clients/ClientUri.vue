@@ -85,7 +85,6 @@
       });
       const [register, { closeDrawer }] = useDrawerInner((data) => {
         state.currentClient = data.record;
-        console.log(state);
       });
 
       const handleAddRedirectUri = async () => {
@@ -94,6 +93,7 @@
             clientId: state.currentClient.clientId,
             uri: state.redirectUriValue,
           });
+          state.redirectUriValue = '';
           closeDrawer();
           emit('reload');
         }
@@ -114,6 +114,7 @@
           clientId: state.currentClient.clientId,
           uri: state.postLogoutRedirectUriValue,
         });
+        state.postLogoutRedirectUriValue = '';
         closeDrawer();
         emit('reload');
       };
@@ -134,6 +135,7 @@
           origin: state.originValue,
         });
         closeDrawer();
+        state.originValue = '';
         emit('reload');
       };
 

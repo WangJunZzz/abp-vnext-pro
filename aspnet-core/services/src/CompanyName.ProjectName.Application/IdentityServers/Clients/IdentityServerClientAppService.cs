@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using CompanyName.ProjectName.Extensions.Customs.Dtos;
 using CompanyName.ProjectName.IdentityServer;
 using CompanyName.ProjectName.Publics.Dtos;
 using Volo.Abp.Application.Dtos;
@@ -10,10 +12,12 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
     public class IdentityServerClientAppService : ProjectNameAppService, IIdentityServerClientAppService
     {
         private readonly IdenityServerClientManager _idenityServerClientManager;
-
+ 
+       
         public IdentityServerClientAppService(IdenityServerClientManager idenityServerClientManager)
         {
             _idenityServerClientManager = idenityServerClientManager;
+          
         }
 
 
@@ -36,7 +40,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// <returns></returns>
         public Task CreateAsync(CreateClientInput input)
         {
-            return _idenityServerClientManager.CreateAsync(input.ClientId, input.ClientName, input.Description);
+            return _idenityServerClientManager.CreateAsync(input.ClientId, input.ClientName, input.Description, input.AllowedGrantTypes);
         }
 
         /// <summary>
@@ -95,7 +99,8 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
                 input.DeviceCodeLifetime,
                 input.SlidingRefreshTokenLifetime,
                 input.Secret,
-                input.SecretType
+                input.SecretType,
+                input.AllowedGrantTypes
             );
         }
 
@@ -165,5 +170,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         {
             return _idenityServerClientManager.EnabledAsync(input.ClientId, input.Enabled);
         }
+
+   
     }
 }

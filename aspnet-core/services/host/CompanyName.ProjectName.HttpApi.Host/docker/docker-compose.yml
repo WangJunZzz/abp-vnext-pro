@@ -1,0 +1,39 @@
+version: '3'
+services:
+  mysql:
+    hostname: mysql
+    image: mysql:5.7.26
+    container_name: mysql # 指定容器名称，如果不设置此参数，则由系统自动生成
+    restart: always # 设置容器自启模式
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci # 设置utf8字符集
+    environment:
+      - TZ=Asia/Shanghai # 设置容器时区与宿主机保持一致
+      - MYSQL_ROOT_PASSWORD=1q2w3E* # 设置root密码
+    ports:
+      - "3308:3306"
+
+  redis:
+    hostname: redis
+    image: redis:5.0.4
+    container_name: redis
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "6380:6379"
+
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=xxxx
+      - RABBITMQ_DEFAULT_PASS=xxxx
+    restart: always
+    ports:
+      - "15673:15672"
+      - "5678:5672"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"

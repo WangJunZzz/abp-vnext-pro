@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.ConfigurationOptions;
+using CompanyName.ProjectName.Extensions.Customs.Http;
 using CompanyName.ProjectName.QueryManagement.Systems.Users;
 using CompanyName.ProjectName.Users.Dtos;
 using IdentityModel;
@@ -16,21 +18,23 @@ using Volo.Abp.Security.Claims;
 
 namespace CompanyName.ProjectName.Users
 {
-    public class LoginAppService: ProjectNameAppService, ILoginAppService
+    public class LoginAppService : ProjectNameAppService, ILoginAppService
     {
         private readonly IdentityUserManager _userManager;
         private readonly JwtOptions _jwtOptions;
         private readonly Microsoft.AspNetCore.Identity.SignInManager<Volo.Abp.Identity.IdentityUser> _signInManager;
-        private readonly IUserFreeSqlRepository _userFreeSqlRepository;
+        private readonly IHttpClientFactory _httpClientFactory;
+
         public LoginAppService(
             IdentityUserManager userManager,
             IOptionsSnapshot<JwtOptions> jwtOptions,
-            Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> signInManager, IUserFreeSqlRepository userFreeSqlRepository)
+            Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> signInManager,
+            IHttpClientFactory httpClientFactory)
         {
             _userManager = userManager;
             _jwtOptions = jwtOptions.Value;
             _signInManager = signInManager;
-            _userFreeSqlRepository = userFreeSqlRepository;
+            _httpClientFactory = httpClientFactory;
         }
 
 
@@ -38,52 +42,68 @@ namespace CompanyName.ProjectName.Users
         {
             try
             {
-                //var s= await _userFreeSqlRepository.GetUserNameByIdAsync(Guid.Parse("39fdb236-a90e-e4b5-02a0-2866a8cf9823"));
                 var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
                 if (result.IsLockedOut) throw new Exception("当前用户已被锁定");
                 if (!result.Succeeded) throw new Exception("用户名或者密码错误");
                 var user = await _userManager.FindByNameAsync(input.Name);
-                var roles = await _userManager.GetRolesAsync(user);
-                if (roles == null || roles.Count == 0) throw new Exception("当前用户未分配角色");
-                var token = GenerateJwt(user, roles.ToList());
-                var loginOutput = ObjectMapper.Map<IdentityUser, LoginOutput>(user);
-                loginOutput.Token = token;
-                loginOutput.Roles = roles.ToList();
-                return loginOutput;
+                return await BuildResult(user);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+        }
 
+
+        public async Task<LoginOutput> StsLoginAsync(string accessToken)
+        {
+            // 通过access token 获取用户信息
+            // 其实当前access token 就有权限访问了
+            Dictionary<string, string> headers = new Dictionary<string, string> {{"Authorization", $"Bearer {accessToken}"}};
+            var response = await _httpClientFactory.GetAsync<LoginStsOutput>(HttpClientNameConsts.Sts, "connect/userinfo", headers);
+            var user = await _userManager.FindByNameAsync(response.name);
+            return await BuildResult(user);
+        }
+
+
+        public async Task<LoginOutput> BuildResult(IdentityUser user)
+        {
+            if (user.LockoutEnabled) throw new Exception("当前用户已被锁定");
+            var roles = await _userManager.GetRolesAsync(user);
+            if (roles == null || roles.Count == 0) throw new Exception("当前用户未分配角色");
+            var token = GenerateJwt(user.Id, user.UserName, user.Name, user.Email, user.TenantId.ToString(), roles.ToList());
+            var loginOutput = ObjectMapper.Map<IdentityUser, LoginOutput>(user);
+            loginOutput.Token = token;
+            loginOutput.Roles = roles.ToList();
+            return loginOutput;
         }
 
         /// <summary>
         /// 生成jwt token
         /// </summary>
-        /// <param name="user"></param>
-        /// <param name="roles"></param>
         /// <returns></returns>
-        private string GenerateJwt(IdentityUser user, List<string> roles)
+        private string GenerateJwt(Guid userId, string userName, string name, string email, string tenantId, List<string> roles)
         {
             var dateNow = DateTime.Now;
             var expirationTime = dateNow + TimeSpan.FromHours(_jwtOptions.ExpirationTime);
             var key = Encoding.ASCII.GetBytes(_jwtOptions.SecurityKey);
 
-            var claims = new List<Claim> {
+            var claims = new List<Claim>
+            {
                 new Claim(JwtClaimTypes.Audience, _jwtOptions.Audience),
                 new Claim(JwtClaimTypes.Issuer, _jwtOptions.Issuer),
-                new Claim(AbpClaimTypes.UserId, user.Id.ToString()),
-                new Claim(AbpClaimTypes.Name, user.Name),
-                new Claim(AbpClaimTypes.UserName, user.UserName),
-                new Claim(AbpClaimTypes.Email, user.Email),
-                new Claim(AbpClaimTypes.TenantId, user.TenantId.ToString())
+                new Claim(AbpClaimTypes.UserId, userId.ToString()),
+                new Claim(AbpClaimTypes.Name, name),
+                new Claim(AbpClaimTypes.UserName, userName),
+                new Claim(AbpClaimTypes.Email, email),
+                new Claim(AbpClaimTypes.TenantId, tenantId)
             };
 
             foreach (var item in roles)
             {
                 claims.Add(new Claim(JwtClaimTypes.Role, item));
             }
+
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(claims),
@@ -93,6 +113,6 @@ namespace CompanyName.ProjectName.Users
             var handler = new JwtSecurityTokenHandler();
             var token = handler.CreateToken(tokenDescriptor);
             return handler.WriteToken(token);
-        } 
+        }
     }
 }

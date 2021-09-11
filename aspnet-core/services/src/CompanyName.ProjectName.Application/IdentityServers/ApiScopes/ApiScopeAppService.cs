@@ -14,10 +14,11 @@ namespace CompanyName.ProjectName.IdentityServers.ApiScopes
     public class ApiScopeAppService : ProjectNameAppService, IApiScopeAppService
     {
         private readonly IdenityServerApiScopeManager _idenityServerApiScopeManager;
-
-        public ApiScopeAppService(IdenityServerApiScopeManager idenityServerApiScopeManager)
+        private readonly IdentityResourceManager _identityResourceManager;
+        public ApiScopeAppService(IdenityServerApiScopeManager idenityServerApiScopeManager, IdentityResourceManager identityResourceManager)
         {
             _idenityServerApiScopeManager = idenityServerApiScopeManager;
+            _identityResourceManager = identityResourceManager;
         }
 
         public async Task<PagedResultDto<PagingApiScopeListOutput>> GetListAsync(PagingApiScopeListInput input)
@@ -51,8 +52,12 @@ namespace CompanyName.ProjectName.IdentityServers.ApiScopes
 
         public async Task<List<FromSelector<string, string>>> FindAllAsync()
         {
-            var result = await _idenityServerApiScopeManager.FindAllAsync();
-            return result.Select(e => new FromSelector<string, string>(e.Name, e.Name)).ToList();
+            var result=new  List<FromSelector<string, string>>();
+            var apiScopes = await _idenityServerApiScopeManager.FindAllAsync();
+            result.AddRange(apiScopes.Select(e => new FromSelector<string, string>(e.Name, e.DisplayName)).ToList());
+            var identityResoure = await _identityResourceManager.GetAllAsync();
+            result.AddRange(identityResoure.Select(e => new FromSelector<string, string>(e.Name, e.DisplayName)).ToList());
+            return result;
         }
     }
 }

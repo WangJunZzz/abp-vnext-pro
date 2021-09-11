@@ -100,8 +100,8 @@ namespace CompanyName.ProjectName.IdentityServer
             bool enabled,
             string allowedAccessTokenSigningAlgorithms,
             bool showInDiscoveryDocument,
-            string secret ,
-            List<string> scopes ,
+            string secret,
+            List<string> scopes,
             CancellationToken cancellationToken = default
         )
         {
@@ -119,12 +119,20 @@ namespace CompanyName.ProjectName.IdentityServer
             apiResource.ShowInDiscoveryDocument = showInDiscoveryDocument;
             if (secret.IsNotNullOrWhiteSpace())
             {
-                if (apiResource.Secrets.Any(e=>e.Value!=secret))
+                if (apiResource.Secrets.Count > 0)
                 {
-                    apiResource.Secrets.Clear();
                     apiResource.AddSecret(secret.ToSha256());
                 }
+                else
+                {
+                    if (apiResource.Secrets.Any(e => e.Value != secret))
+                    {
+                        apiResource.Secrets.Clear();
+                        apiResource.AddSecret(secret.ToSha256());
+                    }
+                }
             }
+
 
             apiResource.Scopes.Clear();
 
@@ -132,9 +140,8 @@ namespace CompanyName.ProjectName.IdentityServer
             {
                 apiResource.AddScope(item);
             }
-          
 
-          
+
             return await _apiResourceRepository.UpdateAsync(apiResource, cancellationToken: cancellationToken);
         }
     }
