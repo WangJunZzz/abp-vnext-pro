@@ -269,3 +269,5 @@ content/src/Zzz.DbMigrator/Logs/*
 /aspnet-core/services/host/CompanyName.ProjectName.HttpApi.Host/publish.zip
 /aspnet-core/services/host/CompanyName.ProjectName.IdentityServer/appsettings.Production.json
 /aspnet-core/services/host/CompanyName.ProjectName.IdentityServer/publish.zip
+vben271/yarn.lock
+/vben271/_nginx.zip
