@@ -39,6 +39,11 @@ export function createPermissionGuard(router: Router) {
 
     // token does not exist
     if (!token) {
+      if (!to.path.includes('/oidc'))
+        if (userStore.checkUserLoginExpire) {
+          router.replace(PageEnum.BASE_LOGIN);
+          return;
+        }
       // You can access without permission. You need to set the routing meta.ignoreAuth to true
       if (to.meta.ignoreAuth) {
         next();

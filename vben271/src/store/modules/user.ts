@@ -22,6 +22,7 @@ import { usePermissionStore } from '/@/store/modules/permission';
 import { RouteRecordRaw } from 'vue-router';
 import { PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
 import { LoginInput, AccountServiceProxy } from '/@/services/ServiceProxies';
+import jwt_decode from 'jwt-decode';
 interface UserState {
   userInfo: Nullable<UserInfo>;
   token?: string;
@@ -64,6 +65,23 @@ export const useUserStore = defineStore({
     },
     getLanguage(): string {
       return this.language || getAuthCache<string>(ABP_LOCALE_KEY);
+    },
+    checkUserLoginExpire(): boolean {
+      try {
+        const userStore = useUserStoreWithOut();
+        const token = userStore.getToken;
+        if (!token) return true;
+        const decoded: any = jwt_decode(token);
+        // 获取当前时间戳
+        let currentTimeStamp = new Date().getTime() / 1000;
+        if (currentTimeStamp >= decoded.exp) {
+          return true;
+        } else {
+          return false;
+        }
+      } catch (error) {
+        return true;
+      }
     },
   },
   actions: {

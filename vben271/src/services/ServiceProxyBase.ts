@@ -12,6 +12,11 @@ export class ServiceProxyBase {
     const guard: boolean = this.urlGuard(options.url as string);
 
     if (!guard) {
+      const userStore = useUserStoreWithOut();
+      if (userStore.checkUserLoginExpire) {
+        router.replace(PageEnum.BASE_LOGIN);
+        return;
+      }
       const { token, language } = this.buildRequestMessage();
       // 添加header
       options.headers = {
