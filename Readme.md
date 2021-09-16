@@ -22,6 +22,11 @@
 #### 项目简介
 
 基于ABP Vnext4.4.0的微服务架构，基于DDD思想开发，基于vue3.0,Typescript,Antd 的后台管理框架，适用于大型分布式业务系统和企业后台。
+[演示地址http://120.24.194.14:8012/](http://120.24.194.14:8012/) 
+
+- 用户名：admin 密码：1q2w3E*
+
+- 警告：不要修改IdentitySever4 客户端管理的Vue3客户端设置，不然影响IdentityServer4登录
 
 #### 系统功能
 
@@ -56,7 +61,6 @@
   - 后端使用swagger的时候tag请不要用中文   [SwaggerOperation(summary: "获取所有角色", Tags = new[] { "Role" })]
   - 前端代理生成在src/services下，如何使用请参考用户模块
   
-
 - 前端
   - 多语言基于前端，后端 Api 的多语言基于 abp 自带的;
   - 配置菜单,属性 meta.policy 不传代表不验证权限
@@ -78,7 +82,6 @@
   - 启动HttpApi.Host和IdentityServer4
   
     
-  
 
 #### 参与贡献
 

@@ -45,6 +45,7 @@ using CompanyName.ProjectName.CAP;
 using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.MultiTenancy;
 using CompanyName.ProjectName.Extensions.Customs.Http;
+using Volo.Abp.AspNetCore.ExceptionHandling;
 
 namespace CompanyName.ProjectName
 {
@@ -91,25 +92,13 @@ namespace CompanyName.ProjectName
             ConfigureHangfireMysql(context);
             ConfigurationCap(context);
             ConfigurationStsHttpClient(context);
+            ConfigureAbpExceptions(context);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
             var app = context.GetApplicationBuilder();
-            var env = context.GetEnvironment();
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             app.UseAbpRequestLocalization();
-
-            if (!env.IsDevelopment())
-            {
-                app.UseErrorPage();
-            }
-
             app.UseCorrelationId();
             app.UseStaticFiles();
             app.UseRouting();
@@ -146,6 +135,16 @@ namespace CompanyName.ProjectName
             });
         }
 
+        /// <summary>
+        /// 异常处理
+        /// </summary>
+        /// <param name="context"></param>
+        private void ConfigureAbpExceptions(ServiceConfigurationContext context)
+        {
+            context.Services.Configure<AbpExceptionHandlingOptions>(options => { options.SendExceptionsDetailsToClients = true; });
+
+           
+        }
         public void ConfigureHangfireMysql(ServiceConfigurationContext context)
         {
             Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = true; });
