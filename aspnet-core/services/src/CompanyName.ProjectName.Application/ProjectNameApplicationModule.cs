@@ -25,7 +25,8 @@ namespace CompanyName.ProjectName
         typeof(AbpAuditLoggingDomainModule),
         typeof(QueryManagementDomainModule),
         typeof(DataDictionaryManagementApplicationModule),
-        typeof(NotificationManagementApplicationModule)
+        typeof(NotificationManagementApplicationModule),
+        typeof(QueryManagementApplicationModule)
         )]
     public class ProjectNameApplicationModule : AbpModule
     {

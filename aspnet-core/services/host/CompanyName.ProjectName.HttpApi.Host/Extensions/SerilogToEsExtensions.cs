@@ -8,13 +8,14 @@ using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
 
 namespace CompanyName.ProjectName.Extensions
 {
     public static class SerilogToEsExtensions
     {
-
-        public static void SetSerilogConfiguration(LoggerConfiguration loggerConfiguration, IConfiguration configuration)
+        public static void SetSerilogConfiguration(LoggerConfiguration loggerConfiguration, IConfiguration configuration,
+            IHostEnvironment hostingEnvironment)
         {
             // 默认读取 configuration 中 "Serilog" 节点下的配置
             loggerConfiguration.ReadFrom.Configuration(configuration)
@@ -40,7 +41,7 @@ namespace CompanyName.ProjectName.Extensions
                 return;
 
 
-            var indexFormat = configuration["LogToElasticSearch:ElasticSearch:IndexFormat"];
+            var indexFormat = configuration["LogToElasticSearch:ElasticSearch:IndexFormat"]+"-{0:yyyy.MM.dd}";
 
             // 需要设置ES URL
             if (string.IsNullOrEmpty(indexFormat))
@@ -49,7 +50,8 @@ namespace CompanyName.ProjectName.Extensions
             var esUserName = configuration["LogToElasticSearch:ElasticSearch:UserName"];
             var esPassword = configuration["LogToElasticSearch:ElasticSearch:Password"];
 
-            loggerConfiguration.Enrich.FromLogContext().Enrich.WithExceptionDetails().WriteTo.Elasticsearch(BuildElasticSearchSinkOptions(esUrl, indexFormat, esUserName, esPassword));
+            loggerConfiguration.Enrich.FromLogContext().Enrich.WithExceptionDetails().WriteTo
+                .Elasticsearch(BuildElasticSearchSinkOptions(esUrl, indexFormat, esUserName, esPassword));
             loggerConfiguration.Enrich.WithProperty("Application", applicationName);
         }
 
@@ -106,7 +108,6 @@ namespace CompanyName.ProjectName.Extensions
             {
                 diagnosticContext.Set("QueryString", request.QueryString.Value);
             }
-
         }
 
         private static async Task<string> ReadRequestBody(HttpRequest request)

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CompanyName.ProjectName.QueryManagement.ElasticSearch;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
@@ -9,7 +10,8 @@ namespace CompanyName.ProjectName.QueryManagement
         typeof(QueryManagementDomainModule),
         typeof(QueryManagementApplicationContractsModule),
         typeof(AbpDddApplicationModule),
-        typeof(AbpAutoMapperModule)
+        typeof(AbpAutoMapperModule),
+        typeof(QueryManagementElasticsearchModule)
         )]
     public class QueryManagementApplicationModule : AbpModule
     {

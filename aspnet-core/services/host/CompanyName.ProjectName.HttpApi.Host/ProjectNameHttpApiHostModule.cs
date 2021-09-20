@@ -45,6 +45,7 @@ using CompanyName.ProjectName.CAP;
 using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.MultiTenancy;
 using CompanyName.ProjectName.Extensions.Customs.Http;
+using CompanyName.ProjectName.QueryManagement.ElasticSearch;
 using Volo.Abp.AspNetCore.ExceptionHandling;
 
 namespace CompanyName.ProjectName

@@ -11,6 +11,7 @@ using CompanyName.ProjectName.Extensions.Customs.Http;
 using CompanyName.ProjectName.QueryManagement.Systems.Users;
 using CompanyName.ProjectName.Users.Dtos;
 using IdentityModel;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Volo.Abp.Identity;
@@ -24,22 +25,24 @@ namespace CompanyName.ProjectName.Users
         private readonly JwtOptions _jwtOptions;
         private readonly Microsoft.AspNetCore.Identity.SignInManager<Volo.Abp.Identity.IdentityUser> _signInManager;
         private readonly IHttpClientFactory _httpClientFactory;
-
+        private readonly ILogger<LoginAppService> _logger;
         public LoginAppService(
             IdentityUserManager userManager,
             IOptionsSnapshot<JwtOptions> jwtOptions,
             Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> signInManager,
-            IHttpClientFactory httpClientFactory)
+            IHttpClientFactory httpClientFactory, ILogger<LoginAppService> logger)
         {
             _userManager = userManager;
             _jwtOptions = jwtOptions.Value;
             _signInManager = signInManager;
             _httpClientFactory = httpClientFactory;
+            _logger = logger;
         }
 
 
         public async Task<LoginOutput> LoginAsync(LoginInput input)
         {
+            _logger.LogError("test");
             try
             {
                 var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);

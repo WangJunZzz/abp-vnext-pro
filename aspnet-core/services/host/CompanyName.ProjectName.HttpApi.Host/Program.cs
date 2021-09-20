@@ -1,4 +1,5 @@
 ﻿using System;
+using CompanyName.ProjectName.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -49,6 +50,12 @@ namespace CompanyName.ProjectName
                     webBuilder.UseStartup<Startup>();
                 })
                 .UseAutofac()
-                .UseSerilog();
+                .UseSerilog((context, loggerConfiguration) =>
+                {
+                    SerilogToEsExtensions.SetSerilogConfiguration(
+                        loggerConfiguration,
+                        context.Configuration,
+                        context.HostingEnvironment);
+                });
     }
 }

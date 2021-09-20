@@ -21,4 +21,8 @@
     <Content Remove="Localization\QueryManagement\*.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\frameworks\Extensions\src\CompanyName.ProjectName.Extensions\CompanyName.ProjectName.Extensions.csproj" />
+  </ItemGroup>
+
 </Project>

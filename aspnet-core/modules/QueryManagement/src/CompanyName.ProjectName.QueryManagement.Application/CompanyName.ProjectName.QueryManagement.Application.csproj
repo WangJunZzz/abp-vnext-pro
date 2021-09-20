@@ -12,6 +12,7 @@
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="4.4.0" />
     <ProjectReference Include="..\CompanyName.ProjectName.QueryManagement.Application.Contracts\CompanyName.ProjectName.QueryManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\CompanyName.ProjectName.QueryManagement.Domain\CompanyName.ProjectName.QueryManagement.Domain.csproj" />
+    <ProjectReference Include="..\CompanyName.ProjectName.QueryManagement.ElasticSearch\CompanyName.ProjectName.QueryManagement.ElasticSearch.csproj" />
   </ItemGroup>
 
 </Project>

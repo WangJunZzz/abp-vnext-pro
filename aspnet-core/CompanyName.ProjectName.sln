@@ -169,6 +169,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.Htt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.IdentityServer", "services\host\CompanyName.ProjectName.IdentityServer\CompanyName.ProjectName.IdentityServer.csproj", "{FB1C29FF-5467-4CF0-995D-5B3F931AB135}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.QueryManagement.ElasticSearch", "modules\QueryManagement\src\CompanyName.ProjectName.QueryManagement.ElasticSearch\CompanyName.ProjectName.QueryManagement.ElasticSearch.csproj", "{C9861622-B0CB-4747-82CC-16664648A499}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -411,6 +413,10 @@ Global
 		{FB1C29FF-5467-4CF0-995D-5B3F931AB135}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB1C29FF-5467-4CF0-995D-5B3F931AB135}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB1C29FF-5467-4CF0-995D-5B3F931AB135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9861622-B0CB-4747-82CC-16664648A499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9861622-B0CB-4747-82CC-16664648A499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9861622-B0CB-4747-82CC-16664648A499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9861622-B0CB-4747-82CC-16664648A499}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -492,6 +498,7 @@ Global
 		{F59B3C43-0B54-4A3A-AA28-1A50F59D2FC3} = {11ED8435-B5AE-4BF3-9D4B-51FA1E4A18A6}
 		{FB20372D-6C96-4733-9AAC-12522F15CAA6} = {8C1B8C6C-C518-4290-B070-622CCA6004DA}
 		{FB1C29FF-5467-4CF0-995D-5B3F931AB135} = {8C1B8C6C-C518-4290-B070-622CCA6004DA}
+		{C9861622-B0CB-4747-82CC-16664648A499} = {9528B5B6-C087-4932-92EA-EE486E97AAB0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}
