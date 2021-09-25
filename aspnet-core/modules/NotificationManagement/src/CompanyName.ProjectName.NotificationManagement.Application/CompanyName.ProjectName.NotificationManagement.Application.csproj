@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="5.0.9" />
-    <PackageReference Include="Volo.Abp.AspNetCore.SignalR" Version="4.4.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.SignalR" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.AutoMapper" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="$(AbpPackageVersion)" />
     <ProjectReference Include="..\CompanyName.ProjectName.NotificationManagement.Application.Contracts\CompanyName.ProjectName.NotificationManagement.Application.Contracts.csproj" />

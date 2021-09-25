@@ -38,6 +38,7 @@ export default {
   close: '关闭',
 
   auditLog: '审计日志',
+  esLogs: 'ES日志',
   backgroundTask: '后台任务',
   integratedEvent: '集成事件',
   tenant: '租户',
@@ -46,4 +47,8 @@ export default {
   apiResource: 'Api资源',
   apiSocpe: 'ApiSocpe',
   identityResource: 'Identity资源',
+
+  logLevel: '级别',
+  logContent: '内容',
+  detail: '详情',
 };

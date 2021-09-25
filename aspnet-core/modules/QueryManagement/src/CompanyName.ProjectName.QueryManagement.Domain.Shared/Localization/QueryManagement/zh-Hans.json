@@ -2,6 +2,7 @@
   "culture": "zh-Hans",
   "texts": {
     "ManageYourProfile": "管理个人资料",
-    "SamplePageMessage": "QueryManagement模块的示例页面"
+    "SamplePageMessage": "QueryManagement模块的示例页面",
+    "Permission:ESManagement": "ES日志"
   }
 }

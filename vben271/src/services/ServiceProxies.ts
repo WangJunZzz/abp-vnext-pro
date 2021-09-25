@@ -3033,6 +3033,111 @@ export class DataDictionaryServiceProxy extends ServiceProxyBase {
     }
 }
 
+export class ElasticSearchServiceProxy extends ServiceProxyBase {
+    private instance: AxiosInstance;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, instance?: AxiosInstance) {
+        super();
+        this.instance = instance ? instance : axios.create();
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    paging(body: PagingElasticSearchLogInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingElasticSearchLogOutputCustomePagedResultDto> {
+        let url_ = this.baseUrl + "/api/QueryManagement/ElasticSearch/paging";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processPaging(_response));
+        });
+    }
+
+    protected processPaging(response: AxiosResponse): Promise<PagingElasticSearchLogOutputCustomePagedResultDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = PagingElasticSearchLogOutputCustomePagedResultDto.fromJS(resultData200);
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<PagingElasticSearchLogOutputCustomePagedResultDto>(<any>null);
+    }
+}
+
 export class IdentityResourceServiceProxy extends ServiceProxyBase {
     private instance: AxiosInstance;
     private baseUrl: string;
@@ -11241,6 +11346,154 @@ export class PagingDataDictionaryOutputPagedResultDto implements IPagingDataDict
 
 export interface IPagingDataDictionaryOutputPagedResultDto {
     items: PagingDataDictionaryOutput[] | undefined;
+    totalCount: number;
+}
+
+export class PagingElasticSearchLogInput implements IPagingElasticSearchLogInput {
+    pageIndex!: number;
+    pageSize!: number;
+    readonly skipCount!: number;
+    filter!: string | undefined;
+    startCreationTime!: moment.Moment | undefined;
+    endCreationTime!: moment.Moment | undefined;
+
+    constructor(data?: IPagingElasticSearchLogInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.pageIndex = _data["pageIndex"];
+            this.pageSize = _data["pageSize"];
+            (<any>this).skipCount = _data["skipCount"];
+            this.filter = _data["filter"];
+            this.startCreationTime = _data["startCreationTime"] ? moment(_data["startCreationTime"].toString()) : <any>undefined;
+            this.endCreationTime = _data["endCreationTime"] ? moment(_data["endCreationTime"].toString()) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): PagingElasticSearchLogInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingElasticSearchLogInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["pageIndex"] = this.pageIndex;
+        data["pageSize"] = this.pageSize;
+        data["skipCount"] = this.skipCount;
+        data["filter"] = this.filter;
+        data["startCreationTime"] = this.startCreationTime ? this.startCreationTime.toISOString() : <any>undefined;
+        data["endCreationTime"] = this.endCreationTime ? this.endCreationTime.toISOString() : <any>undefined;
+        return data; 
+    }
+}
+
+export interface IPagingElasticSearchLogInput {
+    pageIndex: number;
+    pageSize: number;
+    skipCount: number;
+    filter: string | undefined;
+    startCreationTime: moment.Moment | undefined;
+    endCreationTime: moment.Moment | undefined;
+}
+
+export class PagingElasticSearchLogOutput implements IPagingElasticSearchLogOutput {
+    level!: string | undefined;
+    message!: string | undefined;
+    creationTime!: moment.Moment;
+
+    constructor(data?: IPagingElasticSearchLogOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.level = _data["level"];
+            this.message = _data["message"];
+            this.creationTime = _data["creationTime"] ? moment(_data["creationTime"].toString()) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): PagingElasticSearchLogOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingElasticSearchLogOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["level"] = this.level;
+        data["message"] = this.message;
+        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        return data; 
+    }
+}
+
+export interface IPagingElasticSearchLogOutput {
+    level: string | undefined;
+    message: string | undefined;
+    creationTime: moment.Moment;
+}
+
+export class PagingElasticSearchLogOutputCustomePagedResultDto implements IPagingElasticSearchLogOutputCustomePagedResultDto {
+    items!: PagingElasticSearchLogOutput[] | undefined;
+    totalCount!: number;
+
+    constructor(data?: IPagingElasticSearchLogOutputCustomePagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(PagingElasticSearchLogOutput.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): PagingElasticSearchLogOutputCustomePagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingElasticSearchLogOutputCustomePagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data; 
+    }
+}
+
+export interface IPagingElasticSearchLogOutputCustomePagedResultDto {
+    items: PagingElasticSearchLogOutput[] | undefined;
     totalCount: number;
 }
 

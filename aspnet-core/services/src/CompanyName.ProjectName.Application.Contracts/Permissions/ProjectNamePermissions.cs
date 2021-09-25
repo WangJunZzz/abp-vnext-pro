@@ -21,6 +21,7 @@ namespace CompanyName.ProjectName.Permissions
             public const string AuditLog = Default + ".AuditLog";
             public const string Hangfire = Default + ".Hangfire";
             public const string Cap = Default + ".Cap";
+            public const string ES = Default + ".ES";
         }
 
 

@@ -50,7 +50,7 @@ export const tableColumns: BasicColumn[] = [
   {
     title: 'ExecutionTime',
     dataIndex: 'executionTime',
-    width: 150,
+    width: 200,
     customRender: ({ text }) => {
       return moment(text).format('YYYY-MM-DD HH:mm:ss');
     },

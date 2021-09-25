@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.1.4" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="4.4.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="$(AbpPackageVersion)" />
     <ProjectReference Include="..\CompanyName.ProjectName.DataDictionaryManagement.Application.Contracts\CompanyName.ProjectName.DataDictionaryManagement.Application.Contracts.csproj" />
   </ItemGroup>
 

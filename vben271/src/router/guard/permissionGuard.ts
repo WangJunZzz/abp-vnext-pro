@@ -38,30 +38,19 @@ export function createPermissionGuard(router: Router) {
     const token = userStore.getToken;
 
     // token does not exist
-    if (!token) {
-      if (!to.path.includes('/oidc'))
-        if (userStore.checkUserLoginExpire) {
-          router.replace(PageEnum.BASE_LOGIN);
-          return;
-        }
-      // You can access without permission. You need to set the routing meta.ignoreAuth to true
-      if (to.meta.ignoreAuth) {
-        next();
+
+    if (to.meta.ignoreAuth) {
+      next();
+      return;
+    }
+
+    if (token) {
+      if (userStore.checkUserLoginExpire) {
+        router.replace(PageEnum.BASE_LOGIN);
         return;
       }
-
-      // redirect login page
-      const redirectData: { path: string; replace: boolean; query?: Recordable<string> } = {
-        path: LOGIN_PATH,
-        replace: true,
-      };
-      if (to.path) {
-        redirectData.query = {
-          ...redirectData.query,
-          redirect: to.path,
-        };
-      }
-      next(redirectData);
+    } else {
+      router.replace(PageEnum.BASE_LOGIN);
       return;
     }
 

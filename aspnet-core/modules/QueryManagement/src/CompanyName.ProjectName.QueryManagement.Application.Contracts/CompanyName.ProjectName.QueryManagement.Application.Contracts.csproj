@@ -8,8 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="4.4.0" />
-    <PackageReference Include="Volo.Abp.Authorization" Version="4.4.0" />
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Authorization" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="$(AbpPackageVersion)" />
     <ProjectReference Include="..\CompanyName.ProjectName.QueryManagement.Domain.Shared\CompanyName.ProjectName.QueryManagement.Domain.Shared.csproj" />
   </ItemGroup>
 

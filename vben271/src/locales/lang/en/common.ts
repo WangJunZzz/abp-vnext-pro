@@ -28,4 +28,6 @@ export default {
   false: 'False',
   key: 'Key',
   action: 'Action',
+  creationTime: 'CreationTime',
+  detail: 'Detail',
 };

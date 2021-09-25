@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace CompanyName.ProjectName.Extensions
 {
-    public static class SerilogToEsExtensions
+     public static class SerilogToEsExtensions
     {
         public static void SetSerilogConfiguration(LoggerConfiguration loggerConfiguration, IConfiguration configuration,
             IHostEnvironment hostingEnvironment)
@@ -24,16 +24,21 @@ namespace CompanyName.ProjectName.Extensions
                     .WithDefaultDestructurers()
                 )
                 .Enrich.FromLogContext()
-                .WriteTo.Console()
-                .WriteTo.File("logs/logs.txt", rollingInterval: RollingInterval.Day);
+                .WriteTo.Console();
 
+            if (hostingEnvironment.IsDevelopment())
+            {
+                loggerConfiguration.WriteTo.File("logs/logs.txt", rollingInterval: RollingInterval.Day);
+            }
+            loggerConfiguration.WriteTo.File("logs/logs.txt", rollingInterval: RollingInterval.Day);
             var writeToElasticSearch = configuration.GetValue("LogToElasticSearch:Enabled", false);
+
 
             // LogToElasticSearch:Enabled = true 才输出至ES
             if (!writeToElasticSearch)
                 return;
 
-            var applicationName = "CompanyName.ProjectName.HttpApi.Host";
+            var applicationName = "YHWmsOperationApiGateway.HttpApi.Host";
 
             var esUrl = configuration["LogToElasticSearch:ElasticSearch:Url"];
             // 需要设置ES URL
@@ -41,7 +46,7 @@ namespace CompanyName.ProjectName.Extensions
                 return;
 
 
-            var indexFormat = configuration["LogToElasticSearch:ElasticSearch:IndexFormat"]+"-{0:yyyy.MM.dd}";
+            var indexFormat = configuration["LogToElasticSearch:ElasticSearch:IndexFormat"];
 
             // 需要设置ES URL
             if (string.IsNullOrEmpty(indexFormat))

@@ -20,6 +20,8 @@ namespace CompanyName.ProjectName.Permissions
                 abpIdentityGroup.AddPermission(ProjectNamePermissions.SystemManagement.Hangfire, L("Permission:HangfireManagement"));
 
             var capManagement = abpIdentityGroup.AddPermission(ProjectNamePermissions.SystemManagement.Cap, L("Permission:CapManagement"));
+            
+           
 
             #region IdentityServer
 

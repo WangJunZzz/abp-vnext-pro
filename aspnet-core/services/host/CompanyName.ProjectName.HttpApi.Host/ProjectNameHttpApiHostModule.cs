@@ -42,10 +42,12 @@ using Volo.Abp.Swashbuckle;
 using Volo.Abp.VirtualFileSystem;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.CAP;
+using CompanyName.ProjectName.Extensions;
 using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.MultiTenancy;
 using CompanyName.ProjectName.Extensions.Customs.Http;
 using CompanyName.ProjectName.QueryManagement.ElasticSearch;
+using Serilog;
 using Volo.Abp.AspNetCore.ExceptionHandling;
 
 namespace CompanyName.ProjectName
@@ -84,7 +86,6 @@ namespace CompanyName.ProjectName
             ConfigureLocalization();
             ConfigureCache(context);
             ConfigureVirtualFileSystem(context);
-            //ConfigureRedis(context);
             ConfigureCors(context, configuration);
             ConfigureSwaggerServices(context, configuration);
             ConfigureOptions(context);
@@ -126,6 +127,7 @@ namespace CompanyName.ProjectName
 
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
+            app.UseSerilogRequestLogging(opts => { opts.EnrichDiagnosticContext = SerilogToEsExtensions.EnrichFromRequest; });
             app.UseUnitOfWork();
             app.UseConfiguredEndpoints();
             app.UseEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });

@@ -9,53 +9,24 @@ namespace CompanyName.ProjectName
 {
     public class Program
     {
-        public static int Main(string[] args)
+        public static void Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration()
-#if DEBUG
-                .MinimumLevel.Debug()
-#else
-                .MinimumLevel.Information()
-#endif
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
-                .Enrich.FromLogContext()
-                .WriteTo.Async(c => c.File("Logs/logs.txt"))
-#if DEBUG
-                .WriteTo.Async(c => c.Console())
-#endif
-                .CreateLogger();
-
-            try
-            {
-                Log.Information("Starting CompanyName.ProjectName.HttpApi.Host.");
-                CreateHostBuilder(args).Build().Run();
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "Host terminated unexpectedly!");
-                return 1;
-            }
-            finally
-            {
-                Log.CloseAndFlush();
-            }
+            CreateHostBuilder(args).Build().Run();
         }
 
-        internal static IHostBuilder CreateHostBuilder(string[] args) =>
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.ConfigureKestrel((context, options) => { options.Limits.MaxRequestBodySize = 1024 * 50; });
                     webBuilder.UseStartup<Startup>();
                 })
-                .UseAutofac()
                 .UseSerilog((context, loggerConfiguration) =>
                 {
                     SerilogToEsExtensions.SetSerilogConfiguration(
                         loggerConfiguration,
                         context.Configuration,
                         context.HostingEnvironment);
-                });
+                }).UseAutofac();
     }
 }

@@ -2,6 +2,7 @@
   "culture": "en",
   "texts": {
     "ManageYourProfile":  "Manage your profile",
-    "SamplePageMessage": "A sample page for the QueryManagement module"
+    "SamplePageMessage": "A sample page for the QueryManagement module",
+    "Permission:ESManagement": "ElasticSearch"
   }
 }

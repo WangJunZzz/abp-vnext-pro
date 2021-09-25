@@ -31,4 +31,6 @@ export default {
   askDelete: '确认删除吗',
   disEnabledSelf: '不能禁用自己',
   key: '关键字',
+  creationTime: '创建时间',
+  detail: '详情',
 };

@@ -6,8 +6,8 @@
 
     <ItemGroup>
         <PackageReference Include="DotNetCore.CAP" Version="5.1.3" />
-        <PackageReference Include="Volo.Abp.Core" Version="4.4.0" />
-        <PackageReference Include="Volo.Abp.EventBus" Version="4.4.0" />
+        <PackageReference Include="Volo.Abp.Core" Version="$(AbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.EventBus" Version="$(AbpPackageVersion)" />
     </ItemGroup>
 
 </Project>

@@ -39,6 +39,7 @@ export default {
   grantedMessage: 'Authorization Successful, Please Login Again.',
   close: 'close',
   auditLog: 'AuditLog',
+  esLogs: 'ESLog',
   backgroundTask: 'BackgroundTask',
   integratedEvent: 'IntegratedEvent',
   tenant: 'Tenant',
@@ -47,4 +48,7 @@ export default {
   apiResource: 'ApiResource',
   apiSocpe: 'ApiSocpe',
   identityResource: 'IdentityResource',
+
+  logLevel: 'Level',
+  logContent: 'Content',
 };

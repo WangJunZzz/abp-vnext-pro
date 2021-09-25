@@ -48,6 +48,16 @@ const admin: AppRouteModule = {
       },
     },
     {
+      path: 'esLogs',
+      name: 'ESLogs',
+      component: () => import('/@/views/admin/elasticSearch/ElasticSearch.vue'),
+      meta: {
+        title: t('routes.admin.esLogs'),
+        policy: 'System.AuditLog',
+        icon: 'ant-design:snippets-twotone',
+      },
+    },
+    {
       path: 'hangfire',
       name: 'Hangfire',
       component: IFrame,

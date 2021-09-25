@@ -16,15 +16,15 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.*" />
     <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="5.0.*" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.7" />
-    <PackageReference Include="Volo.Abp.Autofac" Version="4.4.0" />
-    <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="4.4.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="4.4.0" />
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="4.4.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="4.4.0" />
-    <PackageReference Include="Volo.Abp.Swashbuckle" Version="4.4.0" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="4.4.0" />
-    <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="4.4.0" />
-    <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="4.4.0" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
   </ItemGroup>
 
   <ItemGroup>

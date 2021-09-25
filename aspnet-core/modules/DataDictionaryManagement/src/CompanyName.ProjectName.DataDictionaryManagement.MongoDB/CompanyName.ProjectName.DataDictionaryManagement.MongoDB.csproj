@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.MongoDB" Version="4.4.0" />
+    <PackageReference Include="Volo.Abp.MongoDB" Version="$(AbpPackageVersion)" />
     <ProjectReference Include="..\CompanyName.ProjectName.DataDictionaryManagement.Domain\CompanyName.ProjectName.DataDictionaryManagement.Domain.csproj" />
   </ItemGroup>
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Nest;
 
 namespace CompanyName.ProjectName.QueryManagement.ElasticSearchs.Dtos
 {
@@ -22,7 +23,8 @@ namespace CompanyName.ProjectName.QueryManagement.ElasticSearchs.Dtos
         /// 创建时间
         /// </summary>
         // [JsonProperty("@timestamp")]
-        [DataMember(Name = "@timestamp")]
+        //[DataMember(Name = "@timestamp")]
+        [PropertyName("@timestamp")]
         public DateTime CreationTime { get; set; }
     }
 }

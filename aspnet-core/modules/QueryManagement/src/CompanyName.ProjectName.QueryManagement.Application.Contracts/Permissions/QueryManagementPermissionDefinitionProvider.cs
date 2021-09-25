@@ -1,5 +1,6 @@
 ﻿using CompanyName.ProjectName.QueryManagement.Localization;
 using Volo.Abp.Authorization.Permissions;
+using Volo.Abp.Identity;
 using Volo.Abp.Localization;
 
 namespace CompanyName.ProjectName.QueryManagement.Permissions
@@ -8,7 +9,8 @@ namespace CompanyName.ProjectName.QueryManagement.Permissions
     {
         public override void Define(IPermissionDefinitionContext context)
         {
-            var myGroup = context.AddGroup(QueryManagementPermissions.GroupName, L("Permission:QueryManagement"));
+            var abpIdentityGroup = context.GetGroup(IdentityPermissions.GroupName);
+            var esManagement = abpIdentityGroup.AddPermission(QueryManagementPermissions.SystemManagement.ES, L("Permission:ESManagement"));
         }
 
         private static LocalizableString L(string name)

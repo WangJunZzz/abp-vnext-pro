@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.Extensions.Customs.Dtos;
@@ -12,45 +13,46 @@ namespace CompanyName.ProjectName.QueryManagement.ElasticSearch
 {
     public class CompanyNameProjectNameLogRepository : ElasticsearchBasicRepository, ICompanyNameProjectNameLogRepository
     {
-        private readonly string IndexName = "{0}*";
+        private readonly string IndexName = "{0}.{1}*";
         private readonly IConfiguration _configuration;
+        private readonly IHostEnvironment _hostEnvironment;
 
         public CompanyNameProjectNameLogRepository(
             IElasticsearchProvider elasticsearchProvider,
-            IConfiguration configuration) :
+            IConfiguration configuration,
+            IHostEnvironment hostEnvironment) :
             base(elasticsearchProvider)
         {
             _configuration = configuration;
-            IndexName = string.Format(IndexName, configuration["LogToElasticSearch:ElasticSearch:IndexFormat"]);
+            _hostEnvironment = hostEnvironment;
+            IndexName = string.Format(IndexName, configuration["LogToElasticSearch:ElasticSearch:DashboardIndex"],
+                _hostEnvironment.EnvironmentName.ToLower());
         }
 
         public async Task<CustomePagedResultDto<PagingElasticSearchLogOutput>> PaingAsync(PagingElasticSearchLogInput input)
         {
-            // 默认查询15分钟
-            input.StartCreationTime ??= DateTime.Now.AddMinutes(1);
+            // 默认查询当天
+            input.StartCreationTime ??= DateTime.Now.Date;
 
-            input.EndCreationTime ??= DateTime.Now.AddMinutes(-15);
+            input.EndCreationTime ??= DateTime.Now.Date;
+            var mustFilters = new List<Func<QueryContainerDescriptor<PagingElasticSearchLogOutput>, QueryContainer>>
+            {
+                t => t.DateRange(f => f.Field(fd => fd.CreationTime).GreaterThanOrEquals(input.StartCreationTime.Value)),
+                t => t.DateRange(f => f.Field(fd => fd.CreationTime).LessThanOrEquals(input.EndCreationTime.Value))
+            };
 
-            if (string.IsNullOrWhiteSpace(input.Filter))
+            if (!string.IsNullOrWhiteSpace(input.Filter))
             {
-                var result = await Client.SearchAsync<PagingElasticSearchLogOutput>(
-                    e => e.Index(IndexName)
-                        .Query(q => q.DateRange(c =>
-                            c.Name("@timestamp").GreaterThan(input.StartCreationTime).LessThan(input.EndCreationTime)))
-                        .Sort(s => s.Descending(d => d.CreationTime)).From(input.SkipCount).Size(input.PageSize));
-                return new CustomePagedResultDto<PagingElasticSearchLogOutput>(result.HitsMetadata.Total.Value, result.Documents.ToList());
+                mustFilters.Add(t => t.MatchPhrase(f => f.Field(fd => fd.Message).Query(input.Filter.Trim())));
             }
-            else
-            {
-                var result = await Client.SearchAsync<PagingElasticSearchLogOutput>(
-                    e => e.Index(IndexName)
-                        .Query(q => q.DateRange(c =>
-                            c.Name("@timestamp").GreaterThan(input.StartCreationTime).LessThan(input.EndCreationTime))).Query(q =>
-                            q.MatchPhrase(m => m.Field(f => f.Message)
-                                .Query(input.Filter.Trim()))).Sort(s => s.Descending(d => d.CreationTime)).From(input.SkipCount)
-                        .Size(input.PageSize));
-                return new CustomePagedResultDto<PagingElasticSearchLogOutput>(result.HitsMetadata.Total.Value, result.Documents.ToList());
-            }
+
+            var result = await Client.SearchAsync<PagingElasticSearchLogOutput>(e => e.Index(IndexName)
+                .From(input.SkipCount)
+                .Size(input.PageSize)
+                .Sort(s => s.Descending(sd => sd.CreationTime))
+                .Query(q => q.Bool(qb => qb.Filter(mustFilters))));
+
+            return new CustomePagedResultDto<PagingElasticSearchLogOutput>(result.HitsMetadata.Total.Value, result.Documents.ToList());
         }
     }
 }
