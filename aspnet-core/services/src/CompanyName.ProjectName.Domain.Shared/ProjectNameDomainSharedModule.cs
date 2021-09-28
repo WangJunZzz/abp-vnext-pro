@@ -1,4 +1,5 @@
 ﻿using CompanyName.ProjectName.Localization;
+using EasyAbp.Abp.SettingUi;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;
@@ -23,8 +24,9 @@ namespace CompanyName.ProjectName
         typeof(AbpIdentityServerDomainSharedModule),
         typeof(AbpPermissionManagementDomainSharedModule),
         typeof(AbpSettingManagementDomainSharedModule),
-        typeof(AbpTenantManagementDomainSharedModule)
-        )]
+        typeof(AbpTenantManagementDomainSharedModule),
+        typeof(AbpSettingUiDomainSharedModule)
+    )]
     public class ProjectNameDomainSharedModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)

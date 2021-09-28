@@ -21,8 +21,6 @@ namespace CompanyName.ProjectName.Permissions
 
             var capManagement = abpIdentityGroup.AddPermission(ProjectNamePermissions.SystemManagement.Cap, L("Permission:CapManagement"));
             
-           
-
             #region IdentityServer
 
             var identityServerManagementGroup =

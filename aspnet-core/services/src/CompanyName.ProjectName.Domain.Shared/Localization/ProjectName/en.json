@@ -3,6 +3,7 @@
   "texts": {
     "Menu:Home": "Home",
     "Welcome": "Welcome",
+    "Test": "Test",
     "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io.",
     "Permission:Query": "Query",
     "Permission:Create": "Create",
@@ -17,6 +18,7 @@
     "Permission:IdentityServerManagement:Client": "Client",
     "Permission:IdentityServerManagement:ApiResource": "ApiResource",
     "Permission:IdentityServerManagement:ApiScope": "ApiScope",
-    "Permission:IdentityServerManagement:IdentityResources": "IdentityResources"
+    "Permission:IdentityServerManagement:IdentityResources": "IdentityResources",
+    "Permission:SettingUi:ShowSettingPage": "SettingManagement"
   }
 }

@@ -38,6 +38,16 @@ const admin: AppRouteModule = {
       },
     },
     {
+      path: 'settings',
+      name: 'Settings',
+      component: () => import('/@/views/admin/settings/Setting.vue'),
+      meta: {
+        title: t('routes.admin.settingManagement'),
+        policy: 'AbpIdentity.Roles',
+        icon: 'ant-design:unordered-list-outlined',
+      },
+    },
+    {
       path: 'abpAuditLogs',
       name: 'AuditLogs',
       component: () => import('/@/views/admin/auditLog/AuditLog.vue'),

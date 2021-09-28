@@ -51,4 +51,5 @@ export default {
   logLevel: '级别',
   logContent: '内容',
   detail: '详情',
+  settingManagement: '设置管理',
 };

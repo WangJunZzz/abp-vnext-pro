@@ -126,7 +126,8 @@ namespace CompanyName.ProjectName.Roles
                 "AbpTenantManagement.Tenants.ManageFeatures",
                 "AbpTenantManagement.Tenants.ManageConnectionStrings",
                 "SettingManagement",
-                "SettingManagement.Emailing"
+                "SettingManagement.Emailing",
+                "SettingUi"
             };
 
             var permissions = new List<PermissionTreeDto>();
@@ -187,6 +188,22 @@ namespace CompanyName.ProjectName.Roles
             }
 
             result.Permissions = permissions;
+
+            var settingUIPermisstion = "SettingUi.ShowSettingPage";
+            // https://github.com/EasyAbp/Abp.SettingUi/blob/develop/src/EasyAbp.Abp.SettingUi.Application/SettingUiAppService.cs
+            // 因为使用的SettingUI模块，想把权限添加到系统管理下 
+            result.Permissions.First(e => e.Key == "AbpIdentity").Children.Add(new PermissionTreeDto()
+            {
+                Key = settingUIPermisstion,
+                Title = L["Permission:SettingUi:ShowSettingPage"]
+            });
+            result.AllGrants.Add(settingUIPermisstion);
+
+            var setting = input.First(e => e.Name == "SettingUi").Permissions.First(e => e.Name == settingUIPermisstion);
+            if (setting.IsGranted)
+            {
+                result.Grants.Add(settingUIPermisstion);
+            }
             return result;
         }
     }

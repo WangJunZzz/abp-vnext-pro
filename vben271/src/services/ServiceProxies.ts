@@ -4659,7 +4659,7 @@ export class RolesServiceProxy extends ServiceProxyBase {
     }
 }
 
-export class SampleServiceProxy extends ServiceProxyBase {
+export class SettingsServiceProxy extends ServiceProxyBase {
     private instance: AxiosInstance;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -4671,14 +4671,15 @@ export class SampleServiceProxy extends ServiceProxyBase {
     }
 
     /**
+     * 获取所有Setting
      * @return Success
      */
-    sample(  cancelToken?: CancelToken | undefined): Promise<SampleDto> {
-        let url_ = this.baseUrl + "/api/DataDictionaryManagement/sample";
+    all(  cancelToken?: CancelToken | undefined): Promise<SettingGroup[]> {
+        let url_ = this.baseUrl + "/Settings/all";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
-            method: "GET",
+            method: "POST",
             url: url_,
             headers: {
                 "Accept": "text/plain"
@@ -4695,11 +4696,11 @@ export class SampleServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processSample(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processAll(_response));
         });
     }
 
-    protected processSample(response: AxiosResponse): Promise<SampleDto> {
+    protected processAll(response: AxiosResponse): Promise<SettingGroup[]> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -4713,7 +4714,14 @@ export class SampleServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = SampleDto.fromJS(resultData200);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(SettingGroup.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
             return result200;
         } else if (status === 403) {
             const _responseText = response.data;
@@ -4755,21 +4763,26 @@ export class SampleServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<SampleDto>(<any>null);
+        return Promise.resolve<SettingGroup[]>(<any>null);
     }
 
     /**
+     * 更新Setting
+     * @param body (optional) 
      * @return Success
      */
-    authorized(  cancelToken?: CancelToken | undefined): Promise<SampleDto> {
-        let url_ = this.baseUrl + "/api/DataDictionaryManagement/sample/authorized";
+    update(body: UpdateSettingInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Settings/update";
         url_ = url_.replace(/[?&]$/, "");
 
+        const content_ = JSON.stringify(body);
+
         let options_ = <AxiosRequestConfig>{
-            method: "GET",
+            data: content_,
+            method: "POST",
             url: url_,
             headers: {
-                "Accept": "text/plain"
+                "Content-Type": "application/json",
             },
             cancelToken
         };
@@ -4783,11 +4796,11 @@ export class SampleServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processAuthorized(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processUpdate(_response));
         });
     }
 
-    protected processAuthorized(response: AxiosResponse): Promise<SampleDto> {
+    protected processUpdate(response: AxiosResponse): Promise<void> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -4799,10 +4812,7 @@ export class SampleServiceProxy extends ServiceProxyBase {
         }
         if (status === 200) {
             const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = SampleDto.fromJS(resultData200);
-            return result200;
+            return Promise.resolve<void>(<any>null);
         } else if (status === 403) {
             const _responseText = response.data;
             let result403: any = null;
@@ -4843,7 +4853,7 @@ export class SampleServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<SampleDto>(<any>null);
+        return Promise.resolve<void>(<any>null);
     }
 }
 
@@ -12773,42 +12783,6 @@ export interface IReturnValueApiDescriptionModel {
     typeSimple: string | undefined;
 }
 
-export class SampleDto implements ISampleDto {
-    value!: number;
-
-    constructor(data?: ISampleDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.value = _data["value"];
-        }
-    }
-
-    static fromJS(data: any): SampleDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new SampleDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["value"] = this.value;
-        return data; 
-    }
-}
-
-export interface ISampleDto {
-    value: number;
-}
-
 export class SendPasswordResetCodeDto implements ISendPasswordResetCodeDto {
     email!: string;
     appName!: string;
@@ -12939,6 +12913,130 @@ export class SetReadInput implements ISetReadInput {
 export interface ISetReadInput {
     id: string;
     receiveId: string;
+}
+
+export class SettingGroup implements ISettingGroup {
+    groupName!: string | undefined;
+    groupDisplayName!: string | undefined;
+    settingInfos!: SettingInfo[] | undefined;
+    permission!: string | undefined;
+
+    constructor(data?: ISettingGroup) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.groupName = _data["groupName"];
+            this.groupDisplayName = _data["groupDisplayName"];
+            if (Array.isArray(_data["settingInfos"])) {
+                this.settingInfos = [] as any;
+                for (let item of _data["settingInfos"])
+                    this.settingInfos!.push(SettingInfo.fromJS(item));
+            }
+            this.permission = _data["permission"];
+        }
+    }
+
+    static fromJS(data: any): SettingGroup {
+        data = typeof data === 'object' ? data : {};
+        let result = new SettingGroup();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["groupName"] = this.groupName;
+        data["groupDisplayName"] = this.groupDisplayName;
+        if (Array.isArray(this.settingInfos)) {
+            data["settingInfos"] = [];
+            for (let item of this.settingInfos)
+                data["settingInfos"].push(item.toJSON());
+        }
+        data["permission"] = this.permission;
+        return data; 
+    }
+}
+
+export interface ISettingGroup {
+    groupName: string | undefined;
+    groupDisplayName: string | undefined;
+    settingInfos: SettingInfo[] | undefined;
+    permission: string | undefined;
+}
+
+export class SettingInfo implements ISettingInfo {
+    name!: string | undefined;
+    displayName!: string | undefined;
+    description!: string | undefined;
+    value!: string | undefined;
+    properties!: { [key: string]: any; } | undefined;
+    permission!: string | undefined;
+
+    constructor(data?: ISettingInfo) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.displayName = _data["displayName"];
+            this.description = _data["description"];
+            this.value = _data["value"];
+            if (_data["properties"]) {
+                this.properties = {} as any;
+                for (let key in _data["properties"]) {
+                    if (_data["properties"].hasOwnProperty(key))
+                        (<any>this.properties)![key] = _data["properties"][key];
+                }
+            }
+            this.permission = _data["permission"];
+        }
+    }
+
+    static fromJS(data: any): SettingInfo {
+        data = typeof data === 'object' ? data : {};
+        let result = new SettingInfo();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["displayName"] = this.displayName;
+        data["description"] = this.description;
+        data["value"] = this.value;
+        if (this.properties) {
+            data["properties"] = {};
+            for (let key in this.properties) {
+                if (this.properties.hasOwnProperty(key))
+                    (<any>data["properties"])[key] = this.properties[key];
+            }
+        }
+        data["permission"] = this.permission;
+        return data; 
+    }
+}
+
+export interface ISettingInfo {
+    name: string | undefined;
+    displayName: string | undefined;
+    description: string | undefined;
+    value: string | undefined;
+    properties: { [key: string]: any; } | undefined;
+    permission: string | undefined;
 }
 
 export class StringStringFromSelector implements IStringStringFromSelector {
@@ -14187,6 +14285,54 @@ export class UpdateScopeInput implements IUpdateScopeInput {
 export interface IUpdateScopeInput {
     clientId: string;
     scopes: string[] | undefined;
+}
+
+export class UpdateSettingInput implements IUpdateSettingInput {
+    values!: { [key: string]: string; } | undefined;
+
+    constructor(data?: IUpdateSettingInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (_data["values"]) {
+                this.values = {} as any;
+                for (let key in _data["values"]) {
+                    if (_data["values"].hasOwnProperty(key))
+                        (<any>this.values)![key] = _data["values"][key];
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): UpdateSettingInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateSettingInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (this.values) {
+            data["values"] = {};
+            for (let key in this.values) {
+                if (this.values.hasOwnProperty(key))
+                    (<any>data["values"])[key] = this.values[key];
+            }
+        }
+        return data; 
+    }
+}
+
+export interface IUpdateSettingInput {
+    values: { [key: string]: string; } | undefined;
 }
 
 export class UpdateUserInput implements IUpdateUserInput {

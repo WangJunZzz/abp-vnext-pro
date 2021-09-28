@@ -51,4 +51,5 @@ export default {
 
   logLevel: 'Level',
   logContent: 'Content',
+  settingManagement: 'SettingManagement',
 };

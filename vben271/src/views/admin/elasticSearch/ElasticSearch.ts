@@ -23,7 +23,7 @@ export const searchFormSchema: FormSchema[] = [
     component: 'RangePicker',
     label: '创建时间:',
     labelWidth: 80,
-    colProps: { span: 4 },
+    colProps: { span: 6 },
     defaultValue: [moment().subtract(0, 'days'), moment().add(1, 'days')],
   },
 ];
