@@ -43,7 +43,7 @@ const admin: AppRouteModule = {
       component: () => import('/@/views/admin/settings/Setting.vue'),
       meta: {
         title: t('routes.admin.settingManagement'),
-        policy: 'AbpIdentity.Roles',
+        policy: 'SettingUi.ShowSettingPage',
         icon: 'ant-design:unordered-list-outlined',
       },
     },
