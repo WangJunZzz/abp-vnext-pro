@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <AbpPackageVersion>4.4.0</AbpPackageVersion>
+    <DotNetCoreCAP>5.1.4</DotNetCoreCAP>
   </PropertyGroup>
 
 </Project>

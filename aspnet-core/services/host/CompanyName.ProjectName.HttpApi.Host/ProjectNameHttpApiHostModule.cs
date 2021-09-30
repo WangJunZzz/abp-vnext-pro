@@ -47,6 +47,7 @@ using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.MultiTenancy;
 using CompanyName.ProjectName.Extensions.Customs.Http;
 using CompanyName.ProjectName.QueryManagement.ElasticSearch;
+using Savorboard.CAP.InMemoryMessageQueue;
 using Serilog;
 using Volo.Abp.AspNetCore.ExceptionHandling;
 
@@ -72,7 +73,7 @@ namespace CompanyName.ProjectName
 
         public override void OnPostApplicationInitialization(ApplicationInitializationContext context)
         {
-           // context.CreateRecurringJob();
+            // context.CreateRecurringJob();
             base.OnPostApplicationInitialization(context);
         }
 
@@ -145,9 +146,8 @@ namespace CompanyName.ProjectName
         private void ConfigureAbpExceptions(ServiceConfigurationContext context)
         {
             context.Services.Configure<AbpExceptionHandlingOptions>(options => { options.SendExceptionsDetailsToClients = true; });
-
-           
         }
+
         public void ConfigureHangfireMysql(ServiceConfigurationContext context)
         {
             Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = true; });
@@ -261,7 +261,7 @@ namespace CompanyName.ProjectName
         private void ConfigureVirtualFileSystem(ServiceConfigurationContext context)
         {
             Configure<AbpVirtualFileSystemOptions>(options => { options.FileSets.AddEmbedded<ProjectNameHttpApiHostModule>(); });
-            
+
             // var hostingEnvironment = context.Services.GetHostingEnvironment();
             //
             // if (hostingEnvironment.IsDevelopment())
@@ -287,11 +287,11 @@ namespace CompanyName.ProjectName
         private void ConfigurationStsHttpClient(ServiceConfigurationContext context)
         {
             context.Services.AddHttpClient(HttpClientNameConsts.Sts,
-                    options =>
-                    {
-                        options.BaseAddress =
-                            new Uri(context.Services.GetConfiguration().GetSection("HttpClient:Sts:Url").Value);
-                    });
+                options =>
+                {
+                    options.BaseAddress =
+                        new Uri(context.Services.GetConfiguration().GetSection("HttpClient:Sts:Url").Value);
+                });
         }
 
         private void ConfigureConventionalControllers()
@@ -414,27 +414,39 @@ namespace CompanyName.ProjectName
                 });
             });
         }
-        
+
         private void ConfigurationCap(ServiceConfigurationContext context)
         {
             var configuration = context.Services.GetConfiguration();
-            context.AddAbpCap(capOptions =>
+            var enabled = configuration.GetValue<bool>("Cap:Enabled", false);
+            if (enabled)
             {
-                capOptions.UseEntityFramework<ProjectNameDbContext>();
-                capOptions.UseRabbitMQ(option =>
+                context.AddAbpCap(capOptions =>
                 {
-                    option.HostName = configuration.GetValue<string>("RabbitMq:HostName");
-                    option.UserName = configuration.GetValue<string>("RabbitMq:UserName");
-                    option.Password = configuration.GetValue<string>("RabbitMq:Password");
-                }); 
-              
-                var hostingEnvironment = context.Services.GetHostingEnvironment();
-                bool auth = !hostingEnvironment.IsDevelopment();
-                capOptions.UseDashboard(options =>
+                    capOptions.UseEntityFramework<ProjectNameDbContext>();
+                    capOptions.UseRabbitMQ(option =>
+                    {
+                        option.HostName = configuration.GetValue<string>("Cap:RabbitMq:HostName");
+                        option.UserName = configuration.GetValue<string>("Cap:RabbitMq:UserName");
+                        option.Password = configuration.GetValue<string>("Cap:RabbitMq:Password");
+                    });
+
+                    var hostingEnvironment = context.Services.GetHostingEnvironment();
+                    bool auth = !hostingEnvironment.IsDevelopment();
+                    capOptions.UseDashboard(options => { options.UseAuth = auth; });
+                });
+            }
+            else
+            {
+                context.AddAbpCap(capOptions =>
                 {
-                    options.UseAuth = auth;
-                }); 
-            });
+                    capOptions.UseInMemoryStorage();
+                    capOptions.UseInMemoryMessageQueue();
+                    var hostingEnvironment = context.Services.GetHostingEnvironment();
+                    bool auth = !hostingEnvironment.IsDevelopment();
+                    capOptions.UseDashboard(options => { options.UseAuth = auth; });
+                });
+            }
         }
     }
 }
