@@ -21,11 +21,12 @@ namespace CompanyName.ProjectName.Users
 
         public async Task SeedAsync(DataSeedContext context)
         {
+            // abp 默认会锁定当前用户
             const string adminUserName = "admin";
             var adminUser = await _userManager.FindByNameAsync(adminUserName);
             if (adminUser != null)
             {
-                await _userManager.SetLockoutEndDateAsync(adminUser, DateTimeOffset.UtcNow.AddDays(-1));
+                await _userManager.SetLockoutEnabledAsync(adminUser, false);
             }
 
             var role = await _identityRoleManager.FindByNameAsync(adminUserName);
