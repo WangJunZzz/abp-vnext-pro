@@ -9,6 +9,7 @@ export enum LoginStateEnum {
   RESET_PASSWORD,
   MOBILE,
   QR_CODE,
+  TENANT,
 }
 
 const currentState = ref(LoginStateEnum.LOGIN);
@@ -45,7 +46,7 @@ export function useFormRules(formData?: Recordable) {
   const getPasswordFormRule = computed(() => createRule(t('sys.login.passwordPlaceholder')));
   const getSmsFormRule = computed(() => createRule(t('sys.login.smsPlaceholder')));
   const getMobileFormRule = computed(() => createRule(t('sys.login.mobilePlaceholder')));
-
+  const getTenantFormRule = computed(() => createRule(t('sys.login.tenantPlaceholder')));
   const validatePolicy = async (_: RuleObject, value: boolean) => {
     return !value ? Promise.reject(t('sys.login.policyPlaceholder')) : Promise.resolve();
   };
@@ -67,11 +68,13 @@ export function useFormRules(formData?: Recordable) {
     const passwordFormRule = unref(getPasswordFormRule);
     const smsFormRule = unref(getSmsFormRule);
     const mobileFormRule = unref(getMobileFormRule);
+    const tenantFormRule = unref(getTenantFormRule);
 
     const mobileRule = {
       sms: smsFormRule,
       mobile: mobileFormRule,
     };
+
     switch (unref(currentState)) {
       // register form rules
       case LoginStateEnum.REGISTER:
@@ -95,7 +98,12 @@ export function useFormRules(formData?: Recordable) {
       // mobile form rules
       case LoginStateEnum.MOBILE:
         return mobileRule;
-
+      case LoginStateEnum.TENANT:
+        return {
+          account: accountFormRule,
+          password: passwordFormRule,
+          tenant: tenantFormRule,
+        };
       // login form rules
       default:
         return {

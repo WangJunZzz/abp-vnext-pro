@@ -4,7 +4,13 @@ import { defineStore } from 'pinia';
 import { store } from '/@/store';
 import { RoleEnum } from '/@/enums/roleEnum';
 import { PageEnum } from '/@/enums/pageEnum';
-import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY, ABP_LOCALE_KEY } from '/@/enums/cacheEnum';
+import {
+  ROLES_KEY,
+  TOKEN_KEY,
+  USER_INFO_KEY,
+  ABP_LOCALE_KEY,
+  ABP_TETANT_KEY,
+} from '/@/enums/cacheEnum';
 import { getAuthCache, setAuthCache } from '/@/utils/auth';
 import { GetUserInfoByUserIdModel, LoginParams } from '/@/api/sys/model/userModel';
 import {
@@ -30,6 +36,7 @@ interface UserState {
   sessionTimeout?: boolean;
   lastUpdateTime: number;
   language: string;
+  tenantId: string;
 }
 
 export const useUserStore = defineStore({
@@ -46,6 +53,7 @@ export const useUserStore = defineStore({
     // Last fetch time
     lastUpdateTime: 0,
     language: '',
+    tenantId: '',
   }),
   getters: {
     getUserInfo(): UserInfo {
@@ -65,6 +73,9 @@ export const useUserStore = defineStore({
     },
     getLanguage(): string {
       return this.language || getAuthCache<string>(ABP_LOCALE_KEY);
+    },
+    getTenant(): string {
+      return this.tenantId || getAuthCache<string>(ABP_TETANT_KEY);
     },
     checkUserLoginExpire(): boolean {
       try {
@@ -97,6 +108,10 @@ export const useUserStore = defineStore({
       this.userInfo = info;
       this.lastUpdateTime = new Date().getTime();
       setAuthCache(USER_INFO_KEY, info);
+    },
+    setTenant(tenantId: string) {
+      this.tenantId = tenantId;
+      setAuthCache(ABP_TETANT_KEY, tenantId);
     },
     setSessionTimeout(flag: boolean) {
       this.sessionTimeout = flag;

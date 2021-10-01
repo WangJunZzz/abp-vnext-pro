@@ -63,7 +63,7 @@ const admin: AppRouteModule = {
       component: () => import('/@/views/admin/elasticSearch/ElasticSearch.vue'),
       meta: {
         title: t('routes.admin.esLogs'),
-        policy: 'System.AuditLog',
+        policy: 'System.ES',
         icon: 'ant-design:snippets-twotone',
       },
     },

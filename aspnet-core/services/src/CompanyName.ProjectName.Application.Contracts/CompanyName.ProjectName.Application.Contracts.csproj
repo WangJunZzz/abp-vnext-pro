@@ -35,4 +35,8 @@
     <None Remove="AuditLogs\Dto\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Tenants" />
+  </ItemGroup>
+
 </Project>

@@ -14,11 +14,11 @@
   import { defineComponent } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
-  import { editFormSchema, editApiScopeAsync } from './ApiScopes';
+  import { editFormSchema, updateTenantAsync } from './Tenant';
   import { useI18n } from '/@/hooks/web/useI18n';
 
   export default defineComponent({
-    name: 'EditApiScope',
+    name: 'EditTenant',
     components: {
       BasicModal,
       BasicForm,
@@ -36,20 +36,14 @@
       const [registerModal, { changeOkLoading, closeModal }] = useModalInner((data) => {
         setFieldsValue({
           name: data.record.name,
-          enabled: data.record.enabled,
-          displayName: data.record.displayName,
-          description: data.record.description,
-          required: data.record.required,
-          emphasize: data.record.emphasize,
-          showInDiscoveryDocument: data.record.showInDiscoveryDocument,
+          id: data.record.id,
         });
       });
 
-      // 保存角色
       const submit = async () => {
         try {
           const request = getFieldsValue();
-          await editApiScopeAsync({ request, changeOkLoading, validate, closeModal });
+          await updateTenantAsync({ request, changeOkLoading, validate, closeModal });
           resetFields();
           emit('reload');
         } finally {

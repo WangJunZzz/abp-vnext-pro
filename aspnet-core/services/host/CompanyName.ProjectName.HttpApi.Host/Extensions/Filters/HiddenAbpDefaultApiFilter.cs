@@ -42,14 +42,14 @@ namespace CompanyName.ProjectName.Extensions.Filters
         private List<string> GetHiddenAbpDefaultApiList()
         {
             return new List<string>() {
-            // "/api/abp/multi-tenancy/tenants",
-            // "/api/account",
-            // "/api/feature-management/features",
-            // "/api/permission-management/permissions",
-            // "/api/identity/my-profile",
-            // "/api/identity",
-            // "/api/multi-tenancy/tenants",
-            // "/api/setting-management/emailing"
+            "/api/abp/multi-tenancy/tenants",
+            "/api/account",
+            "/api/feature-management/features",
+            "/api/permission-management/permissions",
+            "/api/identity/my-profile",
+            "/api/identity",
+            "/api/multi-tenancy/tenants",
+            "/api/setting-management/emailing"
             };
         }
     }

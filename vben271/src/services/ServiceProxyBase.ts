@@ -10,9 +10,9 @@ export class ServiceProxyBase {
   protected transformOptions(options: AxiosRequestConfig) {
     options.baseURL = import.meta.env.VITE_API_URL as string;
     const guard: boolean = this.urlGuard(options.url as string);
+    const userStore = useUserStoreWithOut();
 
-    if (!guard) {
-      const userStore = useUserStoreWithOut();
+    if (guard) {
       if (userStore.checkUserLoginExpire) {
         router.replace(PageEnum.BASE_LOGIN);
         return;
@@ -23,6 +23,12 @@ export class ServiceProxyBase {
         'accept-language': language,
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + token,
+        __tenant: userStore.tenantId,
+      };
+    } else {
+      options.headers = {
+        'Content-Type': 'application/json',
+        __tenant: userStore.tenantId,
       };
     }
 
@@ -55,8 +61,8 @@ export class ServiceProxyBase {
 
   //判决接口是否需要拦截
   private urlGuard(url: string): boolean {
-    // 登录接口不需要拦截
-    return (url.indexOf('login') as number) > 0;
+    let arr = ['/api/app/account/login', '/Tenants/find'];
+    return !arr.includes(url);
   }
 
   private buildRequestMessage(): any {

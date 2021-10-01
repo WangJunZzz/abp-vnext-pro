@@ -14,11 +14,15 @@
   import { defineComponent } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
-  import { editFormSchema, editApiScopeAsync } from './ApiScopes';
+  import {
+    updateConnectionStringFormSchema,
+    updateConnectionStringAsync,
+    getConnectionStringAsync,
+  } from './Tenant';
   import { useI18n } from '/@/hooks/web/useI18n';
 
   export default defineComponent({
-    name: 'EditApiScope',
+    name: 'EditConnectionString',
     components: {
       BasicModal,
       BasicForm,
@@ -26,34 +30,30 @@
     emits: ['reload'],
     setup(_, { emit }) {
       const { t } = useI18n();
-      const [registerApiScopeForm, { getFieldsValue, validate, resetFields, setFieldsValue }] =
-        useForm({
-          labelWidth: 120,
-          schemas: editFormSchema,
-          showActionButtonGroup: false,
-        });
+      const [registerApiScopeForm, { getFieldsValue, resetFields, setFieldsValue }] = useForm({
+        labelWidth: 120,
+        schemas: updateConnectionStringFormSchema,
+        showActionButtonGroup: false,
+      });
 
-      const [registerModal, { changeOkLoading, closeModal }] = useModalInner((data) => {
+      const [registerModal, { changeOkLoading, closeModal }] = useModalInner(async (data) => {
+        const connectionString = await getConnectionStringAsync({ id: data.record.id });
         setFieldsValue({
-          name: data.record.name,
-          enabled: data.record.enabled,
-          displayName: data.record.displayName,
-          description: data.record.description,
-          required: data.record.required,
-          emphasize: data.record.emphasize,
-          showInDiscoveryDocument: data.record.showInDiscoveryDocument,
+          id: data.record.id,
+          connectionString: connectionString,
         });
       });
 
-      // 保存角色
       const submit = async () => {
         try {
           const request = getFieldsValue();
-          await editApiScopeAsync({ request, changeOkLoading, validate, closeModal });
+          changeOkLoading(true);
+          await updateConnectionStringAsync({ request });
           resetFields();
           emit('reload');
         } finally {
           changeOkLoading(false);
+          closeModal();
         }
       };
 

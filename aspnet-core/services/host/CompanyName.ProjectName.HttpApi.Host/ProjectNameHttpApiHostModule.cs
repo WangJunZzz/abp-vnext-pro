@@ -36,9 +36,11 @@ using System.Threading.Tasks;
 using CompanyName.ProjectName.CAP;
 using CompanyName.ProjectName.Extensions;
 using CompanyName.ProjectName.Extensions.Customs.Http;
+using CompanyName.ProjectName.MultiTenancy;
 using Savorboard.CAP.InMemoryMessageQueue;
 using Serilog;
 using Volo.Abp.AspNetCore.ExceptionHandling;
+using Volo.Abp.AspNetCore.MultiTenancy;
 
 namespace CompanyName.ProjectName
 {
@@ -54,7 +56,8 @@ namespace CompanyName.ProjectName
         typeof(AbpAccountWebModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpBackgroundJobsHangfireModule),
-        typeof(AbpCapModule)
+        typeof(AbpCapModule),
+        typeof(AbpAspNetCoreMultiTenancyModule)
     )]
     public class ProjectNameHttpApiHostModule : AbpModule
     {
@@ -96,11 +99,11 @@ namespace CompanyName.ProjectName
             app.UseRouting();
             app.UseCors(DefaultCorsPolicyName);
             app.UseAuthentication();
-            //
-            // if (MultiTenancyConsts.IsEnabled)
-            // {
-            //     app.UseMultiTenancy();
-            // }
+            
+            if (MultiTenancyConsts.IsEnabled)
+            {
+                app.UseMultiTenancy();
+            }
 
             app.UseAuthorization();
 

@@ -15,6 +15,7 @@ import {
   MULTIPLE_TABS_KEY,
   AUHT_KEY,
   ABP_LOCALE_KEY,
+  ABP_TETANT_KEY,
 } from '/@/enums/cacheEnum';
 import { DEFAULT_CACHE_TIME } from '/@/settings/encryptionSetting';
 import { toRaw } from 'vue';
@@ -29,6 +30,7 @@ interface BasicStore {
   [MULTIPLE_TABS_KEY]: RouteLocationNormalized[];
   [AUHT_KEY]: ApplicationAuthConfigurationDto;
   [ABP_LOCALE_KEY]: string;
+  [ABP_TETANT_KEY]: string;
 }
 
 type LocalStore = BasicStore;

@@ -70,7 +70,7 @@ export default {
     signInFormTitle: 'Sign in',
     signUpFormTitle: 'Sign up',
     forgetFormTitle: 'Reset password',
-
+    tenantFormTitle: 'Tenant sign in',
     signInTitle: 'Backstage management system',
     signInDesc: 'Enter your personal details and get started!',
     policy: 'I agree to the xxx Privacy Policy',
@@ -92,6 +92,7 @@ export default {
     smsPlaceholder: 'Please input sms code',
     mobilePlaceholder: 'Please input mobile',
     policyPlaceholder: 'Register after checking',
+    tenantPlaceholder: 'Please input tenant',
     diffPwd: 'The two passwords are inconsistent',
 
     userName: 'Username',
@@ -100,5 +101,6 @@ export default {
     email: 'Email',
     smsCode: 'SMS code',
     mobile: 'Mobile',
+    tenant: 'Tenant',
   },
 };

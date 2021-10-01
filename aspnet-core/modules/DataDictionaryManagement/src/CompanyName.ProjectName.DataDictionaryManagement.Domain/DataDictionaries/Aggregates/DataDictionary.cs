@@ -72,7 +72,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.Aggr
 
         public void SetTenantId(Guid? tenantId)
         {
-            TenantId = TenantId;
+            TenantId = tenantId;
         }
 
         public void SetCode(string code)

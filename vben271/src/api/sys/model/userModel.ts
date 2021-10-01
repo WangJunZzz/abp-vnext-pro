@@ -4,6 +4,7 @@
 export interface LoginParams {
   username: string;
   password: string;
+  tenantId: string;
 }
 
 /**
@@ -48,6 +49,7 @@ export interface GetUserInfoByUserIdModel {
 export interface LoginParams {
   username: string;
   password: string;
+  tenantId: string;
 }
 
 export interface RoleInfo {

@@ -27,6 +27,8 @@ export const APP_SESSION_CACHE_KEY = 'COMMON__SESSION__KEY__';
 
 export const ABP_LOCALE_KEY = 'ABP_LOCALE__';
 
+export const ABP_TETANT_KEY = 'ABP_TETANT__';
+
 export const AUHT_KEY = 'AUTH__KEY__';
 
 export enum CacheTypeEnum {

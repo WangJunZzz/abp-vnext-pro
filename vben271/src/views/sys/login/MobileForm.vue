@@ -10,6 +10,14 @@
           class="fix-auto-fill"
         />
       </FormItem>
+      <FormItem name="mobile" class="enter-x">
+        <Input
+          size="large"
+          v-model:value="formData.mobile"
+          :placeholder="t('sys.login.mobile')"
+          class="fix-auto-fill"
+        />
+      </FormItem>
       <FormItem name="sms" class="enter-x">
         <CountdownInput
           size="large"

@@ -33,7 +33,13 @@
         {{ t('sys.login.registerButton') }}
       </Button> -->
     </FormItem>
-
+    <ARow class="enter-x">
+      <ACol :md="8" :xs="24">
+        <Button block @click="setLoginState(LoginStateEnum.TENANT)">
+          {{ t('sys.login.tenantFormTitle') }}
+        </Button>
+      </ACol>
+    </ARow>
     <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>
 
     <div class="flex justify-evenly enter-x" :class="`${prefixCls}-sign-in-way`">
@@ -58,13 +64,7 @@
   import { useMessage } from '/@/hooks/web/useMessage';
 
   import { useUserStore } from '/@/store/modules/user';
-  import {
-    LoginStateEnum,
-    useLoginState,
-    useFormRules,
-    useFormValid,
-    useOidcLogin,
-  } from './useLogin';
+  import { LoginStateEnum, useLoginState, useFormRules, useFormValid } from './useLogin';
   import { useDesign } from '/@/hooks/web/useDesign';
   //import { onKeyStroke } from '@vueuse/core';
 
@@ -104,6 +104,7 @@
         toRaw({
           password: data.password,
           username: data.account,
+          tenantId: '',
           mode: 'none', //不要默认的错误提示
         })
       );

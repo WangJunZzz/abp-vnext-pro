@@ -15,6 +15,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Volo.Abp.Identity;
+using Volo.Abp.MultiTenancy;
 using Volo.Abp.Security.Claims;
 
 namespace CompanyName.ProjectName.Users
@@ -25,29 +26,37 @@ namespace CompanyName.ProjectName.Users
         private readonly JwtOptions _jwtOptions;
         private readonly Microsoft.AspNetCore.Identity.SignInManager<Volo.Abp.Identity.IdentityUser> _signInManager;
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly ILogger<LoginAppService> _logger;
+        private readonly ICurrentTenant _currentTenant;
         public LoginAppService(
             IdentityUserManager userManager,
             IOptionsSnapshot<JwtOptions> jwtOptions,
             Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> signInManager,
-            IHttpClientFactory httpClientFactory, ILogger<LoginAppService> logger)
+            IHttpClientFactory httpClientFactory, ICurrentTenant currentTenant)
         {
             _userManager = userManager;
             _jwtOptions = jwtOptions.Value;
             _signInManager = signInManager;
             _httpClientFactory = httpClientFactory;
-            _logger = logger;
+            _currentTenant = currentTenant;
         }
 
 
         public async Task<LoginOutput> LoginAsync(LoginInput input)
         {
-            _logger.LogError("test");
             try
             {
                 var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
-                if (result.IsLockedOut) throw new Exception("当前用户已被锁定");
-                if (!result.Succeeded) throw new Exception("用户名或者密码错误");
+                if (result.IsLockedOut)
+                {
+                    throw new Exception("当前用户已被锁定");
+                }
+                
+                if (!result.Succeeded)
+                {
+                    throw new Exception("用户名或者密码错误");
+                }
+
+                var s = _currentTenant.Id;
                 var user = await _userManager.FindByNameAsync(input.Name);
                 return await BuildResult(user);
             }
