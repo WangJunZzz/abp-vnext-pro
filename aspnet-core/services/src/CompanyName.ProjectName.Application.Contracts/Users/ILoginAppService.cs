@@ -12,5 +12,6 @@ namespace CompanyName.ProjectName.Users
         Task<LoginOutput> LoginAsync(LoginInput input);
 
         Task<LoginOutput> StsLoginAsync(string accessToken);
+        Task LogoutAsync();
     }
 }

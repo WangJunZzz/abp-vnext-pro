@@ -64,7 +64,13 @@
   import { useMessage } from '/@/hooks/web/useMessage';
 
   import { useUserStore } from '/@/store/modules/user';
-  import { LoginStateEnum, useLoginState, useFormRules, useFormValid } from './useLogin';
+  import {
+    LoginStateEnum,
+    useLoginState,
+    useFormRules,
+    useFormValid,
+    useOidcLogin,
+  } from './useLogin';
   import { useDesign } from '/@/hooks/web/useDesign';
   //import { onKeyStroke } from '@vueuse/core';
 

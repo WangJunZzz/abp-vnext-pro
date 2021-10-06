@@ -92,7 +92,7 @@
         request.providerName = 'R';
         request.providerKey = roleName;
         const { checked } = toRaw(getTree().getCheckedKeys()) as [];
-        debugger;
+
         const noSelectedPermissions = totalRolePermissionsRef.filter((e) => {
           return !(checked.indexOf(e) > -1);
         });

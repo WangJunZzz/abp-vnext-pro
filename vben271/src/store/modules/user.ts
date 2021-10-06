@@ -20,6 +20,7 @@ import {
   login,
   getAbpApplicationConfiguration,
   stsLogin,
+  stsLogout,
 } from '/@/api/sys/user';
 import { useI18n } from '/@/hooks/web/useI18n';
 import { useMessage } from '/@/hooks/web/useMessage';
@@ -199,10 +200,18 @@ export const useUserStore = defineStore({
 
     async stsLogin(token: string) {
       try {
+        // 获取token中的租户信息
+        const decoded: any = jwt_decode(token);
+        if (decoded.tenantid == undefined) {
+          this.setTenant('');
+        } else {
+          this.setTenant(decoded.tenantid);
+        }
+
         const data = await stsLogin(token);
         this.setToken(data.token as string);
         this.setUserInfo({
-          userId: data.id as string,
+          userId: decoded.sub as string,
           username: data.userName as string,
           realName: data.name as string,
           roles: data.roles as [],
@@ -211,6 +220,7 @@ export const useUserStore = defineStore({
         await this.getAbpApplicationConfigurationAsync();
         await router.replace(PageEnum.BASE_HOME);
       } catch (error) {
+        this.setTenant('');
         router.replace(PageEnum.BASE_LOGIN);
       }
     },
@@ -220,11 +230,12 @@ export const useUserStore = defineStore({
      */
     async logout(goLogin = false) {
       try {
-        //await doLogout();
+        await stsLogout();
       } catch {
         console.log('注销Token失败');
       }
-      this.setToken(undefined);
+      this.setTenant('');
+      this.setToken('');
       this.setSessionTimeout(false);
       goLogin && router.push(PageEnum.BASE_LOGIN);
     },

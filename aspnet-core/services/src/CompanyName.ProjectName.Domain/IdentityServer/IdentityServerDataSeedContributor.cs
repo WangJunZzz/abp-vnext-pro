@@ -125,6 +125,12 @@ namespace CompanyName.ProjectName.IdentityServer
 
         private async Task CreateClientsAsync()
         {
+            var client = await _clientRepository.FindByClientIdAsync("Vue3");
+            if (client != null)
+            {
+                return;
+            }
+
             var commonScopes = new[]
             {
                 "email",

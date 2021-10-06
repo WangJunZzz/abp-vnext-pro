@@ -32,6 +32,7 @@
           message.error('登陆失败');
           router.replace(PageEnum.BASE_HOME);
         } finally {
+          compState.loading = false;
         }
       }
       openLoading(true);

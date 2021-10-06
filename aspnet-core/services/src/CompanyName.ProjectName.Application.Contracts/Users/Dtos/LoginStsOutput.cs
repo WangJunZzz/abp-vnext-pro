@@ -18,5 +18,7 @@ namespace CompanyName.ProjectName.Users.Dtos
         public string avatar { get; set; }
 
         public string sub { get; set; }
+        
+        public Guid? tenantId { get; set; }
     }
 }

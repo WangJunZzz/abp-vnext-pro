@@ -12,7 +12,7 @@ export class ServiceProxyBase {
     const guard: boolean = this.urlGuard(options.url as string);
     const userStore = useUserStoreWithOut();
 
-    if (guard) {
+    if (!guard) {
       if (userStore.checkUserLoginExpire) {
         router.replace(PageEnum.BASE_LOGIN);
         return;
@@ -61,8 +61,17 @@ export class ServiceProxyBase {
 
   //判决接口是否需要拦截
   private urlGuard(url: string): boolean {
-    let arr = ['/api/app/account/login', '/Tenants/find'];
-    return !arr.includes(url);
+    if (url == '/Tenants/find') {
+      return true;
+    }
+    if (url == '/api/app/account/login') {
+      return true;
+    }
+    if (url.startsWith('/api/app/account/login/Sts')) {
+      return true;
+    }
+
+    return false;
   }
 
   private buildRequestMessage(): any {

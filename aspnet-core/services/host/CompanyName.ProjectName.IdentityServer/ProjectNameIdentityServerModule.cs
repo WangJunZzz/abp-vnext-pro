@@ -169,11 +169,11 @@ namespace CompanyName.ProjectName
             app.UseCors(DefaultCorsPolicyName);
             app.UseCookiePolicy();
             app.UseAuthentication();
-            //
-            // if (MultiTenancyConsts.IsEnabled)
-            // {
-            //     app.UseMultiTenancy();
-            // }
+            
+            if (MultiTenancyConsts.IsEnabled)
+            {
+                app.UseMultiTenancy();
+            }
 
             app.UseUnitOfWork();
             app.UseIdentityServer();

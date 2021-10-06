@@ -122,7 +122,7 @@ export function useOidcLogin() {
     authority: import.meta.env.VITE_AUTH_URL,
     client_id: 'Vue3',
     redirect_uri: currentHost + '/oidc',
-    post_logout_redirect_uri: import.meta.env.VITE_AUTH_URL,
+    post_logout_redirect_uri: import.meta.env.VITE_AUTH_URL + 'signOut',
     response_type: `id_token token`,
     scope: 'openid email profile',
     //silent_redirect_uri: currentHost + '/oidc-silent-renew',

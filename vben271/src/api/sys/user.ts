@@ -41,6 +41,10 @@ export function stsLogin(token: string): Promise<LoginOutput> {
   const _accountServiceProxy = new AccountServiceProxy();
   return _accountServiceProxy.sts(token);
 }
+export function stsLogout() {
+  const _accountServiceProxy = new AccountServiceProxy();
+  return _accountServiceProxy.logout();
+}
 
 /**
  * 获取应用程序配置

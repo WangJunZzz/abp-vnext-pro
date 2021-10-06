@@ -11,6 +11,9 @@ using CompanyName.ProjectName.Extensions.Customs.Http;
 using CompanyName.ProjectName.QueryManagement.Systems.Users;
 using CompanyName.ProjectName.Users.Dtos;
 using IdentityModel;
+using IdentityServer4;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -27,17 +30,21 @@ namespace CompanyName.ProjectName.Users
         private readonly Microsoft.AspNetCore.Identity.SignInManager<Volo.Abp.Identity.IdentityUser> _signInManager;
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ICurrentTenant _currentTenant;
+        private readonly IHttpContextAccessor _contextAccessor;
+   
+    
         public LoginAppService(
             IdentityUserManager userManager,
             IOptionsSnapshot<JwtOptions> jwtOptions,
             Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> signInManager,
-            IHttpClientFactory httpClientFactory, ICurrentTenant currentTenant)
+            IHttpClientFactory httpClientFactory, ICurrentTenant currentTenant, IHttpContextAccessor contextAccessor)
         {
             _userManager = userManager;
             _jwtOptions = jwtOptions.Value;
             _signInManager = signInManager;
             _httpClientFactory = httpClientFactory;
             _currentTenant = currentTenant;
+            _contextAccessor = contextAccessor;
         }
 
 
@@ -69,14 +76,18 @@ namespace CompanyName.ProjectName.Users
 
         public async Task<LoginOutput> StsLoginAsync(string accessToken)
         {
-            // 通过access token 获取用户信息
-            // 其实当前access token 就有权限访问了
+            // 通过access token 获取用户信息,id4没有把角色信息带过来
             Dictionary<string, string> headers = new Dictionary<string, string> {{"Authorization", $"Bearer {accessToken}"}};
             var response = await _httpClientFactory.GetAsync<LoginStsOutput>(HttpClientNameConsts.Sts, "connect/userinfo", headers);
             var user = await _userManager.FindByNameAsync(response.name);
             return await BuildResult(user);
         }
 
+        public async Task LogoutAsync()
+        {
+            //await _contextAccessor.HttpContext.SignOutAsync(IdentityServerConstants.DefaultCookieAuthenticationScheme);
+            await _signInManager.SignOutAsync();
+        }
 
         public async Task<LoginOutput> BuildResult(IdentityUser user)
         {
