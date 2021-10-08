@@ -83,11 +83,7 @@ namespace CompanyName.ProjectName.Users
             return await BuildResult(user);
         }
 
-        public async Task LogoutAsync()
-        {
-            //await _contextAccessor.HttpContext.SignOutAsync(IdentityServerConstants.DefaultCookieAuthenticationScheme);
-            await _signInManager.SignOutAsync();
-        }
+
 
         public async Task<LoginOutput> BuildResult(IdentityUser user)
         {

@@ -28,11 +28,5 @@ namespace CompanyName.ProjectName.Controllers.Systems
         {
             return _loginAppService.StsLoginAsync(accessToken);
         }
-        [SwaggerOperation(summary: "登出", Tags = new[] {"Account"})]
-        [HttpPost("/api/app/account/logout")]
-        public async Task LogoutAsync()
-        {
-            await _loginAppService.LogoutAsync();
-        }
     }
 }

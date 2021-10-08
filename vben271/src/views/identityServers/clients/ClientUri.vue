@@ -36,7 +36,7 @@
           />
           <a-button
             type="primary"
-            @click="handleRemoveLogoutRedirectUri(item.postLogoutRedirectUris)"
+            @click="handleRemoveLogoutRedirectUri(item.postLogoutRedirectUri)"
             danger
             >{{ t('common.delText') }}</a-button
           >
@@ -122,6 +122,7 @@
       };
 
       const handleRemoveLogoutRedirectUri = async (redirectUri: string) => {
+        debugger;
         await removeLogoutRedirectUriAsync({
           clientId: state.currentClient.clientId,
           uri: redirectUri,

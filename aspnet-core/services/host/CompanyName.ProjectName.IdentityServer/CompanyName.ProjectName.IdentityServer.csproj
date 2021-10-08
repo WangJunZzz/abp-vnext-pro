@@ -48,4 +48,17 @@
     <ProjectReference Include="..\..\src\CompanyName.ProjectName.EntityFrameworkCore.DbMigrations\CompanyName.ProjectName.EntityFrameworkCore.DbMigrations.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="publish\CompanyName.ProjectName.IdentityServer.dll.config" />
+    <_ContentIncludedByDefault Remove="publish\web.config" />
+    <_ContentIncludedByDefault Remove="publish\appsettings.Development.json" />
+    <_ContentIncludedByDefault Remove="publish\appsettings.json" />
+    <_ContentIncludedByDefault Remove="publish\appsettings.Production.json" />
+    <_ContentIncludedByDefault Remove="publish\appsettings.secrets.json" />
+    <_ContentIncludedByDefault Remove="publish\CompanyName.ProjectName.IdentityServer.deps.json" />
+    <_ContentIncludedByDefault Remove="publish\CompanyName.ProjectName.IdentityServer.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="publish\package.json" />
+    <_ContentIncludedByDefault Remove="publish\wwwroot\libs\malihu-custom-scrollbar-plugin\package.json" />
+  </ItemGroup>
+
 </Project>

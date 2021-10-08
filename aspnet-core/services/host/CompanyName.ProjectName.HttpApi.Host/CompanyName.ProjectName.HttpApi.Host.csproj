@@ -71,6 +71,7 @@
     <_ContentIncludedByDefault Remove="publish\publish\publish\appsettings.secrets.json" />
     <_ContentIncludedByDefault Remove="publish\publish\publish\CompanyName.ProjectName.HttpApi.Host.deps.json" />
     <_ContentIncludedByDefault Remove="publish\publish\publish\CompanyName.ProjectName.HttpApi.Host.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="publish\publish\publish\appsettings.Production.json" />
   </ItemGroup>
 
 </Project>
