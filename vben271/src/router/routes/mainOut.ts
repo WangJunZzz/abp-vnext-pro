@@ -9,9 +9,18 @@ import type { AppRouteModule } from '/@/router/types';
 // http:ip:port/main-out
 export const mainOutRoutes: AppRouteModule[] = [
   {
-    path: '/oidc',
-    name: 'Oidc',
-    component: () => import('/@/views/sys/login/Oidc.vue'),
+    path: '/oidcSignIn',
+    name: 'OidcSignIn',
+    component: () => import('/@/views/sys/login/OidcSignIn.vue'),
+    meta: {
+      title: 'Oidc',
+      ignoreAuth: true,
+    },
+  },
+  {
+    path: '/oidcSignOut',
+    name: 'OidcSignOut',
+    component: () => import('/@/views/sys/login/OidcSignOut.vue'),
     meta: {
       title: 'Oidc',
       ignoreAuth: true,

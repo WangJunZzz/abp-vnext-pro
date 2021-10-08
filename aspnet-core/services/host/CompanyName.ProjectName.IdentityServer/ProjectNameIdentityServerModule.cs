@@ -11,6 +11,9 @@ using CompanyName.ProjectName.EntityFrameworkCore;
 using CompanyName.ProjectName.Extensions;
 using CompanyName.ProjectName.Localization;
 using CompanyName.ProjectName.MultiTenancy;
+using IdentityServer4.Configuration;
+using IdentityServer4.Extensions;
+using IdentityServer4.Models;
 using StackExchange.Redis;
 using Volo.Abp;
 using Volo.Abp.Account;
@@ -43,7 +46,7 @@ namespace CompanyName.ProjectName
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(ProjectNameEntityFrameworkCoreDbMigrationsModule),
         typeof(AbpAspNetCoreSerilogModule)
-        )]
+    )]
     public class ProjectNameIdentityServerModule : AbpModule
     {
         private const string DefaultCorsPolicyName = "Default";
@@ -60,7 +63,7 @@ namespace CompanyName.ProjectName
                     .AddBaseTypes(
                         typeof(AbpUiResource)
                     );
-
+                
                 options.Languages.Add(new LanguageInfo("ar", "ar", "العربية"));
                 options.Languages.Add(new LanguageInfo("cs", "cs", "Čeština"));
                 options.Languages.Add(new LanguageInfo("en", "en", "English"));
@@ -80,10 +83,7 @@ namespace CompanyName.ProjectName
             {
                 options.StyleBundles.Configure(
                     BasicThemeBundles.Styles.Global,
-                    bundle =>
-                    {
-                        bundle.AddFiles("/global-styles.css");
-                    }
+                    bundle => { bundle.AddFiles("/global-styles.css"); }
                 );
             });
 
@@ -96,7 +96,6 @@ namespace CompanyName.ProjectName
             if (hostingEnvironment.IsDevelopment())
             {
                 Configure<AbpVirtualFileSystemOptions>(options => { options.FileSets.AddEmbedded<ProjectNameIdentityServerModule>(); });
-            
             }
 
             Configure<AppUrlOptions>(options =>
@@ -108,15 +107,9 @@ namespace CompanyName.ProjectName
                 options.Applications["Angular"].Urls[AccountUrlNames.PasswordReset] = "account/reset-password";
             });
 
-            Configure<AbpBackgroundJobOptions>(options =>
-            {
-                options.IsJobExecutionEnabled = false;
-            });
+            Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = false; });
 
-            Configure<AbpDistributedCacheOptions>(options =>
-            {
-                options.KeyPrefix = "ProjectName:";
-            });
+            Configure<AbpDistributedCacheOptions>(options => { options.KeyPrefix = "ProjectName:"; });
 
             if (!hostingEnvironment.IsDevelopment())
             {
@@ -169,18 +162,19 @@ namespace CompanyName.ProjectName
             app.UseCors(DefaultCorsPolicyName);
             app.UseCookiePolicy();
             app.UseAuthentication();
-            
+
             if (MultiTenancyConsts.IsEnabled)
             {
                 app.UseMultiTenancy();
             }
-
+     
             app.UseUnitOfWork();
             app.UseIdentityServer();
             app.UseAuthorization();
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints();
+
         }
     }
 }

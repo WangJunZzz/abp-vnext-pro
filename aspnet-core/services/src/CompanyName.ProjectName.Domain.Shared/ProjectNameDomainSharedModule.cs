@@ -45,7 +45,7 @@ namespace CompanyName.ProjectName
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Add<ProjectNameResource>("en")
+                    .Add<ProjectNameResource>("zh-Hans")
                     .AddBaseTypes(typeof(AbpValidationResource))
                     .AddVirtualJson("/Localization/ProjectName");
 

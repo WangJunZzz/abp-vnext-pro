@@ -18,7 +18,7 @@
             <a-row justify="center">
               <a-col :span="24">
                 <a-checkbox
-                  style="width: 150px"
+                  style="width: 200px"
                   v-for="(item, index) in apiScopes"
                   :key="index"
                   :value="item.value"

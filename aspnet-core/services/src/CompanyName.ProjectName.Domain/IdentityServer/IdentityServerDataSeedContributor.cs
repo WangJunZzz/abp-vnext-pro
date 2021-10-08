@@ -147,9 +147,9 @@ namespace CompanyName.ProjectName.IdentityServer
                 scopes: commonScopes,
                 grantTypes: new[] {"implicit"},
                 secret: "1q2w3E*".Sha256(),
-                redirectUri: "http://localhost:4200/oidc",
-                postLogoutRedirectUri: "http://localhost:4200/oidc,http://120.24.194.14:8012/oidc",
-                frontChannelLogoutUri: "http://localhost:4200/oidc",
+                redirectUri: "http://localhost:4200/oidcSignIn",
+                postLogoutRedirectUri: "http://localhost:4200/oidcSignOut",
+                frontChannelLogoutUri: "http://localhost:4200/oidcSignOut",
                 corsOrigins: new[] {"https://localhost:4200", "http://localhost:4200", "http://120.24.194.14:8012"},
                 requireClientSecret: false
             );

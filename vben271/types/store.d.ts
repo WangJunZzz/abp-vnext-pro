@@ -38,6 +38,8 @@ export interface UserInfo {
   desc?: string;
   homePath?: string;
   roles: RoleInfo[];
+  isSts: boolean; // 是否通过IdentityServer4登录
+  idToken: string;
 }
 
 export interface BeforeMiniState {

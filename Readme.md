@@ -1,6 +1,6 @@
 ﻿<div align="center">
 
- [Abp Vnext Pro](https://github.com/WangJunZzz/abp-vnext-pro) 的 Vue3 实现版本 开箱即用的中后台前端/设计解决方案
+[Abp Vnext Pro](https://github.com/WangJunZzz/abp-vnext-pro) 的 Vue3 实现版本 开箱即用的中后台前端/设计解决方案
 
 <table>
     <tr>
@@ -46,7 +46,7 @@
 - [x] 单元测试
 - [x] ES 日志
 - [x] Setting 管理
-- [ ] 多租户
+- [x] 多租户
 - [ ] 组织机构
 
 ### 使用
@@ -54,9 +54,6 @@
 - 下载代码生成器，Git 仓库(https://github.com/WangJunZzz/abp-vnext-pro-gui)
 
   ![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/gui.png)
-
-  
-
 
 #### 参与贡献
 

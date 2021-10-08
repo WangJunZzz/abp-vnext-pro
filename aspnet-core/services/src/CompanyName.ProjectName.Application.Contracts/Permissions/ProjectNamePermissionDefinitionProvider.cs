@@ -2,6 +2,7 @@
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Identity;
 using Volo.Abp.Localization;
+using Volo.Abp.MultiTenancy;
 
 namespace CompanyName.ProjectName.Permissions
 {
@@ -20,52 +21,56 @@ namespace CompanyName.ProjectName.Permissions
                 abpIdentityGroup.AddPermission(ProjectNamePermissions.SystemManagement.Hangfire, L("Permission:HangfireManagement"));
 
             var capManagement = abpIdentityGroup.AddPermission(ProjectNamePermissions.SystemManagement.Cap, L("Permission:CapManagement"));
-            
+
             #region IdentityServer
 
+            // multiTenancySide: MultiTenancySides.Host 只有host租户才有权限
             var identityServerManagementGroup =
-                context.AddGroup(ProjectNamePermissions.IdentityServer.IdentityServerManagement, L("Permission:IdentityServerManagement"));
+                context.AddGroup(ProjectNamePermissions.IdentityServer.IdentityServerManagement, L("Permission:IdentityServerManagement"),
+                    multiTenancySide: MultiTenancySides.Host);
 
             var clientManagment = identityServerManagementGroup.AddPermission(ProjectNamePermissions.IdentityServer.Client.Default,
-                L("Permission:IdentityServerManagement:Client"));
+                L("Permission:IdentityServerManagement:Client"),multiTenancySide: MultiTenancySides.Host);
             clientManagment.AddChild(ProjectNamePermissions.IdentityServer.Client.Create,
-                L("Permission:Create"));
+                L("Permission:Create"),multiTenancySide: MultiTenancySides.Host);
             clientManagment.AddChild(ProjectNamePermissions.IdentityServer.Client.Update,
-                L("Permission:Update"));
+                L("Permission:Update"),multiTenancySide: MultiTenancySides.Host);
             clientManagment.AddChild(ProjectNamePermissions.IdentityServer.Client.Delete,
-                L("Permission:Delete"));
+                L("Permission:Delete"),multiTenancySide: MultiTenancySides.Host);
             clientManagment.AddChild(ProjectNamePermissions.IdentityServer.Client.Enable,
-                L("Permission:Enable"));
-            
-            
-            var apiResourceManagment = identityServerManagementGroup.AddPermission(ProjectNamePermissions.IdentityServer.ApiResource.Default,
-                L("Permission:IdentityServerManagement:ApiResource"));
+                L("Permission:Enable"),multiTenancySide: MultiTenancySides.Host);
+
+
+            var apiResourceManagment = identityServerManagementGroup.AddPermission(
+                ProjectNamePermissions.IdentityServer.ApiResource.Default,
+                L("Permission:IdentityServerManagement:ApiResource"),multiTenancySide: MultiTenancySides.Host);
             apiResourceManagment.AddChild(ProjectNamePermissions.IdentityServer.ApiResource.Create,
-                L("Permission:Create"));
+                L("Permission:Create"),multiTenancySide: MultiTenancySides.Host);
             apiResourceManagment.AddChild(ProjectNamePermissions.IdentityServer.ApiResource.Update,
-                L("Permission:Update"));
+                L("Permission:Update"),multiTenancySide: MultiTenancySides.Host);
             apiResourceManagment.AddChild(ProjectNamePermissions.IdentityServer.ApiResource.Delete,
-                L("Permission:Delete"));
+                L("Permission:Delete"),multiTenancySide: MultiTenancySides.Host);
 
             var apiScopeManagment = identityServerManagementGroup.AddPermission(ProjectNamePermissions.IdentityServer.ApiScope.Default,
-                L("Permission:IdentityServerManagement:ApiScope"));
+                L("Permission:IdentityServerManagement:ApiScope"),multiTenancySide: MultiTenancySides.Host);
             apiScopeManagment.AddChild(ProjectNamePermissions.IdentityServer.ApiScope.Create,
-                L("Permission:Create"));
+                L("Permission:Create"),multiTenancySide: MultiTenancySides.Host);
             apiScopeManagment.AddChild(ProjectNamePermissions.IdentityServer.ApiScope.Update,
-                L("Permission:Update"));
+                L("Permission:Update"),multiTenancySide: MultiTenancySides.Host);
             apiScopeManagment.AddChild(ProjectNamePermissions.IdentityServer.ApiScope.Delete,
-                L("Permission:Delete"));
-            
+                L("Permission:Delete"),multiTenancySide: MultiTenancySides.Host);
 
-            var identityResourcesManagment = identityServerManagementGroup.AddPermission(ProjectNamePermissions.IdentityServer.IdentityResources.Default,
-                L("Permission:IdentityServerManagement:IdentityResources"));
+
+            var identityResourcesManagment = identityServerManagementGroup.AddPermission(
+                ProjectNamePermissions.IdentityServer.IdentityResources.Default,
+                L("Permission:IdentityServerManagement:IdentityResources"),multiTenancySide: MultiTenancySides.Host);
             identityResourcesManagment.AddChild(ProjectNamePermissions.IdentityServer.IdentityResources.Create,
-                L("Permission:Create"));
+                L("Permission:Create"),multiTenancySide: MultiTenancySides.Host);
             identityResourcesManagment.AddChild(ProjectNamePermissions.IdentityServer.IdentityResources.Update,
-                L("Permission:Update"));
+                L("Permission:Update"),multiTenancySide: MultiTenancySides.Host);
             identityResourcesManagment.AddChild(ProjectNamePermissions.IdentityServer.IdentityResources.Delete,
-                L("Permission:Delete"));
-            
+                L("Permission:Delete"),multiTenancySide: MultiTenancySides.Host);
+
             #endregion
         }
 

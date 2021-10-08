@@ -35,12 +35,12 @@ export const tableColumns: BasicColumn[] = [
   {
     title: 'HttpMethod',
     dataIndex: 'httpMethod',
-    width: 100,
+    width: 150,
   },
   {
     title: 'HttpStatusCode',
     dataIndex: 'httpStatusCode',
-    width: 120,
+    width: 150,
   },
   {
     title: 'Url',

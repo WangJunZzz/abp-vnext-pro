@@ -13,26 +13,19 @@ import {
 } from '/@/enums/cacheEnum';
 import { getAuthCache, setAuthCache } from '/@/utils/auth';
 import { GetUserInfoByUserIdModel, LoginParams } from '/@/api/sys/model/userModel';
-import {
-  doLogout,
-  //getUserInfo,
-  //loginApi,
-  login,
-  getAbpApplicationConfiguration,
-  stsLogin,
-  stsLogout,
-} from '/@/api/sys/user';
+import { login, getAbpApplicationConfiguration, stsLogin } from '/@/api/sys/user';
 import { useI18n } from '/@/hooks/web/useI18n';
 import { useMessage } from '/@/hooks/web/useMessage';
 import { router } from '/@/router';
 import { usePermissionStore } from '/@/store/modules/permission';
-import { RouteRecordRaw } from 'vue-router';
-import { PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
-import { LoginInput, AccountServiceProxy } from '/@/services/ServiceProxies';
+import { LoginInput } from '/@/services/ServiceProxies';
 import jwt_decode from 'jwt-decode';
+
+import { useOidcLogout } from '/@/views/sys/login/useLogin';
 interface UserState {
   userInfo: Nullable<UserInfo>;
   token?: string;
+  id_token?: string;
   roleList: RoleEnum[];
   sessionTimeout?: boolean;
   lastUpdateTime: number;
@@ -47,6 +40,7 @@ export const useUserStore = defineStore({
     userInfo: null,
     // token
     token: undefined,
+    id_token: undefined,
     // roleList
     roleList: [],
     // Whether the login expired
@@ -63,6 +57,7 @@ export const useUserStore = defineStore({
     getToken(): string {
       return this.token || getAuthCache<string>(TOKEN_KEY);
     },
+
     getRoleList(): RoleEnum[] {
       return this.roleList.length > 0 ? this.roleList : getAuthCache<RoleEnum[]>(ROLES_KEY);
     },
@@ -101,6 +96,7 @@ export const useUserStore = defineStore({
       this.token = info;
       setAuthCache(TOKEN_KEY, info);
     },
+
     setRoleList(roleList: RoleEnum[]) {
       this.roleList = roleList;
       setAuthCache(ROLES_KEY, roleList);
@@ -119,49 +115,12 @@ export const useUserStore = defineStore({
     },
     resetState() {
       this.userInfo = null;
-      this.token = '';
       this.roleList = [];
       this.sessionTimeout = false;
+      this.tenantId = '';
+      this.setToken(undefined);
     },
-    /**
-     * @description: login
-     */
-    // async login(
-    //   params: LoginParams & {
-    //     goHome?: boolean;
-    //     mode?: ErrorMessageMode;
-    //   }
-    // ): Promise<GetUserInfoModel | null> {
-    //   try {
-    //     const { goHome = true, mode, ...loginParams } = params;
-    //     const data = await loginApi(loginParams, mode);
-    //     const { token } = data;
 
-    //     // save token
-    //     this.setToken(token);
-    //     // get user info
-    //     const userInfo = await this.getUserInfoAction();
-
-    //     const sessionTimeout = this.sessionTimeout;
-    //     if (sessionTimeout) {
-    //       this.setSessionTimeout(false);
-    //     } else if (goHome) {
-    //       const permissionStore = usePermissionStore();
-    //       if (!permissionStore.isDynamicAddedRoute) {
-    //         const routes = await permissionStore.buildRoutesAction();
-    //         routes.forEach((route) => {
-    //           router.addRoute(route as unknown as RouteRecordRaw);
-    //         });
-    //         router.addRoute(PAGE_NOT_FOUND_ROUTE as unknown as RouteRecordRaw);
-    //         permissionStore.setDynamicAddedRoute(true);
-    //       }
-    //       await router.replace(userInfo.homePath || PageEnum.BASE_HOME);
-    //     }
-    //     return userInfo;
-    //   } catch (error) {
-    //     return Promise.reject(error);
-    //   }
-    // },
     async login(
       params: LoginParams & {
         goHome?: boolean;
@@ -181,7 +140,10 @@ export const useUserStore = defineStore({
           realName: data.name as string,
           roles: data.roles as [],
           avatar: '',
+          isSts: false,
+          idToken: '',
         });
+
         await this.getAbpApplicationConfigurationAsync();
         goHome && (await router.replace(PageEnum.BASE_HOME));
         return null;
@@ -198,7 +160,7 @@ export const useUserStore = defineStore({
       permissionStore.setPermCodeList(grantPolicy);
     },
 
-    async stsLogin(token: string) {
+    async stsLogin(token: string, id_token: string) {
       try {
         // 获取token中的租户信息
         const decoded: any = jwt_decode(token);
@@ -210,12 +172,15 @@ export const useUserStore = defineStore({
 
         const data = await stsLogin(token);
         this.setToken(data.token as string);
+
         this.setUserInfo({
           userId: decoded.sub as string,
           username: data.userName as string,
           realName: data.name as string,
           roles: data.roles as [],
           avatar: '',
+          isSts: true,
+          idToken: id_token,
         });
         await this.getAbpApplicationConfigurationAsync();
         await router.replace(PageEnum.BASE_HOME);
@@ -230,14 +195,15 @@ export const useUserStore = defineStore({
      */
     async logout(goLogin = false) {
       try {
-        await stsLogout();
-      } catch {
-        console.log('注销Token失败');
+        if (this.userInfo?.isSts) {
+          await useOidcLogout();
+        } else {
+          this.resetState();
+          goLogin && router.push(PageEnum.BASE_LOGIN);
+        }
+      } catch (ex) {
+        console.log(ex);
       }
-      this.setTenant('');
-      this.setToken('');
-      this.setSessionTimeout(false);
-      goLogin && router.push(PageEnum.BASE_LOGIN);
     },
 
     /**

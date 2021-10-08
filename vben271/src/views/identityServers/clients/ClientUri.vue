@@ -10,7 +10,8 @@
         <a-button type="primary" @click="handleAddRedirectUri" style="margin-bottom: 10px">{{
           t('common.createText')
         }}</a-button>
-        <div v-for="item in currentClient.redirectUris">
+
+        <div v-for="item in currentClient.redirectUris" :key="item.redirectUri">
           <a-input placeholder="" style="width: 470px" :defaultValue="item.redirectUri" disabled />
           <a-button type="primary" @click="handleRemoveRedirectUri(item.redirectUri)" danger>{{
             t('common.delText')
@@ -26,7 +27,7 @@
         <a-button type="primary" @click="handleAddLogoutRedirectUri" style="margin-bottom: 10px">{{
           t('common.createText')
         }}</a-button>
-        <div v-for="item in currentClient.postLogoutRedirectUris">
+        <div v-for="item in currentClient.postLogoutRedirectUris" :key="item.postLogoutRedirectUri">
           <a-input
             placeholder=""
             style="width: 470px"
@@ -46,7 +47,7 @@
         <a-button type="primary" @click="handleAddCors" style="margin-bottom: 10px">{{
           t('common.createText')
         }}</a-button>
-        <div v-for="item in currentClient.allowedCorsOrigins">
+        <div v-for="item in currentClient.allowedCorsOrigins" :key="item.origin">
           <a-input placeholder="" style="width: 470px" :defaultValue="item.origin" disabled />
           <a-button type="primary" @click="handleRemoveCors(item.origin)" danger>{{
             t('common.delText')
@@ -77,6 +78,7 @@
     setup(_, { emit }) {
       const { t } = useI18n();
       let currentClient: PagingClientListOutput = new PagingClientListOutput();
+
       const state = reactive({
         redirectUriValue: '',
         postLogoutRedirectUriValue: '',
@@ -94,8 +96,8 @@
             uri: state.redirectUriValue,
           });
           state.redirectUriValue = '';
-          closeDrawer();
           emit('reload');
+          closeDrawer();
         }
       };
 

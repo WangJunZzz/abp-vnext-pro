@@ -104,7 +104,7 @@ namespace CompanyName.ProjectName
             {
                 app.UseMultiTenancy();
             }
-
+        
             app.UseAuthorization();
 
             app.UseSwagger();

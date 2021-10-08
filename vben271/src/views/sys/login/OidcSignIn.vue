@@ -23,10 +23,11 @@
         compState.loading = true;
         try {
           const { currentRoute } = useRouter();
+          const id_token = currentRoute.value.fullPath.split('=')[1].split('&')[0];
           const token = currentRoute.value.fullPath.split('=')[2].split('&')[0];
-          console.log(token);
+
           if (token) {
-            await userStore.stsLogin(token);
+            await userStore.stsLogin(token, id_token);
           }
         } catch {
           message.error('登陆失败');
