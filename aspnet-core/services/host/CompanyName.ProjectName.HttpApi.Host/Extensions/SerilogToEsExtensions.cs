@@ -38,7 +38,7 @@ namespace CompanyName.ProjectName.Extensions
             if (!writeToElasticSearch)
                 return;
 
-            var applicationName = "YHWmsOperationApiGateway.HttpApi.Host";
+            var applicationName = "CompanyName.ProjectName.HttpApi.Host";
 
             var esUrl = configuration["LogToElasticSearch:ElasticSearch:Url"];
             // 需要设置ES URL

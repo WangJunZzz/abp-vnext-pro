@@ -32,13 +32,15 @@ namespace CompanyName.ProjectName.QueryManagement.ElasticSearch
         public async Task<CustomePagedResultDto<PagingElasticSearchLogOutput>> PaingAsync(PagingElasticSearchLogInput input)
         {
             // 默认查询当天
-            input.StartCreationTime ??= DateTime.Now.Date;
-
-            input.EndCreationTime ??= DateTime.Now.Date;
+            input.StartCreationTime = input.StartCreationTime?.AddMilliseconds(-1) ?? DateTime.Now.Date.AddMilliseconds(-1);
+            input.EndCreationTime =
+                input.EndCreationTime?.AddDays(1).AddMilliseconds(-1) ?? DateTime.Now.Date.AddDays(1).AddMilliseconds(-1);
             var mustFilters = new List<Func<QueryContainerDescriptor<PagingElasticSearchLogOutput>, QueryContainer>>
             {
-                t => t.DateRange(f => f.Field(fd => fd.CreationTime).GreaterThanOrEquals(input.StartCreationTime.Value)),
-                t => t.DateRange(f => f.Field(fd => fd.CreationTime).LessThanOrEquals(input.EndCreationTime.Value))
+                t => t.DateRange(f =>
+                    f.Field(fd => fd.CreationTime).TimeZone("Asia/Shanghai").GreaterThanOrEquals(input.StartCreationTime.Value)),
+                t => t.DateRange(
+                    f => f.Field(fd => fd.CreationTime).TimeZone("Asia/Shanghai").LessThanOrEquals(input.EndCreationTime.Value))
             };
 
             if (!string.IsNullOrWhiteSpace(input.Filter))

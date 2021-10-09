@@ -39,6 +39,7 @@ using CompanyName.ProjectName.Extensions.Customs.Http;
 using CompanyName.ProjectName.MultiTenancy;
 using Savorboard.CAP.InMemoryMessageQueue;
 using Serilog;
+using Swashbuckle.AspNetCore.SwaggerUI;
 using Volo.Abp.AspNetCore.ExceptionHandling;
 using Volo.Abp.AspNetCore.MultiTenancy;
 
@@ -111,11 +112,8 @@ namespace CompanyName.ProjectName
             app.UseAbpSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectName API");
-
-                var configuration = context.GetConfiguration();
-                options.OAuthClientId(configuration["AuthServer:SwaggerClientId"]);
-                options.OAuthClientSecret(configuration["AuthServer:SwaggerClientSecret"]);
-                options.OAuthScopes("ProjectName");
+                options.DocExpansion(DocExpansion.None);
+                options.DefaultModelsExpandDepth(-1);
             });
 
             app.UseAuditing();
@@ -315,7 +313,6 @@ namespace CompanyName.ProjectName
                 options =>
                 {
                     options.SwaggerDoc("v1", new OpenApiInfo {Title = "CompanyNameProjectName API", Version = "v1"});
-
                     options.DocInclusionPredicate((docName, description) => true);
                     options.EnableAnnotations(); // 启用注解
                     options.DocumentFilter<HiddenAbpDefaultApiFilter>();
