@@ -77,6 +77,10 @@ export const createFormSchema: FormSchema[] = [
     componentProps: {
       options: [
         {
+          label: 'ClientCredentials',
+          value: 'client_credentials',
+        },
+        {
           label: 'Implicit',
           value: 'implicit',
         },
@@ -139,6 +143,10 @@ export const editBasicDetailSchema: FormSchema[] = [
     colProps: { span: 20 },
     componentProps: {
       options: [
+        {
+          label: 'ClientCredentials',
+          value: 'client_credentials',
+        },
         {
           label: 'Implicit',
           value: 'implicit',
