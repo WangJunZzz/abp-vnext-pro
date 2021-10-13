@@ -119,17 +119,18 @@ namespace CompanyName.ProjectName.IdentityServer
             apiResource.ShowInDiscoveryDocument = showInDiscoveryDocument;
             if (secret.IsNotNullOrWhiteSpace())
             {
+                // 判读密钥是否一样
                 if (apiResource.Secrets.Count > 0)
                 {
-                    apiResource.AddSecret(secret.ToSha256());
-                }
-                else
-                {
-                    if (apiResource.Secrets.Any(e => e.Value != secret))
+                    if (apiResource.Secrets.First().Value != secret)
                     {
                         apiResource.Secrets.Clear();
                         apiResource.AddSecret(secret.ToSha256());
                     }
+                }
+                else
+                {
+                    apiResource.AddSecret(secret.ToSha256());
                 }
             }
 

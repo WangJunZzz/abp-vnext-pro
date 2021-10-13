@@ -14,6 +14,7 @@ using CompanyName.ProjectName.MultiTenancy;
 using IdentityServer4.Configuration;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
+using Microsoft.Extensions.Configuration;
 using StackExchange.Redis;
 using Volo.Abp;
 using Volo.Abp.Account;
@@ -56,87 +57,11 @@ namespace CompanyName.ProjectName
             var hostingEnvironment = context.Services.GetHostingEnvironment();
             var configuration = context.Services.GetConfiguration();
             context.Services.AddSameSiteCookiePolicy();
-            Configure<AbpLocalizationOptions>(options =>
-            {
-                options.Resources
-                    .Get<ProjectNameResource>()
-                    .AddBaseTypes(
-                        typeof(AbpUiResource)
-                    );
-                
-                options.Languages.Add(new LanguageInfo("ar", "ar", "العربية"));
-                options.Languages.Add(new LanguageInfo("cs", "cs", "Čeština"));
-                options.Languages.Add(new LanguageInfo("en", "en", "English"));
-                options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English (UK)"));
-                options.Languages.Add(new LanguageInfo("fr", "fr", "Français"));
-                options.Languages.Add(new LanguageInfo("hu", "hu", "Magyar"));
-                options.Languages.Add(new LanguageInfo("pt-BR", "pt-BR", "Português"));
-                options.Languages.Add(new LanguageInfo("ru", "ru", "Русский"));
-                options.Languages.Add(new LanguageInfo("tr", "tr", "Türkçe"));
-                options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
-                options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "繁體中文"));
-                options.Languages.Add(new LanguageInfo("de-DE", "de-DE", "Deutsch", "de"));
-                options.Languages.Add(new LanguageInfo("es", "es", "Español", "es"));
-            });
-
-            Configure<AbpBundlingOptions>(options =>
-            {
-                options.StyleBundles.Configure(
-                    BasicThemeBundles.Styles.Global,
-                    bundle => { bundle.AddFiles("/global-styles.css"); }
-                );
-            });
-
-            Configure<AbpAuditingOptions>(options =>
-            {
-                //options.IsEnabledForGetRequests = true;
-                options.ApplicationName = "AuthServer";
-            });
-
-            if (hostingEnvironment.IsDevelopment())
-            {
-                Configure<AbpVirtualFileSystemOptions>(options => { options.FileSets.AddEmbedded<ProjectNameIdentityServerModule>(); });
-            }
-
-            Configure<AppUrlOptions>(options =>
-            {
-                options.Applications["MVC"].RootUrl = configuration["App:SelfUrl"];
-                options.RedirectAllowedUrls.AddRange(configuration["App:RedirectAllowedUrls"].Split(','));
-
-                options.Applications["Angular"].RootUrl = configuration["App:ClientUrl"];
-                options.Applications["Angular"].Urls[AccountUrlNames.PasswordReset] = "account/reset-password";
-            });
-
-            Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = false; });
-
-            Configure<AbpDistributedCacheOptions>(options => { options.KeyPrefix = "ProjectName:"; });
-
-            if (!hostingEnvironment.IsDevelopment())
-            {
-                var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
-                context.Services
-                    .AddDataProtection()
-                    .PersistKeysToStackExchangeRedis(redis, "ProjectName-Protection-Keys");
-            }
-
-            context.Services.AddCors(options =>
-            {
-                options.AddPolicy(DefaultCorsPolicyName, builder =>
-                {
-                    builder
-                        .WithOrigins(
-                            configuration["App:CorsOrigins"]
-                                .Split(",", StringSplitOptions.RemoveEmptyEntries)
-                                .Select(o => o.RemovePostFix("/"))
-                                .ToArray()
-                        )
-                        .WithAbpExposedHeaders()
-                        .SetIsOriginAllowedToAllowWildcardSubdomains()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials();
-                });
-            });
+            ConfigureLocalization();
+            ConfigureVirtualFileSystem(context);
+            ConfigureCache(context);
+            ConfigureCors(context, configuration);
+            ConfigureOther(configuration);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -167,14 +92,110 @@ namespace CompanyName.ProjectName
             {
                 app.UseMultiTenancy();
             }
-     
+
             app.UseUnitOfWork();
             app.UseIdentityServer();
             app.UseAuthorization();
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints();
+        }
 
+        private void ConfigureOther(IConfiguration configuration)
+
+        {
+            Configure<AppUrlOptions>(options =>
+            {
+                options.Applications["MVC"].RootUrl = configuration["App:SelfUrl"];
+                options.RedirectAllowedUrls.AddRange(configuration["App:RedirectAllowedUrls"].Split(','));
+
+                options.Applications["Angular"].RootUrl = configuration["App:ClientUrl"];
+                options.Applications["Angular"].Urls[AccountUrlNames.PasswordReset] = "account/reset-password";
+            });
+            Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = false; });
+            Configure<AbpAuditingOptions>(options =>
+            {
+                //options.IsEnabledForGetRequests = true;
+                options.ApplicationName = "AuthServer";
+            });
+        }
+
+        private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
+        {
+            context.Services.AddCors(options =>
+            {
+                options.AddPolicy(DefaultCorsPolicyName, builder =>
+                {
+                    builder
+                        .WithOrigins(
+                            configuration["App:CorsOrigins"]
+                                .Split(",", StringSplitOptions.RemoveEmptyEntries)
+                                .Select(o => o.RemovePostFix("/"))
+                                .ToArray()
+                        )
+                        .WithAbpExposedHeaders()
+                        .SetIsOriginAllowedToAllowWildcardSubdomains()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+                });
+            });
+        }
+
+        private void ConfigureLocalization()
+        {
+            Configure<AbpLocalizationOptions>(options =>
+            {
+                options.Resources
+                    .Get<ProjectNameResource>()
+                    .AddBaseTypes(
+                        typeof(AbpUiResource)
+                    );
+
+                options.Languages.Add(new LanguageInfo("ar", "ar", "العربية"));
+                options.Languages.Add(new LanguageInfo("cs", "cs", "Čeština"));
+                options.Languages.Add(new LanguageInfo("en", "en", "English"));
+                options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English (UK)"));
+                options.Languages.Add(new LanguageInfo("fr", "fr", "Français"));
+                options.Languages.Add(new LanguageInfo("hu", "hu", "Magyar"));
+                options.Languages.Add(new LanguageInfo("pt-BR", "pt-BR", "Português"));
+                options.Languages.Add(new LanguageInfo("ru", "ru", "Русский"));
+                options.Languages.Add(new LanguageInfo("tr", "tr", "Türkçe"));
+                options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
+                options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "繁體中文"));
+                options.Languages.Add(new LanguageInfo("de-DE", "de-DE", "Deutsch", "de"));
+                options.Languages.Add(new LanguageInfo("es", "es", "Español", "es"));
+            });
+        }
+
+        /// <summary>
+        /// Redis缓存
+        /// </summary>
+        private void ConfigureCache(ServiceConfigurationContext context)
+        {
+            var redisConnectionString =
+                context.Services.GetConfiguration().GetValue<string>("Cache:Redis:ConnectionString");
+            var redisDatabaseId = context.Services.GetConfiguration().GetValue<int>("Cache:Redis:DatabaseId");
+            var password = context.Services.GetConfiguration().GetValue<string>("Cache:Redis:Password");
+            var connectString = $"{redisConnectionString},password={password},defaultdatabase={redisDatabaseId}";
+            var redis = ConnectionMultiplexer.Connect(connectString);
+            context.Services.AddStackExchangeRedisCache(options => { options.Configuration = connectString; });
+            context.Services
+                .AddDataProtection()
+                .PersistKeysToStackExchangeRedis(redis, "ProjectName-Protection-Keys");
+        }
+
+        private void ConfigureVirtualFileSystem(ServiceConfigurationContext context)
+        {
+            Configure<AbpVirtualFileSystemOptions>(options => { options.FileSets.AddEmbedded<ProjectNameIdentityServerModule>(); });
+
+            Configure<AbpBundlingOptions>(options =>
+            {
+                options.StyleBundles.Configure(
+                    BasicThemeBundles.Styles.Global,
+                    bundle => { bundle.AddFiles("/global-styles.css"); }
+                );
+            });
         }
     }
 }

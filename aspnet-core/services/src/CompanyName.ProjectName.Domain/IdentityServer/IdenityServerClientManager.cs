@@ -151,7 +151,6 @@ namespace CompanyName.ProjectName.IdentityServer
             {
                 if (client.ClientSecrets.Count == 0)
                 {
-
                     client.AddSecret(secret.ToSha256(), null, secretType, String.Empty);
                 }
                 else
