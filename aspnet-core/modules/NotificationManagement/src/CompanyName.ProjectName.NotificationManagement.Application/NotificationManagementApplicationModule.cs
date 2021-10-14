@@ -1,8 +1,10 @@
+using System;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
 using Microsoft.Extensions.Configuration;
+using Volo.Abp;
 using Volo.Abp.AspNetCore.SignalR;
 
 namespace CompanyName.ProjectName.NotificationManagement
@@ -13,32 +15,45 @@ namespace CompanyName.ProjectName.NotificationManagement
         typeof(AbpDddApplicationModule),
         typeof(AbpAutoMapperModule),
         typeof(AbpAspNetCoreSignalRModule)
-        )]
+    )]
     public class NotificationManagementApplicationModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddAutoMapperObjectMapper<NotificationManagementApplicationModule>();
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddMaps<NotificationManagementApplicationModule>(validate: true);
-            });
+            Configure<AbpAutoMapperOptions>(options => { options.AddMaps<NotificationManagementApplicationModule>(validate: true); });
 
             ConfigurationSignalR(context);
         }
-        
+
         private void ConfigurationSignalR(ServiceConfigurationContext context)
         {
-            var redisConnectionString =
-                context.Services.GetConfiguration().GetSection("Cache:Redis:ConnectionString").Value;
-            var redisDatabaseId = context.Services.GetConfiguration().GetValue<int>("Cache:Redis:DatabaseId");
-            var password = context.Services.GetConfiguration().GetValue<string>("Cache:Redis:Password");
+            var redisConnection = context.Services.GetConfiguration()["Redis:Configuration"];
+            var redisConnectionStringList = redisConnection.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            if (redisConnectionStringList == null || redisConnectionStringList.Length == 0)
+            {
+                throw new UserFriendlyException(message: "Redis连接字符串配置异常");
+            }
+
+            var password = string.Empty;
+            if (redisConnection.Contains("password"))
+            {
+                password = redisConnectionStringList[1].Split('=')[1];
+            }
+
+            var redisDatabaseId = 0;
+            if (redisConnection.Contains("defaultdatabase"))
+            {
+                redisDatabaseId = Convert.ToInt32(redisConnectionStringList[2].Split('=')[1]);
+            }
+
+
             context.Services.AddSignalR().AddStackExchangeRedis(options =>
             {
                 options.Configuration.ChannelPrefix = "CompanyName.ProjectName";
                 options.Configuration.DefaultDatabase = redisDatabaseId;
                 options.Configuration.Password = password;
-                options.Configuration.EndPoints.Add(redisConnectionString);
+                options.Configuration.EndPoints.Add(redisConnectionStringList[0]);
             });
         }
     }

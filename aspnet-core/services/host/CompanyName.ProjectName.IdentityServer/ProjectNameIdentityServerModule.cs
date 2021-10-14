@@ -173,13 +173,9 @@ namespace CompanyName.ProjectName
         /// </summary>
         private void ConfigureCache(ServiceConfigurationContext context)
         {
-            var redisConnectionString =
-                context.Services.GetConfiguration().GetValue<string>("Cache:Redis:ConnectionString");
-            var redisDatabaseId = context.Services.GetConfiguration().GetValue<int>("Cache:Redis:DatabaseId");
-            var password = context.Services.GetConfiguration().GetValue<string>("Cache:Redis:Password");
-            var connectString = $"{redisConnectionString},password={password},defaultdatabase={redisDatabaseId}";
-            var redis = ConnectionMultiplexer.Connect(connectString);
-            context.Services.AddStackExchangeRedisCache(options => { options.Configuration = connectString; });
+            Configure<AbpDistributedCacheOptions>(options => { options.KeyPrefix = "ProjectName:"; });
+            var configuration = context.Services.GetConfiguration();
+            var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
             context.Services
                 .AddDataProtection()
                 .PersistKeysToStackExchangeRedis(redis, "ProjectName-Protection-Keys");
