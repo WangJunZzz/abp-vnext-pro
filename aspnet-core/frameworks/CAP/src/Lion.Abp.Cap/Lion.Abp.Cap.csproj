@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        
+        <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="5.1.1" />
+        <PackageReference Include="Volo.Abp.Core" Version="4.4.0" />
+        <PackageReference Include="Volo.Abp.EventBus" Version="4.4.0" />
+        <PackageReference Include="DotNetCore.CAP" Version="5.1.4" />
+        <PackageReference Include="DotNetCore.CAP.MySql" Version="5.1.4" />
+        <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.1.4" />
+        <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.1.4" />
+        <PackageReference Include="DotNetCore.CAP.InMemoryStorage" Version="5.1.4" />
+    </ItemGroup>
+</Project>

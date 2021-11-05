@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using CompanyName.ProjectName.ConfigurationOptions;
@@ -33,10 +34,9 @@ using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.VirtualFileSystem;
 using System.Threading.Tasks;
-using CompanyName.ProjectName.CAP;
 using CompanyName.ProjectName.Extensions;
-using CompanyName.ProjectName.Extensions.Customs.Http;
 using CompanyName.ProjectName.MultiTenancy;
+using Lion.Abp.Cap;
 using Savorboard.CAP.InMemoryMessageQueue;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
@@ -58,7 +58,7 @@ namespace CompanyName.ProjectName
         typeof(AbpAccountWebModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpBackgroundJobsHangfireModule),
-        typeof(AbpCapModule),
+        typeof(LionAbpCapModule),
         typeof(AbpAspNetCoreMultiTenancyModule)
     )]
     public class ProjectNameHttpApiHostModule : AbpModule
@@ -314,6 +314,13 @@ namespace CompanyName.ProjectName
                     options.EnableAnnotations(); // 启用注解
                     options.DocumentFilter<HiddenAbpDefaultApiFilter>();
                     options.SchemaFilter<EnumSchemaFilter>();
+                    // 加载所有xml注释，这里会导致swagger加载有点缓慢
+                    var xmls = Directory.GetFiles(AppContext.BaseDirectory, "*.xml");
+                    foreach (var xml in xmls)
+                    {
+                        options.IncludeXmlComments(xml, true);
+                    }
+
                     options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme()
                     {
                         Description = "Please enter into field the word 'Bearer' followed by a space and the JWT value",

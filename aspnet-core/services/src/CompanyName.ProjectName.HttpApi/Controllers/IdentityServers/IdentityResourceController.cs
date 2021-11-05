@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using CompanyName.ProjectName.IdentityServers.IdentityResources;
 using CompanyName.ProjectName.IdentityServers.IdentityResources.Dtos;
 using CompanyName.ProjectName.Permissions;
-using CompanyName.ProjectName.Publics.Dtos;
+using Lion.Abp.Extension;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

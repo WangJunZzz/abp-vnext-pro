@@ -176,7 +176,7 @@ export const usePermissionStore = defineStore({
           // this.setFrontMenuList(menuList);
           // // Convert multi-level routing to level 2 routing
           // routes = flatMultiLevelRoutes(routes);
-
+          debugger;
           const permissions = this.getPermCodeList;
           const roleRouteFilter = (route: AppRouteRecordRaw) => {
             const { meta } = route;

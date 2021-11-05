@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Ddd.Domain" Version="$(AbpPackageVersion)" />
+    <ProjectReference Include="..\..\..\..\frameworks\Extensions\src\Lion.Abp.Domain\Lion.Abp.Domain.csproj" />
+
    
     <ProjectReference Include="..\CompanyName.ProjectName.DataDictionaryManagement.Domain.Shared\CompanyName.ProjectName.DataDictionaryManagement.Domain.Shared.csproj" />
   </ItemGroup>

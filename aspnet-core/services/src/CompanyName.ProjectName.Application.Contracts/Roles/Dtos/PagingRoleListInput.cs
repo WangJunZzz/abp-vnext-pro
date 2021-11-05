@@ -1,5 +1,4 @@
-﻿using CompanyName.ProjectName.Extensions.Customs;
-using CompanyName.ProjectName.Publics.Dtos;
+﻿using Lion.Abp.Extension;
 
 namespace CompanyName.ProjectName.Roles.Dtos
 {

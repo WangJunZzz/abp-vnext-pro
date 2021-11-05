@@ -1,9 +1,9 @@
-using CompanyName.ProjectName.Extensions.Volo.Abp;
-using Volo.Abp.Domain.Services;
+using System;
+using Lion.Abp.Domain;
 
 namespace CompanyName.ProjectName.NotificationManagement
 {
-    public abstract class NotificationManagementDomainService : BaseDomainService
+    public abstract class NotificationManagementDomainService : LionAbpDomainService
     {
         protected NotificationManagementDomainService()
         {

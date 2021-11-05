@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="5.0.*" />
-    <ProjectReference Include="..\..\..\..\frameworks\Extensions\src\CompanyName.ProjectName.Extensions\CompanyName.ProjectName.Extensions.csproj" />
+    <ProjectReference Include="..\..\..\..\frameworks\Extensions\src\Lion.Abp.Extension\Lion.Abp.Extension.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using CompanyName.ProjectName.Publics.Dtos;
 using CompanyName.ProjectName.Tenants.Dtos;
+using Lion.Abp.Extension;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

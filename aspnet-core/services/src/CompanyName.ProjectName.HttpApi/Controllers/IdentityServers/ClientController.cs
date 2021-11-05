@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using CompanyName.ProjectName.IdentityServers.Clients;
 using CompanyName.ProjectName.Permissions;
-using CompanyName.ProjectName.Publics.Dtos;
+using Lion.Abp.Extension;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

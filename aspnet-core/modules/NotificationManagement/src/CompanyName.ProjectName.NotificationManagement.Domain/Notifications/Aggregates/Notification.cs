@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using CompanyName.ProjectName.Extensions.Customs;
 using Volo.Abp.Domain.Entities.Auditing;
 using CompanyName.ProjectName.NotificationManagement.Notifications.DistributedEvents;
+using Lion.Abp.Extension;
 
 namespace CompanyName.ProjectName.NotificationManagement.Notifications
 {

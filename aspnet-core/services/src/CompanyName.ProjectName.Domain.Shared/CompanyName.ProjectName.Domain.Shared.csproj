@@ -30,7 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\frameworks\Extensions\src\CompanyName.ProjectName.Extensions\CompanyName.ProjectName.Extensions.csproj" />
+    <ProjectReference Include="..\..\..\frameworks\Extensions\src\Lion.Abp.Extension\Lion.Abp.Extension.csproj" />
   </ItemGroup>
+
+
 
 </Project>

@@ -37,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\frameworks\CAP\src\CompanyName.ProjectName.CAP\CompanyName.ProjectName.CAP.csproj" />
+    <ProjectReference Include="..\..\..\frameworks\CAP\src\Lion.Abp.Cap\Lion.Abp.Cap.csproj" />
     <ProjectReference Include="..\..\src\CompanyName.ProjectName.Application\CompanyName.ProjectName.Application.csproj" />
     <ProjectReference Include="..\..\src\CompanyName.ProjectName.EntityFrameworkCore.DbMigrations\CompanyName.ProjectName.EntityFrameworkCore.DbMigrations.csproj" />
     <ProjectReference Include="..\..\src\CompanyName.ProjectName.HttpApi\CompanyName.ProjectName.HttpApi.csproj" />

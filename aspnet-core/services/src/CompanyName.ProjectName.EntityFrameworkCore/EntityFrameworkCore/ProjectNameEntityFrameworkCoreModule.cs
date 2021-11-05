@@ -1,6 +1,5 @@
 ﻿using CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore;
 using CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore;
-using CompanyName.ProjectName.QueryManagement.FreeSqlMySql;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -27,7 +26,6 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
         typeof(AbpTenantManagementEntityFrameworkCoreModule),
         typeof(AbpFeatureManagementEntityFrameworkCoreModule),
-        typeof(QueryManagementFreeSqlMySqlModule),
         typeof(DataDictionaryManagementEntityFrameworkCoreModule),
         typeof(NotificationManagementEntityFrameworkCoreModule)
         )]

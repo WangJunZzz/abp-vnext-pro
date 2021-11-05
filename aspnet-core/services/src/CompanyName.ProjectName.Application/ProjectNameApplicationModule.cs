@@ -1,6 +1,6 @@
 ﻿using CompanyName.ProjectName.DataDictionaryManagement;
+using CompanyName.ProjectName.FreeSqlRepository;
 using CompanyName.ProjectName.NotificationManagement;
-using CompanyName.ProjectName.QueryManagement;
 using EasyAbp.Abp.SettingUi;
 using Volo.Abp.Account;
 using Volo.Abp.AuditLogging;
@@ -24,11 +24,10 @@ namespace CompanyName.ProjectName
         typeof(AbpFeatureManagementApplicationModule),
         typeof(AbpSettingManagementApplicationModule),
         typeof(AbpAuditLoggingDomainModule),
-        typeof(QueryManagementDomainModule),
         typeof(DataDictionaryManagementApplicationModule),
         typeof(NotificationManagementApplicationModule),
-        typeof(QueryManagementApplicationModule),
-        typeof(AbpSettingUiApplicationModule)
+        typeof(AbpSettingUiApplicationModule),
+        typeof(FreeSqlRepositoryModule)
         )]
     public class ProjectNameApplicationModule : AbpModule
     {
