@@ -12,6 +12,6 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore
          * DbSet<Question> Questions { get; }
          */
         
-        DbSet<Notification> Questions { get; set; }
+        DbSet<Notification> Notifications { get; set; }
     }
 }

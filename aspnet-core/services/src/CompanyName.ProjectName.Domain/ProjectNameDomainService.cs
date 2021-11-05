@@ -1,13 +1,13 @@
-using System;
+﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Domain.Services;
 using Volo.Abp.EventBus.Distributed;
 using Volo.Abp.ObjectMapping;
 using Volo.Abp.Uow;
 
-namespace CompanyName.ProjectName.NotificationManagement
+namespace CompanyName.ProjectName
 {
-    public abstract class NotificationManagementDomainService : DomainService
+    public abstract class ProjectNameDomainService : DomainService
     {
         protected Type ObjectMapperContext { get; set; }
 

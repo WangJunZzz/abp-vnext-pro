@@ -5,9 +5,9 @@ using Volo.Abp.EventBus.Distributed;
 using Volo.Abp.ObjectMapping;
 using Volo.Abp.Uow;
 
-namespace Lion.Abp.Domain
+namespace CompanyName.ProjectName.DataDictionaryManagement
 {
-    public abstract class LionAbpDomainService : DomainService
+    public abstract class DataDictionaryDomainService : DomainService
     {
         protected Type ObjectMapperContext { get; set; }
 

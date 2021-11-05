@@ -11,7 +11,7 @@ using IdentityModel;
 
 namespace CompanyName.ProjectName.IdentityServer
 {
-    public class IdenityServerApiResourceManager : DomainService
+    public class IdenityServerApiResourceManager : ProjectNameDomainService
     {
         private readonly IApiResourceRepository _apiResourceRepository;
 

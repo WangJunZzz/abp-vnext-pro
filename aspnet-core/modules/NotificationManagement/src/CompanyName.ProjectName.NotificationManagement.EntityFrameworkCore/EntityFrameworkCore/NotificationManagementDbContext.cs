@@ -17,7 +17,7 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore
         {
 
         }
-        public DbSet<Notification> Questions { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         
         protected override void OnModelCreating(ModelBuilder builder)
         {

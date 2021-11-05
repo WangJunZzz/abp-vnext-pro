@@ -8,7 +8,7 @@ using Volo.Abp.Domain.Services;
 
 namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
 {
-    public class DataDictionaryManager : DomainService
+    public class DataDictionaryManager : DataDictionaryDomainService
     {
         private readonly IDataDictionaryRepository _dataDictionaryRepository;
 

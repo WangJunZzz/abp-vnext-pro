@@ -9,20 +9,9 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore
     public static class DataDictionaryManagementDbContextModelCreatingExtensions
     {
         public static void ConfigureDataDictionaryManagement(
-            this ModelBuilder builder,
-            Action<DataDictionaryManagementModelBuilderConfigurationOptions> optionsAction = null)
+            this ModelBuilder builder)
         {
             Check.NotNull(builder, nameof(builder));
-
-            var options = new DataDictionaryManagementModelBuilderConfigurationOptions(
-                DataDictionaryManagementDbProperties.DbTablePrefix,
-                DataDictionaryManagementDbProperties.DbSchema
-            );
-
-            optionsAction?.Invoke(options);
-            
-            
-      
             
             builder.Entity<DataDictionary>(b =>
             {
