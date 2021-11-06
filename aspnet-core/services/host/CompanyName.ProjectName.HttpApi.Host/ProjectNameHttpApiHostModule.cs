@@ -122,7 +122,7 @@ namespace CompanyName.ProjectName
                 Authorization = new[] { new CustomHangfireAuthorizeFilter() },
                 IgnoreAntiforgeryToken = true
             });
-
+            
             if (configuration.GetValue<bool>("Consul:Enabled", false))
             {
                 app.UseConsul();

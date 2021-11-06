@@ -41,6 +41,7 @@ namespace CompanyName.ProjectName.WebGateway
             });
             
             app.UseConfiguredEndpoints();
+            app.UseWebSockets();
             app.UseOcelot().Wait();
         }
 
