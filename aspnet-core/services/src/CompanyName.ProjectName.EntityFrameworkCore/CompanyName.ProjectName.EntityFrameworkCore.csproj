@@ -1,24 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\common.props" />
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>CompanyName.ProjectName</RootNamespace>
-  </PropertyGroup>
+    <Import Project="..\..\..\common.props"/>
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>CompanyName.ProjectName</RootNamespace>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore\CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\..\..\modules\NotificationManagement\src\CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore\CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\CompanyName.ProjectName.Domain\CompanyName.ProjectName.Domain.csproj" />
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.IdentityServer.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-  </ItemGroup>
-
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore\CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore.csproj"/>
+        <ProjectReference Include="..\..\..\modules\NotificationManagement\src\CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore\CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.csproj"/>
+        <ProjectReference Include="..\CompanyName.ProjectName.Domain\CompanyName.ProjectName.Domain.csproj"/>
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(AbpPackageVersion)"/>
+        <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)"/>
+        <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)"/>
+        <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" Version="$(AbpPackageVersion)"/>
+        <PackageReference Include="Volo.Abp.IdentityServer.EntityFrameworkCore" Version="$(AbpPackageVersion)"/>
+        <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore" Version="$(AbpPackageVersion)"/>
+        <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="$(AbpPackageVersion)"/>
+        <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)"/>
+        <PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.7">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+            <PrivateAssets>compile; contentFiles; build; buildMultitargeting; buildTransitive; analyzers; native</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
 </Project>

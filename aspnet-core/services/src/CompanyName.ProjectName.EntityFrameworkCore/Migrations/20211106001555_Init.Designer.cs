@@ -9,8 +9,8 @@ using Volo.Abp.EntityFrameworkCore;
 
 namespace CompanyName.ProjectName.Migrations
 {
-    [DbContext(typeof(ProjectNameMigrationsDbContext))]
-    [Migration("20210903085042_Init")]
+    [DbContext(typeof(ProjectNameDbContext))]
+    [Migration("20211106001555_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -263,7 +263,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("ApplicationName")
@@ -371,7 +370,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<Guid>("AuditLogId")
@@ -421,7 +419,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.AuditLogging.EntityChange", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<Guid>("AuditLogId")
@@ -471,7 +468,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.AuditLogging.EntityPropertyChange", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<Guid>("EntityChangeId")
@@ -513,7 +509,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.BackgroundJobs.BackgroundJobRecord", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -571,7 +566,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.FeatureManagement.FeatureValue", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
@@ -602,7 +596,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.Identity.IdentityClaimType", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -649,7 +642,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.Identity.IdentityLinkUser", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<Guid?>("SourceTenantId")
@@ -675,7 +667,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.Identity.IdentityRole", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -752,7 +743,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.Identity.IdentitySecurityLog", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Action")
@@ -827,7 +817,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.Identity.IdentityUser", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<int>("AccessFailedCount")
@@ -1107,7 +1096,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.Identity.OrganizationUnit", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Code")
@@ -2036,7 +2024,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.PermissionManagement.PermissionGrant", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
@@ -2068,7 +2055,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.SettingManagement.Setting", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
@@ -2099,7 +2085,6 @@ namespace CompanyName.ProjectName.Migrations
             modelBuilder.Entity("Volo.Abp.TenantManagement.Tenant", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("ConcurrencyStamp")

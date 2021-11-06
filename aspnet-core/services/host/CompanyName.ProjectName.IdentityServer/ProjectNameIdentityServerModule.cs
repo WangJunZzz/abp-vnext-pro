@@ -45,7 +45,7 @@ namespace CompanyName.ProjectName
         typeof(AbpAccountWebIdentityServerModule),
         typeof(AbpAccountApplicationModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-        typeof(ProjectNameEntityFrameworkCoreDbMigrationsModule),
+        typeof(ProjectNameEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreSerilogModule)
     )]
     public class ProjectNameIdentityServerModule : AbpModule

@@ -28,7 +28,7 @@
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Autofac" Version="$(AbpPackageVersion)" />
     <ProjectReference Include="..\CompanyName.ProjectName.Application.Contracts\CompanyName.ProjectName.Application.Contracts.csproj" />
-    <ProjectReference Include="..\CompanyName.ProjectName.EntityFrameworkCore.DbMigrations\CompanyName.ProjectName.EntityFrameworkCore.DbMigrations.csproj" />
+    <ProjectReference Include="..\CompanyName.ProjectName.EntityFrameworkCore\CompanyName.ProjectName.EntityFrameworkCore.csproj" />
   </ItemGroup>
   
   <ItemGroup>

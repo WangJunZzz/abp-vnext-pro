@@ -1,4 +1,7 @@
-﻿using CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore;
+﻿using CompanyName.ProjectName.DataDictionaryManagement;
+using CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore;
+using CompanyName.ProjectName.NotificationManagement;
+using CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using CompanyName.ProjectName.Users;
 using Volo.Abp.AuditLogging;
@@ -67,6 +70,14 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            
+            // 如何设置表前缀
+            // Abp框架表前缀 Abp得不建议修改表前缀
+            // AbpCommonDbProperties.DbTablePrefix = "xxx";
+            // 数据字典表前缀
+            //DataDictionaryManagementDbProperties=“xxx”
+            // 通知模块
+            //NotificationManagementDbProperties = "xxx"
             base.OnModelCreating(builder);
 
             builder.ConfigurePermissionManagement( );
@@ -78,6 +89,13 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
             builder.ConfigureTenantManagement();
             builder.ConfigureIdentityServer();
             builder.ConfigureProjectName();
+            
+            
+            // 数据字典
+            builder.ConfigureDataDictionaryManagement();
+
+            // 消息通知
+            builder.ConfigureNotificationManagement();
         }
     }
 }

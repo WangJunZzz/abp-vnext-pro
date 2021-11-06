@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using CompanyName.ProjectName.Data;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.DependencyInjection;
 
 namespace CompanyName.ProjectName.EntityFrameworkCore
@@ -27,7 +27,7 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
              */
 
             await _serviceProvider
-                .GetRequiredService<ProjectNameMigrationsDbContext>()
+                .GetRequiredService<ProjectNameDbContext>()
                 .Database
                 .MigrateAsync();
         }

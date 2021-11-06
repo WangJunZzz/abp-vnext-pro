@@ -52,7 +52,7 @@ namespace CompanyName.ProjectName
         typeof(AbpCachingStackExchangeRedisModule),
         typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
         typeof(ProjectNameApplicationModule),
-        typeof(ProjectNameEntityFrameworkCoreDbMigrationsModule),
+        typeof(ProjectNameEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpSwashbuckleModule),
         typeof(AbpAccountWebModule),

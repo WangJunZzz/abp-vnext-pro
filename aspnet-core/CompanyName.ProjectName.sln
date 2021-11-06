@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{04DBDB01-7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Application.Tests", "services\test\CompanyName.ProjectName.Application.Tests\CompanyName.ProjectName.Application.Tests.csproj", "{50B2631D-129C-47B3-A587-029CCD6099BC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.EntityFrameworkCore.DbMigrations", "services\src\CompanyName.ProjectName.EntityFrameworkCore.DbMigrations\CompanyName.ProjectName.EntityFrameworkCore.DbMigrations.csproj", "{0372FA84-C517-4EB3-9A9F-B9ACAC0CA5E0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Domain.Shared", "services\src\CompanyName.ProjectName.Domain.Shared\CompanyName.ProjectName.Domain.Shared.csproj", "{42F719ED-8413-4895-B5B4-5AB56079BC66}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Application.Contracts", "services\src\CompanyName.ProjectName.Application.Contracts\CompanyName.ProjectName.Application.Contracts.csproj", "{520659C8-C734-4298-A3DA-B539DB9DFC0B}"
@@ -169,10 +167,6 @@ Global
 		{50B2631D-129C-47B3-A587-029CCD6099BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50B2631D-129C-47B3-A587-029CCD6099BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50B2631D-129C-47B3-A587-029CCD6099BC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0372FA84-C517-4EB3-9A9F-B9ACAC0CA5E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0372FA84-C517-4EB3-9A9F-B9ACAC0CA5E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0372FA84-C517-4EB3-9A9F-B9ACAC0CA5E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0372FA84-C517-4EB3-9A9F-B9ACAC0CA5E0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{42F719ED-8413-4895-B5B4-5AB56079BC66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{42F719ED-8413-4895-B5B4-5AB56079BC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42F719ED-8413-4895-B5B4-5AB56079BC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -352,7 +346,6 @@ Global
 		{CA9AC87F-097E-4F15-8393-4BC07735A5B0} = {2C861ADD-76E9-4B3B-8A3C-638EBB67D683}
 		{04DBDB01-70F4-4E06-B468-8F87850B22BE} = {2C861ADD-76E9-4B3B-8A3C-638EBB67D683}
 		{50B2631D-129C-47B3-A587-029CCD6099BC} = {04DBDB01-70F4-4E06-B468-8F87850B22BE}
-		{0372FA84-C517-4EB3-9A9F-B9ACAC0CA5E0} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{42F719ED-8413-4895-B5B4-5AB56079BC66} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{520659C8-C734-4298-A3DA-B539DB9DFC0B} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{4164BDF7-F527-4E85-9CE6-E3C2D7426A27} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
