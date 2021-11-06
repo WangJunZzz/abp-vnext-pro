@@ -4,7 +4,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace DefaultNamespace.Swaggers
+namespace CompanyName.ProjectName.Swaggers
 {
     /// <summary>
     /// swagger 枚举映射，

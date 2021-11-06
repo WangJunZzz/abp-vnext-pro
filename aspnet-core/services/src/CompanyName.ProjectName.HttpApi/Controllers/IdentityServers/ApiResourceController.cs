@@ -13,7 +13,7 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
 {
     [Route("IdentityServer/ApiResource")]
     [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiResource.Default)]
-    public class ApiResourceController : ProjectNameController
+    public class ApiResourceController : ProjectNameController,IApiResourceAppService
     {
         private readonly IApiResourceAppService _apiResourceAppService;
 

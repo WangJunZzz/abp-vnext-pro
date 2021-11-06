@@ -1,13 +1,11 @@
 ﻿{
- 
   "profiles": {
- 
     "CompanyName.ProjectName.IdentityServer": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "applicationUrl": "http://localhost:44354",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Production"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
   }

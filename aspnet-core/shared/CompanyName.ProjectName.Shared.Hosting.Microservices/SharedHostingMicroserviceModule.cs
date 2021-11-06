@@ -10,7 +10,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.UI.Navigation.Urls;
 
-namespace DefaultNamespace
+namespace  CompanyName.ProjectName
 {
     [DependsOn(
         typeof(AbpSwashbuckleModule),

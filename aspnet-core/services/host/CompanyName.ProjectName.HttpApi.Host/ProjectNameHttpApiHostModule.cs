@@ -31,8 +31,7 @@ using Volo.Abp.Swashbuckle;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.Extensions;
 using CompanyName.ProjectName.MultiTenancy;
-using DefaultNamespace;
-using DefaultNamespace.Swaggers;
+using CompanyName.ProjectName.Swaggers;
 using Lion.Abp.Cap;
 using Savorboard.CAP.InMemoryMessageQueue;
 using Serilog;
@@ -79,6 +78,8 @@ namespace CompanyName.ProjectName
             ConfigureHangfireMysql(context);
             ConfigurationCap(context);
             ConfigurationStsHttpClient(context);
+
+
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)

@@ -12,7 +12,7 @@ namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("AuditLogs")]
     [Authorize(Policy = IdentityPermissions.Users.Default)]
-    public class AuditLogController : ProjectNameController
+    public class AuditLogController : ProjectNameController,IAuditLogAppService
     {
         private readonly IAuditLogAppService _auditLogAppService;
 
@@ -24,7 +24,7 @@ namespace CompanyName.ProjectName.Controllers.Systems
         [HttpPost("page")]
         [Authorize(Policy = ProjectNamePermissions.SystemManagement.AuditLog)]
         [SwaggerOperation(summary: "分页获取用户信息", Tags = new[] {"AuditLogs"})]
-        public Task<PagedResultDto<GetAuditLogPageListOutput>> ListAsync(PagingAuditLogListInput input)
+        public Task<PagedResultDto<GetAuditLogPageListOutput>> GetListAsync(PagingAuditLogListInput input)
         {
             return _auditLogAppService.GetListAsync(input);
         }

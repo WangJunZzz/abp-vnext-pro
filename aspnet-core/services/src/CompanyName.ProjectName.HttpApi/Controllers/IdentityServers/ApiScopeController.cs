@@ -13,7 +13,7 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
 {
     [Route("IdentityServer/ApiScope")]
     [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiScope.Default)]
-    public class ApiScopeController:ProjectNameController
+    public class ApiScopeController:ProjectNameController,IApiScopeAppService
     {
         private readonly IApiScopeAppService _apiScopeAppService;
 

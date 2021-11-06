@@ -3,11 +3,11 @@
   "profiles": {
     "CompanyName.ProjectName.WebGateway": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "swagger",
       "applicationUrl": "http://localhost:44314",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Consul"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
   }
