@@ -36,7 +36,6 @@ namespace Microsoft.AspNetCore.Builder
                 Port = appUrl.Port,
                 Check = new AgentServiceCheck
                 {
-                    Status = HealthStatus.Passing,
                     DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5),//服务停止多久后注销
                     Interval = TimeSpan.FromSeconds(3),//健康检查时间间隔，或者称为心跳 间隔
                     HTTP = $"http://{appUrl.Host}:{appUrl.Port}/health",//健康检查地址 

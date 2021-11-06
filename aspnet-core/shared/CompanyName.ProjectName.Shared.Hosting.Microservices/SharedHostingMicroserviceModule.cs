@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.AspNetCore.ExceptionHandling;
 using Volo.Abp.Autofac;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
@@ -26,7 +27,29 @@ namespace DefaultNamespace
             ConfigureLocalization();
             ConfigureCors(context);
             ConfigureUrls(configuration);
-           
+            ConfigureAbpExceptions(context);
+            ConfigureConsul(context, configuration);
+        }
+
+        private void ConfigureConsul(ServiceConfigurationContext context,
+            IConfiguration configuration)
+        {
+            if (configuration.GetValue<bool>("Consul:Enabled", false))
+            {
+                context.Services.AddConsulConfig(configuration);
+            }
+        }
+
+        /// <summary>
+        /// 异常处理
+        /// </summary>
+        /// <param name="context"></param>
+        private void ConfigureAbpExceptions(ServiceConfigurationContext context)
+        {
+            context.Services.Configure<AbpExceptionHandlingOptions>(options =>
+            {
+                options.SendExceptionsDetailsToClients = true;
+            });
         }
 
         /// <summary>
@@ -98,6 +121,7 @@ namespace DefaultNamespace
         private void ConfigureHealthChecks(ServiceConfigurationContext context)
         {
             // TODO 检查数据库和redis是否正常 AspNetCore.HealthChecks.Redis AspNetCore.HealthChecks.MySql
+            // context.Services.AddHealthChecks().AddRedis(redisConnectionString).AddMySql(connectString);
             context.Services.AddHealthChecks();
         }
     }

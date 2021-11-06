@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\frameworks\CAP\src\Lion.Abp.Cap\Lion.Abp.Cap.csproj" />
+    <ProjectReference Include="..\..\..\shared\CompanyName.ProjectName.Shared.Hosting.Microservices\CompanyName.ProjectName.Shared.Hosting.Microservices.csproj" />
     <ProjectReference Include="..\..\src\CompanyName.ProjectName.Application\CompanyName.ProjectName.Application.csproj" />
     <ProjectReference Include="..\..\src\CompanyName.ProjectName.EntityFrameworkCore\CompanyName.ProjectName.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\src\CompanyName.ProjectName.HttpApi\CompanyName.ProjectName.HttpApi.csproj" />
