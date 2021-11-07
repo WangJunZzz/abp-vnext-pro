@@ -18,11 +18,7 @@ namespace CompanyName.ProjectName.Data.Seeds
         public async Task SeedAsync(DataSeedContext context)
         {
             // 设置默认语言
-            var defaultLanguage = await _settingManager.GetOrNullGlobalAsync(DefaultLanguageKey);
-            if (defaultLanguage == null)
-            {
-                await _settingManager.SetGlobalAsync(DefaultLanguageKey, DefaultLanguage);
-            }
+            await _settingManager.SetGlobalAsync(DefaultLanguageKey, DefaultLanguage);
         }
     }
 }

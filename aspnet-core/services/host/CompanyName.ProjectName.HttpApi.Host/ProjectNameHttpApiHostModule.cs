@@ -78,8 +78,6 @@ namespace CompanyName.ProjectName
             ConfigureHangfireMysql(context);
             ConfigurationCap(context);
             ConfigurationStsHttpClient(context);
-
-
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -122,7 +120,7 @@ namespace CompanyName.ProjectName
                 Authorization = new[] { new CustomHangfireAuthorizeFilter() },
                 IgnoreAntiforgeryToken = true
             });
-            
+
             if (configuration.GetValue<bool>("Consul:Enabled", false))
             {
                 app.UseConsul();

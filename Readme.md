@@ -35,9 +35,13 @@
 - [x] 用户管理
 - [x] 角色管理
 - [x] 审计日志
-- [x] 后台任务(hangfire)
-- [x] 集成事件(dotnetcore.cap)
-- [x] IdentityServer4 - [x] 客户端管理 - [x] Api 资源管理 - [x] ApiScope 管理 - [x] Identity 资源管理
+- [x] 后台任务
+- [x] 集成事件
+- [x] IdentityServer4
+  - [x] 客户端管理
+  - [x] Api 资源管理
+  - [x] ApiScope 管理
+  - [x] Identity 资源管理
 - [x] SinglaR 消息通知
 - [x] 多语言
 - [x] FreeSql

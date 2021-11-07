@@ -10,12 +10,12 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications.Distribut
     /// 创建消息事件处理
     /// </summary>
     public class
-        CreatedNotificationDistributedEventHandler : IDistributedEventHandler<CreatedNotificationDistributedEvent>,
+        NotificationCreatedDistributedEventHandler : IDistributedEventHandler<CreatedNotificationDistributedEvent>,
             ITransientDependency
     {
         private readonly INotificationAppService _hubAppService;
 
-        public CreatedNotificationDistributedEventHandler(INotificationAppService hubAppService)
+        public NotificationCreatedDistributedEventHandler(INotificationAppService hubAppService)
         {
             _hubAppService = hubAppService;
         }
