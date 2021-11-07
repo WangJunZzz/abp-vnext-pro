@@ -8,7 +8,7 @@ using Volo.Abp.IdentityServer.IdentityResources;
 
 namespace CompanyName.ProjectName.IdentityServer
 {
-    public class IdentityResourceManager : DomainService
+    public class IdentityResourceManager : ProjectNameDomainService
     {
         private readonly IIdentityResourceRepository _identityResourceRepository;
 

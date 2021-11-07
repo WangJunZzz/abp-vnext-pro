@@ -11,8 +11,8 @@ using Volo.Abp.Modularity;
 namespace CompanyName.ProjectName.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(ProjectNameEntityFrameworkCoreDbMigrationsModule),
         typeof(ProjectNameTestBaseModule),
+        typeof(ProjectNameEntityFrameworkCoreModule),
         typeof(AbpEntityFrameworkCoreSqliteModule)
         )]
     public class ProjectNameEntityFrameworkCoreTestModule : AbpModule
@@ -47,11 +47,11 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
             var connection = new SqliteConnection("Data Source=:memory:");
             connection.Open();
 
-            var options = new DbContextOptionsBuilder<ProjectNameMigrationsDbContext>()
+            var options = new DbContextOptionsBuilder<ProjectNameDbContext>()
                 .UseSqlite(connection)
                 .Options;
 
-            using (var context = new ProjectNameMigrationsDbContext(options))
+            using (var context = new ProjectNameDbContext(options))
             {
                 context.GetService<IRelationalDatabaseCreator>().CreateTables();
             }

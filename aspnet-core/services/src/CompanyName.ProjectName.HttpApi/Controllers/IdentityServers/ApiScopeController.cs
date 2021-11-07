@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using CompanyName.ProjectName.Extensions.Customs.Dtos;
 using CompanyName.ProjectName.IdentityServers.ApiScopes;
 using CompanyName.ProjectName.IdentityServers.ApiScopes.Dtos;
 using CompanyName.ProjectName.Permissions;
-using CompanyName.ProjectName.Publics.Dtos;
+using Lion.Abp.Extension;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -15,7 +13,7 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
 {
     [Route("IdentityServer/ApiScope")]
     [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiScope.Default)]
-    public class ApiScopeController:ProjectNameController
+    public class ApiScopeController:ProjectNameController,IApiScopeAppService
     {
         private readonly IApiScopeAppService _apiScopeAppService;
 

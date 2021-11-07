@@ -1,5 +1,5 @@
 ﻿using System;
-using CompanyName.ProjectName.Extensions.Customs;
+using Lion.Abp.Extension;
 using Volo.Abp.Domain.Entities.Auditing;
 
 namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.Aggregates

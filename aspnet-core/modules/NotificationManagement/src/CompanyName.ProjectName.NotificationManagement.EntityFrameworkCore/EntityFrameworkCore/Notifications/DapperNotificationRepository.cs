@@ -11,10 +11,11 @@ using Volo.Abp.EntityFrameworkCore;
 
 namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Notifications
 {
-     public class DapperNotificationRepository : DapperRepository<INotificationManagementDbContext>,
+    public class DapperNotificationRepository : DapperRepository<INotificationManagementDbContext>,
         IDapperNotificationRepository
     {
-        public DapperNotificationRepository(IDbContextProvider<INotificationManagementDbContext> dbContextProvider) :
+        public DapperNotificationRepository(
+            IDbContextProvider<INotificationManagementDbContext> dbContextProvider) :
             base(dbContextProvider)
         {
         }
@@ -23,16 +24,18 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
         /// 分页查询广播消息
         /// </summary>
         /// <returns></returns>
-        public async Task<List<PagingNotificationListOutput>> GetPageBroadCastNotificationByUserIdAsync(
-            Guid userId,
-            int maxResultCount = 10,
-            int skipCount = 0,
-            CancellationToken cancellationToken = default)
+        public async Task<List<PagingNotificationListOutput>>
+            GetPageBroadCastNotificationByUserIdAsync(
+                Guid userId,
+                int maxResultCount = 10,
+                int skipCount = 0,
+                CancellationToken cancellationToken = default)
         {
             var sql = BuildPageBroadCastSql();
             sql += $" LIMIT {maxResultCount} OFFSET {skipCount}";
             var tran = await GetDbTransactionAsync();
-            return (await (await GetDbConnectionAsync()).QueryAsync<PagingNotificationListOutput>(sql, new {userId},
+            return (await (await GetDbConnectionAsync()).QueryAsync<PagingNotificationListOutput>(
+                    sql, new { userId },
                     transaction: tran))
                 .ToList();
         }
@@ -47,7 +50,8 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
         {
             var sql = BuildPageBroadCastCountSql();
             var tran = await GetDbTransactionAsync();
-            return (await (await GetDbConnectionAsync()).QueryAsync<int>(sql, new {userId}, transaction: tran))
+            return (await (await GetDbConnectionAsync()).QueryAsync<int>(sql, new { userId },
+                    transaction: tran))
                 .FirstOrDefault();
         }
 
@@ -64,7 +68,8 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
             var sql = BuildPageTextSql();
             sql += $" LIMIT {maxResultCount} OFFSET {skipCount}";
             var tran = await GetDbTransactionAsync();
-            return (await (await GetDbConnectionAsync()).QueryAsync<PagingNotificationListOutput>(sql, new {userId},
+            return (await (await GetDbConnectionAsync()).QueryAsync<PagingNotificationListOutput>(
+                    sql, new { userId },
                     transaction: tran))
                 .ToList();
         }
@@ -79,7 +84,8 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
         {
             var sql = BuildPageTextCountSql();
             var tran = await GetDbTransactionAsync();
-            return (await (await GetDbConnectionAsync()).QueryAsync<int>(sql, new {userId}, transaction: tran))
+            return (await (await GetDbConnectionAsync()).QueryAsync<int>(sql, new { userId },
+                    transaction: tran))
                 .FirstOrDefault();
         }
 
@@ -91,8 +97,8 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
                    + "a.Content,"
                    + "a.CreationTime, "
                    + "b.Read "
-                   + "from Notification a  "
-                   + "left join NotificationSubscription b on b.NotificationId=a.Id "
+                   + $"from {NotificationManagementDbProperties.DbTablePrefix}Notification a  "
+                   + $"left join {NotificationManagementDbProperties.DbTablePrefix}NotificationSubscription b on b.NotificationId=a.Id "
                    + "where a.IsDeleted=0  "
                    + "and a.MessageType=20 "
                    + "and b.ReceiveId=@userId "
@@ -104,7 +110,7 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
             return "select "
                    + "count(1) as count "
                    + "from Notification a "
-                   + "left join NotificationSubscription b on b.NotificationId=a.Id "
+                   + $"left join {NotificationManagementDbProperties.DbTablePrefix}NotificationSubscription b on b.NotificationId=a.Id "
                    + "where a.IsDeleted=0  "
                    + "and a.MessageType=20 "
                    + "and b.ReceiveId=@userId ";
@@ -114,21 +120,21 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
         {
             return "select count(1) as count from ("
                    + "select a.Id, a.Title, a.Content, a.CreationTime, a.SenderId, false as \"Read\" "
-                   + "from Notification a "
+                   + $"from {NotificationManagementDbProperties.DbTablePrefix}Notification a "
                    + "where a.IsDeleted = 0 "
                    + "and a.MessageType = 10 "
                    + "and a.Id not in "
                    + "    (select NotificationId "
-                   + "from NotificationSubscription b "
-                   + " where b.ReceiveId = '39febd0a-4c5d-d3b8-b223-ef49e7a3d7e2') "
+                   + $"from {NotificationManagementDbProperties.DbTablePrefix}NotificationSubscription b "
+                   + " where b.ReceiveId = @userId) "
                    + "union "
                    + "    select a.Id, a.Title, a.Content, a.CreationTime, a.SenderId, true as \"Read\" "
-                   + "from Notification a "
+                   + $"from {NotificationManagementDbProperties.DbTablePrefix}Notification a "
                    + " where a.IsDeleted = 0 "
                    + " and a.MessageType = 10 "
                    + "and a.Id in "
-                   + "    (select NotificationId "
-                   + "from NotificationSubscription b "
+                   + $"    (select {NotificationManagementDbProperties.DbTablePrefix}NotificationId "
+                   + $"from {NotificationManagementDbProperties.DbTablePrefix}NotificationSubscription b "
                    + "where b.ReceiveId = @userId) "
                    + "    ) as tt  ";
         }
@@ -137,21 +143,21 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
         {
             return "select * from ("
                    + "select a.Id, a.Title, a.Content, a.CreationTime, a.SenderId, false as \"Read\" "
-                   + "from Notification a "
+                   + $"from {NotificationManagementDbProperties.DbTablePrefix}Notification a "
                    + "where a.IsDeleted = 0 "
                    + "and a.MessageType = 10 "
                    + "and a.Id not in "
                    + "    (select NotificationId "
-                   + "from NotificationSubscription b "
-                   + " where b.ReceiveId = '39febd0a-4c5d-d3b8-b223-ef49e7a3d7e2') "
+                   + $"from {NotificationManagementDbProperties.DbTablePrefix}NotificationSubscription b "
+                   + " where b.ReceiveId = @userId) "
                    + "union"
                    + "    select a.Id, a.Title, a.Content, a.CreationTime, a.SenderId, true as \"Read\" "
-                   + "from  Notification a "
+                   + $"from  {NotificationManagementDbProperties.DbTablePrefix}Notification a "
                    + " where a.IsDeleted = 0 "
                    + " and a.MessageType = 10 "
                    + "and a.Id in "
                    + "    (select NotificationId "
-                   + "from  NotificationSubscription b "
+                   + $"from  {NotificationManagementDbProperties.DbTablePrefix}NotificationSubscription b "
                    + "where b.ReceiveId = @userId)"
                    + "    ) as tt order by tt.Read,tt.CreationTime  ";
         }

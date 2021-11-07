@@ -12,13 +12,13 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
     public class NotificationController : AbpController, IApplicationService
     {
         private readonly IQueryNotificationAppService _queryNotificationAppService;
-        private readonly ICommandNotificationAppService _commandNotificationAppService;
+        private readonly INotificationAppService _notificationAppService;
 
         public NotificationController(IQueryNotificationAppService queryNotificationAppService,
-            ICommandNotificationAppService commandNotificationAppService)
+            INotificationAppService notificationAppService)
         {
             _queryNotificationAppService = queryNotificationAppService;
-            _commandNotificationAppService = commandNotificationAppService;
+            _notificationAppService = notificationAppService;
         }
 
 
@@ -52,14 +52,14 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         [SwaggerOperation(summary: "消息设置为已读", Tags = new[] {"Notification"})]
         public Task SetReadAsync(SetReadInput input)
         {
-            return _commandNotificationAppService.SetReadAsync(input);
+            return _notificationAppService.SetReadAsync(input);
         }
 
         [HttpPost("Create")]
         [SwaggerOperation(summary: "创建消息-测试使用", Tags = new[] {"Notification"})]
         public Task CreateAsync(CreateNotificationInput input)
         {
-            return _commandNotificationAppService.CreateAsync(input);
+            return _notificationAppService.CreateAsync(input);
         }
     }
 }

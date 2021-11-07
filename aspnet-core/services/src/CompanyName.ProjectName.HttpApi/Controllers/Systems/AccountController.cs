@@ -6,7 +6,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace CompanyName.ProjectName.Controllers.Systems
 {
-    public class AccountController : ProjectNameController
+    public class AccountController : ProjectNameController,ILoginAppService
     {
         private readonly ILoginAppService _loginAppService;
 

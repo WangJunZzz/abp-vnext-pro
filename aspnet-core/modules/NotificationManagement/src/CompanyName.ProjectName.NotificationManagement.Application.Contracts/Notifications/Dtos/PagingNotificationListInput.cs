@@ -1,5 +1,4 @@
-﻿using System;
-using CompanyName.ProjectName.Extensions.Customs;
+﻿using Lion.Abp.Extension;
 
 namespace CompanyName.ProjectName.NotificationManagement.Notifications.Dtos
 {

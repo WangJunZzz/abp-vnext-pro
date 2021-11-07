@@ -122,7 +122,6 @@
       };
 
       const handleRemoveLogoutRedirectUri = async (redirectUri: string) => {
-        debugger;
         await removeLogoutRedirectUriAsync({
           clientId: state.currentClient.clientId,
           uri: redirectUri,

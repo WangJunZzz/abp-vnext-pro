@@ -8,7 +8,7 @@ using Volo.Abp.IdentityServer.ApiScopes;
 
 namespace CompanyName.ProjectName.IdentityServer
 {
-    public class IdenityServerApiScopeManager : DomainService
+    public class IdenityServerApiScopeManager : ProjectNameDomainService
     {
         private readonly IApiScopeRepository _apiScopeRepository;
 

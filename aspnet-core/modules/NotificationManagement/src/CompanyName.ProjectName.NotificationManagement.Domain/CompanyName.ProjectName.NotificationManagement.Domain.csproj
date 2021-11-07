@@ -10,7 +10,6 @@
     <ItemGroup>
         <PackageReference Include="Volo.Abp.Ddd.Domain" Version="$(AbpPackageVersion)" />
      
-        <ProjectReference Include="..\..\..\..\frameworks\Extensions\src\CompanyName.ProjectName.Extensions\CompanyName.ProjectName.Extensions.csproj" />
         <ProjectReference Include="..\CompanyName.ProjectName.NotificationManagement.Domain.Shared\CompanyName.ProjectName.NotificationManagement.Domain.Shared.csproj" />
     </ItemGroup>
 

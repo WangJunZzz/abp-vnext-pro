@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.IdentityServer;
 using CompanyName.ProjectName.IdentityServers.IdentityResources;
 using CompanyName.ProjectName.IdentityServers.IdentityResources.Dtos;
-using CompanyName.ProjectName.Publics.Dtos;
+using Lion.Abp.Extension;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.IdentityServer.IdentityResources;
 

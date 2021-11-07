@@ -2,8 +2,6 @@
 using Localization.Resources.AbpUi;
 using CompanyName.ProjectName.Localization;
 using CompanyName.ProjectName.NotificationManagement;
-using CompanyName.ProjectName.QueryManagement;
-using EasyAbp.Abp.SettingUi;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -24,8 +22,7 @@ namespace CompanyName.ProjectName
         typeof(AbpFeatureManagementHttpApiModule),
         typeof(AbpSettingManagementHttpApiModule),
         typeof(DataDictionaryManagementHttpApiModule),
-        typeof(NotificationManagementHttpApiModule),
-        typeof(QueryManagementHttpApiModule)
+        typeof(NotificationManagementHttpApiModule)
         )]
     public class ProjectNameHttpApiModule : AbpModule
     {

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using CompanyName.ProjectName.IdentityServer;
 using CompanyName.ProjectName.IdentityServers.Dtos;
-using CompanyName.ProjectName.Publics.Dtos;
+using Lion.Abp.Extension;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.IdentityServer.ApiResources;
 

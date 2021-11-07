@@ -24,6 +24,18 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
             _currentUser = currentUser;
         }
 
+        public Task SetReadAsync(SetReadInput input)
+        {
+            return _notificationManager.SetReadAsync(input.Id, input.ReceiveId);
+        }
+        
+        public async Task CreateAsync(CreateNotificationInput input)
+        {
+            if (_currentUser.Id != null)
+                await _notificationManager.CreateAsync(input.Title, input.Content, _currentUser.Id.Value, input.ReceiveIds,
+                    input.MessageType);
+        }
+        
         /// <summary>
         /// 发送消息
         /// </summary>

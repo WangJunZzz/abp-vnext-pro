@@ -10,7 +10,7 @@ using Volo.Abp.IdentityServer.Clients;
 
 namespace CompanyName.ProjectName.IdentityServer
 {
-    public class IdenityServerClientManager : DomainService
+    public class IdenityServerClientManager : ProjectNameDomainService
     {
         private readonly IClientRepository _clientRepository;
 

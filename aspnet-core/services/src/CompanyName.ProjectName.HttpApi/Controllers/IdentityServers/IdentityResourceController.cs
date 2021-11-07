@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using CompanyName.ProjectName.IdentityServers.IdentityResources;
 using CompanyName.ProjectName.IdentityServers.IdentityResources.Dtos;
 using CompanyName.ProjectName.Permissions;
-using CompanyName.ProjectName.Publics.Dtos;
+using Lion.Abp.Extension;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -13,7 +13,7 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
 {
     [Route("IdentityServer/IdentityResource")]
     [Authorize(Policy = ProjectNamePermissions.IdentityServer.IdentityResources.Default)]
-    public class IdentityResourceController : ProjectNameController
+    public class IdentityResourceController : ProjectNameController,IIdentityResourceAppService
     {
         private readonly IIdentityResourceAppService _identityResourceAppService;
 

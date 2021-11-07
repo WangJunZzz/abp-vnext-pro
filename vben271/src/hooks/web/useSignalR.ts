@@ -12,20 +12,7 @@ export function useSignalR() {
     //接收广播消息
     connection.on('ReceiveBroadCastMessageAsync', ReceiveBroadCastMessageHandlerAsync);
     //开始连接
-    connection.start().catch((err) => {
-      console.error('SignalR连接失败:' + err);
-    });
-    // 当连接关闭时,尝试重新连接
-    connection.onclose(() => {
-      try {
-        connection.start();
-        console.info('尝试重新连接成功');
-      } catch (err) {
-        setTimeout(() => {
-          connection = connectionsignalR();
-        }, 5000);
-      }
-    });
+    connection.start();
   }
 
   /**
@@ -34,10 +21,31 @@ export function useSignalR() {
   function connectionsignalR(): signalR.HubConnection {
     const userStore = useUserStoreWithOut();
     const token = userStore.getToken;
-    const url = (import.meta.env.VITE_API_URL as string) + '/signalr/notification';
+
+    const url = (import.meta.env.VITE_WEBSOCKE_URL as string) + '/ws/signalr/notification';
     const connection = new signalR.HubConnectionBuilder()
-      .withUrl(url, { accessTokenFactory: () => token })
-      .withAutomaticReconnect([1000, 3000, 5000, 8000, 10000, 15000])
+      .withUrl(url, {
+        accessTokenFactory: () => token,
+        skipNegotiation: true,
+        transport: signalR.HttpTransportType.WebSockets,
+      })
+      .withAutomaticReconnect({
+        nextRetryDelayInMilliseconds: (retryContext) => {
+          //重连规则：重连次数<300：间隔1s;重试次数<3000:间隔3s;重试次数>3000:间隔30s
+          let count = retryContext.previousRetryCount / 300;
+          if (count < 1) {
+            //重试次数<300,间隔1s
+            return 1000;
+          } else if (count < 10) {
+            //重试次数>300:间隔5s
+            return 1000 * 5;
+          } //重试次数>3000:间隔30s
+          else {
+            return 1000 * 30;
+          }
+        },
+      })
+      .configureLogging(signalR.LogLevel.Debug)
       .build();
     return connection;
   }

@@ -1,10 +1,27 @@
-﻿using CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore;
+﻿using CompanyName.ProjectName.DataDictionaryManagement;
+using CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore;
+using CompanyName.ProjectName.NotificationManagement;
+using CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using CompanyName.ProjectName.Users;
+using Volo.Abp.AuditLogging;
+using Volo.Abp.AuditLogging.EntityFrameworkCore;
+using Volo.Abp.BackgroundJobs;
+using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
+using Volo.Abp.FeatureManagement;
+using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
+using Volo.Abp.Identity.EntityFrameworkCore;
+using Volo.Abp.IdentityServer.EntityFrameworkCore;
+using Volo.Abp.PermissionManagement;
+using Volo.Abp.PermissionManagement.EntityFrameworkCore;
+using Volo.Abp.SettingManagement;
+using Volo.Abp.SettingManagement.EntityFrameworkCore;
+using Volo.Abp.TenantManagement;
+using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.Users.EntityFrameworkCore;
 
 namespace CompanyName.ProjectName.EntityFrameworkCore
@@ -19,9 +36,28 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
      * used modules (as explained above). See ProjectNameMigrationsDbContext for migrations.
      */
     [ConnectionStringName("Default")]
-    public class ProjectNameDbContext : AbpDbContext<ProjectNameDbContext>
+    public class ProjectNameDbContext : AbpDbContext<ProjectNameDbContext>,
+        IFeatureManagementDbContext,
+        IIdentityDbContext,
+        IPermissionManagementDbContext,
+        ISettingManagementDbContext,
+        ITenantManagementDbContext,
+        IBackgroundJobsDbContext,
+        IAuditLoggingDbContext
     {
-        public DbSet<AppUser> Users { get; set; }
+        public DbSet<IdentityUser> Users { get; }
+        public DbSet<IdentityRole> Roles { get; }
+        public DbSet<IdentityClaimType> ClaimTypes { get; }
+        public DbSet<OrganizationUnit> OrganizationUnits { get; }
+        public DbSet<IdentitySecurityLog> SecurityLogs { get; }
+        public DbSet<IdentityLinkUser> LinkUsers { get; }
+        public DbSet<FeatureValue> FeatureValues { get; }
+        public DbSet<PermissionGrant> PermissionGrants { get; }
+        public DbSet<Setting> Settings { get; }
+        public DbSet<Tenant> Tenants { get; }
+        public DbSet<TenantConnectionString> TenantConnectionStrings { get; }
+        public DbSet<BackgroundJobRecord> BackgroundJobs { get; }
+        public DbSet<AuditLog> AuditLogs { get; }
 
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside ProjectNameDbContextModelCreatingExtensions.ConfigureProjectName
@@ -30,32 +66,36 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
         public ProjectNameDbContext(DbContextOptions<ProjectNameDbContext> options)
             : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            
+            // 如何设置表前缀
+            // Abp框架表前缀 Abp得不建议修改表前缀
+            // AbpCommonDbProperties.DbTablePrefix = "xxx";
+            // 数据字典表前缀
+            //DataDictionaryManagementDbProperties=“xxx”
+            // 通知模块
+            //NotificationManagementDbProperties = "xxx"
             base.OnModelCreating(builder);
 
-            /* Configure the shared tables (with included modules) here */
-
-            builder.Entity<AppUser>(b =>
-            {
-                b.ToTable(AbpIdentityDbProperties.DbTablePrefix + "Users"); //Sharing the same table "AbpUsers" with the IdentityUser
-                
-                b.ConfigureByConvention();
-                b.ConfigureAbpUser();
-
-                /* Configure mappings for your additional properties
-                 * Also see the ProjectNameEfCoreEntityExtensionMappings class
-                 */
-            });
-
-            /* Configure your own tables/entities inside the ConfigureProjectName method */
-
+            builder.ConfigurePermissionManagement( );
+            builder.ConfigureSettingManagement();
+            builder.ConfigureBackgroundJobs();
+            builder.ConfigureAuditLogging();
+            builder.ConfigureIdentity();
+            builder.ConfigureFeatureManagement();
+            builder.ConfigureTenantManagement();
+            builder.ConfigureIdentityServer();
             builder.ConfigureProjectName();
             
-      
+            
+            // 数据字典
+            builder.ConfigureDataDictionaryManagement();
+
+            // 消息通知
+            builder.ConfigureNotificationManagement();
         }
     }
 }

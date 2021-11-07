@@ -7,14 +7,10 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.ConfigurationOptions;
-using CompanyName.ProjectName.Extensions.Customs.Http;
-using CompanyName.ProjectName.QueryManagement.Systems.Users;
 using CompanyName.ProjectName.Users.Dtos;
 using IdentityModel;
-using IdentityServer4;
-using Microsoft.AspNetCore.Authentication;
+using Lion.Abp.Extension;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Volo.Abp.Identity;
@@ -85,7 +81,7 @@ namespace CompanyName.ProjectName.Users
 
 
 
-        public async Task<LoginOutput> BuildResult(IdentityUser user)
+        private async Task<LoginOutput> BuildResult(IdentityUser user)
         {
             if (user.LockoutEnabled) throw new Exception("当前用户已被锁定");
             var roles = await _userManager.GetRolesAsync(user);

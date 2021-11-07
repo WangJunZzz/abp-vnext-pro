@@ -9,10 +9,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\CompanyName.ProjectName.DataDictionaryManagement.Application\CompanyName.ProjectName.DataDictionaryManagement.Application.csproj" />
     <ProjectReference Include="..\..\..\modules\NotificationManagement\src\CompanyName.ProjectName.NotificationManagement.Application\CompanyName.ProjectName.NotificationManagement.Application.csproj" />
-    <ProjectReference Include="..\..\..\modules\QueryManagement\src\CompanyName.ProjectName.QueryManagement.Application\CompanyName.ProjectName.QueryManagement.Application.csproj" />
-    <ProjectReference Include="..\..\..\modules\QueryManagement\src\CompanyName.ProjectName.QueryManagement.Domain\CompanyName.ProjectName.QueryManagement.Domain.csproj" />
     <ProjectReference Include="..\CompanyName.ProjectName.Domain\CompanyName.ProjectName.Domain.csproj" />
     <ProjectReference Include="..\CompanyName.ProjectName.Application.Contracts\CompanyName.ProjectName.Application.Contracts.csproj" />
+    <ProjectReference Include="..\CompanyName.ProjectName.FreeSqlRepository\CompanyName.ProjectName.FreeSqlRepository.csproj" />
   </ItemGroup>
 
   <ItemGroup>

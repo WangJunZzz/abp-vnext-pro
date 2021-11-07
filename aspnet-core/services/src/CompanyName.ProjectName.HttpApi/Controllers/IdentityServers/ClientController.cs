@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using CompanyName.ProjectName.IdentityServers.Clients;
 using CompanyName.ProjectName.Permissions;
-using CompanyName.ProjectName.Publics.Dtos;
+using Lion.Abp.Extension;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -11,7 +11,7 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
 {
     [Route("IdentityServer/Client")]
     [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Default)]
-    public class ClientController : ProjectNameController
+    public class ClientController : ProjectNameController,IIdentityServerClientAppService
     {
         private readonly IIdentityServerClientAppService _identityServerClientAppService;
 

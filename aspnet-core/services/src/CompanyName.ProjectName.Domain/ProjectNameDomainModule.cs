@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using CompanyName.ProjectName.MultiTenancy;
 using CompanyName.ProjectName.NotificationManagement;
-using CompanyName.ProjectName.QueryManagement;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Emailing;
@@ -32,8 +31,7 @@ namespace CompanyName.ProjectName
         typeof(AbpTenantManagementDomainModule),
         typeof(AbpEmailingModule),
         typeof(DataDictionaryManagementDomainModule),
-        typeof(NotificationManagementDomainModule),
-        typeof(QueryManagementDomainModule)
+        typeof(NotificationManagementDomainModule)
     )]
     public class ProjectNameDomainModule : AbpModule
     {

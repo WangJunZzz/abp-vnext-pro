@@ -164,19 +164,6 @@ export const usePermissionStore = defineStore({
           break;
 
         case PermissionModeEnum.ROUTE_MAPPING:
-          // routes = filter(asyncRoutes, routeFilter);
-          // routes = routes.filter(routeFilter);
-          // const menuList = transformRouteToMenu(routes, true);
-          // routes = filter(routes, routeRemoveIgnoreFilter);
-          // routes = routes.filter(routeRemoveIgnoreFilter);
-          // menuList.sort((a, b) => {
-          //   return (a.meta?.orderNo || 0) - (b.meta?.orderNo || 0);
-          // });
-
-          // this.setFrontMenuList(menuList);
-          // // Convert multi-level routing to level 2 routing
-          // routes = flatMultiLevelRoutes(routes);
-
           const permissions = this.getPermCodeList;
           const roleRouteFilter = (route: AppRouteRecordRaw) => {
             const { meta } = route;

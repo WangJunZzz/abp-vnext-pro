@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CompanyName.ProjectName.QueryManagement.Systems.Users;
 using CompanyName.ProjectName.Users.Dtos;
 using Microsoft.AspNetCore.Identity;
 using Volo.Abp;
