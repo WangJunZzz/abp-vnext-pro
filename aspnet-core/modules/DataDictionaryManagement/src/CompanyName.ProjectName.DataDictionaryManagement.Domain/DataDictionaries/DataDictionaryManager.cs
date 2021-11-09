@@ -3,43 +3,58 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.Aggregates;
+using CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.Dto;
 using CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.Exceptions;
+using Volo.Abp.Caching;
 using Volo.Abp.Domain.Services;
 
 namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
 {
-    public class DataDictionaryManager : DataDictionaryDomainService
+   public class DataDictionaryManager : DataDictionaryDomainService
     {
         private readonly IDataDictionaryRepository _dataDictionaryRepository;
+        private readonly IDistributedCache<DataDictionaryDto> _cache;
 
-        public DataDictionaryManager(IDataDictionaryRepository dataDictionaryRepository)
+        public DataDictionaryManager(
+            IDataDictionaryRepository dataDictionaryRepository,
+            IDistributedCache<DataDictionaryDto> cache)
         {
             _dataDictionaryRepository = dataDictionaryRepository;
+            _cache = cache;
         }
 
-        public Task<DataDictionary> FindByIdAsync(
+        public async Task<DataDictionaryDto> FindByIdAsync(
             Guid id,
             bool includeDetails = true,
             CancellationToken cancellationToken = default)
         {
-            return _dataDictionaryRepository.FindByIdAsync(id, includeDetails, cancellationToken);
+            var cacheKey = DataDictionaryDto.CalculateCacheKey(id, null);
+            return await _cache.GetOrAddAsync(cacheKey,
+                async () =>
+                {
+                    var entity =
+                        await _dataDictionaryRepository.FindByIdAsync(id, includeDetails,
+                            cancellationToken);
+                    return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(entity);
+                }, token: cancellationToken);
         }
 
-        public Task<DataDictionary> FindByCodeAsync(
+        public async Task<DataDictionaryDto> FindByCodeAsync(
             string code,
             bool includeDetails = true,
             CancellationToken cancellationToken = default)
         {
-            return _dataDictionaryRepository.FindByCodeAsync(code, includeDetails, cancellationToken);
+            var cacheKey = DataDictionaryDto.CalculateCacheKey(null, code);
+            return await _cache.GetOrAddAsync(cacheKey,
+                async () =>
+                {
+                    var entity =
+                        await _dataDictionaryRepository.FindByCodeAsync(code, includeDetails,
+                            cancellationToken);
+                    return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(entity);
+                }, token: cancellationToken);
         }
 
-        public Task<DataDictionary> FindByDisplayTextAsync(
-            string displayText,
-            bool includeDetails = true,
-            CancellationToken cancellationToken = default)
-        {
-            return _dataDictionaryRepository.FindByDisplayTextAsync(displayText, includeDetails, cancellationToken);
-        }
 
         /// <summary>
         /// 创建字典类型
@@ -62,7 +77,8 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
         /// <param name="description"></param>
         /// <param name="order"></param>
         /// <exception cref="DataDictionaryDomainException"></exception>
-        public async Task<DataDictionary> CreateDetailAsync(Guid dataDictionaryId, string code, string displayText,
+        public async Task<DataDictionary> CreateDetailAsync(Guid dataDictionaryId, string code,
+            string displayText,
             string description,
             int order)
         {
@@ -81,7 +97,8 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
         /// <summary>
         /// 设置字典明细状态
         /// </summary>
-        public async Task<DataDictionary> SetStatus(Guid dataDictionaryId, Guid dataDictionayDetailId, bool isEnabled)
+        public async Task<DataDictionary> SetStatus(Guid dataDictionaryId,
+            Guid dataDictionayDetailId, bool isEnabled)
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
             if (entity == null)

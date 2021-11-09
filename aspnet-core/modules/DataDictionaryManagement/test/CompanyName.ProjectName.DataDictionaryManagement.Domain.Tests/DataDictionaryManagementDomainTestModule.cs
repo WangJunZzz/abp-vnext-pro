@@ -1,4 +1,5 @@
 ﻿using CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore;
+using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 
 namespace CompanyName.ProjectName.DataDictionaryManagement
@@ -12,6 +13,12 @@ namespace CompanyName.ProjectName.DataDictionaryManagement
         )]
     public class DataDictionaryManagementDomainTestModule : AbpModule
     {
-        
+        public override void ConfigureServices(ServiceConfigurationContext context)
+        {
+            Configure<AbpAutoMapperOptions>(options =>
+            {
+                options.AddMaps<DataDictionaryManagementDomainModule>(validate: true);
+            });
+        }
     }
 }

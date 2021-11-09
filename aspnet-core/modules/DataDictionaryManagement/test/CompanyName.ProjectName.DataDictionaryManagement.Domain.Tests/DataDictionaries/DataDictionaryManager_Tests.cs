@@ -26,10 +26,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
             entity.Details.Count.ShouldBe(3);
             entity.Details.FirstOrDefault(e => e.Code == "None").IsEnabled.ShouldBeFalse();
 
-            var noDetailEntity =
-                await _dataDictionaryManager.FindByIdAsync(DataDictionaryManagementConsts.SeedDataDictionaryId,
-                    false);
-            noDetailEntity.Details.Count.ShouldBe(0);
+        
         }
 
         [Fact]
@@ -38,20 +35,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
             var entity = await _dataDictionaryManager.FindByCodeAsync("Gender", true);
             entity.DisplayText.ShouldBe("性别");
             entity.Details.Count.ShouldBe(3);
-            entity.Details.FirstOrDefault(e => e.Code == "None").IsEnabled.ShouldBeFalse();
-            var noDetailEntity = await _dataDictionaryManager.FindByCodeAsync("Gender", false);
-            noDetailEntity.Details.Count.ShouldBe(0);
-        }
-
-        [Fact]
-        public async Task Test_FindByDisplayTextAsync_Ok()
-        {
-            var entity = await _dataDictionaryManager.FindByDisplayTextAsync("性别", true);
-            entity.Code.ShouldBe("Gender");
-            entity.Details.Count.ShouldBe(3);
-            entity.Details.FirstOrDefault(e => e.Code == "None").IsEnabled.ShouldBeFalse();
-            var noDetailEntity = await _dataDictionaryManager.FindByDisplayTextAsync("性别", false);
-            noDetailEntity.Details.Count.ShouldBe(0);
+         
         }
 
         [Fact]
