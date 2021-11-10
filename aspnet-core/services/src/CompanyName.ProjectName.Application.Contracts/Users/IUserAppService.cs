@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.Users.Dtos;
+using Lion.Abp.Extension;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Identity;
@@ -33,16 +34,14 @@ namespace CompanyName.ProjectName.Users
         /// <summary>
         /// 删除用户
         /// </summary>
-        /// <param name="id"></param>
-        Task DeleteAsync(Guid id);
+        Task DeleteAsync(IdInput input);
 
 
         /// <summary>
         /// 获取用户角色信息
         /// </summary>
-        /// <param name="userId"></param>
         /// <returns></returns>
-        Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(Guid userId);
+        Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(IdInput input);
 
         /// <summary>
         /// 修改密码

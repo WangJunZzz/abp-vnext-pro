@@ -7,7 +7,7 @@ using Volo.Abp.Application.Services;
 
 namespace CompanyName.ProjectName.Users
 {
-    public interface ILoginAppService: IApplicationService
+    public interface IAccountAppService: IApplicationService
     {
         Task<LoginOutput> LoginAsync(LoginInput input);
 

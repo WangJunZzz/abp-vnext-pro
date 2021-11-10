@@ -4,7 +4,7 @@ import { useI18n } from '/@/hooks/web/useI18n';
 const { t } = useI18n();
 import moment from 'moment';
 import {
-  ElasticSearchServiceProxy,
+  EsLogServiceProxy,
   PagingElasticSearchLogInput,
   PagingElasticSearchLogOutputCustomePagedResultDto,
 } from '/@/services/ServiceProxies';
@@ -55,6 +55,6 @@ export const tableColumns: BasicColumn[] = [
 export async function getElasticSearchLogAsync(
   request: PagingElasticSearchLogInput
 ): Promise<PagingElasticSearchLogOutputCustomePagedResultDto> {
-  const _elasticSearchServiceProxy = new ElasticSearchServiceProxy();
-  return await _elasticSearchServiceProxy.paging(request);
+  const _elasticSearchServiceProxy = new EsLogServiceProxy();
+  return await _elasticSearchServiceProxy.page(request);
 }

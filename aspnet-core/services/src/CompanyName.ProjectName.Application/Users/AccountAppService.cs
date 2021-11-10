@@ -19,7 +19,7 @@ using Volo.Abp.Security.Claims;
 
 namespace CompanyName.ProjectName.Users
 {
-    public class LoginAppService : ProjectNameAppService, ILoginAppService
+    public class AccountAppService : ProjectNameAppService, IAccountAppService
     {
         private readonly IdentityUserManager _userManager;
         private readonly JwtOptions _jwtOptions;
@@ -29,7 +29,7 @@ namespace CompanyName.ProjectName.Users
         private readonly IHttpContextAccessor _contextAccessor;
    
     
-        public LoginAppService(
+        public AccountAppService(
             IdentityUserManager userManager,
             IOptionsSnapshot<JwtOptions> jwtOptions,
             Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> signInManager,

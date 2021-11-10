@@ -14,6 +14,7 @@
     "Permission:AuditLogManagement": "AuditLog",
     "Permission:HangfireManagement": "BackgroundTask",
     "Permission:CapManagement": "IntegratedEvent",
+    "Permission:ESManagement": "ESManagement",
     "Permission:IdentityServerManagement": "IdentityServer",
     "Permission:IdentityServerManagement:Client": "Client",
     "Permission:IdentityServerManagement:ApiResource": "ApiResource",

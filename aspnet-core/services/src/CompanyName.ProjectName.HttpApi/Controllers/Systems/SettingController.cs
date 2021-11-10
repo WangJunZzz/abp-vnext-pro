@@ -9,27 +9,27 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("Settings")]
-    public class SettingController : ProjectNameController
+    public class SettingController : ProjectNameController,ISettingAppService
     {
-        private readonly ISettingUiAppService _settingUiAppService;
+        private readonly ISettingAppService _settingAppService;
 
-        public SettingController(ISettingUiAppService settingUiAppService)
+        public SettingController(ISettingAppService settingAppService)
         {
-            _settingUiAppService = settingUiAppService;
+            _settingAppService = settingAppService;
         }
 
         [HttpPost("all")]
-        [SwaggerOperation(summary: "获取所有Setting", Tags = new[] {"Settings"})]
+        [SwaggerOperation(summary: "获取所有Setting", Tags = new[] { "Settings" })]
         public async Task<List<SettingGroup>> GetAsync()
         {
-            return await _settingUiAppService.GroupSettingDefinitions();
+            return await _settingAppService.GetAsync();
         }
 
         [HttpPost("update")]
-        [SwaggerOperation(summary: "更新Setting", Tags = new[] {"Settings"})]
+        [SwaggerOperation(summary: "更新Setting", Tags = new[] { "Settings" })]
         public async Task UpdateAsync(UpdateSettingInput input)
         {
-            await _settingUiAppService.SetSettingValues(input.Values);
+            await _settingAppService.UpdateAsync(input);
         }
     }
 }

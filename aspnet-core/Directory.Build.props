@@ -3,6 +3,28 @@
   <PropertyGroup>
     <AbpPackageVersion>4.4.0</AbpPackageVersion>
     <DotNetCoreCAP>5.1.4</DotNetCoreCAP>
+    <DotNetCoreCAPVersion>5.1.4</DotNetCoreCAPVersion>
+    <MicrosoftVersion>5.0.12</MicrosoftVersion>
+    <EasyAbpSttingVersion>1.5.0</EasyAbpSttingVersion>
+    <SerilogVersion>2.10.0</SerilogVersion>
+    <SerilogExtensionsLoggingVersion>3.0.1</SerilogExtensionsLoggingVersion>
+    <SerilogSinksAsyncVersion>1.4.0</SerilogSinksAsyncVersion>
+    <SerilogSinksFileVersion>5.0.0</SerilogSinksFileVersion>
+    <SerilogSinksConsoleVersion>3.1.1</SerilogSinksConsoleVersion>
+    <SerilogAspNetCoreVersion>4.1.0</SerilogAspNetCoreVersion>
+    <SerilogExceptionsVersion>7.0.0</SerilogExceptionsVersion>
+    <SerilogSettingsConfigurationVersion>3.1.0</SerilogSettingsConfigurationVersion>
+    <SerilogSinksElasticsearchVersion>8.4.1</SerilogSinksElasticsearchVersion>
+    <NESTVersion>7.14.1</NESTVersion>
+    <HangfireMySqlStorageVersion>2.0.3</HangfireMySqlStorageVersion>
+    <SwashbuckleAspNetCoreAnnotationsVersion>6.1.4</SwashbuckleAspNetCoreAnnotationsVersion>
+    <MicrosoftNETTestSdkVersion>16.9.1</MicrosoftNETTestSdkVersion>
+    <NSubstituteVersion>4.2.2</NSubstituteVersion>
+    <ShouldlyVersion>4.0.3</ShouldlyVersion>
+    <XunitVersion>2.4.1</XunitVersion>
+    <Xunitrunnervisualstudio>2.4.3</Xunitrunnervisualstudio>
+    <OcelotVersion>17.0.0</OcelotVersion>
+    <SwaggerUIVersion>6.2.3</SwaggerUIVersion>
   </PropertyGroup>
 
 </Project>

@@ -31,7 +31,7 @@ namespace CompanyName.ProjectName.Extensions
                 loggerConfiguration.WriteTo.File("logs/logs.txt", rollingInterval: RollingInterval.Day);
             }
             loggerConfiguration.WriteTo.File("logs/logs.txt", rollingInterval: RollingInterval.Day);
-            var writeToElasticSearch = configuration.GetValue("LogToElasticSearch:Enabled", false);
+            var writeToElasticSearch = configuration.GetValue("ElasticSearch:Enabled", false);
 
 
             // LogToElasticSearch:Enabled = true 才输出至ES
@@ -40,20 +40,20 @@ namespace CompanyName.ProjectName.Extensions
 
             var applicationName = "CompanyName.ProjectName.HttpApi.Host";
 
-            var esUrl = configuration["LogToElasticSearch:ElasticSearch:Url"];
+            var esUrl = configuration["ElasticSearch:Url"];
             // 需要设置ES URL
             if (string.IsNullOrEmpty(esUrl))
                 return;
 
 
-            var indexFormat = configuration["LogToElasticSearch:ElasticSearch:IndexFormat"];
+            var indexFormat = configuration["ElasticSearch:IndexFormat"];
 
             // 需要设置ES URL
             if (string.IsNullOrEmpty(indexFormat))
                 return;
 
-            var esUserName = configuration["LogToElasticSearch:ElasticSearch:UserName"];
-            var esPassword = configuration["LogToElasticSearch:ElasticSearch:Password"];
+            var esUserName = configuration["ElasticSearch:UserName"];
+            var esPassword = configuration["ElasticSearch:Password"];
 
             loggerConfiguration.Enrich.FromLogContext().Enrich.WithExceptionDetails().WriteTo
                 .Elasticsearch(BuildElasticSearchSinkOptions(esUrl, indexFormat, esUserName, esPassword));

@@ -1,10 +1,6 @@
 import type { AppRouteModule } from '/@/router/types';
 import { LAYOUT } from '/@/router/constant';
 import { t } from '/@/hooks/web/useI18n';
-const IFrame = () => import('/@/views/sys/iframe/FrameBlank.vue');
-import { useUserStoreWithOut } from '/@/store/modules/user';
-const userStore = useUserStoreWithOut();
-const token = userStore.getToken;
 
 const admin: AppRouteModule = {
   path: '/admin',
@@ -66,29 +62,7 @@ const admin: AppRouteModule = {
         policy: 'System.ES',
         icon: 'ant-design:snippets-twotone',
       },
-    },
-    {
-      path: 'hangfire',
-      name: 'Hangfire',
-      component: IFrame,
-      meta: {
-        frameSrc: import.meta.env.VITE_API_URL + '/hangfire?access_token=' + token,
-        title: t('routes.admin.backgroundTask'),
-        policy: 'System.Hangfire',
-        icon: 'ant-design:clock-circle-outlined',
-      },
-    },
-    {
-      path: 'cap',
-      name: 'Cap',
-      component: IFrame,
-      meta: {
-        frameSrc: import.meta.env.VITE_API_URL + '/cap?access_token=' + token,
-        title: t('routes.admin.integratedEvent'),
-        policy: 'System.Cap',
-        icon: 'ant-design:sync-outlined',
-      },
-    },
+    }
   ],
 };
 

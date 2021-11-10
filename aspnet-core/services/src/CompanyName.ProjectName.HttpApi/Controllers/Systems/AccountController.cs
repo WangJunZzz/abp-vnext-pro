@@ -6,27 +6,27 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace CompanyName.ProjectName.Controllers.Systems
 {
-    public class AccountController : ProjectNameController,ILoginAppService
+    public class AccountController : ProjectNameController,IAccountAppService
     {
-        private readonly ILoginAppService _loginAppService;
+        private readonly IAccountAppService _accountAppService;
 
-        public AccountController(ILoginAppService loginAppService)
+        public AccountController(IAccountAppService accountAppService)
         {
-            _loginAppService = loginAppService;
+            _accountAppService = accountAppService;
         }
 
 
         [SwaggerOperation(summary: "登录", Tags = new[] {"Account"})]
         public Task<LoginOutput> LoginAsync(LoginInput input)
         {
-            return _loginAppService.LoginAsync(input);
+            return _accountAppService.LoginAsync(input);
         }
 
         [SwaggerOperation(summary: "登录", Tags = new[] {"Account"})]
         [HttpPost("/api/app/account/login/Sts")]
         public Task<LoginOutput> StsLoginAsync(string accessToken)
         {
-            return _loginAppService.StsLoginAsync(accessToken);
+            return _accountAppService.StsLoginAsync(accessToken);
         }
     }
 }

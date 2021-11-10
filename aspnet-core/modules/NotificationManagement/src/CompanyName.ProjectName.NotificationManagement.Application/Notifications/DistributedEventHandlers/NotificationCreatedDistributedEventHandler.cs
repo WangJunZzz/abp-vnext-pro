@@ -9,8 +9,8 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications.Distribut
     /// <summary>
     /// 创建消息事件处理
     /// </summary>
-    public class
-        NotificationCreatedDistributedEventHandler : IDistributedEventHandler<CreatedNotificationDistributedEvent>,
+    public class NotificationCreatedDistributedEventHandler : 
+            IDistributedEventHandler<CreatedNotificationDistributedEvent>,
             ITransientDependency
     {
         private readonly INotificationAppService _hubAppService;

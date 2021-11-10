@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.Users.Dtos;
+using Lion.Abp.Extension;
 using Microsoft.AspNetCore.Identity;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;
@@ -76,20 +77,18 @@ namespace CompanyName.ProjectName.Users
         /// <summary>
         /// 删除用户
         /// </summary>
-        /// <param name="id"></param>
-        public virtual async Task DeleteAsync(Guid id)
+        public virtual async Task DeleteAsync(IdInput input)
         {
-            await _identityUserAppService.DeleteAsync(id);
+            await _identityUserAppService.DeleteAsync(input.Id);
         }
 
         /// <summary>
         /// 获取用户角色信息
         /// </summary>
-        /// <param name="userId"></param>
         /// <returns></returns>
-        public async Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(Guid userId)
+        public async Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(IdInput input)
         {
-            return await _identityUserAppService.GetRolesAsync(userId);
+            return await _identityUserAppService.GetRolesAsync(input.Id);
         }
 
         /// <summary>

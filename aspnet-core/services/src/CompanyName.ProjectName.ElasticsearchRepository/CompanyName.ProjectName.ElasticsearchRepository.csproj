@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Volo.Abp.Core" Version="4.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NEST" Version="7.14.1" />
+      <ProjectReference Include="..\CompanyName.ProjectName.Domain\CompanyName.ProjectName.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

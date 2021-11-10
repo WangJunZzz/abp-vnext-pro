@@ -1,7 +1,7 @@
 ﻿using Nest;
 using Volo.Abp.DependencyInjection;
 
-namespace Lion.Abp.ElasticSearch
+namespace CompanyName.ProjectName.ElasticsearchRepository
 {
     public interface IElasticsearchProvider : ISingletonDependency
     {

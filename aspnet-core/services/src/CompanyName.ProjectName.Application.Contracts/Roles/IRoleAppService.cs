@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.Roles.Dtos;
+using Lion.Abp.Extension;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Identity;
@@ -17,10 +18,7 @@ namespace CompanyName.ProjectName.Roles
 
         Task<IdentityRoleDto> UpdateAsync(UpdateRoleInput input);
 
-        Task DeleteAsync(Guid id);
+        Task DeleteAsync(IdInput input);
 
-        Task<PermissionOutput> GetPermissionAsync(GetPermissionInput input);
-
-        Task UpdatePermissionAsync(UpdateRolePermissionsInput input);
     }
 }

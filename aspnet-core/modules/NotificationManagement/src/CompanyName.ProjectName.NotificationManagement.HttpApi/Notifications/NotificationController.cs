@@ -11,13 +11,12 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
      [Route("Notification")]
     public class NotificationController : AbpController, IApplicationService
     {
-        private readonly IQueryNotificationAppService _queryNotificationAppService;
+      
         private readonly INotificationAppService _notificationAppService;
 
-        public NotificationController(IQueryNotificationAppService queryNotificationAppService,
+        public NotificationController(
             INotificationAppService notificationAppService)
         {
-            _queryNotificationAppService = queryNotificationAppService;
             _notificationAppService = notificationAppService;
         }
 
@@ -32,7 +31,7 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         public Task<PagedResultDto<PagingNotificationListOutput>> GetPageTextNotificationByUserIdAsync(
             PagingNotificationListInput listInput)
         {
-            return _queryNotificationAppService.GetPageTextNotificationByUserIdAsync(listInput);
+            return _notificationAppService.GetPageTextNotificationByUserIdAsync(listInput);
         }
 
         /// <summary>
@@ -45,7 +44,7 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         public Task<PagedResultDto<PagingNotificationListOutput>> GetPageBroadCastNotificationByUserIdAsync(
             PagingNotificationListInput listInput)
         {
-            return _queryNotificationAppService.GetPageBroadCastNotificationByUserIdAsync(listInput);
+            return _notificationAppService.GetPageBroadCastNotificationByUserIdAsync(listInput);
         }
 
         [HttpPost("Read")]

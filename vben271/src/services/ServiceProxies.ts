@@ -3315,6 +3315,112 @@ export class ClientServiceProxy extends ServiceProxyBase {
     }
 }
 
+export class EsLogServiceProxy extends ServiceProxyBase {
+    private instance: AxiosInstance;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, instance?: AxiosInstance) {
+        super();
+        this.instance = instance ? instance : axios.create();
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * 分页获取Es日志
+     * @param body (optional) 
+     * @return Success
+     */
+    page(body: PagingElasticSearchLogInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingElasticSearchLogOutputCustomePagedResultDto> {
+        let url_ = this.baseUrl + "/EsLog/page";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processPage(_response));
+        });
+    }
+
+    protected processPage(response: AxiosResponse): Promise<PagingElasticSearchLogOutputCustomePagedResultDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = PagingElasticSearchLogOutputCustomePagedResultDto.fromJS(resultData200);
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<PagingElasticSearchLogOutputCustomePagedResultDto>(<any>null);
+    }
+}
+
 export class DataDictionaryServiceProxy extends ServiceProxyBase {
     private instance: AxiosInstance;
     private baseUrl: string;
@@ -3785,7 +3891,7 @@ export class DataDictionaryServiceProxy extends ServiceProxyBase {
     }
 }
 
-export class ElasticSearchServiceProxy extends ServiceProxyBase {
+export class FileConfigurationServiceProxy extends ServiceProxyBase {
     private instance: AxiosInstance;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -3797,22 +3903,16 @@ export class ElasticSearchServiceProxy extends ServiceProxyBase {
     }
 
     /**
-     * @param body (optional) 
      * @return Success
      */
-    paging(body: PagingElasticSearchLogInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingElasticSearchLogOutputCustomePagedResultDto> {
-        let url_ = this.baseUrl + "/api/QueryManagement/ElasticSearch/paging";
+    configurationGet(  cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/configuration";
         url_ = url_.replace(/[?&]$/, "");
 
-        const content_ = JSON.stringify(body);
-
         let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
+            method: "GET",
             url: url_,
             headers: {
-                "Content-Type": "application/json",
-                "Accept": "text/plain"
             },
             cancelToken
         };
@@ -3826,11 +3926,11 @@ export class ElasticSearchServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processPaging(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processConfigurationGet(_response));
         });
     }
 
-    protected processPaging(response: AxiosResponse): Promise<PagingElasticSearchLogOutputCustomePagedResultDto> {
+    protected processConfigurationGet(response: AxiosResponse): Promise<void> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -3842,51 +3942,65 @@ export class ElasticSearchServiceProxy extends ServiceProxyBase {
         }
         if (status === 200) {
             const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = PagingElasticSearchLogOutputCustomePagedResultDto.fromJS(resultData200);
-            return result200;
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
+            return Promise.resolve<void>(<any>null);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<PagingElasticSearchLogOutputCustomePagedResultDto>(<any>null);
+        return Promise.resolve<void>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    configurationPost(body: FileConfiguration | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/configuration";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processConfigurationPost(_response));
+        });
+    }
+
+    protected processConfigurationPost(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(<any>null);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(<any>null);
     }
 }
 
@@ -4374,7 +4488,7 @@ export class NotificationServiceProxy extends ServiceProxyBase {
     }
 
     /**
-     * 分页查询普通消息
+     * 分页获取用户普通文本消息
      * @param body (optional) 
      * @return Success
      */
@@ -4468,7 +4582,7 @@ export class NotificationServiceProxy extends ServiceProxyBase {
     }
 
     /**
-     * 分页查询广播消息
+     * 分页获取广播消息
      * @param body (optional) 
      * @return Success
      */
@@ -4734,6 +4848,69 @@ export class NotificationServiceProxy extends ServiceProxyBase {
             let resultData500  = _responseText;
             result500 = RemoteServiceErrorResponse.fromJS(resultData500);
             return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(<any>null);
+    }
+}
+
+export class OutputCacheServiceProxy extends ServiceProxyBase {
+    private instance: AxiosInstance;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, instance?: AxiosInstance) {
+        super();
+        this.instance = instance ? instance : axios.create();
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @return Success
+     */
+    outputcache(region: string , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/outputcache/{region}";
+        if (region === undefined || region === null)
+            throw new Error("The parameter 'region' must be defined.");
+        url_ = url_.replace("{region}", encodeURIComponent("" + region));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <AxiosRequestConfig>{
+            method: "DELETE",
+            url: url_,
+            headers: {
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processOutputcache(_response));
+        });
+    }
+
+    protected processOutputcache(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(<any>null);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -6483,6 +6660,50 @@ export interface IAddRedirectUriInput {
     uri: string;
 }
 
+export class AggregateRouteConfig implements IAggregateRouteConfig {
+    routeKey!: string | undefined;
+    parameter!: string | undefined;
+    jsonPath!: string | undefined;
+
+    constructor(data?: IAggregateRouteConfig) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.routeKey = _data["routeKey"];
+            this.parameter = _data["parameter"];
+            this.jsonPath = _data["jsonPath"];
+        }
+    }
+
+    static fromJS(data: any): AggregateRouteConfig {
+        data = typeof data === 'object' ? data : {};
+        let result = new AggregateRouteConfig();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["routeKey"] = this.routeKey;
+        data["parameter"] = this.parameter;
+        data["jsonPath"] = this.jsonPath;
+        return data; 
+    }
+}
+
+export interface IAggregateRouteConfig {
+    routeKey: string | undefined;
+    parameter: string | undefined;
+    jsonPath: string | undefined;
+}
+
 export class ApiResourceClaimOutput implements IApiResourceClaimOutput {
     apiResourceId!: string;
     type!: string | undefined;
@@ -8092,9 +8313,13 @@ export interface ICreateIdentityResourceInput {
 }
 
 export class CreateNotificationInput implements ICreateNotificationInput {
+    /** 消息标题 */
     title!: string | undefined;
+    /** 消息内容 */
     content!: string | undefined;
     messageType!: MessageType;
+    /** 接收人
+如果消息类型是广播消息，接收人字段为空 */
     receiveIds!: string[] | undefined;
 
     constructor(data?: ICreateNotificationInput) {
@@ -8141,9 +8366,13 @@ export class CreateNotificationInput implements ICreateNotificationInput {
 }
 
 export interface ICreateNotificationInput {
+    /** 消息标题 */
     title: string | undefined;
+    /** 消息内容 */
     content: string | undefined;
     messageType: MessageType;
+    /** 接收人
+如果消息类型是广播消息，接收人字段为空 */
     receiveIds: string[] | undefined;
 }
 
@@ -9285,6 +9514,1042 @@ export class FeatureProviderDto implements IFeatureProviderDto {
 export interface IFeatureProviderDto {
     name: string | undefined;
     key: string | undefined;
+}
+
+export class FileAggregateRoute implements IFileAggregateRoute {
+    routeKeys!: string[] | undefined;
+    routeKeysConfig!: AggregateRouteConfig[] | undefined;
+    upstreamPathTemplate!: string | undefined;
+    upstreamHost!: string | undefined;
+    routeIsCaseSensitive!: boolean;
+    aggregator!: string | undefined;
+    readonly upstreamHttpMethod!: string[] | undefined;
+    priority!: number;
+
+    constructor(data?: IFileAggregateRoute) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["routeKeys"])) {
+                this.routeKeys = [] as any;
+                for (let item of _data["routeKeys"])
+                    this.routeKeys!.push(item);
+            }
+            if (Array.isArray(_data["routeKeysConfig"])) {
+                this.routeKeysConfig = [] as any;
+                for (let item of _data["routeKeysConfig"])
+                    this.routeKeysConfig!.push(AggregateRouteConfig.fromJS(item));
+            }
+            this.upstreamPathTemplate = _data["upstreamPathTemplate"];
+            this.upstreamHost = _data["upstreamHost"];
+            this.routeIsCaseSensitive = _data["routeIsCaseSensitive"];
+            this.aggregator = _data["aggregator"];
+            if (Array.isArray(_data["upstreamHttpMethod"])) {
+                (<any>this).upstreamHttpMethod = [] as any;
+                for (let item of _data["upstreamHttpMethod"])
+                    (<any>this).upstreamHttpMethod!.push(item);
+            }
+            this.priority = _data["priority"];
+        }
+    }
+
+    static fromJS(data: any): FileAggregateRoute {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileAggregateRoute();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.routeKeys)) {
+            data["routeKeys"] = [];
+            for (let item of this.routeKeys)
+                data["routeKeys"].push(item);
+        }
+        if (Array.isArray(this.routeKeysConfig)) {
+            data["routeKeysConfig"] = [];
+            for (let item of this.routeKeysConfig)
+                data["routeKeysConfig"].push(item.toJSON());
+        }
+        data["upstreamPathTemplate"] = this.upstreamPathTemplate;
+        data["upstreamHost"] = this.upstreamHost;
+        data["routeIsCaseSensitive"] = this.routeIsCaseSensitive;
+        data["aggregator"] = this.aggregator;
+        if (Array.isArray(this.upstreamHttpMethod)) {
+            data["upstreamHttpMethod"] = [];
+            for (let item of this.upstreamHttpMethod)
+                data["upstreamHttpMethod"].push(item);
+        }
+        data["priority"] = this.priority;
+        return data; 
+    }
+}
+
+export interface IFileAggregateRoute {
+    routeKeys: string[] | undefined;
+    routeKeysConfig: AggregateRouteConfig[] | undefined;
+    upstreamPathTemplate: string | undefined;
+    upstreamHost: string | undefined;
+    routeIsCaseSensitive: boolean;
+    aggregator: string | undefined;
+    upstreamHttpMethod: string[] | undefined;
+    priority: number;
+}
+
+export class FileAuthenticationOptions implements IFileAuthenticationOptions {
+    authenticationProviderKey!: string | undefined;
+    allowedScopes!: string[] | undefined;
+
+    constructor(data?: IFileAuthenticationOptions) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.authenticationProviderKey = _data["authenticationProviderKey"];
+            if (Array.isArray(_data["allowedScopes"])) {
+                this.allowedScopes = [] as any;
+                for (let item of _data["allowedScopes"])
+                    this.allowedScopes!.push(item);
+            }
+        }
+    }
+
+    static fromJS(data: any): FileAuthenticationOptions {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileAuthenticationOptions();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["authenticationProviderKey"] = this.authenticationProviderKey;
+        if (Array.isArray(this.allowedScopes)) {
+            data["allowedScopes"] = [];
+            for (let item of this.allowedScopes)
+                data["allowedScopes"].push(item);
+        }
+        return data; 
+    }
+}
+
+export interface IFileAuthenticationOptions {
+    authenticationProviderKey: string | undefined;
+    allowedScopes: string[] | undefined;
+}
+
+export class FileCacheOptions implements IFileCacheOptions {
+    ttlSeconds!: number;
+    region!: string | undefined;
+
+    constructor(data?: IFileCacheOptions) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.ttlSeconds = _data["ttlSeconds"];
+            this.region = _data["region"];
+        }
+    }
+
+    static fromJS(data: any): FileCacheOptions {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileCacheOptions();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["ttlSeconds"] = this.ttlSeconds;
+        data["region"] = this.region;
+        return data; 
+    }
+}
+
+export interface IFileCacheOptions {
+    ttlSeconds: number;
+    region: string | undefined;
+}
+
+export class FileConfiguration implements IFileConfiguration {
+    routes!: FileRoute[] | undefined;
+    dynamicRoutes!: FileDynamicRoute[] | undefined;
+    aggregates!: FileAggregateRoute[] | undefined;
+    globalConfiguration!: FileGlobalConfiguration;
+
+    constructor(data?: IFileConfiguration) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["routes"])) {
+                this.routes = [] as any;
+                for (let item of _data["routes"])
+                    this.routes!.push(FileRoute.fromJS(item));
+            }
+            if (Array.isArray(_data["dynamicRoutes"])) {
+                this.dynamicRoutes = [] as any;
+                for (let item of _data["dynamicRoutes"])
+                    this.dynamicRoutes!.push(FileDynamicRoute.fromJS(item));
+            }
+            if (Array.isArray(_data["aggregates"])) {
+                this.aggregates = [] as any;
+                for (let item of _data["aggregates"])
+                    this.aggregates!.push(FileAggregateRoute.fromJS(item));
+            }
+            this.globalConfiguration = _data["globalConfiguration"] ? FileGlobalConfiguration.fromJS(_data["globalConfiguration"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): FileConfiguration {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileConfiguration();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.routes)) {
+            data["routes"] = [];
+            for (let item of this.routes)
+                data["routes"].push(item.toJSON());
+        }
+        if (Array.isArray(this.dynamicRoutes)) {
+            data["dynamicRoutes"] = [];
+            for (let item of this.dynamicRoutes)
+                data["dynamicRoutes"].push(item.toJSON());
+        }
+        if (Array.isArray(this.aggregates)) {
+            data["aggregates"] = [];
+            for (let item of this.aggregates)
+                data["aggregates"].push(item.toJSON());
+        }
+        data["globalConfiguration"] = this.globalConfiguration ? this.globalConfiguration.toJSON() : <any>undefined;
+        return data; 
+    }
+}
+
+export interface IFileConfiguration {
+    routes: FileRoute[] | undefined;
+    dynamicRoutes: FileDynamicRoute[] | undefined;
+    aggregates: FileAggregateRoute[] | undefined;
+    globalConfiguration: FileGlobalConfiguration;
+}
+
+export class FileDynamicRoute implements IFileDynamicRoute {
+    serviceName!: string | undefined;
+    rateLimitRule!: FileRateLimitRule;
+    downstreamHttpVersion!: string | undefined;
+
+    constructor(data?: IFileDynamicRoute) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.serviceName = _data["serviceName"];
+            this.rateLimitRule = _data["rateLimitRule"] ? FileRateLimitRule.fromJS(_data["rateLimitRule"]) : <any>undefined;
+            this.downstreamHttpVersion = _data["downstreamHttpVersion"];
+        }
+    }
+
+    static fromJS(data: any): FileDynamicRoute {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileDynamicRoute();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["serviceName"] = this.serviceName;
+        data["rateLimitRule"] = this.rateLimitRule ? this.rateLimitRule.toJSON() : <any>undefined;
+        data["downstreamHttpVersion"] = this.downstreamHttpVersion;
+        return data; 
+    }
+}
+
+export interface IFileDynamicRoute {
+    serviceName: string | undefined;
+    rateLimitRule: FileRateLimitRule;
+    downstreamHttpVersion: string | undefined;
+}
+
+export class FileGlobalConfiguration implements IFileGlobalConfiguration {
+    requestIdKey!: string | undefined;
+    serviceDiscoveryProvider!: FileServiceDiscoveryProvider;
+    rateLimitOptions!: FileRateLimitOptions;
+    qoSOptions!: FileQoSOptions;
+    baseUrl!: string | undefined;
+    loadBalancerOptions!: FileLoadBalancerOptions;
+    downstreamScheme!: string | undefined;
+    httpHandlerOptions!: FileHttpHandlerOptions;
+    downstreamHttpVersion!: string | undefined;
+
+    constructor(data?: IFileGlobalConfiguration) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.requestIdKey = _data["requestIdKey"];
+            this.serviceDiscoveryProvider = _data["serviceDiscoveryProvider"] ? FileServiceDiscoveryProvider.fromJS(_data["serviceDiscoveryProvider"]) : <any>undefined;
+            this.rateLimitOptions = _data["rateLimitOptions"] ? FileRateLimitOptions.fromJS(_data["rateLimitOptions"]) : <any>undefined;
+            this.qoSOptions = _data["qoSOptions"] ? FileQoSOptions.fromJS(_data["qoSOptions"]) : <any>undefined;
+            this.baseUrl = _data["baseUrl"];
+            this.loadBalancerOptions = _data["loadBalancerOptions"] ? FileLoadBalancerOptions.fromJS(_data["loadBalancerOptions"]) : <any>undefined;
+            this.downstreamScheme = _data["downstreamScheme"];
+            this.httpHandlerOptions = _data["httpHandlerOptions"] ? FileHttpHandlerOptions.fromJS(_data["httpHandlerOptions"]) : <any>undefined;
+            this.downstreamHttpVersion = _data["downstreamHttpVersion"];
+        }
+    }
+
+    static fromJS(data: any): FileGlobalConfiguration {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileGlobalConfiguration();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["requestIdKey"] = this.requestIdKey;
+        data["serviceDiscoveryProvider"] = this.serviceDiscoveryProvider ? this.serviceDiscoveryProvider.toJSON() : <any>undefined;
+        data["rateLimitOptions"] = this.rateLimitOptions ? this.rateLimitOptions.toJSON() : <any>undefined;
+        data["qoSOptions"] = this.qoSOptions ? this.qoSOptions.toJSON() : <any>undefined;
+        data["baseUrl"] = this.baseUrl;
+        data["loadBalancerOptions"] = this.loadBalancerOptions ? this.loadBalancerOptions.toJSON() : <any>undefined;
+        data["downstreamScheme"] = this.downstreamScheme;
+        data["httpHandlerOptions"] = this.httpHandlerOptions ? this.httpHandlerOptions.toJSON() : <any>undefined;
+        data["downstreamHttpVersion"] = this.downstreamHttpVersion;
+        return data; 
+    }
+}
+
+export interface IFileGlobalConfiguration {
+    requestIdKey: string | undefined;
+    serviceDiscoveryProvider: FileServiceDiscoveryProvider;
+    rateLimitOptions: FileRateLimitOptions;
+    qoSOptions: FileQoSOptions;
+    baseUrl: string | undefined;
+    loadBalancerOptions: FileLoadBalancerOptions;
+    downstreamScheme: string | undefined;
+    httpHandlerOptions: FileHttpHandlerOptions;
+    downstreamHttpVersion: string | undefined;
+}
+
+export class FileHostAndPort implements IFileHostAndPort {
+    host!: string | undefined;
+    port!: number;
+
+    constructor(data?: IFileHostAndPort) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.host = _data["host"];
+            this.port = _data["port"];
+        }
+    }
+
+    static fromJS(data: any): FileHostAndPort {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileHostAndPort();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["host"] = this.host;
+        data["port"] = this.port;
+        return data; 
+    }
+}
+
+export interface IFileHostAndPort {
+    host: string | undefined;
+    port: number;
+}
+
+export class FileHttpHandlerOptions implements IFileHttpHandlerOptions {
+    allowAutoRedirect!: boolean;
+    useCookieContainer!: boolean;
+    useTracing!: boolean;
+    useProxy!: boolean;
+    maxConnectionsPerServer!: number;
+
+    constructor(data?: IFileHttpHandlerOptions) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.allowAutoRedirect = _data["allowAutoRedirect"];
+            this.useCookieContainer = _data["useCookieContainer"];
+            this.useTracing = _data["useTracing"];
+            this.useProxy = _data["useProxy"];
+            this.maxConnectionsPerServer = _data["maxConnectionsPerServer"];
+        }
+    }
+
+    static fromJS(data: any): FileHttpHandlerOptions {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileHttpHandlerOptions();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["allowAutoRedirect"] = this.allowAutoRedirect;
+        data["useCookieContainer"] = this.useCookieContainer;
+        data["useTracing"] = this.useTracing;
+        data["useProxy"] = this.useProxy;
+        data["maxConnectionsPerServer"] = this.maxConnectionsPerServer;
+        return data; 
+    }
+}
+
+export interface IFileHttpHandlerOptions {
+    allowAutoRedirect: boolean;
+    useCookieContainer: boolean;
+    useTracing: boolean;
+    useProxy: boolean;
+    maxConnectionsPerServer: number;
+}
+
+export class FileLoadBalancerOptions implements IFileLoadBalancerOptions {
+    type!: string | undefined;
+    key!: string | undefined;
+    expiry!: number;
+
+    constructor(data?: IFileLoadBalancerOptions) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.type = _data["type"];
+            this.key = _data["key"];
+            this.expiry = _data["expiry"];
+        }
+    }
+
+    static fromJS(data: any): FileLoadBalancerOptions {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileLoadBalancerOptions();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["type"] = this.type;
+        data["key"] = this.key;
+        data["expiry"] = this.expiry;
+        return data; 
+    }
+}
+
+export interface IFileLoadBalancerOptions {
+    type: string | undefined;
+    key: string | undefined;
+    expiry: number;
+}
+
+export class FileQoSOptions implements IFileQoSOptions {
+    exceptionsAllowedBeforeBreaking!: number;
+    durationOfBreak!: number;
+    timeoutValue!: number;
+
+    constructor(data?: IFileQoSOptions) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.exceptionsAllowedBeforeBreaking = _data["exceptionsAllowedBeforeBreaking"];
+            this.durationOfBreak = _data["durationOfBreak"];
+            this.timeoutValue = _data["timeoutValue"];
+        }
+    }
+
+    static fromJS(data: any): FileQoSOptions {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileQoSOptions();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["exceptionsAllowedBeforeBreaking"] = this.exceptionsAllowedBeforeBreaking;
+        data["durationOfBreak"] = this.durationOfBreak;
+        data["timeoutValue"] = this.timeoutValue;
+        return data; 
+    }
+}
+
+export interface IFileQoSOptions {
+    exceptionsAllowedBeforeBreaking: number;
+    durationOfBreak: number;
+    timeoutValue: number;
+}
+
+export class FileRateLimitOptions implements IFileRateLimitOptions {
+    clientIdHeader!: string | undefined;
+    quotaExceededMessage!: string | undefined;
+    rateLimitCounterPrefix!: string | undefined;
+    disableRateLimitHeaders!: boolean;
+    httpStatusCode!: number;
+
+    constructor(data?: IFileRateLimitOptions) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.clientIdHeader = _data["clientIdHeader"];
+            this.quotaExceededMessage = _data["quotaExceededMessage"];
+            this.rateLimitCounterPrefix = _data["rateLimitCounterPrefix"];
+            this.disableRateLimitHeaders = _data["disableRateLimitHeaders"];
+            this.httpStatusCode = _data["httpStatusCode"];
+        }
+    }
+
+    static fromJS(data: any): FileRateLimitOptions {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileRateLimitOptions();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["clientIdHeader"] = this.clientIdHeader;
+        data["quotaExceededMessage"] = this.quotaExceededMessage;
+        data["rateLimitCounterPrefix"] = this.rateLimitCounterPrefix;
+        data["disableRateLimitHeaders"] = this.disableRateLimitHeaders;
+        data["httpStatusCode"] = this.httpStatusCode;
+        return data; 
+    }
+}
+
+export interface IFileRateLimitOptions {
+    clientIdHeader: string | undefined;
+    quotaExceededMessage: string | undefined;
+    rateLimitCounterPrefix: string | undefined;
+    disableRateLimitHeaders: boolean;
+    httpStatusCode: number;
+}
+
+export class FileRateLimitRule implements IFileRateLimitRule {
+    clientWhitelist!: string[] | undefined;
+    enableRateLimiting!: boolean;
+    period!: string | undefined;
+    periodTimespan!: number;
+    limit!: number;
+
+    constructor(data?: IFileRateLimitRule) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["clientWhitelist"])) {
+                this.clientWhitelist = [] as any;
+                for (let item of _data["clientWhitelist"])
+                    this.clientWhitelist!.push(item);
+            }
+            this.enableRateLimiting = _data["enableRateLimiting"];
+            this.period = _data["period"];
+            this.periodTimespan = _data["periodTimespan"];
+            this.limit = _data["limit"];
+        }
+    }
+
+    static fromJS(data: any): FileRateLimitRule {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileRateLimitRule();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.clientWhitelist)) {
+            data["clientWhitelist"] = [];
+            for (let item of this.clientWhitelist)
+                data["clientWhitelist"].push(item);
+        }
+        data["enableRateLimiting"] = this.enableRateLimiting;
+        data["period"] = this.period;
+        data["periodTimespan"] = this.periodTimespan;
+        data["limit"] = this.limit;
+        return data; 
+    }
+}
+
+export interface IFileRateLimitRule {
+    clientWhitelist: string[] | undefined;
+    enableRateLimiting: boolean;
+    period: string | undefined;
+    periodTimespan: number;
+    limit: number;
+}
+
+export class FileRoute implements IFileRoute {
+    downstreamPathTemplate!: string | undefined;
+    upstreamPathTemplate!: string | undefined;
+    upstreamHttpMethod!: string[] | undefined;
+    downstreamHttpMethod!: string | undefined;
+    addHeadersToRequest!: { [key: string]: string; } | undefined;
+    upstreamHeaderTransform!: { [key: string]: string; } | undefined;
+    downstreamHeaderTransform!: { [key: string]: string; } | undefined;
+    addClaimsToRequest!: { [key: string]: string; } | undefined;
+    routeClaimsRequirement!: { [key: string]: string; } | undefined;
+    addQueriesToRequest!: { [key: string]: string; } | undefined;
+    changeDownstreamPathTemplate!: { [key: string]: string; } | undefined;
+    requestIdKey!: string | undefined;
+    fileCacheOptions!: FileCacheOptions;
+    routeIsCaseSensitive!: boolean;
+    serviceName!: string | undefined;
+    serviceNamespace!: string | undefined;
+    downstreamScheme!: string | undefined;
+    qoSOptions!: FileQoSOptions;
+    loadBalancerOptions!: FileLoadBalancerOptions;
+    rateLimitOptions!: FileRateLimitRule;
+    authenticationOptions!: FileAuthenticationOptions;
+    httpHandlerOptions!: FileHttpHandlerOptions;
+    downstreamHostAndPorts!: FileHostAndPort[] | undefined;
+    upstreamHost!: string | undefined;
+    key!: string | undefined;
+    delegatingHandlers!: string[] | undefined;
+    priority!: number;
+    timeout!: number;
+    dangerousAcceptAnyServerCertificateValidator!: boolean;
+    securityOptions!: FileSecurityOptions;
+    downstreamHttpVersion!: string | undefined;
+
+    constructor(data?: IFileRoute) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.downstreamPathTemplate = _data["downstreamPathTemplate"];
+            this.upstreamPathTemplate = _data["upstreamPathTemplate"];
+            if (Array.isArray(_data["upstreamHttpMethod"])) {
+                this.upstreamHttpMethod = [] as any;
+                for (let item of _data["upstreamHttpMethod"])
+                    this.upstreamHttpMethod!.push(item);
+            }
+            this.downstreamHttpMethod = _data["downstreamHttpMethod"];
+            if (_data["addHeadersToRequest"]) {
+                this.addHeadersToRequest = {} as any;
+                for (let key in _data["addHeadersToRequest"]) {
+                    if (_data["addHeadersToRequest"].hasOwnProperty(key))
+                        (<any>this.addHeadersToRequest)![key] = _data["addHeadersToRequest"][key];
+                }
+            }
+            if (_data["upstreamHeaderTransform"]) {
+                this.upstreamHeaderTransform = {} as any;
+                for (let key in _data["upstreamHeaderTransform"]) {
+                    if (_data["upstreamHeaderTransform"].hasOwnProperty(key))
+                        (<any>this.upstreamHeaderTransform)![key] = _data["upstreamHeaderTransform"][key];
+                }
+            }
+            if (_data["downstreamHeaderTransform"]) {
+                this.downstreamHeaderTransform = {} as any;
+                for (let key in _data["downstreamHeaderTransform"]) {
+                    if (_data["downstreamHeaderTransform"].hasOwnProperty(key))
+                        (<any>this.downstreamHeaderTransform)![key] = _data["downstreamHeaderTransform"][key];
+                }
+            }
+            if (_data["addClaimsToRequest"]) {
+                this.addClaimsToRequest = {} as any;
+                for (let key in _data["addClaimsToRequest"]) {
+                    if (_data["addClaimsToRequest"].hasOwnProperty(key))
+                        (<any>this.addClaimsToRequest)![key] = _data["addClaimsToRequest"][key];
+                }
+            }
+            if (_data["routeClaimsRequirement"]) {
+                this.routeClaimsRequirement = {} as any;
+                for (let key in _data["routeClaimsRequirement"]) {
+                    if (_data["routeClaimsRequirement"].hasOwnProperty(key))
+                        (<any>this.routeClaimsRequirement)![key] = _data["routeClaimsRequirement"][key];
+                }
+            }
+            if (_data["addQueriesToRequest"]) {
+                this.addQueriesToRequest = {} as any;
+                for (let key in _data["addQueriesToRequest"]) {
+                    if (_data["addQueriesToRequest"].hasOwnProperty(key))
+                        (<any>this.addQueriesToRequest)![key] = _data["addQueriesToRequest"][key];
+                }
+            }
+            if (_data["changeDownstreamPathTemplate"]) {
+                this.changeDownstreamPathTemplate = {} as any;
+                for (let key in _data["changeDownstreamPathTemplate"]) {
+                    if (_data["changeDownstreamPathTemplate"].hasOwnProperty(key))
+                        (<any>this.changeDownstreamPathTemplate)![key] = _data["changeDownstreamPathTemplate"][key];
+                }
+            }
+            this.requestIdKey = _data["requestIdKey"];
+            this.fileCacheOptions = _data["fileCacheOptions"] ? FileCacheOptions.fromJS(_data["fileCacheOptions"]) : <any>undefined;
+            this.routeIsCaseSensitive = _data["routeIsCaseSensitive"];
+            this.serviceName = _data["serviceName"];
+            this.serviceNamespace = _data["serviceNamespace"];
+            this.downstreamScheme = _data["downstreamScheme"];
+            this.qoSOptions = _data["qoSOptions"] ? FileQoSOptions.fromJS(_data["qoSOptions"]) : <any>undefined;
+            this.loadBalancerOptions = _data["loadBalancerOptions"] ? FileLoadBalancerOptions.fromJS(_data["loadBalancerOptions"]) : <any>undefined;
+            this.rateLimitOptions = _data["rateLimitOptions"] ? FileRateLimitRule.fromJS(_data["rateLimitOptions"]) : <any>undefined;
+            this.authenticationOptions = _data["authenticationOptions"] ? FileAuthenticationOptions.fromJS(_data["authenticationOptions"]) : <any>undefined;
+            this.httpHandlerOptions = _data["httpHandlerOptions"] ? FileHttpHandlerOptions.fromJS(_data["httpHandlerOptions"]) : <any>undefined;
+            if (Array.isArray(_data["downstreamHostAndPorts"])) {
+                this.downstreamHostAndPorts = [] as any;
+                for (let item of _data["downstreamHostAndPorts"])
+                    this.downstreamHostAndPorts!.push(FileHostAndPort.fromJS(item));
+            }
+            this.upstreamHost = _data["upstreamHost"];
+            this.key = _data["key"];
+            if (Array.isArray(_data["delegatingHandlers"])) {
+                this.delegatingHandlers = [] as any;
+                for (let item of _data["delegatingHandlers"])
+                    this.delegatingHandlers!.push(item);
+            }
+            this.priority = _data["priority"];
+            this.timeout = _data["timeout"];
+            this.dangerousAcceptAnyServerCertificateValidator = _data["dangerousAcceptAnyServerCertificateValidator"];
+            this.securityOptions = _data["securityOptions"] ? FileSecurityOptions.fromJS(_data["securityOptions"]) : <any>undefined;
+            this.downstreamHttpVersion = _data["downstreamHttpVersion"];
+        }
+    }
+
+    static fromJS(data: any): FileRoute {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileRoute();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["downstreamPathTemplate"] = this.downstreamPathTemplate;
+        data["upstreamPathTemplate"] = this.upstreamPathTemplate;
+        if (Array.isArray(this.upstreamHttpMethod)) {
+            data["upstreamHttpMethod"] = [];
+            for (let item of this.upstreamHttpMethod)
+                data["upstreamHttpMethod"].push(item);
+        }
+        data["downstreamHttpMethod"] = this.downstreamHttpMethod;
+        if (this.addHeadersToRequest) {
+            data["addHeadersToRequest"] = {};
+            for (let key in this.addHeadersToRequest) {
+                if (this.addHeadersToRequest.hasOwnProperty(key))
+                    (<any>data["addHeadersToRequest"])[key] = this.addHeadersToRequest[key];
+            }
+        }
+        if (this.upstreamHeaderTransform) {
+            data["upstreamHeaderTransform"] = {};
+            for (let key in this.upstreamHeaderTransform) {
+                if (this.upstreamHeaderTransform.hasOwnProperty(key))
+                    (<any>data["upstreamHeaderTransform"])[key] = this.upstreamHeaderTransform[key];
+            }
+        }
+        if (this.downstreamHeaderTransform) {
+            data["downstreamHeaderTransform"] = {};
+            for (let key in this.downstreamHeaderTransform) {
+                if (this.downstreamHeaderTransform.hasOwnProperty(key))
+                    (<any>data["downstreamHeaderTransform"])[key] = this.downstreamHeaderTransform[key];
+            }
+        }
+        if (this.addClaimsToRequest) {
+            data["addClaimsToRequest"] = {};
+            for (let key in this.addClaimsToRequest) {
+                if (this.addClaimsToRequest.hasOwnProperty(key))
+                    (<any>data["addClaimsToRequest"])[key] = this.addClaimsToRequest[key];
+            }
+        }
+        if (this.routeClaimsRequirement) {
+            data["routeClaimsRequirement"] = {};
+            for (let key in this.routeClaimsRequirement) {
+                if (this.routeClaimsRequirement.hasOwnProperty(key))
+                    (<any>data["routeClaimsRequirement"])[key] = this.routeClaimsRequirement[key];
+            }
+        }
+        if (this.addQueriesToRequest) {
+            data["addQueriesToRequest"] = {};
+            for (let key in this.addQueriesToRequest) {
+                if (this.addQueriesToRequest.hasOwnProperty(key))
+                    (<any>data["addQueriesToRequest"])[key] = this.addQueriesToRequest[key];
+            }
+        }
+        if (this.changeDownstreamPathTemplate) {
+            data["changeDownstreamPathTemplate"] = {};
+            for (let key in this.changeDownstreamPathTemplate) {
+                if (this.changeDownstreamPathTemplate.hasOwnProperty(key))
+                    (<any>data["changeDownstreamPathTemplate"])[key] = this.changeDownstreamPathTemplate[key];
+            }
+        }
+        data["requestIdKey"] = this.requestIdKey;
+        data["fileCacheOptions"] = this.fileCacheOptions ? this.fileCacheOptions.toJSON() : <any>undefined;
+        data["routeIsCaseSensitive"] = this.routeIsCaseSensitive;
+        data["serviceName"] = this.serviceName;
+        data["serviceNamespace"] = this.serviceNamespace;
+        data["downstreamScheme"] = this.downstreamScheme;
+        data["qoSOptions"] = this.qoSOptions ? this.qoSOptions.toJSON() : <any>undefined;
+        data["loadBalancerOptions"] = this.loadBalancerOptions ? this.loadBalancerOptions.toJSON() : <any>undefined;
+        data["rateLimitOptions"] = this.rateLimitOptions ? this.rateLimitOptions.toJSON() : <any>undefined;
+        data["authenticationOptions"] = this.authenticationOptions ? this.authenticationOptions.toJSON() : <any>undefined;
+        data["httpHandlerOptions"] = this.httpHandlerOptions ? this.httpHandlerOptions.toJSON() : <any>undefined;
+        if (Array.isArray(this.downstreamHostAndPorts)) {
+            data["downstreamHostAndPorts"] = [];
+            for (let item of this.downstreamHostAndPorts)
+                data["downstreamHostAndPorts"].push(item.toJSON());
+        }
+        data["upstreamHost"] = this.upstreamHost;
+        data["key"] = this.key;
+        if (Array.isArray(this.delegatingHandlers)) {
+            data["delegatingHandlers"] = [];
+            for (let item of this.delegatingHandlers)
+                data["delegatingHandlers"].push(item);
+        }
+        data["priority"] = this.priority;
+        data["timeout"] = this.timeout;
+        data["dangerousAcceptAnyServerCertificateValidator"] = this.dangerousAcceptAnyServerCertificateValidator;
+        data["securityOptions"] = this.securityOptions ? this.securityOptions.toJSON() : <any>undefined;
+        data["downstreamHttpVersion"] = this.downstreamHttpVersion;
+        return data; 
+    }
+}
+
+export interface IFileRoute {
+    downstreamPathTemplate: string | undefined;
+    upstreamPathTemplate: string | undefined;
+    upstreamHttpMethod: string[] | undefined;
+    downstreamHttpMethod: string | undefined;
+    addHeadersToRequest: { [key: string]: string; } | undefined;
+    upstreamHeaderTransform: { [key: string]: string; } | undefined;
+    downstreamHeaderTransform: { [key: string]: string; } | undefined;
+    addClaimsToRequest: { [key: string]: string; } | undefined;
+    routeClaimsRequirement: { [key: string]: string; } | undefined;
+    addQueriesToRequest: { [key: string]: string; } | undefined;
+    changeDownstreamPathTemplate: { [key: string]: string; } | undefined;
+    requestIdKey: string | undefined;
+    fileCacheOptions: FileCacheOptions;
+    routeIsCaseSensitive: boolean;
+    serviceName: string | undefined;
+    serviceNamespace: string | undefined;
+    downstreamScheme: string | undefined;
+    qoSOptions: FileQoSOptions;
+    loadBalancerOptions: FileLoadBalancerOptions;
+    rateLimitOptions: FileRateLimitRule;
+    authenticationOptions: FileAuthenticationOptions;
+    httpHandlerOptions: FileHttpHandlerOptions;
+    downstreamHostAndPorts: FileHostAndPort[] | undefined;
+    upstreamHost: string | undefined;
+    key: string | undefined;
+    delegatingHandlers: string[] | undefined;
+    priority: number;
+    timeout: number;
+    dangerousAcceptAnyServerCertificateValidator: boolean;
+    securityOptions: FileSecurityOptions;
+    downstreamHttpVersion: string | undefined;
+}
+
+export class FileSecurityOptions implements IFileSecurityOptions {
+    ipAllowedList!: string[] | undefined;
+    ipBlockedList!: string[] | undefined;
+
+    constructor(data?: IFileSecurityOptions) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["ipAllowedList"])) {
+                this.ipAllowedList = [] as any;
+                for (let item of _data["ipAllowedList"])
+                    this.ipAllowedList!.push(item);
+            }
+            if (Array.isArray(_data["ipBlockedList"])) {
+                this.ipBlockedList = [] as any;
+                for (let item of _data["ipBlockedList"])
+                    this.ipBlockedList!.push(item);
+            }
+        }
+    }
+
+    static fromJS(data: any): FileSecurityOptions {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileSecurityOptions();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.ipAllowedList)) {
+            data["ipAllowedList"] = [];
+            for (let item of this.ipAllowedList)
+                data["ipAllowedList"].push(item);
+        }
+        if (Array.isArray(this.ipBlockedList)) {
+            data["ipBlockedList"] = [];
+            for (let item of this.ipBlockedList)
+                data["ipBlockedList"].push(item);
+        }
+        return data; 
+    }
+}
+
+export interface IFileSecurityOptions {
+    ipAllowedList: string[] | undefined;
+    ipBlockedList: string[] | undefined;
+}
+
+export class FileServiceDiscoveryProvider implements IFileServiceDiscoveryProvider {
+    scheme!: string | undefined;
+    host!: string | undefined;
+    port!: number;
+    type!: string | undefined;
+    token!: string | undefined;
+    configurationKey!: string | undefined;
+    pollingInterval!: number;
+    namespace!: string | undefined;
+
+    constructor(data?: IFileServiceDiscoveryProvider) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.scheme = _data["scheme"];
+            this.host = _data["host"];
+            this.port = _data["port"];
+            this.type = _data["type"];
+            this.token = _data["token"];
+            this.configurationKey = _data["configurationKey"];
+            this.pollingInterval = _data["pollingInterval"];
+            this.namespace = _data["namespace"];
+        }
+    }
+
+    static fromJS(data: any): FileServiceDiscoveryProvider {
+        data = typeof data === 'object' ? data : {};
+        let result = new FileServiceDiscoveryProvider();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["scheme"] = this.scheme;
+        data["host"] = this.host;
+        data["port"] = this.port;
+        data["type"] = this.type;
+        data["token"] = this.token;
+        data["configurationKey"] = this.configurationKey;
+        data["pollingInterval"] = this.pollingInterval;
+        data["namespace"] = this.namespace;
+        return data; 
+    }
+}
+
+export interface IFileServiceDiscoveryProvider {
+    scheme: string | undefined;
+    host: string | undefined;
+    port: number;
+    type: string | undefined;
+    token: string | undefined;
+    configurationKey: string | undefined;
+    pollingInterval: number;
+    namespace: string | undefined;
 }
 
 export class FindTenantByNameInput implements IFindTenantByNameInput {
@@ -10718,8 +11983,11 @@ export interface ILockUserInput {
     locked: boolean;
 }
 
+/** 登录 */
 export class LoginInput implements ILoginInput {
+    /** 用户名或者邮箱 */
     name!: string | undefined;
+    /** 密码 */
     password!: string | undefined;
 
     constructor(data?: ILoginInput) {
@@ -10753,8 +12021,11 @@ export class LoginInput implements ILoginInput {
     }
 }
 
+/** 登录 */
 export interface ILoginInput {
+    /** 用户名或者邮箱 */
     name: string | undefined;
+    /** 密码 */
     password: string | undefined;
 }
 
@@ -10826,6 +12097,7 @@ export enum LoginResultType {
     RequiresTwoFactor = 5,
 }
 
+/** 消息类型 */
 export enum MessageType {
     BroadCast = 10,
     Text = 20,
@@ -11897,11 +13169,17 @@ export interface IPagingDataDictionaryDetailInput {
 
 export class PagingDataDictionaryDetailOutput implements IPagingDataDictionaryDetailOutput {
     id!: string;
+    /** 所属字典Id */
     dataDictionaryId!: string;
+    /** 字典明细编码 */
     code!: string | undefined;
+    /** 展现列表时排序用 */
     order!: number;
+    /** 英文显示名 */
     displayText!: string | undefined;
+    /** 描述 */
     description!: string | undefined;
+    /** 启/停用(默认启用) */
     isEnabled!: boolean;
 
     constructor(data?: IPagingDataDictionaryDetailOutput) {
@@ -11947,11 +13225,17 @@ export class PagingDataDictionaryDetailOutput implements IPagingDataDictionaryDe
 
 export interface IPagingDataDictionaryDetailOutput {
     id: string;
+    /** 所属字典Id */
     dataDictionaryId: string;
+    /** 字典明细编码 */
     code: string | undefined;
+    /** 展现列表时排序用 */
     order: number;
+    /** 英文显示名 */
     displayText: string | undefined;
+    /** 描述 */
     description: string | undefined;
+    /** 启/停用(默认启用) */
     isEnabled: boolean;
 }
 
@@ -12053,8 +13337,11 @@ export interface IPagingDataDictionaryInput {
 
 export class PagingDataDictionaryOutput implements IPagingDataDictionaryOutput {
     id!: string;
+    /** 字典编码 */
     code!: string | undefined;
+    /** 显示名 */
     displayText!: string | undefined;
+    /** 描述 */
     description!: string | undefined;
 
     constructor(data?: IPagingDataDictionaryOutput) {
@@ -12094,8 +13381,11 @@ export class PagingDataDictionaryOutput implements IPagingDataDictionaryOutput {
 
 export interface IPagingDataDictionaryOutput {
     id: string;
+    /** 字典编码 */
     code: string | undefined;
+    /** 显示名 */
     displayText: string | undefined;
+    /** 描述 */
     description: string | undefined;
 }
 
@@ -12699,6 +13989,7 @@ export class PagingUserListInput implements IPagingUserListInput {
     pageIndex!: number;
     pageSize!: number;
     readonly skipCount!: number;
+    /** 关键字 */
     filter!: string | undefined;
 
     constructor(data?: IPagingUserListInput) {
@@ -12740,6 +14031,7 @@ export interface IPagingUserListInput {
     pageIndex: number;
     pageSize: number;
     skipCount: number;
+    /** 关键字 */
     filter: string | undefined;
 }
 

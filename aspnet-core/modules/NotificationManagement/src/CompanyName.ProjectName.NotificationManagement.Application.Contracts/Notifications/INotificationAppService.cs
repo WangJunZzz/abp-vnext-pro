@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.NotificationManagement.Notifications.Dtos;
+using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
 namespace CompanyName.ProjectName.NotificationManagement.Notifications
@@ -27,5 +29,21 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         /// <param name="input"></param>
         /// <returns></returns>
         Task CreateAsync(CreateNotificationInput input);
+        
+        /// <summary>
+        /// 分页获取用户普通文本消息
+        /// </summary>
+        /// <param name="listInput"></param>
+        /// <returns></returns>
+        Task<PagedResultDto<PagingNotificationListOutput>> GetPageTextNotificationByUserIdAsync(
+            PagingNotificationListInput listInput);
+
+        /// <summary>
+        /// 分页获取广播消息
+        /// </summary>
+        /// <param name="listInput"></param>
+        /// <returns></returns>
+        Task<PagedResultDto<PagingNotificationListOutput>> GetPageBroadCastNotificationByUserIdAsync(
+            PagingNotificationListInput listInput);
     }
 }

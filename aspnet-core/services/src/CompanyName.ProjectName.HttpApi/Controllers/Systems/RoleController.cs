@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using CompanyName.ProjectName.Roles;
 using CompanyName.ProjectName.Roles.Dtos;
 using Lion.Abp.Extension;
@@ -12,7 +13,7 @@ namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("Roles")]
     [Authorize(Policy = IdentityPermissions.Roles.Default)]
-    public class RoleController : ProjectNameController
+    public class RoleController : ProjectNameController,IRoleAppService
     {
         private readonly IRoleAppService _roleAppService;
 
@@ -51,12 +52,13 @@ namespace CompanyName.ProjectName.Controllers.Systems
             return _roleAppService.UpdateAsync(input);
         }
 
+
         [HttpPost("delete")]
         [Authorize(IdentityPermissions.Roles.Delete)]
         [SwaggerOperation(summary: "删除角色", Tags = new[] { "Roles" })]
         public Task DeleteAsync(IdInput input)
         {
-            return _roleAppService.DeleteAsync(input.Id);
+            return _roleAppService.DeleteAsync(input);
         }
 
 

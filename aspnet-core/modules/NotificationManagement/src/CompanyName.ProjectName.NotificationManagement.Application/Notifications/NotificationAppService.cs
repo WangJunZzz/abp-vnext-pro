@@ -5,6 +5,7 @@ using CompanyName.ProjectName.NotificationManagement.Hubs;
 using CompanyName.ProjectName.NotificationManagement.Notifications.Dtos;
 using Microsoft.AspNetCore.SignalR;
 using Volo.Abp;
+using Volo.Abp.Application.Dtos;
 using Volo.Abp.Users;
 
 namespace CompanyName.ProjectName.NotificationManagement.Notifications
@@ -14,14 +15,17 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         private readonly IHubContext<NotificationHub, INotificationHub> _hubContext;
         private readonly NotificationManager _notificationManager;
         private readonly ICurrentUser _currentUser;
-
+        private readonly IDapperNotificationRepository _dapperNotificationRepository;
         public NotificationAppService(
-            IHubContext<NotificationHub, INotificationHub> hubContext, NotificationManager notificationManager,
-            ICurrentUser currentUser)
+            IHubContext<NotificationHub, INotificationHub> hubContext,
+            NotificationManager notificationManager,
+            ICurrentUser currentUser, 
+            IDapperNotificationRepository dapperNotificationRepository)
         {
             _hubContext = hubContext;
             _notificationManager = notificationManager;
             _currentUser = currentUser;
+            _dapperNotificationRepository = dapperNotificationRepository;
         }
 
         public Task SetReadAsync(SetReadInput input)
@@ -54,7 +58,48 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
             }
         }
 
+        /// <summary>
+        /// 分页获取用户普通文本消息
+        /// </summary>
+        /// <param name="listInput"></param>
+        /// <returns></returns>
+        public async Task<PagedResultDto<PagingNotificationListOutput>> GetPageTextNotificationByUserIdAsync(
+            PagingNotificationListInput listInput)
+        {
+            if (!_currentUser.Id.HasValue)
+            {
+                return null;
+            }
 
+            var totalCount =
+                await _dapperNotificationRepository.GetPageTextNotificationCountByUserIdAsync(_currentUser.Id.Value);
+            var list = await _dapperNotificationRepository.GetPageTextNotificationByUserIdAsync(_currentUser.Id.Value,
+                listInput.PageSize,
+                listInput.SkipCount);
+            return new PagedResultDto<PagingNotificationListOutput>(totalCount, list);
+        }
+
+        /// <summary>
+        /// 分页获取广播消息
+        /// </summary>
+        /// <param name="listInput"></param>
+        /// <returns></returns>
+        public async Task<PagedResultDto<PagingNotificationListOutput>> GetPageBroadCastNotificationByUserIdAsync(
+            PagingNotificationListInput listInput)
+        {
+            if (!_currentUser.Id.HasValue)
+            {
+                return null;
+            }
+
+            var totalCount =
+                await _dapperNotificationRepository.GetPageBroadCastNotificationCountByUserIdAsync(_currentUser.Id.Value);
+            var list = await _dapperNotificationRepository.GetPageBroadCastNotificationByUserIdAsync(_currentUser.Id.Value,
+                listInput.PageSize,
+                listInput.SkipCount);
+            return new PagedResultDto<PagingNotificationListOutput>(totalCount, list);
+        }
+        
         /// <summary>
         /// 发送消息指定客户端用户
         /// </summary>
@@ -81,6 +126,7 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         {
             await _hubContext.Clients.All.ReceiveBroadCastMessageAsync(sendNotificationDto);
         }
+        
         
     }
 }

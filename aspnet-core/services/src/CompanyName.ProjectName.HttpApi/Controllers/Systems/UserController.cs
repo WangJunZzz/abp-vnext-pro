@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using CompanyName.ProjectName.Permissions;
 using CompanyName.ProjectName.Users;
 using CompanyName.ProjectName.Users.Dtos;
@@ -13,7 +14,7 @@ namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("Users")]
     [Authorize(Policy = IdentityPermissions.Users.Default)]
-    public class UserContoller:ProjectNameController
+    public class UserContoller:ProjectNameController,IUserAppService
     {
         private readonly IUserAppService _userAppService;
 
@@ -50,14 +51,15 @@ namespace CompanyName.ProjectName.Controllers.Systems
         [SwaggerOperation(summary: "删除用户", Tags = new[] { "Users" })]
         public Task DeleteAsync(IdInput input)
         {
-            return _userAppService.DeleteAsync(input.Id);
+            return _userAppService.DeleteAsync(input);
         }
+
 
         [HttpPost("role")]
         [SwaggerOperation(summary: "获取用户角色信息", Tags = new[] { "Users" })]
         public Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(IdInput input)
         {
-            return _userAppService.GetRoleByUserId(input.Id);
+            return _userAppService.GetRoleByUserId(input);
         }
 
         [HttpPost("changePassword")]

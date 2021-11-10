@@ -10,20 +10,21 @@ namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("Permissions")]
     [Authorize]
-    public class PermissionController : ProjectNameController
+    public class PermissionController : ProjectNameController,IRolePermissionAppService
     {
-        private readonly IRoleAppService _roleAppService;
+        private readonly IRolePermissionAppService _rolePermissionAppService;
 
-        public PermissionController(IRoleAppService roleAppService)
+        public PermissionController(IRolePermissionAppService rolePermissionAppService)
         {
-            _roleAppService = roleAppService;
+            _rolePermissionAppService = rolePermissionAppService;
         }
-        
+
+
         [HttpPost("tree")]
         [SwaggerOperation(summary: "获取角色权限", Tags = new[] { "Permissions" })]
         public Task<PermissionOutput> GetPermissionAsync(GetPermissionInput input)
         {
-            return _roleAppService.GetPermissionAsync(input);
+            return _rolePermissionAppService.GetPermissionAsync(input);
         }
 
         [HttpPost("update")]
@@ -31,7 +32,7 @@ namespace CompanyName.ProjectName.Controllers.Systems
         [SwaggerOperation(summary: "更新角色", Tags = new[] { "Permissions" })]
         public Task UpdatePermissionAsync(UpdateRolePermissionsInput input)
         {
-            return _roleAppService.UpdatePermissionAsync(input);
+            return _rolePermissionAppService.UpdatePermissionAsync(input);
         }
     }
 }
