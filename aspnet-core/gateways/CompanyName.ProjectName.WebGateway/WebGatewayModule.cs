@@ -22,25 +22,16 @@ namespace CompanyName.ProjectName.WebGateway
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             ConfigureCors(context);
-            ConfigureSwaggerServices(context);
+          
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
             var app = context.GetApplicationBuilder();
-            var env = context.GetEnvironment();
             app.UseCorrelationId();
             app.UseCors(DefaultCorsPolicyName);
             app.UseRouting();
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/ProjectName/swagger.json", "ProjectNameAPI");
-                options.DefaultModelsExpandDepth(-1);
-                options.DocExpansion(DocExpansion.None);
-            });
-            
-            app.UseConfiguredEndpoints();
+            app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
             app.UseWebSockets();
             app.UseOcelot().Wait();
         }
@@ -48,7 +39,6 @@ namespace CompanyName.ProjectName.WebGateway
         /// <summary>
         /// 配置跨域
         /// </summary>
-        /// <param name="context"></param>
         private void ConfigureCors(ServiceConfigurationContext context)
         {
             var configuration = context.Services.GetConfiguration();
@@ -71,29 +61,6 @@ namespace CompanyName.ProjectName.WebGateway
                 });
             });
         }
-        
-        private static void ConfigureSwaggerServices(ServiceConfigurationContext context)
-        {
-            context.Services.AddSwaggerGen(
-                options =>
-                {
-                    options.SwaggerDoc("v1", new OpenApiInfo {Title = "WebGateway API", Version = "v1"});
-                    options.DocInclusionPredicate((docName, description) => true);
-                    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-                    {
-                        {
-                            new OpenApiSecurityScheme
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.SecurityScheme, Id = "Bearer"
-                                }
-                            },
-                            new List<string>()
-                        }
-                    });
-                    
-                });
-        }
+     
     }
 }

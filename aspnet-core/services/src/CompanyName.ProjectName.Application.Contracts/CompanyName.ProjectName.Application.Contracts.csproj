@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyAbp.Abp.SettingUi.Application.Contracts" Version="1.5.0" />
+    <PackageReference Include="EasyAbp.Abp.SettingUi.Application.Contracts" Version="$(EasyAbpSttingVersion)" />
     <PackageReference Include="Volo.Abp.ObjectExtending" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Account.Application.Contracts" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="$(AbpPackageVersion)" />

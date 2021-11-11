@@ -17,6 +17,7 @@ namespace CompanyName.ProjectName.Shared.Hosting.Gateways
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             ConfigureOcelot(context);
+            ConfigureHealthChecks(context);
         }
 
         /// <summary>
@@ -27,6 +28,13 @@ namespace CompanyName.ProjectName.Shared.Hosting.Gateways
             var configuration = context.Services.GetConfiguration();
             context.Services.AddOcelot(configuration).AddConsul().AddPolly();
         }
-
+        /// <summary>
+        /// 健康检查
+        /// </summary>
+        /// <param name="context"></param>
+        private void ConfigureHealthChecks(ServiceConfigurationContext context)
+        {
+            context.Services.AddHealthChecks();
+        }
     }
 }

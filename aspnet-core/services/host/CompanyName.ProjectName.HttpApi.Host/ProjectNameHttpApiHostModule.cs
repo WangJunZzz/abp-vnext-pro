@@ -37,6 +37,7 @@ using Savorboard.CAP.InMemoryMessageQueue;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using Volo.Abp.AspNetCore.MultiTenancy;
+using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Volo.Abp.Caching;
 
 namespace CompanyName.ProjectName
@@ -55,11 +56,11 @@ namespace CompanyName.ProjectName
         typeof(AbpBackgroundJobsHangfireModule),
         typeof(LionAbpCapModule),
         typeof(AbpAspNetCoreMultiTenancyModule),
-        typeof(SharedHostingMicroserviceModule)
+        typeof(SharedHostingMicroserviceModule),
+        typeof(AbpAspNetCoreMvcUiBasicThemeModule)
     )]
     public class ProjectNameHttpApiHostModule : AbpModule
     {
-        private const string DefaultCorsPolicyName = "Default";
 
         public override void OnPostApplicationInitialization(
             ApplicationInitializationContext context)
@@ -88,7 +89,7 @@ namespace CompanyName.ProjectName
             app.UseCorrelationId();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseCors(DefaultCorsPolicyName);
+            app.UseCors(ProjectNameHttpApiHostConsts.DefaultCookieName);
             app.UseAuthentication();
 
             if (MultiTenancyConsts.IsEnabled)
@@ -113,8 +114,8 @@ namespace CompanyName.ProjectName
                 opts.EnrichDiagnosticContext = SerilogToEsExtensions.EnrichFromRequest;
             });
             app.UseUnitOfWork();
-            app.UseConfiguredEndpoints();
-            app.UseEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
+          
+            app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
             app.UseHangfireDashboard("/hangfire", new DashboardOptions()
             {
                 Authorization = new[] { new CustomHangfireAuthorizeFilter() },
@@ -185,35 +186,34 @@ namespace CompanyName.ProjectName
                     {
                         OnMessageReceived = currentContext =>
                         {
-                            var accessToken = currentContext.Request.Query["access_token"];
-                            // 如果请求来自signalr
                             var path = currentContext.HttpContext.Request.Path;
-                            if (path.StartsWithSegments("/signalr"))
+                            if (!path.StartsWithSegments("/login"))
                             {
-                                currentContext.Token = accessToken;
-                            }
-
-                            // 如果请求来自hangfire 或者cap
-                            if (path.ToString().StartsWith("/hangfire") ||
-                                path.ToString().StartsWith("/cap"))
-                            {
-                                currentContext.HttpContext.Response.Headers.Remove(
-                                    "X-Frame-Options");
-                                if (!string.IsNullOrEmpty(accessToken))
+                                var accessToken =
+                                    currentContext.Request.Cookies[
+                                        ProjectNameHttpApiHostConsts.DefaultCookieName] ;
+                                
+                                if (!accessToken.IsNullOrWhiteSpace())
                                 {
-                                    currentContext.Token = accessToken;
-                                    currentContext.HttpContext.Response.Cookies
-                                        .Append("ProjectNameCookie", accessToken);
-                                }
-                                else
-                                {
-                                    var cookies = currentContext.Request.Cookies;
-                                    if (cookies.ContainsKey("ProjectNameCookie"))
+                                    if (path.StartsWithSegments("/signalr"))
                                     {
-                                        currentContext.Token = cookies["ProjectNameCookie"];
+                                        currentContext.Token = accessToken;
+                                    }
+
+                                    currentContext.Request.Headers.Add("Authorization",
+                                        $"Bearer {accessToken}");
+
+                                    // 如果请求来自hangfire 或者cap
+                                    if (path.ToString().StartsWith("/hangfire") ||
+                                        path.ToString().StartsWith("/cap"))
+                                    {
+                                        currentContext.HttpContext.Response.Headers.Remove(
+                                            "X-Frame-Options");
+                                        currentContext.Token = !string.IsNullOrEmpty(accessToken) ? accessToken : accessToken;
                                     }
                                 }
                             }
+
 
                             return Task.CompletedTask;
                         }

@@ -2,7 +2,7 @@
   "profiles": {
     "CompanyName.ProjectName.HttpApi.Host": {
       "commandName": "Project",
-      "launchBrowser": false,
+      "launchBrowser": true,
       "applicationUrl": "http://localhost:44315",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

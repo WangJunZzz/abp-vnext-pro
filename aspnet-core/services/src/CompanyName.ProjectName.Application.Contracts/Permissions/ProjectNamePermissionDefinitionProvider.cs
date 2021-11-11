@@ -17,11 +17,7 @@ namespace CompanyName.ProjectName.Permissions
             var auditManagement =
                 abpIdentityGroup.AddPermission(ProjectNamePermissions.SystemManagement.AuditLog, L("Permission:AuditLogManagement"));
 
-            var hangfireManagement =
-                abpIdentityGroup.AddPermission(ProjectNamePermissions.SystemManagement.Hangfire, L("Permission:HangfireManagement"));
-
-            var capManagement = abpIdentityGroup.AddPermission(ProjectNamePermissions.SystemManagement.Cap, L("Permission:CapManagement"));
-            
+          
             var esManagement = abpIdentityGroup.AddPermission(ProjectNamePermissions.SystemManagement.ES, L("Permission:ESManagement"));
 
             #region IdentityServer

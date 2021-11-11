@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	<PackageReference Include="EasyAbp.Abp.SettingUi.Application" Version="1.5.0" />
+	<PackageReference Include="EasyAbp.Abp.SettingUi.Application" Version="$(EasyAbpSttingVersion)" />
 	<PackageReference Include="Volo.Abp.Account.Application" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Identity.Application" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="$(AbpPackageVersion)" />

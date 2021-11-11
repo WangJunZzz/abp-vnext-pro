@@ -4,8 +4,8 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="FreeSql" Version="2.5.200" />
-        <PackageReference Include="FreeSql.Provider.MySql" Version="2.5.200" />
+        <PackageReference Include="FreeSql" Version="$(FreeSqlVersion)" />
+        <PackageReference Include="FreeSql.Provider.MySql" Version="$(FreeSqlVersion)" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\CompanyName.ProjectName.Domain\CompanyName.ProjectName.Domain.csproj" />

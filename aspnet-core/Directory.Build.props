@@ -2,9 +2,13 @@
 
   <PropertyGroup>
     <AbpPackageVersion>4.4.0</AbpPackageVersion>
-    <DotNetCoreCAP>5.1.4</DotNetCoreCAP>
+   
     <DotNetCoreCAPVersion>5.1.4</DotNetCoreCAPVersion>
     <MicrosoftVersion>5.0.12</MicrosoftVersion>
+    <NewtonsoftJsonVersion>13.0.1</NewtonsoftJsonVersion>
+    <MicrosoftExtensionsHttpVersion>5.0.0</MicrosoftExtensionsHttpVersion>
+    <SystemComponentModelAnnotationsVersion>5.0.0</SystemComponentModelAnnotationsVersion>
+    <MicrosoftExtensionsDependencyModelVersion>5.0.0</MicrosoftExtensionsDependencyModelVersion>
     <EasyAbpSttingVersion>1.5.0</EasyAbpSttingVersion>
     <SerilogVersion>2.10.0</SerilogVersion>
     <SerilogExtensionsLoggingVersion>3.0.1</SerilogExtensionsLoggingVersion>
@@ -15,7 +19,7 @@
     <SerilogExceptionsVersion>7.0.0</SerilogExceptionsVersion>
     <SerilogSettingsConfigurationVersion>3.1.0</SerilogSettingsConfigurationVersion>
     <SerilogSinksElasticsearchVersion>8.4.1</SerilogSinksElasticsearchVersion>
-    <NESTVersion>7.14.1</NESTVersion>
+    <NESTVersion>7.15.1</NESTVersion>
     <HangfireMySqlStorageVersion>2.0.3</HangfireMySqlStorageVersion>
     <SwashbuckleAspNetCoreAnnotationsVersion>6.1.4</SwashbuckleAspNetCoreAnnotationsVersion>
     <MicrosoftNETTestSdkVersion>16.9.1</MicrosoftNETTestSdkVersion>
@@ -25,6 +29,8 @@
     <Xunitrunnervisualstudio>2.4.3</Xunitrunnervisualstudio>
     <OcelotVersion>17.0.0</OcelotVersion>
     <SwaggerUIVersion>6.2.3</SwaggerUIVersion>
+    <FreeSqlVersion>2.5.200</FreeSqlVersion>
+
   </PropertyGroup>
 
 </Project>

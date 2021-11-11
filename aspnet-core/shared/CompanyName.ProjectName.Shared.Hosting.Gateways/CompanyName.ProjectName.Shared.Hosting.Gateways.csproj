@@ -4,14 +4,14 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Ocelot" Version="17.0.0" />
-        <PackageReference Include="Ocelot.Provider.Consul" Version="17.0.0" />
-        <PackageReference Include="Ocelot.Provider.Polly" Version="17.0.0" />
+        <PackageReference Include="Ocelot" Version="$(OcelotVersion)" />
+        <PackageReference Include="Ocelot.Provider.Consul" Version="$(OcelotVersion)" />
+        <PackageReference Include="Ocelot.Provider.Polly" Version="$(OcelotVersion)" />
         <PackageReference Include="Volo.Abp" Version="$(AbpPackageVersion)" />
         <PackageReference Include="Volo.Abp.AspNetCore" Version="$(AbpPackageVersion)" />
         <PackageReference Include="Volo.Abp.Autofac" Version="$(AbpPackageVersion)" />
         <PackageReference Include="Volo.Abp.Core" Version="$(AbpPackageVersion)" />
         <PackageReference Include="Volo.Abp.Swashbuckle" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="$(SwashbuckleAspNetCoreAnnotationsVersion)" />
     </ItemGroup>
 </Project>
