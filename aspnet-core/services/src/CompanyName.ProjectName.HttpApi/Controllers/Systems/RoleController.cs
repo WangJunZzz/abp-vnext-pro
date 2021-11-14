@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using CompanyName.ProjectName.Roles;
 using CompanyName.ProjectName.Roles.Dtos;
-using Lion.Abp.Extension;
+using CompanyName.ProjectName.Extension.Customs.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

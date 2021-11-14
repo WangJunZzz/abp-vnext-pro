@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using CompanyName.ProjectName.ElasticsearchRepository;
 using CompanyName.ProjectName.ElasticsearchRepository.Dto;
-using Lion.Abp.Extension;
+using CompanyName.ProjectName.Extension.Customs.Dtos;
 
 namespace CompanyName.ProjectName.ElasticSearchs
 {

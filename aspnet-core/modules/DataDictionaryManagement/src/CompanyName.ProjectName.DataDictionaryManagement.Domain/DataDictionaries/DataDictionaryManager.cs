@@ -25,7 +25,6 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
 
         public async Task<DataDictionaryDto> FindByIdAsync(
             Guid id,
-            bool includeDetails = true,
             CancellationToken cancellationToken = default)
         {
             var cacheKey = DataDictionaryDto.CalculateCacheKey(id, null);
@@ -33,7 +32,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
                 async () =>
                 {
                     var entity =
-                        await _dataDictionaryRepository.FindByIdAsync(id, includeDetails,
+                        await _dataDictionaryRepository.FindByIdAsync(id, true,
                             cancellationToken);
                     return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(entity);
                 }, token: cancellationToken);
@@ -41,7 +40,6 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
 
         public async Task<DataDictionaryDto> FindByCodeAsync(
             string code,
-            bool includeDetails = true,
             CancellationToken cancellationToken = default)
         {
             var cacheKey = DataDictionaryDto.CalculateCacheKey(null, code);
@@ -49,7 +47,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
                 async () =>
                 {
                     var entity =
-                        await _dataDictionaryRepository.FindByCodeAsync(code, includeDetails,
+                        await _dataDictionaryRepository.FindByCodeAsync(code, true,
                             cancellationToken);
                     return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(entity);
                 }, token: cancellationToken);

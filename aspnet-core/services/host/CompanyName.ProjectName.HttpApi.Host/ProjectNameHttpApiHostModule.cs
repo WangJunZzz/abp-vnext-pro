@@ -29,10 +29,10 @@ using Volo.Abp.Caching.StackExchangeRedis;
 using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using System.Threading.Tasks;
+using CompanyName.ProjectName.CAP;
 using CompanyName.ProjectName.Extensions;
 using CompanyName.ProjectName.MultiTenancy;
 using CompanyName.ProjectName.Swaggers;
-using Lion.Abp.Cap;
 using Savorboard.CAP.InMemoryMessageQueue;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
@@ -54,7 +54,7 @@ namespace CompanyName.ProjectName
         typeof(AbpAccountWebModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpBackgroundJobsHangfireModule),
-        typeof(LionAbpCapModule),
+        typeof(ProjectNameAbpCapModule),
         typeof(AbpAspNetCoreMultiTenancyModule),
         typeof(SharedHostingMicroserviceModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule)

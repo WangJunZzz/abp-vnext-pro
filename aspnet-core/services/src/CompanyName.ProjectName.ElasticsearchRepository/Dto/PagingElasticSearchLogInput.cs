@@ -1,5 +1,5 @@
 using System;
-using Lion.Abp.Extension;
+using CompanyName.ProjectName.Extension.Customs.Dtos;
 
 namespace CompanyName.ProjectName.ElasticsearchRepository.Dto
 {

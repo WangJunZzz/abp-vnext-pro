@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.Users.Dtos;
-using Lion.Abp.Extension;
+using CompanyName.ProjectName.Extension.Customs.Dtos;
 using Microsoft.AspNetCore.Identity;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.Exceptions;
-using Lion.Abp.Extension;
+using CompanyName.ProjectName.Extension.Customs;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.MultiTenancy;
 

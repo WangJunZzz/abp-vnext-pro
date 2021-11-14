@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using CompanyName.ProjectName.Extension.Customs.Dtos;
 using CompanyName.ProjectName.IdentityServers.ApiScopes;
 using CompanyName.ProjectName.IdentityServers.ApiScopes.Dtos;
 using CompanyName.ProjectName.Permissions;
-using Lion.Abp.Extension;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

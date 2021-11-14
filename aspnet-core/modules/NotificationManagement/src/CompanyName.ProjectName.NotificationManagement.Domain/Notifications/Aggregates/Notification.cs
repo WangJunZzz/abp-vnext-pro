@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using CompanyName.ProjectName.Extension.Customs;
 using Volo.Abp.Domain.Entities.Auditing;
 using CompanyName.ProjectName.NotificationManagement.Notifications.DistributedEvents;
-using Lion.Abp.Extension;
+
 
 namespace CompanyName.ProjectName.NotificationManagement.Notifications
 {
@@ -109,7 +110,8 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         public void AddNotificationSubscription(Guid notificationSubscriptionId, Guid receiveId)
         {
             if (NotificationSubscriptions.Any(e => e.ReceiveId == receiveId)) return;
-            NotificationSubscriptions.Add(new NotificationSubscription(notificationSubscriptionId, receiveId));
+            NotificationSubscriptions.Add(
+                new NotificationSubscription(notificationSubscriptionId, receiveId));
         }
 
         /// <summary>
@@ -117,7 +119,8 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         /// </summary>
         /// <param name="notificationSubscriptionId"></param>
         /// <param name="receiveId"></param>
-        public void AddBroadCastNotificationSubscription(Guid notificationSubscriptionId, Guid receiveId)
+        public void AddBroadCastNotificationSubscription(Guid notificationSubscriptionId,
+            Guid receiveId)
         {
             if (NotificationSubscriptions.Any(e => e.ReceiveId == receiveId))
             {

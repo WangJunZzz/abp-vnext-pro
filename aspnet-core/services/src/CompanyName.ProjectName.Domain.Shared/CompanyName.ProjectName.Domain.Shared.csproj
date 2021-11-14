@@ -29,8 +29,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\frameworks\Extensions\src\Lion.Abp.Extension\Lion.Abp.Extension.csproj" />
+    <ProjectReference Include="..\..\..\frameworks\Extensions\src\CompanyName.ProjectName.Extension\CompanyName.ProjectName.Extension.csproj" />
   </ItemGroup>
+
+ 
 
 
 

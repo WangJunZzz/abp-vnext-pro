@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.ElasticsearchRepository.Dto;
-using Lion.Abp.Extension;
+using CompanyName.ProjectName.Extension.Customs.Dtos;
 using Microsoft.Extensions.Configuration;
 using Nest;
 

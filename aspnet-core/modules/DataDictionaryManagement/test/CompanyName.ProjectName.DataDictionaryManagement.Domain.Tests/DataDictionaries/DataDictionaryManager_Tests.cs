@@ -20,8 +20,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
         public async Task Test_FindByIdAsync_Ok()
         {
             var entity =
-                await _dataDictionaryManager.FindByIdAsync(DataDictionaryManagementConsts.SeedDataDictionaryId,
-                    true);
+                await _dataDictionaryManager.FindByIdAsync(DataDictionaryManagementConsts.SeedDataDictionaryId);
             entity.DisplayText.ShouldBe("性别");
             entity.Details.Count.ShouldBe(3);
             entity.Details.FirstOrDefault(e => e.Code == "None").IsEnabled.ShouldBeFalse();
@@ -32,7 +31,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
         [Fact]
         public async Task Test_FindByCodeAsync_Ok()
         {
-            var entity = await _dataDictionaryManager.FindByCodeAsync("Gender", true);
+            var entity = await _dataDictionaryManager.FindByCodeAsync("Gender");
             entity.DisplayText.ShouldBe("性别");
             entity.Details.Count.ShouldBe(3);
          

@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 using CompanyName.ProjectName.ConfigurationOptions;
 using CompanyName.ProjectName.Users.Dtos;
 using IdentityModel;
-using Lion.Abp.Extension;
+using CompanyName.ProjectName.Extension.Customs.Dtos;
+using CompanyName.ProjectName.Extension.Customs.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Volo.Abp;
 using Volo.Abp.Identity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.Security.Claims;
@@ -51,12 +53,12 @@ namespace CompanyName.ProjectName.Users
                 var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
                 if (result.IsLockedOut)
                 {
-                    throw new Exception("当前用户已被锁定");
+                    throw new UserFriendlyException("当前用户已被锁定");
                 }
                 
                 if (!result.Succeeded)
                 {
-                    throw new Exception("用户名或者密码错误");
+                    throw new UserFriendlyException("用户名或者密码错误");
                 }
 
                 var s = _currentTenant.Id;
@@ -65,7 +67,7 @@ namespace CompanyName.ProjectName.Users
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new UserFriendlyException(ex.Message);
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using CompanyName.ProjectName.ElasticsearchRepository.Dto;
-using Lion.Abp.Extension;
+using CompanyName.ProjectName.Extension.Customs.Dtos;
 using Volo.Abp.DependencyInjection;
 
 namespace CompanyName.ProjectName.ElasticsearchRepository

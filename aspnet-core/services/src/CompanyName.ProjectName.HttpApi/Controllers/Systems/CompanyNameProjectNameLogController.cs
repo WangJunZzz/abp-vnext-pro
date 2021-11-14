@@ -2,7 +2,7 @@
 using CompanyName.ProjectName.ElasticsearchRepository.Dto;
 using CompanyName.ProjectName.ElasticSearchs;
 using CompanyName.ProjectName.Permissions;
-using Lion.Abp.Extension;
+using CompanyName.ProjectName.Extension.Customs.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

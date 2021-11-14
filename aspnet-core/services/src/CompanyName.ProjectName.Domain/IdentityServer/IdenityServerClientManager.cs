@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using CompanyName.ProjectName.Extension.System;
 using IdentityModel;
 using Volo.Abp;
-using Volo.Abp.Domain.Services;
 using Volo.Abp.IdentityServer.Clients;
 
 namespace CompanyName.ProjectName.IdentityServer

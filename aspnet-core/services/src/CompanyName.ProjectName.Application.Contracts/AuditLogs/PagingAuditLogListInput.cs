@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net;
-using Lion.Abp.Extension;
+using CompanyName.ProjectName.Extension.Customs.Dtos;
 
 
 namespace CompanyName.ProjectName.AuditLogs
