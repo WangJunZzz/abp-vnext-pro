@@ -22,7 +22,7 @@ export function useSignalR() {
     const userStore = useUserStoreWithOut();
     const token = userStore.getToken;
 
-    const url = (import.meta.env.VITE_WEBSOCKE_URL as string) + '/ws/signalr/notification';
+    const url = (import.meta.env.VITE_WEBSOCKE_URL as string) + '/signalr/notification';
     const connection = new signalR.HubConnectionBuilder()
       .withUrl(url, {
         accessTokenFactory: () => token,

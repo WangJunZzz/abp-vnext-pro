@@ -21,6 +21,7 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.CAP;
@@ -61,7 +62,6 @@ namespace CompanyName.ProjectName
     )]
     public class ProjectNameHttpApiHostModule : AbpModule
     {
-
         public override void OnPostApplicationInitialization(
             ApplicationInitializationContext context)
         {
@@ -114,7 +114,7 @@ namespace CompanyName.ProjectName
                 opts.EnrichDiagnosticContext = SerilogToEsExtensions.EnrichFromRequest;
             });
             app.UseUnitOfWork();
-          
+
             app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
             app.UseHangfireDashboard("/hangfire", new DashboardOptions()
             {
@@ -187,31 +187,38 @@ namespace CompanyName.ProjectName
                         OnMessageReceived = currentContext =>
                         {
                             var path = currentContext.HttpContext.Request.Path;
-                            if (!path.StartsWithSegments("/login"))
+                            if (path.StartsWithSegments("/login"))
                             {
-                                var accessToken =
-                                    currentContext.Request.Cookies[
-                                        ProjectNameHttpApiHostConsts.DefaultCookieName] ;
-                                
-                                if (!accessToken.IsNullOrWhiteSpace())
-                                {
-                                    if (path.StartsWithSegments("/signalr"))
-                                    {
-                                        currentContext.Token = accessToken;
-                                    }
+                                return Task.CompletedTask;
+                            }
 
-                                    currentContext.Request.Headers.Add("Authorization",
-                                        $"Bearer {accessToken}");
+                            var accessToken =
+                                currentContext.Request.Query["access_token"].FirstOrDefault() ??
+                                currentContext.Request.Cookies[
+                                    ProjectNameHttpApiHostConsts.DefaultCookieName];
 
-                                    // 如果请求来自hangfire 或者cap
-                                    if (path.ToString().StartsWith("/hangfire") ||
-                                        path.ToString().StartsWith("/cap"))
-                                    {
-                                        currentContext.HttpContext.Response.Headers.Remove(
-                                            "X-Frame-Options");
-                                        currentContext.Token = !string.IsNullOrEmpty(accessToken) ? accessToken : accessToken;
-                                    }
-                                }
+                            if (!accessToken.IsNullOrWhiteSpace())
+                            {
+                                return Task.CompletedTask;
+                            }
+
+                            if (path.StartsWithSegments("/signalr"))
+                            {
+                                currentContext.Token = accessToken;
+                            }
+
+                            currentContext.Request.Headers.Add("Authorization",
+                                $"Bearer {accessToken}");
+
+                            // 如果请求来自hangfire 或者cap
+                            if (path.ToString().StartsWith("/hangfire") ||
+                                path.ToString().StartsWith("/cap"))
+                            {
+                                currentContext.HttpContext.Response.Headers.Remove(
+                                    "X-Frame-Options");
+                                currentContext.Token = !string.IsNullOrEmpty(accessToken)
+                                    ? accessToken
+                                    : accessToken;
                             }
 
 

@@ -16,7 +16,8 @@ namespace CompanyName.ProjectName.Pages
         private readonly ILogger<Login> _logger;
         private readonly IHostEnvironment _hostEnvironment;
 
-        public Login(IAccountAppService accountAppService, ILogger<Login> logger, IHostEnvironment hostEnvironment)
+        public Login(IAccountAppService accountAppService, ILogger<Login> logger,
+            IHostEnvironment hostEnvironment)
         {
             _accountAppService = accountAppService;
             _logger = logger;
@@ -26,7 +27,7 @@ namespace CompanyName.ProjectName.Pages
         public void OnGet()
         {
         }
-        
+
         public async Task OnPost()
         {
             string userName = Request.Form["userName"];
@@ -44,16 +45,15 @@ namespace CompanyName.ProjectName.Pages
                     SameSite = SameSiteMode.Unspecified,
                 };
 
-                if (!_hostEnvironment.IsDevelopment())
-                {
-                    // 设置cookies domain
-                    options.Domain = "ProjectName.cn";
-                }
 
-                
+                // 设置cookies domain
+                //options.Domain = "ProjectName.cn";
+
+
                 var result = await _accountAppService.LoginAsync(new LoginInput()
                     { Name = userName, Password = password });
-                Response.Cookies.Append(ProjectNameHttpApiHostConsts.DefaultCookieName, result.Token,options);
+                Response.Cookies.Append(ProjectNameHttpApiHostConsts.DefaultCookieName,
+                    result.Token, options);
             }
             catch (Exception e)
             {
