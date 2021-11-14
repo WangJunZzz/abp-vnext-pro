@@ -1,44 +1,44 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using CompanyName.ProjectName.ConfigurationOptions;
+using CompanyName.ProjectName.EntityFrameworkCore;
+using CompanyName.ProjectName.Extensions;
+using CompanyName.ProjectName.MultiTenancy;
+using CompanyName.ProjectName.Swaggers;
+using CompanyNameProjectName.Extensions.Filters;
+using Hangfire;
+using Hangfire.MySql;
+using Lion.Abp.Cap;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using CompanyName.ProjectName.EntityFrameworkCore;
-using CompanyNameProjectName.Extensions.Filters;
-using Hangfire;
-using Hangfire.MySql;
 using Microsoft.IdentityModel.Tokens;
-using StackExchange.Redis;
 using Microsoft.OpenApi.Models;
+using Savorboard.CAP.InMemoryMessageQueue;
+using Serilog;
+using StackExchange.Redis;
+using Swashbuckle.AspNetCore.SwaggerUI;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Authentication.JwtBearer;
+using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
+using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.BackgroundJobs.Hangfire;
+using Volo.Abp.Caching;
 using Volo.Abp.Caching.StackExchangeRedis;
 using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
-using System.Threading.Tasks;
-using CompanyName.ProjectName.CAP;
-using CompanyName.ProjectName.Extensions;
-using CompanyName.ProjectName.MultiTenancy;
-using CompanyName.ProjectName.Swaggers;
-using Savorboard.CAP.InMemoryMessageQueue;
-using Serilog;
-using Swashbuckle.AspNetCore.SwaggerUI;
-using Volo.Abp.AspNetCore.MultiTenancy;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
-using Volo.Abp.Caching;
 
 namespace CompanyName.ProjectName
 {
@@ -54,7 +54,7 @@ namespace CompanyName.ProjectName
         typeof(AbpAccountWebModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpBackgroundJobsHangfireModule),
-        typeof(ProjectNameAbpCapModule),
+        typeof(LionAbpCapModule),
         typeof(AbpAspNetCoreMultiTenancyModule),
         typeof(SharedHostingMicroserviceModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule)
@@ -89,7 +89,7 @@ namespace CompanyName.ProjectName
             app.UseCorrelationId();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseCors(ProjectNameHttpApiHostConsts.DefaultCookieName);
+            app.UseCors(ProjectNameHttpApiHostConsts.DefaultCorsPolicyName);
             app.UseAuthentication();
 
             if (MultiTenancyConsts.IsEnabled)

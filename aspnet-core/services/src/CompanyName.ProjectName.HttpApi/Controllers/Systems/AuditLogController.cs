@@ -1,17 +1,15 @@
-﻿using System.Threading.Tasks;
-using CompanyName.ProjectName.AuditLogs;
+﻿using CompanyName.ProjectName.AuditLogs;
 using CompanyName.ProjectName.Permissions;
-using CompanyName.ProjectName.Users.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
-using Volo.Abp.Identity;
 
 namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("AuditLogs")]
-    [Authorize(Policy = IdentityPermissions.Users.Default)]
+    [Authorize(Policy = ProjectNamePermissions.SystemManagement.AuditLog)]
     public class AuditLogController : ProjectNameController,IAuditLogAppService
     {
         private readonly IAuditLogAppService _auditLogAppService;
@@ -22,8 +20,7 @@ namespace CompanyName.ProjectName.Controllers.Systems
         }
 
         [HttpPost("page")]
-        [Authorize(Policy = ProjectNamePermissions.SystemManagement.AuditLog)]
-        [SwaggerOperation(summary: "分页获取用户信息", Tags = new[] {"AuditLogs"})]
+        [SwaggerOperation(summary: "分页获取审计日志信息", Tags = new[] {"AuditLogs"})]
         public Task<PagedResultDto<GetAuditLogPageListOutput>> GetListAsync(PagingAuditLogListInput input)
         {
             return _auditLogAppService.GetListAsync(input);
