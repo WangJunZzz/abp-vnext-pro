@@ -6,7 +6,6 @@ using CompanyName.ProjectName.Swaggers;
 using CompanyNameProjectName.Extensions.Filters;
 using Hangfire;
 using Hangfire.MySql;
-using Lion.Abp.Cap;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
@@ -24,6 +23,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using CompanyName.ProjectName.CAP;
 using Volo.Abp;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Authentication.JwtBearer;
@@ -54,7 +54,7 @@ namespace CompanyName.ProjectName
         typeof(AbpAccountWebModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpBackgroundJobsHangfireModule),
-        typeof(LionAbpCapModule),
+        typeof(ProjectNameAbpCapModule),
         typeof(AbpAspNetCoreMultiTenancyModule),
         typeof(SharedHostingMicroserviceModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule)
