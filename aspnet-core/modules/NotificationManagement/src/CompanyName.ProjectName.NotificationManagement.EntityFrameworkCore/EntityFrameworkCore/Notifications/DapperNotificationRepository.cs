@@ -101,7 +101,7 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
                    + $"left join {NotificationManagementDbProperties.DbTablePrefix}NotificationSubscription b on b.NotificationId=a.Id "
                    + "where a.IsDeleted=0  "
                    + "and a.MessageType=20 "
-                   + "and b.ReceiveId=@userId "
+                   + "and b.ReceiveId=?userId "
                    + "order by  b.Read,  CreationTime desc ";
         }
 
@@ -113,7 +113,7 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
                    + $"left join {NotificationManagementDbProperties.DbTablePrefix}NotificationSubscription b on b.NotificationId=a.Id "
                    + "where a.IsDeleted=0  "
                    + "and a.MessageType=20 "
-                   + "and b.ReceiveId=@userId ";
+                   + "and b.ReceiveId=?userId ";
         }
 
         private string BuildPageBroadCastCountSql()
@@ -126,7 +126,7 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
                    + "and a.Id not in "
                    + "    (select NotificationId "
                    + $"from {NotificationManagementDbProperties.DbTablePrefix}NotificationSubscription b "
-                   + " where b.ReceiveId = @userId) "
+                   + " where b.ReceiveId = ?userId) "
                    + "union "
                    + "    select a.Id, a.Title, a.Content, a.CreationTime, a.SenderId, true as \"Read\" "
                    + $"from {NotificationManagementDbProperties.DbTablePrefix}Notification a "
@@ -135,7 +135,7 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
                    + "and a.Id in "
                    + $"    (select {NotificationManagementDbProperties.DbTablePrefix}NotificationId "
                    + $"from {NotificationManagementDbProperties.DbTablePrefix}NotificationSubscription b "
-                   + "where b.ReceiveId = @userId) "
+                   + "where b.ReceiveId = ?userId) "
                    + "    ) as tt  ";
         }
 
@@ -149,7 +149,7 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
                    + "and a.Id not in "
                    + "    (select NotificationId "
                    + $"from {NotificationManagementDbProperties.DbTablePrefix}NotificationSubscription b "
-                   + " where b.ReceiveId = @userId) "
+                   + " where b.ReceiveId = ?userId) "
                    + "union"
                    + "    select a.Id, a.Title, a.Content, a.CreationTime, a.SenderId, true as \"Read\" "
                    + $"from  {NotificationManagementDbProperties.DbTablePrefix}Notification a "
@@ -158,7 +158,7 @@ namespace CompanyName.ProjectName.NotificationManagement.EntityFrameworkCore.Not
                    + "and a.Id in "
                    + "    (select NotificationId "
                    + $"from  {NotificationManagementDbProperties.DbTablePrefix}NotificationSubscription b "
-                   + "where b.ReceiveId = @userId)"
+                   + "where b.ReceiveId = ?userId)"
                    + "    ) as tt order by tt.Read,tt.CreationTime  ";
         }
     }
