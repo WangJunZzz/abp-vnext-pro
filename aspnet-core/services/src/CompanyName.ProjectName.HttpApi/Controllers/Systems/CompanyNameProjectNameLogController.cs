@@ -21,7 +21,6 @@ namespace CompanyName.ProjectName.Controllers.Systems
         
         [HttpPost("page")]
         [SwaggerOperation(summary: "分页获取Es日志", Tags = new[] { "EsLog" })]
-        [Authorize(Policy = ProjectNamePermissions.SystemManagement.ES)]
         public Task<CustomePagedResultDto<PagingElasticSearchLogOutput>> PaingAsync(PagingElasticSearchLogInput input)
         {
             return _companyNameProjectNameLogAppService.PaingAsync(input);

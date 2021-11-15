@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Volo.Abp.AspNetCore.ExceptionHandling;
 using Volo.Abp.Autofac;
 using Volo.Abp.Localization;
@@ -10,7 +11,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.UI.Navigation.Urls;
 
-namespace  CompanyName.ProjectName
+namespace CompanyName.ProjectName
 {
     [DependsOn(
         typeof(AbpSwashbuckleModule),
@@ -46,9 +47,11 @@ namespace  CompanyName.ProjectName
         /// <param name="context"></param>
         private void ConfigureAbpExceptions(ServiceConfigurationContext context)
         {
+            //开启后通过ErrorCode抛本地化异常，message不会显示本地化词条
+            var SendExceptionsDetails = context.Services.GetHostingEnvironment().IsDevelopment();
             context.Services.Configure<AbpExceptionHandlingOptions>(options =>
             {
-                options.SendExceptionsDetailsToClients = true;
+                options.SendExceptionsDetailsToClients = SendExceptionsDetails;
             });
         }
 

@@ -3,11 +3,14 @@ using System.Threading.Tasks;
 using CompanyName.ProjectName.IdentityServer;
 using CompanyName.ProjectName.IdentityServers.Dtos;
 using CompanyName.ProjectName.Extension.Customs.Dtos;
+using CompanyName.ProjectName.Permissions;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.IdentityServer.ApiResources;
 
 namespace CompanyName.ProjectName.IdentityServers.ApiResources
 {
+    [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiResource.Default)]
     public class ApiResourceAppService : ProjectNameAppService, IApiResourceAppService
     {
         private readonly IdenityServerApiResourceManager _idenityServerApiResourceManager;
@@ -43,6 +46,7 @@ namespace CompanyName.ProjectName.IdentityServers.ApiResources
         /// 新增 ApiResource
         /// </summary>
         /// <returns></returns>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiResource.Create)]
         public Task CreateAsync(CreateApiResourceInput input)
         {
             return _idenityServerApiResourceManager.CreateAsync(
@@ -61,6 +65,7 @@ namespace CompanyName.ProjectName.IdentityServers.ApiResources
         /// 删除 ApiResource
         /// </summary>
         /// <returns></returns>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiResource.Delete)]
         public async Task DeleteAsync(IdInput input)
         {
             await _idenityServerApiResourceManager.DeleteAsync(input.Id);
@@ -70,6 +75,7 @@ namespace CompanyName.ProjectName.IdentityServers.ApiResources
         /// 更新 ApiResource
         /// </summary>
         /// <returns></returns>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiResource.Update)]
         public Task UpdateAsync(UpdateApiResourceInput input)
         {
             return _idenityServerApiResourceManager.UpdateAsync(

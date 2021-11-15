@@ -12,8 +12,7 @@ using Volo.Abp.Identity;
 namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("Roles")]
-    [Authorize(Policy = IdentityPermissions.Roles.Default)]
-    public class RoleController : ProjectNameController,IRoleAppService
+    public class RoleController : ProjectNameController, IRoleAppService
     {
         private readonly IRoleAppService _roleAppService;
 
@@ -21,7 +20,7 @@ namespace CompanyName.ProjectName.Controllers.Systems
         {
             _roleAppService = roleAppService;
         }
-        
+
         [HttpPost("all")]
         [SwaggerOperation(summary: "获取所有角色", Tags = new[] { "Roles" })]
         public Task<ListResultDto<IdentityRoleDto>> AllListAsync()
@@ -37,7 +36,6 @@ namespace CompanyName.ProjectName.Controllers.Systems
         }
 
         [HttpPost("create")]
-        [Authorize(IdentityPermissions.Roles.Create)]
         [SwaggerOperation(summary: "创建角色", Tags = new[] { "Roles" })]
         public Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input)
         {
@@ -45,7 +43,6 @@ namespace CompanyName.ProjectName.Controllers.Systems
         }
 
         [HttpPost("update")]
-        [Authorize(IdentityPermissions.Roles.Update)]
         [SwaggerOperation(summary: "更新角色", Tags = new[] { "Roles" })]
         public Task<IdentityRoleDto> UpdateAsync(UpdateRoleInput input)
         {
@@ -54,13 +51,10 @@ namespace CompanyName.ProjectName.Controllers.Systems
 
 
         [HttpPost("delete")]
-        [Authorize(IdentityPermissions.Roles.Delete)]
         [SwaggerOperation(summary: "删除角色", Tags = new[] { "Roles" })]
         public Task DeleteAsync(IdInput input)
         {
             return _roleAppService.DeleteAsync(input);
         }
-
-
     }
 }

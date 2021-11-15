@@ -9,7 +9,6 @@ using Volo.Abp.Application.Dtos;
 namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("AuditLogs")]
-    [Authorize(Policy = ProjectNamePermissions.SystemManagement.AuditLog)]
     public class AuditLogController : ProjectNameController,IAuditLogAppService
     {
         private readonly IAuditLogAppService _auditLogAppService;

@@ -9,7 +9,6 @@ using Volo.Abp.Identity;
 namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("Permissions")]
-    [Authorize]
     public class PermissionController : ProjectNameController,IRolePermissionAppService
     {
         private readonly IRolePermissionAppService _rolePermissionAppService;
@@ -28,7 +27,6 @@ namespace CompanyName.ProjectName.Controllers.Systems
         }
 
         [HttpPost("update")]
-        [Authorize(IdentityPermissions.Roles.ManagePermissions)]
         [SwaggerOperation(summary: "更新角色", Tags = new[] { "Permissions" })]
         public Task UpdatePermissionAsync(UpdateRolePermissionsInput input)
         {

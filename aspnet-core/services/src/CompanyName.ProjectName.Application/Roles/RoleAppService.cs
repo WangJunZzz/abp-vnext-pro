@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.Roles.Dtos;
 using CompanyName.ProjectName.Extension.Customs.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Identity;
@@ -11,6 +12,7 @@ using Volo.Abp.PermissionManagement;
 
 namespace CompanyName.ProjectName.Roles
 {
+    [Authorize(Policy = IdentityPermissions.Roles.Default)]
     public class RoleAppService : ProjectNameAppService, IRoleAppService
     {
         private readonly IIdentityRoleAppService _identityRoleAppService;
@@ -67,6 +69,7 @@ namespace CompanyName.ProjectName.Roles
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [Authorize(IdentityPermissions.Roles.Create)]
         public async Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input)
         {
             return await _identityRoleAppService.CreateAsync(input);
@@ -77,6 +80,7 @@ namespace CompanyName.ProjectName.Roles
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [Authorize(IdentityPermissions.Roles.Update)]
         public async Task<IdentityRoleDto> UpdateAsync(UpdateRoleInput input)
         {
             return await _identityRoleAppService.UpdateAsync(input.RoleId, input.RoleInfo);
@@ -86,6 +90,7 @@ namespace CompanyName.ProjectName.Roles
         /// <summary>
         /// 删除角色
         /// </summary>
+        [Authorize(IdentityPermissions.Roles.Delete)]
         public async Task DeleteAsync(IdInput input)
         {
             await _identityRoleAppService.DeleteAsync(input.Id);

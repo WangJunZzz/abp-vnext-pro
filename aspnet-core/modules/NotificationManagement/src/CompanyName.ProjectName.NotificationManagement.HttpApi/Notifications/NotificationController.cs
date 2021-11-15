@@ -8,10 +8,9 @@ using Volo.Abp.AspNetCore.Mvc;
 
 namespace CompanyName.ProjectName.NotificationManagement.Notifications
 {
-     [Route("Notification")]
+    [Route("Notification")]
     public class NotificationController : AbpController, IApplicationService
     {
-      
         private readonly INotificationAppService _notificationAppService;
 
         public NotificationController(
@@ -27,9 +26,10 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         /// <param name="listInput"></param>
         /// <returns></returns>
         [HttpPost("Text")]
-        [SwaggerOperation(summary: "分页查询普通消息", Tags = new[] {"Notification"})]
-        public Task<PagedResultDto<PagingNotificationListOutput>> GetPageTextNotificationByUserIdAsync(
-            PagingNotificationListInput listInput)
+        [SwaggerOperation(summary: "分页查询普通消息", Tags = new[] { "Notification" })]
+        public Task<PagedResultDto<PagingNotificationListOutput>>
+            GetPageTextNotificationByUserIdAsync(
+                PagingNotificationListInput listInput)
         {
             return _notificationAppService.GetPageTextNotificationByUserIdAsync(listInput);
         }
@@ -40,22 +40,23 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         /// <param name="listInput"></param>
         /// <returns></returns>
         [HttpPost("BroadCast")]
-        [SwaggerOperation(summary: "分页查询广播消息", Tags = new[] {"Notification"})]
-        public Task<PagedResultDto<PagingNotificationListOutput>> GetPageBroadCastNotificationByUserIdAsync(
-            PagingNotificationListInput listInput)
+        [SwaggerOperation(summary: "分页查询广播消息", Tags = new[] { "Notification" })]
+        public Task<PagedResultDto<PagingNotificationListOutput>>
+            GetPageBroadCastNotificationByUserIdAsync(
+                PagingNotificationListInput listInput)
         {
             return _notificationAppService.GetPageBroadCastNotificationByUserIdAsync(listInput);
         }
 
         [HttpPost("Read")]
-        [SwaggerOperation(summary: "消息设置为已读", Tags = new[] {"Notification"})]
+        [SwaggerOperation(summary: "消息设置为已读", Tags = new[] { "Notification" })]
         public Task SetReadAsync(SetReadInput input)
         {
             return _notificationAppService.SetReadAsync(input);
         }
 
         [HttpPost("Create")]
-        [SwaggerOperation(summary: "创建消息-测试使用", Tags = new[] {"Notification"})]
+        [SwaggerOperation(summary: "创建消息-测试使用", Tags = new[] { "Notification" })]
         public Task CreateAsync(CreateNotificationInput input)
         {
             return _notificationAppService.CreateAsync(input);

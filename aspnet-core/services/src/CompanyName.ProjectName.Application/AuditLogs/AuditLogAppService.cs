@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using CompanyName.ProjectName.Permissions;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.AuditLogging;
 
 namespace CompanyName.ProjectName.AuditLogs
 {
+    [Authorize(Policy = ProjectNamePermissions.SystemManagement.AuditLog)]
     public class AuditLogAppService : ProjectNameAppService, IAuditLogAppService
     {
         private readonly IAuditLogRepository _auditLogRepository;

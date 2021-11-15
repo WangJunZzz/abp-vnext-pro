@@ -16,8 +16,6 @@ namespace CompanyName.ProjectName.Permissions
 
             var auditManagement =
                 abpIdentityGroup.AddPermission(ProjectNamePermissions.SystemManagement.AuditLog, L("Permission:AuditLogManagement"));
-
-          
             var esManagement = abpIdentityGroup.AddPermission(ProjectNamePermissions.SystemManagement.ES, L("Permission:ESManagement"));
 
             #region IdentityServer

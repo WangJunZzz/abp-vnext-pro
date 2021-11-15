@@ -4,11 +4,14 @@ using CompanyName.ProjectName.IdentityServer;
 using CompanyName.ProjectName.IdentityServers.IdentityResources;
 using CompanyName.ProjectName.IdentityServers.IdentityResources.Dtos;
 using CompanyName.ProjectName.Extension.Customs.Dtos;
+using CompanyName.ProjectName.Permissions;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.IdentityServer.IdentityResources;
 
 namespace CompanyName.ProjectName.IdentityServers.Mappers.IdentityResources
 {
+    [Authorize(Policy = ProjectNamePermissions.IdentityServer.IdentityResources.Default)]
     public class IdentityResourceAppService : ProjectNameAppService, IIdentityResourceAppService
     {
         private readonly IdentityResourceManager _identityResourceManager;
@@ -47,6 +50,7 @@ namespace CompanyName.ProjectName.IdentityServers.Mappers.IdentityResources
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.IdentityResources.Create)]
         public Task CreateAsync(CreateIdentityResourceInput input)
         {
             return _identityResourceManager.CreateAsync(input.Name, input.DisplayName, input.Description,
@@ -58,6 +62,7 @@ namespace CompanyName.ProjectName.IdentityServers.Mappers.IdentityResources
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.IdentityResources.Update)]
         public Task UpdateAsync(UpdateIdentityResourceInput input)
         {
             return _identityResourceManager.UpdateAsync(input.Name, input.DisplayName, input.Description,
@@ -69,6 +74,7 @@ namespace CompanyName.ProjectName.IdentityServers.Mappers.IdentityResources
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.IdentityResources.Delete)]
         public Task DeleteAsync(IdInput input)
         {
             return _identityResourceManager.DeleteAsync(input.Id);

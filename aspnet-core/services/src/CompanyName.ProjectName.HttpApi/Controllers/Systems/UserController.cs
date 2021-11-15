@@ -13,8 +13,7 @@ using Volo.Abp.Identity;
 namespace CompanyName.ProjectName.Controllers.Systems
 {
     [Route("Users")]
-    [Authorize(Policy = IdentityPermissions.Users.Default)]
-    public class UserContoller:ProjectNameController,IUserAppService
+    public class UserContoller : ProjectNameController, IUserAppService
     {
         private readonly IUserAppService _userAppService;
 
@@ -29,25 +28,22 @@ namespace CompanyName.ProjectName.Controllers.Systems
         {
             return _userAppService.ListAsync(input);
         }
-        
+
         [HttpPost("create")]
-        [Authorize(IdentityPermissions.Users.Create)]
         [SwaggerOperation(summary: "创建用户", Tags = new[] { "Users" })]
         public Task<IdentityUserDto> CreateAsync(IdentityUserCreateDto input)
         {
             return _userAppService.CreateAsync(input);
         }
-        
+
         [HttpPost("update")]
-        [Authorize(IdentityPermissions.Users.Update)]
         [SwaggerOperation(summary: "编辑用户", Tags = new[] { "Users" })]
         public Task<IdentityUserDto> UpdateAsync(UpdateUserInput input)
         {
             return _userAppService.UpdateAsync(input);
         }
-        
+
         [HttpPost("delete")]
-        [Authorize(IdentityPermissions.Users.Update)]
         [SwaggerOperation(summary: "删除用户", Tags = new[] { "Users" })]
         public Task DeleteAsync(IdInput input)
         {
@@ -70,7 +66,6 @@ namespace CompanyName.ProjectName.Controllers.Systems
         }
 
         [HttpPost("lock")]
-        [Authorize(ProjectNamePermissions.SystemManagement.UserEnable)]
         [SwaggerOperation(summary: "锁定用户", Tags = new[] { "Users" })]
         public Task LockAsync(LockUserInput input)
         {

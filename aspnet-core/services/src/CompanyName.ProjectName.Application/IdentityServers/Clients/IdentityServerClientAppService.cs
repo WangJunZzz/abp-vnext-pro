@@ -2,11 +2,14 @@
 using System.Threading.Tasks;
 using CompanyName.ProjectName.IdentityServer;
 using CompanyName.ProjectName.Extension.Customs.Dtos;
+using CompanyName.ProjectName.Permissions;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.IdentityServer.Clients;
 
 namespace CompanyName.ProjectName.IdentityServers.Clients
 {
+    [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Default)]
     public class IdentityServerClientAppService : ProjectNameAppService, IIdentityServerClientAppService
     {
         private readonly IdenityServerClientManager _idenityServerClientManager;
@@ -36,6 +39,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Create)]
         public Task CreateAsync(CreateClientInput input)
         {
             return _idenityServerClientManager.CreateAsync(input.ClientId, input.ClientName, input.Description, input.AllowedGrantTypes);
@@ -45,6 +49,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// 删除client
         /// </summary>
         /// <returns></returns>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Delete)]
         public Task DeleteAsync(IdInput input)
         {
             return _idenityServerClientManager.DeleteAsync(input.Id);
@@ -54,6 +59,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// 更新基本信息
         /// </summary>
         /// <returns></returns>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Update)]
         public Task UpdateBasicDataAsync(UpdataBasicDataInput input)
         {
             return _idenityServerClientManager.UpdateBasicDataAsync(
@@ -106,6 +112,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// 更新client scopes
         /// </summary>
         /// <returns></returns>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Update)]
         public Task UpdateScopesAsync(UpdateScopeInput input)
         {
             return _idenityServerClientManager.UpdateScopesAsync(input.ClientId, input.Scopes);
@@ -114,6 +121,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// <summary>
         /// 新增回调地址
         /// </summary>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Update)]
         public Task AddRedirectUriAsync(AddRedirectUriInput input)
         {
             return _idenityServerClientManager.AddRedirectUriAsync(input.ClientId, input.Uri);
@@ -122,6 +130,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// <summary>
         /// 删除回调地址
         /// </summary>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Update)]
         public Task RemoveRedirectUriAsync(RemoveRedirectUriInput input)
         {
             return _idenityServerClientManager.RemoveRedirectUriAsync(input.ClientId, input.Uri);
@@ -130,6 +139,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// <summary>
         /// 新增Logout回调地址
         /// </summary>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Update)]
         public Task AddLogoutRedirectUriAsync(AddRedirectUriInput input)
         {
             return _idenityServerClientManager.AddLogoutRedirectUriAsync(input.ClientId, input.Uri);
@@ -138,6 +148,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// <summary>
         /// 删除Logout回调地址
         /// </summary>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Update)]
         public Task RemoveLogoutRedirectUriAsync(RemoveRedirectUriInput input)
         {
             return _idenityServerClientManager.RemoveLogoutRedirectUriAsync(input.ClientId, input.Uri);
@@ -146,6 +157,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// <summary>
         /// 添加cors
         /// </summary>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Update)]
         public Task AddCorsAsync(AddCorsInput input)
         {
             return _idenityServerClientManager.AddCorsAsync(input.ClientId, input.Origin);
@@ -154,6 +166,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// <summary>
         /// 删除cors
         /// </summary>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Update)]
         public Task RemoveCorsAsync(RemoveCorsInput input)
         {
             return _idenityServerClientManager.RemoveCorsAsync(input.ClientId, input.Origin);
@@ -164,6 +177,7 @@ namespace CompanyName.ProjectName.IdentityServers.Clients
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [Authorize(Policy = ProjectNamePermissions.IdentityServer.Client.Enable)]
         public Task EnabledAsync(EnabledInput input)
         {
             return _idenityServerClientManager.EnabledAsync(input.ClientId, input.Enabled);

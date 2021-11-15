@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.Users.Dtos;
 using CompanyName.ProjectName.Extension.Customs.Dtos;
+using CompanyName.ProjectName.Permissions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;
@@ -12,6 +14,7 @@ using Volo.Abp.Users;
 
 namespace CompanyName.ProjectName.Users
 {
+    [Authorize(Policy = IdentityPermissions.Users.Default)]
     public class UserAppService : ProjectNameAppService, IUserAppService
     {
         private readonly IIdentityUserAppService _identityUserAppService;
@@ -59,6 +62,7 @@ namespace CompanyName.ProjectName.Users
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [Authorize(IdentityPermissions.Users.Create)]
         public async Task<IdentityUserDto> CreateAsync(IdentityUserCreateDto input)
         {
             return await _identityUserAppService.CreateAsync(input);
@@ -69,6 +73,7 @@ namespace CompanyName.ProjectName.Users
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [Authorize(IdentityPermissions.Users.Update)]
         public virtual async Task<IdentityUserDto> UpdateAsync(UpdateUserInput input)
         {
             return await _identityUserAppService.UpdateAsync(input.UserId, input.UserInfo);
@@ -77,6 +82,7 @@ namespace CompanyName.ProjectName.Users
         /// <summary>
         /// 删除用户
         /// </summary>
+        [Authorize(IdentityPermissions.Users.Delete)]
         public virtual async Task DeleteAsync(IdInput input)
         {
             await _identityUserAppService.DeleteAsync(input.Id);
@@ -119,6 +125,7 @@ namespace CompanyName.ProjectName.Users
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [Authorize(ProjectNamePermissions.SystemManagement.UserEnable)]
         public async Task LockAsync(LockUserInput input)
         {
             var identityUser = await _userManager.GetByIdAsync(input.UserId);

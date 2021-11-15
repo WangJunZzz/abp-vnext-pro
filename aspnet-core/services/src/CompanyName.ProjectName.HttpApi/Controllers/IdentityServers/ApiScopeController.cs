@@ -12,8 +12,7 @@ using Volo.Abp.Application.Dtos;
 namespace CompanyName.ProjectName.Controllers.IdentityServers
 {
     [Route("IdentityServer/ApiScope")]
-    [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiScope.Default)]
-    public class ApiScopeController:ProjectNameController,IApiScopeAppService
+    public class ApiScopeController : ProjectNameController, IApiScopeAppService
     {
         private readonly IApiScopeAppService _apiScopeAppService;
 
@@ -23,38 +22,37 @@ namespace CompanyName.ProjectName.Controllers.IdentityServers
         }
 
         [HttpPost("page")]
-        [SwaggerOperation(summary: "分页获取ApiScope信息", Tags = new[] {"ApiScope"})]
-        public Task<PagedResultDto<PagingApiScopeListOutput>> GetListAsync(PagingApiScopeListInput input)
+        [SwaggerOperation(summary: "分页获取ApiScope信息", Tags = new[] { "ApiScope" })]
+        public Task<PagedResultDto<PagingApiScopeListOutput>> GetListAsync(
+            PagingApiScopeListInput input)
         {
             return _apiScopeAppService.GetListAsync(input);
         }
 
         [HttpPost("create")]
-        [SwaggerOperation(summary: "创建ApiScope", Tags = new[] {"ApiScope"})]
-        [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiScope.Create)]
+        [SwaggerOperation(summary: "创建ApiScope", Tags = new[] { "ApiScope" })]
         public Task CreateAsync(CreateApiScopeInput input)
         {
             return _apiScopeAppService.CreateAsync(input);
         }
 
         [HttpPost("update")]
-        [SwaggerOperation(summary: "更新ApiScope", Tags = new[] {"ApiScope"})]
-        [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiScope.Update)]
+        [SwaggerOperation(summary: "更新ApiScope", Tags = new[] { "ApiScope" })]
         public Task UpdateAsync(UpdateCreateApiScopeInput input)
         {
             return _apiScopeAppService.UpdateAsync(input);
         }
 
         [HttpPost("delete")]
-        [SwaggerOperation(summary: "删除ApiScope", Tags = new[] {"ApiScope"})]
-        [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiScope.Delete)]
+        [SwaggerOperation(summary: "删除ApiScope", Tags = new[] { "ApiScope" })]
         public Task DeleteAsync(IdInput input)
         {
             return _apiScopeAppService.DeleteAsync(input);
         }
+
         [HttpPost("all")]
-        [SwaggerOperation(summary: "获取所有ApiScope", Tags = new[] {"ApiScope"})]
-        public  Task<List<FromSelector<string, string>>> FindAllAsync()
+        [SwaggerOperation(summary: "获取所有ApiScope", Tags = new[] { "ApiScope" })]
+        public Task<List<FromSelector<string, string>>> FindAllAsync()
         {
             return _apiScopeAppService.FindAllAsync();
         }

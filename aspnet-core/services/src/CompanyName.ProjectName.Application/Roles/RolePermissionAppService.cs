@@ -2,10 +2,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.Roles.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using Volo.Abp.Identity;
 using Volo.Abp.PermissionManagement;
 
 namespace CompanyName.ProjectName.Roles
 {
+    [Authorize]
     public class RolePermissionAppService : ProjectNameAppService, IRolePermissionAppService
     {
         private readonly IPermissionAppService _rolePermissionAppService;
@@ -30,6 +33,7 @@ namespace CompanyName.ProjectName.Roles
         /// 更新权限
         /// </summary>
         /// <param name="input"></param>
+        [Authorize(IdentityPermissions.Roles.ManagePermissions)]
         public async Task UpdatePermissionAsync(UpdateRolePermissionsInput input)
         {
             await _rolePermissionAppService.UpdateAsync(input.ProviderName, input.ProviderKey,

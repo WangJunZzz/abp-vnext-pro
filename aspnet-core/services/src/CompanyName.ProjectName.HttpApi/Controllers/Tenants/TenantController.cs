@@ -10,7 +10,6 @@ using Volo.Abp.TenantManagement;
 namespace CompanyName.ProjectName.Controllers.Tenants
 {
     [Route("Tenants")]
-    [Authorize(TenantManagementPermissions.Tenants.Default)]
     public class TenantController : ProjectNameController
     {
         private readonly ITenantAppService _tenantAppService;
@@ -30,7 +29,6 @@ namespace CompanyName.ProjectName.Controllers.Tenants
 
         [HttpPost("create")]
         [SwaggerOperation(summary: "创建租户", Tags = new[] {"Tenants"})]
-        [Authorize(TenantManagementPermissions.Tenants.Create)]
         public Task<TenantDto> CreateAsync(TenantCreateDto input)
         {
             return _tenantAppService.CreateAsync(input);
@@ -38,7 +36,6 @@ namespace CompanyName.ProjectName.Controllers.Tenants
 
         [HttpPost("update")]
         [SwaggerOperation(summary: "更新租户", Tags = new[] {"Tenants"})]
-        [Authorize(TenantManagementPermissions.Tenants.Update)]
         public Task<TenantDto> UpdateAsync(UpdateTenantInput input)
         {
             var request = new TenantUpdateDto()
@@ -50,7 +47,6 @@ namespace CompanyName.ProjectName.Controllers.Tenants
         
         [HttpPost("delete")]
         [SwaggerOperation(summary: "删除租户", Tags = new[] {"Tenants"})]
-        [Authorize(TenantManagementPermissions.Tenants.Delete)]
         public Task DeleteAsync(IdInput input)
         {
             return _tenantAppService.DeleteAsync(input.Id);
@@ -66,7 +62,6 @@ namespace CompanyName.ProjectName.Controllers.Tenants
 
         [HttpPost("updateConnectionString")]
         [SwaggerOperation(summary: "更新租户连接字符串", Tags = new[] {"Tenants"})]
-        [Authorize(TenantManagementPermissions.Tenants.ManageConnectionStrings)]
         public Task UpdateDefaultConnectionStringAsync(UpdateConnectionStringInput input)
         {
             return _tenantAppService.UpdateDefaultConnectionStringAsync(input.Id, input.ConnectionString);
@@ -74,7 +69,6 @@ namespace CompanyName.ProjectName.Controllers.Tenants
 
         [HttpPost("deleteConnectionString")]
         [SwaggerOperation(summary: "删除租户连接字符串", Tags = new[] {"Tenants"})]
-        [Authorize(TenantManagementPermissions.Tenants.ManageConnectionStrings)]
         public Task DeleteDefaultConnectionStringAsync(IdInput input)
         {
             return _tenantAppService.DeleteDefaultConnectionStringAsync(input.Id);

@@ -197,7 +197,7 @@ namespace CompanyName.ProjectName
                                 currentContext.Request.Cookies[
                                     ProjectNameHttpApiHostConsts.DefaultCookieName];
 
-                            if (!accessToken.IsNullOrWhiteSpace())
+                            if (accessToken.IsNullOrWhiteSpace())
                             {
                                 return Task.CompletedTask;
                             }
@@ -214,11 +214,9 @@ namespace CompanyName.ProjectName
                             if (path.ToString().StartsWith("/hangfire") ||
                                 path.ToString().StartsWith("/cap"))
                             {
-                                currentContext.HttpContext.Response.Headers.Remove(
-                                    "X-Frame-Options");
-                                currentContext.Token = !string.IsNullOrEmpty(accessToken)
-                                    ? accessToken
-                                    : accessToken;
+                                // currentContext.HttpContext.Response.Headers.Remove(
+                                //     "X-Frame-Options");
+                                currentContext.Token = accessToken;
                             }
 
 
