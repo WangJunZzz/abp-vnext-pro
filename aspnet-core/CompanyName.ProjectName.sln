@@ -133,17 +133,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.FreeSqlRepository", "services\src\CompanyName.ProjectName.FreeSqlRepository\CompanyName.ProjectName.FreeSqlRepository.csproj", "{FC30B17B-F671-4E55-90C6-9F37E40B483D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.ElasticsearchRepository", "services\src\CompanyName.ProjectName.ElasticsearchRepository\CompanyName.ProjectName.ElasticsearchRepository.csproj", "{5910B07F-1520-45D6-A15F-7A3E0698BE18}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Extension", "frameworks\Extensions\src\CompanyName.ProjectName.Extension\CompanyName.ProjectName.Extension.csproj", "{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.CAP", "frameworks\CAP\src\CompanyName.ProjectName.CAP\CompanyName.ProjectName.CAP.csproj", "{3C3FF821-E43D-4D58-8B3C-1E97F4518EF7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Blazor.Layout.AntDesignTheme", "services\src\CompanyName.ProjectName.Blazor.Layout.AntDesignTheme\CompanyName.ProjectName.Blazor.Layout.AntDesignTheme.csproj", "{3E63EC99-F592-42E9-B360-258146BA9C79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.Blazor.Server", "services\host\CompanyName.ProjectName.Blazor.Server\CompanyName.ProjectName.Blazor.Server.csproj", "{10BB7892-639F-4169-9A26-0CCCAE3AE254}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Blazor.Server", "services\host\CompanyName.ProjectName.Blazor.Server\CompanyName.ProjectName.Blazor.Server.csproj", "{10BB7892-639F-4169-9A26-0CCCAE3AE254}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.Blazor.WebAssembly", "services\host\CompanyName.ProjectName.Blazor.WebAssembly\CompanyName.ProjectName.Blazor.WebAssembly.csproj", "{CFDC2921-A191-406D-A6D6-6AA4898D9948}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Blazor.WebAssembly", "services\host\CompanyName.ProjectName.Blazor.WebAssembly\CompanyName.ProjectName.Blazor.WebAssembly.csproj", "{CFDC2921-A191-406D-A6D6-6AA4898D9948}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -319,10 +317,6 @@ Global
 		{FC30B17B-F671-4E55-90C6-9F37E40B483D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC30B17B-F671-4E55-90C6-9F37E40B483D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC30B17B-F671-4E55-90C6-9F37E40B483D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5910B07F-1520-45D6-A15F-7A3E0698BE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5910B07F-1520-45D6-A15F-7A3E0698BE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5910B07F-1520-45D6-A15F-7A3E0698BE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5910B07F-1520-45D6-A15F-7A3E0698BE18}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -404,7 +398,6 @@ Global
 		{C018EFF9-579E-43B3-9181-543BE95E2E03} = {6434E3F2-B352-4B30-839A-88C2BA166D96}
 		{D9108313-8D05-4F5F-9AA0-B443EC3374B6} = {5C304CBC-F30D-413C-A0AF-8B6814A2D4A3}
 		{FC30B17B-F671-4E55-90C6-9F37E40B483D} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
-		{5910B07F-1520-45D6-A15F-7A3E0698BE18} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7} = {C4AC9352-C9F5-4096-8D73-13638232CFB9}
 		{3C3FF821-E43D-4D58-8B3C-1E97F4518EF7} = {11ED8435-B5AE-4BF3-9D4B-51FA1E4A18A6}
 		{3E63EC99-F592-42E9-B360-258146BA9C79} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}

@@ -1,9 +1,9 @@
 using System;
-using Nest;
+
 
 namespace CompanyName.ProjectName.ElasticsearchRepository.Dto
 {
-    [Serializable]
+   
     public class PagingElasticSearchLogOutput
     {
         /// <summary>
@@ -21,7 +21,6 @@ namespace CompanyName.ProjectName.ElasticsearchRepository.Dto
         /// <summary>
         /// 创建时间
         /// </summary>
-        [PropertyName("@timestamp")]
         public DateTime CreationTime { get; set; }
     }
 }

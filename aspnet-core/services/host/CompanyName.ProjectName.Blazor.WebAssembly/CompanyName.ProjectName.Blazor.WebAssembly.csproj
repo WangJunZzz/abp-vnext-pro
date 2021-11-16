@@ -10,4 +10,8 @@
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CompanyName.ProjectName.Blazor.Layout.AntDesignTheme\CompanyName.ProjectName.Blazor.Layout.AntDesignTheme.csproj" />
+  </ItemGroup>
+
 </Project>

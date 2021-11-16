@@ -3,12 +3,12 @@ using Volo.Abp.Domain.Services;
 
 namespace CompanyName.ProjectName.ElasticsearchRepository
 {
-    public abstract class ElasticsearchBasicRepository : DomainService
+    public abstract class ElasticsearchBasicService : ProjectNameAppService
     {
         private readonly IElasticsearchProvider _elasticsearchProvider;
 
         // ReSharper disable once PublicConstructorInAbstractClass
-        public ElasticsearchBasicRepository(IElasticsearchProvider elasticsearchProvider)
+        public ElasticsearchBasicService(IElasticsearchProvider elasticsearchProvider)
         {
             _elasticsearchProvider = elasticsearchProvider;
         }

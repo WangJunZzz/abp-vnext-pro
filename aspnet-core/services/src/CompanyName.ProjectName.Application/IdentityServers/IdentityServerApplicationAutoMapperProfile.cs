@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using CompanyName.ProjectName.ElasticsearchRepository.Dto;
+using CompanyName.ProjectName.ElasticSearchs;
 using CompanyName.ProjectName.IdentityServers.ApiScopes.Dtos;
 using CompanyName.ProjectName.IdentityServers.Clients;
 using CompanyName.ProjectName.IdentityServers.Dtos;
@@ -35,6 +37,8 @@ namespace CompanyName.ProjectName.IdentityServers.Mappers
 
             CreateMap<ApiScope, PagingApiScopeListOutput>();
             CreateMap<IdentityResource, PagingIdentityResourceListOutput>();
+
+            CreateMap<PagingElasticSearchLogDto, PagingElasticSearchLogOutput>();
         }
     }
 }
