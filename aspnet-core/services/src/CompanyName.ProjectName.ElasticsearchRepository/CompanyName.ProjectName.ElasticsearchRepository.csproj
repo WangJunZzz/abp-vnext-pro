@@ -1,17 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\..\..\common.props" />
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.Core" Version="$(AbpPackageVersion)"/>
-        <PackageReference Include="NEST" Version="$(NESTVersion)"/>
+        <PackageReference Include="Volo.Abp.Core" Version="$(AbpPackageVersion)" />
+        <PackageReference Include="NEST" Version="$(NESTVersion)" />
     </ItemGroup>
 
     <ItemGroup>
-
-        <ProjectReference Include="..\CompanyName.ProjectName.Domain\CompanyName.ProjectName.Domain.csproj"/>
+        <ProjectReference Include="..\CompanyName.ProjectName.Domain\CompanyName.ProjectName.Domain.csproj" />
     </ItemGroup>
 
 </Project>

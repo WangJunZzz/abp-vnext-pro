@@ -109,7 +109,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Dat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{5AACD0EE-F2B2-49F6-868F-8FE08D7243C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.DataDictionaryManagement.HttpApi.Host", "modules\DataDictionaryManagement\host\CompanyName.ProjectName.DataDictionaryManagement.HttpApi.Host\CompanyName.ProjectName.DataDictionaryManagement.HttpApi.Host.csproj", "{8D196E3D-6F95-4793-B948-79669AF09017}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.DataDictionaryManagement.HttpApi.Host", "modules\DataDictionaryManagement\host\CompanyName.ProjectName.DataDictionaryManagement.HttpApi.Host\CompanyName.ProjectName.DataDictionaryManagement.HttpApi.Host.csproj", "{8D196E3D-6F95-4793-B948-79669AF09017}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{8C1B8C6C-C518-4290-B070-622CCA6004DA}"
 EndProject
@@ -117,27 +117,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CAP", "CAP", "{2C09EED0-5AF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{11ED8435-B5AE-4BF3-9D4B-51FA1E4A18A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.HttpApi.Host", "services\host\CompanyName.ProjectName.HttpApi.Host\CompanyName.ProjectName.HttpApi.Host.csproj", "{FB20372D-6C96-4733-9AAC-12522F15CAA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.HttpApi.Host", "services\host\CompanyName.ProjectName.HttpApi.Host\CompanyName.ProjectName.HttpApi.Host.csproj", "{FB20372D-6C96-4733-9AAC-12522F15CAA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.IdentityServer", "services\host\CompanyName.ProjectName.IdentityServer\CompanyName.ProjectName.IdentityServer.csproj", "{FB1C29FF-5467-4CF0-995D-5B3F931AB135}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.IdentityServer", "services\host\CompanyName.ProjectName.IdentityServer\CompanyName.ProjectName.IdentityServer.csproj", "{FB1C29FF-5467-4CF0-995D-5B3F931AB135}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{6434E3F2-B352-4B30-839A-88C2BA166D96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.Shared.Hosting.Microservices", "shared\CompanyName.ProjectName.Shared.Hosting.Microservices\CompanyName.ProjectName.Shared.Hosting.Microservices.csproj", "{A091AE9B-3A1E-49AC-9AD5-D29310512A3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Shared.Hosting.Microservices", "shared\CompanyName.ProjectName.Shared.Hosting.Microservices\CompanyName.ProjectName.Shared.Hosting.Microservices.csproj", "{A091AE9B-3A1E-49AC-9AD5-D29310512A3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.Shared.Hosting.Gateways", "shared\CompanyName.ProjectName.Shared.Hosting.Gateways\CompanyName.ProjectName.Shared.Hosting.Gateways.csproj", "{C018EFF9-579E-43B3-9181-543BE95E2E03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Shared.Hosting.Gateways", "shared\CompanyName.ProjectName.Shared.Hosting.Gateways\CompanyName.ProjectName.Shared.Hosting.Gateways.csproj", "{C018EFF9-579E-43B3-9181-543BE95E2E03}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateways", "gateways", "{5C304CBC-F30D-413C-A0AF-8B6814A2D4A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.WebGateway", "gateways\CompanyName.ProjectName.WebGateway\CompanyName.ProjectName.WebGateway.csproj", "{D9108313-8D05-4F5F-9AA0-B443EC3374B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.WebGateway", "gateways\CompanyName.ProjectName.WebGateway\CompanyName.ProjectName.WebGateway.csproj", "{D9108313-8D05-4F5F-9AA0-B443EC3374B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.FreeSqlRepository", "services\src\CompanyName.ProjectName.FreeSqlRepository\CompanyName.ProjectName.FreeSqlRepository.csproj", "{FC30B17B-F671-4E55-90C6-9F37E40B483D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.FreeSqlRepository", "services\src\CompanyName.ProjectName.FreeSqlRepository\CompanyName.ProjectName.FreeSqlRepository.csproj", "{FC30B17B-F671-4E55-90C6-9F37E40B483D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.ElasticsearchRepository", "services\src\CompanyName.ProjectName.ElasticsearchRepository\CompanyName.ProjectName.ElasticsearchRepository.csproj", "{5910B07F-1520-45D6-A15F-7A3E0698BE18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Extension", "frameworks\Extensions\src\CompanyName.ProjectName.Extension\CompanyName.ProjectName.Extension.csproj", "{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.Extension", "frameworks\Extensions\src\CompanyName.ProjectName.Extension\CompanyName.ProjectName.Extension.csproj", "{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyName.ProjectName.CAP", "frameworks\CAP\src\CompanyName.ProjectName.CAP\CompanyName.ProjectName.CAP.csproj", "{3C3FF821-E43D-4D58-8B3C-1E97F4518EF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.CAP", "frameworks\CAP\src\CompanyName.ProjectName.CAP\CompanyName.ProjectName.CAP.csproj", "{3C3FF821-E43D-4D58-8B3C-1E97F4518EF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -313,10 +311,6 @@ Global
 		{FC30B17B-F671-4E55-90C6-9F37E40B483D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC30B17B-F671-4E55-90C6-9F37E40B483D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC30B17B-F671-4E55-90C6-9F37E40B483D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5910B07F-1520-45D6-A15F-7A3E0698BE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5910B07F-1520-45D6-A15F-7A3E0698BE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5910B07F-1520-45D6-A15F-7A3E0698BE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5910B07F-1520-45D6-A15F-7A3E0698BE18}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -386,7 +380,6 @@ Global
 		{C018EFF9-579E-43B3-9181-543BE95E2E03} = {6434E3F2-B352-4B30-839A-88C2BA166D96}
 		{D9108313-8D05-4F5F-9AA0-B443EC3374B6} = {5C304CBC-F30D-413C-A0AF-8B6814A2D4A3}
 		{FC30B17B-F671-4E55-90C6-9F37E40B483D} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
-		{5910B07F-1520-45D6-A15F-7A3E0698BE18} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7} = {C4AC9352-C9F5-4096-8D73-13638232CFB9}
 		{3C3FF821-E43D-4D58-8B3C-1E97F4518EF7} = {11ED8435-B5AE-4BF3-9D4B-51FA1E4A18A6}
 	EndGlobalSection

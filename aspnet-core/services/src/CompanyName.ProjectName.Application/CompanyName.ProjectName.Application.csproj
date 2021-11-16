@@ -1,27 +1,28 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\common.props" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\..\..\common.props" />
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>CompanyName.ProjectName</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<RootNamespace>CompanyName.ProjectName</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\CompanyName.ProjectName.DataDictionaryManagement.Application\CompanyName.ProjectName.DataDictionaryManagement.Application.csproj" />
-    <ProjectReference Include="..\..\..\modules\NotificationManagement\src\CompanyName.ProjectName.NotificationManagement.Application\CompanyName.ProjectName.NotificationManagement.Application.csproj" />
-    <ProjectReference Include="..\CompanyName.ProjectName.Domain\CompanyName.ProjectName.Domain.csproj" />
-    <ProjectReference Include="..\CompanyName.ProjectName.Application.Contracts\CompanyName.ProjectName.Application.Contracts.csproj" />
-    <ProjectReference Include="..\CompanyName.ProjectName.FreeSqlRepository\CompanyName.ProjectName.FreeSqlRepository.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\CompanyName.ProjectName.DataDictionaryManagement.Application\CompanyName.ProjectName.DataDictionaryManagement.Application.csproj" />
+		<ProjectReference Include="..\..\..\modules\NotificationManagement\src\CompanyName.ProjectName.NotificationManagement.Application\CompanyName.ProjectName.NotificationManagement.Application.csproj" />
+		<ProjectReference Include="..\CompanyName.ProjectName.Domain\CompanyName.ProjectName.Domain.csproj" />
+		<ProjectReference Include="..\CompanyName.ProjectName.Application.Contracts\CompanyName.ProjectName.Application.Contracts.csproj" />
+		<ProjectReference Include="..\CompanyName.ProjectName.FreeSqlRepository\CompanyName.ProjectName.FreeSqlRepository.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-	<PackageReference Include="EasyAbp.Abp.SettingUi.Application" Version="$(EasyAbpSttingVersion)" />
-	<PackageReference Include="Volo.Abp.Account.Application" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.Identity.Application" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="$(AbpPackageVersion)" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="EasyAbp.Abp.SettingUi.Application" Version="$(EasyAbpSttingVersion)" />
+		<PackageReference Include="Volo.Abp.Account.Application" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Identity.Application" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.TenantManagement.Application" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.SettingManagement.Application" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="NEST" Version="$(NESTVersion)" />
+	</ItemGroup>
 
 </Project>

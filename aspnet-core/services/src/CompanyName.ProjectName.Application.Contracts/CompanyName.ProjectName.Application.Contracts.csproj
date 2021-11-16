@@ -10,7 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\CompanyName.ProjectName.DataDictionaryManagement.Application.Contracts\CompanyName.ProjectName.DataDictionaryManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\CompanyName.ProjectName.Domain.Shared\CompanyName.ProjectName.Domain.Shared.csproj" />
-    <ProjectReference Include="..\CompanyName.ProjectName.ElasticsearchRepository\CompanyName.ProjectName.ElasticsearchRepository.csproj" />
   </ItemGroup>
 
   <ItemGroup>

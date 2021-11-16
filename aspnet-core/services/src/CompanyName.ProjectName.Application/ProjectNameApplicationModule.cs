@@ -1,5 +1,4 @@
 ﻿using CompanyName.ProjectName.DataDictionaryManagement;
-using CompanyName.ProjectName.ElasticsearchRepository;
 using CompanyName.ProjectName.FreeSqlRepository;
 using CompanyName.ProjectName.NotificationManagement;
 using EasyAbp.Abp.SettingUi;
@@ -28,8 +27,7 @@ namespace CompanyName.ProjectName
         typeof(DataDictionaryManagementApplicationModule),
         typeof(NotificationManagementApplicationModule),
         typeof(AbpSettingUiApplicationModule),
-        typeof(FreeSqlRepositoryModule),
-        typeof(ProjectNameElasticSearchModule)
+        typeof(FreeSqlRepositoryModule)
         )]
     public class ProjectNameApplicationModule : AbpModule
     {

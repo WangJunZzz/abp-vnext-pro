@@ -1,5 +1,5 @@
 using System;
-using Nest;
+using Newtonsoft.Json;
 
 namespace CompanyName.ProjectName.ElasticsearchRepository.Dto
 {
@@ -21,7 +21,7 @@ namespace CompanyName.ProjectName.ElasticsearchRepository.Dto
         /// <summary>
         /// 创建时间
         /// </summary>
-        [PropertyName("@timestamp")]
+        [JsonProperty("@timestamp")]
         public DateTime CreationTime { get; set; }
     }
 }
