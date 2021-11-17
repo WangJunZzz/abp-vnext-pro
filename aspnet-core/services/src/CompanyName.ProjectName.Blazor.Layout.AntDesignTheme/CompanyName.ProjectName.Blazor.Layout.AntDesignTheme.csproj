@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.12" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Components.Web.Theming" Version="4.4.0" />
   </ItemGroup>
 
 	<ItemGroup>

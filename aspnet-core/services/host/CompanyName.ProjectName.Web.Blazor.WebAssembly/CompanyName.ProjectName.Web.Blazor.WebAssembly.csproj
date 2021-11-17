@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.11" PrivateAssets="all" />
+		<PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+		<PackageReference Include="Volo.Abp.Autofac.WebAssembly" Version="4.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\CompanyName.ProjectName.Blazor.WebAssembly\CompanyName.ProjectName.Blazor.WebAssembly.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <_ContentIncludedByDefault Remove="Pages\Counter.razor" />
+	  <_ContentIncludedByDefault Remove="Pages\FetchData.razor" />
+	  <_ContentIncludedByDefault Remove="Pages\Index.razor" />
+	</ItemGroup>
+
+</Project>

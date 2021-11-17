@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CompanyName.ProjectName.Blazor.Layout.AntDesignTheme\CompanyName.ProjectName.Blazor.Layout.AntDesignTheme.csproj" />
+      <ProjectReference Include="..\CompanyName.ProjectName.HttpApi.Client\CompanyName.ProjectName.HttpApi.Client.csproj" />
+    </ItemGroup>
+
+</Project>
