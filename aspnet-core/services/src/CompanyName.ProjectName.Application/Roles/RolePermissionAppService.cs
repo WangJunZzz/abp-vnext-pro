@@ -69,18 +69,18 @@ namespace CompanyName.ProjectName.Roles
 
             foreach (var group in input)
             {
-                if (excludes.Any(e => e == group.Name))
-                {
-                    continue;
-                }
+                if (excludes.Any(e => e == group.Name)) continue;
 
+                // 获取分组信息
                 var groupPermission = new PermissionTreeDto
-                    { Key = @group.Name, Title = @group.DisplayName };
-                groupPermission.Key = group.Name;
-                groupPermission.Title =
-                    group.Name == "AbpIdentity"
+                {
+                    Key = @group.Name,
+                    Title = @group.Name == "AbpIdentity"
                         ? L["Permission:SystemManagement"]
-                        : group.DisplayName;
+                        : @group.DisplayName
+                };
+
+                // 获取所有已授权和未授权权限集合
                 foreach (var item in group.Permissions)
                 {
                     result.AllGrants.Add(item.Name);
@@ -88,42 +88,13 @@ namespace CompanyName.ProjectName.Roles
                     {
                         result.Grants.Add(item.Name);
                     }
-
-                    //获取ParentName=null的权限
-                    var management = group.Permissions
-                        .Where(e => string.IsNullOrWhiteSpace(e.ParentName)).ToList();
-
-                    foreach (var managementItem in management)
-                    {
-                        if (groupPermission.Children.Any(e => e.Key == managementItem.Name))
-                        {
-                            continue;
-                        }
-
-                        {
-                            var managementPermission = new PermissionTreeDto()
-                            {
-                                Key = managementItem.Name,
-                                Title = managementItem.DisplayName
-                            };
-                            // 获取management下权限
-                            var childrenPermission = @group.Permissions
-                                .Where(e => e.ParentName == managementItem.Name)
-                                .ToList();
-                            foreach (var childrenPermissionItem in childrenPermission)
-                            {
-                                managementPermission.Children.Add(new PermissionTreeDto()
-                                {
-                                    Key = childrenPermissionItem.Name,
-                                    Title = childrenPermissionItem.DisplayName
-                                });
-                            }
-
-                            groupPermission.Children.Add(managementPermission);
-                        }
-                    }
                 }
+                
+                // 递归菜单
+                var childTreeMenu = RecursionMenu(group.Permissions, null);
 
+                groupPermission.Children.AddRange(childTreeMenu.Children);
+                
                 permissions.Add(groupPermission);
             }
 
@@ -148,6 +119,29 @@ namespace CompanyName.ProjectName.Roles
             }
 
             return result;
+        }
+        
+        
+        /// <summary>
+        /// 递归菜单
+        /// </summary>
+        private PermissionTreeDto RecursionMenu(List<PermissionGrantInfoDto> permissionGrantInfoDtos,
+            string parentName)
+        {
+            var tree = new PermissionTreeDto();
+            var permissions = permissionGrantInfoDtos
+                .Where(e => e.ParentName == parentName).ToList();
+            foreach (var item in permissions)
+            {
+                var child = new PermissionTreeDto
+                {
+                    Key = item.Name,
+                    Title = item.DisplayName
+                };
+                child.Children.AddRange(RecursionMenu(permissionGrantInfoDtos, item.Name).Children);
+                tree.Children.Add(child);
+            }
+            return tree;
         }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using CompanyName.ProjectName.ConfigurationOptions;
 using CompanyName.ProjectName.Users;
 using CompanyName.ProjectName.Users.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 
 namespace CompanyName.ProjectName.Pages
@@ -15,13 +17,16 @@ namespace CompanyName.ProjectName.Pages
         private readonly IAccountAppService _accountAppService;
         private readonly ILogger<Login> _logger;
         private readonly IHostEnvironment _hostEnvironment;
-
-        public Login(IAccountAppService accountAppService, ILogger<Login> logger,
-            IHostEnvironment hostEnvironment)
+        private readonly JwtOptions _jwtOptions;
+        public Login(IAccountAppService accountAppService,
+            ILogger<Login> logger,
+            IHostEnvironment hostEnvironment,
+            IOptionsSnapshot<JwtOptions> jwtOptions)
         {
             _accountAppService = accountAppService;
             _logger = logger;
             _hostEnvironment = hostEnvironment;
+            _jwtOptions = jwtOptions.Value;
         }
 
         public void OnGet()
@@ -41,7 +46,7 @@ namespace CompanyName.ProjectName.Pages
             {
                 var options = new CookieOptions
                 {
-                    Expires = DateTime.Now.AddHours(2),
+                    Expires = DateTime.Now.AddHours(_jwtOptions.ExpirationTime),
                     SameSite = SameSiteMode.Unspecified,
                 };
 
