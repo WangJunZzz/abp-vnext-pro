@@ -150,7 +150,7 @@ namespace CompanyName.ProjectName.Data
         {
             var dbMigrationsProjectFolder = GetDbMigrationsProjectFolderPath();
 
-            return Directory.Exists(Path.Combine(dbMigrationsProjectFolder, "Migrations"));
+            return Directory.Exists(Path.Combine(dbMigrationsProjectFolder, "EntityFrameworkCore"));
         }
 
         private void AddInitialMigration()

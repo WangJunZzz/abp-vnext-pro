@@ -28,7 +28,6 @@ namespace CompanyName.ProjectName.IdentityServer
         private readonly IIdentityResourceDataSeeder _identityResourceDataSeeder;
         private readonly IGuidGenerator _guidGenerator;
         private readonly IPermissionDataSeeder _permissionDataSeeder;
-        private readonly IConfiguration _configuration;
         private readonly ICurrentTenant _currentTenant;
 
         public IdentityServerDataSeedContributor(
@@ -38,7 +37,6 @@ namespace CompanyName.ProjectName.IdentityServer
             IIdentityResourceDataSeeder identityResourceDataSeeder,
             IGuidGenerator guidGenerator,
             IPermissionDataSeeder permissionDataSeeder,
-            IConfiguration configuration,
             ICurrentTenant currentTenant)
         {
             _clientRepository = clientRepository;
@@ -47,7 +45,6 @@ namespace CompanyName.ProjectName.IdentityServer
             _identityResourceDataSeeder = identityResourceDataSeeder;
             _guidGenerator = guidGenerator;
             _permissionDataSeeder = permissionDataSeeder;
-            _configuration = configuration;
             _currentTenant = currentTenant;
         }
 
