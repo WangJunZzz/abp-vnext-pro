@@ -20,18 +20,20 @@ namespace CompanyName.ProjectName.IdentityServer
         }
 
         public Task<List<ApiResource>> GetListAsync(
-            int skipCount,
-            int maxResultCount,
+            int skipCount = 0,
+            int maxResultCount = 10,
             string filter = null,
             bool includeDetails = false,
             CancellationToken cancellationToken = default)
         {
-            return _apiResourceRepository.GetListAsync("CreationTime desc", skipCount, maxResultCount, filter,
+            return _apiResourceRepository.GetListAsync("CreationTime desc", skipCount,
+                maxResultCount, filter,
                 includeDetails,
                 cancellationToken);
         }
 
-        public Task<long> GetCountAsync(string filter = null, CancellationToken cancellationToken = default)
+        public Task<long> GetCountAsync(string filter = null,
+            CancellationToken cancellationToken = default)
         {
             return _apiResourceRepository.GetCountAsync(filter,
                 cancellationToken);
@@ -81,7 +83,8 @@ namespace CompanyName.ProjectName.IdentityServer
             //
             // properties?.Distinct().ToList().ForEach(item => { apiResource.AddProperty(item.Key, item.Value); });
 
-            return await _apiResourceRepository.InsertAsync(apiResource, cancellationToken: cancellationToken);
+            return await _apiResourceRepository.InsertAsync(apiResource,
+                cancellationToken: cancellationToken);
         }
 
         public async Task DeleteAsync(
@@ -136,13 +139,17 @@ namespace CompanyName.ProjectName.IdentityServer
 
             apiResource.Scopes.Clear();
 
-            foreach (var item in scopes)
+            if (scopes != null)
             {
-                apiResource.AddScope(item);
+                foreach (var item in scopes)
+                {
+                    apiResource.AddScope(item);
+                }
             }
 
 
-            return await _apiResourceRepository.UpdateAsync(apiResource, cancellationToken: cancellationToken);
+            return await _apiResourceRepository.UpdateAsync(apiResource,
+                cancellationToken: cancellationToken);
         }
     }
 }

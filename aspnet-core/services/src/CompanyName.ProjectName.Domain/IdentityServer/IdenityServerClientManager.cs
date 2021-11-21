@@ -22,36 +22,40 @@ namespace CompanyName.ProjectName.IdentityServer
 
 
         public Task<List<Client>> GetListAsync(
-            int skipCount,
-            int maxResultCount,
+            int skipCount = 0,
+            int maxResultCount = 10,
             string filter = null,
             bool includeDetails = false,
             CancellationToken cancellationToken = default)
         {
-            return _clientRepository.GetListAsync("CreationTime desc", skipCount, maxResultCount, filter, includeDetails,
+            return _clientRepository.GetListAsync("CreationTime desc", skipCount, maxResultCount,
+                filter, includeDetails,
                 cancellationToken);
         }
 
-        public Task<long> GetCountAsync(string filter = null, CancellationToken cancellationToken = default)
+        public Task<long> GetCountAsync(string filter = null,
+            CancellationToken cancellationToken = default)
         {
             return _clientRepository.GetCountAsync(filter,
                 cancellationToken);
         }
 
-        public Task DeleteAsync(Guid id, bool autoSave = false, CancellationToken cancellationToken = default)
+        public Task DeleteAsync(Guid id, bool autoSave = false,
+            CancellationToken cancellationToken = default)
         {
             return _clientRepository.DeleteAsync(id, autoSave, default);
         }
 
-        public async Task<Client> CreateAsync(string clientId, string clientName, string description, string allowedGrantTypes)
+        public async Task<Client> CreateAsync(string clientId, string clientName,
+            string description, string allowedGrantTypes)
         {
             var entity = await _clientRepository.FindByClientIdAsync(clientId);
             if (null != entity) throw new UserFriendlyException(message: "当前ClientId已存在");
             entity = new Client(GuidGenerator.Create(), clientId)
             {
-                ClientName = clientName, Description = description
+                ClientName = clientName, Description = description,
+                ClientClaimsPrefix = "client_"
             };
-            entity.ClientClaimsPrefix="client_";
             entity.AddGrantType(allowedGrantTypes);
             return await _clientRepository.InsertAsync(entity);
         }
@@ -160,7 +164,6 @@ namespace CompanyName.ProjectName.IdentityServer
                         client.ClientSecrets.Clear();
                         client.AddSecret(secret.ToSha256(), null, secretType, String.Empty);
                     }
-
                 }
             }
 
@@ -179,8 +182,15 @@ namespace CompanyName.ProjectName.IdentityServer
             var client = await _clientRepository.FindByClientIdAsync(clientId);
             if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
             client.RemoveAllScopes();
-            scopes.ForEach(item => { client.AddScope(item.Trim()); });
-
+          
+            foreach (var item in scopes.Distinct())
+            {
+                if (item.IsNotNullOrWhiteSpace())
+                {
+                    client.AddScope(item.Trim());
+                }
+            
+            }
             return await _clientRepository.UpdateAsync(client);
         }
 

@@ -18,9 +18,9 @@ namespace CompanyName.ProjectName.IdentityServer
         }
 
         public Task<List<IdentityResource>> GetListAsync(
-            int skipCount,
-            int maxResultCount,
-            string filter,
+            int skipCount = 0,
+            int maxResultCount = 10,
+            string filter = null,
             bool includeDetails = false,
             CancellationToken cancellationToken = default)
         {
@@ -33,22 +33,16 @@ namespace CompanyName.ProjectName.IdentityServer
                 cancellationToken);
         }
 
-        public Task<List<IdentityResource>> GetAllAsync(CancellationToken cancellationToken = default)
+        public Task<List<IdentityResource>> GetAllAsync(
+            CancellationToken cancellationToken = default)
         {
             return _identityResourceRepository.GetListAsync(true, cancellationToken);
         }
 
-        public Task<long> GetCountAsync(string filter = null, CancellationToken cancellationToken = default)
-        {
-            return _identityResourceRepository.GetCountAsync(filter, cancellationToken);
-        }
-
-        public Task<IdentityResource> FindByNameAsync(
-            string name,
-            bool includeDetails = true,
+        public Task<long> GetCountAsync(string filter = null,
             CancellationToken cancellationToken = default)
         {
-            return _identityResourceRepository.FindByNameAsync(name, includeDetails, cancellationToken);
+            return _identityResourceRepository.GetCountAsync(filter, cancellationToken);
         }
 
 
@@ -63,9 +57,10 @@ namespace CompanyName.ProjectName.IdentityServer
         {
             var identityResource = await _identityResourceRepository.FindByNameAsync(name, false);
             if (null != identityResource) throw new UserFriendlyException(message: $"{name}已存在");
-            identityResource = new IdentityResource(GuidGenerator.Create(), name, displayName, description, required,
-                emphasize,
-                showInDiscoveryDocument, enabled);
+            identityResource = new IdentityResource(GuidGenerator.Create(), name, displayName,
+                description, enabled,
+                required,
+                false, showInDiscoveryDocument);
             return await _identityResourceRepository.InsertAsync(identityResource);
         }
 

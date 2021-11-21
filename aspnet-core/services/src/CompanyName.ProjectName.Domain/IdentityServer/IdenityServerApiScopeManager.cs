@@ -18,8 +18,8 @@ namespace CompanyName.ProjectName.IdentityServer
         }
 
         public Task<List<ApiScope>> GetListAsync(
-            int skipCount,
-            int maxResultCount,
+            int skipCount = 0,
+            int maxResultCount = 10,
             string filter = null,
             bool includeDetails = false,
             CancellationToken cancellationToken = default)
@@ -33,7 +33,8 @@ namespace CompanyName.ProjectName.IdentityServer
                 cancellationToken);
         }
 
-        public Task<long> GetCountAsync(string filter = null, CancellationToken cancellationToken = default)
+        public Task<long> GetCountAsync(string filter = null,
+            CancellationToken cancellationToken = default)
         {
             return _apiScopeRepository.GetCountAsync(filter, cancellationToken);
         }
@@ -50,7 +51,8 @@ namespace CompanyName.ProjectName.IdentityServer
             var apiScope = await _apiScopeRepository.GetByNameAsync(name, false);
             if (null != apiScope) throw new UserFriendlyException(message: $"{name}已存在");
 
-            apiScope = new ApiScope(GuidGenerator.Create(), name, displayName, description, required, emphasize,
+            apiScope = new ApiScope(GuidGenerator.Create(), name, displayName, description,
+                required, emphasize,
                 showInDiscoveryDocument, enabled);
             return await _apiScopeRepository.InsertAsync(apiScope);
         }
@@ -81,9 +83,11 @@ namespace CompanyName.ProjectName.IdentityServer
             return _apiScopeRepository.DeleteAsync(id, autoSave, cancellationToken);
         }
 
-        public async Task<List<ApiScope>> FindAllAsync(CancellationToken cancellationToken = default)
+        public async Task<List<ApiScope>> FindAllAsync(
+            CancellationToken cancellationToken = default)
         {
-            return await _apiScopeRepository.GetListAsync(e => e.Enabled == true, false, cancellationToken);
+            return await _apiScopeRepository.GetListAsync(e => e.Enabled == true, false,
+                cancellationToken);
         }
     }
 }
