@@ -293,13 +293,13 @@ namespace CompanyName.ProjectName
                     options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme,
                         new OpenApiSecurityScheme()
                         {
-                            Description =
-                                "Please enter into field the word 'Bearer' followed by a space and the JWT value",
+                            Description = "直接在下框输入JWT生成的Token",
                             Name = "Authorization",
                             In = ParameterLocation.Header,
                             Type = SecuritySchemeType.Http,
                             Scheme = JwtBearerDefaults.AuthenticationScheme,
                             BearerFormat = "JWT"
+
                         });
                     options.AddSecurityRequirement(new OpenApiSecurityRequirement
                     {
@@ -320,7 +320,7 @@ namespace CompanyName.ProjectName
                         Type = SecuritySchemeType.ApiKey,
                         In = ParameterLocation.Header,
                         Name = "Accept-Language",
-                        Description = "多语言"
+                        Description = "多语言设置，系统预设语言有zh-Hans、en，默认为zh-Hans"
                     });
 
                     options.AddSecurityRequirement(new OpenApiSecurityRequirement

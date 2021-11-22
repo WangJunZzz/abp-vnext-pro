@@ -38,7 +38,6 @@ namespace CompanyName.ProjectName.IdentityServers.Mappers
             CreateMap<ApiScope, PagingApiScopeListOutput>();
             CreateMap<IdentityResource, PagingIdentityResourceListOutput>();
 
-            CreateMap<PagingElasticSearchLogDto, PagingElasticSearchLogOutput>();
         }
     }
 }

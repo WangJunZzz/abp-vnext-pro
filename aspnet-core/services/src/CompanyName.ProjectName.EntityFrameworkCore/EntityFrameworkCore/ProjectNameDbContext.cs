@@ -36,7 +36,7 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
      * used modules (as explained above). See ProjectNameMigrationsDbContext for migrations.
      */
     [ConnectionStringName("Default")]
-    public class ProjectNameDbContext : AbpDbContext<ProjectNameDbContext>,
+    public class ProjectNameDbContext : AbpDbContext<ProjectNameDbContext>, IProjectNameDbContext,
         IFeatureManagementDbContext,
         IIdentityDbContext,
         IPermissionManagementDbContext,
@@ -70,7 +70,7 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            
+
             // 如何设置表前缀
             // Abp框架表前缀 Abp得不建议修改表前缀
             // AbpCommonDbProperties.DbTablePrefix = "xxx";
@@ -80,7 +80,7 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
             //NotificationManagementDbProperties = "xxx"
             base.OnModelCreating(builder);
 
-            builder.ConfigurePermissionManagement( );
+            builder.ConfigurePermissionManagement();
             builder.ConfigureSettingManagement();
             builder.ConfigureBackgroundJobs();
             builder.ConfigureAuditLogging();
@@ -89,8 +89,8 @@ namespace CompanyName.ProjectName.EntityFrameworkCore
             builder.ConfigureTenantManagement();
             builder.ConfigureIdentityServer();
             builder.ConfigureProjectName();
-            
-            
+
+
             // 数据字典
             builder.ConfigureDataDictionaryManagement();
 

@@ -6,7 +6,7 @@ namespace CompanyName.ProjectName.Controllers
 {
     /* Inherit your controllers from this class.
      */
-    public abstract class ProjectNameController : AbpController, IApplicationService
+    public abstract class ProjectNameController : AbpController
     {
         protected ProjectNameController()
         {
