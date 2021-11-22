@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="5.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="$(MicrosoftAspNetCoreSignalRStackExchangeRedisVersion)" />
     <PackageReference Include="Volo.Abp.AspNetCore.SignalR" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.AutoMapper" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="$(AbpPackageVersion)" />

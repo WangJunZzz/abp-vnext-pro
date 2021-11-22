@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using CompanyName.ProjectName.NotificationManagement.Notifications.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -9,7 +10,7 @@ using Volo.Abp.AspNetCore.Mvc;
 namespace CompanyName.ProjectName.NotificationManagement.Notifications
 {
     [Route("Notification")]
-    public class NotificationController : AbpController, IApplicationService
+    public class NotificationController : AbpController, INotificationAppService
     {
         private readonly INotificationAppService _notificationAppService;
 
@@ -60,6 +61,13 @@ namespace CompanyName.ProjectName.NotificationManagement.Notifications
         public Task CreateAsync(CreateNotificationInput input)
         {
             return _notificationAppService.CreateAsync(input);
+        }
+
+        [HttpPost("SendMessage")]
+        [SwaggerOperation(summary: "发送消息-测试使用", Tags = new[] { "Notification" })]
+        public Task SendMessageAsync(string title, string content, MessageType messageType, List<string> users)
+        {
+            return _notificationAppService.SendMessageAsync(title, content, messageType, users);
         }
     }
 }

@@ -40,6 +40,7 @@ namespace CompanyName.ProjectName.Pages
             if (userName.IsNullOrWhiteSpace() || password.IsNullOrWhiteSpace())
             {
                 Response.Redirect("/Login");
+                return;
             }
 
             try
@@ -56,7 +57,7 @@ namespace CompanyName.ProjectName.Pages
 
 
                 var result = await _accountAppService.LoginAsync(new LoginInput()
-                    { Name = userName, Password = password });
+                { Name = userName, Password = password });
                 Response.Cookies.Append(ProjectNameHttpApiHostConsts.DefaultCookieName,
                     result.Token, options);
             }
@@ -64,6 +65,7 @@ namespace CompanyName.ProjectName.Pages
             {
                 _logger.LogError($"登录失败：{e.Message}");
                 Response.Redirect("/Login");
+                return;
             }
 
             Response.Redirect("/monitor");
