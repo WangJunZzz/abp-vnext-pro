@@ -79,6 +79,7 @@ namespace CompanyName.ProjectName
             ConfigureHangfireMysql(context);
             ConfigurationCap(context);
             ConfigurationStsHttpClient(context);
+            ConfigurationMiniProfiler(context);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -88,6 +89,7 @@ namespace CompanyName.ProjectName
             app.UseAbpRequestLocalization();
             app.UseCorrelationId();
             app.UseStaticFiles();
+            app.UseMiniProfiler();
             app.UseRouting();
             app.UseCors(ProjectNameHttpApiHostConsts.DefaultCorsPolicyName);
             app.UseAuthentication();
@@ -98,7 +100,6 @@ namespace CompanyName.ProjectName
             }
 
             app.UseAuthorization();
-
             app.UseSwagger();
             app.UseAbpSwaggerUI(options =>
             {
@@ -114,7 +115,6 @@ namespace CompanyName.ProjectName
                 opts.EnrichDiagnosticContext = SerilogToEsExtensions.EnrichFromRequest;
             });
             app.UseUnitOfWork();
-
             app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
             app.UseHangfireDashboard("/hangfire", new DashboardOptions()
             {
@@ -150,7 +150,17 @@ namespace CompanyName.ProjectName
             });
         }
 
-
+        /// <summary>
+        /// 配置MiniProfiler
+        /// </summary>
+        /// <param name="context"></param>
+        private void ConfigurationMiniProfiler(ServiceConfigurationContext context)
+        {
+            
+            context.Services.AddMiniProfiler(options => options.RouteBasePath = "/profiler")
+                .AddEntityFramework();
+        }
+        
         /// <summary>
         /// 配置JWT
         /// </summary>

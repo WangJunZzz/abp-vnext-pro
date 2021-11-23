@@ -32,6 +32,8 @@ namespace CompanyName.ProjectName
             ConfigureConsul(context, configuration);
         }
 
+  
+
         private void ConfigureConsul(ServiceConfigurationContext context,
             IConfiguration configuration)
         {

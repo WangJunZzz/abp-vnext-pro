@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<AbpPackageVersion>4.4.0</AbpPackageVersion>
-
 		<DotNetCoreCAPVersion>5.1.4</DotNetCoreCAPVersion>
 		<MicrosoftVersion>5.0.12</MicrosoftVersion>
 		<NewtonsoftJsonVersion>13.0.1</NewtonsoftJsonVersion>
@@ -30,9 +29,7 @@
 		<OcelotVersion>17.0.0</OcelotVersion>
 		<SwaggerUIVersion>6.2.3</SwaggerUIVersion>
 		<FreeSqlVersion>2.5.200</FreeSqlVersion>
-
-		<MicrosoftAspNetCoreSignalRStackExchangeRedisVersion>2.5.200</MicrosoftAspNetCoreSignalRStackExchangeRedisVersion>
-
+		<MiniProfiler>4.2.22</MiniProfiler>
 	</PropertyGroup>
 
 </Project>

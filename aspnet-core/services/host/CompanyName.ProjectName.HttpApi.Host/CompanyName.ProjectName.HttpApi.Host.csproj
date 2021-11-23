@@ -32,6 +32,8 @@
     <PackageReference Include="Hangfire.MySqlStorage" Version="$(HangfireMySqlStorageVersion)" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="$(MicrosoftVersion)" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="$(MiniProfiler)" />
+    <PackageReference Include="MiniProfiler.EntityFrameworkCore" Version="$(MiniProfiler)" />
   </ItemGroup>
 
   <ItemGroup>
