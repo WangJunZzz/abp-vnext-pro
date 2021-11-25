@@ -1,5 +1,4 @@
 ﻿using CompanyName.ProjectName.DataDictionaryManagement;
-using CompanyName.ProjectName.FreeSqlRepository;
 using CompanyName.ProjectName.NotificationManagement;
 using Volo.Abp.Account;
 using Volo.Abp.AuditLogging;
@@ -24,8 +23,7 @@ namespace CompanyName.ProjectName
         typeof(AbpSettingManagementApplicationModule),
         typeof(AbpAuditLoggingDomainModule),
         typeof(DataDictionaryManagementApplicationModule),
-        typeof(NotificationManagementApplicationModule),
-        typeof(FreeSqlRepositoryModule)
+        typeof(NotificationManagementApplicationModule)
         )]
     public class ProjectNameApplicationModule : AbpModule
     {

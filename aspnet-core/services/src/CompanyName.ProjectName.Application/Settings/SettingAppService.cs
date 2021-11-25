@@ -6,7 +6,6 @@ using CompanyName.ProjectName.Localization;
 using CompanyName.ProjectName.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Localization;
-using Volo.Abp.Localization;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.Settings;
 
@@ -34,9 +33,6 @@ namespace CompanyName.ProjectName.Settings
 
         public async Task<List<SettingOutput>> GetAsync()
         {
-            var ss = _localizer.GetAllStrings();
-            var s = _localizer["Setting:Group:System"];
-            var s2 = _localizer["Volo.Abp.Identity:PasswordRequiresDigit"];
             var allSettings = _settingDefinitionManager.GetAll().ToList();
             var settings = allSettings
                 .Where(e => e.Properties.ContainsKey(ProjectNameSettings.Group.Defalut)).ToList();

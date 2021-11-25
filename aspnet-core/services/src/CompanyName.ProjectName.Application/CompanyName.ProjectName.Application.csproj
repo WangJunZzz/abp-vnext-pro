@@ -11,7 +11,6 @@
 		<ProjectReference Include="..\..\..\modules\NotificationManagement\src\CompanyName.ProjectName.NotificationManagement.Application\CompanyName.ProjectName.NotificationManagement.Application.csproj" />
 		<ProjectReference Include="..\CompanyName.ProjectName.Domain\CompanyName.ProjectName.Domain.csproj" />
 		<ProjectReference Include="..\CompanyName.ProjectName.Application.Contracts\CompanyName.ProjectName.Application.Contracts.csproj" />
-		<ProjectReference Include="..\CompanyName.ProjectName.FreeSqlRepository\CompanyName.ProjectName.FreeSqlRepository.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
