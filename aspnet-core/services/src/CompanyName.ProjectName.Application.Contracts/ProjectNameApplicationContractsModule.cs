@@ -1,5 +1,4 @@
 ﻿using CompanyName.ProjectName.DataDictionaryManagement;
-using EasyAbp.Abp.SettingUi;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -20,8 +19,7 @@ namespace CompanyName.ProjectName
         typeof(AbpSettingManagementApplicationContractsModule),
         typeof(AbpTenantManagementApplicationContractsModule),
         typeof(AbpObjectExtendingModule),
-        typeof(DataDictionaryManagementApplicationContractsModule),
-        typeof(AbpSettingUiApplicationContractsModule)
+        typeof(DataDictionaryManagementApplicationContractsModule)
     )]
     public class ProjectNameApplicationContractsModule : AbpModule
     {

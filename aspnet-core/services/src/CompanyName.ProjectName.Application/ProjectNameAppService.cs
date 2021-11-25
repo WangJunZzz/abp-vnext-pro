@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using CompanyName.ProjectName.Localization;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Localization;
 
 namespace CompanyName.ProjectName
 {

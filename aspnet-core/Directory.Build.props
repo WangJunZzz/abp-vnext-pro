@@ -8,7 +8,6 @@
 		<MicrosoftExtensionsHttpVersion>5.0.0</MicrosoftExtensionsHttpVersion>
 		<SystemComponentModelAnnotationsVersion>5.0.0</SystemComponentModelAnnotationsVersion>
 		<MicrosoftExtensionsDependencyModelVersion>5.0.0</MicrosoftExtensionsDependencyModelVersion>
-		<EasyAbpSttingVersion>1.5.0</EasyAbpSttingVersion>
 		<SerilogVersion>2.10.0</SerilogVersion>
 		<SerilogExtensionsLoggingVersion>3.0.1</SerilogExtensionsLoggingVersion>
 		<SerilogSinksAsyncVersion>1.4.0</SerilogSinksAsyncVersion>

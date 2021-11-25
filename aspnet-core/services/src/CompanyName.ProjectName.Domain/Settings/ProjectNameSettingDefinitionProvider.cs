@@ -10,24 +10,65 @@ namespace CompanyName.ProjectName.Settings
         {
             //Define your own settings here. Example:
             //context.Add(new SettingDefinition(ProjectNameSettings.MySetting1));
-            Test(context);
+            OverrideDefalutSettings(context);
         }
 
         /// <summary>
-        /// 测试Setting
+        /// 重写默认setting添加自定义属性
         /// </summary>
-        /// <param name="context"></param>
-        public void Test(ISettingDefinitionContext context)
+        private static void OverrideDefalutSettings(ISettingDefinitionContext context)
         {
-            // 具体设置请参考  https://github.com/EasyAbp/Abp.SettingUi/blob/develop/docs/README_zh-Hans.md
-            context.Add(
-                new SettingDefinition(
-                    name: "Test",
-                    defaultValue: "Test Setting Module",
-                    displayName: L("Test")
-                ).WithProviders( // 设置级别
-                    DefaultValueSettingValueProvider.ProviderName,
-                    GlobalSettingValueProvider.ProviderName));
+            context.GetOrNull("Abp.Localization.DefaultLanguage")
+                .WithProperty(ProjectNameSettings.Group.Defalut,
+                    ProjectNameSettings.Group.SystemManagement)
+                .WithProperty(ProjectNameSettings.ControlType.Defalut,
+                    ProjectNameSettings.ControlType.TypeText);
+
+            context.GetOrNull("Abp.Identity.Password.RequiredLength")
+                .WithProperty(ProjectNameSettings.Group.Defalut,
+                    ProjectNameSettings.Group.SystemManagement)
+                .WithProperty(ProjectNameSettings.ControlType.Defalut,
+                    ProjectNameSettings.ControlType.TypeCheckBox);
+
+            context.GetOrNull("Abp.Identity.Password.RequiredUniqueChars")
+                .WithProperty(ProjectNameSettings.Group.Defalut,
+                    ProjectNameSettings.Group.SystemManagement)
+                .WithProperty(ProjectNameSettings.ControlType.Defalut,
+                    ProjectNameSettings.ControlType.TypeCheckBox);
+
+            context.GetOrNull("Abp.Identity.Password.RequireNonAlphanumeric")
+                .WithProperty(ProjectNameSettings.Group.Defalut,
+                    ProjectNameSettings.Group.SystemManagement)
+                .WithProperty(ProjectNameSettings.ControlType.Defalut,
+                    ProjectNameSettings.ControlType.TypeCheckBox);
+
+            context.GetOrNull("Abp.Identity.Password.RequireLowercase")
+                .WithProperty(ProjectNameSettings.Group.Defalut,
+                    ProjectNameSettings.Group.SystemManagement)
+                .WithProperty(ProjectNameSettings.ControlType.Defalut,
+                    ProjectNameSettings.ControlType.TypeCheckBox);
+
+            context.GetOrNull("Abp.Identity.Password.RequireUppercase")
+                .WithProperty(ProjectNameSettings.Group.Defalut,
+                    ProjectNameSettings.Group.SystemManagement)
+                .WithProperty(ProjectNameSettings.ControlType.Defalut,
+                    ProjectNameSettings.ControlType.TypeCheckBox);
+
+            context.GetOrNull("Abp.Identity.Password.RequireDigit")
+                .WithProperty(ProjectNameSettings.Group.Defalut,
+                    ProjectNameSettings.Group.SystemManagement)
+                .WithProperty(ProjectNameSettings.ControlType.Defalut,
+                    ProjectNameSettings.ControlType.TypeCheckBox);
+
+            context.Add(new SettingDefinition(
+                    ProjectNameSettings.Other.Github,
+                    "https://github.com/WangJunZzz/abp-vnext-pro",
+                    L("DisplayName:" + ProjectNameSettings.Other.Github),
+                    L("Description:" + ProjectNameSettings.Other.Github)
+                ).WithProperty(ProjectNameSettings.Group.Defalut,
+                    ProjectNameSettings.Group.OtherManagement)
+                .WithProperty(ProjectNameSettings.ControlType.Defalut,
+                    ProjectNameSettings.ControlType.TypeText));
         }
 
         private static LocalizableString L(string name)

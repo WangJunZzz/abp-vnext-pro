@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.Settings;
-using EasyAbp.Abp.SettingUi;
-using EasyAbp.Abp.SettingUi.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -20,7 +18,7 @@ namespace CompanyName.ProjectName.Controllers.Systems
 
         [HttpPost("all")]
         [SwaggerOperation(summary: "获取所有Setting", Tags = new[] { "Settings" })]
-        public async Task<List<SettingGroup>> GetAsync()
+        public async Task<List<SettingOutput>> GetAsync()
         {
             return await _settingAppService.GetAsync();
         }

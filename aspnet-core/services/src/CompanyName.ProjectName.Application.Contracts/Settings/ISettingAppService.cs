@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EasyAbp.Abp.SettingUi.Dto;
 using Volo.Abp.Application.Services;
 
 namespace CompanyName.ProjectName.Settings
@@ -11,7 +10,7 @@ namespace CompanyName.ProjectName.Settings
         /// 获取setting信息
         /// </summary>
         /// <returns></returns>
-        Task<List<SettingGroup>> GetAsync();
+        Task<List<SettingOutput>> GetAsync();
         
         /// <summary>
         /// 更新setting

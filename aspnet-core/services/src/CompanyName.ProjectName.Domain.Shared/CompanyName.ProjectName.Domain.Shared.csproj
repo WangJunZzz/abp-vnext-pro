@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyAbp.Abp.SettingUi.Domain.Shared" Version="$(EasyAbpSttingVersion)" />
     <PackageReference Include="Volo.Abp.Identity.Domain.Shared" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.IdentityServer.Domain.Shared" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.BackgroundJobs.Domain.Shared" Version="$(AbpPackageVersion)" />

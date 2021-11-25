@@ -1,16 +1,19 @@
 ﻿using CompanyName.ProjectName.Localization;
-using EasyAbp.Abp.SettingUi;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
+using Volo.Abp.Identity.Localization;
 using Volo.Abp.IdentityServer;
 using Volo.Abp.Localization;
 using Volo.Abp.Localization.ExceptionHandling;
+using Volo.Abp.Localization.Resources.AbpLocalization;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
+using Volo.Abp.Timing.Localization.Resources.AbpTiming;
+using Volo.Abp.Validation;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 
@@ -24,8 +27,7 @@ namespace CompanyName.ProjectName
         typeof(AbpIdentityServerDomainSharedModule),
         typeof(AbpPermissionManagementDomainSharedModule),
         typeof(AbpSettingManagementDomainSharedModule),
-        typeof(AbpTenantManagementDomainSharedModule),
-        typeof(AbpSettingUiDomainSharedModule)
+        typeof(AbpTenantManagementDomainSharedModule)
     )]
     public class ProjectNameDomainSharedModule : AbpModule
     {
@@ -41,12 +43,15 @@ namespace CompanyName.ProjectName
             {
                 options.FileSets.AddEmbedded<ProjectNameDomainSharedModule>("CompanyName.ProjectName");
             });
-
+          
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
                     .Add<ProjectNameResource>("zh-Hans")
                     .AddBaseTypes(typeof(AbpValidationResource))
+                    .AddBaseTypes(typeof(AbpLocalizationResource))
+                    .AddBaseTypes(typeof(IdentityResource))
+                    .AddBaseTypes(typeof(AbpTimingResource))
                     .AddVirtualJson("/Localization/ProjectName");
 
                 options.DefaultResourceType = typeof(ProjectNameResource);

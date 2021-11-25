@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyAbp.Abp.SettingUi.Application.Contracts" Version="$(EasyAbpSttingVersion)" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.Contracts" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.ObjectExtending" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Account.Application.Contracts" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="$(AbpPackageVersion)" />
@@ -33,10 +33,6 @@
 
   <ItemGroup>
     <None Remove="AuditLogs\Dto\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Tenants" />
   </ItemGroup>
 
 </Project>

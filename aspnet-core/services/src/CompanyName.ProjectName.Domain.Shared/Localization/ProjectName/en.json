@@ -15,11 +15,15 @@
     "Permission:HangfireManagement": "BackgroundTask",
     "Permission:CapManagement": "IntegratedEvent",
     "Permission:ESManagement": "ESManagement",
+    "Permission:SettingManagement": "SettingManagement",
     "Permission:IdentityServerManagement": "IdentityServer",
     "Permission:IdentityServerManagement:Client": "Client",
     "Permission:IdentityServerManagement:ApiResource": "ApiResource",
     "Permission:IdentityServerManagement:ApiScope": "ApiScope",
     "Permission:IdentityServerManagement:IdentityResources": "IdentityResources",
-    "Permission:SettingUi:ShowSettingPage": "SettingManagement"
+    "Setting.Group.System": "System",
+    "Setting.Group.Other": "Other",
+    "DisplayName:Setting.Group.Other.Github": "Github",
+    "Description:Setting.Group.Other.Github": "Github"
   }
 }

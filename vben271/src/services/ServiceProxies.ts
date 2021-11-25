@@ -217,758 +217,6 @@ export class AbpApplicationConfigurationServiceProxy extends ServiceProxyBase {
     }
 }
 
-export class TenantsServiceProxy extends ServiceProxyBase {
-    private instance: AxiosInstance;
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(baseUrl?: string, instance?: AxiosInstance) {
-        super();
-        this.instance = instance ? instance : axios.create();
-        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
-    }
-
-    /**
-     * 通过名称获取租户信息
-     * @param body (optional) 
-     * @return Success
-     */
-    find(body: FindTenantByNameInput | undefined , cancelToken?: CancelToken | undefined): Promise<FindTenantResultDto> {
-        let url_ = this.baseUrl + "/Tenants/find";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "text/plain"
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processFind(_response));
-        });
-    }
-
-    protected processFind(response: AxiosResponse): Promise<FindTenantResultDto> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = FindTenantResultDto.fromJS(resultData200);
-            return result200;
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<FindTenantResultDto>(<any>null);
-    }
-
-    /**
-     * 分页获取租户信息
-     * @param body (optional) 
-     * @return Success
-     */
-    page(body: PagingTenantInput | undefined , cancelToken?: CancelToken | undefined): Promise<TenantDtoPagedResultDto> {
-        let url_ = this.baseUrl + "/Tenants/page";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "text/plain"
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processPage(_response));
-        });
-    }
-
-    protected processPage(response: AxiosResponse): Promise<TenantDtoPagedResultDto> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = TenantDtoPagedResultDto.fromJS(resultData200);
-            return result200;
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<TenantDtoPagedResultDto>(<any>null);
-    }
-
-    /**
-     * 创建租户
-     * @param body (optional) 
-     * @return Success
-     */
-    create(body: TenantCreateDto | undefined , cancelToken?: CancelToken | undefined): Promise<TenantDto> {
-        let url_ = this.baseUrl + "/Tenants/create";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "text/plain"
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processCreate(_response));
-        });
-    }
-
-    protected processCreate(response: AxiosResponse): Promise<TenantDto> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = TenantDto.fromJS(resultData200);
-            return result200;
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<TenantDto>(<any>null);
-    }
-
-    /**
-     * 更新租户
-     * @param body (optional) 
-     * @return Success
-     */
-    update(body: UpdateTenantInput | undefined , cancelToken?: CancelToken | undefined): Promise<TenantDto> {
-        let url_ = this.baseUrl + "/Tenants/update";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "text/plain"
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processUpdate(_response));
-        });
-    }
-
-    protected processUpdate(response: AxiosResponse): Promise<TenantDto> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = TenantDto.fromJS(resultData200);
-            return result200;
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<TenantDto>(<any>null);
-    }
-
-    /**
-     * 删除租户
-     * @param body (optional) 
-     * @return Success
-     */
-    delete(body: IdInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
-        let url_ = this.baseUrl + "/Tenants/delete";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processDelete(_response));
-        });
-    }
-
-    protected processDelete(response: AxiosResponse): Promise<void> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            return Promise.resolve<void>(<any>null);
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<void>(<any>null);
-    }
-
-    /**
-     * 获取租户连接字符串
-     * @param body (optional) 
-     * @return Success
-     */
-    getConnectionString(body: IdInput | undefined , cancelToken?: CancelToken | undefined): Promise<string> {
-        let url_ = this.baseUrl + "/Tenants/getConnectionString";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "text/plain"
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processGetConnectionString(_response));
-        });
-    }
-
-    protected processGetConnectionString(response: AxiosResponse): Promise<string> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
-            return result200;
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<string>(<any>null);
-    }
-
-    /**
-     * 更新租户连接字符串
-     * @param body (optional) 
-     * @return Success
-     */
-    updateConnectionString(body: UpdateConnectionStringInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
-        let url_ = this.baseUrl + "/Tenants/updateConnectionString";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processUpdateConnectionString(_response));
-        });
-    }
-
-    protected processUpdateConnectionString(response: AxiosResponse): Promise<void> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            return Promise.resolve<void>(<any>null);
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<void>(<any>null);
-    }
-
-    /**
-     * 删除租户连接字符串
-     * @param body (optional) 
-     * @return Success
-     */
-    deleteConnectionString(body: IdInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
-        let url_ = this.baseUrl + "/Tenants/deleteConnectionString";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processDeleteConnectionString(_response));
-        });
-    }
-
-    protected processDeleteConnectionString(response: AxiosResponse): Promise<void> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            return Promise.resolve<void>(<any>null);
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<void>(<any>null);
-    }
-}
-
 export class AccountServiceProxy extends ServiceProxyBase {
     private instance: AxiosInstance;
     private baseUrl: string;
@@ -2125,7 +1373,7 @@ export class AuditLogsServiceProxy extends ServiceProxyBase {
     }
 
     /**
-     * 分页获取用户信息
+     * 分页获取审计日志信息
      * @param body (optional) 
      * @return Success
      */
@@ -4854,6 +4102,111 @@ export class NotificationServiceProxy extends ServiceProxyBase {
         }
         return Promise.resolve<void>(<any>null);
     }
+
+    /**
+     * 发送消息-测试使用
+     * @param title (optional) 
+     * @param content (optional) 
+     * @param messageType (optional) 
+     * @param body (optional) 
+     * @return Success
+     */
+    sendMessage(title: string | undefined, content: string | undefined, messageType: MessageType | undefined, body: string[] | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Notification/SendMessage?";
+        if (title === null)
+            throw new Error("The parameter 'title' cannot be null.");
+        else if (title !== undefined)
+            url_ += "title=" + encodeURIComponent("" + title) + "&";
+        if (content === null)
+            throw new Error("The parameter 'content' cannot be null.");
+        else if (content !== undefined)
+            url_ += "content=" + encodeURIComponent("" + content) + "&";
+        if (messageType === null)
+            throw new Error("The parameter 'messageType' cannot be null.");
+        else if (messageType !== undefined)
+            url_ += "messageType=" + encodeURIComponent("" + messageType) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processSendMessage(_response));
+        });
+    }
+
+    protected processSendMessage(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(<any>null);
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(<any>null);
+    }
 }
 
 export class OutputCacheServiceProxy extends ServiceProxyBase {
@@ -5603,7 +4956,7 @@ export class SettingsServiceProxy extends ServiceProxyBase {
      * 获取所有Setting
      * @return Success
      */
-    all(  cancelToken?: CancelToken | undefined): Promise<SettingGroup[]> {
+    all(  cancelToken?: CancelToken | undefined): Promise<SettingOutput[]> {
         let url_ = this.baseUrl + "/Settings/all";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -5629,7 +4982,7 @@ export class SettingsServiceProxy extends ServiceProxyBase {
         });
     }
 
-    protected processAll(response: AxiosResponse): Promise<SettingGroup[]> {
+    protected processAll(response: AxiosResponse): Promise<SettingOutput[]> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -5646,7 +4999,7 @@ export class SettingsServiceProxy extends ServiceProxyBase {
             if (Array.isArray(resultData200)) {
                 result200 = [] as any;
                 for (let item of resultData200)
-                    result200!.push(SettingGroup.fromJS(item));
+                    result200!.push(SettingOutput.fromJS(item));
             }
             else {
                 result200 = <any>null;
@@ -5692,7 +5045,7 @@ export class SettingsServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<SettingGroup[]>(<any>null);
+        return Promise.resolve<SettingOutput[]>(<any>null);
     }
 
     /**
@@ -5730,6 +5083,758 @@ export class SettingsServiceProxy extends ServiceProxyBase {
     }
 
     protected processUpdate(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(<any>null);
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(<any>null);
+    }
+}
+
+export class TenantsServiceProxy extends ServiceProxyBase {
+    private instance: AxiosInstance;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, instance?: AxiosInstance) {
+        super();
+        this.instance = instance ? instance : axios.create();
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * 通过名称获取租户信息
+     * @param body (optional) 
+     * @return Success
+     */
+    find(body: FindTenantByNameInput | undefined , cancelToken?: CancelToken | undefined): Promise<FindTenantResultDto> {
+        let url_ = this.baseUrl + "/Tenants/find";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processFind(_response));
+        });
+    }
+
+    protected processFind(response: AxiosResponse): Promise<FindTenantResultDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = FindTenantResultDto.fromJS(resultData200);
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<FindTenantResultDto>(<any>null);
+    }
+
+    /**
+     * 分页获取租户信息
+     * @param body (optional) 
+     * @return Success
+     */
+    page(body: PagingTenantInput | undefined , cancelToken?: CancelToken | undefined): Promise<TenantDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/Tenants/page";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processPage(_response));
+        });
+    }
+
+    protected processPage(response: AxiosResponse): Promise<TenantDtoPagedResultDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = TenantDtoPagedResultDto.fromJS(resultData200);
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<TenantDtoPagedResultDto>(<any>null);
+    }
+
+    /**
+     * 创建租户
+     * @param body (optional) 
+     * @return Success
+     */
+    create(body: TenantCreateDto | undefined , cancelToken?: CancelToken | undefined): Promise<TenantDto> {
+        let url_ = this.baseUrl + "/Tenants/create";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processCreate(_response));
+        });
+    }
+
+    protected processCreate(response: AxiosResponse): Promise<TenantDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = TenantDto.fromJS(resultData200);
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<TenantDto>(<any>null);
+    }
+
+    /**
+     * 更新租户
+     * @param body (optional) 
+     * @return Success
+     */
+    update(body: UpdateTenantInput | undefined , cancelToken?: CancelToken | undefined): Promise<TenantDto> {
+        let url_ = this.baseUrl + "/Tenants/update";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processUpdate(_response));
+        });
+    }
+
+    protected processUpdate(response: AxiosResponse): Promise<TenantDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = TenantDto.fromJS(resultData200);
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<TenantDto>(<any>null);
+    }
+
+    /**
+     * 删除租户
+     * @param body (optional) 
+     * @return Success
+     */
+    delete(body: IdInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Tenants/delete";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processDelete(_response));
+        });
+    }
+
+    protected processDelete(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(<any>null);
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(<any>null);
+    }
+
+    /**
+     * 获取租户连接字符串
+     * @param body (optional) 
+     * @return Success
+     */
+    getConnectionString(body: IdInput | undefined , cancelToken?: CancelToken | undefined): Promise<string> {
+        let url_ = this.baseUrl + "/Tenants/getConnectionString";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processGetConnectionString(_response));
+        });
+    }
+
+    protected processGetConnectionString(response: AxiosResponse): Promise<string> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<string>(<any>null);
+    }
+
+    /**
+     * 更新租户连接字符串
+     * @param body (optional) 
+     * @return Success
+     */
+    updateConnectionString(body: UpdateConnectionStringInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Tenants/updateConnectionString";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processUpdateConnectionString(_response));
+        });
+    }
+
+    protected processUpdateConnectionString(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(<any>null);
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(<any>null);
+    }
+
+    /**
+     * 删除租户连接字符串
+     * @param body (optional) 
+     * @return Success
+     */
+    deleteConnectionString(body: IdInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Tenants/deleteConnectionString";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processDeleteConnectionString(_response));
+        });
+    }
+
+    protected processDeleteConnectionString(response: AxiosResponse): Promise<void> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -12420,8 +12525,11 @@ export interface IObjectExtensionsDto {
 }
 
 export class PagingApiRseourceListInput implements IPagingApiRseourceListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
+    /** 跳过多少条 */
     readonly skipCount!: number;
     filter!: string | undefined;
 
@@ -12461,15 +12569,21 @@ export class PagingApiRseourceListInput implements IPagingApiRseourceListInput {
 }
 
 export interface IPagingApiRseourceListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize: number;
+    /** 跳过多少条 */
     skipCount: number;
     filter: string | undefined;
 }
 
 export class PagingApiScopeListInput implements IPagingApiScopeListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
+    /** 跳过多少条 */
     readonly skipCount!: number;
     filter!: string | undefined;
 
@@ -12509,8 +12623,11 @@ export class PagingApiScopeListInput implements IPagingApiScopeListInput {
 }
 
 export interface IPagingApiScopeListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize: number;
+    /** 跳过多少条 */
     skipCount: number;
     filter: string | undefined;
 }
@@ -12628,8 +12745,11 @@ export interface IPagingApiScopeListOutputPagedResultDto {
 }
 
 export class PagingAuditLogListInput implements IPagingAuditLogListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
+    /** 跳过多少条 */
     readonly skipCount!: number;
     sorting!: string | undefined;
     startTime!: moment.Moment | undefined;
@@ -12702,8 +12822,11 @@ export class PagingAuditLogListInput implements IPagingAuditLogListInput {
 }
 
 export interface IPagingAuditLogListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize: number;
+    /** 跳过多少条 */
     skipCount: number;
     sorting: string | undefined;
     startTime: moment.Moment | undefined;
@@ -12720,8 +12843,11 @@ export interface IPagingAuditLogListInput {
 }
 
 export class PagingClientListInput implements IPagingClientListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
+    /** 跳过多少条 */
     readonly skipCount!: number;
     filter!: string | undefined;
 
@@ -12761,8 +12887,11 @@ export class PagingClientListInput implements IPagingClientListInput {
 }
 
 export interface IPagingClientListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize: number;
+    /** 跳过多少条 */
     skipCount: number;
     filter: string | undefined;
 }
@@ -13116,8 +13245,11 @@ export interface IPagingClientListOutputPagedResultDto {
 }
 
 export class PagingDataDictionaryDetailInput implements IPagingDataDictionaryDetailInput {
+    /** 当前页面.默认从1开始 */
     pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
+    /** 跳过多少条 */
     readonly skipCount!: number;
     dataDictionaryId!: string;
     filter!: string | undefined;
@@ -13160,8 +13292,11 @@ export class PagingDataDictionaryDetailInput implements IPagingDataDictionaryDet
 }
 
 export interface IPagingDataDictionaryDetailInput {
+    /** 当前页面.默认从1开始 */
     pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize: number;
+    /** 跳过多少条 */
     skipCount: number;
     dataDictionaryId: string;
     filter: string | undefined;
@@ -13288,8 +13423,11 @@ export interface IPagingDataDictionaryDetailOutputPagedResultDto {
 }
 
 export class PagingDataDictionaryInput implements IPagingDataDictionaryInput {
+    /** 当前页面.默认从1开始 */
     pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
+    /** 跳过多少条 */
     readonly skipCount!: number;
     filter!: string | undefined;
 
@@ -13329,8 +13467,11 @@ export class PagingDataDictionaryInput implements IPagingDataDictionaryInput {
 }
 
 export interface IPagingDataDictionaryInput {
+    /** 当前页面.默认从1开始 */
     pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize: number;
+    /** 跳过多少条 */
     skipCount: number;
     filter: string | undefined;
 }
@@ -13438,8 +13579,11 @@ export interface IPagingDataDictionaryOutputPagedResultDto {
 }
 
 export class PagingElasticSearchLogInput implements IPagingElasticSearchLogInput {
+    /** 当前页面.默认从1开始 */
     pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
+    /** 跳过多少条 */
     readonly skipCount!: number;
     filter!: string | undefined;
     startCreationTime!: moment.Moment | undefined;
@@ -13485,8 +13629,11 @@ export class PagingElasticSearchLogInput implements IPagingElasticSearchLogInput
 }
 
 export interface IPagingElasticSearchLogInput {
+    /** 当前页面.默认从1开始 */
     pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize: number;
+    /** 跳过多少条 */
     skipCount: number;
     filter: string | undefined;
     startCreationTime: moment.Moment | undefined;
@@ -13494,8 +13641,11 @@ export interface IPagingElasticSearchLogInput {
 }
 
 export class PagingElasticSearchLogOutput implements IPagingElasticSearchLogOutput {
+    /** 日志级别 */
     level!: string | undefined;
+    /** 日志内容 */
     message!: string | undefined;
+    /** 创建时间 */
     creationTime!: moment.Moment;
 
     constructor(data?: IPagingElasticSearchLogOutput) {
@@ -13532,8 +13682,11 @@ export class PagingElasticSearchLogOutput implements IPagingElasticSearchLogOutp
 }
 
 export interface IPagingElasticSearchLogOutput {
+    /** 日志级别 */
     level: string | undefined;
+    /** 日志内容 */
     message: string | undefined;
+    /** 创建时间 */
     creationTime: moment.Moment;
 }
 
@@ -13586,8 +13739,11 @@ export interface IPagingElasticSearchLogOutputCustomePagedResultDto {
 }
 
 export class PagingIdentityResourceListInput implements IPagingIdentityResourceListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
+    /** 跳过多少条 */
     readonly skipCount!: number;
     filter!: string | undefined;
 
@@ -13627,8 +13783,11 @@ export class PagingIdentityResourceListInput implements IPagingIdentityResourceL
 }
 
 export interface IPagingIdentityResourceListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize: number;
+    /** 跳过多少条 */
     skipCount: number;
     filter: string | undefined;
 }
@@ -13746,8 +13905,11 @@ export interface IPagingIdentityResourceListOutputPagedResultDto {
 }
 
 export class PagingNotificationListInput implements IPagingNotificationListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
+    /** 跳过多少条 */
     readonly skipCount!: number;
 
     constructor(data?: IPagingNotificationListInput) {
@@ -13784,8 +13946,11 @@ export class PagingNotificationListInput implements IPagingNotificationListInput
 }
 
 export interface IPagingNotificationListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize: number;
+    /** 跳过多少条 */
     skipCount: number;
 }
 
@@ -13890,8 +14055,11 @@ export interface IPagingNotificationListOutputPagedResultDto {
 }
 
 export class PagingRoleListInput implements IPagingRoleListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
+    /** 跳过多少条 */
     readonly skipCount!: number;
     filter!: string | undefined;
 
@@ -13931,15 +14099,21 @@ export class PagingRoleListInput implements IPagingRoleListInput {
 }
 
 export interface IPagingRoleListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize: number;
+    /** 跳过多少条 */
     skipCount: number;
     filter: string | undefined;
 }
 
 export class PagingTenantInput implements IPagingTenantInput {
+    /** 当前页面.默认从1开始 */
     pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
+    /** 跳过多少条 */
     readonly skipCount!: number;
     filter!: string | undefined;
 
@@ -13979,15 +14153,21 @@ export class PagingTenantInput implements IPagingTenantInput {
 }
 
 export interface IPagingTenantInput {
+    /** 当前页面.默认从1开始 */
     pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize: number;
+    /** 跳过多少条 */
     skipCount: number;
     filter: string | undefined;
 }
 
 export class PagingUserListInput implements IPagingUserListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
+    /** 跳过多少条 */
     readonly skipCount!: number;
     /** 关键字 */
     filter!: string | undefined;
@@ -14028,8 +14208,11 @@ export class PagingUserListInput implements IPagingUserListInput {
 }
 
 export interface IPagingUserListInput {
+    /** 当前页面.默认从1开始 */
     pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
     pageSize: number;
+    /** 跳过多少条 */
     skipCount: number;
     /** 关键字 */
     filter: string | undefined;
@@ -15043,71 +15226,19 @@ export interface ISetReadInput {
     receiveId: string;
 }
 
-export class SettingGroup implements ISettingGroup {
-    groupName!: string | undefined;
-    groupDisplayName!: string | undefined;
-    settingInfos!: SettingInfo[] | undefined;
-    permission!: string | undefined;
-
-    constructor(data?: ISettingGroup) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.groupName = _data["groupName"];
-            this.groupDisplayName = _data["groupDisplayName"];
-            if (Array.isArray(_data["settingInfos"])) {
-                this.settingInfos = [] as any;
-                for (let item of _data["settingInfos"])
-                    this.settingInfos!.push(SettingInfo.fromJS(item));
-            }
-            this.permission = _data["permission"];
-        }
-    }
-
-    static fromJS(data: any): SettingGroup {
-        data = typeof data === 'object' ? data : {};
-        let result = new SettingGroup();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["groupName"] = this.groupName;
-        data["groupDisplayName"] = this.groupDisplayName;
-        if (Array.isArray(this.settingInfos)) {
-            data["settingInfos"] = [];
-            for (let item of this.settingInfos)
-                data["settingInfos"].push(item.toJSON());
-        }
-        data["permission"] = this.permission;
-        return data; 
-    }
-}
-
-export interface ISettingGroup {
-    groupName: string | undefined;
-    groupDisplayName: string | undefined;
-    settingInfos: SettingInfo[] | undefined;
-    permission: string | undefined;
-}
-
-export class SettingInfo implements ISettingInfo {
+export class SettingItemOutput implements ISettingItemOutput {
+    /** 名称 */
     name!: string | undefined;
+    /** 显示名称 */
     displayName!: string | undefined;
+    /** 描述 */
     description!: string | undefined;
+    /** 值 */
     value!: string | undefined;
-    properties!: { [key: string]: any; } | undefined;
-    permission!: string | undefined;
+    /** 前端控件类型 */
+    type!: string | undefined;
 
-    constructor(data?: ISettingInfo) {
+    constructor(data?: ISettingItemOutput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -15122,20 +15253,13 @@ export class SettingInfo implements ISettingInfo {
             this.displayName = _data["displayName"];
             this.description = _data["description"];
             this.value = _data["value"];
-            if (_data["properties"]) {
-                this.properties = {} as any;
-                for (let key in _data["properties"]) {
-                    if (_data["properties"].hasOwnProperty(key))
-                        (<any>this.properties)![key] = _data["properties"][key];
-                }
-            }
-            this.permission = _data["permission"];
+            this.type = _data["type"];
         }
     }
 
-    static fromJS(data: any): SettingInfo {
+    static fromJS(data: any): SettingItemOutput {
         data = typeof data === 'object' ? data : {};
-        let result = new SettingInfo();
+        let result = new SettingItemOutput();
         result.init(data);
         return result;
     }
@@ -15146,25 +15270,78 @@ export class SettingInfo implements ISettingInfo {
         data["displayName"] = this.displayName;
         data["description"] = this.description;
         data["value"] = this.value;
-        if (this.properties) {
-            data["properties"] = {};
-            for (let key in this.properties) {
-                if (this.properties.hasOwnProperty(key))
-                    (<any>data["properties"])[key] = this.properties[key];
-            }
-        }
-        data["permission"] = this.permission;
+        data["type"] = this.type;
         return data; 
     }
 }
 
-export interface ISettingInfo {
+export interface ISettingItemOutput {
+    /** 名称 */
     name: string | undefined;
+    /** 显示名称 */
     displayName: string | undefined;
+    /** 描述 */
     description: string | undefined;
+    /** 值 */
     value: string | undefined;
-    properties: { [key: string]: any; } | undefined;
-    permission: string | undefined;
+    /** 前端控件类型 */
+    type: string | undefined;
+}
+
+export class SettingOutput implements ISettingOutput {
+    /** 分组 */
+    group!: string | undefined;
+    /** 分组显示名称 */
+    groupDisplayName!: string | undefined;
+    settingItemOutput!: SettingItemOutput[] | undefined;
+
+    constructor(data?: ISettingOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.group = _data["group"];
+            this.groupDisplayName = _data["groupDisplayName"];
+            if (Array.isArray(_data["settingItemOutput"])) {
+                this.settingItemOutput = [] as any;
+                for (let item of _data["settingItemOutput"])
+                    this.settingItemOutput!.push(SettingItemOutput.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): SettingOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new SettingOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["group"] = this.group;
+        data["groupDisplayName"] = this.groupDisplayName;
+        if (Array.isArray(this.settingItemOutput)) {
+            data["settingItemOutput"] = [];
+            for (let item of this.settingItemOutput)
+                data["settingItemOutput"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface ISettingOutput {
+    /** 分组 */
+    group: string | undefined;
+    /** 分组显示名称 */
+    groupDisplayName: string | undefined;
+    settingItemOutput: SettingItemOutput[] | undefined;
 }
 
 export class StringStringFromSelector implements IStringStringFromSelector {

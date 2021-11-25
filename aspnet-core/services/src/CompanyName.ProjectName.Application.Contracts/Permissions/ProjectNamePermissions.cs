@@ -20,6 +20,7 @@ namespace CompanyName.ProjectName.Permissions
             public const string UserEnable = Default + ".Users.Enable";
             public const string AuditLog = Default + ".AuditLog";
             public const string ES = Default + ".ES";
+            public const string Setting = Default + ".Setting";
         }
 
 
