@@ -89,7 +89,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
             }
 
             entity.AddDetail(GuidGenerator.Create(), code, displayText, order, description);
-            return await _dataDictionaryRepository.UpdateAsync(entity);
+            return await _dataDictionaryRepository.InsertAsync(entity);
         }
 
         /// <summary>
