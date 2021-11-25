@@ -264,7 +264,7 @@ namespace CompanyName.ProjectName
 
         private void ConfigurationStsHttpClient(ServiceConfigurationContext context)
         {
-            context.Services.AddHttpClient(HttpClientNameConsts.Sts,
+            context.Services.AddHttpClient(context.Services.GetConfiguration().GetSection("HttpClient:Sts:Name").Value,
                 options =>
                 {
                     options.BaseAddress =
