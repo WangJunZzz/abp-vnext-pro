@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../../../common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro.DataDictionaryManagement</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
+    <PackageReference Include="Mongo2Go" Version="3.1.1" />
+    <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.MongoDB\Lion.AbpPro.DataDictionaryManagement.MongoDB.csproj" />
+    <ProjectReference Include="..\Lion.AbpPro.DataDictionaryManagement.TestBase\Lion.AbpPro.DataDictionaryManagement.TestBase.csproj" />
+  </ItemGroup>
+
+</Project>

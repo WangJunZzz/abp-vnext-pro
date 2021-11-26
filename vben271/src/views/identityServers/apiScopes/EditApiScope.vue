@@ -35,6 +35,7 @@
 
       const [registerModal, { changeOkLoading, closeModal }] = useModalInner((data) => {
         setFieldsValue({
+          id: data.record.id,
           name: data.record.name,
           enabled: data.record.enabled,
           displayName: data.record.displayName,

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../../../common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro.DataDictionaryManagement</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Authorization" Version="$(AbpPackageVersion)" />
+    <ProjectReference Include="..\Lion.AbpPro.DataDictionaryManagement.Domain.Shared\Lion.AbpPro.DataDictionaryManagement.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

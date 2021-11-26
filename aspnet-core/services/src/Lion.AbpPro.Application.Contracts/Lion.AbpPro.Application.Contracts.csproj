@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Application.Contracts\Lion.AbpPro.DataDictionaryManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Lion.AbpPro.Domain.Shared\Lion.AbpPro.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.ObjectExtending" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Account.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" Version="$(AbpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="AuditLogs\Dto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="AuditLogs\Dto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="AuditLogs\Dto\**" />
+  </ItemGroup>
+
+</Project>

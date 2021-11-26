@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\..\..\common.props" />
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Lion.AbpPro</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Application\Lion.AbpPro.DataDictionaryManagement.Application.csproj" />
+		<ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.Application\Lion.AbpPro.NotificationManagement.Application.csproj" />
+		<ProjectReference Include="..\Lion.AbpPro.Domain\Lion.AbpPro.Domain.csproj" />
+		<ProjectReference Include="..\Lion.AbpPro.Application.Contracts\Lion.AbpPro.Application.Contracts.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.Account.Application" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.Contracts" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Identity.Application" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.TenantManagement.Application" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.SettingManagement.Application" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="NEST" Version="$(NESTVersion)" />
+	</ItemGroup>
+
+</Project>

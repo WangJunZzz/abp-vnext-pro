@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../../../common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro.DataDictionaryManagement</RootNamespace>
+    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Validation" Version="$(AbpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="$(MicrosoftVersion)" />
+    <ProjectReference Include="..\..\..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\DataDictionaryManagement\*.json" />
+    <Content Remove="Localization\DataDictionaryManagement\*.json" />
+  </ItemGroup>
+
+</Project>

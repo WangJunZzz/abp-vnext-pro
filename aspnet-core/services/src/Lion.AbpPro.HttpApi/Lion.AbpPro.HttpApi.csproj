@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.HttpApi\Lion.AbpPro.DataDictionaryManagement.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.HttpApi\Lion.AbpPro.NotificationManagement.HttpApi.csproj" />
+    <ProjectReference Include="..\Lion.AbpPro.Application.Contracts\Lion.AbpPro.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleVersion)" />
+    <PackageReference Include="Volo.Abp.Account.HttpApi" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi" Version="$(AbpPackageVersion)" />
+  </ItemGroup>
+
+</Project>

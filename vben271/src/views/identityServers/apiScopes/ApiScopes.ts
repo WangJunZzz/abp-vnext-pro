@@ -41,8 +41,8 @@ export const tableColumns: BasicColumn[] = [
     slots: { customRender: 'emphasize' },
   },
   {
-    title: 'ShowInDiscoveryDocument',
-    dataIndex: 'showInDiscoveryDocument',
+    title: 'ShowInDiscovery',
+    dataIndex: 'showInDiscovery',
     slots: { customRender: 'showInDiscoveryDocument' },
   },
 ];
@@ -101,6 +101,13 @@ export const createFormSchema: FormSchema[] = [
   },
 ];
 export const editFormSchema: FormSchema[] = [
+  {
+    field: 'id',
+    label: 'Id',
+    component: 'Input',
+    required: true,
+    ifShow: false,
+  },
   {
     field: 'name',
     label: 'Name',

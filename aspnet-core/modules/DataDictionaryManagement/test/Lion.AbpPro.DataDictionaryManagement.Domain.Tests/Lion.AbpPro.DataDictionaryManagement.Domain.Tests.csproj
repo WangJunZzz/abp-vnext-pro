@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../../../common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro.DataDictionaryManagement</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
+    <ProjectReference Include="..\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.Tests\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.Tests.csproj" />
+  </ItemGroup>
+
+</Project>

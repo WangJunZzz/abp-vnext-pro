@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+ <Import Project="../../../../common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro.NotificationManagement</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.Application\Lion.AbpPro.NotificationManagement.Application.csproj" />
+    <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.Domain.Tests\Lion.AbpPro.NotificationManagement.Domain.Tests.csproj" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
+  </ItemGroup>
+
+</Project>

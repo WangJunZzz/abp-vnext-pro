@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lion.AbpPro.Application.Contracts\Lion.AbpPro.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.HttpApi.Client" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi.Client" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi.Client" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi.Client" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi.Client" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi.Client" Version="$(AbpPackageVersion)" />
+  </ItemGroup>
+
+</Project>

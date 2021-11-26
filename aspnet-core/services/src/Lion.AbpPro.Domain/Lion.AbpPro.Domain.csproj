@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Domain\Lion.AbpPro.DataDictionaryManagement.Domain.csproj" />
+    <ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.Domain\Lion.AbpPro.NotificationManagement.Domain.csproj" />
+    <ProjectReference Include="..\Lion.AbpPro.Domain.Shared\Lion.AbpPro.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Emailing" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Identity.Domain" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.IdentityServer.Domain" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.IdentityServer" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Domain" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Domain" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="$(AbpPackageVersion)" />
+  </ItemGroup>
+
+</Project>

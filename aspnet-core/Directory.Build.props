@@ -1,13 +1,17 @@
 ﻿<Project>
 
 	<PropertyGroup>
-		<AbpPackageVersion>4.4.0</AbpPackageVersion>
-		<DotNetCoreCAPVersion>5.1.4</DotNetCoreCAPVersion>
-		<MicrosoftVersion>5.0.12</MicrosoftVersion>
-		<NewtonsoftJsonVersion>13.0.1</NewtonsoftJsonVersion>
+		<AbpPackageVersion>5.0.0-rc.1</AbpPackageVersion>
+		<DotNetCoreCAPVersion>6.0.0-preview-153999281</DotNetCoreCAPVersion>
+		<MicrosoftVersion>6.0.0</MicrosoftVersion>
 		<MicrosoftExtensionsHttpVersion>5.0.0</MicrosoftExtensionsHttpVersion>
 		<SystemComponentModelAnnotationsVersion>5.0.0</SystemComponentModelAnnotationsVersion>
 		<MicrosoftExtensionsDependencyModelVersion>5.0.0</MicrosoftExtensionsDependencyModelVersion>
+		<SwashbuckleVersion>6.2.3</SwashbuckleVersion>
+		<MicrosoftNETTestSdkVersion>17.0.0</MicrosoftNETTestSdkVersion>
+		<FreeSqlVersion>2.5.200</FreeSqlVersion>
+		<MiniProfilerVersion>4.2.22</MiniProfilerVersion>
+		
 		<SerilogVersion>2.10.0</SerilogVersion>
 		<SerilogExtensionsLoggingVersion>3.0.1</SerilogExtensionsLoggingVersion>
 		<SerilogSinksAsyncVersion>1.4.0</SerilogSinksAsyncVersion>
@@ -17,18 +21,14 @@
 		<SerilogExceptionsVersion>7.0.0</SerilogExceptionsVersion>
 		<SerilogSettingsConfigurationVersion>3.1.0</SerilogSettingsConfigurationVersion>
 		<SerilogSinksElasticsearchVersion>8.4.1</SerilogSinksElasticsearchVersion>
+		<NewtonsoftJsonVersion>13.0.1</NewtonsoftJsonVersion>
 		<NESTVersion>7.15.1</NESTVersion>
 		<HangfireMySqlStorageVersion>2.0.3</HangfireMySqlStorageVersion>
-		<SwashbuckleAspNetCoreAnnotationsVersion>6.1.4</SwashbuckleAspNetCoreAnnotationsVersion>
-		<MicrosoftNETTestSdkVersion>16.9.1</MicrosoftNETTestSdkVersion>
 		<NSubstituteVersion>4.2.2</NSubstituteVersion>
 		<ShouldlyVersion>4.0.3</ShouldlyVersion>
 		<XunitVersion>2.4.1</XunitVersion>
-		<Xunitrunnervisualstudio>2.4.3</Xunitrunnervisualstudio>
+		<XunitrunnervisualstudioVersion>2.4.3</XunitrunnervisualstudioVersion>
 		<OcelotVersion>17.0.0</OcelotVersion>
-		<SwaggerUIVersion>6.2.3</SwaggerUIVersion>
-		<FreeSqlVersion>2.5.200</FreeSqlVersion>
-		<MiniProfiler>4.2.22</MiniProfiler>
 	</PropertyGroup>
 
 </Project>

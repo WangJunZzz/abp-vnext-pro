@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <Import Project="../../../../common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro.DataDictionaryManagement</RootNamespace>
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+    <UserSecretsId>Lion.AbpPro.DataDictionaryManagement-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog.AspNetCore" Version="$(SerilogAspNetCoreVersion)" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="$(SerilogSinksAsyncVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="$(MicrosoftVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="$(MicrosoftVersion)" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.HttpApi\Lion.AbpPro.DataDictionaryManagement.HttpApi.csproj" />
+    <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.Application\Lion.AbpPro.DataDictionaryManagement.Application.csproj" />
+    <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <Content Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
+</Project>

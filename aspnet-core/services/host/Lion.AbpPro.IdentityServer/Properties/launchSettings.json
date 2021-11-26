@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Lion.AbpPro.IdentityServer": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:44354",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
