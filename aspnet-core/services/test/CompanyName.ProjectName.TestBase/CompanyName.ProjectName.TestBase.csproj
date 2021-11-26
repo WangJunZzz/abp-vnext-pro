@@ -3,7 +3,7 @@
   <Import Project="..\..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>CompanyName.ProjectName</RootNamespace>
   </PropertyGroup>
 
@@ -20,7 +20,7 @@
     <PackageReference Include="Shouldly" Version="$(ShouldlyVersion)" />
     <PackageReference Include="xunit" Version="$(XunitVersion)" />
     <PackageReference Include="xunit.extensibility.execution" Version="$(XunitVersion)" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="$(Xunitrunnervisualstudio)" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="$(XunitrunnervisualstudioVersion)" />
   </ItemGroup>
 
 </Project>

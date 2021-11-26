@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Volo.Abp;
-using Volo.Abp.Domain.Services;
 using Volo.Abp.IdentityServer.ApiScopes;
 
 namespace CompanyName.ProjectName.IdentityServer
@@ -48,16 +47,17 @@ namespace CompanyName.ProjectName.IdentityServer
             bool emphasize,
             bool showInDiscoveryDocument)
         {
-            var apiScope = await _apiScopeRepository.GetByNameAsync(name, false);
-            if (null != apiScope) throw new UserFriendlyException(message: $"{name}已存在");
+            var apiScopes = await _apiScopeRepository.GetListByNameAsync(new[] { name }, false);
+            if (apiScopes.Count > 0) throw new UserFriendlyException(message: $"{name}已存在");
 
-            apiScope = new ApiScope(GuidGenerator.Create(), name, displayName, description,
+            var scope = new ApiScope(GuidGenerator.Create(), name, displayName, description,
                 required, emphasize,
                 showInDiscoveryDocument, enabled);
-            return await _apiScopeRepository.InsertAsync(apiScope);
+            return await _apiScopeRepository.InsertAsync(scope);
         }
 
         public async Task<ApiScope> UpdateAsync(
+            Guid id,
             string name,
             string displayName,
             string description,
@@ -66,7 +66,7 @@ namespace CompanyName.ProjectName.IdentityServer
             bool emphasize,
             bool showInDiscoveryDocument)
         {
-            var apiScope = await _apiScopeRepository.GetByNameAsync(name, false);
+            var apiScope = await _apiScopeRepository.FindAsync(id, false);
             if (null == apiScope) throw new UserFriendlyException(message: $"{name}不存在");
             apiScope.DisplayName = displayName;
             apiScope.Description = description;
@@ -86,7 +86,8 @@ namespace CompanyName.ProjectName.IdentityServer
         public async Task<List<ApiScope>> FindAllAsync(
             CancellationToken cancellationToken = default)
         {
-            return await _apiScopeRepository.GetListAsync(e => e.Enabled == true, false,
+            return await _apiScopeRepository.GetListAsync("CreationTime desc", 0, Int32.MaxValue,
+                null, false,
                 cancellationToken);
         }
     }

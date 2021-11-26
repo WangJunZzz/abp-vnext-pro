@@ -49,7 +49,8 @@ namespace CompanyName.ProjectName.IdentityServers.ApiScopes
         [Authorize(Policy = ProjectNamePermissions.IdentityServer.ApiScope.Update)]
         public Task UpdateAsync(UpdateCreateApiScopeInput input)
         {
-            return _idenityServerApiScopeManager.UpdateAsync(input.Name, input.DisplayName,
+            return _idenityServerApiScopeManager.UpdateAsync(input.Id, input.Name,
+                input.DisplayName,
                 input.Description,
                 input.Enabled, input.Required, input.Emphasize, input.ShowInDiscoveryDocument);
         }

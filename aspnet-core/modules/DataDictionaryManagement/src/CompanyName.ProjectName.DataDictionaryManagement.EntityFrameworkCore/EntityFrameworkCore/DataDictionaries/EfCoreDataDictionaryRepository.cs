@@ -5,8 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries.Aggregates;
 using CompanyName.ProjectName.DataDictionaryManagement.EntityFrameworkCore;
-using CompanyName.ProjectName.Extension.System;
 using Microsoft.EntityFrameworkCore;
+using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -63,7 +63,7 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
         {
             return await (await GetDbSetAsync())
                 .IncludeDetails(includeDetails)
-                .WhereIf(filter.IsNotNullOrWhiteSpace(),
+                .WhereIf(!filter.IsNullOrWhiteSpace(),
                     e => (e.Code.Contains(filter) || e.DisplayText.Contains(filter)))
                 .OrderByDescending(e => e.CreationTime)
                 .PageBy(skipCount, maxResultCount)
@@ -73,10 +73,15 @@ namespace CompanyName.ProjectName.DataDictionaryManagement.DataDictionaries
         public async Task<long> GetPagingCountAsync(string filter = null,
             CancellationToken cancellationToken = default)
         {
-            return await this
-                .WhereIf(filter.IsNotNullOrWhiteSpace(),
+            return await (await GetDbSetAsync())
+                .WhereIf(!filter.IsNullOrWhiteSpace(),
                     e => (e.Code.Contains(filter) || e.DisplayText.Contains(filter)))
                 .CountAsync(cancellationToken: cancellationToken);
+        }
+        
+        public override async Task<IQueryable<DataDictionary>> WithDetailsAsync()
+        {
+            return (await GetQueryableAsync()).IncludeDetails();
         }
     }
 }

@@ -66,15 +66,15 @@ namespace CompanyName.ProjectName.IdentityServer
             })).Message.ShouldBe("ApiScope_Test已存在");
         }
         
-        [Fact]
-        public async Task Shuold_UpdateAsync_Ok()
-        {
-            var result = await _idenityServerApiScopeManager.UpdateAsync("ApiScope_Test",
-                "Update", "Update_Desc", true, true, true,
-                true);
-            result.DisplayName.ShouldBe("Update");
-            result.Enabled.ShouldBeTrue();
-        }
+        // [Fact]
+        // public async Task Shuold_UpdateAsync_Ok()
+        // {
+        //     var result = await _idenityServerApiScopeManager.UpdateAsync("ApiScope_Test",
+        //         "Update", "Update_Desc", true, true, true,
+        //         true);
+        //     result.DisplayName.ShouldBe("Update");
+        //     result.Enabled.ShouldBeTrue();
+        // }
         
         [Fact]
         public async Task Shuold_DeleteAsync_Ok()

@@ -6603,6 +6603,7 @@ export class ActionApiDescriptionModel implements IActionApiDescriptionModel {
     parameters!: ParameterApiDescriptionModel[] | undefined;
     returnValue!: ReturnValueApiDescriptionModel;
     allowAnonymous!: boolean | undefined;
+    implementFrom!: string | undefined;
 
     constructor(data?: IActionApiDescriptionModel) {
         if (data) {
@@ -6636,6 +6637,7 @@ export class ActionApiDescriptionModel implements IActionApiDescriptionModel {
             }
             this.returnValue = _data["returnValue"] ? ReturnValueApiDescriptionModel.fromJS(_data["returnValue"]) : <any>undefined;
             this.allowAnonymous = _data["allowAnonymous"];
+            this.implementFrom = _data["implementFrom"];
         }
     }
 
@@ -6669,6 +6671,7 @@ export class ActionApiDescriptionModel implements IActionApiDescriptionModel {
         }
         data["returnValue"] = this.returnValue ? this.returnValue.toJSON() : <any>undefined;
         data["allowAnonymous"] = this.allowAnonymous;
+        data["implementFrom"] = this.implementFrom;
         return data; 
     }
 }
@@ -6683,6 +6686,7 @@ export interface IActionApiDescriptionModel {
     parameters: ParameterApiDescriptionModel[] | undefined;
     returnValue: ReturnValueApiDescriptionModel;
     allowAnonymous: boolean | undefined;
+    implementFrom: string | undefined;
 }
 
 export class AddCorsInput implements IAddCorsInput {
@@ -7991,6 +7995,7 @@ export interface IClockDto {
 
 export class ControllerApiDescriptionModel implements IControllerApiDescriptionModel {
     controllerName!: string | undefined;
+    controllerGroupName!: string | undefined;
     type!: string | undefined;
     interfaces!: ControllerInterfaceApiDescriptionModel[] | undefined;
     actions!: { [key: string]: ActionApiDescriptionModel; } | undefined;
@@ -8007,6 +8012,7 @@ export class ControllerApiDescriptionModel implements IControllerApiDescriptionM
     init(_data?: any) {
         if (_data) {
             this.controllerName = _data["controllerName"];
+            this.controllerGroupName = _data["controllerGroupName"];
             this.type = _data["type"];
             if (Array.isArray(_data["interfaces"])) {
                 this.interfaces = [] as any;
@@ -8033,6 +8039,7 @@ export class ControllerApiDescriptionModel implements IControllerApiDescriptionM
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["controllerName"] = this.controllerName;
+        data["controllerGroupName"] = this.controllerGroupName;
         data["type"] = this.type;
         if (Array.isArray(this.interfaces)) {
             data["interfaces"] = [];
@@ -8052,6 +8059,7 @@ export class ControllerApiDescriptionModel implements IControllerApiDescriptionM
 
 export interface IControllerApiDescriptionModel {
     controllerName: string | undefined;
+    controllerGroupName: string | undefined;
     type: string | undefined;
     interfaces: ControllerInterfaceApiDescriptionModel[] | undefined;
     actions: { [key: string]: ActionApiDescriptionModel; } | undefined;
@@ -11424,6 +11432,7 @@ export class IdentityUserCreateDto implements IIdentityUserCreateDto {
     surname!: string | undefined;
     email!: string;
     phoneNumber!: string | undefined;
+    isActive!: boolean;
     lockoutEnabled!: boolean;
     roleNames!: string[] | undefined;
     password!: string;
@@ -11451,6 +11460,7 @@ export class IdentityUserCreateDto implements IIdentityUserCreateDto {
             this.surname = _data["surname"];
             this.email = _data["email"];
             this.phoneNumber = _data["phoneNumber"];
+            this.isActive = _data["isActive"];
             this.lockoutEnabled = _data["lockoutEnabled"];
             if (Array.isArray(_data["roleNames"])) {
                 this.roleNames = [] as any;
@@ -11482,6 +11492,7 @@ export class IdentityUserCreateDto implements IIdentityUserCreateDto {
         data["surname"] = this.surname;
         data["email"] = this.email;
         data["phoneNumber"] = this.phoneNumber;
+        data["isActive"] = this.isActive;
         data["lockoutEnabled"] = this.lockoutEnabled;
         if (Array.isArray(this.roleNames)) {
             data["roleNames"] = [];
@@ -11500,6 +11511,7 @@ export interface IIdentityUserCreateDto {
     surname: string | undefined;
     email: string;
     phoneNumber: string | undefined;
+    isActive: boolean;
     lockoutEnabled: boolean;
     roleNames: string[] | undefined;
     password: string;
@@ -11523,6 +11535,7 @@ export class IdentityUserDto implements IIdentityUserDto {
     emailConfirmed!: boolean;
     phoneNumber!: string | undefined;
     phoneNumberConfirmed!: boolean;
+    isActive!: boolean;
     lockoutEnabled!: boolean;
     lockoutEnd!: moment.Moment | undefined;
     concurrencyStamp!: string | undefined;
@@ -11561,6 +11574,7 @@ export class IdentityUserDto implements IIdentityUserDto {
             this.emailConfirmed = _data["emailConfirmed"];
             this.phoneNumber = _data["phoneNumber"];
             this.phoneNumberConfirmed = _data["phoneNumberConfirmed"];
+            this.isActive = _data["isActive"];
             this.lockoutEnabled = _data["lockoutEnabled"];
             this.lockoutEnd = _data["lockoutEnd"] ? moment(_data["lockoutEnd"].toString()) : <any>undefined;
             this.concurrencyStamp = _data["concurrencyStamp"];
@@ -11599,6 +11613,7 @@ export class IdentityUserDto implements IIdentityUserDto {
         data["emailConfirmed"] = this.emailConfirmed;
         data["phoneNumber"] = this.phoneNumber;
         data["phoneNumberConfirmed"] = this.phoneNumberConfirmed;
+        data["isActive"] = this.isActive;
         data["lockoutEnabled"] = this.lockoutEnabled;
         data["lockoutEnd"] = this.lockoutEnd ? this.lockoutEnd.toISOString() : <any>undefined;
         data["concurrencyStamp"] = this.concurrencyStamp;
@@ -11624,6 +11639,7 @@ export interface IIdentityUserDto {
     emailConfirmed: boolean;
     phoneNumber: string | undefined;
     phoneNumberConfirmed: boolean;
+    isActive: boolean;
     lockoutEnabled: boolean;
     lockoutEnd: moment.Moment | undefined;
     concurrencyStamp: string | undefined;
@@ -11684,6 +11700,7 @@ export class IdentityUserUpdateDto implements IIdentityUserUpdateDto {
     surname!: string | undefined;
     email!: string;
     phoneNumber!: string | undefined;
+    isActive!: boolean;
     lockoutEnabled!: boolean;
     roleNames!: string[] | undefined;
     password!: string | undefined;
@@ -11712,6 +11729,7 @@ export class IdentityUserUpdateDto implements IIdentityUserUpdateDto {
             this.surname = _data["surname"];
             this.email = _data["email"];
             this.phoneNumber = _data["phoneNumber"];
+            this.isActive = _data["isActive"];
             this.lockoutEnabled = _data["lockoutEnabled"];
             if (Array.isArray(_data["roleNames"])) {
                 this.roleNames = [] as any;
@@ -11744,6 +11762,7 @@ export class IdentityUserUpdateDto implements IIdentityUserUpdateDto {
         data["surname"] = this.surname;
         data["email"] = this.email;
         data["phoneNumber"] = this.phoneNumber;
+        data["isActive"] = this.isActive;
         data["lockoutEnabled"] = this.lockoutEnabled;
         if (Array.isArray(this.roleNames)) {
             data["roleNames"] = [];
@@ -11763,6 +11782,7 @@ export interface IIdentityUserUpdateDto {
     surname: string | undefined;
     email: string;
     phoneNumber: string | undefined;
+    isActive: boolean;
     lockoutEnabled: boolean;
     roleNames: string[] | undefined;
     password: string | undefined;
@@ -11961,9 +11981,9 @@ export interface IIValueValidator {
 }
 
 export class LanguageInfo implements ILanguageInfo {
-    readonly cultureName!: string | undefined;
-    readonly uiCultureName!: string | undefined;
-    readonly displayName!: string | undefined;
+    cultureName!: string | undefined;
+    uiCultureName!: string | undefined;
+    displayName!: string | undefined;
     flagIcon!: string | undefined;
 
     constructor(data?: ILanguageInfo) {
@@ -11977,9 +11997,9 @@ export class LanguageInfo implements ILanguageInfo {
 
     init(_data?: any) {
         if (_data) {
-            (<any>this).cultureName = _data["cultureName"];
-            (<any>this).uiCultureName = _data["uiCultureName"];
-            (<any>this).displayName = _data["displayName"];
+            this.cultureName = _data["cultureName"];
+            this.uiCultureName = _data["uiCultureName"];
+            this.displayName = _data["displayName"];
             this.flagIcon = _data["flagIcon"];
         }
     }
@@ -12009,7 +12029,7 @@ export interface ILanguageInfo {
 }
 
 export class LocalizableStringDto implements ILocalizableStringDto {
-    readonly name!: string | undefined;
+    name!: string | undefined;
     resource!: string | undefined;
 
     constructor(data?: ILocalizableStringDto) {
@@ -12023,7 +12043,7 @@ export class LocalizableStringDto implements ILocalizableStringDto {
 
     init(_data?: any) {
         if (_data) {
-            (<any>this).name = _data["name"];
+            this.name = _data["name"];
             this.resource = _data["resource"];
         }
     }
@@ -14551,6 +14571,7 @@ export class ProfileDto implements IProfileDto {
     phoneNumber!: string | undefined;
     isExternal!: boolean;
     hasPassword!: boolean;
+    concurrencyStamp!: string | undefined;
 
     constructor(data?: IProfileDto) {
         if (data) {
@@ -14577,6 +14598,7 @@ export class ProfileDto implements IProfileDto {
             this.phoneNumber = _data["phoneNumber"];
             this.isExternal = _data["isExternal"];
             this.hasPassword = _data["hasPassword"];
+            this.concurrencyStamp = _data["concurrencyStamp"];
         }
     }
 
@@ -14603,6 +14625,7 @@ export class ProfileDto implements IProfileDto {
         data["phoneNumber"] = this.phoneNumber;
         data["isExternal"] = this.isExternal;
         data["hasPassword"] = this.hasPassword;
+        data["concurrencyStamp"] = this.concurrencyStamp;
         return data; 
     }
 }
@@ -14616,6 +14639,7 @@ export interface IProfileDto {
     phoneNumber: string | undefined;
     isExternal: boolean;
     hasPassword: boolean;
+    concurrencyStamp: string | undefined;
 }
 
 export class PropertyApiDescriptionModel implements IPropertyApiDescriptionModel {
@@ -15448,6 +15472,7 @@ export class TenantDto implements ITenantDto {
     readonly extraProperties!: { [key: string]: any; } | undefined;
     id!: string;
     name!: string | undefined;
+    concurrencyStamp!: string | undefined;
 
     constructor(data?: ITenantDto) {
         if (data) {
@@ -15469,6 +15494,7 @@ export class TenantDto implements ITenantDto {
             }
             this.id = _data["id"];
             this.name = _data["name"];
+            this.concurrencyStamp = _data["concurrencyStamp"];
         }
     }
 
@@ -15490,6 +15516,7 @@ export class TenantDto implements ITenantDto {
         }
         data["id"] = this.id;
         data["name"] = this.name;
+        data["concurrencyStamp"] = this.concurrencyStamp;
         return data; 
     }
 }
@@ -15498,6 +15525,7 @@ export interface ITenantDto {
     extraProperties: { [key: string]: any; } | undefined;
     id: string;
     name: string | undefined;
+    concurrencyStamp: string | undefined;
 }
 
 export class TenantDtoPagedResultDto implements ITenantDtoPagedResultDto {
@@ -15551,6 +15579,7 @@ export interface ITenantDtoPagedResultDto {
 export class TenantUpdateDto implements ITenantUpdateDto {
     readonly extraProperties!: { [key: string]: any; } | undefined;
     name!: string;
+    concurrencyStamp!: string | undefined;
 
     constructor(data?: ITenantUpdateDto) {
         if (data) {
@@ -15571,6 +15600,7 @@ export class TenantUpdateDto implements ITenantUpdateDto {
                 }
             }
             this.name = _data["name"];
+            this.concurrencyStamp = _data["concurrencyStamp"];
         }
     }
 
@@ -15591,6 +15621,7 @@ export class TenantUpdateDto implements ITenantUpdateDto {
             }
         }
         data["name"] = this.name;
+        data["concurrencyStamp"] = this.concurrencyStamp;
         return data; 
     }
 }
@@ -15598,6 +15629,7 @@ export class TenantUpdateDto implements ITenantUpdateDto {
 export interface ITenantUpdateDto {
     extraProperties: { [key: string]: any; } | undefined;
     name: string;
+    concurrencyStamp: string | undefined;
 }
 
 export class TimeZone implements ITimeZone {
@@ -16077,6 +16109,7 @@ export interface IUpdateConnectionStringInput {
 }
 
 export class UpdateCreateApiScopeInput implements IUpdateCreateApiScopeInput {
+    id!: string;
     enabled!: boolean;
     name!: string | undefined;
     displayName!: string | undefined;
@@ -16096,6 +16129,7 @@ export class UpdateCreateApiScopeInput implements IUpdateCreateApiScopeInput {
 
     init(_data?: any) {
         if (_data) {
+            this.id = _data["id"];
             this.enabled = _data["enabled"];
             this.name = _data["name"];
             this.displayName = _data["displayName"];
@@ -16115,6 +16149,7 @@ export class UpdateCreateApiScopeInput implements IUpdateCreateApiScopeInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
         data["enabled"] = this.enabled;
         data["name"] = this.name;
         data["displayName"] = this.displayName;
@@ -16127,6 +16162,7 @@ export class UpdateCreateApiScopeInput implements IUpdateCreateApiScopeInput {
 }
 
 export interface IUpdateCreateApiScopeInput {
+    id: string;
     enabled: boolean;
     name: string | undefined;
     displayName: string | undefined;
@@ -16439,6 +16475,7 @@ export class UpdateProfileDto implements IUpdateProfileDto {
     name!: string | undefined;
     surname!: string | undefined;
     phoneNumber!: string | undefined;
+    concurrencyStamp!: string | undefined;
 
     constructor(data?: IUpdateProfileDto) {
         if (data) {
@@ -16463,6 +16500,7 @@ export class UpdateProfileDto implements IUpdateProfileDto {
             this.name = _data["name"];
             this.surname = _data["surname"];
             this.phoneNumber = _data["phoneNumber"];
+            this.concurrencyStamp = _data["concurrencyStamp"];
         }
     }
 
@@ -16487,6 +16525,7 @@ export class UpdateProfileDto implements IUpdateProfileDto {
         data["name"] = this.name;
         data["surname"] = this.surname;
         data["phoneNumber"] = this.phoneNumber;
+        data["concurrencyStamp"] = this.concurrencyStamp;
         return data; 
     }
 }
@@ -16498,6 +16537,7 @@ export interface IUpdateProfileDto {
     name: string | undefined;
     surname: string | undefined;
     phoneNumber: string | undefined;
+    concurrencyStamp: string | undefined;
 }
 
 export class UpdateRoleInput implements IUpdateRoleInput {

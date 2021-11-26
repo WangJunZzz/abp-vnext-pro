@@ -1,7 +1,10 @@
-﻿namespace CompanyName.ProjectName.IdentityServers.ApiScopes.Dtos
+﻿using System;
+
+namespace CompanyName.ProjectName.IdentityServers.ApiScopes.Dtos
 {
     public class UpdateCreateApiScopeInput
     {
+        public Guid Id { get; set; }
         public bool Enabled { get; set; }
 
         public string Name { get; set; }

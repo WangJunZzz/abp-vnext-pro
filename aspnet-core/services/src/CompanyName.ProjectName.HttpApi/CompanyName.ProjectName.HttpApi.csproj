@@ -3,7 +3,7 @@
   <Import Project="..\..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>CompanyName.ProjectName</RootNamespace>
   </PropertyGroup>
 
@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleAspNetCoreAnnotationsVersion)" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleVersion)" />
     <PackageReference Include="Volo.Abp.Account.HttpApi" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Identity.HttpApi" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" Version="$(AbpPackageVersion)" />

@@ -2,7 +2,7 @@
 	<Import Project="..\..\..\common.props" />
 
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 		<RootNamespace>CompanyName.ProjectName</RootNamespace>
 	</PropertyGroup>
 
@@ -15,7 +15,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Volo.Abp.Account.Application" Version="$(AbpPackageVersion)" />
-		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.Contracts" Version="4.4.0" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.Contracts" Version="$(AbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.Identity.Application" Version="$(AbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="$(AbpPackageVersion)" />
 		<PackageReference Include="Volo.Abp.TenantManagement.Application" Version="$(AbpPackageVersion)" />

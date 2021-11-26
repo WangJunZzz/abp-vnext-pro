@@ -12,6 +12,7 @@ using Volo.Abp.EventBus;
 using Volo.Abp.EventBus.Distributed;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.Threading;
+using Volo.Abp.Uow;
 
 namespace CompanyName.ProjectName.CAP
 {
@@ -20,20 +21,22 @@ namespace CompanyName.ProjectName.CAP
         IDistributedEventBus,
         ISingletonDependency
     {
-        protected AbpDistributedEventBusOptions AbpDistributedEventBusOptions { get; }
-        protected ConcurrentDictionary<Type, List<IEventHandlerFactory>> HandlerFactories { get; }
-        protected ConcurrentDictionary<string, Type> EventTypes { get; }
+        private AbpDistributedEventBusOptions AbpDistributedEventBusOptions { get; }
+        private ConcurrentDictionary<Type, List<IEventHandlerFactory>> HandlerFactories { get; }
+        private ConcurrentDictionary<string, Type> EventTypes { get; }
 
-        protected readonly ICapPublisher CapPublisher;
+        private readonly ICapPublisher CapPublisher;
 
+        private readonly UnitOfWorkManager _unitOfWorkManager;
+        
         public ProjectNameAbpCapDistributedEventBus(IServiceScopeFactory serviceScopeFactory,
             IOptions<AbpDistributedEventBusOptions> distributedEventBusOptions,
             ICapPublisher capPublisher,
-            ICurrentTenant currentTenant,
-            IEventErrorHandler errorHandler)
-            : base(serviceScopeFactory, currentTenant, errorHandler)
+            ICurrentTenant currentTenant, UnitOfWorkManager unitOfWorkManager)
+            : base(serviceScopeFactory, currentTenant,unitOfWorkManager)
         {
             CapPublisher = capPublisher;
+            _unitOfWorkManager = unitOfWorkManager;
             AbpDistributedEventBusOptions = distributedEventBusOptions.Value;
             HandlerFactories = new ConcurrentDictionary<Type, List<IEventHandlerFactory>>();
             EventTypes = new ConcurrentDictionary<string, Type>();
@@ -95,17 +98,36 @@ namespace CompanyName.ProjectName.CAP
             GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Clear());
         }
 
+        protected override Task PublishToEventBusAsync(Type eventType, object eventData)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void AddToUnitOfWork(IUnitOfWork unitOfWork, UnitOfWorkEventRecord eventRecord)
+        {
+            throw new NotImplementedException();
+        }
+
         public IDisposable Subscribe<TEvent>(IDistributedEventHandler<TEvent> handler) where TEvent : class
         {
             return Subscribe(typeof(TEvent), handler);
         }
 
+        public async Task PublishAsync<TEvent>(TEvent eventData, bool onUnitOfWorkComplete = true,
+            bool useOutbox = true) where TEvent : class
+        {
+            var eventName = EventNameAttribute.GetNameOrDefault(typeof(TEvent));
+            await CapPublisher.PublishAsync(eventName, eventData);
 
-        public override async Task PublishAsync(Type eventType, object eventData)
+        }
+
+        public async Task PublishAsync(Type eventType, object eventData, bool onUnitOfWorkComplete = true,
+            bool useOutbox = true)
         {
             var eventName = EventNameAttribute.GetNameOrDefault(eventType);
             await CapPublisher.PublishAsync(eventName, eventData);
         }
+        
 
         protected override IEnumerable<EventTypeWithEventHandlerFactories> GetHandlerFactories(Type eventType)
         {

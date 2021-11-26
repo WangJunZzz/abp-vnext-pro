@@ -3,12 +3,12 @@
   <Import Project="../../../../common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>CompanyName.ProjectName.DataDictionaryManagement</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleAspNetCoreAnnotationsVersion)" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleVersion)" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="$(AbpPackageVersion)" />
     <ProjectReference Include="..\CompanyName.ProjectName.DataDictionaryManagement.Application.Contracts\CompanyName.ProjectName.DataDictionaryManagement.Application.Contracts.csproj" />
   </ItemGroup>

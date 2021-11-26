@@ -1,12 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using CompanyName.ProjectName.Permissions;
+﻿using System.Threading.Tasks;
 using CompanyName.ProjectName.Users;
 using CompanyName.ProjectName.Users.Dtos;
 using CompanyName.ProjectName.Extension.Customs.Dtos;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using Volo.Abp.Account;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Identity;
 

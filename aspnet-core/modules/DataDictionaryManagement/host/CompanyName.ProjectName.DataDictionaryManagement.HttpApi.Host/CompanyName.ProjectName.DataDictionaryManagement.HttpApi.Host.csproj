@@ -3,7 +3,7 @@
   <Import Project="../../../../common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>CompanyName.ProjectName.DataDictionaryManagement</RootNamespace>
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
     <UserSecretsId>CompanyName.ProjectName.DataDictionaryManagement-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>

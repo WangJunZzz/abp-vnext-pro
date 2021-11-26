@@ -2,7 +2,7 @@
 
     <Import Project="..\..\..\..\common.props" />
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="5.1.1" />
