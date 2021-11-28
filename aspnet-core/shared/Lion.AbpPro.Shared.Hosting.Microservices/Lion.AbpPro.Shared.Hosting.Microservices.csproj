@@ -16,4 +16,7 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="$(SwashbuckleVersion)" />
         <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="$(MicrosoftVersion)" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj" />
+    </ItemGroup>
 </Project>

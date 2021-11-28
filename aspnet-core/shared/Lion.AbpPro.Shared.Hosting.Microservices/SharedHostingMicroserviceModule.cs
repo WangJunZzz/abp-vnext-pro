@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -54,6 +55,10 @@ namespace Lion.AbpPro
             context.Services.Configure<AbpExceptionHandlingOptions>(options =>
             {
                 options.SendExceptionsDetailsToClients = SendExceptionsDetails;
+            });
+            context.Services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(ResultExceptionFilter));
             });
         }
 
