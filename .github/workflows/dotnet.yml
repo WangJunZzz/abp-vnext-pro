@@ -1,0 +1,32 @@
+name: CI
+
+# on:
+#   push:
+#     tags:
+#       - "*"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  AbpVnextPrc-CI:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Dotnet 6.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0"
+          include-prerelease: True
+      - name: Build
+        run: dotnet build aspnet-core/Lion.AbpPro.sln
+      - name: Test
+        run: dotnet test aspnet-core/services/test/Lion.AbpPro.Domain.Tests/Lion.AbpPro.Domain.Tests.csproj
+
+    #- name: Restore dependencies
+    #  run: dotnet restore
+    #- name: Build
+    #  run: dotnet build --no-restore
+    # https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/lion.png

@@ -4,9 +4,8 @@
 		<AbpPackageVersion>5.0.0-rc.1</AbpPackageVersion>
 		<DotNetCoreCAPVersion>6.0.0-preview-153999281</DotNetCoreCAPVersion>
 		<MicrosoftVersion>6.0.0</MicrosoftVersion>
-		<MicrosoftExtensionsHttpVersion>5.0.0</MicrosoftExtensionsHttpVersion>
-		<SystemComponentModelAnnotationsVersion>5.0.0</SystemComponentModelAnnotationsVersion>
-		<MicrosoftExtensionsDependencyModelVersion>5.0.0</MicrosoftExtensionsDependencyModelVersion>
+		<SystemComponentModelAnnotationsVersion>6.0.0-preview.4.21253.7</SystemComponentModelAnnotationsVersion>
+		<MicrosoftExtensionsDependencyModelVersion>6.0.0</MicrosoftExtensionsDependencyModelVersion>
 		<SwashbuckleVersion>6.2.3</SwashbuckleVersion>
 		<MicrosoftNETTestSdkVersion>17.0.0</MicrosoftNETTestSdkVersion>
 		<FreeSqlVersion>2.5.200</FreeSqlVersion>
