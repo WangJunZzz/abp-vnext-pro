@@ -7,21 +7,18 @@
         <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4login.png"/></td>
         <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4roole.png"/></td>
     </tr>
-    <tr>
-         <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4hangfire.png"/></td>
-        <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4cap.png"/></td>
-    </tr>
         <tr>
          <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4client.png"/></td>
         <td><img src="https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4identity.png"/></td>
     </tr>
 </table>
 
+
 </div>
 
 #### 项目简介
 
-基于 ABP Vnext4.4.0 的微服务架构，基于 DDD 思想开发，基于 vue3.0,Typescript,Antd 的后台管理框架，适用于大型分布式业务系统和企业后台。
+基于 ABP Vnext 的微服务架构，基于 DDD 思想开发，基于 vue3.0,Typescript,Antd 的后台管理框架，适用于大型分布式业务系统和企业后台。
 
 - [文档地址](http://doc.cncore.club/)
 - [演示地址 ](http://120.24.194.14:8012/)
