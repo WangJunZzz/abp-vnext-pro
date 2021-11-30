@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+	<Import Project="..\..\..\common.props" />
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(MicrosoftVersion)" />
+	  <PackageReference Include="Volo.Abp.AspNetCore.Components.Web.Theming" Version="$(AbpPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.Core" Version="$(AbpPackageVersion)" />
+  </ItemGroup>
+
+</Project>

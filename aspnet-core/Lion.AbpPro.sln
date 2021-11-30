@@ -1,4 +1,3 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31410.414
@@ -134,6 +133,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Extension", "frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj", "{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.CAP", "frameworks\CAP\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj", "{3C3FF821-E43D-4D58-8B3C-1E97F4518EF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Blazor.Layout.AntDesignTheme", "services\src\Lion.AbpPro.Blazor.Layout.AntDesignTheme\Lion.AbpPro.Blazor.Layout.AntDesignTheme.csproj", "{4A87D946-886A-4CCE-9E6B-CCDA16BBEB0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Web.Blazor.WebAssembly", "services\host\Lion.AbpPro.Web.Blazor.WebAssembly\Lion.AbpPro.Web.Blazor.WebAssembly.csproj", "{41E33F8A-E3D2-4F27-8F2E-FDD35D066251}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -313,6 +316,14 @@ Global
 		{3C3FF821-E43D-4D58-8B3C-1E97F4518EF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C3FF821-E43D-4D58-8B3C-1E97F4518EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C3FF821-E43D-4D58-8B3C-1E97F4518EF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A87D946-886A-4CCE-9E6B-CCDA16BBEB0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A87D946-886A-4CCE-9E6B-CCDA16BBEB0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A87D946-886A-4CCE-9E6B-CCDA16BBEB0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A87D946-886A-4CCE-9E6B-CCDA16BBEB0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41E33F8A-E3D2-4F27-8F2E-FDD35D066251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41E33F8A-E3D2-4F27-8F2E-FDD35D066251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41E33F8A-E3D2-4F27-8F2E-FDD35D066251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41E33F8A-E3D2-4F27-8F2E-FDD35D066251}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -375,6 +386,8 @@ Global
 		{D9108313-8D05-4F5F-9AA0-B443EC3374B6} = {5C304CBC-F30D-413C-A0AF-8B6814A2D4A3}
 		{4C65690E-2C17-46A1-BB35-A51BAB2EA3B7} = {C4AC9352-C9F5-4096-8D73-13638232CFB9}
 		{3C3FF821-E43D-4D58-8B3C-1E97F4518EF7} = {11ED8435-B5AE-4BF3-9D4B-51FA1E4A18A6}
+		{4A87D946-886A-4CCE-9E6B-CCDA16BBEB0C} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{41E33F8A-E3D2-4F27-8F2E-FDD35D066251} = {8C1B8C6C-C518-4290-B070-622CCA6004DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

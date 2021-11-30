@@ -271,3 +271,5 @@ content/src/Zzz.DbMigrator/Logs/*
 /aspnet-core/services/host/CompanyName.ProjectName.IdentityServer/publish.zip
 vben271/yarn.lock
 /vben271/_nginx.zip
+/aspnet-core/services/host/Lion.AbpPro.HttpApi.Host/logs
+/aspnet-core/services/host/Lion.AbpPro.IdentityServer/Logs
