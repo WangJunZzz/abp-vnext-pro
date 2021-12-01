@@ -1,9 +1,10 @@
 ﻿using System;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Volo.Abp;
 using Volo.Abp.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
+
 
 namespace Lion.AbpPro.Localization
 {
@@ -46,7 +47,7 @@ namespace Lion.AbpPro.Localization
             }
 
             return StringLocalizerFactory.CreateDefaultOrNull() ??
-                   throw new AbpException(message: L["YH.Bee.Abp:0010"]);
+                   throw new AbpException(message: "Localizer is null");
         }
 
      

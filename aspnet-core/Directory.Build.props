@@ -10,7 +10,7 @@
 		<MicrosoftNETTestSdkVersion>17.0.0</MicrosoftNETTestSdkVersion>
 		<FreeSqlVersion>2.5.200</FreeSqlVersion>
 		<MiniProfilerVersion>4.2.22</MiniProfilerVersion>
-		
+		<MicrosoftAspNetCoreHttpAbstractionsVersion>2.2.0</MicrosoftAspNetCoreHttpAbstractionsVersion>
 		<SerilogVersion>2.10.0</SerilogVersion>
 		<SerilogExtensionsLoggingVersion>3.0.1</SerilogExtensionsLoggingVersion>
 		<SerilogSinksAsyncVersion>1.4.0</SerilogSinksAsyncVersion>
