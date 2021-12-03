@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Volo.Abp.AspNetCore.ExceptionHandling;
+using Volo.Abp.AspNetCore.Mvc.AntiForgery;
 using Volo.Abp.Autofac;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
@@ -31,10 +32,21 @@ namespace Lion.AbpPro
             ConfigureUrls(configuration);
             ConfigureAbpExceptions(context);
             ConfigureConsul(context, configuration);
+            ConfigAntiForgery();
         }
 
   
-
+        /// <summary>
+        /// 阻止跨站点请求伪造
+        /// https://docs.microsoft.com/zh-cn/aspnet/core/security/anti-request-forgery?view=aspnetcore-6.0
+        /// </summary>
+        private void ConfigAntiForgery()
+        {
+            Configure<AbpAntiForgeryOptions>(options =>
+            {
+                options.AutoValidate = false;
+            });
+        }
         private void ConfigureConsul(ServiceConfigurationContext context,
             IConfiguration configuration)
         {

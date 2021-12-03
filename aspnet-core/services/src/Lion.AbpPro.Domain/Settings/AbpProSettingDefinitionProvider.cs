@@ -28,7 +28,7 @@ namespace Lion.AbpPro.Settings
                 .WithProperty(AbpProSettings.Group.Defalut,
                     AbpProSettings.Group.SystemManagement)
                 .WithProperty(AbpProSettings.ControlType.Defalut,
-                    AbpProSettings.ControlType.TypeCheckBox);
+                    AbpProSettings.ControlType.TypeText);
 
             context.GetOrNull("Abp.Identity.Password.RequiredUniqueChars")
                 .WithProperty(AbpProSettings.Group.Defalut,

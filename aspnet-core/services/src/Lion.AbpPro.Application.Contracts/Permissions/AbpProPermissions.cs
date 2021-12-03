@@ -4,13 +4,6 @@ namespace Lion.AbpPro.Permissions
 {
     public static class AbpProPermissions
     {
-        public const string GroupName = "AbpPro";
-
-        public const string AbpIdentityGroupName = "AbpIdentity";
-
-        //Add your own permission names. Example:
-        //public const string MyPermission1 = GroupName + ".MyPermission1";
-
         /// <summary>
         /// 系统管理扩展权限
         /// </summary>

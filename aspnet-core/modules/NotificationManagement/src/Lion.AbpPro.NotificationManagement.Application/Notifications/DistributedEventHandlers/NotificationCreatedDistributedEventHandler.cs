@@ -20,7 +20,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.DistributedEventHandl
             _hubAppService = hubAppService;
         }
 
-        public Task HandleEventAsync(CreatedNotificationDistributedEvent eventData)
+        public virtual Task HandleEventAsync(CreatedNotificationDistributedEvent eventData)
         {
             return _hubAppService.SendMessageAsync(
                 eventData.NotificationEto.Title,
