@@ -28,13 +28,13 @@ namespace Lion.AbpPro.Settings
                 .WithProperty(AbpProSettings.Group.Defalut,
                     AbpProSettings.Group.SystemManagement)
                 .WithProperty(AbpProSettings.ControlType.Defalut,
-                    AbpProSettings.ControlType.TypeText);
+                    AbpProSettings.ControlType.Number);
 
             context.GetOrNull("Abp.Identity.Password.RequiredUniqueChars")
                 .WithProperty(AbpProSettings.Group.Defalut,
                     AbpProSettings.Group.SystemManagement)
                 .WithProperty(AbpProSettings.ControlType.Defalut,
-                    AbpProSettings.ControlType.TypeCheckBox);
+                    AbpProSettings.ControlType.Number);
 
             context.GetOrNull("Abp.Identity.Password.RequireNonAlphanumeric")
                 .WithProperty(AbpProSettings.Group.Defalut,
