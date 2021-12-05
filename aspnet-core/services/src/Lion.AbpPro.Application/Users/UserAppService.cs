@@ -79,6 +79,7 @@ namespace Lion.AbpPro.Users
         [Authorize(IdentityPermissions.Users.Update)]
         public virtual async Task<IdentityUserDto> UpdateAsync(UpdateUserInput input)
         {
+            input.UserInfo.IsActive = true;
             return await _identityUserAppService.UpdateAsync(input.UserId, input.UserInfo);
         }
 

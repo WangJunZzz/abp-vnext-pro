@@ -157,6 +157,10 @@ export const useUserStore = defineStore({
       const application = await getAbpApplicationConfiguration();
       const permissionStore = usePermissionStore();
       const grantPolicy = Object.keys(application.auth?.grantedPolicies as object);
+      if (grantPolicy.length == 0) {
+        router.replace(PageEnum.BASE_LOGIN);
+        return;
+      }
       permissionStore.setPermCodeList(grantPolicy);
     },
 
