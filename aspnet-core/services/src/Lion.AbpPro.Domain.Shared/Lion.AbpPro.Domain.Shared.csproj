@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="$(MicrosoftAspNetCoreHttpAbstractionsVersion)" />
     <PackageReference Include="Volo.Abp.Identity.Domain.Shared" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.IdentityServer.Domain.Shared" Version="$(AbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.BackgroundJobs.Domain.Shared" Version="$(AbpPackageVersion)" />
@@ -30,9 +31,5 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj" />
   </ItemGroup>
-
- 
-
-
 
 </Project>

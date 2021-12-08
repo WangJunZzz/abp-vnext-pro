@@ -50,7 +50,8 @@ export function createPermissionGuard(router: Router) {
         return;
       }
     } else {
-      router.replace(PageEnum.BASE_LOGIN);
+      next({path:PageEnum.BASE_LOGIN})
+      //router.replace(PageEnum.BASE_LOGIN);
       return;
     }
 

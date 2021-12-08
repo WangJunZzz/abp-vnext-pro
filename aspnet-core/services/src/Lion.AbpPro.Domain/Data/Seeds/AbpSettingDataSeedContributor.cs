@@ -9,7 +9,7 @@ namespace Lion.AbpPro.Data.Seeds
     {
         private readonly ISettingManager _settingManager;
         private const string DefaultLanguageKey = "Abp.Localization.DefaultLanguage";
-        private const string DefaultLanguage = "zh-hans";
+        private const string DefaultLanguage = "zh-Hans";
         public AbpSettingDataSeedContributor(ISettingManager settingManager)
         {
             _settingManager = settingManager;

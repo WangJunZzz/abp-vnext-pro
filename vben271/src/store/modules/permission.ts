@@ -165,6 +165,7 @@ export const usePermissionStore = defineStore({
 
         case PermissionModeEnum.ROUTE_MAPPING:
           const permissions = this.getPermCodeList;
+
           const roleRouteFilter = (route: AppRouteRecordRaw) => {
             const { meta } = route;
             const { policy } = meta || {};
@@ -173,6 +174,8 @@ export const usePermissionStore = defineStore({
               ? true
               : permissions.includes(policy as string);
           };
+          console.log(roleRouteFilter);
+          console.log(asyncRoutes);
           routes = filter(asyncRoutes, roleRouteFilter);
           routes = routes.filter(roleRouteFilter);
           routes = routes.filter((e) => e.path.startsWith('/dashboard') || e.children?.length != 0);

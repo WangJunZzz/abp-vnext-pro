@@ -12,6 +12,7 @@ namespace Lion.AbpPro.Settings
             public const string Defalut = "Type";
             public const string TypeText = "Text";
             public const string TypeCheckBox = "CheckBox";
+            public const string Number = "Number";
         }
 
         /// <summary>

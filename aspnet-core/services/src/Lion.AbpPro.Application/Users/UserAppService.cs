@@ -66,6 +66,8 @@ namespace Lion.AbpPro.Users
         [Authorize(IdentityPermissions.Users.Create)]
         public async Task<IdentityUserDto> CreateAsync(IdentityUserCreateDto input)
         {
+            // abp 5.0 之后新增字段,是否运行用户登录，默认设置为true
+            input.IsActive = true;
             return await _identityUserAppService.CreateAsync(input);
         }
 
@@ -77,6 +79,7 @@ namespace Lion.AbpPro.Users
         [Authorize(IdentityPermissions.Users.Update)]
         public virtual async Task<IdentityUserDto> UpdateAsync(UpdateUserInput input)
         {
+            input.UserInfo.IsActive = true;
             return await _identityUserAppService.UpdateAsync(input.UserId, input.UserInfo);
         }
 

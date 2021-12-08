@@ -1,3 +1,4 @@
+using Lion.AbpPro.Localization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ namespace Lion.AbpPro
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             app.InitializeApplication();
+            app.InitializeLocalization();
         }
     }
 }
