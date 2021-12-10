@@ -1,7 +1,8 @@
-﻿<Router AppAssembly="@typeof(App).Assembly" AdditionalAssemblies="new[] { typeof(AbpProBlazorLayoutAntDesignThemeModule).Assembly }">
+﻿
+<Router AppAssembly="@typeof(App).Assembly" AdditionalAssemblies="new[] { typeof(AbpProBlazorLayoutAntDesignThemeModule).Assembly }">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        <ReuseTabsRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"></ReuseTabsRouteView>
+        @* <FocusOnNavigate RouteData="@routeData" Selector="h1" />*@
     </Found>
     <NotFound>
         <PageTitle>Not found</PageTitle>

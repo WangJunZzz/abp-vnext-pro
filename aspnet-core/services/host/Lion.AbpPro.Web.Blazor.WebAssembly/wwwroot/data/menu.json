@@ -1,0 +1,95 @@
+﻿[
+  {
+    "path": "/",
+    "name": "首页",
+    "key": "dashboard",
+    "icon": "dashboard"
+  },
+  {
+    "name": "系统管理",
+    "key": "system-management",
+    "icon": "table",
+    "children": [
+      {
+        "path": "/user/roles",
+        "name": "角色",
+        "key": "roles",
+        "icon": "dashboard"
+      },
+      {
+        "path": "/account/users",
+        "name": "用户",
+        "key": "users",
+        "icon": "dashboard"
+      },
+      {
+        "path": "/system/auditlogs",
+        "name": "审计日志",
+        "key": "auditlogs",
+        "icon": "dashboard"
+      },
+      {
+        "path": "/system/eslogs",
+        "name": "ES日志",
+        "key": "eslogs",
+        "icon": "dashboard"
+      }
+    ]
+  },
+  {
+    "name": "身份认证服务",
+    "key": "identity-server",
+    "icon": "table",
+    "children": [
+      {
+        "path": "/identity-server/clients",
+        "name": "客户端",
+        "key": "clients",
+        "icon": "dashboard"
+      },
+      {
+        "path": "/identity-server/identity-resources",
+        "name": "Identity资源",
+        "key": "identity-resources",
+        "icon": "dashboard"
+      },
+      {
+        "path": "/identity-server/api-resources",
+        "name": "Api资源",
+        "key": "api-resources",
+        "icon": "dashboard"
+      },
+      {
+        "path": "/identity-server/api-scopes",
+        "name": "Api Scope",
+        "key": "api-scopes",
+        "icon": "dashboard"
+      }
+    ]
+  },
+  {
+    "name": "语言管理",
+    "key": "languagemanagement",
+    "icon": "dashboard",
+    "children": [
+      {
+        "path": "/list/search/languages",
+        "name": "语言",
+        "key": "list.search.languages",
+        "icon": "dashboard"
+      },
+      {
+        "path": "/list/search/api-scopes",
+        "name": "语言文本",
+        "key": "list.search.api-scopes",
+        "icon": "dashboard"
+      }
+    ]
+  },
+  {
+    "path": "/system/settings",
+    "name": "设置",
+    "key": "settings",
+    "icon": "dashboard"
+  }
+]

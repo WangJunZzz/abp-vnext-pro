@@ -134,11 +134,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Extension", "fr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.CAP", "frameworks\CAP\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj", "{3C3FF821-E43D-4D58-8B3C-1E97F4518EF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Blazor.Layout.AntDesignTheme", "services\src\Lion.AbpPro.Blazor.Layout.AntDesignTheme\Lion.AbpPro.Blazor.Layout.AntDesignTheme.csproj", "{4A87D946-886A-4CCE-9E6B-CCDA16BBEB0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Blazor.Layout.AntDesignTheme", "services\src\Lion.AbpPro.Blazor.Layout.AntDesignTheme\Lion.AbpPro.Blazor.Layout.AntDesignTheme.csproj", "{4A87D946-886A-4CCE-9E6B-CCDA16BBEB0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Web.Blazor.WebAssembly", "services\host\Lion.AbpPro.Web.Blazor.WebAssembly\Lion.AbpPro.Web.Blazor.WebAssembly.csproj", "{7DEEF8D0-84F0-4A9B-9268-C0185CC7C365}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Web.Blazor.WebAssembly", "services\host\Lion.AbpPro.Web.Blazor.WebAssembly\Lion.AbpPro.Web.Blazor.WebAssembly.csproj", "{7DEEF8D0-84F0-4A9B-9268-C0185CC7C365}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Web.Blazor.Server", "services\host\Lion.AbpPro.Web.Blazor.Server\Lion.AbpPro.Web.Blazor.Server.csproj", "{2C65E22D-0D98-474F-B52C-2A0C036FE2F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Web.Blazor.Server", "services\host\Lion.AbpPro.Web.Blazor.Server\Lion.AbpPro.Web.Blazor.Server.csproj", "{2C65E22D-0D98-474F-B52C-2A0C036FE2F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
