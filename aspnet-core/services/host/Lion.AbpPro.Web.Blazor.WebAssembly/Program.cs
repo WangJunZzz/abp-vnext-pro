@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Lion.AbpPro.Web.Blazor.WebAssembly;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace Lion.AbpPro.Web.Blazor
