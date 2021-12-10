@@ -1,4 +1,5 @@
-﻿using Lion.AbpPro.Web.Blazor.Server.Data;
+﻿using Lion.AbpPro.Blazor.Layout.AntDesignTheme;
+using Lion.AbpPro.Web.Blazor.Server.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,7 +11,8 @@ using Volo.Abp.Modularity;
 namespace Lion.AbpPro.Web.Blazor.Server
 {
     [DependsOn(typeof(AbpAutofacModule),
-        typeof(AbpAspNetCoreSerilogModule))]
+        typeof(AbpAspNetCoreSerilogModule),
+        typeof(AbpProBlazorLayoutAntDesignThemeModule))]
     public class AbpProWebBlazorServerModule:AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)

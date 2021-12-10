@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+      <PackageReference Include="AntDesign" Version="0.10.2" />
       <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(MicrosoftVersion)" />
 	  <PackageReference Include="Volo.Abp.AspNetCore.Components.Web.Theming" Version="$(AbpPackageVersion)" />
 	  <PackageReference Include="Volo.Abp.Core" Version="$(AbpPackageVersion)" />
