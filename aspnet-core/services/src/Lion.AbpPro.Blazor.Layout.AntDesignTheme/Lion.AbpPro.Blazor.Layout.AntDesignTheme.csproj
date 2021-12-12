@@ -11,10 +11,16 @@
 
   <ItemGroup>
       <PackageReference Include="AntDesign" Version="0.10.2" />
-	 
-      <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(MicrosoftVersion)" />
+	  <PackageReference Include="AntDesign.ProLayout" Version="0.1.9" />
+	  <PackageReference Include="Blazored.LocalStorage" Version="4.1.5" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(MicrosoftVersion)" />
+	  <PackageReference Include="Volo.Abp.Autofac.WebAssembly" Version="$(AbpPackageVersion)" />
 	  <PackageReference Include="Volo.Abp.AspNetCore.Components.Web.Theming" Version="$(AbpPackageVersion)" />
 	  <PackageReference Include="Volo.Abp.Core" Version="$(AbpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lion.AbpPro.HttpApi.Client\Lion.AbpPro.HttpApi.Client.csproj" />
   </ItemGroup>
 
 </Project>
