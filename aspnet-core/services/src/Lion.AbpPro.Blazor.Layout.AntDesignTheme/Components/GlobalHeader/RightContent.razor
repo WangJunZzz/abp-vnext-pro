@@ -2,44 +2,44 @@
 @inherits AntDomComponentBase
 <Space Class="@ClassMapper.Class" Size="@("24")">
 
-    <!--通知-->
-    <SpaceItem>
-        <NoticeIcon ClearText="Empty"
-                    ViewMoreText="see more"
-                    Count="0"
-                    OnClear="HandleClear"
-                    OnViewMore="HandleViewMore">
-            <NoticeList TabKey="message"
-                        Title="消息"
-                        EmptyText="你已阅读所有站内消息"
-                        ShowViewMore=true
-                        Data="null" />
-            <NoticeList TabKey="notification"
-                        Title="通知"
-                        EmptyText="你已阅读所有通知消息"
-                        ShowViewMore=true
-                        Data="null" />
-        </NoticeIcon>
-    </SpaceItem>
-
-    <!--语言-->
-    <SpaceItem>
-        <SelectLang OnItemSelected="HandleSelectLang" LanguageIcons="_languageIcons"  LanguageLabels="_languageLabels"  Locales="_locales" />
-    </SpaceItem>
-
-    <!--账户信息-->
-    <SpaceItem>
-        <AvatarDropdown Name="admin"
-                        Avatar="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
-                        MenuItems="AvatarMenuItems"
-                        OnItemSelected="HandleSelectUser" />
-    </SpaceItem>
-
-    <!--最大化-->
-    <SpaceItem>
-        <AntDesign.Tooltip Placement="@Placement.Bottom" Title="FullScreenTipMsg">
-            <Button Icon="fullscreen" Type="@ButtonType.Text"></Button>
-        </AntDesign.Tooltip>
-    </SpaceItem>
+    @* <!--通知--> *@
+    @* <SpaceItem> *@
+    @*     <NoticeIcon ClearText="Empty" *@
+    @*                 ViewMoreText="see more" *@
+    @*                 Count="0" *@
+    @*                 OnClear="HandleClear" *@
+    @*                 OnViewMore="HandleViewMore"> *@
+    @*         <NoticeList TabKey="message" *@
+    @*                     Title="消息" *@
+    @*                     EmptyText="你已阅读所有站内消息" *@
+    @*                     ShowViewMore=true *@
+    @*                     Data="null" /> *@
+    @*         <NoticeList TabKey="notification" *@
+    @*                     Title="通知" *@
+    @*                     EmptyText="你已阅读所有通知消息" *@
+    @*                     ShowViewMore=true *@
+    @*                     Data="null" /> *@
+    @*     </NoticeIcon> *@
+    @* </SpaceItem> *@
+    @* *@
+    @* <!--语言--> *@
+    @* <SpaceItem> *@
+    @*     <SelectLang OnItemSelected="HandleSelectLang" LanguageIcons="_languageIcons"  LanguageLabels="_languageLabels"  Locales="_locales" /> *@
+    @* </SpaceItem> *@
+    @* *@
+    @* <!--账户信息--> *@
+    @* <SpaceItem> *@
+    @*     <AvatarDropdown Name="admin" *@
+    @*                     Avatar="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png" *@
+    @*                     MenuItems="AvatarMenuItems" *@
+    @*                     OnItemSelected="HandleSelectUser" /> *@
+    @* </SpaceItem> *@
+    @* *@
+    @* <!--最大化--> *@
+    @* <SpaceItem> *@
+    @*     <AntDesign.Tooltip Placement="@Placement.Bottom" Title="FullScreenTipMsg"> *@
+    @*         <Button Icon="fullscreen" Type="@ButtonType.Text"></Button> *@
+    @*     </AntDesign.Tooltip> *@
+    @* </SpaceItem> *@
 
 </Space>

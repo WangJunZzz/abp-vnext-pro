@@ -13,7 +13,8 @@ namespace Lion.AbpPro.Web.Blazor.WebAssembly
     [DependsOn(
         typeof(AbpAutofacWebAssemblyModule),
         typeof(AbpAspNetCoreComponentsWebAssemblyBasicThemeModule),
-        typeof(AbpProBlazorLayoutAntDesignThemeModule)
+        typeof(AbpProBlazorLayoutAntDesignThemeModule),
+        typeof(AbpProHttpApiClientModule)
     )]
     public class WebBlazorWebAssemblyModule:AbpModule
     {

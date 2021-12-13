@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Lion.AbpPro.Blazor.Layout.AntDesignTheme\Lion.AbpPro.Blazor.Layout.AntDesignTheme.csproj" />
+    <ProjectReference Include="..\..\src\Lion.AbpPro.HttpApi.Client\Lion.AbpPro.HttpApi.Client.csproj" />
   </ItemGroup>
 
   <ItemGroup>
