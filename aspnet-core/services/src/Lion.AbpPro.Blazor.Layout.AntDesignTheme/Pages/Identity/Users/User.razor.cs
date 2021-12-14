@@ -1,17 +1,15 @@
 ﻿using System.Threading.Tasks;
 using Lion.AbpPro.Users;
 using Lion.AbpPro.Users.Dtos;
+using Microsoft.AspNetCore.Components;
 
 namespace Lion.AbpPro.Blazor.Layout.AntDesignTheme.Pages.Identity.Users;
 
 public partial class User
 {
-    private readonly IAccountAppService _accountAppService;
+    [Inject] protected  IAccountAppService _accountAppService { get; set; }
 
-    public User(IAccountAppService accountAppService)
-    {
-        _accountAppService = accountAppService;
-    }
+
 
     protected override async Task OnInitializedAsync()
     {
