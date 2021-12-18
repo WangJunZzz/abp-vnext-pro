@@ -6,6 +6,6 @@
 		<AbpProjectType>app</AbpProjectType>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<RepositoryUrl>https://github.com/WangJunZzz/abp-vnext-pro</RepositoryUrl>
-		<PackageIcon>https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/06.jpg</PackageIcon>
+		<PackageIconUrl>https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/06.jpg</PackageIconUrl>
 	</PropertyGroup>
 </Project>
