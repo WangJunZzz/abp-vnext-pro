@@ -5,5 +5,7 @@
 		<NoWarn>$(NoWarn);CS1591;CS0436</NoWarn>
 		<AbpProjectType>app</AbpProjectType>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<RepositoryUrl>https://github.com/WangJunZzz/abp-vnext-pro</RepositoryUrl>
+		<PackageIconUrl>https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/06.jpg</PackageIconUrl>
 	</PropertyGroup>
 </Project>

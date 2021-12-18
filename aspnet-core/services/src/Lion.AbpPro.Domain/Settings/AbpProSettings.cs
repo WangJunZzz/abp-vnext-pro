@@ -9,7 +9,7 @@ namespace Lion.AbpPro.Settings
         /// </summary>
         public static class ControlType
         {
-            public const string Defalut = "Type";
+            public const string Default = "Type";
             public const string TypeText = "Text";
             public const string TypeCheckBox = "CheckBox";
             public const string Number = "Number";
@@ -20,9 +20,9 @@ namespace Lion.AbpPro.Settings
         /// </summary>
         public static class Group
         {
-            public const string Defalut = "Setting.Group";
-            public const string SystemManagement = Defalut + ".System";
-            public const string OtherManagement = Defalut + ".Other";
+            public const string Default = "Setting.Group";
+            public const string SystemManagement = Default + ".System";
+            public const string OtherManagement = Default + ".Other";
         }
 
         /// <summary>
@@ -30,8 +30,8 @@ namespace Lion.AbpPro.Settings
         /// </summary>
         public static class Other
         {
-            private const string Defalut = "Setting.Group.Other";
-            public const string Github = Defalut + ".Github";
+            private const string Default = "Setting.Group.Other";
+            public const string Github = Default + ".Github";
         }
     }
 }

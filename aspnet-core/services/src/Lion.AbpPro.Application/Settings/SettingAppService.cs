@@ -35,10 +35,10 @@ namespace Lion.AbpPro.Settings
         {
             var allSettings = _settingDefinitionManager.GetAll().ToList();
             var settings = allSettings
-                .Where(e => e.Properties.ContainsKey(AbpProSettings.Group.Defalut)).ToList();
+                .Where(e => e.Properties.ContainsKey(AbpProSettings.Group.Default)).ToList();
 
             var settingOutput = settings
-                .GroupBy(e => e.Properties[AbpProSettings.Group.Defalut].ToString()).Select(s =>
+                .GroupBy(e => e.Properties[AbpProSettings.Group.Default].ToString()).Select(s =>
                     new SettingOutput
                     {
                         Group = s.Key,
@@ -53,12 +53,12 @@ namespace Lion.AbpPro.Settings
                   
                     var value = await SettingProvider.GetOrNullAsync(itemDefinition.Name);
                     var type = itemDefinition.Properties
-                        .FirstOrDefault(f => f.Key == AbpProSettings.ControlType.Defalut).Value
+                        .FirstOrDefault(f => f.Key == AbpProSettings.ControlType.Default).Value
                         .ToString();
                     
                     item.SettingItemOutput.Add(new SettingItemOutput(
                         itemDefinition.Name,
-                        L["DisplayName:" + itemDefinition.Name],
+                        itemDefinition.DisplayName.Localize(_factory),
                         value,
                         type,
                         itemDefinition.Description.Localize(_factory)));

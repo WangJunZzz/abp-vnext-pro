@@ -19,45 +19,45 @@ namespace Lion.AbpPro.Settings
         private static void OverrideDefalutSettings(ISettingDefinitionContext context)
         {
             context.GetOrNull("Abp.Localization.DefaultLanguage")
-                .WithProperty(AbpProSettings.Group.Defalut,
+                .WithProperty(AbpProSettings.Group.Default,
                     AbpProSettings.Group.SystemManagement)
-                .WithProperty(AbpProSettings.ControlType.Defalut,
+                .WithProperty(AbpProSettings.ControlType.Default,
                     AbpProSettings.ControlType.TypeText);
 
             context.GetOrNull("Abp.Identity.Password.RequiredLength")
-                .WithProperty(AbpProSettings.Group.Defalut,
+                .WithProperty(AbpProSettings.Group.Default,
                     AbpProSettings.Group.SystemManagement)
-                .WithProperty(AbpProSettings.ControlType.Defalut,
+                .WithProperty(AbpProSettings.ControlType.Default,
                     AbpProSettings.ControlType.Number);
 
             context.GetOrNull("Abp.Identity.Password.RequiredUniqueChars")
-                .WithProperty(AbpProSettings.Group.Defalut,
+                .WithProperty(AbpProSettings.Group.Default,
                     AbpProSettings.Group.SystemManagement)
-                .WithProperty(AbpProSettings.ControlType.Defalut,
+                .WithProperty(AbpProSettings.ControlType.Default,
                     AbpProSettings.ControlType.Number);
 
             context.GetOrNull("Abp.Identity.Password.RequireNonAlphanumeric")
-                .WithProperty(AbpProSettings.Group.Defalut,
+                .WithProperty(AbpProSettings.Group.Default,
                     AbpProSettings.Group.SystemManagement)
-                .WithProperty(AbpProSettings.ControlType.Defalut,
+                .WithProperty(AbpProSettings.ControlType.Default,
                     AbpProSettings.ControlType.TypeCheckBox);
 
             context.GetOrNull("Abp.Identity.Password.RequireLowercase")
-                .WithProperty(AbpProSettings.Group.Defalut,
+                .WithProperty(AbpProSettings.Group.Default,
                     AbpProSettings.Group.SystemManagement)
-                .WithProperty(AbpProSettings.ControlType.Defalut,
+                .WithProperty(AbpProSettings.ControlType.Default,
                     AbpProSettings.ControlType.TypeCheckBox);
 
             context.GetOrNull("Abp.Identity.Password.RequireUppercase")
-                .WithProperty(AbpProSettings.Group.Defalut,
+                .WithProperty(AbpProSettings.Group.Default,
                     AbpProSettings.Group.SystemManagement)
-                .WithProperty(AbpProSettings.ControlType.Defalut,
+                .WithProperty(AbpProSettings.ControlType.Default,
                     AbpProSettings.ControlType.TypeCheckBox);
 
             context.GetOrNull("Abp.Identity.Password.RequireDigit")
-                .WithProperty(AbpProSettings.Group.Defalut,
+                .WithProperty(AbpProSettings.Group.Default,
                     AbpProSettings.Group.SystemManagement)
-                .WithProperty(AbpProSettings.ControlType.Defalut,
+                .WithProperty(AbpProSettings.ControlType.Default,
                     AbpProSettings.ControlType.TypeCheckBox);
 
             context.Add(new SettingDefinition(
@@ -65,9 +65,9 @@ namespace Lion.AbpPro.Settings
                     "https://github.com/WangJunZzz/abp-vnext-pro",
                     L("DisplayName:" + AbpProSettings.Other.Github),
                     L("Description:" + AbpProSettings.Other.Github)
-                ).WithProperty(AbpProSettings.Group.Defalut,
+                ).WithProperty(AbpProSettings.Group.Default,
                     AbpProSettings.Group.OtherManagement)
-                .WithProperty(AbpProSettings.ControlType.Defalut,
+                .WithProperty(AbpProSettings.ControlType.Default,
                     AbpProSettings.ControlType.TypeText));
         }
 
