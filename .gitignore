@@ -278,3 +278,5 @@ vben271/yarn.lock
 /aspnet-core/services/host/Lion.AbpPro.IdentityServer/appsettings.Production.json
 /aspnet-core/services/host/Lion.AbpPro.HttpApi.Host/appsettings.Production.json
 aspnet-core/services/host/Lion.AbpPro.Web.Blazor.Server/Logs/logs.txt
+/nupkgs
+/aspnet-core/Lion.AbpPro.sln.DotSettings
