@@ -1,7 +1,7 @@
 ﻿<Project>
 
 	<PropertyGroup>
-		<AbpPackageVersion>5.0.0</AbpPackageVersion>
+		<AbpPackageVersion>5.0.1</AbpPackageVersion>
 		<DotNetCoreCAPVersion>6.0.0-preview-153999281</DotNetCoreCAPVersion>
 		<MicrosoftVersion>6.0.0</MicrosoftVersion>
 		<SystemComponentModelAnnotationsVersion>6.0.0-preview.4.21253.7</SystemComponentModelAnnotationsVersion>
@@ -13,12 +13,12 @@
 		<MicrosoftAspNetCoreHttpAbstractionsVersion>2.2.0</MicrosoftAspNetCoreHttpAbstractionsVersion>
 		<SerilogVersion>2.10.0</SerilogVersion>
 		<SerilogExtensionsLoggingVersion>3.0.1</SerilogExtensionsLoggingVersion>
-		<SerilogSinksAsyncVersion>1.4.0</SerilogSinksAsyncVersion>
+		<SerilogSinksAsyncVersion>1.5.0</SerilogSinksAsyncVersion>
 		<SerilogSinksFileVersion>5.0.0</SerilogSinksFileVersion>
-		<SerilogSinksConsoleVersion>3.1.1</SerilogSinksConsoleVersion>
+		<SerilogSinksConsoleVersion>4.0.0</SerilogSinksConsoleVersion>
 		<SerilogAspNetCoreVersion>4.1.0</SerilogAspNetCoreVersion>
 		<SerilogExceptionsVersion>7.0.0</SerilogExceptionsVersion>
-		<SerilogSettingsConfigurationVersion>3.1.0</SerilogSettingsConfigurationVersion>
+		<SerilogSettingsConfigurationVersion>3.3.0</SerilogSettingsConfigurationVersion>
 		<SerilogSinksElasticsearchVersion>8.4.1</SerilogSinksElasticsearchVersion>
 		<NewtonsoftJsonVersion>13.0.1</NewtonsoftJsonVersion>
 		<NESTVersion>7.15.1</NESTVersion>

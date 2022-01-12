@@ -77,7 +77,7 @@ namespace Microsoft.AspNetCore.Mvc.Filters
             var statusCode = (int)_statusCodeFinder.GetStatusCode(context.HttpContext, context.Exception);
             context.HttpContext.Response.StatusCode = 200;
 
-            var remoteServiceErrorInfo = _errorInfoConverter.Convert(context.Exception, _exceptionHandlingOptions.SendExceptionsDetailsToClients);
+            var remoteServiceErrorInfo = _errorInfoConverter.Convert(context.Exception, options => { options.SendExceptionsDetailsToClients = _exceptionHandlingOptions.SendExceptionsDetailsToClients; });
             remoteServiceErrorInfo.Code = context.HttpContext.TraceIdentifier;
             remoteServiceErrorInfo.Message = SimplifyMessage(context.Exception);
             var result = new WrapResult<object>();

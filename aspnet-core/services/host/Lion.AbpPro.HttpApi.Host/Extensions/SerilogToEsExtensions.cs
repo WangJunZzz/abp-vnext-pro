@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Exceptions;
+using Serilog.Exceptions.Core;
 using Serilog.Sinks.Elasticsearch;
 using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
 
 namespace Lion.AbpPro.Extensions
 {
@@ -14,8 +16,14 @@ namespace Lion.AbpPro.Extensions
     {
         public static void SetSerilogConfiguration(LoggerConfiguration loggerConfiguration, IConfiguration configuration)
         {
-           
+            // 默认读取 configuration 中 "Serilog" 节点下的配置
+            loggerConfiguration.ReadFrom.Configuration(configuration)
+                .ReadFrom.Configuration(configuration)
+                .Enrich.FromLogContext()
+                .WriteTo.Console();
+
             var writeToElasticSearch = configuration.GetValue("ElasticSearch:Enabled", false);
+
 
             // LogToElasticSearch:Enabled = true 才输出至ES
             if (!writeToElasticSearch)

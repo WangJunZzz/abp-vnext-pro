@@ -45,20 +45,17 @@ namespace Lion.AbpPro
 {
     [DependsOn(
         typeof(AbpProHttpApiModule),
-        typeof(AbpAutofacModule),
-        typeof(AbpCachingStackExchangeRedisModule),
-        typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
-        typeof(AbpProApplicationModule),
-        typeof(AbpProEntityFrameworkCoreModule),
-        typeof(AbpAspNetCoreSerilogModule),
-        typeof(AbpSwashbuckleModule),
-        typeof(AbpAccountWebModule),
-        typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
-        typeof(AbpBackgroundJobsHangfireModule),
-        typeof(AbpProAbpCapModule),
-        typeof(AbpAspNetCoreMultiTenancyModule),
         typeof(SharedHostingMicroserviceModule),
-        typeof(AbpAspNetCoreMvcUiBasicThemeModule)
+        typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
+        typeof(AbpProEntityFrameworkCoreModule),
+        typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
+        typeof(AbpAspNetCoreSerilogModule),
+        typeof(AbpAccountWebModule),
+        typeof(AbpBackgroundJobsHangfireModule),
+        typeof(AbpProApplicationModule),
+        typeof(AbpProAbpCapModule),
+        typeof(AbpAspNetCoreMvcUiBasicThemeModule),
+        typeof(AbpCachingStackExchangeRedisModule)
     )]
     public class AbpProHttpApiHostModule : AbpModule
     {

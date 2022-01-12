@@ -13,27 +13,8 @@ namespace Lion.AbpPro
     {
         public static void Main(string[] args)
         {
-            try
-            {
-                var configuration = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? ""}.json", true)
-                    .Build();
-
-                Log.Logger = new LoggerConfiguration()
-                    .ReadFrom.Configuration(configuration)
-                    .Enrich.FromLogContext()
-                    .CreateLogger();
-                CreateHostBuilder(args).Build().Run();
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "Host terminated unexpectedly!");
-            }
-            finally
-            {
-                Log.CloseAndFlush();
-            }
+            CreateHostBuilder(args).Build().Run();
+          
         }
 
         private static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -45,7 +26,9 @@ namespace Lion.AbpPro
                 })
                 .UseSerilog((context, loggerConfiguration) =>
                 {
-                    SerilogToEsExtensions.SetSerilogConfiguration(loggerConfiguration,context.Configuration);
+                    SerilogToEsExtensions.SetSerilogConfiguration(
+                        loggerConfiguration,
+                        context.Configuration);
                 }).UseAutofac();
     }
 }

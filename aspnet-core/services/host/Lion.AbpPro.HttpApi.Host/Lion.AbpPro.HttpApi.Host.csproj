@@ -29,6 +29,7 @@
     <PackageReference Include="Serilog.Sinks.Console" Version="$(SerilogSinksConsoleVersion)" />
     <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="$(SerilogSinksElasticsearchVersion)" />
     <PackageReference Include="Serilog.Sinks.File" Version="$(SerilogSinksFileVersion)" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="$(SerilogSinksAsyncVersion)" />
     <PackageReference Include="Hangfire.MySqlStorage" Version="$(HangfireMySqlStorageVersion)" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="$(MicrosoftVersion)" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="$(AbpPackageVersion)" />
