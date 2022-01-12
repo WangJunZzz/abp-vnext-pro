@@ -110,10 +110,7 @@ namespace Lion.AbpPro
 
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
-            app.UseSerilogRequestLogging(opts =>
-            {
-                opts.EnrichDiagnosticContext = SerilogToEsExtensions.EnrichFromRequest;
-            });
+       
             app.UseUnitOfWork();
             app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
             app.UseHangfireDashboard("/hangfire", new DashboardOptions()
