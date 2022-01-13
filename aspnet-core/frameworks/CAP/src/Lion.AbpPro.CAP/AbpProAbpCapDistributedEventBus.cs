@@ -29,14 +29,19 @@ namespace Lion.AbpPro.CAP
 
         private readonly UnitOfWorkManager _unitOfWorkManager;
         
+        private IEventHandlerInvoker EventHandlerInvoker { get; }
+        
         public AbpProAbpCapDistributedEventBus(IServiceScopeFactory serviceScopeFactory,
             IOptions<AbpDistributedEventBusOptions> distributedEventBusOptions,
             ICapPublisher capPublisher,
-            ICurrentTenant currentTenant, UnitOfWorkManager unitOfWorkManager)
-            : base(serviceScopeFactory, currentTenant,unitOfWorkManager)
+            ICurrentTenant currentTenant,
+            UnitOfWorkManager unitOfWorkManager,
+            IEventHandlerInvoker eventHandlerInvoker)
+            : base(serviceScopeFactory, currentTenant,unitOfWorkManager,eventHandlerInvoker)
         {
             CapPublisher = capPublisher;
             _unitOfWorkManager = unitOfWorkManager;
+            EventHandlerInvoker = eventHandlerInvoker;
             AbpDistributedEventBusOptions = distributedEventBusOptions.Value;
             HandlerFactories = new ConcurrentDictionary<Type, List<IEventHandlerFactory>>();
             EventTypes = new ConcurrentDictionary<string, Type>();
