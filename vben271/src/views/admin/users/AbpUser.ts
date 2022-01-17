@@ -38,9 +38,9 @@ export const tableColumns: BasicColumn[] = [
     dataIndex: 'phoneNumber',
   },
   {
-    title: t('routes.admin.userManagement_locked'),
-    dataIndex: 'lockoutEnabled',
-    slots: { customRender: 'lockoutEnabled' },
+    title: t('common.status'),
+    dataIndex: 'isActive',
+    slots: { customRender: 'isActive' },
   },
   {
     title: t('routes.admin.userManagement_createTime'),

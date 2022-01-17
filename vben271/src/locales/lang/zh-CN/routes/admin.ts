@@ -21,7 +21,6 @@ export default {
   roleManagement_create_role: '创建角色',
   roleManagement_permission: '授权',
   userManagement_locked: '锁定',
-
   audit_executeTime: '执行时间',
   audit_userName: '用户名',
   audit_httpMethod: 'Http方法',

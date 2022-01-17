@@ -30,4 +30,6 @@ export default {
   action: 'Action',
   creationTime: 'CreationTime',
   detail: 'Detail',
+  status: 'Status',
+  active: 'IsActive',
 };

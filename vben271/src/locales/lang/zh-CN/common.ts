@@ -33,4 +33,6 @@ export default {
   key: '关键字',
   creationTime: '创建时间',
   detail: '详情',
+  status: '状态',
+  active: '是否激活',
 };

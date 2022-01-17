@@ -52,11 +52,10 @@ namespace Lion.AbpPro.Users
 
         public async Task<LoginOutput> LoginAsync(LoginInput input)
         {
-            var result =
-                await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
-            if (result.IsLockedOut)
+            var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
+            if (result.IsNotAllowed)
             {
-                throw new UserFriendlyException("当前用户已被锁定");
+                throw new UserFriendlyException("当前用户已锁定");
             }
 
             if (!result.Succeeded)
@@ -78,6 +77,10 @@ namespace Lion.AbpPro.Users
                 await _httpClientFactory.GetAsync<LoginStsOutput>(HttpClientNameConsts.Sts,
                     "connect/userinfo", headers);
             var user = await _userManager.FindByNameAsync(response.name);
+            if (!user.IsActive)
+            {
+                throw new UserFriendlyException("当前用户已锁定");
+            }
             return await BuildResult(user);
         }
 

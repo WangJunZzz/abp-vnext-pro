@@ -10,9 +10,9 @@
           {{ t('common.createText') }}
         </a-button>
       </template>
-      <template #lockoutEnabled="{ record }">
-        <Tag :color="record.lockoutEnabled ? 'red' : 'green'">
-          {{ record.lockoutEnabled ? t('common.locked') : t('common.unLocked') }}
+      <template #isActive="{ record }">
+        <Tag :color="record.isActive ? 'green' : 'red'">
+          {{ record.isActive ? t('common.enabled') : t('common.disEnabled') }}
         </Tag>
       </template>
       <template #action="{ record }">
@@ -39,7 +39,7 @@
           @click="handleLock(record)"
           v-auth="'System.Users.Enable'"
         >
-          {{ record.lockoutEnabled ? t('common.enabled') : t('common.disEnabled') }}
+          {{ !record.isActive ? t('common.enabled') : t('common.disEnabled') }}
         </a-button>
       </template>
     </BasicTable>
@@ -159,7 +159,7 @@
         }
         let request = new LockUserInput();
         request.userId = record.id;
-        request.locked = !record.lockoutEnabled;
+        request.locked = !record.isActive;
         await lockUserAsync(request);
         message.success(t('common.operationSuccess'));
         reload();

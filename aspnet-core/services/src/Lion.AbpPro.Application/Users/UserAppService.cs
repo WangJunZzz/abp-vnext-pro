@@ -133,16 +133,8 @@ namespace Lion.AbpPro.Users
         public async Task LockAsync(LockUserInput input)
         {
             var identityUser = await _userManager.GetByIdAsync(input.UserId);
-            await _userManager.SetLockoutEnabledAsync(identityUser, input.Locked);
-            if (input.Locked)
-            {
-                // 如果锁定用户，锁定100年
-                await _userManager.SetLockoutEndDateAsync(identityUser, DateTimeOffset.UtcNow.AddYears(100));
-            }
-            else
-            {
-                await _userManager.SetLockoutEndDateAsync(identityUser, DateTimeOffset.UtcNow.AddDays(-1));
-            }
+            identityUser.SetIsActive(input.Locked);
+            await _userManager.UpdateAsync(identityUser);
         }
     }
 }
