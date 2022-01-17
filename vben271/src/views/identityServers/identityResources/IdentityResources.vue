@@ -3,6 +3,7 @@
     <BasicTable @register="registerTable" size="small">
       <template #toolbar>
         <a-button
+          preIcon="ant-design:plus-circle-outlined"
           type="primary"
           @click="openCreateIdentityResourcesModal"
           v-auth="'IdentityServerManagement.IdentityResources.Create'"
@@ -31,23 +32,22 @@
         </Tag>
       </template>
       <template #action="{ record }">
-        <a-button
-          type="link"
-          size="small"
-          @click="handleEdit(record)"
-          v-auth="'IdentityServerManagement.IdentityResources.Update'"
-        >
-          {{ t('common.editText') }}
-        </a-button>
-
-        <a-button
-          type="link"
-          size="small"
-          @click="handleDelete(record)"
-          v-auth="'IdentityServerManagement.IdentityResources.Delete'"
-        >
-          {{ t('common.delText') }}
-        </a-button>
+        <TableAction
+          :actions="[
+            {
+              auth: 'IdentityServerManagement.IdentityResources.Update',
+              label: t('common.editText'),
+              icon: 'ant-design:edit-outlined',
+              onClick: handleEdit.bind(null, record),
+            },
+            {
+              icon: 'ic:outline-delete-outline',
+              auth: 'IdentityServerManagement.IdentityResources.Delete',
+              label: t('common.delText'),
+              onClick: handleDelete.bind(null, record),
+            },
+          ]"
+        />
       </template>
     </BasicTable>
     <CreateIdentityResource

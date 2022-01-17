@@ -10,6 +10,7 @@
       <template #toolbar>
         <a-button
           type="primary"
+          preIcon="ant-design:plus-circle-outlined"
           @click="openCreateAbpRoleModal"
           v-auth="'AbpIdentity.Roles.Create'"
         >
@@ -18,32 +19,28 @@
       </template>
 
       <template #action="{ record }">
-        <a-button
-          type="link"
-          size="small"
-          @click="handlePermission(record)"
-          v-auth="'AbpIdentity.Roles.ManagePermissions'"
-        >
-          {{ t('routes.admin.roleManagement_permission') }}
-        </a-button>
-
-        <a-button
-          type="link"
-          size="small"
-          @click="handleEdit(record)"
-          v-auth="'AbpIdentity.Roles.Update'"
-        >
-          {{ t('common.editText') }}
-        </a-button>
-
-        <a-button
-          type="link"
-          size="small"
-          @click="handleDelete(record)"
-          v-auth="'AbpIdentity.Roles.Delete'"
-        >
-          {{ t('common.delText') }}
-        </a-button>
+        <TableAction
+          :actions="[
+            {
+              auth: 'AbpIdentity.Roles.ManagePermissions',
+              label: t('routes.admin.roleManagement_permission'),
+              icon: 'ant-design:property-safety-outlined',
+              onClick: handlePermission.bind(null, record),
+            },
+          ]"
+          :dropDownActions="[
+            {
+              auth: 'AbpIdentity.Roles.Update',
+              label: t('common.editText'),
+              onClick: handleEdit.bind(null, record),
+            },
+            {
+              auth: 'AbpIdentity.Roles.Delete',
+              label: t('common.delText'),
+              onClick: handleDelete.bind(null, record),
+            },
+          ]"
+        />
       </template>
     </BasicTable>
 

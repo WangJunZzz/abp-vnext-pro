@@ -3,6 +3,7 @@
     <BasicTable @register="registerTable" size="small">
       <template #toolbar>
         <a-button
+          preIcon="ant-design:plus-circle-outlined"
           type="primary"
           @click="openCreateClientModal"
           v-auth="'IdentityServerManagement.Client.Create'"
@@ -18,46 +19,38 @@
       </template>
 
       <template #action="{ record }">
-        <a-button
-          type="link"
-          size="small"
-          @click="handleEdit(record)"
-          v-auth="'IdentityServerManagement.Client.Update'"
-        >
-          {{ t('common.editText') }}
-        </a-button>
-        <a-button
-          type="link"
-          size="small"
-          @click="handleEnabled(record)"
-          v-auth="'IdentityServerManagement.Client.Enable'"
-        >
-          {{ record.enabled ? t('common.disEnabled') : t('common.enabled') }}
-        </a-button>
-        <a-button
-          type="link"
-          size="small"
-          @click="handleUri(record)"
-          v-auth="'IdentityServerManagement.Client.Update'"
-        >
-          Uri
-        </a-button>
-        <a-button
-          type="link"
-          size="small"
-          @click="handleDelete(record)"
-          v-auth="'IdentityServerManagement.Client.Delete'"
-        >
-          {{ t('common.delText') }}
-        </a-button>
-        <a-button
-          type="link"
-          size="small"
-          @click="handleIdenityResource(record)"
-          v-auth="'IdentityServerManagement.Client.Delete'"
-        >
-          Scopes
-        </a-button>
+        <TableAction
+          :actions="[
+            {
+              auth: 'IdentityServerManagement.Client.Update',
+              label: t('common.editText'),
+              icon: 'ant-design:edit-outlined',
+              onClick: handleEdit.bind(null, record),
+            },
+          ]"
+          :dropDownActions="[
+            {
+              auth: 'IdentityServerManagement.Client.Enable',
+              label: record.enabled ? t('common.disEnabled') : t('common.enabled'),
+              onClick: handleEnabled.bind(null, record),
+            },
+            {
+              auth: 'IdentityServerManagement.Client.Update',
+              label: 'Uri',
+              onClick: handleUri.bind(null, record),
+            },
+            {
+              auth: 'IdentityServerManagement.Client.Update',
+              label: 'Scopes',
+              onClick: handleIdenityResource.bind(null, record),
+            },
+            {
+              auth: 'IdentityServerManagement.Client.Delete',
+              label: t('common.delText'),
+              onClick: handleDelete.bind(null, record),
+            },
+          ]"
+        />
       </template>
     </BasicTable>
     <CreateClient
@@ -127,7 +120,7 @@
         canResize: true,
         showIndexColumn: true,
         actionColumn: {
-          width: 300,
+          width: 120,
           title: t('common.action'),
           dataIndex: 'action',
           slots: {

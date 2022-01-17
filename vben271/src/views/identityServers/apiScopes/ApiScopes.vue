@@ -3,6 +3,7 @@
     <BasicTable @register="registerTable" size="small">
       <template #toolbar>
         <a-button
+          preIcon="ant-design:plus-circle-outlined"
           type="primary"
           @click="openCreateApiScopeModal"
           v-auth="'IdentityServerManagement.ApiScope.Create'"
@@ -31,23 +32,22 @@
         </Tag>
       </template>
       <template #action="{ record }">
-        <a-button
-          type="link"
-          size="small"
-          @click="handleEdit(record)"
-          v-auth="'IdentityServerManagement.ApiScope.Update'"
-        >
-          {{ t('common.editText') }}
-        </a-button>
-
-        <a-button
-          type="link"
-          size="small"
-          @click="handleDelete(record)"
-          v-auth="'IdentityServerManagement.ApiScope.Delete'"
-        >
-          {{ t('common.delText') }}
-        </a-button>
+        <TableAction
+          :actions="[
+            {
+              auth: 'IdentityServerManagement.ApiScope.Update',
+              label: t('common.editText'),
+              icon: 'ant-design:edit-outlined',
+              onClick: handleEdit.bind(null, record),
+            },
+            {
+              icon: 'ic:outline-delete-outline',
+              auth: 'IdentityServerManagement.ApiScope.Delete',
+              label: t('common.delText'),
+              onClick: handleDelete.bind(null, record),
+            },
+          ]"
+        />
       </template>
     </BasicTable>
     <CreateApiScope
@@ -102,7 +102,7 @@
         canResize: true,
         showIndexColumn: true,
         actionColumn: {
-          width: 150,
+          width: 120,
           title: t('common.action'),
           dataIndex: 'action',
           slots: {

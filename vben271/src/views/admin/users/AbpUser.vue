@@ -3,6 +3,7 @@
     <BasicTable @register="registerTable" size="small">
       <template #toolbar>
         <a-button
+          preIcon="ant-design:plus-circle-outlined"
           type="primary"
           @click="openCreateAbpUserModal"
           v-auth="'AbpIdentity.Users.Create'"
@@ -16,31 +17,28 @@
         </Tag>
       </template>
       <template #action="{ record }">
-        <a-button
-          type="link"
-          size="small"
-          @click="handleEdit(record)"
-          v-auth="'AbpIdentity.Users.Update'"
-        >
-          {{ t('common.editText') }}
-        </a-button>
-
-        <a-button
-          type="link"
-          size="small"
-          @click="handleDelete(record)"
-          v-auth="'AbpIdentity.Users.Delete'"
-        >
-          {{ t('common.delText') }}
-        </a-button>
-        <a-button
-          type="link"
-          size="small"
-          @click="handleLock(record)"
-          v-auth="'System.Users.Enable'"
-        >
-          {{ !record.isActive ? t('common.enabled') : t('common.disEnabled') }}
-        </a-button>
+        <TableAction
+          :actions="[
+            {
+              icon: 'ant-design:edit-outlined',
+              auth: 'AbpIdentity.Users.Update',
+              label: t('common.editText'),
+              onClick: handleEdit.bind(null, record),
+            },
+          ]"
+          :dropDownActions="[
+            {
+              auth: 'AbpIdentity.Users.Delete',
+              label: t('common.delText'),
+              onClick: handleDelete.bind(null, record),
+            },
+            {
+              auth: 'System.Users.Enable',
+              label: !record.isActive ? t('common.enabled') : t('common.disEnabled'),
+              onClick: handleLock.bind(null, record),
+            },
+          ]"
+        />
       </template>
     </BasicTable>
     <CreateAbpUser
@@ -113,7 +111,7 @@
         canResize: true,
         showIndexColumn: true,
         actionColumn: {
-          width: 250,
+          width: 120,
           title: t('common.action'),
           dataIndex: 'action',
           slots: {

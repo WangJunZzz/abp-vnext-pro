@@ -3,6 +3,7 @@
     <BasicTable @register="registerTable" size="small">
       <template #toolbar>
         <a-button
+          preIcon="ant-design:plus-circle-outlined"
           type="primary"
           @click="openCreateTenantModal"
           v-auth="'AbpTenantManagement.Tenants.Create'"
@@ -11,7 +12,32 @@
         </a-button>
       </template>
 
-      <template #action="{ record }">
+      <template #action="{ action }">
+        <TableAction
+          :actions="[
+            {
+              icon: 'ant-design:edit-outlined',
+              auth: 'AbpTenantManagement.Tenants.Update',
+              label: t('common.editText'),
+              onClick: handleEdit.bind(null, record),
+            },
+          ]"
+          :dropDownActions="[
+            {
+              auth: 'AbpTenantManagement.Tenants.ManageConnectionStrings',
+              label: t('routes.tenant.connectionString'),
+              onClick: handleConnectionString.bind(null, record),
+            },
+            {
+              auth: 'AbpTenantManagement.Tenants.Delete',
+              label: t('common.delText'),
+              onClick: handleDelete.bind(null, record),
+            },
+          ]"
+        />
+      </template>
+
+      <!-- <template #action="{ record }">
         <a-button
           type="link"
           size="small"
@@ -37,7 +63,7 @@
         >
           {{ t('routes.tenant.connectionString') }}
         </a-button>
-      </template>
+      </template> -->
     </BasicTable>
     <EditTenant
       @register="registerEditTenantModal"
@@ -61,7 +87,7 @@
   import { defineComponent } from 'vue';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { BasicModal, useModal } from '/@/components/Modal';
-  import { BasicTable, useTable } from '/@/components/Table';
+  import { BasicTable, useTable, TableAction } from '/@/components/Table';
 
   import { getTenantListAsync, tableColumns, searchFormSchema, deleteTenantAsync } from './Tenant';
   import CreateTenant from './CreateTenant.vue';
@@ -74,6 +100,7 @@
     components: {
       BasicTable,
       BasicModal,
+      TableAction,
       CreateTenant,
       EditTenant,
       EditConnectionString,
@@ -103,7 +130,7 @@
           slots: {
             customRender: 'action',
           },
-          width: 200,
+          width: 120,
           fixed: 'right',
         },
       });
