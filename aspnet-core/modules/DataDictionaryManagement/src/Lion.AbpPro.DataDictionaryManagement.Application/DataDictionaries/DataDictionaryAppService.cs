@@ -4,11 +4,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos;
+using Lion.AbpPro.DataDictionaryManagement.Permissions;
 using Lion.AbpPro.Extension.System;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
+    [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Default)]
     public class DataDictionaryAppService : DataDictionaryManagementAppService, IDataDictionaryAppService
     {
         /// <summary>
@@ -74,6 +77,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// 创建字典类型
         /// </summary>
         /// <returns></returns>
+        [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Create)]
         public Task CreateAsync(CreateDataDictinaryInput input)
         {
             return _dataDictionaryManager.CreateAsync(input.Code, input.DisplayText, input.Description);
@@ -82,6 +86,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <summary>
         /// 新增字典明细
         /// </summary>
+        [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Create)]
         public Task CreateDetailAsync(CreateDataDictinaryDetailInput input)
         {
             return _dataDictionaryManager.CreateDetailAsync(input.Id, input.Code, input.DisplayText, input.Description,
@@ -91,16 +96,23 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <summary>
         /// 设置字典明细状态
         /// </summary>
+        [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Update)]
         public Task SetStatus(SetDataDictinaryDetailInput input)
         {
             return _dataDictionaryManager.SetStatus(input.DataDictionaryId, input.DataDictionayDetailId,
                 input.IsEnabled);
         }
 
+        [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Update)]
         public Task UpdateDetailAsync(UpdateDetailInput input)
         {
             return _dataDictionaryManager.UpdateDetailAsync(input.DataDictionaryId, input.Id, input.DisplayText, input.Description,
                 input.Order);
+        }
+
+        public Task DeleteAsync(DeleteDataDictionaryDetailInput input)
+        {
+            return _dataDictionaryManager.DeleteAsync(input.DataDictionaryId, input.DataDictionayDetailId);
         }
     }
 }

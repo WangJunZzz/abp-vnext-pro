@@ -10,6 +10,7 @@
       >
         <template #toolbar>
           <a-button
+            v-auth="'System.DataDictionaryManagement.Create'"
             type="primary"
             preIcon="ant-design:plus-circle-outlined"
             @click="handleCreateType"
@@ -21,7 +22,12 @@
 
       <BasicTable @register="registerTable" class="w-3/4 xl:w-4/5" size="small">
         <template #toolbar>
-          <a-button preIcon="ant-design:plus-circle-outlined" type="primary" @click="handleCreate">
+          <a-button
+            v-auth="'System.DataDictionaryManagement.Create'"
+            preIcon="ant-design:plus-circle-outlined"
+            type="primary"
+            @click="handleCreate"
+          >
             {{ t('common.createText') }}</a-button
           >
         </template>
@@ -31,8 +37,15 @@
             :actions="[
               {
                 icon: 'ant-design:edit-outlined',
+                auth: 'System.DataDictionaryManagement.Update',
                 label: t('common.editText'),
                 onClick: handleEdit.bind(null, record),
+              },
+              {
+                icon: 'ic:outline-delete-outline',
+                auth: 'System.DataDictionaryManagement.Delete',
+                label: t('common.delText'),
+                onClick: handleDelete.bind(null, record),
               },
             ]"
           />
@@ -65,8 +78,9 @@
     dictionaryTypeTableColumns,
     searchDictionaryFormSchema,
     getDictionaryDetailsAsync,
+    deleleDetailAsync,
   } from './AbpDictionary';
-
+  import { useMessage } from '/@/hooks/web/useMessage';
   import { Tag, message } from 'ant-design-vue';
   export default defineComponent({
     name: 'AbpDictionary',
@@ -162,7 +176,22 @@
       const handleCreateType = () => {
         createTypeModal(true);
       };
-
+      const { createConfirm } = useMessage();
+      const handleDelete = async (record: Recordable) => {
+        let msg = t('common.askDelete');
+        createConfirm({
+          iconType: 'warning',
+          title: t('common.tip'),
+          content: msg,
+          onOk: async () => {
+            await deleleDetailAsync({
+              dataDictionaryId: record.dataDictionaryId,
+              dataDictionayDetailId: record.id,
+              reload,
+            });
+          },
+        });
+      };
       return {
         registerTable,
         registerCreateModal,
@@ -177,6 +206,7 @@
         onSelectChange,
         clearSelectedRowKeys,
         t,
+        handleDelete,
       };
     },
   });

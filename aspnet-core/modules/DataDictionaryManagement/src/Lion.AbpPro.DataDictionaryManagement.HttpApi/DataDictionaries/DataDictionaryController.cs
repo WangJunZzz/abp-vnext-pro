@@ -60,5 +60,12 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         {
             return _dataDictionaryAppService.UpdateDetailAsync(input);
         }
+
+        [HttpPost("delete")]
+        [SwaggerOperation(summary: "删除字典明细", Tags = new[] { "DataDictionary" })]
+        public Task DeleteAsync(DeleteDataDictionaryDetailInput input)
+        {
+            return _dataDictionaryAppService.DeleteAsync(input);
+        }
     }
 }

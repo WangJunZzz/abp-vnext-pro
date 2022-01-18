@@ -110,13 +110,13 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             detail.SetIsEnabled(isEnabled);
             return await _dataDictionaryRepository.UpdateAsync(entity);
         }
-        
+
         /// <summary>
         /// 更新数据字典明细
         /// </summary>
         public async Task<DataDictionary> UpdateDetailAsync(
             Guid dataDictionaryId,
-            Guid dataDictionayDetailId,             
+            Guid dataDictionayDetailId,
             string displayText,
             string description,
             int order)
@@ -130,8 +130,23 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
                 throw new DataDictionaryDomainException(message: $"字典项不存在");
             }
 
-            detail.UpdateDetail(dataDictionayDetailId,displayText,description,order);
+            detail.UpdateDetail(dataDictionayDetailId, displayText, description, order);
             return await _dataDictionaryRepository.UpdateAsync(entity);
+        }
+
+        public async Task DeleteAsync(Guid dataDictionaryId, Guid dataDictionayDetailId)
+        {
+            var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
+            if (entity == null)
+                throw new DataDictionaryDomainException(message: "数据字典不存在");
+            var detail = entity.Details.FirstOrDefault(e => e.Id == dataDictionayDetailId);
+            if (null == detail)
+            {
+                throw new DataDictionaryDomainException(message: $"字典项不存在");
+            }
+
+            entity.Details.Remove(detail);
+            await _dataDictionaryRepository.UpdateAsync(entity);
         }
     }
 }

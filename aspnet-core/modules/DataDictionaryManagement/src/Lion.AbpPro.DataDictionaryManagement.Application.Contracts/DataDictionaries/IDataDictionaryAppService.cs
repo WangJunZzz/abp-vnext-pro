@@ -43,5 +43,12 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         Task SetStatus(SetDataDictinaryDetailInput input);
 
         Task UpdateDetailAsync(UpdateDetailInput input);
+
+        /// <summary>
+        /// 删除数据字典明细项
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task DeleteAsync(DeleteDataDictionaryDetailInput input);
     }
 }

@@ -6,6 +6,7 @@ import {
   PagingDataDictionaryInput,
   DataDictionaryServiceProxy,
   SetDataDictinaryDetailInput,
+  DeleteDataDictionaryDetailInput,
 } from '/@/services/ServiceProxies';
 import { h } from 'vue';
 import { Switch } from 'ant-design-vue';
@@ -332,4 +333,13 @@ export async function editDetailsDictionaryAsync({
   message.success(t('common.operationSuccess'));
   changeOkLoading(false);
   closeModal();
+}
+
+export async function deleleDetailAsync({ dataDictionaryId, dataDictionayDetailId, reload }) {
+  const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();
+  const request = new DeleteDataDictionaryDetailInput();
+  request.dataDictionaryId = dataDictionaryId;
+  request.dataDictionayDetailId = dataDictionayDetailId;
+  await _dataDictionaryServiceProxy.delete(request);
+  reload();
 }

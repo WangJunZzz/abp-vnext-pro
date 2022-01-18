@@ -68,9 +68,9 @@ const admin: AppRouteModule = {
       name: 'dataDictionary',
       component: () => import('/@/views/admin/dictionary/AbpDictionary.vue'),
       meta: {
-        title: t('routes.admin.esLogs'),
-
-        icon: 'ant-design:snippets-twotone',
+        title: t('routes.admin.dictionaryManagement'),
+        icon: 'ant-design:table-outlined',
+        policy: 'System.DataDictionaryManagement',
       },
     },
   ],
