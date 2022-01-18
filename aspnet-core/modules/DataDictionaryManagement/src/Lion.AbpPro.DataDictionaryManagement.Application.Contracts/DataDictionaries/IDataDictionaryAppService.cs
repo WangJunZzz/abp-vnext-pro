@@ -15,8 +15,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         Task<PagedResultDto<PagingDataDictionaryOutput>> GetPagingListAsync(
-            PagingDataDictionaryInput input,
-            CancellationToken cancellationToken = default);
+            PagingDataDictionaryInput input);
 
         /// <summary>
         /// 分页查询字典项明细
@@ -25,8 +24,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         Task<PagedResultDto<PagingDataDictionaryDetailOutput>> GetPagingDetailListAsync(
-            PagingDataDictionaryDetailInput input,
-            CancellationToken cancellationToken = default);
+            PagingDataDictionaryDetailInput input);
 
         /// <summary>
         /// 创建字典类型
@@ -43,5 +41,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// 设置字典明细状态
         /// </summary>
         Task SetStatus(SetDataDictinaryDetailInput input);
+
+        Task UpdateDetailAsync(UpdateDetailInput input);
     }
 }

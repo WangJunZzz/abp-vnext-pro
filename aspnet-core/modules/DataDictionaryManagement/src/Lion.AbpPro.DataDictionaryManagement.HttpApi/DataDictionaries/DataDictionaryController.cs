@@ -8,7 +8,7 @@ using Volo.Abp.Application.Services;
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
     [Route("DataDictionary")]
-    public class DataDictionaryController : DataDictionaryManagementController, IApplicationService
+    public class DataDictionaryController : DataDictionaryManagementController, IDataDictionaryAppService
     {
         private readonly IDataDictionaryAppService _dataDictionaryAppService;
 
@@ -25,7 +25,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             return _dataDictionaryAppService.GetPagingListAsync(input);
         }
 
-        [HttpPost("page/detail")]
+        [HttpPost("pageDetail")]
         [SwaggerOperation(summary: "分页字典明细", Tags = new[] { "DataDictionary" })]
         public  Task<PagedResultDto<PagingDataDictionaryDetailOutput>> GetPagingDetailListAsync(
             PagingDataDictionaryDetailInput input)
@@ -52,6 +52,13 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         public Task SetStatus(SetDataDictinaryDetailInput input)
         {
             return _dataDictionaryAppService.SetStatus(input);
+        }
+
+        [HttpPost("updateDetail")]
+        [SwaggerOperation(summary: "更新字典明细", Tags = new[] { "DataDictionary" })]
+        public Task UpdateDetailAsync(UpdateDetailInput input)
+        {
+            return _dataDictionaryAppService.UpdateDetailAsync(input);
         }
     }
 }

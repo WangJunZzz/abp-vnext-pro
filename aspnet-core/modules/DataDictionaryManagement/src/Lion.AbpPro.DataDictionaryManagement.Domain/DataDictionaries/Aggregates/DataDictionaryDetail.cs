@@ -61,21 +61,27 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates
             SetDescription(description);
         }
 
-        public void SetCode(string code)
+        private void SetCode(string code)
         {
             Guard.NotNullOrWhiteSpace(code, nameof(code), DataDictionaryMaxLengths.Code);
             Code = code;
         }
 
-        public void SetOrder(int order)
+        private void SetOrder(int order)
         {
             Order = order;
         }
 
-        public void SetDisplayText(string displayText)
+        private void SetDisplayText(string displayText)
         {
             Guard.NotNullOrWhiteSpace(displayText, nameof(displayText), DataDictionaryMaxLengths.DisplayText);
             DisplayText = displayText;
+        }
+
+        private void SetDescription(string description)
+        {
+            Guard.Length(description, nameof(description), DataDictionaryMaxLengths.Description);
+            Description = Description = description ?? string.Empty;
         }
 
         public void SetIsEnabled(bool isEnabled)
@@ -83,10 +89,15 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates
             IsEnabled = isEnabled;
         }
 
-        public void SetDescription(string description)
+        public void UpdateDetail(
+            Guid dataDictionayDetailId,
+            string displayText,
+            string description,
+            int order)
         {
-            Guard.Length(description, nameof(description), DataDictionaryMaxLengths.Description);
-            Description =  Description = description ?? string.Empty;
+            SetDescription(description);
+            SetDisplayText(displayText);
+            SetOrder(order);
         }
     }
 }

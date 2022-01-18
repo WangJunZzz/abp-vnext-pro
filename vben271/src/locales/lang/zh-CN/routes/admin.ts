@@ -51,4 +51,12 @@ export default {
   logContent: '内容',
   detail: '详情',
   settingManagement: '设置管理',
+  dictionaryManagement: '数据字典',
+  dictionaryTypeName: '字典类型',
+  dictionaryCode: '编码',
+  dictionaryDisplayText: '名称',
+  dictionaryDescription: '描述',
+  dictionaryOrder: '排序',
+  chooseDictionary: '请选择字典类型',
+  nonZeroMessage: '请输入非零的正整数',
 };

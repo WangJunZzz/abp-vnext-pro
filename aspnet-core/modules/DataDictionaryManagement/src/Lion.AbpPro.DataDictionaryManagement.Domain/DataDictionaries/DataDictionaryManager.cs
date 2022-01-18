@@ -10,7 +10,7 @@ using Volo.Abp.Domain.Services;
 
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
-   public class DataDictionaryManager : DataDictionaryDomainService
+    public class DataDictionaryManager : DataDictionaryDomainService
     {
         private readonly IDataDictionaryRepository _dataDictionaryRepository;
         private readonly IDistributedCache<DataDictionaryDto> _cache;
@@ -89,7 +89,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             }
 
             entity.AddDetail(GuidGenerator.Create(), code, displayText, order, description);
-            return await _dataDictionaryRepository.InsertAsync(entity);
+            return await _dataDictionaryRepository.UpdateAsync(entity);
         }
 
         /// <summary>
@@ -108,6 +108,29 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             }
 
             detail.SetIsEnabled(isEnabled);
+            return await _dataDictionaryRepository.UpdateAsync(entity);
+        }
+        
+        /// <summary>
+        /// 更新数据字典明细
+        /// </summary>
+        public async Task<DataDictionary> UpdateDetailAsync(
+            Guid dataDictionaryId,
+            Guid dataDictionayDetailId,             
+            string displayText,
+            string description,
+            int order)
+        {
+            var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
+            if (entity == null)
+                throw new DataDictionaryDomainException(message: "数据字典不存在");
+            var detail = entity.Details.FirstOrDefault(e => e.Id == dataDictionayDetailId);
+            if (null == detail)
+            {
+                throw new DataDictionaryDomainException(message: $"字典项不存在");
+            }
+
+            detail.UpdateDetail(dataDictionayDetailId,displayText,description,order);
             return await _dataDictionaryRepository.UpdateAsync(entity);
         }
     }

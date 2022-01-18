@@ -63,6 +63,16 @@ const admin: AppRouteModule = {
         icon: 'ant-design:snippets-twotone',
       },
     },
+    {
+      path: 'dataDictionary',
+      name: 'dataDictionary',
+      component: () => import('/@/views/admin/dictionary/AbpDictionary.vue'),
+      meta: {
+        title: t('routes.admin.esLogs'),
+
+        icon: 'ant-design:snippets-twotone',
+      },
+    },
   ],
 };
 

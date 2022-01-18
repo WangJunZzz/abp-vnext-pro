@@ -2563,112 +2563,6 @@ export class ClientServiceProxy extends ServiceProxyBase {
     }
 }
 
-export class EsLogServiceProxy extends ServiceProxyBase {
-    private instance: AxiosInstance;
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(baseUrl?: string, instance?: AxiosInstance) {
-        super();
-        this.instance = instance ? instance : axios.create();
-        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
-    }
-
-    /**
-     * 分页获取Es日志
-     * @param body (optional) 
-     * @return Success
-     */
-    page(body: PagingElasticSearchLogInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingElasticSearchLogOutputCustomePagedResultDto> {
-        let url_ = this.baseUrl + "/EsLog/page";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "text/plain"
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processPage(_response));
-        });
-    }
-
-    protected processPage(response: AxiosResponse): Promise<PagingElasticSearchLogOutputCustomePagedResultDto> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = PagingElasticSearchLogOutputCustomePagedResultDto.fromJS(resultData200);
-            return result200;
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<PagingElasticSearchLogOutputCustomePagedResultDto>(<any>null);
-    }
-}
-
 export class DataDictionaryServiceProxy extends ServiceProxyBase {
     private instance: AxiosInstance;
     private baseUrl: string;
@@ -2779,8 +2673,8 @@ export class DataDictionaryServiceProxy extends ServiceProxyBase {
      * @param body (optional) 
      * @return Success
      */
-    detail(body: PagingDataDictionaryDetailInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingDataDictionaryDetailOutputPagedResultDto> {
-        let url_ = this.baseUrl + "/DataDictionary/page/detail";
+    pageDetail(body: PagingDataDictionaryDetailInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingDataDictionaryDetailOutputPagedResultDto> {
+        let url_ = this.baseUrl + "/DataDictionary/pageDetail";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -2805,11 +2699,11 @@ export class DataDictionaryServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processDetail(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processPageDetail(_response));
         });
     }
 
-    protected processDetail(response: AxiosResponse): Promise<PagingDataDictionaryDetailOutputPagedResultDto> {
+    protected processPageDetail(response: AxiosResponse): Promise<PagingDataDictionaryDetailOutputPagedResultDto> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -3083,6 +2977,96 @@ export class DataDictionaryServiceProxy extends ServiceProxyBase {
     }
 
     protected processStatus(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(<any>null);
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(<any>null);
+    }
+
+    /**
+     * 更新字典明细
+     * @param body (optional) 
+     * @return Success
+     */
+    updateDetail(body: UpdateDetailInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/DataDictionary/updateDetail";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processUpdateDetail(_response));
+        });
+    }
+
+    protected processUpdateDetail(response: AxiosResponse): Promise<void> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -3721,6 +3705,112 @@ export class IdentityResourceServiceProxy extends ServiceProxyBase {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
         return Promise.resolve<void>(<any>null);
+    }
+}
+
+export class EsLogServiceProxy extends ServiceProxyBase {
+    private instance: AxiosInstance;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, instance?: AxiosInstance) {
+        super();
+        this.instance = instance ? instance : axios.create();
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * 分页获取Es日志
+     * @param body (optional) 
+     * @return Success
+     */
+    page(body: PagingElasticSearchLogInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingElasticSearchLogOutputCustomePagedResultDto> {
+        let url_ = this.baseUrl + "/EsLog/page";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processPage(_response));
+        });
+    }
+
+    protected processPage(response: AxiosResponse): Promise<PagingElasticSearchLogOutputCustomePagedResultDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = PagingElasticSearchLogOutputCustomePagedResultDto.fromJS(resultData200);
+            return result200;
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<PagingElasticSearchLogOutputCustomePagedResultDto>(<any>null);
     }
 }
 
@@ -8607,6 +8697,8 @@ export class CurrentUserDto implements ICurrentUserDto {
     tenantId!: string | undefined;
     impersonatorUserId!: string | undefined;
     impersonatorTenantId!: string | undefined;
+    impersonatorUserName!: string | undefined;
+    impersonatorTenantName!: string | undefined;
     userName!: string | undefined;
     name!: string | undefined;
     surName!: string | undefined;
@@ -8632,6 +8724,8 @@ export class CurrentUserDto implements ICurrentUserDto {
             this.tenantId = _data["tenantId"];
             this.impersonatorUserId = _data["impersonatorUserId"];
             this.impersonatorTenantId = _data["impersonatorTenantId"];
+            this.impersonatorUserName = _data["impersonatorUserName"];
+            this.impersonatorTenantName = _data["impersonatorTenantName"];
             this.userName = _data["userName"];
             this.name = _data["name"];
             this.surName = _data["surName"];
@@ -8661,6 +8755,8 @@ export class CurrentUserDto implements ICurrentUserDto {
         data["tenantId"] = this.tenantId;
         data["impersonatorUserId"] = this.impersonatorUserId;
         data["impersonatorTenantId"] = this.impersonatorTenantId;
+        data["impersonatorUserName"] = this.impersonatorUserName;
+        data["impersonatorTenantName"] = this.impersonatorTenantName;
         data["userName"] = this.userName;
         data["name"] = this.name;
         data["surName"] = this.surName;
@@ -8683,6 +8779,8 @@ export interface ICurrentUserDto {
     tenantId: string | undefined;
     impersonatorUserId: string | undefined;
     impersonatorTenantId: string | undefined;
+    impersonatorUserName: string | undefined;
+    impersonatorTenantName: string | undefined;
     userName: string | undefined;
     name: string | undefined;
     surName: string | undefined;
@@ -16170,6 +16268,58 @@ export interface IUpdateCreateApiScopeInput {
     required: boolean;
     emphasize: boolean;
     showInDiscoveryDocument: boolean;
+}
+
+export class UpdateDetailInput implements IUpdateDetailInput {
+    dataDictionaryId!: string;
+    id!: string;
+    displayText!: string;
+    description!: string | undefined;
+    order!: number;
+
+    constructor(data?: IUpdateDetailInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.dataDictionaryId = _data["dataDictionaryId"];
+            this.id = _data["id"];
+            this.displayText = _data["displayText"];
+            this.description = _data["description"];
+            this.order = _data["order"];
+        }
+    }
+
+    static fromJS(data: any): UpdateDetailInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateDetailInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["dataDictionaryId"] = this.dataDictionaryId;
+        data["id"] = this.id;
+        data["displayText"] = this.displayText;
+        data["description"] = this.description;
+        data["order"] = this.order;
+        return data; 
+    }
+}
+
+export interface IUpdateDetailInput {
+    dataDictionaryId: string;
+    id: string;
+    displayText: string;
+    description: string | undefined;
+    order: number;
 }
 
 export class UpdateEmailSettingsDto implements IUpdateEmailSettingsDto {

@@ -52,4 +52,12 @@ export default {
   logLevel: 'Level',
   logContent: 'Content',
   settingManagement: 'SettingManagement',
+  dictionaryManagement: 'DataDictionary',
+  dictionaryTypeName: 'Type',
+  dictionaryCode: 'Code',
+  dictionaryDisplayText: 'Name',
+  dictionaryDescription: 'Description',
+  dictionaryOrder: 'Order',
+  chooseDictionary: 'Please Choose DataDictionary Type',
+  nonZeroMessage: 'Please enter a non-zero positive integer',
 };
