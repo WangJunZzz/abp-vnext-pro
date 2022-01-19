@@ -1,7 +1,6 @@
 using System;
 
-
-namespace Lion.AbpPro.ElasticsearchRepository.Dto
+namespace Lion.AbpPro.ElasticSearchs.Dto
 {
    
     public class PagingElasticSearchLogOutput

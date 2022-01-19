@@ -1,7 +1,7 @@
 using System;
 using Lion.AbpPro.Extension.Customs.Dtos;
 
-namespace Lion.AbpPro.ElasticsearchRepository.Dto
+namespace Lion.AbpPro.ElasticSearchs.Dto
 {
     public class PagingElasticSearchLogInput : PagingBase
     {

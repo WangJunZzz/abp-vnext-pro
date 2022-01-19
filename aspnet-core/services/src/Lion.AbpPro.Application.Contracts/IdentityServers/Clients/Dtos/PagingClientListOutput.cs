@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Volo.Abp.Application.Dtos;
 
-namespace Lion.AbpPro.IdentityServers.Clients
+namespace Lion.AbpPro.IdentityServers.Clients.Dtos
 {
     public class PagingClientListOutput : EntityDto<Guid>
     {

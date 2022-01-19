@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Lion.AbpPro.NotificationManagement.Notifications.Enums;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications.Dtos
 {

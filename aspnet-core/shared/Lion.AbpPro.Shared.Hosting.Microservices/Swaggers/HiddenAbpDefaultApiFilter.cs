@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Lion.AbpPro.Swaggers
+namespace Lion.AbpPro.Shared.Hosting.Microservices.Swaggers
 {
     /// <summary>
     /// 在使用nswag的时候，原生默认的api导致生产的代理类存在问题

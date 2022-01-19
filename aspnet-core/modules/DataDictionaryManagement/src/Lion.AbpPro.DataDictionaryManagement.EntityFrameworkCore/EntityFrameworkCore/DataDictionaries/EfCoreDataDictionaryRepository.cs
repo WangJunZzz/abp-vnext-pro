@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Lion.AbpPro.DataDictionaryManagement.DataDictionaries;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
-using Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
+namespace Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.DataDictionaries
 {
     public class EfCoreDataDictionaryRepository :
         EfCoreRepository<IDataDictionaryManagementDbContext, DataDictionary, Guid>,

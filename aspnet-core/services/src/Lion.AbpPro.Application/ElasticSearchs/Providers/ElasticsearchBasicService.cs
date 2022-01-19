@@ -1,7 +1,6 @@
 using Nest;
-using Volo.Abp.Domain.Services;
 
-namespace Lion.AbpPro.ElasticsearchRepository
+namespace Lion.AbpPro.ElasticSearchs.Providers
 {
     public abstract class ElasticsearchBasicService : AbpProAppService
     {

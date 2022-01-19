@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using Microsoft.Extensions.Logging;
 using Volo.Abp;
 
-namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Exceptions
+namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
     public class DataDictionaryDomainException : UserFriendlyException
     {

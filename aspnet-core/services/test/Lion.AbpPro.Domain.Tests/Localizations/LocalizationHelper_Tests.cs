@@ -1,5 +1,6 @@
 ﻿using System;
 using Lion.AbpPro.Localization;
+using Lion.AbpPro.Localization.Extensions;
 using Shouldly;
 using Volo.Abp.Localization;
 using Xunit;

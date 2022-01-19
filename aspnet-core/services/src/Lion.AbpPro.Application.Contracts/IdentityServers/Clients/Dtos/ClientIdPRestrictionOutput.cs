@@ -1,7 +1,6 @@
 using System;
-using Volo.Abp.Application.Dtos;
 
-namespace Lion.AbpPro.IdentityServers.Clients
+namespace Lion.AbpPro.IdentityServers.Clients.Dtos
 {
     public class ClientIdPRestrictionOutput
     {

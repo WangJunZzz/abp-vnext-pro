@@ -1,7 +1,7 @@
 using System;
 using Volo.Abp.Domain.Entities.Auditing;
 
-namespace Lion.AbpPro.NotificationManagement.Notifications
+namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
 {
     /// <summary>
     /// 消息订阅者 

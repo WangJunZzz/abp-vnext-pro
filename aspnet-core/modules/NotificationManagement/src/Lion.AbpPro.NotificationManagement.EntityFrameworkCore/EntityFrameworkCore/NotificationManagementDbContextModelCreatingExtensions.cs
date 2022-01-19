@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 using Lion.AbpPro.NotificationManagement.Notifications;
+using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
 
 namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore
 {

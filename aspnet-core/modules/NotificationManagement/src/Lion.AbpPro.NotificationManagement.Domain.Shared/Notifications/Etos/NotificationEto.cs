@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Lion.AbpPro.NotificationManagement.Notifications.Enums;
 
 
 namespace Lion.AbpPro.NotificationManagement.Notifications.Etos

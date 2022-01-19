@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Lion.AbpPro.IdentityServer;
 using Lion.AbpPro.Extension.Customs.Dtos;
+using Lion.AbpPro.IdentityServers.Clients.Dtos;
 using Lion.AbpPro.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;

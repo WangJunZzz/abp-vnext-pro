@@ -4,7 +4,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Lion.AbpPro.Swaggers
+namespace Lion.AbpPro.Shared.Hosting.Microservices.Swaggers
 {
     /// <summary>
     /// swagger 枚举映射，

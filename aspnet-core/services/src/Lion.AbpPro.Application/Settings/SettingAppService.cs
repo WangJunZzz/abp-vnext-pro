@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Lion.AbpPro.Localization;
 using Lion.AbpPro.Permissions;
+using Lion.AbpPro.Settings.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Localization;
 using Volo.Abp.SettingManagement;

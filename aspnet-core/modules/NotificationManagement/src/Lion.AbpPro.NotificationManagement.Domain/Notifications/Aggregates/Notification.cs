@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Lion.AbpPro.Extension.Customs;
-using Volo.Abp.Domain.Entities.Auditing;
 using Lion.AbpPro.NotificationManagement.Notifications.DistributedEvents;
+using Lion.AbpPro.NotificationManagement.Notifications.Enums;
+using Lion.AbpPro.NotificationManagement.Notifications.MaxLengths;
+using Volo.Abp.Domain.Entities.Auditing;
 
-
-namespace Lion.AbpPro.NotificationManagement.Notifications
+namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
 {
     /// <summary>
     /// 消息通知 

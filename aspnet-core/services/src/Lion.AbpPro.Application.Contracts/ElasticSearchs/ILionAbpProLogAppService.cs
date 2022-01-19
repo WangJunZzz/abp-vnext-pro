@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Lion.AbpPro.ElasticsearchRepository.Dto;
+using Lion.AbpPro.ElasticSearchs.Dto;
 using Lion.AbpPro.Extension.Customs.Dtos;
 using Volo.Abp.Application.Services;
 
