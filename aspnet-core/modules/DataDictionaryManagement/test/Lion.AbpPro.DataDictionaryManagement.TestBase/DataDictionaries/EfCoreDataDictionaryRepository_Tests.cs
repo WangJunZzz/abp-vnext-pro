@@ -1,8 +1,6 @@
-using System.Threading.Tasks;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries;
 using Volo.Abp.Modularity;
 
-namespace Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.DataDictionaries
+namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
     public abstract class
         EfCoreDataDictionaryRepository_Tests<TStartupModule> : DataDictionaryManagementTestBase<TStartupModule>

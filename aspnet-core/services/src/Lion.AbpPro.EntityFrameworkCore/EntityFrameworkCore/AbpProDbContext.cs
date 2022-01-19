@@ -3,7 +3,6 @@ using Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore;
 using Lion.AbpPro.NotificationManagement;
 using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Lion.AbpPro.Users;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs;

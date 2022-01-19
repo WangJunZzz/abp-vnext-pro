@@ -1,7 +1,8 @@
 using System;
 using System.Linq;
+using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.MVC.Filters;
+using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,7 +14,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.UI.Navigation.Urls;
 
-namespace Lion.AbpPro
+namespace Lion.AbpPro.Shared.Hosting.Microservices
 {
     [DependsOn(
         typeof(AbpSwashbuckleModule),

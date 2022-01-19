@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
 using Volo.Abp.Domain.Repositories;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications

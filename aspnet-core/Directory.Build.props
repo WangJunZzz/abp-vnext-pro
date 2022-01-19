@@ -19,6 +19,7 @@
 		<SerilogAspNetCoreVersion>4.1.0</SerilogAspNetCoreVersion>
 		<SerilogExceptionsVersion>7.0.0</SerilogExceptionsVersion>
 		<SerilogSettingsConfigurationVersion>3.3.0</SerilogSettingsConfigurationVersion>
+		<SerilogSinksRollingFileVersion>3.3.0</SerilogSinksRollingFileVersion>
 		<SerilogSinksElasticsearchVersion>8.4.1</SerilogSinksElasticsearchVersion>
 		<NewtonsoftJsonVersion>13.0.1</NewtonsoftJsonVersion>
 		<NESTVersion>7.15.1</NESTVersion>

@@ -1,6 +1,6 @@
 using System;
 
-namespace Lion.AbpPro.IdentityServers.Dtos
+namespace Lion.AbpPro.IdentityServers.ApiResources.Dtos
 {
     public class ApiResourcePropertyOutput
     {

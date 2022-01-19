@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Lion.AbpPro.Settings
+namespace Lion.AbpPro.Settings.Dtos
 {
     public class UpdateSettingInput
     {

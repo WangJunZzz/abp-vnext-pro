@@ -1,4 +1,5 @@
 using AutoMapper;
+using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
 using Lion.AbpPro.NotificationManagement.Notifications.Etos;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications

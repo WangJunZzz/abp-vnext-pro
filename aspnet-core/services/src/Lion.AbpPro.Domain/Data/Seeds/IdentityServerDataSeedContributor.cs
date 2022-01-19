@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IdentityServer4.Models;
-using Microsoft.Extensions.Configuration;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
@@ -18,7 +17,7 @@ using ApiResource = Volo.Abp.IdentityServer.ApiResources.ApiResource;
 using ApiScope = Volo.Abp.IdentityServer.ApiScopes.ApiScope;
 using Client = Volo.Abp.IdentityServer.Clients.Client;
 
-namespace Lion.AbpPro.IdentityServer
+namespace Lion.AbpPro.Data.Seeds
 {
     public class IdentityServerDataSeedContributor : IDataSeedContributor, ITransientDependency
     {

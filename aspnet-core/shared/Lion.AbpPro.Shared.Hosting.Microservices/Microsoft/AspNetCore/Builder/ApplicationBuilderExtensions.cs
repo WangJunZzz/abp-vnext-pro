@@ -1,10 +1,11 @@
 using System;
 using Consul;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Microsoft.AspNetCore.Builder
+namespace Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.Builder
 {
     public static class ApplicationBuilderExtensions
     {

@@ -2,13 +2,15 @@ using System;
 using System.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
+using Volo.Abp;
+using Volo.Abp.AspNetCore.ExceptionHandling;
 using Volo.Abp.Authorization;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.ExceptionHandling;
 using Volo.Abp.Validation;
 
-namespace Volo.Abp.AspNetCore.ExceptionHandling
+namespace Lion.AbpPro.Shared.Hosting.Microservices.Volo.Abp
 {
     /// <summary>
     /// 修改Abp 返回状态码

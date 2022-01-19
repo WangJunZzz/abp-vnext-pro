@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Nest;
 using Volo.Abp.DependencyInjection;
 
-namespace Lion.AbpPro.ElasticsearchRepository
+namespace Lion.AbpPro.ElasticSearchs.Providers
 {
     public class ElasticsearchProvider : IElasticsearchProvider, ISingletonDependency
     {

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Lion.AbpPro.NotificationManagement.Hubs;
 using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
+using Lion.AbpPro.NotificationManagement.Notifications.Enums;
 using Microsoft.AspNetCore.SignalR;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;

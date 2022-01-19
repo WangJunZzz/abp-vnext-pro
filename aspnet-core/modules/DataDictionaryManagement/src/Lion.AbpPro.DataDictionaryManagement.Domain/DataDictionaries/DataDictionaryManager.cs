@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dto;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Exceptions;
 using Volo.Abp.Caching;
 using Volo.Abp.Domain.Services;
 

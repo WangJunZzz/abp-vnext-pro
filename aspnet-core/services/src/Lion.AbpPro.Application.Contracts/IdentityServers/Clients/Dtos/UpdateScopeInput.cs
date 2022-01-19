@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Lion.AbpPro.IdentityServers.Clients
+namespace Lion.AbpPro.IdentityServers.Clients.Dtos
 {
     public class UpdateScopeInput
     {

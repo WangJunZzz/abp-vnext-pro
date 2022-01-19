@@ -1,7 +1,7 @@
 using System;
 using Nest;
 
-namespace Lion.AbpPro.ElasticSearchs
+namespace Lion.AbpPro.ElasticSearchs.Dto
 {
     /// <summary>
     ///   Dto为什么在Service层

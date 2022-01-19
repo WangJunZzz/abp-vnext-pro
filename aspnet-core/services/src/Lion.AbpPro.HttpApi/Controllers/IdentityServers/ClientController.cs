@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Lion.AbpPro.IdentityServers.Clients;
 using Lion.AbpPro.Permissions;
 using Lion.AbpPro.Extension.Customs.Dtos;
+using Lion.AbpPro.IdentityServers.Clients.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

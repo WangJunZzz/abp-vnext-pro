@@ -1,4 +1,4 @@
-namespace Lion.AbpPro.NotificationManagement.Notifications
+namespace Lion.AbpPro.NotificationManagement.Notifications.MaxLengths
 {
     public class NotificationMaxLengths
     {

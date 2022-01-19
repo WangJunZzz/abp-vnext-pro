@@ -1,4 +1,4 @@
-namespace Lion.AbpPro.IdentityServers.Clients
+namespace Lion.AbpPro.IdentityServers.Clients.Dtos
 {
     public class UpdataBasicDataInput
     {
