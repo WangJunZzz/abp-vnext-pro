@@ -35,7 +35,6 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// 分页查询字典项
         /// </summary>
         /// <param name="input"></param>
-        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public async Task<PagedResultDto<PagingDataDictionaryOutput>> GetPagingListAsync(
             PagingDataDictionaryInput input)
@@ -57,7 +56,6 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// 分页查询字典项明细
         /// </summary>
         /// <param name="input"></param>
-        /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public async Task<PagedResultDto<PagingDataDictionaryDetailOutput>> GetPagingDetailListAsync(
             PagingDataDictionaryDetailInput input)
