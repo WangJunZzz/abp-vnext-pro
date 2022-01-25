@@ -1,0 +1,10 @@
+{
+  "culture": "zh-Hans",
+  "texts": {
+    "MyAccount": "我的账户",
+    "SamplePageMessage": "FileManagement模块的示例页面",
+    "Permission:FileManagement": "文件管理",
+    "Permission:Upload": "上传",
+    "Permission:Down": "下载"
+  }
+}

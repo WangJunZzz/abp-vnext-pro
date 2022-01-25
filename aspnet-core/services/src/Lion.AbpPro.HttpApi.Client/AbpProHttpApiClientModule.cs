@@ -1,4 +1,5 @@
 using Lion.AbpPro.DataDictionaryManagement;
+using Lion.AbpPro.FileManagement;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
@@ -18,7 +19,8 @@ namespace Lion.AbpPro
         typeof(AbpTenantManagementHttpApiClientModule),
         typeof(AbpFeatureManagementHttpApiClientModule),
         typeof(AbpSettingManagementHttpApiClientModule),
-        typeof(DataDictionaryManagementHttpApiClientModule)
+        typeof(DataDictionaryManagementHttpApiClientModule),
+        typeof(FileManagementHttpApiClientModule)
     )]
     public class AbpProHttpApiClientModule : AbpModule
     {

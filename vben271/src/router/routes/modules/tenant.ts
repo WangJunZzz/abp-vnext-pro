@@ -7,7 +7,7 @@ const tenant: AppRouteModule = {
   component: LAYOUT,
   meta: {
     orderNo: 30,
-    icon: 'ion:grid-outline',
+    icon: 'ant-design:contacts-outlined',
     title: t('routes.tenant.tenantManagement'),
   },
   children: [

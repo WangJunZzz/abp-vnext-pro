@@ -1,4 +1,5 @@
 using Lion.AbpPro.DataDictionaryManagement;
+using Lion.AbpPro.FileManagement;
 using Lion.AbpPro.NotificationManagement;
 using Volo.Abp.Account;
 using Volo.Abp.AuditLogging;
@@ -23,7 +24,8 @@ namespace Lion.AbpPro
         typeof(AbpSettingManagementApplicationModule),
         typeof(AbpAuditLoggingDomainModule),
         typeof(DataDictionaryManagementApplicationModule),
-        typeof(NotificationManagementApplicationModule)
+        typeof(NotificationManagementApplicationModule),
+        typeof(FileManagementApplicationModule)
         )]
     public class AbpProApplicationModule : AbpModule
     {

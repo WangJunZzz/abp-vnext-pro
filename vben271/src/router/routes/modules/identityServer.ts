@@ -8,7 +8,7 @@ const identityServer: AppRouteModule = {
   //redirect: '/admin/abpUser',
   meta: {
     orderNo: 30,
-    icon: 'ion:grid-outline',
+    icon: 'ant-design:skin-outlined',
     title: t('routes.admin.identityServer'),
   },
   children: [

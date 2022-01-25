@@ -59,4 +59,6 @@ export default {
   dictionaryOrder: '排序',
   chooseDictionary: '请选择字典类型',
   nonZeroMessage: '请输入非零的正整数',
+  fileName: '文件名称',
+  fileNameManagement: '文件管理',
 };

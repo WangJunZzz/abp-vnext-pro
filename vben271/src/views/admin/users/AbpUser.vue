@@ -73,7 +73,6 @@
   import { useModal } from '/@/components/Modal';
   import CreateAbpUser from './CreateAbpUser.vue';
   import EditAbpUser from './EditAbpUser.vue';
-  import { useUserStoreWithOut } from '/@/store/modules/user';
   import { message } from 'ant-design-vue';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { LockUserInput } from '/@/services/ServiceProxies';
@@ -88,9 +87,6 @@
       Tag,
     },
     setup() {
-      const userStore = useUserStoreWithOut();
-      const userInfo = userStore.getUserInfo;
-      let currentUserId = userInfo.userId;
       const { createConfirm } = useMessage();
       const { t } = useI18n();
       const [registerCreateAbpUserModal, { openModal: openCreateAbpUserModal }] = useModal();
@@ -147,14 +143,6 @@
       };
 
       const handleLock = async (record: Recordable) => {
-        if (!record.lockoutEnabled && currentUserId === record.id) {
-          createConfirm({
-            iconType: 'warning',
-            title: t('common.tip'),
-            content: t('common.disEnabledSelf'),
-          });
-          return;
-        }
         let request = new LockUserInput();
         request.userId = record.id;
         request.locked = !record.isActive;

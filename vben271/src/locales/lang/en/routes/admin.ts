@@ -60,4 +60,6 @@ export default {
   dictionaryOrder: 'Order',
   chooseDictionary: 'Please Choose DataDictionary Type',
   nonZeroMessage: 'Please enter a non-zero positive integer',
+  fileName: 'FileName',
+  fileNameManagement: 'FileNameManagement',
 };

@@ -1,4 +1,5 @@
 using Lion.AbpPro.DataDictionaryManagement;
+using Lion.AbpPro.FileManagement;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -19,7 +20,8 @@ namespace Lion.AbpPro
         typeof(AbpSettingManagementApplicationContractsModule),
         typeof(AbpTenantManagementApplicationContractsModule),
         typeof(AbpObjectExtendingModule),
-        typeof(DataDictionaryManagementApplicationContractsModule)
+        typeof(DataDictionaryManagementApplicationContractsModule),
+        typeof(FileManagementApplicationContractsModule)
     )]
     public class AbpProApplicationContractsModule : AbpModule
     {

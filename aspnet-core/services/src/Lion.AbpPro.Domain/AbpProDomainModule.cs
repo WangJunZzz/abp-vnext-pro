@@ -1,4 +1,5 @@
 using Lion.AbpPro.DataDictionaryManagement;
+using Lion.AbpPro.FileManagement;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Lion.AbpPro.MultiTenancy;
@@ -31,7 +32,8 @@ namespace Lion.AbpPro
         typeof(AbpTenantManagementDomainModule),
         typeof(AbpEmailingModule),
         typeof(DataDictionaryManagementDomainModule),
-        typeof(NotificationManagementDomainModule)
+        typeof(NotificationManagementDomainModule),
+        typeof(FileManagementDomainModule)
     )]
     public class AbpProDomainModule : AbpModule
     {

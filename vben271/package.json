@@ -39,6 +39,7 @@
     "@microsoft/signalr": "^5.0.8",
     "@vueuse/core": "^5.3.0",
     "@zxcvbn-ts/core": "^1.0.0-beta.0",
+    "ali-oss": "^6.16.0",
     "ant-design-vue": "2.2.6",
     "axios": "^0.21.1",
     "crypto-js": "^4.1.1",

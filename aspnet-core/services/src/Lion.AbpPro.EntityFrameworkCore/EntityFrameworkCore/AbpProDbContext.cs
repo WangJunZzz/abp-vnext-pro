@@ -1,5 +1,7 @@
 using Lion.AbpPro.DataDictionaryManagement;
 using Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore;
+using Lion.AbpPro.FileManagement.EntityFrameworkCore;
+using Lion.AbpPro.FileManagement.Files;
 using Lion.AbpPro.NotificationManagement;
 using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -42,7 +44,8 @@ namespace Lion.AbpPro.EntityFrameworkCore
         ISettingManagementDbContext,
         ITenantManagementDbContext,
         IBackgroundJobsDbContext,
-        IAuditLoggingDbContext
+        IAuditLoggingDbContext,
+        IFileManagementDbContext
     {
         public DbSet<IdentityUser> Users { get; }
         public DbSet<IdentityRole> Roles { get; }
@@ -57,7 +60,8 @@ namespace Lion.AbpPro.EntityFrameworkCore
         public DbSet<TenantConnectionString> TenantConnectionStrings { get; }
         public DbSet<BackgroundJobRecord> BackgroundJobs { get; }
         public DbSet<AuditLog> AuditLogs { get; }
-
+        public DbSet<File> Files { get; }
+        
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside AbpProDbContextModelCreatingExtensions.ConfigureAbpPro
          */
@@ -95,6 +99,10 @@ namespace Lion.AbpPro.EntityFrameworkCore
 
             // 消息通知
             builder.ConfigureNotificationManagement();
+            
+            // 文件管理
+            builder.ConfigureFileManagement();
         }
+
     }
 }
