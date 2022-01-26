@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="5.0.0-rc.1" />
-    <PackageReference Include="Volo.Abp.Autofac" Version="5.0.0-rc.1" />
+    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="$(AbpPackageVersion)" />
     <ProjectReference Include="..\..\src\Lion.AbpPro.FileManagement.HttpApi.Client\Lion.AbpPro.FileManagement.HttpApi.Client.csproj" />
   </ItemGroup>
 
