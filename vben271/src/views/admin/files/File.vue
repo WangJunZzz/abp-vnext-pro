@@ -89,9 +89,7 @@
           'X'
         )}.${type}`;
 
-        await client.put(fileFullName, action.file).then((res) => {
-          console.log(res);
-        });
+        await client.put(fileFullName, action.file);
         let request = new CreateFileInput();
         request.fileName = fileName;
         request.filePath = fileFullName;
