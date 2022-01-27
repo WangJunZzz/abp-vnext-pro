@@ -7,9 +7,11 @@ import {
   DataDictionaryServiceProxy,
   SetDataDictinaryDetailInput,
   DeleteDataDictionaryDetailInput,
+  DeleteDataDictionaryInput,
 } from '/@/services/ServiceProxies';
 import { h } from 'vue';
 import { Switch } from 'ant-design-vue';
+import { debug } from 'console';
 const { t } = useI18n();
 export const tableColumns: BasicColumn[] = [
   {
@@ -258,7 +260,53 @@ export const createDictionaryTypeFormSchema: FormSchema[] = [
     },
   },
 ];
-
+//编辑字典类型
+export const editDictionaryTypeFormSchema: FormSchema[] = [
+  {
+    field: 'code',
+    label: t('routes.admin.dictionaryCode'),
+    component: 'Input',
+    required: true,
+    colProps: {
+      span: 22,
+    },
+  },
+  {
+    field: 'displayText',
+    label: t('routes.admin.dictionaryDisplayText'),
+    component: 'Input',
+    required: true,
+    colProps: {
+      span: 22,
+    },
+  },
+  {
+    field: 'description',
+    label: t('routes.admin.dictionaryDescription'),
+    component: 'InputTextArea',
+    colProps: {
+      span: 22,
+    },
+  },
+  {
+    field: 'key',
+    label: '',
+    ifShow: false,
+    component: 'Input',
+    colProps: {
+      span: 18,
+    },
+  },
+  {
+    field: 'id',
+    label: '',
+    ifShow: false,
+    component: 'Input',
+    colProps: {
+      span: 18,
+    },
+  },
+];
 /**
  *获取字典类型表格
  *
@@ -287,7 +335,16 @@ export async function createDictionaryTypeAsync({
   changeOkLoading(false);
   closeModal();
 }
-
+//编辑数据字典类型
+export async function editDictionaryTypeAsync({ request, changeOkLoading, validate, closeModal }) {
+  changeOkLoading(true);
+  await validate();
+  const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();
+  await _dataDictionaryServiceProxy.update(request);
+  message.success(t('common.operationSuccess'));
+  changeOkLoading(false);
+  closeModal();
+}
 //启用|禁用详情字典
 export async function enableDictionaryAsync(input: SetDataDictinaryDetailInput) {
   const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();
@@ -343,3 +400,12 @@ export async function deleleDetailAsync({ dataDictionaryId, dataDictionayDetailI
   await _dataDictionaryServiceProxy.delete(request);
   reload();
 }
+
+export async function deleteDictinaryTypeAsync({ Id, reloadType }) {
+  const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();
+  const request = new DeleteDataDictionaryInput();
+  request.Id = Id;
+  await _dataDictionaryServiceProxy.deleteDictinaryType(request);
+  reloadType();
+}
+

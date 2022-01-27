@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos;
+using Lion.AbpPro.Extension.Customs.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
 
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
@@ -67,5 +67,21 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         {
             return _dataDictionaryAppService.DeleteAsync(input);
         }
+
+        [HttpPost("deleteDictinaryType")]
+        [SwaggerOperation(summary: "删除字典类型", Tags = new[] { "DataDictionary" })]
+        public Task DeleteDictinaryTypeAsync(IdInput input)
+        {
+            return _dataDictionaryAppService.DeleteDictinaryTypeAsync(input);
+        }
+
+
+        [HttpPost("update")]
+        [SwaggerOperation(summary: "修改字典类型", Tags = new[] { "DataDictionary" })]
+        public Task UpdateAsync(UpdateDataDictinaryInput input)
+        {
+            return _dataDictionaryAppService.UpdateAsync(input);
+        }
+
     }
 }

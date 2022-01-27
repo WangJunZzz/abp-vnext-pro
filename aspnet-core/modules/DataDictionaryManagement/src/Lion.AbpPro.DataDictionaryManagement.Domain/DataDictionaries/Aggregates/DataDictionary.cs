@@ -114,5 +114,11 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates
 
             Details.Remove(detail);
         }
+
+        public void Update(Guid dataDictionayDetailId,string displayText,string description)
+        {
+            SetDescription(description);
+            SetDisplayText(displayText);
+        }
     }
 }

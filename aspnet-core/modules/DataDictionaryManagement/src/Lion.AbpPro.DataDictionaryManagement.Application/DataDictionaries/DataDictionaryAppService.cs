@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos;
 using Lion.AbpPro.DataDictionaryManagement.Permissions;
+using Lion.AbpPro.Extension.Customs.Dtos;
 using Lion.AbpPro.Extension.System;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
@@ -111,6 +112,18 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         public Task DeleteAsync(DeleteDataDictionaryDetailInput input)
         {
             return _dataDictionaryManager.DeleteAsync(input.DataDictionaryId, input.DataDictionayDetailId);
+        }
+
+
+        [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Delete)]
+        public Task DeleteDictinaryTypeAsync(IdInput input)
+        {
+            return _dataDictionaryManager.DeleteDictinaryTypeAsync(input.Id);
+        }
+        [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Update)]
+        public  Task UpdateAsync(UpdateDataDictinaryInput input)
+        {
+            return _dataDictionaryManager.UpdateAsync( input.Id, input.DisplayText, input.Description);
         }
     }
 }

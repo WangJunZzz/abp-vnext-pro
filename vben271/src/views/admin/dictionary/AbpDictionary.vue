@@ -18,6 +18,20 @@
             {{ t('common.createText') }}</a-button
           >
         </template>
+        <template #action="{ record }">
+          <TableAction
+            :dropDownActions="[
+              {
+                label: t('common.editText'),
+                onClick: handleEditType.bind(null, record),
+              },
+              {
+                label: t('common.delText'),
+                onClick: handleDeleteDictinaryType.bind(null, record),
+              },
+            ]"
+          />
+        </template>
       </BasicTable>
 
       <BasicTable @register="registerTable" class="w-3/4 xl:w-4/5" size="small">
@@ -51,12 +65,10 @@
           />
         </template>
       </BasicTable>
-      <CreateAbpDictionaryType
-        @reloadType="reloadType"
-        @register="registerCreateType"
-      ></CreateAbpDictionaryType>
+      <CreateAbpDictionaryType @reloadType="reloadType" @register="registerCreateType" />
       <CreateAbpDictionary @register="registerCreateModal" @reload="reload" />
       <EditAbpDictionary @register="registerEditModal" @reload="reload" />
+      <EditAbpDictionaryType @register="registerEditTypeModal" @reload="reload" />
     </PageWrapper>
   </div>
 </template>
@@ -68,6 +80,7 @@
   import { BasicModal, useModal } from '/@/components/Modal';
   import CreateAbpDictionary from './CreateAbpDictionary.vue';
   import EditAbpDictionary from './EditAbpDictionary.vue';
+  import EditAbpDictionaryType from './EditAbpDictionaryType.vue';
   import CreateAbpDictionaryType from './CreateAbpDictionaryType.vue';
 
   import { useI18n } from '/@/hooks/web/useI18n';
@@ -79,6 +92,7 @@
     searchDictionaryFormSchema,
     getDictionaryDetailsAsync,
     deleleDetailAsync,
+    deleteDictinaryTypeAsync,
   } from './AbpDictionary';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { Tag, message } from 'ant-design-vue';
@@ -93,12 +107,14 @@
       CreateAbpDictionaryType,
       CreateAbpDictionary,
       EditAbpDictionary,
+      EditAbpDictionaryType,
     },
     setup() {
       const { t } = useI18n();
 
       const [registerCreateModal, { openModal: createModal }] = useModal();
       const [registerEditModal, { openModal: editModal }] = useModal();
+      const [registerEditTypeModal, { openModal: editTypeModal }] = useModal();
       const [registerCreateType, { openModal: createTypeModal }] = useModal();
       const selectedDataDictionaryIdRef = ref('');
       const selectedDataDictionaryDisplayTextRef = ref('');
@@ -119,6 +135,12 @@
         canResize: true,
         rowSelection: { type: 'radio' },
         pagination: false,
+        actionColumn: {
+          width: 50,
+          title: t('common.action'),
+          dataIndex: 'action',
+          slots: { customRender: 'action' },
+        },
       });
 
       //勾选事件
@@ -140,7 +162,25 @@
           createModal(true, { dictionaryCreate: dictionaryCreate });
         }
       };
-
+      const handleEditType = (record: Recordable) => {
+        editTypeModal(true, {
+          record: record,
+        });
+      };
+      const handleDeleteDictinaryType = async (record: Recordable) => {
+        let msg = t('common.askDelete');
+        createConfirm({
+          iconType: 'warning',
+          title: t('common.tip'),
+          content: msg,
+          onOk: async () => {
+            await deleteDictinaryTypeAsync({
+              Id: record.id,
+              reloadType,
+            });
+          },
+        });
+      };
       const [registerTable, { reload }] = useTable({
         columns: tableColumns,
         formConfig: {
@@ -172,7 +212,6 @@
           record: record,
         });
       };
-
       const handleCreateType = () => {
         createTypeModal(true);
       };
@@ -196,8 +235,10 @@
         registerTable,
         registerCreateModal,
         registerEditModal,
+        registerEditTypeModal,
         handleCreate,
         handleEdit,
+        handleEditType,
         reload,
         registerTypeTable,
         registerCreateType,
@@ -207,6 +248,7 @@
         clearSelectedRowKeys,
         t,
         handleDelete,
+        handleDeleteDictinaryType,
       };
     },
   });
