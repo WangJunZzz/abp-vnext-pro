@@ -24,6 +24,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Lion.AbpPro.CAP;
 using Lion.AbpPro.Extensions.Filters;
+using Lion.AbpPro.Extensions.Hangfire;
+using Lion.AbpPro.Jobs;
 using Lion.AbpPro.Shared.Hosting.Microservices;
 using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.Builder;
 using Lion.AbpPro.Shared.Hosting.Microservices.Swaggers;
@@ -64,7 +66,7 @@ namespace Lion.AbpPro
         public override void OnPostApplicationInitialization(
             ApplicationInitializationContext context)
         {
-            // context.CreateRecurringJob();
+            context.CreateRecurringJob();
             base.OnPostApplicationInitialization(context);
         }
 
@@ -109,7 +111,7 @@ namespace Lion.AbpPro
 
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
-       
+
             app.UseUnitOfWork();
             app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
             app.UseHangfireDashboard("/hangfire", new DashboardOptions()
@@ -127,10 +129,7 @@ namespace Lion.AbpPro
 
         private void ConfigureHangfireMysql(ServiceConfigurationContext context)
         {
-            Configure<AbpBackgroundJobOptions>(options =>
-            {
-                options.IsJobExecutionEnabled = true;
-            });
+            Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = true; });
             context.Services.AddHangfire(config =>
             {
                 config.UseStorage(new MySqlStorage(
@@ -142,7 +141,13 @@ namespace Lion.AbpPro
                         //QueuePollInterval = TimeSpan.Zero,
                         //UseRecommendedIsolationLevel = true,
                         //DisableGlobalLocks = true
+                        JobExpirationCheckInterval = TimeSpan.FromSeconds(3)
                     }));
+                var delaysInSeconds = new int[] { 10, 60, 60 * 3 }; // 重试时间间隔
+                var Attempts = 3; // 重试次数
+                config.UseFilter(new AutomaticRetryAttribute() { Attempts = Attempts, DelaysInSeconds = delaysInSeconds });
+                config.UseFilter(new AutoDeleteAfterSuccessAttributer(TimeSpan.FromSeconds(5)));
+                config.UseFilter(new JobRetryLastFilter(Attempts));
             });
         }
 
@@ -152,11 +157,10 @@ namespace Lion.AbpPro
         /// <param name="context"></param>
         private void ConfigurationMiniProfiler(ServiceConfigurationContext context)
         {
-            
             context.Services.AddMiniProfiler(options => options.RouteBasePath = "/profiler")
                 .AddEntityFramework();
         }
-        
+
         /// <summary>
         /// 配置JWT
         /// </summary>
@@ -306,7 +310,6 @@ namespace Lion.AbpPro
                             Type = SecuritySchemeType.Http,
                             Scheme = JwtBearerDefaults.AuthenticationScheme,
                             BearerFormat = "JWT"
-
                         });
                     options.AddSecurityRequirement(new OpenApiSecurityRequirement
                     {
