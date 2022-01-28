@@ -32,4 +32,5 @@ export default {
   detail: 'Detail',
   status: 'Status',
   active: 'IsActive',
+  download: 'DownLoad',
 };

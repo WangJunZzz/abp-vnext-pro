@@ -1,4 +1,5 @@
 using Lion.AbpPro.DataDictionaryManagement;
+using Lion.AbpPro.FileManagement;
 using Localization.Resources.AbpUi;
 using Lion.AbpPro.Localization;
 using Lion.AbpPro.NotificationManagement;
@@ -22,7 +23,8 @@ namespace Lion.AbpPro
         typeof(AbpFeatureManagementHttpApiModule),
         typeof(AbpSettingManagementHttpApiModule),
         typeof(DataDictionaryManagementHttpApiModule),
-        typeof(NotificationManagementHttpApiModule)
+        typeof(NotificationManagementHttpApiModule),
+        typeof(FileManagementHttpApiModule)
         )]
     public class AbpProHttpApiModule : AbpModule
     {

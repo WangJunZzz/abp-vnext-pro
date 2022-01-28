@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../../../common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>Lion.AbpPro.FileManagement</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNETTestSdkVersion)"/>
+        <ProjectReference Include="..\Lion.AbpPro.FileManagement.EntityFrameworkCore.Tests\Lion.AbpPro.FileManagement.EntityFrameworkCore.Tests.csproj"/>
+    </ItemGroup>
+
+</Project>

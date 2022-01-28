@@ -1,4 +1,5 @@
 using Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore;
+using Lion.AbpPro.FileManagement.EntityFrameworkCore;
 using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -27,7 +28,8 @@ namespace Lion.AbpPro.EntityFrameworkCore
         typeof(AbpTenantManagementEntityFrameworkCoreModule),
         typeof(AbpFeatureManagementEntityFrameworkCoreModule),
         typeof(DataDictionaryManagementEntityFrameworkCoreModule),
-        typeof(NotificationManagementEntityFrameworkCoreModule)
+        typeof(NotificationManagementEntityFrameworkCoreModule),
+        typeof(FileManagementEntityFrameworkCoreModule)
         )]
     public class AbpProEntityFrameworkCoreModule : AbpModule
     {

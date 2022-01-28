@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.HttpApi\Lion.AbpPro.DataDictionaryManagement.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\modules\FileManagement\src\Lion.AbpPro.FileManagement.HttpApi\Lion.AbpPro.FileManagement.HttpApi.csproj" />
     <ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.HttpApi\Lion.AbpPro.NotificationManagement.HttpApi.csproj" />
     <ProjectReference Include="..\Lion.AbpPro.Application.Contracts\Lion.AbpPro.Application.Contracts.csproj" />
   </ItemGroup>

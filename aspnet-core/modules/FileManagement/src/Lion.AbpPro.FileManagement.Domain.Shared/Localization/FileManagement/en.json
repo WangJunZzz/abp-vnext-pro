@@ -1,0 +1,10 @@
+{
+  "culture": "en",
+  "texts": {
+    "MyAccount": "My account",
+    "SamplePageMessage": "A sample page for the FileManagement module",
+    "Permission:FileManagement": "FileManagement",
+    "Permission:Upload": "Upload",
+    "Permission:Down": "Down"
+  }
+}

@@ -1,4 +1,5 @@
 using Lion.AbpPro.DataDictionaryManagement;
+using Lion.AbpPro.FileManagement;
 using Lion.AbpPro.Localization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
@@ -34,7 +35,8 @@ namespace Lion.AbpPro
         typeof(AbpPermissionManagementDomainSharedModule),
         typeof(AbpSettingManagementDomainSharedModule),
         typeof(AbpTenantManagementDomainSharedModule),
-        typeof(DataDictionaryManagementDomainSharedModule)
+        typeof(DataDictionaryManagementDomainSharedModule),
+        typeof(FileManagementDomainSharedModule)
     )]
     public class AbpProDomainSharedModule : AbpModule
     {

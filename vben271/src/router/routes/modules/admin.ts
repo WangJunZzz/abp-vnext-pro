@@ -73,6 +73,16 @@ const admin: AppRouteModule = {
         policy: 'System.DataDictionaryManagement',
       },
     },
+    {
+      path: 'files',
+      name: 'files',
+      component: () => import('/@/views/admin/files/File.vue'),
+      meta: {
+        title: t('routes.admin.fileNameManagement'),
+        icon: 'ant-design:snippets-outlined',
+        policy: 'System.FileManagement',
+      },
+    },
   ],
 };
 

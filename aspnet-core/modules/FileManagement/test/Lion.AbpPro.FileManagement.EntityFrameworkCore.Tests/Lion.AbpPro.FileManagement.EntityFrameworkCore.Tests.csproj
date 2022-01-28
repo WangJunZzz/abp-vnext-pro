@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../../../common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>Lion.AbpPro.FileManagement</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNETTestSdkVersion)"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="$(MicrosoftVersion)"/>
+        <ProjectReference Include="..\..\src\Lion.AbpPro.FileManagement.EntityFrameworkCore\Lion.AbpPro.FileManagement.EntityFrameworkCore.csproj"/>
+        <ProjectReference Include="..\Lion.AbpPro.FileManagement.TestBase\Lion.AbpPro.FileManagement.TestBase.csproj"/>
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="$(AbpPackageVersion)"/>
+    </ItemGroup>
+
+</Project>
