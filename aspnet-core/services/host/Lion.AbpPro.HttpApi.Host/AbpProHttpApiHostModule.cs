@@ -141,12 +141,12 @@ namespace Lion.AbpPro
                         //QueuePollInterval = TimeSpan.Zero,
                         //UseRecommendedIsolationLevel = true,
                         //DisableGlobalLocks = true
-                        JobExpirationCheckInterval = TimeSpan.FromSeconds(3)
+                        JobExpirationCheckInterval = TimeSpan.FromMinutes(30)
                     }));
                 var delaysInSeconds = new int[] { 10, 60, 60 * 3 }; // 重试时间间隔
                 var Attempts = 3; // 重试次数
                 config.UseFilter(new AutomaticRetryAttribute() { Attempts = Attempts, DelaysInSeconds = delaysInSeconds });
-                config.UseFilter(new AutoDeleteAfterSuccessAttributer(TimeSpan.FromSeconds(5)));
+                config.UseFilter(new AutoDeleteAfterSuccessAttributer(TimeSpan.FromDays(7)));
                 config.UseFilter(new JobRetryLastFilter(Attempts));
             });
         }
