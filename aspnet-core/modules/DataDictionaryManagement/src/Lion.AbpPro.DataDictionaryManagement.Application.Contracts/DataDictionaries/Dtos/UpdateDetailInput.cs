@@ -1,17 +1,19 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos;
-
-public class UpdateDetailInput
+namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos
 {
-    [Required] public Guid DataDictionaryId { get; set; }
+    public class UpdateDetailInput
+    {
+        [Required] public Guid DataDictionaryId { get; set; }
 
-    [Required] public Guid Id { get; set; }
+        [Required] public Guid Id { get; set; }
 
-    [Required] public string DisplayText { get; set; }
+        [Required] public string DisplayText { get; set; }
 
-    public string Description { get; set; }
+        public string Description { get; set; }
 
-    public int Order { get; set; }
+        public int Order { get; set; }
+    }
 }
+

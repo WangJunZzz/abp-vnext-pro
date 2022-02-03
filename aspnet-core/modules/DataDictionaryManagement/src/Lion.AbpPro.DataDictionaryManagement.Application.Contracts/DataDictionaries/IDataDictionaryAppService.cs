@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos;
+using Lion.AbpPro.Extension.Customs.Dtos;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
@@ -48,5 +49,20 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <param name="input"></param>
         /// <returns></returns>
         Task DeleteAsync(DeleteDataDictionaryDetailInput input);
+
+        /// <summary>
+        /// 删除字典类型
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task DeleteDictinaryTypeAsync(IdInput input);
+
+        /// <summary>
+        /// 修改数据字典
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task UpdateAsync(UpdateDataDictinaryInput input);
+
     }
 }

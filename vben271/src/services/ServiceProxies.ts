@@ -3255,7 +3255,39 @@ export class DataDictionaryServiceProxy extends ServiceProxyBase {
         }
         return Promise.resolve<void>(<any>null);
     }
+    /**
+     * 更新字典类型
+     * @param body (optional) 
+     * @return Success
+     */
+     update(body: UpdateDetailInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/DataDictionary/update";
+        url_ = url_.replace(/[?&]$/, "");
 
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processUpdateDetail(_response));
+        });
+    }
     /**
      * 更新字典明细
      * @param body (optional) 
@@ -3352,7 +3384,39 @@ export class DataDictionaryServiceProxy extends ServiceProxyBase {
         }
         return Promise.resolve<void>(<any>null);
     }
+    /**
+     * 删除字典类型
+     * @param body (optional) 
+     * @return Success
+     */
+     deleteDictinaryType(body: DeleteDataDictionaryInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/DataDictionary/deleteDictinaryType";
+        url_ = url_.replace(/[?&]$/, "");
 
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processDelete(_response));
+        });
+    }
     /**
      * 删除字典明细
      * @param body (optional) 
@@ -10015,6 +10079,42 @@ export class DeleteDataDictionaryDetailInput implements IDeleteDataDictionaryDet
 export interface IDeleteDataDictionaryDetailInput {
     dataDictionaryId: string;
     dataDictionayDetailId: string;
+}
+
+export class DeleteDataDictionaryInput implements IDeleteDataDictionaryInput {
+    Id!: string;
+
+    constructor(data?: IDeleteDataDictionaryInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.Id = _data["Id"];
+        }
+    }
+
+    static fromJS(data: any): DeleteDataDictionaryInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new DeleteDataDictionaryInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["Id"] = this.Id;
+        return data; 
+    }
+}
+
+export interface IDeleteDataDictionaryInput {
+    Id: string;
 }
 
 export class EmailSettingsDto implements IEmailSettingsDto {

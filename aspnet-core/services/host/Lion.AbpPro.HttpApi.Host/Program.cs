@@ -23,6 +23,7 @@ namespace Lion.AbpPro
                 {
                     webBuilder.ConfigureKestrel((context, options) => { options.Limits.MaxRequestBodySize = 1024 * 50; });
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls("http://localhost:44315");
                 })
                 .UseSerilog((context, loggerConfiguration) =>
                 {

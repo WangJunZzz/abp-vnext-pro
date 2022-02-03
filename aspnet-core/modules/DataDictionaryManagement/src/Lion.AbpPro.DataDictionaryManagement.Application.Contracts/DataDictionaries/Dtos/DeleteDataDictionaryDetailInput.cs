@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos;
-
-public class DeleteDataDictionaryDetailInput
+namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos
 {
-    public Guid DataDictionaryId { get; set; }
-    
-    public Guid DataDictionayDetailId { get; set; }
+    public class DeleteDataDictionaryDetailInput
+    {
+        public Guid DataDictionaryId { get; set; }
+
+        public Guid DataDictionayDetailId { get; set; }
+    }
 }

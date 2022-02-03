@@ -147,5 +147,34 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             entity.Details.Remove(detail);
             await _dataDictionaryRepository.UpdateAsync(entity);
         }
+        public async Task<DataDictionary> UpdateAsync(Guid dataDictionaryId,
+            string displayText,
+            string description)
+        {
+            var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
+            if (entity == null)
+                throw new DataDictionaryDomainException(message: "数据字典不存在");
+            entity.Update(dataDictionaryId,displayText,description);
+            return await _dataDictionaryRepository.UpdateAsync(entity);
+
+        }
+        /// <summary>
+        /// 删除字典类型
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task DeleteDictinaryTypeAsync(Guid id)
+        {
+            var entity = await _dataDictionaryRepository.FindByIdAsync(id);
+            if (entity == null)
+                throw new DataDictionaryDomainException(message: "数据字典不存在");
+            var detail = entity.Details.FirstOrDefault(e => e.DataDictionaryId == id);
+            if (detail !=null )
+            {
+                entity.Details.Remove(detail);
+                await _dataDictionaryRepository.UpdateAsync(entity);
+            }
+            await _dataDictionaryRepository.DeleteAsync(id);
+        }
     }
 }
