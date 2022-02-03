@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
+using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dto;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos;
 using Lion.AbpPro.DataDictionaryManagement.Permissions;
 using Lion.AbpPro.Extension.Customs.Dtos;
@@ -61,7 +62,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         public async Task<PagedResultDto<PagingDataDictionaryDetailOutput>> GetPagingDetailListAsync(
             PagingDataDictionaryDetailInput input)
         {
-            var entity = await _dataDictionaryRepository.FindByIdAsync(input.DataDictionaryId, true);
+            var entity = await _dataDictionaryRepository.FindByIdAsync(input.DataDictionaryId);
             var details = entity.Details
                 .WhereIf(input.Filter.IsNotNullOrWhiteSpace(), e => (e.Code.Contains(input.Filter) || e.DisplayText.Contains(input.Filter)))
                 .OrderBy(e => e.Order)
@@ -109,6 +110,8 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
                 input.Order);
         }
 
+        
+        [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Delete)]
         public Task DeleteAsync(DeleteDataDictionaryDetailInput input)
         {
             return _dataDictionaryManager.DeleteAsync(input.DataDictionaryId, input.DataDictionayDetailId);

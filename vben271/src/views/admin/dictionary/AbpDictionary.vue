@@ -65,10 +65,10 @@
           />
         </template>
       </BasicTable>
-      <CreateAbpDictionaryType @reloadType="reloadType" @register="registerCreateType" />
+      <CreateAbpDictionaryType @register="registerCreateType" @reload="reloadType" />
       <CreateAbpDictionary @register="registerCreateModal" @reload="reload" />
       <EditAbpDictionary @register="registerEditModal" @reload="reload" />
-      <EditAbpDictionaryType @register="registerEditTypeModal" @reload="reload" />
+      <EditAbpDictionaryType @register="registerEditTypeModal" @reload="reloadType" />
     </PageWrapper>
   </div>
 </template>

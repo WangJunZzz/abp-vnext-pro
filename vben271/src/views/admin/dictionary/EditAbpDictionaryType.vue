@@ -47,7 +47,7 @@
         try {
           let request = getFieldsValue();
           await editDictionaryTypeAsync({ request, changeOkLoading, validate, closeModal });
-          emit('reloadType');
+          emit('reload');
         } catch (error) {
           changeOkLoading(false);
         }

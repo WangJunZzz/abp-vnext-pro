@@ -1,5 +1,6 @@
 using AutoMapper;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
+using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dto;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos;
 
 namespace Lion.AbpPro.DataDictionaryManagement

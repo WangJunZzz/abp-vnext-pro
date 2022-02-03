@@ -20,7 +20,7 @@
   import { BasicForm, useForm } from '/@/components/Form/index';
   import { createDictionaryTypeFormSchema, createDictionaryTypeAsync } from './AbpDictionary';
   export default defineComponent({
-    name: 'EditDictionary',
+    name: 'CreateAbpDictionaryType',
     components: {
       BasicModal,
       BasicForm,
@@ -44,7 +44,7 @@
             validate,
             resetFields,
           });
-          emit('reloadType');
+          emit('reload');
         } catch (error) {
           changeOkLoading(false);
         }

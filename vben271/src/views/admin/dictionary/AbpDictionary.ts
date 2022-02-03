@@ -11,7 +11,7 @@ import {
 } from '/@/services/ServiceProxies';
 import { h } from 'vue';
 import { Switch } from 'ant-design-vue';
-import { debug } from 'console';
+
 const { t } = useI18n();
 export const tableColumns: BasicColumn[] = [
   {
@@ -270,6 +270,9 @@ export const editDictionaryTypeFormSchema: FormSchema[] = [
     colProps: {
       span: 22,
     },
+    componentProps: {
+      disabled: true,
+    },
   },
   {
     field: 'displayText',
@@ -408,4 +411,3 @@ export async function deleteDictinaryTypeAsync({ Id, reloadType }) {
   await _dataDictionaryServiceProxy.deleteDictinaryType(request);
   reloadType();
 }
-

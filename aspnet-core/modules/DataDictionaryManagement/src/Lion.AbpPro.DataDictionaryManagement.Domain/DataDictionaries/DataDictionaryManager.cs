@@ -22,6 +22,9 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             _cache = cache;
         }
 
+        
+        
+        
         public async Task<DataDictionaryDto> FindByIdAsync(
             Guid id,
             CancellationToken cancellationToken = default)
