@@ -5,6 +5,9 @@ RUN mkdir /app
 
 COPY publish /app
 
+# 这里速度会有点慢，可以打包自己的下边镜像底包
+RUN apt-get update -y && apt-get install -y libgdiplus && apt-get clean && ln -s /usr/lib/libgdiplus.so /usr/lib/gdiplus.dll
+
 # 设置工作目录
 WORKDIR /app
 
