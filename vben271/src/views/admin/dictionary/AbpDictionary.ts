@@ -7,7 +7,7 @@ import {
   DataDictionaryServiceProxy,
   SetDataDictinaryDetailInput,
   DeleteDataDictionaryDetailInput,
-  DeleteDataDictionaryInput,
+  IdInput,
 } from '/@/services/ServiceProxies';
 import { h } from 'vue';
 import { Switch } from 'ant-design-vue';
@@ -406,7 +406,7 @@ export async function deleleDetailAsync({ dataDictionaryId, dataDictionayDetailI
 
 export async function deleteDictinaryTypeAsync({ Id, reloadType }) {
   const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();
-  const request = new DeleteDataDictionaryInput();
+  const request = new IdInput();
   request.Id = Id;
   await _dataDictionaryServiceProxy.deleteDictinaryType(request);
   reloadType();
