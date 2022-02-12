@@ -36,4 +36,5 @@ export default {
   status: '状态',
   active: '是否激活',
   download: '下载',
+  export:"导出"
 };

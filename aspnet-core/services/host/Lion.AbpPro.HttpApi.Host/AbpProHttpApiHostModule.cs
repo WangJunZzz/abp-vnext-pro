@@ -44,6 +44,9 @@ using Volo.Abp.Caching;
 using Volo.Abp.Caching.StackExchangeRedis;
 using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
+using Microsoft.AspNetCore.Mvc;
+using Magicodes.ExporterAndImporter.Core;
+using Magicodes.ExporterAndImporter.Excel;
 
 namespace Lion.AbpPro
 {
@@ -81,6 +84,7 @@ namespace Lion.AbpPro
             ConfigurationCap(context);
             ConfigurationStsHttpClient(context);
             ConfigurationMiniProfiler(context);
+            ConfigureMagicodes(context);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -126,6 +130,16 @@ namespace Lion.AbpPro
             }
         }
 
+        /// <summary>
+        /// 配置Magicodes.IE
+        /// Excel导入导出
+        /// </summary>
+        /// <param name="context"></param>
+        private void ConfigureMagicodes(ServiceConfigurationContext context)
+        {
+            context.Services.AddTransient<IExporter, ExcelExporter>();
+            context.Services.AddTransient<IExcelExporter, ExcelExporter>();
+        }
 
         private void ConfigureHangfireMysql(ServiceConfigurationContext context)
         {
@@ -288,6 +302,9 @@ namespace Lion.AbpPro
             context.Services.AddSwaggerGen(
                 options =>
                 {
+                    // 文件下载类型
+                    options.MapType<FileContentResult>(() => new OpenApiSchema() { Type = "file" });
+
                     options.SwaggerDoc("AbpPro",
                         new OpenApiInfo { Title = "LionAbpPro API", Version = "v1" });
                     options.DocInclusionPredicate((docName, description) => true);

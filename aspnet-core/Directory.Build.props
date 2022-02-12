@@ -28,6 +28,7 @@
 		<XunitVersion>2.4.1</XunitVersion>
 		<XunitrunnervisualstudioVersion>2.4.3</XunitrunnervisualstudioVersion>
 		<OcelotVersion>17.0.0</OcelotVersion>
+		<MagicodesIEExcelVersion>2.6.1</MagicodesIEExcelVersion>
 	</PropertyGroup>
 
 </Project>

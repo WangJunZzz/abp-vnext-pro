@@ -11,6 +11,7 @@ namespace Lion.AbpPro.Permissions
         {
             public const string Default = "System";
             public const string UserEnable = Default + ".Users.Enable";
+            public const string UserExport = Default + ".Users.Export";
             public const string AuditLog = Default + ".AuditLog";
             public const string ES = Default + ".ES";
             public const string Setting = Default + ".Setting";

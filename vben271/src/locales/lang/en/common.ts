@@ -33,4 +33,5 @@ export default {
   status: 'Status',
   active: 'IsActive',
   download: 'DownLoad',
+  export:"Export"
 };

@@ -13,6 +13,7 @@ namespace Lion.AbpPro.Permissions
             var abpIdentityGroup = context.GetGroup(IdentityPermissions.GroupName);
             var userManagement = abpIdentityGroup.GetPermissionOrNull(IdentityPermissions.Users.Default);
             userManagement.AddChild(AbpProPermissions.SystemManagement.UserEnable, L("Permission:Enable"));
+            userManagement.AddChild(AbpProPermissions.SystemManagement.UserExport, L("Permission:Export"));
 
             var auditManagement =
                 abpIdentityGroup.AddPermission(AbpProPermissions.SystemManagement.AuditLog, L("Permission:AuditLogManagement"));

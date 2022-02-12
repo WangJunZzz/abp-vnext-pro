@@ -9,6 +9,7 @@
     "Permission:Create": "Create",
     "Permission:Update": "Update",
     "Permission:Delete": "Delete",
+    "Permission:Export": "Export",
     "Permission:Enable": "Enable|Disable",
     "Permission:SystemManagement": "SystemManagement",
     "Permission:AuditLogManagement": "AuditLog",

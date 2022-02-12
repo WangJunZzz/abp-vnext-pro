@@ -1,3 +1,4 @@
+using System.Net;
 using System.Threading.Tasks;
 using Lion.AbpPro.Users;
 using Lion.AbpPro.Users.Dtos;
@@ -11,11 +12,11 @@ using Volo.Abp.Identity;
 namespace Lion.AbpPro.Controllers.Systems
 {
     [Route("Users")]
-    public class UserContoller : AbpProController, IUserAppService
+    public class UserController : AbpProController, IUserAppService
     {
         private readonly IUserAppService _userAppService;
 
-        public UserContoller(IUserAppService userAppService)
+        public UserController(IUserAppService userAppService)
         {
             _userAppService = userAppService;
         }
@@ -25,6 +26,13 @@ namespace Lion.AbpPro.Controllers.Systems
         public Task<PagedResultDto<IdentityUserDto>> ListAsync(PagingUserListInput input)
         {
             return _userAppService.ListAsync(input);
+        }
+        [HttpPost("export")]
+        [SwaggerOperation(summary: "导出用户列表", Tags = new[] { "Users" })]
+        [ProducesResponseType(typeof(FileContentResult), (int)HttpStatusCode.OK)]
+        public Task<ActionResult> ExportAsync(PagingUserListInput input)
+        {
+            return _userAppService.ExportAsync(input);
         }
 
         [HttpPost("create")]

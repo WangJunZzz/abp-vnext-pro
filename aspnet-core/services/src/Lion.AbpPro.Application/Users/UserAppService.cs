@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 using Lion.AbpPro.Users.Dtos;
 using Lion.AbpPro.Extension.Customs.Dtos;
 using Lion.AbpPro.Permissions;
+using Magicodes.ExporterAndImporter.Excel;
+using Magicodes.ExporterAndImporter.Excel.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Application.Dtos;
@@ -21,16 +24,17 @@ namespace Lion.AbpPro.Users
         private readonly IIdentityUserAppService _identityUserAppService;
         private readonly IdentityUserManager _userManager;
         private readonly IIdentityUserRepository _identityUserRepository;
-       
+        private readonly IExcelExporter _excelExporter;
         public UserAppService(
             IIdentityUserAppService identityUserAppService,
             IdentityUserManager userManager,
-            IIdentityUserRepository userRepository 
-            )
+            IIdentityUserRepository userRepository,
+            IExcelExporter excelExporter)
         {
             _identityUserAppService = identityUserAppService;
             _userManager = userManager;
             _identityUserRepository = userRepository;
+            _excelExporter = excelExporter;
         }
 
         /// <summary>
@@ -47,15 +51,34 @@ namespace Lion.AbpPro.Users
                 SkipCount = input.SkipCount,
                 Sorting = " LastModificationTime desc"
             };
-     
-            long count = await _identityUserRepository.GetCountAsync(request.Filter)
-                .ConfigureAwait(continueOnCapturedContext: false);
+
+            long count = await _identityUserRepository.GetCountAsync(request.Filter);
             List<Volo.Abp.Identity.IdentityUser> source = await _identityUserRepository
-                .GetListAsync(request.Sorting, request.MaxResultCount, request.SkipCount, request.Filter)
-                .ConfigureAwait(continueOnCapturedContext: false);
+                .GetListAsync(request.Sorting, request.MaxResultCount, request.SkipCount, request.Filter);
 
             return new PagedResultDto<IdentityUserDto>(count,
                 base.ObjectMapper.Map<List<Volo.Abp.Identity.IdentityUser>, List<IdentityUserDto>>(source));
+        }
+
+        /// <summary>
+        /// 用户导出列表
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(AbpProPermissions.SystemManagement.UserExport)]
+        public async Task<ActionResult> ExportAsync(PagingUserListInput input)
+        {
+            var request = new GetIdentityUsersInput
+            {
+                Filter = input.Filter?.Trim(),
+                MaxResultCount = input.PageSize,
+                SkipCount = input.SkipCount,
+                Sorting = " LastModificationTime desc"
+            };
+            List<Volo.Abp.Identity.IdentityUser> source = await _identityUserRepository
+                .GetListAsync(request.Sorting, request.MaxResultCount, request.SkipCount, request.Filter);
+            var result = ObjectMapper.Map<List<Volo.Abp.Identity.IdentityUser>, List<ExportIdentityUserOutput>>(source);
+            var bytes = await _excelExporter.ExportAsByteArray<ExportIdentityUserOutput>(result);
+            return new XlsxFileResult(bytes: bytes, fileDownloadName: $"用户导出列表{DateTime.Now:yyyyMMdd}");
         }
 
         /// <summary>

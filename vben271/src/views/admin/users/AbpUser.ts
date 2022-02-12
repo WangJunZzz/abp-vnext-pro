@@ -215,6 +215,23 @@ export async function getTableListAsync(
 }
 
 /**
+ * 导出列表
+ * @param params
+ * @returns
+ */
+ export  function exportAsync({request}) {
+  openFullLoading();
+  const _userServiceProxy = new UsersServiceProxy();
+ _userServiceProxy.export(request).then(res=>{
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(res.data);
+  a.download = '用户列表导出.xlsx';
+  a.click();
+  closeFullLoading();
+ });
+}
+
+/**
  * 获取用户角色
  * @param userId
  * @returns
@@ -310,3 +327,5 @@ export async function lockUserAsync(request: LockUserInput): Promise<void> {
   const _userServiceProxy = new UsersServiceProxy();
   return _userServiceProxy.lock(request);
 }
+
+

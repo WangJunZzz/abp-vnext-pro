@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Lion.AbpPro.Users.Dtos;
 using Lion.AbpPro.Extension.Customs.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Account;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
@@ -18,6 +19,12 @@ namespace Lion.AbpPro.Users
         /// <returns></returns>
         Task<PagedResultDto<IdentityUserDto>> ListAsync(PagingUserListInput input);
 
+        /// <summary>
+        /// 用户导出列表
+        /// </summary>
+        /// <returns></returns>
+        Task<ActionResult> ExportAsync(PagingUserListInput input);
+        
         /// <summary>
         /// 新增用户
         /// </summary>

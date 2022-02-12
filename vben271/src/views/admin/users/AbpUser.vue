@@ -10,6 +10,14 @@
         >
           {{ t('common.createText') }}
         </a-button>
+        <a-button
+          preIcon="ant-design:cloud-download-outlined"
+          type="primary"
+          @click="handleExport"
+          v-auth="'System.Users.Export'"
+        >
+          {{ t('common.export') }}
+        </a-button>
       </template>
       <template #isActive="{ record }">
         <Tag :color="record.isActive ? 'green' : 'red'">
@@ -69,6 +77,7 @@
     getTableListAsync,
     deleteUserAsync,
     lockUserAsync,
+    exportAsync
   } from './AbpUser';
   import { useModal } from '/@/components/Modal';
   import CreateAbpUser from './CreateAbpUser.vue';
@@ -94,7 +103,7 @@
       const [registerEditAbpUserModal, { openModal: openEditAbpUserModal }] = useModal();
 
       // table配置
-      const [registerTable, { reload }] = useTable({
+      const [registerTable, { reload,getForm }] = useTable({
         columns: tableColumns,
         formConfig: {
           labelWidth: 70,
@@ -150,6 +159,11 @@
         message.success(t('common.operationSuccess'));
         reload();
       };
+      const handleExport=()=>{
+        const { getFieldsValue } = getForm();
+        let request = getFieldsValue()
+        exportAsync({request})
+      }
       return {
         registerTable,
         handleEdit,
@@ -161,6 +175,7 @@
         t,
         reload,
         handleLock,
+        handleExport
       };
     },
   });

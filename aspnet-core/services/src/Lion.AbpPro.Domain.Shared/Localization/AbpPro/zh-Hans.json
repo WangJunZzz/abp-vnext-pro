@@ -9,6 +9,7 @@
     "Permission:Create": "创建",
     "Permission:Update": "编辑",
     "Permission:Delete": "删除",
+    "Permission:Export": "导出",
     "Permission:Enable": "启用|禁用",
     "Permission:AuditLogManagement": "审计日志",
     "Permission:SystemManagement": "系统管理",
