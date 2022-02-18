@@ -404,10 +404,10 @@ export async function deleleDetailAsync({ dataDictionaryId, dataDictionayDetailI
   reload();
 }
 
-export async function deleteDictinaryTypeAsync({ Id, reloadType }) {
+export async function deleteDictinaryTypeAsync({ id, reloadType }) {
   const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();
   const request = new IdInput();
-  request.Id = Id;
+  request.id = id;
   await _dataDictionaryServiceProxy.deleteDictinaryType(request);
   reloadType();
 }

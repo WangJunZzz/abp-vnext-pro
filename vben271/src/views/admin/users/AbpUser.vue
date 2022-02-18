@@ -59,11 +59,6 @@
       @reload="reload"
       :bodyStyle="{ 'padding-top': '0' }"
     />
-    <Warehouse
-      @register="registerWarehosueModal"
-      @reload="reload"
-      :bodyStyle="{ 'padding-top': '0' }"
-    />
   </div>
 </template>
 
@@ -77,7 +72,7 @@
     getTableListAsync,
     deleteUserAsync,
     lockUserAsync,
-    exportAsync
+    exportAsync,
   } from './AbpUser';
   import { useModal } from '/@/components/Modal';
   import CreateAbpUser from './CreateAbpUser.vue';
@@ -103,7 +98,7 @@
       const [registerEditAbpUserModal, { openModal: openEditAbpUserModal }] = useModal();
 
       // table配置
-      const [registerTable, { reload,getForm }] = useTable({
+      const [registerTable, { reload, getForm }] = useTable({
         columns: tableColumns,
         formConfig: {
           labelWidth: 70,
@@ -159,11 +154,11 @@
         message.success(t('common.operationSuccess'));
         reload();
       };
-      const handleExport=()=>{
+      const handleExport = () => {
         const { getFieldsValue } = getForm();
-        let request = getFieldsValue()
-        exportAsync({request})
-      }
+        let request = getFieldsValue();
+        exportAsync({ request });
+      };
       return {
         registerTable,
         handleEdit,
@@ -175,7 +170,7 @@
         t,
         reload,
         handleLock,
-        handleExport
+        handleExport,
       };
     },
   });

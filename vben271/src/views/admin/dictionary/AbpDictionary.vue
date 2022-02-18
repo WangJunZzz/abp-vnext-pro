@@ -175,7 +175,7 @@
           content: msg,
           onOk: async () => {
             await deleteDictinaryTypeAsync({
-              Id: record.id,
+              id: record.id,
               reloadType,
             });
           },
