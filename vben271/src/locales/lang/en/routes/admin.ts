@@ -11,7 +11,7 @@ export default {
   userManagement_create_user: 'Create User',
   userManagement_edit_user: 'Edit User',
   userManagement_password: 'Password',
-  userManagement_comfirm_password: 'Password(Confirm)',
+  userManagement_confirm_password: 'Password(Confirm)',
   userManagement_userInfo: 'UserInfo',
   userManagement_role: 'Role',
 
@@ -62,4 +62,8 @@ export default {
   nonZeroMessage: 'Please enter a non-zero positive integer',
   fileName: 'FileName',
   fileNameManagement: 'FileNameManagement',
+  currentPassword: 'CurrentPassword',
+  newPassword: 'NewPassword',
+  confirmPassword: 'ConfirmPassword',
+  editPasswordMessage: 'The passwords entered twice are inconsistent. Procedure',
 };

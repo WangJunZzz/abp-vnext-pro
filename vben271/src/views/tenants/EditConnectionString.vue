@@ -5,6 +5,7 @@
     @ok="submit"
     @cancel="cancel"
     @register="registerModal"
+    minHeight="100"
   >
     <BasicForm @register="registerApiScopeForm" />
   </BasicModal>

@@ -25,7 +25,7 @@ export const tableColumns: BasicColumn[] = [
 export const createFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: 'Name',
+    label: t('routes.tenant.name'),
     component: 'Input',
     required: true,
     labelWidth: 150,
@@ -33,7 +33,7 @@ export const createFormSchema: FormSchema[] = [
   },
   {
     field: 'adminEmailAddress',
-    label: 'AdminEmailAddress',
+    label: t('routes.tenant.adminEmailAddress'),
     component: 'Input',
     required: true,
     labelWidth: 150,
@@ -41,7 +41,7 @@ export const createFormSchema: FormSchema[] = [
   },
   {
     field: 'adminPassword',
-    label: 'AdminPassword',
+    label: t('routes.tenant.adminPassword'),
     component: 'InputPassword',
     required: true,
     labelWidth: 150,
@@ -60,7 +60,7 @@ export const editFormSchema: FormSchema[] = [
   },
   {
     field: 'name',
-    label: 'Name',
+    label: t('routes.tenant.name'),
     component: 'Input',
     required: true,
     labelWidth: 150,
@@ -79,7 +79,7 @@ export const updateConnectionStringFormSchema: FormSchema[] = [
   },
   {
     field: 'connectionString',
-    label: 'ConnectionString',
+    label: t('routes.tenant.connectionString'),
     component: 'Input',
     labelWidth: 150,
     colProps: { span: 20 },

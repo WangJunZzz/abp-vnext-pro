@@ -12,7 +12,7 @@
         </a-button>
       </template>
 
-      <template #action="{ action }">
+      <template #action="{ record }">
         <TableAction
           :actions="[
             {
@@ -36,34 +36,6 @@
           ]"
         />
       </template>
-
-      <!-- <template #action="{ record }">
-        <a-button
-          type="link"
-          size="small"
-          @click="handleEdit(record)"
-          v-auth="'AbpTenantManagement.Tenants.Update'"
-        >
-          {{ t('common.editText') }}
-        </a-button>
-
-        <a-button
-          type="link"
-          size="small"
-          @click="handleDelete(record)"
-          v-auth="'AbpTenantManagement.Tenants.Delete'"
-        >
-          {{ t('common.delText') }}
-        </a-button>
-        <a-button
-          type="link"
-          size="small"
-          @click="handleConnectionString(record)"
-          v-auth="'AbpTenantManagement.Tenants.ManageConnectionStrings'"
-        >
-          {{ t('routes.tenant.connectionString') }}
-        </a-button>
-      </template> -->
     </BasicTable>
     <EditTenant
       @register="registerEditTenantModal"
@@ -86,7 +58,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { useI18n } from '/@/hooks/web/useI18n';
-  import { BasicModal, useModal } from '/@/components/Modal';
+  import { useModal } from '/@/components/Modal';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
 
   import { getTenantListAsync, tableColumns, searchFormSchema, deleteTenantAsync } from './Tenant';
@@ -99,7 +71,6 @@
     name: 'Tenant',
     components: {
       BasicTable,
-      BasicModal,
       TableAction,
       CreateTenant,
       EditTenant,
@@ -135,12 +106,12 @@
         },
       });
       const { createConfirm } = useMessage();
-      // 编辑用户
+      // 编辑
       const handleEdit = (record: Recordable) => {
         openEditTenantModal(true, { record: record });
       };
 
-      // 删除用户
+      // 删除
       const handleDelete = async (record: Recordable) => {
         let msg = t('common.askDelete');
         createConfirm({

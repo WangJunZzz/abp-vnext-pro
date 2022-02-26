@@ -126,7 +126,7 @@ export const createFormSchema: FormSchema[] = [
     componentProps: {
       autocomplete: 'off',
     },
-    label: t('routes.admin.userManagement_comfirm_password'),
+    label: t('routes.admin.userManagement_confirm_password'),
     required: true,
     labelWidth: 130,
     colProps: {
@@ -193,7 +193,7 @@ export const editFormSchema: FormSchema[] = [
   {
     field: 'confirmPassword',
     component: 'InputPassword',
-    label: t('routes.admin.userManagement_comfirm_password'),
+    label: t('routes.admin.userManagement_confirm_password'),
     required: false,
     labelWidth: 130,
     colProps: {

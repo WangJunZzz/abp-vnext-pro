@@ -11,13 +11,7 @@
 
     <template #overlay>
       <Menu @click="handleMenuClick">
-        <MenuItem
-          key="doc"
-          :text="t('layout.header.dropdownItemDoc')"
-          icon="ion:document-text-outline"
-          v-if="getShowDoc"
-        />
-        <MenuDivider v-if="getShowDoc" />
+        <MenuItem key="password" text="修改密码" icon="ant-design:info-circle-outlined" />
         <MenuItem
           v-if="getUseLockPage"
           key="lock"
@@ -33,6 +27,7 @@
     </template>
   </Dropdown>
   <LockAction @register="register" />
+  <PasswordAction @register="registerChangePasswordModal" />
 </template>
 <script lang="ts">
   // components
@@ -54,7 +49,7 @@
 
   import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
 
-  type MenuEvent = 'logout' | 'doc' | 'lock';
+  type MenuEvent = 'logout' | 'doc' | 'lock' | 'password';
 
   export default defineComponent({
     name: 'UserDropdown',
@@ -64,6 +59,7 @@
       MenuItem: createAsyncComponent(() => import('./DropMenuItem.vue')),
       MenuDivider: Menu.Divider,
       LockAction: createAsyncComponent(() => import('../lock/LockModal.vue')),
+      PasswordAction: createAsyncComponent(() => import('./ChangePassword.vue')),
     },
     props: {
       theme: propTypes.oneOf(['dark', 'light']),
@@ -80,7 +76,10 @@
       });
 
       const [register, { openModal }] = useModal();
-
+      const [registerChangePasswordModal, { openModal: openChangePasswordModal }] = useModal();
+      function handleChangePassword() {
+        openChangePasswordModal(true);
+      }
       function handleLock() {
         openModal(true);
       }
@@ -100,6 +99,9 @@
           case 'logout':
             handleLoginOut();
             break;
+          case 'password':
+            handleChangePassword();
+            break;
           case 'doc':
             openDoc();
             break;
@@ -117,6 +119,7 @@
         getShowDoc,
         register,
         getUseLockPage,
+        registerChangePasswordModal,
       };
     },
   });

@@ -9,7 +9,7 @@ export default {
   userManagement_phone: '手机号码',
   userManagement_createTime: '创建时间',
   userManagement_password: '密码',
-  userManagement_comfirm_password: '密码(再次确认)',
+  userManagement_confirm_password: '密码(再次确认)',
   userManagement_create_user: '新增用户',
   userManagement_edit_user: '编辑用户',
   userManagement_userInfo: '用户信息',
@@ -61,4 +61,8 @@ export default {
   nonZeroMessage: '请输入非零的正整数',
   fileName: '文件名称',
   fileNameManagement: '文件管理',
+  currentPassword: '当前密码',
+  newPassword: '新密码',
+  confirmPassword: '确认密码',
+  editPasswordMessage: '输入的2次密码不一致',
 };

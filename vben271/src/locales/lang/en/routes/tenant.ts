@@ -3,4 +3,6 @@ export default {
   connectionString: 'ConnectionString',
   tenantManagement: 'TenantManagement',
   tenantList: 'TenantList',
+  adminPassword: 'AdminPassword',
+  adminEmailAddress: 'AdminEmailAddress',
 };
