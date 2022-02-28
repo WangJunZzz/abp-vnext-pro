@@ -46,7 +46,7 @@ export default {
   identityServer: 'IdentityServer',
   client: 'Client',
   apiResource: 'ApiResource',
-  apiSocpe: 'ApiSocpe',
+  apiScope: 'ApiScope',
   identityResource: 'IdentityResource',
 
   logLevel: 'Level',
@@ -66,4 +66,6 @@ export default {
   newPassword: 'NewPassword',
   confirmPassword: 'ConfirmPassword',
   editPasswordMessage: 'The passwords entered twice are inconsistent. Procedure',
+  executionTime: 'ExecutionTime',
+  executionDuration: 'ExecutionDuration(Millisecond)',
 };

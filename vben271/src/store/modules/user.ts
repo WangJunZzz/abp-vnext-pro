@@ -150,8 +150,8 @@ export const useUserStore = defineStore({
       } catch (error) {
         //console.log(error);
         router.replace(PageEnum.BASE_LOGIN);
-        //return null;
-        throw new Error(error);
+        return null;
+        //throw new Error(error);
       }
     },
     async getAbpApplicationConfigurationAsync() {

@@ -37,7 +37,7 @@ const identityServer: AppRouteModule = {
       name: 'ApiScopes',
       component: () => import('/@/views/identityServers/apiScopes/ApiScopes.vue'),
       meta: {
-        title: t('routes.admin.apiSocpe'),
+        title: t('routes.admin.apiScope'),
         icon: 'ant-design:compass-outlined',
         policy: 'IdentityServerManagement.ApiScope',
       },

@@ -1,6 +1,7 @@
 import { FormSchema } from '/@/components/Table';
 import { BasicColumn } from '/@/components/Table';
 import { useI18n } from '/@/hooks/web/useI18n';
+
 const { t } = useI18n();
 import moment from 'moment';
 import { AuditLogsServiceProxy, PagingAuditLogListInput } from '/@/services/ServiceProxies';
@@ -28,27 +29,20 @@ export const tableColumns: BasicColumn[] = [
   //   width: 100,
   // },
   {
+    title: 'Url',
+    dataIndex: 'url',
+    width: 300,
+    slots: {
+      customRender: 'url',
+    },
+  },
+  {
     title: t('routes.admin.userManagement_userName'),
     dataIndex: 'userName',
     width: 100,
   },
   {
-    title: 'HttpMethod',
-    dataIndex: 'httpMethod',
-    width: 150,
-  },
-  {
-    title: 'HttpStatusCode',
-    dataIndex: 'httpStatusCode',
-    width: 150,
-  },
-  {
-    title: 'Url',
-    dataIndex: 'url',
-    width: 350,
-  },
-  {
-    title: 'ExecutionTime',
+    title: t('routes.admin.executionTime'),
     dataIndex: 'executionTime',
     width: 200,
     customRender: ({ text }) => {
@@ -56,12 +50,14 @@ export const tableColumns: BasicColumn[] = [
     },
   },
   {
-    title: 'BrowserInfo',
-    dataIndex: 'browserInfo',
+    title: t('routes.admin.executionDuration'),
+    dataIndex: 'executionDuration',
+    width: 150,
   },
   {
     title: 'Exceptions',
     dataIndex: 'exceptions',
+
   },
 ];
 /**
@@ -72,4 +68,43 @@ export const tableColumns: BasicColumn[] = [
 export async function getTableListAsync(params: PagingAuditLogListInput) {
   const _auditLogsServiceProxy = new AuditLogsServiceProxy();
   return _auditLogsServiceProxy.page(params);
+}
+export function httpStatusCodeColor(statusCode?: number) {
+  if (!statusCode) {
+    return '';
+  }
+  if (statusCode >= 200 && statusCode < 300) {
+    return '#87d068';
+  }
+  if (statusCode >= 300 && statusCode < 400) {
+    return '#108ee9';
+  }
+  if (statusCode >= 400 && statusCode < 500) {
+    return 'orange';
+  }
+  if (statusCode >= 500) {
+    return 'red';
+  }
+  return 'cyan';
+}
+export function httpMethodColor(method?: string) {
+  if (method == 'GET') {
+    return 'blue';
+  }
+  if (method == 'POST') {
+    return 'blue';
+  }
+  if (method == 'PUT') {
+    return 'orange';
+  }
+  if (method == 'DELETE') {
+    return 'red';
+  }
+  if (method == 'OPTIONS') {
+    return 'cyan';
+  }
+  if (method == 'PATCH') {
+    return 'pink';
+  }
+  return 'cyan';
 }

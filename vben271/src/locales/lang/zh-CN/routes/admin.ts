@@ -44,7 +44,7 @@ export default {
   identityServer: '身份认证中心',
   client: '客户端',
   apiResource: 'Api资源',
-  apiSocpe: 'ApiSocpe',
+  apiScope: 'ApiScope',
   identityResource: 'Identity资源',
 
   logLevel: '级别',
@@ -65,4 +65,7 @@ export default {
   newPassword: '新密码',
   confirmPassword: '确认密码',
   editPasswordMessage: '输入的2次密码不一致',
+  executionTime: '执行时间',
+  executionDuration: '响应时间(毫秒)',
+
 };

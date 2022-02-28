@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Volo.Abp.Auditing;
 
 namespace Lion.AbpPro.Users.Dtos
 {
@@ -14,6 +15,7 @@ namespace Lion.AbpPro.Users.Dtos
         /// </summary>
         public string Name { get; set; }
 
+        [DisableAuditing]
         /// <summary>
         /// 密码
         /// </summary>

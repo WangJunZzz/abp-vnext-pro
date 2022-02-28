@@ -1,20 +1,27 @@
 <template>
   <div>
-    <BasicTable @register="registerTable" size="small"> </BasicTable>
+    <BasicTable @register="registerTable" size="small">
+      <template #url="{ record }">
+        <Tag :color="httpStatusCodeColor(record.httpStatusCode)">{{ record.httpStatusCode }}</Tag>
+        <Tag style="margin-left: 5px" :color="httpMethodColor(record.httpMethod)">{{
+          record.httpMethod
+        }}</Tag>
+        <span style="margin-left: 5px">{{ record.url }}</span>
+      </template>
+    </BasicTable>
   </div>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { tableColumns, searchFormSchema, getTableListAsync } from './AuditLog';
+  import { BasicTable, useTable } from '/@/components/Table';
+  import { tableColumns, searchFormSchema, getTableListAsync,httpStatusCodeColor,httpMethodColor } from './AuditLog';
   import { Tag } from 'ant-design-vue';
   import { useI18n } from '/@/hooks/web/useI18n';
   export default defineComponent({
     name: 'AuditLog',
     components: {
       BasicTable,
-      TableAction,
       Tag,
     },
     setup() {
@@ -35,12 +42,17 @@
         bordered: true,
         canResize: true,
         showIndexColumn: true,
+        bordered: true,
+        immediate: true,
+        scroll: { x: true },
       });
 
       return {
         registerTable,
         reload,
         t,
+        httpStatusCodeColor,
+        httpMethodColor,
       };
     },
   });
