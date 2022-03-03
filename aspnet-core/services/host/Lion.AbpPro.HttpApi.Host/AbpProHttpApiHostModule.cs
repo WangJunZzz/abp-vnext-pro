@@ -26,6 +26,7 @@ using Lion.AbpPro.Extensions.Hangfire;
 using Lion.AbpPro.Jobs;
 using Lion.AbpPro.Shared.Hosting.Microservices;
 using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.Builder;
+using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.MVC.Filters;
 using Lion.AbpPro.Shared.Hosting.Microservices.Swaggers;
 using Volo.Abp;
 using Volo.Abp.Account.Web;
@@ -42,6 +43,7 @@ using Volo.Abp.Modularity;
 using Microsoft.AspNetCore.Mvc;
 using Magicodes.ExporterAndImporter.Core;
 using Magicodes.ExporterAndImporter.Excel;
+using Volo.Abp.AspNetCore.ExceptionHandling;
 
 namespace Lion.AbpPro
 {
@@ -80,6 +82,7 @@ namespace Lion.AbpPro
             ConfigurationStsHttpClient(context);
             ConfigurationMiniProfiler(context);
             ConfigureMagicodes(context);
+            ConfigureAbpExceptions(context);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -124,7 +127,23 @@ namespace Lion.AbpPro
                 app.UseConsul();
             }
         }
-
+        /// <summary>
+        /// 异常处理
+        /// </summary>
+        /// <param name="context"></param>
+        private void ConfigureAbpExceptions(ServiceConfigurationContext context)
+        {
+            //开启后通过ErrorCode抛本地化异常，message不会显示本地化词条
+            var SendExceptionsDetails = context.Services.GetHostingEnvironment().IsDevelopment();
+            context.Services.Configure<AbpExceptionHandlingOptions>(options =>
+            {
+                options.SendExceptionsDetailsToClients = SendExceptionsDetails;
+            });
+            context.Services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(ResultExceptionFilter));
+            });
+        }
         /// <summary>
         /// 配置Magicodes.IE
         /// Excel导入导出
