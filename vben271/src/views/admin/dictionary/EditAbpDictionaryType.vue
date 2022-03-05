@@ -9,7 +9,7 @@
     :maskClosable="false"
     :minHeight="100"
   >
-    <BasicForm @register="registeDictionaryTypeForm" />
+    <BasicForm @register="registerDictionaryTypeForm" />
   </BasicModal>
 </template>
 
@@ -18,7 +18,7 @@
   import { useI18n } from '/@/hooks/web/useI18n';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
-  import { editDictionaryTypeFormSchema, editDictionaryTypeAsync } from './AbpDictionary';
+  import { editDictionaryTypeFormSchema, editDictionaryTypeAsync } from "/@/views/admin/dictionary/AbpDictionary";
   export default defineComponent({
     name: 'EditDictionary',
     components: {
@@ -36,7 +36,7 @@
           key: data.record.key,
         });
       });
-      const [registeDictionaryTypeForm, { setFieldsValue, getFieldsValue, validate, resetFields }] =
+      const [registerDictionaryTypeForm, { setFieldsValue, getFieldsValue, validate, resetFields }] =
         useForm({
           labelWidth: 100,
           schemas: editDictionaryTypeFormSchema,
@@ -60,7 +60,7 @@
 
       return {
         registerModal,
-        registeDictionaryTypeForm,
+        registerDictionaryTypeForm,
         submit,
         t,
         cancel,

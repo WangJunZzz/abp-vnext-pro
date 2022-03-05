@@ -69,7 +69,7 @@
     searchFormSchema,
     getTableListAsync,
     deleteApiScopeAsync,
-  } from './ApiScopes';
+  } from "/@/views/identityServers/apiScopes/ApiScopes";
   import { useI18n } from '/@/hooks/web/useI18n';
   import { Tag } from 'ant-design-vue';
   import CreateApiScope from './CreateApiScope.vue';

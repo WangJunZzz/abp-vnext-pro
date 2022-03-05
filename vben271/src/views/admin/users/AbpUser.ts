@@ -320,7 +320,7 @@ export async function updateUserAsync({
 
 /**
  * 启用或者禁用用户
- * @param isLock
+ * @param request
  * @returns
  */
 export async function lockUserAsync(request: LockUserInput): Promise<void> {

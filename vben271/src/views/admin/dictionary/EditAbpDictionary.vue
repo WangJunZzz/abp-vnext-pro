@@ -9,7 +9,7 @@
     :destroyOnClose="true"
     :maskClosable="false"
   >
-    <BasicForm @register="registeDictionaryForm" />
+    <BasicForm @register="registerDictionaryForm" />
   </BasicModal>
 </template>
 
@@ -18,7 +18,7 @@
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { BasicForm, useForm } from '/@/components/Form/index';
-  import { editFormSchema, editDetailsDictionaryAsync } from './AbpDictionary';
+  import { editFormSchema, editDetailsDictionaryAsync } from "/@/views/admin/dictionary/AbpDictionary";
 
   export default defineComponent({
     name: 'EditDictionary',
@@ -39,7 +39,7 @@
           order: data.record.order,
         });
       });
-      const [registeDictionaryForm, { setFieldsValue, getFieldsValue, validate, resetFields }] =
+      const [registerDictionaryForm, { setFieldsValue, getFieldsValue, validate, resetFields }] =
         useForm({
           labelWidth: 120,
           schemas: editFormSchema,
@@ -62,7 +62,7 @@
 
       return {
         registerModal,
-        registeDictionaryForm,
+        registerDictionaryForm,
         submit,
         cancel,
         t,

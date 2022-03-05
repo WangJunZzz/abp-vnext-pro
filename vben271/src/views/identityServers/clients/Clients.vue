@@ -42,7 +42,7 @@
             {
               auth: 'IdentityServerManagement.Client.Update',
               label: 'Scopes',
-              onClick: handleIdenityResource.bind(null, record),
+              onClick: handleIdentityResource.bind(null, record),
             },
             {
               auth: 'IdentityServerManagement.Client.Delete',
@@ -81,7 +81,7 @@
     getTableListAsync,
     deleteClientAsync,
     enabledClientAsync,
-  } from './Clients';
+  } from "/@/views/identityServers/clients/Clients";
   import { useI18n } from '/@/hooks/web/useI18n';
   import { Tag } from 'ant-design-vue';
   import CreateClient from './CreateClient.vue';
@@ -158,7 +158,7 @@
         openUriDrawer(true, { record: record });
       };
 
-      const handleIdenityResource = async (record: Recordable) => {
+      const handleIdentityResource = async (record: Recordable) => {
         openIdentityResourceDrawer(true, { record: record });
       };
       return {
@@ -175,7 +175,7 @@
         handleUri,
         registerUriDrawer,
         registerIdentityResourceDrawer,
-        handleIdenityResource,
+        handleIdentityResource,
       };
     },
   });

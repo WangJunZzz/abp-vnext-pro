@@ -67,7 +67,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { tableColumns, searchFormSchema, getTableListAsync, deleleRoleAsync } from './AbpRole';
+  import { tableColumns, searchFormSchema, getTableListAsync, deleteRoleAsync } from "/@/views/admin/roles/AbpRole";
   import { useModal } from '/@/components/Modal';
   import CreateAbpRole from './CreateAbpRole.vue';
   import PermissionAbpRole from './PermissionAbpRole.vue';
@@ -142,7 +142,7 @@
           title: t('common.tip'),
           content: msg,
           onOk: async () => {
-            await deleleRoleAsync({ roleId: record.id, reload });
+            await deleteRoleAsync({ roleId: record.id, reload });
           },
         });
       };

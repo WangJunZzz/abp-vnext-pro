@@ -59,7 +59,7 @@
     searchFormSchema,
     getTableListAsync,
     deleteApiResourceAsync,
-  } from './ApiResources';
+  } from "/@/views/identityServers/apiResources/ApiResources";
   import { useI18n } from '/@/hooks/web/useI18n';
   import { Tag } from 'ant-design-vue';
   import CreateApiResource from './CreateApiResource.vue';

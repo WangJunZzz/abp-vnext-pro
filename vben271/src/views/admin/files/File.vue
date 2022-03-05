@@ -35,7 +35,7 @@
   import { defineComponent, ref } from 'vue';
   import { UploadOutlined } from '@ant-design/icons-vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { tableColumns, searchFormSchema, getTableListAsync } from './File';
+  import { tableColumns, searchFormSchema, getTableListAsync } from "/@/views/admin/files/File";
   import { Tag } from 'ant-design-vue';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { getOSSClient, importFileAsync, downLoadFile } from './UploadOss';
@@ -83,7 +83,6 @@
         let index = fileName.lastIndexOf('.');
         let type = fileName.slice(index + 1);
         let name = fileName.slice(0, index);
-        debugger;
         const client = await getOSSClient();
         let fileFullName = `host/${moment().format('YYYY-MM-DD')}/${name}_${moment().format(
           'X'
@@ -94,10 +93,10 @@
         request.fileName = fileName;
         request.filePath = fileFullName;
         await importFileAsync({ request });
-        reload();
+        await reload();
       }
       const handleDownload = async (record: Recordable) => {
-        downLoadFile(record.filePath);
+       await downLoadFile(record.filePath);
       };
       return {
         t,

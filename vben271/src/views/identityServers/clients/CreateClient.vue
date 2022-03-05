@@ -14,7 +14,7 @@
   import { defineComponent } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
-  import { createFormSchema, createClientAsync } from './Clients';
+  import { createFormSchema, createClientAsync } from "/@/views/identityServers/clients/Clients";
   import { useI18n } from '/@/hooks/web/useI18n';
 
   export default defineComponent({

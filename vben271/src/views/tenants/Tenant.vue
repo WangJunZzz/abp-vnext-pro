@@ -61,7 +61,7 @@
   import { useModal } from '/@/components/Modal';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
 
-  import { getTenantListAsync, tableColumns, searchFormSchema, deleteTenantAsync } from './Tenant';
+  import { getTenantListAsync, tableColumns, searchFormSchema, deleteTenantAsync } from "/@/views/tenants/Tenant";
   import CreateTenant from './CreateTenant.vue';
 
   import EditConnectionString from './EditConnectionString.vue';
@@ -120,7 +120,7 @@
           content: msg,
           onOk: async () => {
             await deleteTenantAsync({ id: record.id });
-            reload();
+            await reload();
           },
         });
       };

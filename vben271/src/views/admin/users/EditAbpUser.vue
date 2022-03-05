@@ -46,7 +46,7 @@
     getAllRoleAsync,
     updateUserAsync,
     getRolesByUserIdAsync,
-  } from './AbpUser';
+  } from "/@/views/admin/users/AbpUser";
   import {
     IdentityRoleDto,
     IdentityUserDto,
@@ -110,8 +110,7 @@
           let request = getFieldsValue();
 
           if (request.password != request.confirmPassword) {
-            message.error('两次密码输入不一致');
-            throw new Error('两次密码输入不一致');
+            message.error(t('routes.admin.editPasswordMessage'));
           }
           let updateUserInput = new UpdateUserInput();
           let userInfo = new IdentityUserUpdateDto();
@@ -160,6 +159,6 @@
 </script>
 <style lang="less" scoped>
   .ant-checkbox-wrapper + .ant-checkbox-wrapper {
-    margin-left: 0px;
+    margin-left: 0;
   }
 </style>

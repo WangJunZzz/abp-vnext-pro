@@ -39,7 +39,7 @@
     editBasicTokenSchema,
     editBasicSecretSchema,
     updateClientAsync,
-  } from './Clients';
+  } from "/@/views/identityServers/clients/Clients";
 
   export default defineComponent({
     name: 'EditAbpUser',
@@ -149,11 +149,11 @@
         await optionValidate();
         await tokenValidate();
         await secretValidate();
-        var detailRequest = getFieldsDetailValue();
-        var optionRequest = getFieldsOptionValue();
-        var tokenRequest = getFieldsTokenValue();
-        var secretRequest = getFieldsSecretValue();
-        var request = Object.assign(detailRequest, optionRequest, tokenRequest, secretRequest);
+        const detailRequest = getFieldsDetailValue();
+        const optionRequest = getFieldsOptionValue();
+        const tokenRequest = getFieldsTokenValue();
+        const secretRequest = getFieldsSecretValue();
+        const request = Object.assign(detailRequest, optionRequest, tokenRequest, secretRequest);
         await updateClientAsync({ request, changeOkLoading, closeModal });
         emit('reload');
       };
@@ -171,6 +171,6 @@
 </script>
 <style lang="less" scoped>
   .ant-checkbox-wrapper + .ant-checkbox-wrapper {
-    margin-left: 0px;
+    margin-left: 0;
   }
 </style>

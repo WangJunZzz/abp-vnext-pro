@@ -63,10 +63,18 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             PagingDataDictionaryDetailInput input)
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(input.DataDictionaryId);
+            if (entity == null)
+            {
+                return new PagedResultDto<PagingDataDictionaryDetailOutput>();
+            }
             var details = entity.Details
                 .WhereIf(input.Filter.IsNotNullOrWhiteSpace(), e => (e.Code.Contains(input.Filter) || e.DisplayText.Contains(input.Filter)))
                 .OrderBy(e => e.Order)
                 .Take(input.PageSize).Skip(input.SkipCount).ToList();
+            if (details.Count == 0)
+            {
+                return new PagedResultDto<PagingDataDictionaryDetailOutput>();
+            }
             return new PagedResultDto<PagingDataDictionaryDetailOutput>(
                 entity.Details.Count,
                 ObjectMapper.Map<List<DataDictionaryDetail>, List<PagingDataDictionaryDetailOutput>>(details));

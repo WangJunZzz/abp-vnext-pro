@@ -8,6 +8,10 @@
         @selection-change="onSelectChange"
         :clickToRowSelect="false"
       >
+        <template #text="{ record }">
+          {{record.code}}|
+          {{record.displayText}}
+        </template>
         <template #toolbar>
           <a-button
             v-auth="'System.DataDictionaryManagement.Create'"
@@ -27,7 +31,7 @@
               },
               {
                 label: t('common.delText'),
-                onClick: handleDeleteDictinaryType.bind(null, record),
+                onClick: handleDeleteDictionaryType.bind(null, record),
               },
             ]"
           />
@@ -77,7 +81,7 @@
   import { defineComponent, ref } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { PageWrapper } from '/@/components/Page';
-  import { BasicModal, useModal } from '/@/components/Modal';
+  import { useModal } from '/@/components/Modal';
   import CreateAbpDictionary from './CreateAbpDictionary.vue';
   import EditAbpDictionary from './EditAbpDictionary.vue';
   import EditAbpDictionaryType from './EditAbpDictionaryType.vue';
@@ -91,16 +95,15 @@
     dictionaryTypeTableColumns,
     searchDictionaryFormSchema,
     getDictionaryDetailsAsync,
-    deleleDetailAsync,
-    deleteDictinaryTypeAsync,
-  } from './AbpDictionary';
+    deleteDetailAsync,
+    deleteDictionaryTypeAsync,
+  } from '/@/views/admin/dictionary/AbpDictionary';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { Tag, message } from 'ant-design-vue';
   export default defineComponent({
     name: 'AbpDictionary',
     components: {
       BasicTable,
-      BasicModal,
       PageWrapper,
       TableAction,
       Tag,
@@ -144,7 +147,7 @@
       });
 
       //勾选事件
-      const onSelectChange = async ({ rows }) => {
+      const onSelectChange = ({ rows }) => {
         selectedDataDictionaryIdRef.value = rows[0].id;
         selectedDataDictionaryDisplayTextRef.value = rows[0].displayText;
         reload();
@@ -167,17 +170,18 @@
           record: record,
         });
       };
-      const handleDeleteDictinaryType = async (record: Recordable) => {
+      const handleDeleteDictionaryType = async (record: Recordable) => {
         let msg = t('common.askDelete');
         createConfirm({
           iconType: 'warning',
           title: t('common.tip'),
           content: msg,
           onOk: async () => {
-            await deleteDictinaryTypeAsync({
+            await deleteDictionaryTypeAsync({
               id: record.id,
               reloadType,
             });
+            await reload()
           },
         });
       };
@@ -223,9 +227,9 @@
           title: t('common.tip'),
           content: msg,
           onOk: async () => {
-            await deleleDetailAsync({
+            await deleteDetailAsync({
               dataDictionaryId: record.dataDictionaryId,
-              dataDictionayDetailId: record.id,
+              dataDictionaryDetailId: record.id,
               reload,
             });
           },
@@ -248,7 +252,7 @@
         clearSelectedRowKeys,
         t,
         handleDelete,
-        handleDeleteDictinaryType,
+        handleDeleteDictionaryType,
       };
     },
   });

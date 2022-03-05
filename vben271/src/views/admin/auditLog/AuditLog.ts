@@ -31,10 +31,11 @@ export const tableColumns: BasicColumn[] = [
   {
     title: 'Url',
     dataIndex: 'url',
-    width: 300,
+    width: 350,
     slots: {
       customRender: 'url',
     },
+    align: 'left',
   },
   {
     title: t('routes.admin.userManagement_userName'),
@@ -57,7 +58,6 @@ export const tableColumns: BasicColumn[] = [
   {
     title: 'Exceptions',
     dataIndex: 'exceptions',
-
   },
 ];
 /**

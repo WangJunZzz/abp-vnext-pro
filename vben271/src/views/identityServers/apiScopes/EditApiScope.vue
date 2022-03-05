@@ -14,7 +14,7 @@
   import { defineComponent } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
-  import { editFormSchema, editApiScopeAsync } from './ApiScopes';
+  import { editFormSchema, editApiScopeAsync } from "/@/views/identityServers/apiScopes/ApiScopes";
   import { useI18n } from '/@/hooks/web/useI18n';
 
   export default defineComponent({
@@ -51,7 +51,7 @@
         try {
           const request = getFieldsValue();
           await editApiScopeAsync({ request, changeOkLoading, validate, closeModal });
-          resetFields();
+          await resetFields();
           emit('reload');
         } finally {
           changeOkLoading(false);

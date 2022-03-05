@@ -18,7 +18,11 @@
   import { useI18n } from '/@/hooks/web/useI18n';
   import { BasicModal, useModal } from '/@/components/Modal';
   import { BasicTable, useTable } from '/@/components/Table';
-  import { getElasticSearchLogAsync, tableColumns, searchFormSchema } from './ElasticSearch';
+  import {
+    getElasticSearchLogAsync,
+    tableColumns,
+    searchFormSchema,
+  } from '/@/views/admin/elasticSearch/ElasticSearch';
   export default defineComponent({
     name: 'ElasticSearch',
     components: {

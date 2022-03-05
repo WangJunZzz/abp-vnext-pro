@@ -115,7 +115,7 @@ export async function getTableListAsync(params: PagingRoleListInput): Promise<Id
  * 删除角色
  * @param param0
  */
-export async function deleleRoleAsync({ roleId, reload }) {
+export async function deleteRoleAsync({ roleId, reload }) {
   try {
     const _roleServiceProxy = new RolesServiceProxy();
     openFullLoading();
@@ -186,24 +186,3 @@ export async function updateRoleAsync({ request, changeOkLoading, validate, clos
   closeModal();
 }
 
-/**
- * 排除指定权限
- * @param name
- */
-export function excludePermission(name: string): boolean {
-  const excludes: string[] = [
-    'AbpIdentity.Users.ManagePermissions',
-    'FeatureManagement',
-    'FeatureManagement.ManageHostFeatures',
-    'AbpTenantManagement',
-    'AbpTenantManagement.Tenants',
-    'AbpTenantManagement.Tenants.Create',
-    'AbpTenantManagement.Tenants.Update',
-    'AbpTenantManagement.Tenants.Delete',
-    'AbpTenantManagement.Tenants.ManageFeatures',
-    'AbpTenantManagement.Tenants.ManageConnectionStrings',
-    'SettingManagement',
-    'SettingManagement.Emailing',
-  ];
-  return excludes.includes(name);
-}

@@ -41,10 +41,9 @@
 <script lang="ts">
   import { defineComponent, reactive, toRefs, onMounted } from 'vue';
   import { Tabs } from 'ant-design-vue';
-  import { CollapseContainer } from '/@/components/Container/index';
-  import { ScrollContainer } from '/@/components/Container/index';
+  import { CollapseContainer,ScrollContainer } from '/@/components/Container/index';
   import { SettingOutput, UpdateSettingInput } from '/@/services/ServiceProxies';
-  import { getAllSettingsAsync, updateSettingsAsync } from './Setting';
+  import { getAllSettingsAsync, updateSettingsAsync } from "/@/views/admin/settings/Setting";
   import { useI18n } from '/@/hooks/web/useI18n';
   import { PageWrapper } from '/@/components/Page';
   import { message } from 'ant-design-vue';
@@ -74,7 +73,7 @@
         try {
           debugger;
           const prefix = 'setting_';
-          var request = new UpdateSettingInput();
+          const request = new UpdateSettingInput();
           request.values as {};
           let items: { [key: string]: string } = {};
           item.forEach((e) => {

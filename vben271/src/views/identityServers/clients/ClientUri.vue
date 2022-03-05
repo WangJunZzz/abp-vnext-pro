@@ -69,7 +69,7 @@
     removeLogoutRedirectUriAsync,
     addCorsAsync,
     removeCorsAsync,
-  } from './Clients';
+  } from "/@/views/identityServers/clients/Clients";
   import { PagingClientListOutput } from '/@/services/ServiceProxies';
   export default defineComponent({
     name: 'ClientUri',

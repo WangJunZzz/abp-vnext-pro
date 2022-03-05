@@ -69,7 +69,7 @@
     searchFormSchema,
     getTableListAsync,
     deleteIdentityResourcesAsync,
-  } from './IdentityResources';
+  } from "/@/views/identityServers/identityResources/IdentityResources";
   import { useI18n } from '/@/hooks/web/useI18n';
   import { Tag } from 'ant-design-vue';
   import CreateIdentityResource from './CreateIdentityResource.vue';

@@ -14,7 +14,7 @@
   import { defineComponent } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
-  import { editFormSchema, editIdentityResourceAsync } from './IdentityResources';
+  import { editFormSchema, editIdentityResourceAsync } from "/@/views/identityServers/identityResources/IdentityResources";
   import { useI18n } from '/@/hooks/web/useI18n';
 
   export default defineComponent({
@@ -53,7 +53,7 @@
           const request = getFieldsValue();
           await validate();
           await editIdentityResourceAsync({ request, changeOkLoading, closeModal });
-          resetFields();
+          await resetFields();
           emit('reload');
         } catch (error) {
           changeOkLoading(false);

@@ -15,7 +15,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicTable, useTable } from '/@/components/Table';
-  import { tableColumns, searchFormSchema, getTableListAsync,httpStatusCodeColor,httpMethodColor } from './AuditLog';
+  import { tableColumns, searchFormSchema, getTableListAsync,httpStatusCodeColor,httpMethodColor } from "/@/views/admin/auditLog/AuditLog";
   import { Tag } from 'ant-design-vue';
   import { useI18n } from '/@/hooks/web/useI18n';
   export default defineComponent({
@@ -42,7 +42,6 @@
         bordered: true,
         canResize: true,
         showIndexColumn: true,
-        bordered: true,
         immediate: true,
         scroll: { x: true },
       });

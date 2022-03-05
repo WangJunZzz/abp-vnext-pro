@@ -38,7 +38,7 @@
 <script lang="ts">
   import { defineComponent, reactive, toRefs } from 'vue';
   import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
-  import { getAllScopeAsync, updateScopesAsync } from './Clients';
+  import { getAllScopeAsync, updateScopesAsync } from "/@/views/identityServers/clients/Clients";
   import { StringStringFromSelector } from '/@/services/ServiceProxies';
   import { useI18n } from '/@/hooks/web/useI18n';
   export default defineComponent({
@@ -77,6 +77,6 @@
 </script>
 <style lang="less" scoped>
   .ant-checkbox-wrapper + .ant-checkbox-wrapper {
-    margin-left: 0px;
+    margin-left: 0;
   }
 </style>

@@ -9,7 +9,7 @@ export async function importFileAsync({ request }) {
 
 async function getFileTokenAsync() {
   const _filesServiceProxy = new FilesServiceProxy();
-  var result = await _filesServiceProxy.getFileToken();
+  const result = await _filesServiceProxy.getFileToken();
   sessionStorage.setItem('oss', JSON.stringify(result));
   return result;
 }
@@ -29,7 +29,7 @@ export async function getOSSClient(): Promise<OSS> {
         fileToken = await getFileTokenAsync();
       }
     }
-    let requet = {
+    let request = {
       region: fileToken.region,
       accessKeyId: fileToken.accessKeyId,
       accessKeySecret: fileToken.accessKeySecret,
@@ -37,7 +37,7 @@ export async function getOSSClient(): Promise<OSS> {
       stsToken: fileToken.token as string,
     };
 
-    return Promise.resolve<OSS>(new OSS(requet));
+    return Promise.resolve<OSS>(new OSS(request));
   } catch (error) {
     console.error('获取oss Client失败');
   }
@@ -58,12 +58,12 @@ export async function downLoadFile(fileName) {
 }
 
 function formatDate(dateTime) {
-  var date = new Date(dateTime);
-  var YY = date.getFullYear() + '-';
-  var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-  var DD = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-  var hh = date.getHours() + ':';
-  var mm = date.getMinutes() + ':';
-  var ss = date.getSeconds();
+  const date = new Date(dateTime);
+  const YY = date.getFullYear() + '-';
+  const MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+  const DD = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+  const hh = date.getHours() + ':';
+  const mm = date.getMinutes() + ':';
+  const ss = date.getSeconds();
   return YY + MM + DD + ' ' + hh + mm + ss;
 }

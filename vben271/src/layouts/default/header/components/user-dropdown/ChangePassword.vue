@@ -69,7 +69,7 @@
           await validate();
           const request = getFieldsValue();
           if (request.newPassword != request.confirmPassword) {
-            message.error(t('editPasswordMessage'));
+            message.error(t('routes.admin.editPasswordMessage'));
             changeOkLoading(false);
             return;
           }
@@ -78,7 +78,7 @@
           await _userServiceProxy.changePassword(request as ChangePasswordInput);
           changeOkLoading(false);
           closeModal();
-          resetFields();
+         await resetFields();
         } catch (error) {
           changeOkLoading(false);
         }

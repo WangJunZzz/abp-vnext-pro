@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { FormSchema } from '/@/components/Table';
 import { BasicColumn } from '/@/components/Table';
 import { useI18n } from '/@/hooks/web/useI18n';

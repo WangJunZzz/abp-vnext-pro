@@ -14,7 +14,7 @@
   import { defineComponent } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
-  import { createFormSchema, createTenantAsync } from './Tenant';
+  import { createFormSchema, createTenantAsync } from "/@/views/tenants/Tenant";
   import { useI18n } from '/@/hooks/web/useI18n';
 
   export default defineComponent({
@@ -38,7 +38,7 @@
         try {
           const request = getFieldsValue();
           await createTenantAsync({ request, changeOkLoading, validate, closeModal });
-          resetFields();
+          await  resetFields();
           emit('reload');
         } catch (error) {
           changeOkLoading(false);
