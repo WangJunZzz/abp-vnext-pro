@@ -51,12 +51,11 @@ namespace Lion.AbpPro.Settings
                 var currentSettings = settings.Where(e => e.Properties.ContainsValue(item.Group));
                 foreach (var itemDefinition in currentSettings)
                 {
-                  
                     var value = await SettingProvider.GetOrNullAsync(itemDefinition.Name);
                     var type = itemDefinition.Properties
                         .FirstOrDefault(f => f.Key == AbpProSettings.ControlType.Default).Value
                         .ToString();
-                    
+
                     item.SettingItemOutput.Add(new SettingItemOutput(
                         itemDefinition.Name,
                         itemDefinition.DisplayName.Localize(_factory),
@@ -98,13 +97,13 @@ namespace Lion.AbpPro.Settings
                 return _settingManager.SetForCurrentUserAsync(setting.Name, value);
             }
 
-            if (setting.Providers.Any(p => p == GlobalSettingValueProvider.ProviderName))
+            if (setting.Providers.Any(p => p == TenantSettingValueProvider.ProviderName))
             {
-                return _settingManager.SetGlobalAsync(setting.Name, value);
+                return _settingManager.SetForCurrentTenantAsync(setting.Name, value);
             }
 
-            //Default
-            return _settingManager.SetForCurrentTenantAsync(setting.Name, value);
+            
+            return _settingManager.SetGlobalAsync(setting.Name, value);
         }
     }
 }

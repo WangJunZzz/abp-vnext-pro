@@ -5,9 +5,19 @@ RUN mkdir /app
 
 COPY publish /app
 
-# 这里速度会有点慢，可以打包自己的下边镜像底包
-RUN apt-get update -y && apt-get install -y libgdiplus && apt-get clean && ln -s /usr/lib/libgdiplus.so /usr/lib/gdiplus.dll
-
+RUN echo "deb http://mirrors.aliyun.com/debian/ bullseye main non-free contrib" > /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.aliyun.com/debian/ bullseye main non-free contrib" >> /etc/apt/sources.list && \
+    echo "deb http://mirrors.aliyun.com/debian-security/ bullseye-security main" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.aliyun.com/debian-security/ bullseye-security main" >> /etc/apt/sources.list && \
+    echo "deb http://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib" >> /etc/apt/sources.list && \
+    echo "deb http://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib" >> /etc/apt/sources.list && \
+    apt-get update && \
+    apt-get install libgdiplus libc6-dev -y && \
+    ln -s /usr/lib/libgdiplus.so /usr/lib/gdiplus.dll && \
+    ln -s /usr/lib/x86_64-linux-gnu/libdl.so /usr/lib/libdl.dll && apt-get clean
+    
 # 设置工作目录
 WORKDIR /app
 

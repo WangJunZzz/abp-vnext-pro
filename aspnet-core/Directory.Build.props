@@ -1,7 +1,7 @@
 ﻿<Project>
 
 	<PropertyGroup>
-		<AbpPackageVersion>5.1.3</AbpPackageVersion>
+		<AbpPackageVersion>5.1.4</AbpPackageVersion>
 		<DotNetCoreCAPVersion>6.0.0</DotNetCoreCAPVersion>
 		<MicrosoftVersion>6.0.0</MicrosoftVersion>
 		<SystemComponentModelAnnotationsVersion>6.0.0-preview.4.21253.7</SystemComponentModelAnnotationsVersion>

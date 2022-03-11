@@ -10,6 +10,7 @@ using Magicodes.ExporterAndImporter.Excel.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Application.Dtos;
@@ -25,16 +26,20 @@ namespace Lion.AbpPro.Users
         private readonly IdentityUserManager _userManager;
         private readonly IIdentityUserRepository _identityUserRepository;
         private readonly IExcelExporter _excelExporter;
+        private readonly IOptions<IdentityOptions> _options;
+
         public UserAppService(
             IIdentityUserAppService identityUserAppService,
             IdentityUserManager userManager,
             IIdentityUserRepository userRepository,
-            IExcelExporter excelExporter)
+            IExcelExporter excelExporter,
+            IOptions<IdentityOptions> options)
         {
             _identityUserAppService = identityUserAppService;
             _userManager = userManager;
             _identityUserRepository = userRepository;
             _excelExporter = excelExporter;
+            _options = options;
         }
 
         /// <summary>
@@ -131,6 +136,7 @@ namespace Lion.AbpPro.Users
         /// <returns></returns>
         public async Task<bool> ChangePasswordAsync(ChangePasswordInput input)
         {
+            await _options.SetAsync();
             var identityUser = await _userManager.GetByIdAsync(base.CurrentUser.GetId());
             IdentityResult result;
             if (identityUser.PasswordHash == null)

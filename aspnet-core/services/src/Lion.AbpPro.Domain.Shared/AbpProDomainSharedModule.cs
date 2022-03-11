@@ -17,6 +17,7 @@ using Volo.Abp.Localization.Resources.AbpLocalization;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
+using Volo.Abp.SettingManagement.Localization;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.Threading;
 using Volo.Abp.Timing.Localization.Resources.AbpTiming;
@@ -57,11 +58,12 @@ namespace Lion.AbpPro
             {
                 options.Resources
                     .Add<AbpProResource>("zh-Hans")
+                    .AddVirtualJson("/Localization/AbpPro")
+                    .AddBaseTypes(typeof(IdentityResource))
                     .AddBaseTypes(typeof(AbpValidationResource))
                     .AddBaseTypes(typeof(AbpLocalizationResource))
-                    .AddBaseTypes(typeof(IdentityResource))
                     .AddBaseTypes(typeof(AbpTimingResource))
-                    .AddVirtualJson("/Localization/AbpPro");
+                    .AddBaseTypes(typeof(AbpSettingManagementResource));
 
                 options.DefaultResourceType = typeof(AbpProResource);
             });
@@ -70,8 +72,6 @@ namespace Lion.AbpPro
             {
                 options.MapCodeNamespace("AbpPro", typeof(AbpProResource));
             });
-
-           
         }
 
        
