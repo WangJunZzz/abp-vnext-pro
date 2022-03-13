@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Localization\AuditLogManagement\en.json" />
+		<None Remove="Localization\AuditLogManagement\zh-Hans.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Localization\AuditLogManagement\en.json" />
+		<EmbeddedResource Include="Localization\AuditLogManagement\zh-Hans.json" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Validation" Version="$(AbpPackageVersion)" />
+	</ItemGroup>
+	
+</Project>

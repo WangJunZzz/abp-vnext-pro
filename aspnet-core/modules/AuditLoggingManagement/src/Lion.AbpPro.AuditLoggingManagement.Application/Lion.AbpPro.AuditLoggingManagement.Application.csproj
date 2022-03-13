@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="../../../../common.props" />
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>Lion.AbpPro.AuditLoggingManagement</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.AutoMapper" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Autofac" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Ddd.Application" Version="$(AbpPackageVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Lion.AbpPro.AuditLoggingManagement.Application.Contracts\Lion.AbpPro.AuditLoggingManagement.Application.Contracts.csproj" />
+	</ItemGroup>
+</Project>

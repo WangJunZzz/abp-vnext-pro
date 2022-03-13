@@ -1,0 +1,6 @@
+{
+  "culture": "en",
+  "texts": {
+    "AuditLogNotFound": "AuditLog Id: {0} does not exist!"
+  }
+}
