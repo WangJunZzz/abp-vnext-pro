@@ -21,8 +21,12 @@ namespace Lion.AbpPro.ElasticSearchs.Providers
             var connectionSettings =
                 new ConnectionSettings(pool);
             connectionSettings.EnableHttpCompression();
-            connectionSettings.BasicAuthentication(_configuration.GetValue<string>("ElasticSearch:UserName"),
-                _configuration.GetValue<string>("ElasticSearch:Password"));
+            var username = _configuration.GetValue<string>("ElasticSearch:UserName");
+            if (!string.IsNullOrEmpty(username))
+            {
+                connectionSettings.BasicAuthentication(username,
+                    _configuration.GetValue<string>("ElasticSearch:Password"));
+            }
             return new ElasticClient(connectionSettings);
         }
     }
