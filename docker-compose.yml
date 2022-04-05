@@ -1,0 +1,93 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    # network_mode: "host" # 如果需要容器使用宿主机IP(内网IP)，则可以配置此项
+    # container_name: mysql # 指定容器名称，如果不设置此参数，则由系统自动生成
+    restart: always # 设置容器自启模式
+    environment:
+      - TZ=Asia/Shanghai # 设置容器时区与宿主机保持一致
+      - MYSQL_ROOT_PASSWORD=1q2w3E* # 设置root密码
+      - MYSQL_USER= sa
+      # 用户密码
+      - MYSQL_PASSWORD= 1q2w3E*
+    volumes:
+       - /etc/localtime:/etc/localtime:ro # 设置容器时区与宿主机保持一致
+    ports:
+        - "3306:3306"
+    networks:
+      - dev 
+    command:
+      # 将mysql8.0默认密码策略 修改为 原先 策略 (mysql8.0对其默认策略做了更改 会导致密码无法匹配)
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+      
+  redis:
+    image: redis:5.0.4
+    restart: always
+    command: redis-server  # 启动redis命令
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/localtime:/etc/localtime:ro # 设置容器时区与宿主机保持一致
+    ports:
+        - "6379:6379"
+    networks:
+      - dev  
+
+  rabbitMq:
+    image: rabbitmq:management
+    restart: always
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    networks:
+      - dev      
+
+  elasticsearch:
+    image: elasticsearch:7.14.1
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - elasticsearch:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+      discovery.type: "single-node"
+      bootstrap.memory_lock: "true"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elastic
+
+  kibana:
+    image: kibana:7.14.1
+    environment:
+      SERVER_NAME: kibana
+      ELASTICSEARCH_HOSTS: "http://elasticsearch:9200"
+    volumes:
+      - /etc/localtime:/etc/localtime
+    ports:
+      - "5601:5601"
+    networks:
+      - elastic
+    depends_on:
+      - elasticsearch
+volumes:
+  elasticsearch:
+    driver: local
+    
+networks:
+  dev:
+    driver: bridge
+  elastic:
+    driver: bridge
