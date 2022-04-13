@@ -1,7 +1,7 @@
 ﻿<Project>
 
 	<PropertyGroup>
-		<AbpPackageVersion>5.1.4</AbpPackageVersion>
+		<AbpPackageVersion>5.2.0</AbpPackageVersion>
 		<DotNetCoreCAPVersion>6.0.0</DotNetCoreCAPVersion>
 		<MicrosoftVersion>6.0.0</MicrosoftVersion>
 		<SystemComponentModelAnnotationsVersion>6.0.0-preview.4.21253.7</SystemComponentModelAnnotationsVersion>
@@ -29,6 +29,7 @@
 		<XunitrunnervisualstudioVersion>2.4.3</XunitrunnervisualstudioVersion>
 		<OcelotVersion>17.0.0</OcelotVersion>
 		<MagicodesIEExcelVersion>2.6.1</MagicodesIEExcelVersion>
+		<ZackEFCoreBatchVersion>6.0.11</ZackEFCoreBatchVersion>
 	</PropertyGroup>
 
 </Project>

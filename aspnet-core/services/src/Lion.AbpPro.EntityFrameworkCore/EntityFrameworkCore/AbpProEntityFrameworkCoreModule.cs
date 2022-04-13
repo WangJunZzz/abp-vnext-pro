@@ -1,6 +1,7 @@
 using Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore;
 using Lion.AbpPro.FileManagement.EntityFrameworkCore;
 using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -51,6 +52,10 @@ namespace Lion.AbpPro.EntityFrameworkCore
             {
                 /* The main point to change your DBMS.
                  * See also AbpProMigrationsDbContextFactory for EF Core tooling. */
+                options.PreConfigure<AbpProDbContext>(options =>
+                {
+                    options.DbContextOptions.UseBatchEF_MySQLPomelo();
+                });
                 options.UseMySQL();
             });
         }

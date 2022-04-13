@@ -15,10 +15,11 @@ namespace Lion.AbpPro.Users.Dtos
         /// </summary>
         public string Name { get; set; }
 
-        [DisableAuditing]
+
         /// <summary>
         /// 密码
         /// </summary>
+        [DisableAuditing]
         public string Password { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

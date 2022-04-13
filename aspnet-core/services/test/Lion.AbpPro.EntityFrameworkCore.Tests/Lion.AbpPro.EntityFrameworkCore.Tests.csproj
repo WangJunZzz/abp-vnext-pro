@@ -12,6 +12,7 @@
     <ProjectReference Include="..\..\src\Lion.AbpPro.EntityFrameworkCore\Lion.AbpPro.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Lion.AbpPro.TestBase\Lion.AbpPro.TestBase.csproj" />
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Zack.EFCore.Batch.Sqlite_NET6" Version="$(ZackEFCoreBatchVersion)" />
   </ItemGroup>
 
   <ItemGroup>

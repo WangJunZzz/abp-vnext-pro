@@ -168,30 +168,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.FileManagement.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.FileManagement.HttpApi.Host", "modules\FileManagement\host\Lion.AbpPro.FileManagement.HttpApi.Host\Lion.AbpPro.FileManagement.HttpApi.Host.csproj", "{831CD22A-AC6E-4515-AB24-8C96B34C717F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuditLoggingManagement", "AuditLoggingManagement", "{5D994A2D-4ABB-47B7-B1CB-474E6B6C5437}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{1C6F6BDF-F309-49F5-80F9-152CB1F883AB}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{03DAEDDF-7E80-41AD-883B-FEB89992F18B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{61DF4305-D331-40A8-9F71-792D9793AF9F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.AuditLoggingManagement.HttpApi.Host", "modules\AuditLoggingManagement\host\Lion.AbpPro.AuditLoggingManagement.HttpApi.Host\Lion.AbpPro.AuditLoggingManagement.HttpApi.Host.csproj", "{56AF025A-9F18-4097-9B5A-855C56E9AA04}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.AuditLoggingManagement.Application", "modules\AuditLoggingManagement\src\Lion.AbpPro.AuditLoggingManagement.Application\Lion.AbpPro.AuditLoggingManagement.Application.csproj", "{A49FCA2B-998A-4A4A-9ADE-523AB083CFBA}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.AuditLoggingManagement.Application.Contracts", "modules\AuditLoggingManagement\src\Lion.AbpPro.AuditLoggingManagement.Application.Contracts\Lion.AbpPro.AuditLoggingManagement.Application.Contracts.csproj", "{5BBF431C-8617-47A6-B10A-AE5665BF1E1F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.AuditLoggingManagement.Domain.Shared", "modules\AuditLoggingManagement\src\Lion.AbpPro.AuditLoggingManagement.Domain.Shared\Lion.AbpPro.AuditLoggingManagement.Domain.Shared.csproj", "{994971ED-A7E5-438E-AAE3-C4F61111BFB4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.AuditLoggingManagement.HttpApi", "modules\AuditLoggingManagement\src\Lion.AbpPro.AuditLoggingManagement.HttpApi\Lion.AbpPro.AuditLoggingManagement.HttpApi.csproj", "{63B86B76-F3ED-40E2-8F72-808B4A5FB1DE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.AuditLoggingManagement.HttpApi.Client", "modules\AuditLoggingManagement\src\Lion.AbpPro.AuditLoggingManagement.HttpApi.Client\Lion.AbpPro.AuditLoggingManagement.HttpApi.Client.csproj", "{C28EEDC0-6D83-4D7C-AED3-F6F49AEA5E02}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.AuditLoggingManagement.Application.Tests", "modules\AuditLoggingManagement\test\Lion.AbpPro.AuditLoggingManagement.Application.Tests\Lion.AbpPro.AuditLoggingManagement.Application.Tests.csproj", "{DDC5801F-8E0D-4290-9585-EF60C7FC98E5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.AuditLoggingManagement.TestBase", "modules\AuditLoggingManagement\test\Lion.AbpPro.AuditLoggingManagement.TestBase\Lion.AbpPro.AuditLoggingManagement.TestBase.csproj", "{97ACF365-2693-4352-8EDD-EE26995D3215}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -422,38 +398,6 @@ Global
 		{831CD22A-AC6E-4515-AB24-8C96B34C717F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{831CD22A-AC6E-4515-AB24-8C96B34C717F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{831CD22A-AC6E-4515-AB24-8C96B34C717F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56AF025A-9F18-4097-9B5A-855C56E9AA04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56AF025A-9F18-4097-9B5A-855C56E9AA04}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56AF025A-9F18-4097-9B5A-855C56E9AA04}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56AF025A-9F18-4097-9B5A-855C56E9AA04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A49FCA2B-998A-4A4A-9ADE-523AB083CFBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A49FCA2B-998A-4A4A-9ADE-523AB083CFBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A49FCA2B-998A-4A4A-9ADE-523AB083CFBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A49FCA2B-998A-4A4A-9ADE-523AB083CFBA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5BBF431C-8617-47A6-B10A-AE5665BF1E1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BBF431C-8617-47A6-B10A-AE5665BF1E1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BBF431C-8617-47A6-B10A-AE5665BF1E1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BBF431C-8617-47A6-B10A-AE5665BF1E1F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{994971ED-A7E5-438E-AAE3-C4F61111BFB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{994971ED-A7E5-438E-AAE3-C4F61111BFB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{994971ED-A7E5-438E-AAE3-C4F61111BFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{994971ED-A7E5-438E-AAE3-C4F61111BFB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63B86B76-F3ED-40E2-8F72-808B4A5FB1DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63B86B76-F3ED-40E2-8F72-808B4A5FB1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63B86B76-F3ED-40E2-8F72-808B4A5FB1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63B86B76-F3ED-40E2-8F72-808B4A5FB1DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C28EEDC0-6D83-4D7C-AED3-F6F49AEA5E02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C28EEDC0-6D83-4D7C-AED3-F6F49AEA5E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C28EEDC0-6D83-4D7C-AED3-F6F49AEA5E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C28EEDC0-6D83-4D7C-AED3-F6F49AEA5E02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DDC5801F-8E0D-4290-9585-EF60C7FC98E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DDC5801F-8E0D-4290-9585-EF60C7FC98E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DDC5801F-8E0D-4290-9585-EF60C7FC98E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DDC5801F-8E0D-4290-9585-EF60C7FC98E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{97ACF365-2693-4352-8EDD-EE26995D3215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97ACF365-2693-4352-8EDD-EE26995D3215}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97ACF365-2693-4352-8EDD-EE26995D3215}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97ACF365-2693-4352-8EDD-EE26995D3215}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -533,18 +477,6 @@ Global
 		{9201AEE4-2E6D-4A48-805F-3F3C6878BC0B} = {40BF21CB-4520-45A6-A588-5FFB95BAC87C}
 		{78589964-923E-4803-9B74-183487C3ED0F} = {40BF21CB-4520-45A6-A588-5FFB95BAC87C}
 		{831CD22A-AC6E-4515-AB24-8C96B34C717F} = {C188A1F4-9601-42E5-9A0A-B282E13EAC41}
-		{5D994A2D-4ABB-47B7-B1CB-474E6B6C5437} = {F8A8EB2A-2D4B-464F-9A13-F8F7B6A8FAA3}
-		{1C6F6BDF-F309-49F5-80F9-152CB1F883AB} = {5D994A2D-4ABB-47B7-B1CB-474E6B6C5437}
-		{03DAEDDF-7E80-41AD-883B-FEB89992F18B} = {5D994A2D-4ABB-47B7-B1CB-474E6B6C5437}
-		{61DF4305-D331-40A8-9F71-792D9793AF9F} = {5D994A2D-4ABB-47B7-B1CB-474E6B6C5437}
-		{56AF025A-9F18-4097-9B5A-855C56E9AA04} = {1C6F6BDF-F309-49F5-80F9-152CB1F883AB}
-		{A49FCA2B-998A-4A4A-9ADE-523AB083CFBA} = {03DAEDDF-7E80-41AD-883B-FEB89992F18B}
-		{5BBF431C-8617-47A6-B10A-AE5665BF1E1F} = {03DAEDDF-7E80-41AD-883B-FEB89992F18B}
-		{994971ED-A7E5-438E-AAE3-C4F61111BFB4} = {03DAEDDF-7E80-41AD-883B-FEB89992F18B}
-		{63B86B76-F3ED-40E2-8F72-808B4A5FB1DE} = {03DAEDDF-7E80-41AD-883B-FEB89992F18B}
-		{C28EEDC0-6D83-4D7C-AED3-F6F49AEA5E02} = {03DAEDDF-7E80-41AD-883B-FEB89992F18B}
-		{DDC5801F-8E0D-4290-9585-EF60C7FC98E5} = {61DF4305-D331-40A8-9F71-792D9793AF9F}
-		{97ACF365-2693-4352-8EDD-EE26995D3215} = {61DF4305-D331-40A8-9F71-792D9793AF9F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}
