@@ -20,7 +20,7 @@ import { router } from '/@/router';
 import { usePermissionStore } from '/@/store/modules/permission';
 import { LoginInput } from '/@/services/ServiceProxies';
 import jwt_decode from 'jwt-decode';
-
+import { useSignalR } from '/@/hooks/web/useSignalR';
 import { useOidcLogout } from '/@/views/sys/login/useLogin';
 interface UserState {
   userInfo: Nullable<UserInfo>;
@@ -223,6 +223,8 @@ export const useUserStore = defineStore({
         content: t('sys.app.logoutMessage'),
         onOk: async () => {
           await this.logout(true);
+          const { closeConnect } = useSignalR();
+          closeConnect();
         },
       });
     },

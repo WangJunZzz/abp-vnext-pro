@@ -1,12 +1,13 @@
 import * as signalR from '@microsoft/signalr';
 import { useMessage } from '/@/hooks/web/useMessage';
 import { useUserStoreWithOut } from '/@/store/modules/user';
+let connection;
 export function useSignalR() {
   /**
    * 开始连接SignalR
    */
   function startConnect(): void {
-    let connection = connectionsignalR();
+    connection = connectionsignalR();
     //接收普通文本消息
     connection.on('ReceiveTextMessageAsync', ReceiveTextMessageHandlerAsync);
     //接收广播消息
@@ -14,16 +15,24 @@ export function useSignalR() {
     //开始连接
     connection.start();
   }
+  /**
+   * 关闭SignalR连接
+   */
+  function closeConnect(): void {
+    if (connection) {
+      connection.stop();
+    }
+  }
 
   /**
    * 连接signalr
    */
-  function connectionsignalR(): signalR.HubConnection {
+  function connectionsignalR() {
     const userStore = useUserStoreWithOut();
     const token = userStore.getToken;
 
     const url = (import.meta.env.VITE_WEBSOCKE_URL as string) + '/signalr/notification';
-    const connection = new signalR.HubConnectionBuilder()
+    connection = new signalR.HubConnectionBuilder()
       .withUrl(url, {
         accessTokenFactory: () => token,
         skipNegotiation: true,
@@ -78,5 +87,5 @@ export function useSignalR() {
     });
   }
 
-  return { startConnect };
+  return { startConnect, closeConnect };
 }
