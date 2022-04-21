@@ -69,12 +69,12 @@
     removeLogoutRedirectUriAsync,
     addCorsAsync,
     removeCorsAsync,
-  } from "/@/views/identityServers/clients/Clients";
+  } from '/@/views/identityServers/clients/Clients';
   import { PagingClientListOutput } from '/@/services/ServiceProxies';
   export default defineComponent({
     name: 'ClientUri',
     components: { BasicDrawer, Tabs, TabPane: Tabs.TabPane },
-    emits: ['reload'],
+    emits: ['reload', 'register'],
     setup(_, { emit }) {
       const { t } = useI18n();
       let currentClient: PagingClientListOutput = new PagingClientListOutput();

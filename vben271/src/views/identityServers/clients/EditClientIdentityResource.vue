@@ -38,13 +38,13 @@
 <script lang="ts">
   import { defineComponent, reactive, toRefs } from 'vue';
   import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
-  import { getAllScopeAsync, updateScopesAsync } from "/@/views/identityServers/clients/Clients";
+  import { getAllScopeAsync, updateScopesAsync } from '/@/views/identityServers/clients/Clients';
   import { StringStringFromSelector } from '/@/services/ServiceProxies';
   import { useI18n } from '/@/hooks/web/useI18n';
   export default defineComponent({
     name: 'EditClientIdentityResource',
     components: { BasicDrawer },
-    emits: ['reload'],
+    emits: ['reload', 'register'],
     setup(_, { emit }) {
       const { t } = useI18n();
       let scopes: StringStringFromSelector[] = [];
