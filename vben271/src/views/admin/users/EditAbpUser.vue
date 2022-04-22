@@ -46,7 +46,7 @@
     getAllRoleAsync,
     updateUserAsync,
     getRolesByUserIdAsync,
-  } from "/@/views/admin/users/AbpUser";
+  } from '/@/views/admin/users/AbpUser';
   import {
     IdentityRoleDto,
     IdentityUserDto,
@@ -63,7 +63,7 @@
       Tabs,
       TabPane: Tabs.TabPane,
     },
-    emits: ['reload'],
+    emits: ['reload', 'register'],
     setup(_, { emit }) {
       const [registerUserForm, { getFieldsValue, validate, setFieldsValue, resetFields }] = useForm(
         {

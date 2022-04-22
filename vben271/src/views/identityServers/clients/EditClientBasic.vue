@@ -39,7 +39,7 @@
     editBasicTokenSchema,
     editBasicSecretSchema,
     updateClientAsync,
-  } from "/@/views/identityServers/clients/Clients";
+  } from '/@/views/identityServers/clients/Clients';
 
   export default defineComponent({
     name: 'EditAbpUser',
@@ -49,7 +49,7 @@
       Tabs,
       TabPane: Tabs.TabPane,
     },
-    emits: ['reload'],
+    emits: ['reload', 'register'],
     setup(_, { emit }) {
       const { t } = useI18n();
       const [

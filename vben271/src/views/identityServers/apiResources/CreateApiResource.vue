@@ -14,7 +14,10 @@
   import { defineComponent } from 'vue';
   import { BasicModal, useModalInner } from '/@/components/Modal';
   import { BasicForm, useForm } from '/@/components/Form/index';
-  import { createFormSchema, createApiResourceAsync } from "/@/views/identityServers/apiResources/ApiResources";
+  import {
+    createFormSchema,
+    createApiResourceAsync,
+  } from '/@/views/identityServers/apiResources/ApiResources';
   import { useI18n } from '/@/hooks/web/useI18n';
 
   export default defineComponent({
@@ -23,7 +26,7 @@
       BasicModal,
       BasicForm,
     },
-    emits: ['reload'],
+    emits: ['reload', 'register'],
     setup(_, { emit }) {
       const { t } = useI18n();
       const [registerApiResourceForm, { getFieldsValue, validate, resetFields }] = useForm({

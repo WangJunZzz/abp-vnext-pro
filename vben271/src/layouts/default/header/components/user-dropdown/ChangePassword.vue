@@ -5,7 +5,7 @@
     @register="register"
     :canFullscreen="false"
     @ok="submit"
-    minHeight="100"
+    :minHeight="100"
   >
     <BasicForm @register="registerForm" />
   </BasicModal>
@@ -78,7 +78,7 @@
           await _userServiceProxy.changePassword(request as ChangePasswordInput);
           changeOkLoading(false);
           closeModal();
-         await resetFields();
+          await resetFields();
         } catch (error) {
           changeOkLoading(false);
         }
