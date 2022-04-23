@@ -64,10 +64,8 @@ export class ServiceProxyBase {
     if (url == '/Tenants/find') {
       return true;
     }
-    if (url == '/api/app/account/login') {
-      return true;
-    }
-    if (url.startsWith('/api/app/account/login/Sts')) {
+
+    if (url.startsWith('/api/app/account')) {
       return true;
     }
 

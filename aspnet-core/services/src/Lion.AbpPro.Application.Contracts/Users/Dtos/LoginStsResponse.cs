@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Lion.AbpPro.Users.Dtos
 {
-    public class LoginStsOutput
+    public class LoginStsResponse
     {
         public string name { get; set; }
 

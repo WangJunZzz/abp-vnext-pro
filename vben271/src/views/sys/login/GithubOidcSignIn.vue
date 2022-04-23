@@ -22,12 +22,12 @@
         compState.absolute = absolute;
         compState.loading = true;
         try {
+          debugger;
           const { currentRoute } = useRouter();
-          const id_token = currentRoute.value.fullPath.split('=')[1].split('&')[0];
-          const token = currentRoute.value.fullPath.split('=')[2].split('&')[0];
+          const code = currentRoute.value.fullPath.split('=')[1].split('&')[0];
 
-          if (token) {
-            await userStore.id4Login(token, id_token);
+          if (code) {
+            await userStore.githubLogin(code);
           }
         } catch {
           message.error('登陆失败');

@@ -13,7 +13,7 @@ import {
 } from '/@/enums/cacheEnum';
 import { getAuthCache, setAuthCache } from '/@/utils/auth';
 import { GetUserInfoByUserIdModel, LoginParams } from '/@/api/sys/model/userModel';
-import { login, getAbpApplicationConfiguration, stsLogin } from '/@/api/sys/user';
+import { login, getAbpApplicationConfiguration, id4, github } from '/@/api/sys/user';
 import { useI18n } from '/@/hooks/web/useI18n';
 import { useMessage } from '/@/hooks/web/useMessage';
 import { router } from '/@/router';
@@ -148,10 +148,8 @@ export const useUserStore = defineStore({
         goHome && (await router.replace(PageEnum.BASE_HOME));
         return null;
       } catch (error) {
-        //console.log(error);
         router.replace(PageEnum.BASE_LOGIN);
         return null;
-        //throw new Error(error);
       }
     },
     async getAbpApplicationConfigurationAsync() {
@@ -165,7 +163,7 @@ export const useUserStore = defineStore({
       permissionStore.setPermCodeList(grantPolicy);
     },
 
-    async stsLogin(token: string, id_token: string) {
+    async id4Login(token: string, id_token: string) {
       try {
         // 获取token中的租户信息
         const decoded: any = jwt_decode(token);
@@ -175,7 +173,7 @@ export const useUserStore = defineStore({
           this.setTenant(decoded.tenantid);
         }
 
-        const data = await stsLogin(token);
+        const data = await id4(token);
         this.setToken(data.token as string);
 
         this.setUserInfo({
@@ -195,6 +193,54 @@ export const useUserStore = defineStore({
       }
     },
 
+    async githubLogin(code: string) {
+      try {
+        const data = await github(code);
+        this.setToken(data.token as string);
+        this.setTenant('');
+        this.setUserInfo({
+          userId: data.id as string,
+          username: data.userName as string,
+          realName: data.name as string,
+          roles: data.roles as [],
+          avatar: '',
+          isSts: false,
+          idToken: '',
+        });
+        await this.getAbpApplicationConfigurationAsync();
+        await router.replace(PageEnum.BASE_HOME);
+      } catch (error) {
+        this.setTenant('');
+        router.replace(PageEnum.BASE_LOGIN);
+      }
+    },
+
+    // async githubLogin(code: string) {
+    //   try {
+    //     debugger;
+    //     await githubLogin(code).then((res) => {
+    //       console.log(res);
+    //     });
+
+    //     // this.setToken(data.token as string);
+
+    //     // this.setUserInfo({
+    //     //   userId: decoded.sub as string,
+    //     //   username: data.userName as string,
+    //     //   realName: data.name as string,
+    //     //   roles: data.roles as [],
+    //     //   avatar: '',
+    //     //   isSts: true,
+    //     //   idToken: id_token,
+    //     // });
+    //     // await this.getAbpApplicationConfigurationAsync();
+    //     // await router.replace(PageEnum.BASE_HOME);
+    //   } catch (error) {
+    //     console.log(error);
+    //     //this.setTenant('');
+    //     router.replace(PageEnum.BASE_LOGIN);
+    //   }
+    // },
     /**
      * @description: logout
      */

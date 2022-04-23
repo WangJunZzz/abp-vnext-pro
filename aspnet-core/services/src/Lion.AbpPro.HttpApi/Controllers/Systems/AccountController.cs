@@ -23,10 +23,17 @@ namespace Lion.AbpPro.Controllers.Systems
         }
 
         [SwaggerOperation(summary: "登录", Tags = new[] {"Account"})]
-        [HttpPost("/api/app/account/login/Sts")]
-        public Task<LoginOutput> StsLoginAsync(string accessToken)
+        [HttpPost("/api/app/account/login/id4")]
+        public Task<LoginOutput> Id4LoginAsync(string accessToken)
         {
-            return _accountAppService.StsLoginAsync(accessToken);
+            return _accountAppService.Id4LoginAsync(accessToken);
+        }
+        
+        [SwaggerOperation(summary: "登录", Tags = new[] {"Account"})]
+        [HttpPost("/api/app/account/login/github")]
+        public Task<LoginOutput> GithubLoginAsync(string code)
+        {
+            return _accountAppService.GithubLoginAsync(code);
         }
     }
 }

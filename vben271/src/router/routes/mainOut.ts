@@ -26,6 +26,15 @@ export const mainOutRoutes: AppRouteModule[] = [
       ignoreAuth: true,
     },
   },
+  {
+    path: '/githubSignIn',
+    name: 'GithubOidcSign',
+    component: () => import('/@/views/sys/login/GithubOidcSignIn.vue'),
+    meta: {
+      title: 'GithubOidcSign',
+      ignoreAuth: true,
+    },
+  },
 ];
 
 export const mainOutRouteNames = mainOutRoutes.map((item) => item.name);

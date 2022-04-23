@@ -43,7 +43,15 @@
     <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>
 
     <div class="flex justify-evenly enter-x" :class="`${prefixCls}-sign-in-way`">
-      <a-button type="link" @click="useOidcLogin">IdentityServer登录 </a-button>
+      <a-button type="link" @click="useOidcLogin" aria-placeholder="sf"
+        ><LoginOutlined />
+      </a-button>
+
+      <a-button
+        type="link"
+        href="https://github.com/login/oauth/authorize?client_id=127fc528f611879fba03&state=abp"
+        ><GithubFilled />
+      </a-button>
     </div>
   </Form>
 </template>
@@ -57,6 +65,7 @@
     AlipayCircleFilled,
     GoogleCircleFilled,
     TwitterCircleFilled,
+    LoginOutlined,
   } from '@ant-design/icons-vue';
   import LoginFormTitle from './LoginFormTitle.vue';
 

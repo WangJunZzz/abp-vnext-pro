@@ -43,6 +43,7 @@ using Volo.Abp.Modularity;
 using Microsoft.AspNetCore.Mvc;
 using Magicodes.ExporterAndImporter.Core;
 using Magicodes.ExporterAndImporter.Excel;
+using Microsoft.AspNetCore.Identity;
 using Volo.Abp.AspNetCore.ExceptionHandling;
 
 namespace Lion.AbpPro
@@ -83,6 +84,7 @@ namespace Lion.AbpPro
             ConfigurationMiniProfiler(context);
             ConfigureMagicodes(context);
             ConfigureAbpExceptions(context);
+            ConfigureIdentity(context);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -127,6 +129,7 @@ namespace Lion.AbpPro
                 app.UseConsul();
             }
         }
+
         /// <summary>
         /// 异常处理
         /// </summary>
@@ -135,15 +138,10 @@ namespace Lion.AbpPro
         {
             //开启后通过ErrorCode抛本地化异常，message不会显示本地化词条
             var SendExceptionsDetails = context.Services.GetHostingEnvironment().IsDevelopment();
-            context.Services.Configure<AbpExceptionHandlingOptions>(options =>
-            {
-                options.SendExceptionsDetailsToClients = SendExceptionsDetails;
-            });
-            context.Services.AddMvc(options =>
-            {
-                options.Filters.Add(typeof(ResultExceptionFilter));
-            });
+            context.Services.Configure<AbpExceptionHandlingOptions>(options => { options.SendExceptionsDetailsToClients = SendExceptionsDetails; });
+            context.Services.AddMvc(options => { options.Filters.Add(typeof(ResultExceptionFilter)); });
         }
+
         /// <summary>
         /// 配置Magicodes.IE
         /// Excel导入导出
@@ -299,8 +297,30 @@ namespace Lion.AbpPro
                         new Uri(context.Services.GetConfiguration().GetSection("HttpClient:Sts:Url")
                             .Value);
                 });
+            context.Services.AddHttpClient(context.Services.GetConfiguration().GetSection("HttpClient:Github:Name").Value,
+                options =>
+                {
+                    options.BaseAddress =
+                        new Uri(context.Services.GetConfiguration().GetSection("HttpClient:Github:Url")
+                            .Value);
+                });
+            context.Services.AddHttpClient(context.Services.GetConfiguration().GetSection("HttpClient:GithubApi:Name").Value,
+                options =>
+                {
+                    options.BaseAddress =
+                        new Uri(context.Services.GetConfiguration().GetSection("HttpClient:GithubApi:Url")
+                            .Value);
+                });
+          
         }
 
+        /// <summary>
+        /// 配置Identity
+        /// </summary>
+        private void ConfigureIdentity(ServiceConfigurationContext context)
+        {
+            context.Services.Configure<IdentityOptions>(options => { options.Lockout = new LockoutOptions() { AllowedForNewUsers = false }; });
+        }
         private void ConfigureConventionalControllers()
         {
             Configure<AbpAspNetCoreMvcOptions>(options =>

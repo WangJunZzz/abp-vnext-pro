@@ -36,13 +36,20 @@ export function login(input: LoginInput): Promise<LoginOutput> {
  * @param token
  * @returns
  */
-export function stsLogin(token: string): Promise<LoginOutput> {
+export function id4(token: string): Promise<LoginOutput> {
   const _accountServiceProxy = new AccountServiceProxy();
-  return _accountServiceProxy.sts(token);
+  return _accountServiceProxy.id4(token);
 }
-export function stsLogout() {
+
+/**
+ * sts登录
+ * @param token
+ * @returns
+ */
+export function github(code: string): Promise<LoginOutput> {
+  debugger;
   const _accountServiceProxy = new AccountServiceProxy();
-  return _accountServiceProxy.logout();
+  return _accountServiceProxy.github(code);
 }
 
 /**
