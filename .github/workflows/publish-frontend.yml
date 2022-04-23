@@ -22,7 +22,7 @@ jobs:
       - name: 部署->Vue
         uses: easingthemes/ssh-deploy@v2.2.11
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.ALIYUN_SERVER_ACCESS_TOKEN }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-avzr --delete"
           SOURCE: "vben271/dist"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
