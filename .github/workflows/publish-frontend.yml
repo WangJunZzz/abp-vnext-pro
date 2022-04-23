@@ -1,0 +1,30 @@
+name: 前端部署(vue)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+
+      - name: 编译|发布
+        run: |
+          cd vben271
+          yarn
+          npm run build
+
+      - name: 部署->Vue
+        uses: easingthemes/ssh-deploy@v2.2.11
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.ALIYUN_SERVER_ACCESS_TOKEN }}
+          ARGS: "-avzr --delete"
+          SOURCE: "vben271/dist"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: "/root/wwwroot"

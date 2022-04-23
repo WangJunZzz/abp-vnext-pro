@@ -1,0 +1,60 @@
+name: 后端部署(API,IdentityServer4,Gateways)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Dotnet 6.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0"
+          include-prerelease: True
+      - name: 编译
+        run: dotnet build aspnet-core/Lion.AbpPro.sln
+
+      - name: 单元测试
+        run: dotnet test aspnet-core/services/test/Lion.AbpPro.Domain.Tests/Lion.AbpPro.Domain.Tests.csproj
+
+      - name: 发布->Lion.AbpPro.HttpApi.Host
+        run: dotnet publish aspnet-core/services/host/Lion.AbpPro.HttpApi.Host/Lion.AbpPro.HttpApi.Host.csproj -o Lion.AbpPro.HttpApi.Host
+     
+      - name: 发布->Lion.AbpPro.IdentityServer
+        run: dotnet publish aspnet-core/services/host/Lion.AbpPro.IdentityServer/Lion.AbpPro.IdentityServer.csproj -o Lion.AbpPro.IdentityServer
+      
+      - name: 发布->Lion.AbpPro.IdentityServer
+        run: dotnet publish aspnet-core/gateways/Lion.AbpPro.WebGateway/Lion.AbpPro.WebGateway.csproj -o Lion.AbpPro.WebGateway
+     
+      - name: 部署->Lion.AbpPro.HttpApi.Host
+        uses: easingthemes/ssh-deploy@v2.2.11
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-avzr --delete --exclude 'appsettings.json'"
+          SOURCE: "Lion.AbpPro.HttpApi.Host"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: "/root/wwwroot"
+     
+      - name: 部署->Lion.AbpPro.IdentityServer
+        uses: easingthemes/ssh-deploy@v2.2.11
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-avzr --delete --exclude 'appsettings.json'"
+          SOURCE: "Lion.AbpPro.IdentityServer"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: "/root/wwwroot"
+     
+      - name: 部署->Lion.AbpPro.WebGateway
+        uses: easingthemes/ssh-deploy@v2.2.11
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-avzr --delete --exclude 'appsettings.json'"
+          SOURCE: "Lion.AbpPro.WebGateway"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: "/root/wwwroot"
