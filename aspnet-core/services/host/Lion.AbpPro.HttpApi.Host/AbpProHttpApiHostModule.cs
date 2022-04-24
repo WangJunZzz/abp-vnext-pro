@@ -167,7 +167,8 @@ namespace Lion.AbpPro
                         //QueuePollInterval = TimeSpan.Zero,
                         //UseRecommendedIsolationLevel = true,
                         //DisableGlobalLocks = true
-                        JobExpirationCheckInterval = TimeSpan.FromMinutes(30)
+                        JobExpirationCheckInterval = TimeSpan.FromMinutes(30),
+                        TablesPrefix = "Hangfire_"
                     }));
                 var delaysInSeconds = new int[] { 10, 60, 60 * 3 }; // 重试时间间隔
                 var Attempts = 3; // 重试次数

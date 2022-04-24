@@ -30,6 +30,7 @@
 		<OcelotVersion>17.0.0</OcelotVersion>
 		<MagicodesIEExcelVersion>2.6.1</MagicodesIEExcelVersion>
 		<ZackEFCoreBatchVersion>6.0.11</ZackEFCoreBatchVersion>
+		<FreesqlVersion>3.0.100</FreesqlVersion>
 	</PropertyGroup>
 
 </Project>

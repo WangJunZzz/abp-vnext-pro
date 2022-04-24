@@ -17,18 +17,15 @@ namespace Lion.AbpPro.Settings
     {
         private readonly ISettingDefinitionManager _settingDefinitionManager;
         private readonly ISettingManager _settingManager;
-        private readonly IStringLocalizer<AbpProResource> _localizer;
         private readonly IStringLocalizerFactory _factory;
 
         public SettingAppService(
             ISettingDefinitionManager settingDefinitionManager,
             ISettingManager settingManager,
-            IStringLocalizer<AbpProResource> localizer,
             IStringLocalizerFactory factory)
         {
             _settingDefinitionManager = settingDefinitionManager;
             _settingManager = settingManager;
-            _localizer = localizer;
             _factory = factory;
         }
 
@@ -43,7 +40,7 @@ namespace Lion.AbpPro.Settings
                     new SettingOutput
                     {
                         Group = s.Key,
-                        GroupDisplayName = _localizer[s.Key]
+                        GroupDisplayName = _factory.CreateDefaultOrNull()[s.Key]
                     }).ToList();
 
             foreach (var item in settingOutput)
