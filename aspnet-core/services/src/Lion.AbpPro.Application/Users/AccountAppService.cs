@@ -139,7 +139,7 @@ namespace Lion.AbpPro.Users
 
         private async Task<LoginOutput> BuildResult(IdentityUser user)
         {
-            if (user.LockoutEnabled) throw new UserFriendlyException("当前用户已被锁定");
+            if (!user.IsActive) throw new UserFriendlyException("当前用户已被锁定");
             var roles = await _userManager.GetRolesAsync(user);
             if (roles == null || roles.Count == 0) throw new UserFriendlyException("当前用户未分配角色");
             var token = GenerateJwt(user.Id, user.UserName, user.Name, user.Email,
