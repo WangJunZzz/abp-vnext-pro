@@ -27,7 +27,6 @@ namespace Lion.AbpPro.Users
         private readonly Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> _signInManager;
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IConfiguration _configuretion;
-
         private readonly Volo.Abp.Domain.Repositories.IRepository<IdentityRole> _identityRoleRepository;
 
         public AccountAppService(

@@ -83,6 +83,16 @@ const admin: AppRouteModule = {
         policy: 'System.FileManagement',
       },
     },
+    {
+      path: 'organizationUnit',
+      name: 'organizationUnit',
+      component: () => import('/@/views/admin/organizationUnits/OrganizationUnit.vue'),
+      meta: {
+        title: t('routes.admin.organizationUnitManagement'),
+        icon: 'ant-design:snippets-outlined',
+        policy: 'System.FileManagement',
+      },
+    },
   ],
 };
 

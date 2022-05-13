@@ -135,6 +135,7 @@ function getOidcSettings() {
 
 export function useOidcLogin() {
   const settings = getOidcSettings();
+  mgr.getUser()
   const mgr = new Oidc.UserManager(settings);
   mgr.signinRedirect();
 }

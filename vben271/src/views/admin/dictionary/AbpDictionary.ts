@@ -1,39 +1,39 @@
-import { FormSchema } from "/@/components/Table";
-import { BasicColumn } from "/@/components/Table";
-import { message } from "ant-design-vue";
-import { useI18n } from "/@/hooks/web/useI18n";
+import { FormSchema } from '/@/components/Table';
+import { BasicColumn } from '/@/components/Table';
+import { message } from 'ant-design-vue';
+import { useI18n } from '/@/hooks/web/useI18n';
 import {
   PagingDataDictionaryInput,
   DataDictionaryServiceProxy,
   SetDataDictinaryDetailInput,
   DeleteDataDictionaryDetailInput,
-  IdInput
-} from "/@/services/ServiceProxies";
-import { h } from "vue";
-import { Switch } from "ant-design-vue";
+  IdInput,
+} from '/@/services/ServiceProxies';
+import { h } from 'vue';
+import { Switch } from 'ant-design-vue';
 
 const { t } = useI18n();
 export const tableColumns: BasicColumn[] = [
   {
-    title: t("routes.admin.dictionaryCode"),
-    dataIndex: "code"
+    title: t('routes.admin.dictionaryCode'),
+    dataIndex: 'code',
   },
   {
-    title: t("routes.admin.dictionaryDisplayText"),
-    dataIndex: "displayText"
+    title: t('routes.admin.dictionaryDisplayText'),
+    dataIndex: 'displayText',
   },
   {
-    title: t("routes.admin.dictionaryOrder"),
-    dataIndex: "order"
+    title: t('routes.admin.dictionaryOrder'),
+    dataIndex: 'order',
   },
   {
-    title: t("common.status"),
-    dataIndex: "isEnabled",
+    title: t('common.status'),
+    dataIndex: 'isEnabled',
     customRender: ({ record }) => {
       return h(Switch, {
         checked: record.isEnabled,
-        checkedChildren: "是",
-        unCheckedChildren: "否",
+        checkedChildren: '是',
+        unCheckedChildren: '否',
         onChange(checked: boolean) {
           const request = new SetDataDictinaryDetailInput();
           request.dataDictionaryId = record.dataDictionaryId;
@@ -42,103 +42,102 @@ export const tableColumns: BasicColumn[] = [
           enableDictionaryAsync(request)
             .then(() => {
               record.isEnabled = checked;
-              message.success(t("common.operationSuccess"));
+              message.success(t('common.operationSuccess'));
             })
             .catch(() => {
-              message.error(t("common.operationFail"));
+              message.error(t('common.operationFail'));
             });
-        }
+        },
       });
-    }
+    },
   },
   {
-    dataIndex: "description",
-    title: t("routes.admin.dictionaryDescription")
-  }
+    dataIndex: 'description',
+    title: t('routes.admin.dictionaryDescription'),
+  },
 ];
 //字典类型表格
 export const dictionaryTypeTableColumns: BasicColumn[] = [
   {
-    title: t("routes.admin.dictionaryCode") + "|" + t("routes.admin.dictionaryDisplayText"),
-    dataIndex: "text",
-    align: "left",
+    title: t('routes.admin.dictionaryCode') + '|' + t('routes.admin.dictionaryDisplayText'),
+    dataIndex: 'text',
+    align: 'left',
     slots: {
-      customRender: "text"
-    }
-  }
-
+      customRender: 'text',
+    },
+  },
 ];
 //字典项查询
 export const searchFormSchema: FormSchema[] = [
   {
-    field: "filter",
-    label: "",
-    component: "Input",
+    field: 'filter',
+    label: '',
+    component: 'Input',
     colProps: {
-      span: 6
-    }
-  }
+      span: 6,
+    },
+  },
 ];
 
 //字典类型查询
 export const searchDictionaryFormSchema: FormSchema[] = [
   {
-    field: "filter",
-    label: "",
-    component: "Input",
+    field: 'filter',
+    label: '',
+    component: 'Input',
     colProps: {
-      span: 18
-    }
-  }
+      span: 18,
+    },
+  },
 ];
 
 //新增字典项
 export const createFormSchema: FormSchema[] = [
   {
-    field: "id",
-    label: "",
+    field: 'id',
+    label: '',
     ifShow: false,
-    component: "Input",
+    component: 'Input',
     colProps: {
-      span: 18
-    }
+      span: 18,
+    },
   },
   {
-    field: "typeDisplayText",
-    label: t("routes.admin.dictionaryTypeName"),
-    component: "Input",
+    field: 'typeDisplayText',
+    label: t('routes.admin.dictionaryTypeName'),
+    component: 'Input',
     colProps: {
-      span: 18
+      span: 18,
     },
     componentProps: {
-      disabled: true
-    }
+      disabled: true,
+    },
   },
   {
-    field: "code",
-    label: t("routes.admin.dictionaryCode"),
+    field: 'code',
+    label: t('routes.admin.dictionaryCode'),
     required: true,
-    component: "Input",
+    component: 'Input',
     colProps: {
-      span: 18
-    }
+      span: 18,
+    },
   },
   {
-    field: "displayText",
-    label: t("routes.admin.dictionaryDisplayText"),
-    component: "Input",
+    field: 'displayText',
+    label: t('routes.admin.dictionaryDisplayText'),
+    component: 'Input',
     required: true,
     colProps: {
-      span: 18
-    }
+      span: 18,
+    },
   },
   {
-    field: "order",
-    label: t("routes.admin.dictionaryOrder"),
+    field: 'order',
+    label: t('routes.admin.dictionaryOrder'),
     required: true,
-    component: "InputNumber",
+    component: 'InputNumber',
     colProps: {
-      span: 18
+      span: 18,
     },
     dynamicRules: () => {
       return [
@@ -149,69 +148,69 @@ export const createFormSchema: FormSchema[] = [
             if (regNull.test(value)) {
               return Promise.resolve();
             }
-            return Promise.reject(t("routes.admin.nonZeroMessage"));
-          }
-        }
+            return Promise.reject(t('routes.admin.nonZeroMessage'));
+          },
+        },
       ];
-    }
+    },
   },
   {
-    field: "description",
-    label: t("routes.admin.dictionaryDescription"),
-    component: "InputTextArea",
+    field: 'description',
+    label: t('routes.admin.dictionaryDescription'),
+    component: 'InputTextArea',
     colProps: {
-      span: 18
-    }
-  }
+      span: 18,
+    },
+  },
 ];
 //编辑字典项
 export const editFormSchema: FormSchema[] = [
   {
-    field: "dataDictionaryId",
-    label: "",
+    field: 'dataDictionaryId',
+    label: '',
     ifShow: false,
-    component: "Input",
+    component: 'Input',
     colProps: {
-      span: 18
-    }
+      span: 18,
+    },
   },
   {
-    field: "id",
-    label: "",
+    field: 'id',
+    label: '',
     ifShow: false,
-    component: "Input",
+    component: 'Input',
     colProps: {
-      span: 18
-    }
+      span: 18,
+    },
   },
   {
-    field: "code",
-    label: t("routes.admin.dictionaryCode"),
+    field: 'code',
+    label: t('routes.admin.dictionaryCode'),
     required: true,
-    component: "Input",
+    component: 'Input',
     colProps: {
-      span: 18
+      span: 18,
     },
     componentProps: {
-      disabled: true
-    }
+      disabled: true,
+    },
   },
   {
-    field: "displayText",
-    label: t("routes.admin.dictionaryDisplayText"),
-    component: "Input",
+    field: 'displayText',
+    label: t('routes.admin.dictionaryDisplayText'),
+    component: 'Input',
     required: true,
     colProps: {
-      span: 18
-    }
+      span: 18,
+    },
   },
   {
-    field: "order",
-    label: t("routes.admin.dictionaryOrder"),
+    field: 'order',
+    label: t('routes.admin.dictionaryOrder'),
     required: true,
-    component: "InputNumber",
+    component: 'InputNumber',
     colProps: {
-      span: 18
+      span: 18,
     },
     dynamicRules: () => {
       return [
@@ -222,99 +221,99 @@ export const editFormSchema: FormSchema[] = [
             if (regNull.test(value)) {
               return Promise.resolve();
             }
-            return Promise.reject(t("routes.admin.nonZeroMessage"));
-          }
-        }
+            return Promise.reject(t('routes.admin.nonZeroMessage'));
+          },
+        },
       ];
-    }
+    },
   },
   {
-    field: "description",
-    label: t("routes.admin.dictionaryDescription"),
-    component: "InputTextArea",
+    field: 'description',
+    label: t('routes.admin.dictionaryDescription'),
+    component: 'InputTextArea',
     colProps: {
-      span: 18
-    }
-  }
+      span: 18,
+    },
+  },
 ];
 //新增字典类型
 export const createDictionaryTypeFormSchema: FormSchema[] = [
   {
-    field: "code",
-    label: t("routes.admin.dictionaryCode"),
-    component: "Input",
+    field: 'code',
+    label: t('routes.admin.dictionaryCode'),
+    component: 'Input',
     required: true,
     colProps: {
-      span: 22
-    }
+      span: 22,
+    },
   },
   {
-    field: "displayText",
-    label: t("routes.admin.dictionaryDisplayText"),
-    component: "Input",
+    field: 'displayText',
+    label: t('routes.admin.dictionaryDisplayText'),
+    component: 'Input',
     required: true,
     colProps: {
-      span: 22
-    }
+      span: 22,
+    },
   },
   {
-    field: "description",
-    label: t("routes.admin.dictionaryDescription"),
-    component: "InputTextArea",
+    field: 'description',
+    label: t('routes.admin.dictionaryDescription'),
+    component: 'InputTextArea',
     colProps: {
-      span: 22
-    }
-  }
+      span: 22,
+    },
+  },
 ];
 //编辑字典类型
 export const editDictionaryTypeFormSchema: FormSchema[] = [
   {
-    field: "code",
-    label: t("routes.admin.dictionaryCode"),
-    component: "Input",
+    field: 'code',
+    label: t('routes.admin.dictionaryCode'),
+    component: 'Input',
     required: true,
     colProps: {
-      span: 22
+      span: 22,
     },
     componentProps: {
-      disabled: true
-    }
+      disabled: true,
+    },
   },
   {
-    field: "displayText",
-    label: t("routes.admin.dictionaryDisplayText"),
-    component: "Input",
+    field: 'displayText',
+    label: t('routes.admin.dictionaryDisplayText'),
+    component: 'Input',
     required: true,
     colProps: {
-      span: 22
-    }
+      span: 22,
+    },
   },
   {
-    field: "description",
-    label: t("routes.admin.dictionaryDescription"),
-    component: "InputTextArea",
+    field: 'description',
+    label: t('routes.admin.dictionaryDescription'),
+    component: 'InputTextArea',
     colProps: {
-      span: 22
-    }
+      span: 22,
+    },
   },
   {
-    field: "key",
-    label: "",
+    field: 'key',
+    label: '',
     ifShow: false,
-    component: "Input",
+    component: 'Input',
     colProps: {
-      span: 18
-    }
+      span: 18,
+    },
   },
   {
-    field: "id",
-    label: "",
+    field: 'id',
+    label: '',
     ifShow: false,
-    component: "Input",
+    component: 'Input',
     colProps: {
-      span: 18
-    }
-  }
+      span: 18,
+    },
+  },
 ];
 
 /**
@@ -330,17 +329,17 @@ export async function getDictionaryTypeAsync(params: PagingDataDictionaryInput) 
 
 //新建字典类型
 export async function createDictionaryTypeAsync({
-                                                  request,
-                                                  changeOkLoading,
-                                                  closeModal,
-                                                  validate,
-                                                  resetFields
-                                                }) {
+  request,
+  changeOkLoading,
+  closeModal,
+  validate,
+  resetFields,
+}) {
   changeOkLoading(true);
   await validate();
   const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();
   await _dataDictionaryServiceProxy.create(request);
-  message.success(t("common.operationSuccess"));
+  message.success(t('common.operationSuccess'));
   resetFields();
   changeOkLoading(false);
   closeModal();
@@ -352,7 +351,7 @@ export async function editDictionaryTypeAsync({ request, changeOkLoading, valida
   await validate();
   const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();
   await _dataDictionaryServiceProxy.update(request);
-  message.success(t("common.operationSuccess"));
+  message.success(t('common.operationSuccess'));
   changeOkLoading(false);
   closeModal();
 }
@@ -365,17 +364,17 @@ export async function enableDictionaryAsync(input: SetDataDictinaryDetailInput) 
 
 //创建数据详情字典
 export async function createDetailsDictionaryAsync({
-                                                     request,
-                                                     changeOkLoading,
-                                                     validate,
-                                                     resetFields,
-                                                     closeModal
-                                                   }) {
+  request,
+  changeOkLoading,
+  validate,
+  resetFields,
+  closeModal,
+}) {
   changeOkLoading(true);
   await validate();
   const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();
   await _dataDictionaryServiceProxy.createDetail(request);
-  message.success(t("common.operationSuccess"));
+  message.success(t('common.operationSuccess'));
   resetFields();
   changeOkLoading(false);
   closeModal();
@@ -390,16 +389,16 @@ export async function getDictionaryDetailsAsync({ params }) {
 
 //编辑数据字典
 export async function editDetailsDictionaryAsync({
-                                                   request,
-                                                   changeOkLoading,
-                                                   validate,
-                                                   closeModal
-                                                 }) {
+  request,
+  changeOkLoading,
+  validate,
+  closeModal,
+}) {
   changeOkLoading(true);
   await validate();
   const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();
   await _dataDictionaryServiceProxy.updateDetail(request);
-  message.success(t("common.operationSuccess"));
+  message.success(t('common.operationSuccess'));
   changeOkLoading(false);
   closeModal();
 }
