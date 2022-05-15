@@ -1,7 +1,7 @@
 using System;
 using Hangfire;
 
-namespace Lion.AbpPro.Jobs
+namespace Lion.AbpPro.Extensions.Hangfire
 {
     /// <summary>
     /// Cron类型

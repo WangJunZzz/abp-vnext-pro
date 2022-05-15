@@ -1,6 +1,6 @@
 using Lion.AbpPro.DataDictionaryManagement;
 using Lion.AbpPro.FileManagement;
-using Lion.AbpPro.FreeSqlReppsitory;
+using Lion.AbpPro.FreeSqlRepository;
 using Lion.AbpPro.NotificationManagement;
 using Volo.Abp.Account;
 using Volo.Abp.AuditLogging;

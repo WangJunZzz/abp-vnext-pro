@@ -1,6 +1,6 @@
 namespace Lion.AbpPro
 {
-    public class AbpProHttpApiHostConsts
+    public static class AbpProHttpApiHostConst
     {
         /// <summary>
         /// 跨域策略名

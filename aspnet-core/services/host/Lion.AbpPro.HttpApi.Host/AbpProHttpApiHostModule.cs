@@ -21,9 +21,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lion.AbpPro.CAP;
-using Lion.AbpPro.Extensions.Filters;
+using Lion.AbpPro.Extensions;
 using Lion.AbpPro.Extensions.Hangfire;
-using Lion.AbpPro.Jobs;
 using Lion.AbpPro.Shared.Hosting.Microservices;
 using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.Builder;
 using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.MVC.Filters;
@@ -31,7 +30,6 @@ using Lion.AbpPro.Shared.Hosting.Microservices.Swaggers;
 using Volo.Abp;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Authentication.JwtBearer;
-using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Volo.Abp.AspNetCore.Serilog;
@@ -75,13 +73,13 @@ namespace Lion.AbpPro
         {
             var configuration = context.Services.GetConfiguration();
             ConfigureCache(context);
-            ConfigureSwaggerServices(context, configuration);
+            ConfigureSwaggerServices(context);
             ConfigureOptions(context);
             ConfigureJwtAuthentication(context, configuration);
             ConfigureHangfireMysql(context);
-            ConfigurationCap(context);
-            ConfigurationStsHttpClient(context);
-            ConfigurationMiniProfiler(context);
+            ConfigureCap(context);
+            ConfigureHttpClient(context);
+            ConfigureMiniProfiler(context);
             ConfigureMagicodes(context);
             ConfigureAbpExceptions(context);
             ConfigureIdentity(context);
@@ -91,12 +89,13 @@ namespace Lion.AbpPro
         {
             var app = context.GetApplicationBuilder();
             var configuration = context.GetConfiguration();
+            app.UseRequestLog();
             app.UseAbpRequestLocalization();
             app.UseCorrelationId();
             app.UseStaticFiles();
             app.UseMiniProfiler();
             app.UseRouting();
-            app.UseCors(AbpProHttpApiHostConsts.DefaultCorsPolicyName);
+            app.UseCors(AbpProHttpApiHostConst.DefaultCorsPolicyName);
             app.UseAuthentication();
 
             if (MultiTenancyConsts.IsEnabled)
@@ -124,7 +123,7 @@ namespace Lion.AbpPro
                 IgnoreAntiforgeryToken = true
             });
 
-            if (configuration.GetValue<bool>("Consul:Enabled", false))
+            if (configuration.GetValue("Consul:Enabled", false))
             {
                 app.UseConsul();
             }
@@ -146,7 +145,6 @@ namespace Lion.AbpPro
         /// 配置Magicodes.IE
         /// Excel导入导出
         /// </summary>
-        /// <param name="context"></param>
         private void ConfigureMagicodes(ServiceConfigurationContext context)
         {
             context.Services.AddTransient<IExporter, ExcelExporter>();
@@ -170,8 +168,8 @@ namespace Lion.AbpPro
                         JobExpirationCheckInterval = TimeSpan.FromMinutes(30),
                         TablesPrefix = "Hangfire_"
                     }));
-                var delaysInSeconds = new int[] { 10, 60, 60 * 3 }; // 重试时间间隔
-                var Attempts = 3; // 重试次数
+                var delaysInSeconds = new[] { 10, 60, 60 * 3 }; // 重试时间间隔
+                const int Attempts = 3; // 重试次数
                 config.UseFilter(new AutomaticRetryAttribute() { Attempts = Attempts, DelaysInSeconds = delaysInSeconds });
                 config.UseFilter(new AutoDeleteAfterSuccessAttributer(TimeSpan.FromDays(7)));
                 config.UseFilter(new JobRetryLastFilter(Attempts));
@@ -182,7 +180,7 @@ namespace Lion.AbpPro
         /// 配置MiniProfiler
         /// </summary>
         /// <param name="context"></param>
-        private void ConfigurationMiniProfiler(ServiceConfigurationContext context)
+        private void ConfigureMiniProfiler(ServiceConfigurationContext context)
         {
             context.Services.AddMiniProfiler(options => options.RouteBasePath = "/profiler")
                 .AddEntityFramework();
@@ -204,7 +202,7 @@ namespace Lion.AbpPro
                 .AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters =
-                        new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                        new TokenValidationParameters()
                         {
                             // 是否开启签名认证
                             ValidateIssuerSigningKey = true,
@@ -232,7 +230,7 @@ namespace Lion.AbpPro
                             var accessToken =
                                 currentContext.Request.Query["access_token"].FirstOrDefault() ??
                                 currentContext.Request.Cookies[
-                                    AbpProHttpApiHostConsts.DefaultCookieName];
+                                    AbpProHttpApiHostConst.DefaultCookieName];
 
                             if (accessToken.IsNullOrWhiteSpace())
                             {
@@ -289,7 +287,7 @@ namespace Lion.AbpPro
         }
 
 
-        private void ConfigurationStsHttpClient(ServiceConfigurationContext context)
+        private void ConfigureHttpClient(ServiceConfigurationContext context)
         {
             context.Services.AddHttpClient(context.Services.GetConfiguration().GetSection("HttpClient:Sts:Name").Value,
                 options =>
@@ -322,17 +320,16 @@ namespace Lion.AbpPro
         {
             context.Services.Configure<IdentityOptions>(options => { options.Lockout = new LockoutOptions() { AllowedForNewUsers = false }; });
         }
-        private void ConfigureConventionalControllers()
-        {
-            Configure<AbpAspNetCoreMvcOptions>(options =>
-            {
-                options.ConventionalControllers.Create(typeof(AbpProApplicationModule)
-                    .Assembly);
-            });
-        }
 
-        private static void ConfigureSwaggerServices(ServiceConfigurationContext context,
-            IConfiguration configuration)
+        // private void ConfigureConventionalControllers()
+        // {
+        //     Configure<AbpAspNetCoreMvcOptions>(options =>
+        //     {
+        //         options.ConventionalControllers.Create(typeof(AbpProApplicationModule).Assembly);
+        //     });
+        // }
+
+        private static void ConfigureSwaggerServices(ServiceConfigurationContext context)
         {
             context.Services.AddSwaggerGen(
                 options =>
@@ -347,8 +344,8 @@ namespace Lion.AbpPro
                     options.DocumentFilter<HiddenAbpDefaultApiFilter>();
                     options.SchemaFilter<EnumSchemaFilter>();
                     // 加载所有xml注释，这里会导致swagger加载有点缓慢
-                    var xmls = Directory.GetFiles(AppContext.BaseDirectory, "*.xml");
-                    foreach (var xml in xmls)
+                    var xmlPaths = Directory.GetFiles(AppContext.BaseDirectory, "*.xml");
+                    foreach (var xml in xmlPaths)
                     {
                         options.IncludeXmlComments(xml, true);
                     }
@@ -382,7 +379,7 @@ namespace Lion.AbpPro
                         Type = SecuritySchemeType.ApiKey,
                         In = ParameterLocation.Header,
                         Name = "Accept-Language",
-                        Description = "多语言设置，系统预设语言有zh-Hans、en，默认为zh-Hans"
+                        Description = "多语言设置，系统预设语言有zh-Hans、en，默认为zh-Hans",
                     });
 
                     options.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -393,17 +390,17 @@ namespace Lion.AbpPro
                                 Reference = new OpenApiReference
                                     { Type = ReferenceType.SecurityScheme, Id = "ApiKey" }
                             },
-                            new string[] { }
+                            Array.Empty<string>()
                         }
                     });
                 });
         }
 
 
-        private void ConfigurationCap(ServiceConfigurationContext context)
+        private void ConfigureCap(ServiceConfigurationContext context)
         {
             var configuration = context.Services.GetConfiguration();
-            var enabled = configuration.GetValue<bool>("Cap:Enabled", false);
+            var enabled = configuration.GetValue("Cap:Enabled", false);
             if (enabled)
             {
                 context.AddAbpCap(capOptions =>

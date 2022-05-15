@@ -12,7 +12,7 @@
 		<ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.Application\Lion.AbpPro.NotificationManagement.Application.csproj" />
 		<ProjectReference Include="..\Lion.AbpPro.Domain\Lion.AbpPro.Domain.csproj" />
 		<ProjectReference Include="..\Lion.AbpPro.Application.Contracts\Lion.AbpPro.Application.Contracts.csproj" />
-		<ProjectReference Include="..\Lion.AbpPro.FreeSqlReppsitory\Lion.AbpPro.FreeSqlReppsitory.csproj" />
+		<ProjectReference Include="..\Lion.AbpPro.FreeSqlRepository\Lion.AbpPro.FreeSqlRepository.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

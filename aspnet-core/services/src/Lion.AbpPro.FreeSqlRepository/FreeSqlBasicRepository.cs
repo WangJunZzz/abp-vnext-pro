@@ -1,7 +1,7 @@
 ﻿using Volo.Abp.Domain.Services;
 using Volo.Abp.Threading;
 
-namespace Lion.AbpPro.FreeSqlReppsitory;
+namespace Lion.AbpPro.FreeSqlRepository;
 
 public abstract class FreeSqlBasicRepository : DomainService
 {

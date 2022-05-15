@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lion.AbpPro.Shared.Hosting.Microservices.System
+namespace Lion.AbpPro.Extensions.System
 {
     public class WrapResultAttribute : Attribute
     {

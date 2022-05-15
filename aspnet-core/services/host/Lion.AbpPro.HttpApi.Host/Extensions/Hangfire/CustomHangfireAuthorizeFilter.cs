@@ -2,7 +2,7 @@ using Hangfire.Dashboard;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Users;
 
-namespace Lion.AbpPro.Extensions.Filters
+namespace Lion.AbpPro.Extensions.Hangfire
 {
     public class CustomHangfireAuthorizeFilter : IDashboardAuthorizationFilter
     {

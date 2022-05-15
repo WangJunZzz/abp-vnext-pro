@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lion.AbpPro.Extension.Customs.Dtos;
-using Lion.AbpPro.Shared.Hosting.Microservices.System;
+using Lion.AbpPro.Extensions.System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -23,7 +23,7 @@ using Volo.Abp.Validation;
 
 namespace Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.MVC.Filters
 {
-    public class ResultExceptionFilter : IFilterMetadata, IAsyncExceptionFilter, ITransientDependency
+    public sealed class ResultExceptionFilter : IFilterMetadata, IAsyncExceptionFilter, ITransientDependency
     {
         private ILogger<ResultExceptionFilter> Logger { get; set; }
 
@@ -56,7 +56,7 @@ namespace Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.MVC.Filt
             await HandleAndWrapException(context);
         }
 
-        protected virtual bool ShouldHandleException(ExceptionContext context)
+        private bool ShouldHandleException(ExceptionContext context)
         {
             if (context.ActionDescriptor.AsControllerActionDescriptor().ControllerTypeInfo.GetCustomAttributes(typeof(WrapResultAttribute), true).Any())
             {
@@ -71,7 +71,7 @@ namespace Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.MVC.Filt
             return false;
         }
 
-        protected virtual async Task HandleAndWrapException(ExceptionContext context)
+        private async Task HandleAndWrapException(ExceptionContext context)
         {
             //TODO: Trigger an AbpExceptionHandled event or something like that.
 
@@ -108,21 +108,20 @@ namespace Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.MVC.Filt
 
         private string SimplifyMessage(Exception error)
         {
-            string message = string.Empty;
             switch (error)
             {
                 case AbpAuthorizationException e:
-                    return message = "Authenticate failure！";
+                    return "Authenticate failure！";
                 case AbpValidationException e:
-                    return message = "Request param validate failure！";
+                    return "Request param validate failure！";
                 case EntityNotFoundException e:
-                    return message = "not found the entity！";
+                    return "not found the entity！";
                 case BusinessException e:
-                    return message = $"{e.Message}";
+                    return $"{e.Message}";
                 case NotImplementedException e:
-                    return message = "not implement！";
+                    return "not implement！";
                 default:
-                    return message = "server internal error！";
+                    return "server internal error！";
             }
         }
     }

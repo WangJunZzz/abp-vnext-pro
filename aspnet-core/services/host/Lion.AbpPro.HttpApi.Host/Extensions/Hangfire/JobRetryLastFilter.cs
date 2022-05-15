@@ -19,7 +19,7 @@ public class JobRetryLastFilter : JobFilterAttribute, IElectStateFilter
 
     public void OnStateElection(ElectStateContext context)
     {
-        int retryAttempt = context.GetJobParameter<int>("RetryCount");
+        var retryAttempt = context.GetJobParameter<int>("RetryCount");
         if (RetryCount == retryAttempt)
         {
             Log.Error("最后一次重试");

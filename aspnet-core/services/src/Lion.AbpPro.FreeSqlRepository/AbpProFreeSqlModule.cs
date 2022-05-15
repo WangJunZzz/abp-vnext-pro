@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;
 
-namespace Lion.AbpPro.FreeSqlReppsitory;
+namespace Lion.AbpPro.FreeSqlRepository;
 
 public class AbpProFreeSqlModule : AbpModule
 {
@@ -13,7 +13,7 @@ public class AbpProFreeSqlModule : AbpModule
         var freeSql = new FreeSql.FreeSqlBuilder()
             .UseConnectionString(FreeSql.DataType.MySql, connectionString)
             .Build();
-
+        
         context.Services.AddSingleton<IFreeSql>(freeSql);
     }
 }

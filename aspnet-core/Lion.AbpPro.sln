@@ -168,7 +168,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.FileManagement.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.FileManagement.HttpApi.Host", "modules\FileManagement\host\Lion.AbpPro.FileManagement.HttpApi.Host\Lion.AbpPro.FileManagement.HttpApi.Host.csproj", "{831CD22A-AC6E-4515-AB24-8C96B34C717F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.FreeSqlReppsitory", "services\src\Lion.AbpPro.FreeSqlReppsitory\Lion.AbpPro.FreeSqlReppsitory.csproj", "{27C7A0E6-4C2E-4AFF-9DE7-1F526DDC0D18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.FreeSqlRepository", "services\src\Lion.AbpPro.FreeSqlRepository\Lion.AbpPro.FreeSqlRepository.csproj", "{27C7A0E6-4C2E-4AFF-9DE7-1F526DDC0D18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.FreeSqlRepository.Tests", "services\test\Lion.AbpPro.FreeSqlRepository.Tests\Lion.AbpPro.FreeSqlRepository.Tests.csproj", "{7971DF5A-B001-4751-8F40-D7752C612BF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -404,6 +406,10 @@ Global
 		{27C7A0E6-4C2E-4AFF-9DE7-1F526DDC0D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27C7A0E6-4C2E-4AFF-9DE7-1F526DDC0D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27C7A0E6-4C2E-4AFF-9DE7-1F526DDC0D18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7971DF5A-B001-4751-8F40-D7752C612BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7971DF5A-B001-4751-8F40-D7752C612BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7971DF5A-B001-4751-8F40-D7752C612BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7971DF5A-B001-4751-8F40-D7752C612BF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -484,6 +490,7 @@ Global
 		{78589964-923E-4803-9B74-183487C3ED0F} = {40BF21CB-4520-45A6-A588-5FFB95BAC87C}
 		{831CD22A-AC6E-4515-AB24-8C96B34C717F} = {C188A1F4-9601-42E5-9A0A-B282E13EAC41}
 		{27C7A0E6-4C2E-4AFF-9DE7-1F526DDC0D18} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{7971DF5A-B001-4751-8F40-D7752C612BF1} = {04DBDB01-70F4-4E06-B468-8F87850B22BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}
