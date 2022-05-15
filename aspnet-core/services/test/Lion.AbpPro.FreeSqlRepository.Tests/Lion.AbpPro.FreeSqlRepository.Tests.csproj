@@ -16,8 +16,8 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\src\Lion.AbpPro.EntityFrameworkCore\Lion.AbpPro.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\..\src\Lion.AbpPro.FreeSqlRepository\Lion.AbpPro.FreeSqlRepository.csproj" />
-        <ProjectReference Include="..\Lion.AbpPro.EntityFrameworkCore.Tests\Lion.AbpPro.EntityFrameworkCore.Tests.csproj" />
         <ProjectReference Include="..\Lion.AbpPro.TestBase\Lion.AbpPro.TestBase.csproj" />
     </ItemGroup>
 
