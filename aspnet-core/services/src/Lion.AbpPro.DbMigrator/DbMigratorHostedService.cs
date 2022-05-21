@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,24 +13,23 @@ namespace Lion.AbpPro.DbMigrator
     public class DbMigratorHostedService : IHostedService
     {
         private readonly IHostApplicationLifetime _hostApplicationLifetime;
-        private readonly IConfigurationRoot _configurationRoot;
+        private readonly IConfiguration _configuration;
         public DbMigratorHostedService(IHostApplicationLifetime hostApplicationLifetime,
-            IConfigurationRoot configurationRoot)
+            IConfiguration configuration)
         {
             _hostApplicationLifetime = hostApplicationLifetime;
-            _configurationRoot = configurationRoot;
+            _configuration = configuration;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
             using (var application = await AbpApplicationFactory.CreateAsync<AbpProDbMigratorModule>(options =>
                    {
+                       options.Services.ReplaceConfiguration(_configuration);
                        options.UseAutofac();
                        options.Services.AddLogging(c => c.AddSerilog());
                    }))
             {
-                
-                var s = _configurationRoot.GetValue<string>("ConnectionStrings:Default");
                 await application.InitializeAsync();
 
                 await application

@@ -51,13 +51,13 @@ namespace Lion.AbpPro
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpProDomainSharedModule>("Lion.AbpPro");
+                options.FileSets.AddEmbedded<AbpProDomainSharedModule>(AbpProDomainSharedConsts.NameSpace);
             });
           
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Add<AbpProResource>("zh-Hans")
+                    .Add<AbpProResource>(AbpProDomainSharedConsts.DefaultCultureName)
                     .AddVirtualJson("/Localization/AbpPro")
                     .AddBaseTypes(typeof(IdentityResource))
                     .AddBaseTypes(typeof(AbpValidationResource))
@@ -70,7 +70,7 @@ namespace Lion.AbpPro
 
             Configure<AbpExceptionLocalizationOptions>(options =>
             {
-                options.MapCodeNamespace("AbpPro", typeof(AbpProResource));
+                options.MapCodeNamespace(AbpProDomainSharedConsts.NameSpace, typeof(AbpProResource));
             });
         }
 

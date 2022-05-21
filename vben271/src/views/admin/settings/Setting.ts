@@ -1,4 +1,4 @@
-import { SettingsServiceProxy } from '/@/services/ServiceProxies';
+import { SettingsServiceProxy } from "/@/services/ServiceProxies";
 
 /**
  * 获取所有settings

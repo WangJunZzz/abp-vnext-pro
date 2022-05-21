@@ -1,15 +1,16 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 
-namespace Lion.AbpPro.Data;
-
-/* This is used if database provider does't define
- * IAbpProDbSchemaMigrator implementation.
- */
-public class NullAbpProDbSchemaMigrator : IAbpProDbSchemaMigrator, ITransientDependency
+namespace Lion.AbpPro.Data
 {
-    public Task MigrateAsync()
+    /* This is used if database provider does't define
+     * IAbpProDbSchemaMigrator implementation.
+     */
+    public class NullAbpProDbSchemaMigrator : IAbpProDbSchemaMigrator, ITransientDependency
     {
-        return Task.CompletedTask;
+        public Task MigrateAsync()
+        {
+            return Task.CompletedTask;
+        }
     }
 }

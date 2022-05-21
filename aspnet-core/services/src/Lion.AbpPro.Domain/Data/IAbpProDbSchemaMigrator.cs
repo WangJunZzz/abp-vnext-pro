@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 
-namespace Lion.AbpPro.Data;
-
-public interface IAbpProDbSchemaMigrator
+namespace Lion.AbpPro.Data
 {
-    Task MigrateAsync();
+    public interface IAbpProDbSchemaMigrator
+    {
+        Task MigrateAsync();
+    }
 }

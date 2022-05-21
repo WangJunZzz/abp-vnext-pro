@@ -56,7 +56,7 @@ namespace Lion.AbpPro.IdentityServer
             bool showInDiscoveryDocument)
         {
             var identityResource = await _identityResourceRepository.FindByNameAsync(name, false);
-            if (null != identityResource) throw new UserFriendlyException(message: $"{name}已存在");
+            if (null != identityResource) throw new BusinessException(AbpProDomainErrorCodes.IdentityResourceExist);
             identityResource = new IdentityResource(GuidGenerator.Create(), name, displayName,
                 description, enabled,
                 required,
@@ -74,7 +74,7 @@ namespace Lion.AbpPro.IdentityServer
             bool showInDiscoveryDocument)
         {
             var identityResource = await _identityResourceRepository.FindByNameAsync(name, false);
-            if (null == identityResource) throw new UserFriendlyException(message: $"{name}不存在");
+            if (null == identityResource) throw new BusinessException(AbpProDomainErrorCodes.IdentityResourceNotExist);
             identityResource.DisplayName = displayName;
             identityResource.Description = description;
             identityResource.Enabled = enabled;

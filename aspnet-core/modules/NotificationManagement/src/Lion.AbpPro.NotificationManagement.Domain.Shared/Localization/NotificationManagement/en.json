@@ -2,6 +2,10 @@
   "culture": "en",
   "texts": {
     "ManageYourProfile":  "Manage your profile",
-    "SamplePageMessage": "A sample page for the NotificationManagement module"
+    "SamplePageMessage": "A sample page for the NotificationManagement module",
+    "Lion.AbpPro.NotificationManagement:100001": "ReceiverNotNull",
+    "Lion.AbpPro.NotificationManagement:100002": "MessageNotExist",
+    "Lion.AbpPro.NotificationManagement:100003": "MessageTypeUnknown",
+    "Lion.AbpPro.NotificationManagement:100004": "UserUnSubscription"
   }
 }

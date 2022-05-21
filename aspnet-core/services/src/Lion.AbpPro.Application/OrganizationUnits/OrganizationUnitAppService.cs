@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Lion.AbpPro.Extension.Customs.Dtos;
-using Lion.AbpPro.IdentityServers.ApiResources.Dtos;
 using Lion.AbpPro.OrganizationUnits.Dto;
+using Lion.AbpPro.Permissions;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Identity;
 
 namespace Lion.AbpPro.OrganizationUnits;
 
+[Authorize(AbpProPermissions.SystemManagement.OrganizationUnitManagement.Default)]
 public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitAppService
 {
     private readonly OrganizationUnitManager _organizationUnitManager;
@@ -34,6 +36,7 @@ public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitApp
         return ConvertToTree(organizationUnitDtos);
     }
 
+    [Authorize(AbpProPermissions.SystemManagement.OrganizationUnitManagement.Create)]
     public async Task CreateAsync(CreateOrganizationUnitInput input)
     {
         var entity = new OrganizationUnit
@@ -46,11 +49,13 @@ public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitApp
         await _organizationUnitManager.CreateAsync(entity);
     }
 
+    [Authorize(AbpProPermissions.SystemManagement.OrganizationUnitManagement.Delete)]
     public Task DeleteAsync(IdInput input)
     {
         return _organizationUnitManager.DeleteAsync(input.Id);
     }
 
+    [Authorize(AbpProPermissions.SystemManagement.OrganizationUnitManagement.Update)]
     public async Task UpdateAsync(UpdateOrganizationUnitInput input)
     {
         var entity = await _organizationUnitRepository.FindAsync(input.Id);
@@ -61,6 +66,7 @@ public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitApp
         }
     }
 
+    [Authorize(AbpProPermissions.SystemManagement.OrganizationUnitManagement.Create)]
     public async Task AddRoleToOrganizationUnitAsync(AddRoleToOrganizationUnitInput input)
     {
         foreach (var roleId in input.RoleId)
@@ -69,11 +75,13 @@ public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitApp
         }
     }
 
+    [Authorize(AbpProPermissions.SystemManagement.OrganizationUnitManagement.Delete)]
     public async Task RemoveRoleFromOrganizationUnitAsync(RemoveRoleToOrganizationUnitInput input)
     {
         await _organizationUnitManager.RemoveRoleFromOrganizationUnitAsync(input.RoleId, input.OrganizationUnitId);
     }
 
+    [Authorize(AbpProPermissions.SystemManagement.OrganizationUnitManagement.Create)]
     public async Task AddUserToOrganizationUnitAsync(AddUserToOrganizationUnitInput input)
     {
         foreach (var userId in input.UserId)
@@ -82,6 +90,7 @@ public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitApp
         }
     }
 
+    [Authorize(AbpProPermissions.SystemManagement.OrganizationUnitManagement.Delete)]
     public async Task RemoveUserFromOrganizationUnitAsync(RemoveUserToOrganizationUnitInput input)
     {
         await _identityUserManager.RemoveFromOrganizationUnitAsync(input.UserId, input.OrganizationUnitId);
@@ -91,7 +100,7 @@ public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitApp
     {
         var listResult = new List<GetOrganizationUnitUserOutput>();
         var organizationUnit = await _organizationUnitRepository.FindAsync(input.OrganizationUnitId);
-        if (organizationUnit == null) throw new UserFriendlyException("组织机构不存在");
+        if (organizationUnit == null) throw new BusinessException(AbpProDomainErrorCodes.OrganizationUnitNotExist);
 
         var count = await _organizationUnitRepository.GetMembersCountAsync(organizationUnit, filter: input.Filter);
         if (count > 0)
@@ -113,7 +122,7 @@ public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitApp
     {
         var listResult = new List<GetUnAddUserOutput>();
         var organizationUnit = await _organizationUnitRepository.FindAsync(input.OrganizationUnitId);
-        if (organizationUnit == null) throw new UserFriendlyException("组织机构不存在");
+        if (organizationUnit == null) throw new BusinessException(AbpProDomainErrorCodes.OrganizationUnitNotExist);
         var count = await _organizationUnitRepository.GetUnaddedUsersCountAsync(organizationUnit, input.Filter);
         if (count > 0)
         {
@@ -134,7 +143,7 @@ public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitApp
     {
         var listResult = new List<GetOrganizationUnitRoleOutput>();
         var organizationUnit = await _organizationUnitRepository.FindAsync(input.OrganizationUnitId);
-        if (organizationUnit == null) throw new UserFriendlyException("组织机构不存在");
+        if (organizationUnit == null) throw new BusinessException(AbpProDomainErrorCodes.OrganizationUnitNotExist);
 
         var count = await _organizationUnitRepository.GetRolesCountAsync(organizationUnit);
         if (count > 0)
@@ -150,7 +159,7 @@ public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitApp
     {
         var listResult = new List<GetUnAddRoleOutput>();
         var organizationUnit = await _organizationUnitRepository.FindAsync(input.OrganizationUnitId);
-        if (organizationUnit == null) throw new UserFriendlyException("组织机构不存在");
+        if (organizationUnit == null) throw new BusinessException(AbpProDomainErrorCodes.OrganizationUnitNotExist);
         var count = await _organizationUnitRepository.GetUnaddedRolesCountAsync(organizationUnit, input.Filter);
         if (count > 0)
         {
@@ -169,7 +178,8 @@ public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitApp
 
     #region 私有方法
 
-    private List<TreeOutput> ConvertToTree(List<OrganizationUnitDto> list,
+    private List<TreeOutput> ConvertToTree(
+        List<OrganizationUnitDto> list,
         Guid? Id = null)
     {
         var result = new List<TreeOutput>();
@@ -188,7 +198,8 @@ public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitApp
         return result;
     }
 
-    private List<OrganizationUnitDto> Children(List<OrganizationUnitDto> list,
+    private List<OrganizationUnitDto> Children(
+        List<OrganizationUnitDto> list,
         Guid? Id)
     {
         var childList = list.Where(x => x.ParentId == Id).ToList();

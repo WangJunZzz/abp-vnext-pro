@@ -6,6 +6,11 @@
     "Permission:DataDictionaryManagement": "数据字典",
     "Permission:Create": "创建",
     "Permission:Update": "编辑",
-    "Permission:Delete": "删除"
+    "Permission:Delete": "删除",
+
+    "Lion.AbpPro.DataDictionaryManagement:100001": "数据字典已存在",
+    "Lion.AbpPro.DataDictionaryManagement:100002": "数据字典不存在",
+    "Lion.AbpPro.DataDictionaryManagement:100003": "数据字典明细已存在",
+    "Lion.AbpPro.DataDictionaryManagement:100004": "数据字典明细不存在"
   }
 }

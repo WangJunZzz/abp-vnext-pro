@@ -3,7 +3,7 @@
     <BasicTable @register="registerTable" size="small">
       <template #category="{ record }">
         <Tag :color="record.isDefault ? 'red' : 'green'">
-          {{ record.isDefault ? '是' : '否' }}
+          {{ record.isDefault ? "是" : "否" }}
         </Tag>
       </template>
 
@@ -14,7 +14,7 @@
           @click="openCreateAbpRoleModal"
           v-auth="'AbpIdentity.Roles.Create'"
         >
-          {{ t('common.createText') }}
+          {{ t("common.createText") }}
         </a-button>
       </template>
 
@@ -65,101 +65,102 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { tableColumns, searchFormSchema, getTableListAsync, deleteRoleAsync } from "/@/views/admin/roles/AbpRole";
-  import { useModal } from '/@/components/Modal';
-  import CreateAbpRole from './CreateAbpRole.vue';
-  import PermissionAbpRole from './PermissionAbpRole.vue';
-  import EditAbpRole from './EditAbpRole.vue';
-  import { useMessage } from '/@/hooks/web/useMessage';
-  import { useDrawer } from '/@/components/Drawer';
-  import { useI18n } from '/@/hooks/web/useI18n';
-  import { Tag } from 'ant-design-vue';
-  export default defineComponent({
-    name: 'AbpUser',
-    components: {
-      BasicTable,
-      TableAction,
-      CreateAbpRole,
-      PermissionAbpRole,
-      EditAbpRole,
-      Tag,
-    },
-    setup() {
-      const { createConfirm } = useMessage();
-      const { t } = useI18n();
-      const [registerPermissionAbpRoleModal, { openDrawer: openPermissionAbpRoleDrawer }] =
-        useDrawer();
+import { defineComponent } from "vue";
+import { BasicTable, useTable, TableAction } from "/@/components/Table";
+import { tableColumns, searchFormSchema, getTableListAsync, deleteRoleAsync } from "/@/views/admin/roles/AbpRole";
+import { useModal } from "/@/components/Modal";
+import CreateAbpRole from "./CreateAbpRole.vue";
+import PermissionAbpRole from "./PermissionAbpRole.vue";
+import EditAbpRole from "./EditAbpRole.vue";
+import { useMessage } from "/@/hooks/web/useMessage";
+import { useDrawer } from "/@/components/Drawer";
+import { useI18n } from "/@/hooks/web/useI18n";
+import { Tag } from "ant-design-vue";
 
-      const [registerCreateAbpRoleModal, { openModal: openCreateAbpRoleModal }] = useModal();
+export default defineComponent({
+  name: "AbpUser",
+  components: {
+    BasicTable,
+    TableAction,
+    CreateAbpRole,
+    PermissionAbpRole,
+    EditAbpRole,
+    Tag
+  },
+  setup() {
+    const { createConfirm } = useMessage();
+    const { t } = useI18n();
+    const [registerPermissionAbpRoleModal, { openDrawer: openPermissionAbpRoleDrawer }] =
+      useDrawer();
 
-      const [registerEditAbpRoleModal, { openModal: openEditAbpRoleModal }] = useModal();
+    const [registerCreateAbpRoleModal, { openModal: openCreateAbpRoleModal }] = useModal();
 
-      // table配置
-      const [registerTable, { reload }] = useTable({
-        columns: tableColumns,
-        formConfig: {
-          labelWidth: 70,
-          schemas: searchFormSchema,
+    const [registerEditAbpRoleModal, { openModal: openEditAbpRoleModal }] = useModal();
+
+    // table配置
+    const [registerTable, { reload }] = useTable({
+      columns: tableColumns,
+      formConfig: {
+        labelWidth: 70,
+        schemas: searchFormSchema
+      },
+      api: getTableListAsync,
+      showTableSetting: true,
+      useSearchForm: true,
+      bordered: true,
+      canResize: true,
+      showIndexColumn: true,
+      actionColumn: {
+        width: 200,
+        title: t("common.action"),
+        dataIndex: "action",
+        slots: {
+          customRender: "action"
         },
-        api: getTableListAsync,
-        showTableSetting: true,
-        useSearchForm: true,
-        bordered: true,
-        canResize: true,
-        showIndexColumn: true,
-        actionColumn: {
-          width: 200,
-          title: t('common.action'),
-          dataIndex: 'action',
-          slots: {
-            customRender: 'action',
-          },
-          fixed: 'right',
-        },
+        fixed: "right"
+      }
+    });
+
+    // 角色编辑
+    const handleEdit = (record: Recordable) => {
+      openEditAbpRoleModal(true, {
+        record: record
       });
+    };
 
-      // 角色编辑
-      const handleEdit = (record: Recordable) => {
-        openEditAbpRoleModal(true, {
-          record: record,
-        });
-      };
+    // 角色授权
+    const handlePermission = (record: Recordable) => {
+      openPermissionAbpRoleDrawer(true, {
+        record: record
+      });
+    };
 
-      // 角色授权
-      const handlePermission = (record: Recordable) => {
-        openPermissionAbpRoleDrawer(true, {
-          record: record,
-        });
-      };
+    // 删除角色
+    const handleDelete = async (record: Recordable) => {
+      let msg = t("common.askDelete");
+      createConfirm({
+        iconType: "warning",
+        title: t("common.tip"),
+        content: msg,
+        onOk: async () => {
+          await deleteRoleAsync({ roleId: record.id, reload });
+        }
+      });
+    };
 
-      // 删除角色
-      const handleDelete = async (record: Recordable) => {
-        let msg = t('common.askDelete');
-        createConfirm({
-          iconType: 'warning',
-          title: t('common.tip'),
-          content: msg,
-          onOk: async () => {
-            await deleteRoleAsync({ roleId: record.id, reload });
-          },
-        });
-      };
-
-      return {
-        t,
-        registerTable,
-        handleEdit,
-        handleDelete,
-        handlePermission,
-        getTableListAsync,
-        registerCreateAbpRoleModal,
-        openCreateAbpRoleModal,
-        registerPermissionAbpRoleModal,
-        registerEditAbpRoleModal,
-        reload,
-      };
-    },
-  });
+    return {
+      t,
+      registerTable,
+      handleEdit,
+      handleDelete,
+      handlePermission,
+      getTableListAsync,
+      registerCreateAbpRoleModal,
+      openCreateAbpRoleModal,
+      registerPermissionAbpRoleModal,
+      registerEditAbpRoleModal,
+      reload
+    };
+  }
+});
 </script>

@@ -16,60 +16,60 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { BasicModal, useModalInner } from '/@/components/Modal';
-  import { BasicForm, useForm } from '/@/components/Form/index';
-  import { useI18n } from '/@/hooks/web/useI18n';
-  import { editOrganizationUnitFormSchema, editOrganizationUnitAsync } from "/@/views/admin/organizationUnits/OrganizationUnit";
+import { defineComponent } from "vue";
+import { BasicModal, useModalInner } from "/@/components/Modal";
+import { BasicForm, useForm } from "/@/components/Form/index";
+import { useI18n } from "/@/hooks/web/useI18n";
+import { editOrganizationUnitFormSchema, editOrganizationUnitAsync } from "/@/views/admin/organizationUnits/OrganizationUnit";
 
-  export default defineComponent({
-    name: 'EditOrganizationUnit',
-    components: {
-      BasicModal,
-      BasicForm,
-    },
+export default defineComponent({
+  name: "EditOrganizationUnit",
+  components: {
+    BasicModal,
+    BasicForm
+  },
 
-    setup(_, { emit }) {
-      const { t } = useI18n();
-      const [registerModal, { closeModal, changeOkLoading }] = useModalInner((data) => {
-        setFieldsValue({
-          displayName: data.record.displayName,
-          id: data.record.id,
+  setup(_, { emit }) {
+    const { t } = useI18n();
+    const [registerModal, { closeModal, changeOkLoading }] = useModalInner((data) => {
+      setFieldsValue({
+        displayName: data.record.displayName,
+        id: data.record.id
+      });
+    });
+    const [registerOrganizationUnitForm, { getFieldsValue, validate, setFieldsValue }] = useForm({
+      labelWidth: 120,
+      schemas: editOrganizationUnitFormSchema,
+      showActionButtonGroup: false
+    });
+    const submit = async () => {
+      try {
+        let request = getFieldsValue();
+        await editOrganizationUnitAsync({
+          request,
+          changeOkLoading,
+          validate,
+          closeModal
         });
-      });
-      const [registerOrganizationUnitForm, { getFieldsValue, validate, setFieldsValue }] = useForm({
-        labelWidth: 120,
-        schemas: editOrganizationUnitFormSchema,
-        showActionButtonGroup: false,
-      });
-      const submit = async () => {
-        try {
-          let request = getFieldsValue();
-          await editOrganizationUnitAsync({
-            request,
-            changeOkLoading,
-            validate,
-            closeModal,
-          });
-          emit('reload');
-        } catch (error) {
-          changeOkLoading(false);
-        }
-      };
+        emit("reload");
+      } catch (error) {
+        changeOkLoading(false);
+      }
+    };
 
-      const cancel = () => {
-        closeModal();
-      };
+    const cancel = () => {
+      closeModal();
+    };
 
-      return {
-        registerModal,
-        registerOrganizationUnitForm,
-        submit,
-        t,
-        cancel,
-      };
-    },
-  });
+    return {
+      registerModal,
+      registerOrganizationUnitForm,
+      submit,
+      t,
+      cancel
+    };
+  }
+});
 </script>
 
 <style lang="less" scoped></style>

@@ -24,12 +24,6 @@ namespace Lion.AbpPro.EntityFrameworkCore
 
         private static IConfigurationRoot BuildConfiguration()
         {
-            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            var appSettingFileName = "appsettings.json";
-            if (!environment.IsNullOrWhiteSpace())
-                appSettingFileName = $"appsettings.{environment}.json";
-
-
             var builder = new ConfigurationBuilder()
                 .SetBasePath
                 (
@@ -41,7 +35,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
                 )
                 .AddJsonFile
                 (
-                    appSettingFileName,
+                    "appsettings.json",
                     false
                 );
 

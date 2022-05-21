@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Lion.AbpPro.Users.Dtos;
 using Lion.AbpPro.Extension.Customs.Dtos;
+using Lion.AbpPro.NotificationManagement.Notifications;
 using Lion.AbpPro.Permissions;
 using Magicodes.ExporterAndImporter.Excel;
 using Magicodes.ExporterAndImporter.Excel.AspNetCore;
@@ -27,13 +28,13 @@ namespace Lion.AbpPro.Users
         private readonly IIdentityUserRepository _identityUserRepository;
         private readonly IExcelExporter _excelExporter;
         private readonly IOptions<IdentityOptions> _options;
-
         public UserAppService(
             IIdentityUserAppService identityUserAppService,
             IdentityUserManager userManager,
             IIdentityUserRepository userRepository,
             IExcelExporter excelExporter,
-            IOptions<IdentityOptions> options)
+            IOptions<IdentityOptions> options,
+            NotificationManager notificationManager)
         {
             _identityUserAppService = identityUserAppService;
             _userManager = userManager;

@@ -4,8 +4,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dto;
+using Volo.Abp;
 using Volo.Abp.Caching;
-using Volo.Abp.Domain.Services;
 
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
@@ -22,22 +22,28 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             _cache = cache;
         }
 
-        
-        
-        
+
         public async Task<DataDictionaryDto> FindByIdAsync(
             Guid id,
             CancellationToken cancellationToken = default)
         {
             var cacheKey = DataDictionaryDto.CalculateCacheKey(id, null);
-            return await _cache.GetOrAddAsync(cacheKey,
+            return await _cache.GetOrAddAsync
+            (
+                cacheKey,
                 async () =>
                 {
                     var entity =
-                        await _dataDictionaryRepository.FindByIdAsync(id, true,
-                            cancellationToken);
+                        await _dataDictionaryRepository.FindByIdAsync
+                        (
+                            id,
+                            true,
+                            cancellationToken
+                        );
                     return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(entity);
-                }, token: cancellationToken);
+                },
+                token: cancellationToken
+            );
         }
 
         public async Task<DataDictionaryDto> FindByCodeAsync(
@@ -45,14 +51,22 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             CancellationToken cancellationToken = default)
         {
             var cacheKey = DataDictionaryDto.CalculateCacheKey(null, code);
-            return await _cache.GetOrAddAsync(cacheKey,
+            return await _cache.GetOrAddAsync
+            (
+                cacheKey,
                 async () =>
                 {
                     var entity =
-                        await _dataDictionaryRepository.FindByCodeAsync(code, true,
-                            cancellationToken);
+                        await _dataDictionaryRepository.FindByCodeAsync
+                        (
+                            code,
+                            true,
+                            cancellationToken
+                        );
                     return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(entity);
-                }, token: cancellationToken);
+                },
+                token: cancellationToken
+            );
         }
 
 
@@ -62,10 +76,21 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <param name="code"></param>
         /// <param name="displayText"></param>
         /// <param name="description"></param>
-        public Task<DataDictionary> CreateAsync(string code, string displayText, string description)
+        public async Task<DataDictionary> CreateAsync(string code, string displayText, string description)
         {
-            var entity = new DataDictionary(GuidGenerator.Create(), code, displayText, description);
-            return _dataDictionaryRepository.InsertAsync(entity);
+            Check.NotNullOrWhiteSpace(code, nameof(code));
+            var entity = await _dataDictionaryRepository.FindByCodeAsync(code);
+            if (entity != null) throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryExist);
+
+            entity = new DataDictionary
+            (
+                GuidGenerator.Create(),
+                code,
+                displayText,
+                description
+            );
+
+            return await _dataDictionaryRepository.InsertAsync(entity);
         }
 
         /// <summary>
@@ -77,36 +102,47 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <param name="description"></param>
         /// <param name="order"></param>
         /// <exception cref="DataDictionaryDomainException"></exception>
-        public async Task<DataDictionary> CreateDetailAsync(Guid dataDictionaryId, string code,
+        public async Task<DataDictionary> CreateDetailAsync(
+            Guid dataDictionaryId,
+            string code,
             string displayText,
             string description,
             int order)
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
             if (entity == null)
-                throw new DataDictionaryDomainException(message: "数据字典不存在");
+                throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryNotExist);
             if (entity.Details.Any(e => e.Code == code.Trim()))
             {
-                throw new DataDictionaryDomainException(message: $"字典项{code}已存在");
+                throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryDetailExist);
             }
 
-            entity.AddDetail(GuidGenerator.Create(), code, displayText, order, description);
+            entity.AddDetail
+            (
+                GuidGenerator.Create(),
+                code,
+                displayText,
+                order,
+                description
+            );
             return await _dataDictionaryRepository.UpdateAsync(entity);
         }
 
         /// <summary>
         /// 设置字典明细状态
         /// </summary>
-        public async Task<DataDictionary> SetStatus(Guid dataDictionaryId,
-            Guid dataDictionayDetailId, bool isEnabled)
+        public async Task<DataDictionary> SetStatus(
+            Guid dataDictionaryId,
+            Guid dataDictionayDetailId,
+            bool isEnabled)
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
             if (entity == null)
-                throw new DataDictionaryDomainException(message: "数据字典不存在");
+                throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryNotExist);
             var detail = entity.Details.FirstOrDefault(e => e.Id == dataDictionayDetailId);
             if (null == detail)
             {
-                throw new DataDictionaryDomainException(message: $"字典项不存在");
+                throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryDetailExist);
             }
 
             detail.SetIsEnabled(isEnabled);
@@ -125,14 +161,20 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
             if (entity == null)
-                throw new DataDictionaryDomainException(message: "数据字典不存在");
+                throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryNotExist);
             var detail = entity.Details.FirstOrDefault(e => e.Id == dataDictionayDetailId);
             if (null == detail)
             {
-                throw new DataDictionaryDomainException(message: $"字典项不存在");
+                throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryDetailNotExist);
             }
 
-            detail.UpdateDetail(dataDictionayDetailId, displayText, description, order);
+            detail.UpdateDetail
+            (
+                dataDictionayDetailId,
+                displayText,
+                description,
+                order
+            );
             return await _dataDictionaryRepository.UpdateAsync(entity);
         }
 
@@ -140,27 +182,29 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
             if (entity == null)
-                throw new DataDictionaryDomainException(message: "数据字典不存在");
+                throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryNotExist);
             var detail = entity.Details.FirstOrDefault(e => e.Id == dataDictionayDetailId);
             if (null == detail)
             {
-                throw new DataDictionaryDomainException(message: $"字典项不存在");
+                throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryDetailNotExist);
             }
 
             entity.Details.Remove(detail);
             await _dataDictionaryRepository.UpdateAsync(entity);
         }
-        public async Task<DataDictionary> UpdateAsync(Guid dataDictionaryId,
+
+        public async Task<DataDictionary> UpdateAsync(
+            Guid dataDictionaryId,
             string displayText,
             string description)
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
             if (entity == null)
-                throw new DataDictionaryDomainException(message: "数据字典不存在");
-            entity.Update(dataDictionaryId,displayText,description);
+                throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryNotExist);
+            entity.Update(dataDictionaryId, displayText, description);
             return await _dataDictionaryRepository.UpdateAsync(entity);
-
         }
+
         /// <summary>
         /// 删除字典类型
         /// </summary>
@@ -170,13 +214,14 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(id);
             if (entity == null)
-                throw new DataDictionaryDomainException(message: "数据字典不存在");
+                throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryNotExist);
             var detail = entity.Details.FirstOrDefault(e => e.DataDictionaryId == id);
-            if (detail !=null )
+            if (detail != null)
             {
                 entity.Details.Remove(detail);
                 await _dataDictionaryRepository.UpdateAsync(entity);
             }
+
             await _dataDictionaryRepository.DeleteAsync(id);
         }
     }

@@ -63,13 +63,13 @@ namespace Lion.AbpPro.IdentityServer
         [Fact]
         public async Task Shuold_CreateAsync_Name_Repetition_Exception()
         {
-            (await Should.ThrowAsync<UserFriendlyException>(async () =>
+            (await Should.ThrowAsync<BusinessException>(async () =>
             {
                 var result = await _identityResourceManager.CreateAsync("openid", "单元测试",
                     "desc", true, false,
                     false,
                     false);
-            })).Message.ShouldBe("openid已存在");
+            })).Code.ShouldBe(AbpProDomainErrorCodes.IdentityResourceExist);
         }
         
         

@@ -60,12 +60,12 @@ namespace Lion.AbpPro.IdentityServer
         [Fact]
         public async Task Shuold_CreateAsync_Name_Repetition_Exception()
         {
-            (await Should.ThrowAsync<UserFriendlyException>(async () =>
+            (await Should.ThrowAsync<BusinessException>(async () =>
             {
                 var result =
                     await _idenityServerClientManager.CreateAsync("Test_Client", "XunitName",
                         "desc", "test");
-            })).Message.ShouldBe("当前ClientId已存在");
+            })).Code.ShouldBe(AbpProDomainErrorCodes.ApiClientExist);
         }
 
         [Fact]

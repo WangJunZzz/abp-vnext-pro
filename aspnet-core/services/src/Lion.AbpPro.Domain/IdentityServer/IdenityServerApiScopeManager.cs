@@ -23,16 +23,19 @@ namespace Lion.AbpPro.IdentityServer
             bool includeDetails = false,
             CancellationToken cancellationToken = default)
         {
-            return _apiScopeRepository.GetListAsync(
+            return _apiScopeRepository.GetListAsync
+            (
                 "CreationTime desc",
                 skipCount,
                 maxResultCount,
                 filter,
                 includeDetails,
-                cancellationToken);
+                cancellationToken
+            );
         }
 
-        public Task<long> GetCountAsync(string filter = null,
+        public Task<long> GetCountAsync(
+            string filter = null,
             CancellationToken cancellationToken = default)
         {
             return _apiScopeRepository.GetCountAsync(filter, cancellationToken);
@@ -48,11 +51,19 @@ namespace Lion.AbpPro.IdentityServer
             bool showInDiscoveryDocument)
         {
             var apiScopes = await _apiScopeRepository.GetListByNameAsync(new[] { name }, false);
-            if (apiScopes.Count > 0) throw new UserFriendlyException(message: $"{name}已存在");
+            if (apiScopes.Count > 0) throw new BusinessException(AbpProDomainErrorCodes.ApiScopeExist);
 
-            var scope = new ApiScope(GuidGenerator.Create(), name, displayName, description,
-                required, emphasize,
-                showInDiscoveryDocument, enabled);
+            var scope = new ApiScope
+            (
+                GuidGenerator.Create(),
+                name,
+                displayName,
+                description,
+                required,
+                emphasize,
+                showInDiscoveryDocument,
+                enabled
+            );
             return await _apiScopeRepository.InsertAsync(scope);
         }
 
@@ -67,7 +78,7 @@ namespace Lion.AbpPro.IdentityServer
             bool showInDiscoveryDocument)
         {
             var apiScope = await _apiScopeRepository.FindAsync(id, false);
-            if (null == apiScope) throw new UserFriendlyException(message: $"{name}不存在");
+            if (null == apiScope) throw new BusinessException(AbpProDomainErrorCodes.ApiScopeNotExist);
             apiScope.DisplayName = displayName;
             apiScope.Description = description;
             apiScope.Enabled = enabled;
@@ -77,18 +88,25 @@ namespace Lion.AbpPro.IdentityServer
             return await _apiScopeRepository.UpdateAsync(apiScope);
         }
 
-        public Task DeleteAsync(Guid id, bool autoSave = false,
+        public Task DeleteAsync(
+            Guid id,
+            bool autoSave = false,
             CancellationToken cancellationToken = default)
         {
             return _apiScopeRepository.DeleteAsync(id, autoSave, cancellationToken);
         }
 
-        public async Task<List<ApiScope>> FindAllAsync(
-            CancellationToken cancellationToken = default)
+        public async Task<List<ApiScope>> FindAllAsync(CancellationToken cancellationToken = default)
         {
-            return await _apiScopeRepository.GetListAsync("CreationTime desc", 0, Int32.MaxValue,
-                null, false,
-                cancellationToken);
+            return await _apiScopeRepository.GetListAsync
+            (
+                "CreationTime desc",
+                0,
+                Int32.MaxValue,
+                null,
+                false,
+                cancellationToken
+            );
         }
     }
 }

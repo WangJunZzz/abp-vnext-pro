@@ -20,13 +20,13 @@ import { BasicModal, useModalInner } from "/@/components/Modal";
 import { BasicForm } from "/@/components/Form/index";
 import { useI18n } from "/@/hooks/web/useI18n";
 import {
-  getUnAddRolesAsync, addRoleTableColumns, searchAddRoleFormSchema, addRoleToOrganizationUnitAsync, GetUnAddUserAsync
+  addUserTableColumns, searchUserFormSchema, addUserToOrganizationUnitAsync, GetUnAddUserAsync
 } from "/@/views/admin/organizationUnits/OrganizationUnit";
-import { AddRoleToOrganizationUnitInput, GetUnAddRoleInput } from "/@/services/ServiceProxies";
+import { AddUserToOrganizationUnitInput, GetUnAddUserInput } from "/@/services/ServiceProxies";
 import { BasicTable, useTable } from "/@/components/Table";
 
 export default defineComponent({
-  name: "AddRoleToOrganizationUnit",
+  name: "AddUserToOrganizationUnit",
   components: {
     BasicModal,
     BasicForm,
@@ -36,19 +36,22 @@ export default defineComponent({
   setup(_, { emit }) {
     const { t } = useI18n();
     const getTableAsync = async () => {
-      let request= new GetUnAddRoleInput();
+      let request= new GetUnAddUserInput();
       request.organizationUnitId=organizationUnitId;
-      return await getUnAddRolesAsync(request)
+      request.filter=getForm().getFieldsValue().filter;
+      return await GetUnAddUserAsync(request)
     };
-    const [registerRoleTable, {  reload }] = useTable({
-      columns: addRoleTableColumns,
+
+    const [registerRoleTable, { reload,getForm }] = useTable({
+      columns: addUserTableColumns,
       formConfig: {
         labelWidth: 70,
-        schemas: searchAddRoleFormSchema
+        schemas: searchUserFormSchema,
+        showResetButton: false
       },
       api: getTableAsync,
       showTableSetting: false,
-      useSearchForm: false,
+      useSearchForm: true,
       bordered: true,
       showIndexColumn: true,
       maxHeight: 400,
@@ -56,25 +59,29 @@ export default defineComponent({
       rowSelection: { type: "checkbox" }
     });
 
+
     let organizationUnitId = "";
     const [registerModal, { closeModal, changeOkLoading }] = useModalInner(async (data) => {
       organizationUnitId = data.organizationUnitId;
-      await reload();
+      await reload({ searchInfo: { organizationUnitId: organizationUnitId } });
     });
+
+
     //勾选事件
-    let selectRoles:string[]=[];
+    let selectUsers: string[] = [];
     const onSelectChange = ({ rows }) => {
-       selectRoles = rows.map((item)=>{
+      selectUsers = rows.map((item) => {
         return item.id;
-      })
+      });
+
     };
     const submit = async () => {
       try {
-        changeOkLoading(true)
-        let request = new AddRoleToOrganizationUnitInput();
+        changeOkLoading(true);
+        let request = new AddUserToOrganizationUnitInput();
         request.organizationUnitId = organizationUnitId;
-        request.roleId=selectRoles;
-        await addRoleToOrganizationUnitAsync(request);
+        request.userId = selectUsers;
+        await addUserToOrganizationUnitAsync(request);
         changeOkLoading(false);
         closeModal();
         emit("reload");
@@ -84,8 +91,8 @@ export default defineComponent({
     };
 
     const cancel = () => {
-      organizationUnitId='';
-      selectRoles=[]
+      organizationUnitId = "";
+      selectUsers = [];
       closeModal();
     };
 

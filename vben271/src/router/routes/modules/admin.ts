@@ -34,6 +34,16 @@ const admin: AppRouteModule = {
       },
     },
     {
+      path: 'organizationUnit',
+      name: 'organizationUnit',
+      component: () => import('/@/views/admin/organizationUnits/OrganizationUnit.vue'),
+      meta: {
+        title: t('routes.admin.organizationUnitManagement'),
+        icon: 'ant-design:gold-outlined',
+        policy: 'System.OrganizationUnitManagement',
+      },
+    },
+    {
       path: 'settings',
       name: 'Settings',
       component: () => import('/@/views/admin/settings/Setting.vue'),
@@ -79,16 +89,6 @@ const admin: AppRouteModule = {
       component: () => import('/@/views/admin/files/File.vue'),
       meta: {
         title: t('routes.admin.fileNameManagement'),
-        icon: 'ant-design:snippets-outlined',
-        policy: 'System.FileManagement',
-      },
-    },
-    {
-      path: 'organizationUnit',
-      name: 'organizationUnit',
-      component: () => import('/@/views/admin/organizationUnits/OrganizationUnit.vue'),
-      meta: {
-        title: t('routes.admin.organizationUnitManagement'),
         icon: 'ant-design:snippets-outlined',
         policy: 'System.FileManagement',
       },

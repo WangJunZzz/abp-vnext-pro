@@ -1,6 +1,6 @@
-import { FormSchema } from '/@/components/Table';
-import { BasicColumn } from '/@/components/Table';
-import moment from 'moment';
+import { FormSchema } from "/@/components/Table";
+import { BasicColumn } from "/@/components/Table";
+import moment from "moment";
 import {
   PagingUserListInput,
   UsersServiceProxy,
@@ -8,198 +8,199 @@ import {
   IdentityRoleDtoListResultDto,
   RolesServiceProxy,
   LockUserInput,
-  IdInput,
-} from '/@/services/ServiceProxies';
-import { message } from 'ant-design-vue';
-import { useLoading } from '/@/components/Loading';
+  IdInput
+} from "/@/services/ServiceProxies";
+import { message } from "ant-design-vue";
+import { useLoading } from "/@/components/Loading";
 
-import { useI18n } from '/@/hooks/web/useI18n';
+import { useI18n } from "/@/hooks/web/useI18n";
+
 const { t } = useI18n();
 const [openFullLoading, closeFullLoading] = useLoading({
-  tip: 'Loading...',
+  tip: "Loading..."
 });
 
 export const tableColumns: BasicColumn[] = [
   {
-    title: t('routes.admin.userManagement_userName'),
-    dataIndex: 'userName',
+    title: t("routes.admin.userManagement_userName"),
+    dataIndex: "userName"
   },
   {
-    title: t('routes.admin.userManagement_name'),
-    dataIndex: 'name',
+    title: t("routes.admin.userManagement_name"),
+    dataIndex: "name"
   },
 
   {
-    title: t('routes.admin.userManagement_email'),
-    dataIndex: 'email',
+    title: t("routes.admin.userManagement_email"),
+    dataIndex: "email"
   },
   {
-    title: t('routes.admin.userManagement_phone'),
-    dataIndex: 'phoneNumber',
+    title: t("routes.admin.userManagement_phone"),
+    dataIndex: "phoneNumber"
   },
   {
-    title: t('common.status'),
-    dataIndex: 'isActive',
-    slots: { customRender: 'isActive' },
+    title: t("common.status"),
+    dataIndex: "isActive",
+    slots: { customRender: "isActive" }
   },
   {
-    title: t('routes.admin.userManagement_createTime'),
-    dataIndex: 'creationTime',
+    title: t("routes.admin.userManagement_createTime"),
+    dataIndex: "creationTime",
     customRender: ({ text }) => {
-      return moment(text).format('YYYY-MM-DD HH:mm:ss');
-    },
-  },
+      return moment(text).format("YYYY-MM-DD HH:mm:ss");
+    }
+  }
 ];
 
 export const searchFormSchema: FormSchema[] = [
   {
-    field: 'filter',
-    label: t('routes.admin.userManagement_userName'),
-    component: 'Input',
-    colProps: { span: 8 },
-  },
+    field: "filter",
+    label: t("routes.admin.userManagement_userName"),
+    component: "Input",
+    colProps: { span: 8 }
+  }
 ];
 
 export const createFormSchema: FormSchema[] = [
   {
-    field: 'userName',
-    component: 'Input',
-    label: t('routes.admin.userManagement_userName'),
+    field: "userName",
+    component: "Input",
+    label: t("routes.admin.userManagement_userName"),
     labelWidth: 85,
     required: true,
     colProps: {
-      span: 12,
+      span: 12
     },
     componentProps: {
-      autocomplete: 'off',
-    },
+      autocomplete: "off"
+    }
   },
   {
-    field: 'name',
-    component: 'Input',
-    label: t('routes.admin.roleManagement_name'),
+    field: "name",
+    component: "Input",
+    label: t("routes.admin.roleManagement_name"),
     labelWidth: 130,
     required: true,
     colProps: {
-      span: 12,
+      span: 12
     },
     componentProps: {
-      autocomplete: 'off',
-    },
+      autocomplete: "off"
+    }
   },
   {
-    field: 'email',
-    component: 'Input',
-    label: t('routes.admin.userManagement_email'),
+    field: "email",
+    component: "Input",
+    label: t("routes.admin.userManagement_email"),
     required: true,
     labelWidth: 85,
     colProps: {
-      span: 12,
-    },
+      span: 12
+    }
   },
   {
-    field: 'phoneNumber',
-    component: 'Input',
-    label: t('routes.admin.userManagement_phone'),
+    field: "phoneNumber",
+    component: "Input",
+    label: t("routes.admin.userManagement_phone"),
     required: false,
     labelWidth: 130,
     colProps: {
-      span: 12,
-    },
+      span: 12
+    }
   },
   {
-    field: 'password',
-    component: 'InputPassword',
-    label: t('routes.admin.userManagement_password'),
+    field: "password",
+    component: "InputPassword",
+    label: t("routes.admin.userManagement_password"),
     required: true,
     labelWidth: 85,
     colProps: {
-      span: 12,
+      span: 12
     },
     componentProps: {
-      autocomplete: 'off',
-    },
+      autocomplete: "off"
+    }
   },
   {
-    field: 'confirmPassword',
-    component: 'InputPassword',
+    field: "confirmPassword",
+    component: "InputPassword",
     componentProps: {
-      autocomplete: 'off',
+      autocomplete: "off"
     },
-    label: t('routes.admin.userManagement_confirm_password'),
+    label: t("routes.admin.userManagement_confirm_password"),
     required: true,
     labelWidth: 130,
     colProps: {
-      span: 12,
-    },
-  },
+      span: 12
+    }
+  }
 ];
 
 export const editFormSchema: FormSchema[] = [
   {
-    field: 'userName',
-    component: 'Input',
-    label: t('routes.admin.userManagement_userName'),
+    field: "userName",
+    component: "Input",
+    label: t("routes.admin.userManagement_userName"),
     labelWidth: 85,
     required: true,
     colProps: {
-      span: 12,
+      span: 12
     },
     componentProps: {
-      autocomplete: 'off',
-      disabled: true,
-    },
+      autocomplete: "off",
+      disabled: true
+    }
   },
   {
-    field: 'name',
-    component: 'Input',
-    label: t('routes.admin.userManagement_name'),
+    field: "name",
+    component: "Input",
+    label: t("routes.admin.userManagement_name"),
     labelWidth: 130,
     required: true,
     colProps: {
-      span: 12,
-    },
+      span: 12
+    }
   },
   {
-    field: 'email',
-    component: 'Input',
-    label: t('routes.admin.userManagement_email'),
+    field: "email",
+    component: "Input",
+    label: t("routes.admin.userManagement_email"),
     required: true,
     labelWidth: 85,
     colProps: {
-      span: 12,
-    },
+      span: 12
+    }
   },
   {
-    field: 'phoneNumber',
-    component: 'Input',
-    label: t('routes.admin.userManagement_phone'),
+    field: "phoneNumber",
+    component: "Input",
+    label: t("routes.admin.userManagement_phone"),
     required: false,
     labelWidth: 130,
     colProps: {
-      span: 12,
-    },
+      span: 12
+    }
   },
   {
-    field: 'password',
-    component: 'InputPassword',
-    label: t('routes.admin.userManagement_password'),
+    field: "password",
+    component: "InputPassword",
+    label: t("routes.admin.userManagement_password"),
     required: false,
     labelWidth: 85,
     colProps: {
-      span: 12,
-    },
+      span: 12
+    }
   },
   {
-    field: 'confirmPassword',
-    component: 'InputPassword',
-    label: t('routes.admin.userManagement_confirm_password'),
+    field: "confirmPassword",
+    component: "InputPassword",
+    label: t("routes.admin.userManagement_confirm_password"),
     required: false,
     labelWidth: 130,
     colProps: {
-      span: 12,
-    },
-  },
+      span: 12
+    }
+  }
 ];
 
 /**
@@ -219,16 +220,16 @@ export async function getTableListAsync(
  * @param params
  * @returns
  */
- export  function exportAsync({request}) {
+export function exportAsync({ request }) {
   openFullLoading();
   const _userServiceProxy = new UsersServiceProxy();
- _userServiceProxy.export(request).then(res=>{
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(res.data);
-  a.download = '用户列表导出.xlsx';
-  a.click();
-  closeFullLoading();
- });
+  _userServiceProxy.export(request).then(res => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(res.data);
+    a.download = "用户列表导出.xlsx";
+    a.click();
+    closeFullLoading();
+  });
 }
 
 /**
@@ -261,18 +262,18 @@ export async function createUserAsync({
   changeOkLoading,
   validate,
   closeModal,
-  resetFields,
+  resetFields
 }) {
   changeOkLoading(true);
   await validate();
   if (request.password != request.confirmPassword) {
-    message.error('两次密码输入不一致');
-    throw new Error('两次密码输入不一致');
+    message.error("两次密码输入不一致");
+    throw new Error("两次密码输入不一致");
   }
   const _userServiceProxy = new UsersServiceProxy();
   await _userServiceProxy.create(request);
   changeOkLoading(false);
-  message.success(t('common.operationSuccess'));
+  message.success(t("common.operationSuccess"));
   resetFields();
   closeModal();
 }
@@ -289,7 +290,7 @@ export async function deleteUserAsync({ userId, reload }) {
     request.id = userId;
     await _userServiceProxy.delete(request);
     closeFullLoading();
-    message.success(t('common.operationSuccess'));
+    message.success(t("common.operationSuccess"));
     reload();
   } catch (error) {
     closeFullLoading();
@@ -305,7 +306,7 @@ export async function updateUserAsync({
   changeOkLoading,
   validate,
   closeModal,
-  resetFields,
+  resetFields
 }) {
   changeOkLoading(true);
   await validate();
@@ -314,7 +315,7 @@ export async function updateUserAsync({
   await _userServiceProxy.update(request);
   changeOkLoading(false);
   resetFields();
-  message.success(t('common.operationSuccess'));
+  message.success(t("common.operationSuccess"));
   closeModal();
 }
 

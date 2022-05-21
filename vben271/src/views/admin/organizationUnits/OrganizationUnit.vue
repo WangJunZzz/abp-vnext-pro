@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageWrapper dense contentFullHeight fixedHeight contentClass="flex">
+    <PageWrapper dense contentFullHeight contentClass="flex">
       <div class="bg-white m-4 mr-0 overflow-hidden">
         <BasicTree
           toolbar
@@ -10,14 +10,15 @@
           @select="handleSelect"
         >
           <template #headerTitle>
-            <span style="font-weight: 500">组织机构</span>
+            <span style="font-weight: 500"> {{ t("routes.admin.organizationUnit") }}</span>
             <a-button
               type="primary"
               style="margin-left: 20px"
               size="small"
+              v-auth="'System.OrganizationUnitManagement.Create'"
               @click="createRootOrganizationUnit"
             >
-              添加根机构
+              {{ t("routes.admin.createRootOrganizationUnit") }}
             </a-button>
           </template>
         </BasicTree>
@@ -25,15 +26,26 @@
       <div class="bg-white m-4 mr-0 w-3/4 xl:w-4/5">
 
         <a-tabs v-model:activeKey="activeKey" @change="activeKeyChange">
-          <a-tab-pane key="1" tab="成员">
+          <a-tab-pane key="1" :tab="t('routes.admin.member') ">
             <BasicTable @register="registerUserTable" size="small">
+              <template #toolbar>
+                <a-button
+                  preIcon="ant-design:plus-circle-outlined"
+                  type="primary"
+                  v-auth="'System.OrganizationUnitManagement.Update'"
+                  @click="openAddUserToOrganizationUnitModal"
+                >
+                  {{ t("common.createText") }}
+                </a-button>
+              </template>>
               <template #action="{ record }">
                 <TableAction
                   :actions="[
                   {
-                 icon: 'ant-design:delete-outlined',
-                  label: '删除',
-                  onClick: handleUserDelete.bind(null, record),
+                    icon: 'ant-design:delete-outlined',
+                    label: t('common.delText'),
+                    auth:'System.OrganizationUnitManagement.Delete',
+                    onClick: handleUserDelete.bind(null, record),
                   },
                  ]"
                 />
@@ -41,13 +53,14 @@
 
             </BasicTable>
           </a-tab-pane>
-          <a-tab-pane key="2" tab="角色" force-render>
+          <a-tab-pane key="2" :tab="t('routes.admin.role') " force-render>
             <BasicTable @register="registerRoleTable" size="small">
               <template #toolbar>
                 <a-button
                   preIcon="ant-design:plus-circle-outlined"
                   type="primary"
-                  @click="AddRoleToOrganizationUnitModal"
+                  v-auth="'System.OrganizationUnitManagement.Update'"
+                  @click="openAddRoleToOrganizationUnitModal"
                 >
                   {{ t("common.createText") }}
                 </a-button>
@@ -56,13 +69,13 @@
               <template #action="{ record }">
                 <TableAction
                   :actions="[
-            {
-              icon: 'ant-design:delete-outlined',
-
-              label: '删除',
-              onClick: handleRoleDelete.bind(null, record),
-            },
-          ]"
+                  {
+                    icon: 'ant-design:delete-outlined',
+                    label: t('common.delText'),
+                    auth:'System.OrganizationUnitManagement.Delete',
+                    onClick: handleRoleDelete.bind(null, record),
+                  },
+                  ]"
                 />
               </template>
             </BasicTable>
@@ -75,7 +88,10 @@
       @reload="initOrganizationUnit"
     />
     <EditOrganizationUnit @register="registerEditOrganizationUnit" @reload="initOrganizationUnit" />
-    <AddRoleToOrganizationUnit @register="registerAddRoleToOrganizationUnit" @reload="initOrganizationUnit" />
+    <AddRoleToOrganizationUnit @register="registerAddRoleToOrganizationUnit"
+                               @reload="reloadRole" />
+    <AddUserToOrganizationUnit @register="registerAddUserToOrganizationUnit"
+                               @reload="reloadUser" />
   </div>
 </template>
 
@@ -103,7 +119,8 @@ import {
 import { Tabs } from "ant-design-vue";
 import CreateOrganizationUnit from "./CreateOrganizationUnit.vue";
 import EditOrganizationUnit from "./EditOrganizationUnit.vue";
-import AddRoleToOrganizationUnit from './AddRoleToOrganizationUnit.vue';
+import AddRoleToOrganizationUnit from "./AddRoleToOrganizationUnit.vue";
+import AddUserToOrganizationUnit from "./AddUserToOrganizationUnit.vue";
 
 import { useModal } from "/@/components/Modal";
 import { useMessage } from "/@/hooks/web/useMessage";
@@ -121,18 +138,32 @@ export default defineComponent({
     EditOrganizationUnit,
     BasicTable,
     TableAction,
-    AddRoleToOrganizationUnit
+    AddRoleToOrganizationUnit,
+    AddUserToOrganizationUnit
   },
   setup() {
     const { t } = useI18n();
     const { createConfirm } = useMessage();
     const treeData = ref<TreeOutput[]>([]);
     const activeKey = ref("1");
-    const [registerCreateOrganizationUnit, { openModal: CreateOrganizationUnitModal }] =
-      useModal();
+    const [registerCreateOrganizationUnit, { openModal: CreateOrganizationUnitModal }] =useModal();
     const [registerEditOrganizationUnit, { openModal: EditOrganizationUnitModal }] = useModal();
-    const [registerAddRoleToOrganizationUnit, { openModal: AddRoleToOrganizationUnitModal }] =
-      useModal();
+    const [registerAddRoleToOrganizationUnit, { openModal: AddRoleToOrganizationUnitModal }] = useModal();
+    const [registerAddUserToOrganizationUnit, { openModal: AddUserToOrganizationUnitModal }] = useModal();
+
+    let organizationUnitId: string = "";
+    const openAddUserToOrganizationUnitModal= ()=>{
+      if(organizationUnitId)
+      {
+        AddUserToOrganizationUnitModal(true,{organizationUnitId});
+      }
+    };
+    const openAddRoleToOrganizationUnitModal= ()=>{
+      if(organizationUnitId)
+      {
+        AddRoleToOrganizationUnitModal(true,{organizationUnitId});
+      }
+    };
     const initOrganizationUnit = async () => {
       treeData.value = await getTreeAsync();
     };
@@ -188,15 +219,12 @@ export default defineComponent({
               }
             });
           },
-          icon: "ant-design:delete-outlined"
+          icon: "ant-design:delete-outlined",
         }
       ];
     }
 
-    let organizationUnitId: string = "";
-
     async function handleSelect(keys) {
-      console.log(keys);
       if (keys.length > 0) {
         organizationUnitId = keys[0];
         if (activeKey.value == "1") {
@@ -251,7 +279,6 @@ export default defineComponent({
       }
     });
 
-
     const [registerRoleTable, { reload: reloadRole }] = useTable({
       columns: roleTableColumns,
       api: getRoleAsync,
@@ -283,7 +310,6 @@ export default defineComponent({
 
     };
 
-    // 删除用户
     const handleUserDelete = async (record: Recordable) => {
       let msg = t("common.askDelete");
       createConfirm({
@@ -300,7 +326,6 @@ export default defineComponent({
       });
     };
 
-    // 删除用户
     const handleRoleDelete = async (record: Recordable) => {
       let msg = t("common.askDelete");
       createConfirm({
@@ -332,7 +357,13 @@ export default defineComponent({
       handleRoleDelete,
       t,
       registerAddRoleToOrganizationUnit,
-      AddRoleToOrganizationUnitModal
+      openAddRoleToOrganizationUnitModal,
+      getRoleAsync,
+      reloadRole,
+      reloadUser,
+      openAddUserToOrganizationUnitModal,
+      registerAddUserToOrganizationUnit,
+      getUserAsync
     };
   }
 });
