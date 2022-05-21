@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -24,8 +25,19 @@ namespace Lion.AbpPro.EntityFrameworkCore
         private static IConfigurationRoot BuildConfiguration()
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../Lion.AbpPro.DbMigrator/"))
-                .AddJsonFile("appsettings.json", optional: false);
+                .SetBasePath
+                (
+                    Path.Combine
+                    (
+                        Directory.GetCurrentDirectory(),
+                        "../Lion.AbpPro.DbMigrator/"
+                    )
+                )
+                .AddJsonFile
+                (
+                    "appsettings.json",
+                    false
+                );
 
             return builder.Build();
         }

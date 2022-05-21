@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Lion.AbpPro.MultiTenancy;
 using Lion.AbpPro.NotificationManagement;
 using Volo.Abp.AuditLogging;
+using Volo.Abp.AutoMapper;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Emailing;
 using Volo.Abp.FeatureManagement;
@@ -43,7 +44,10 @@ namespace Lion.AbpPro
             {
                 options.IsEnabled = MultiTenancyConsts.IsEnabled;
             });
-
+            Configure<AbpAutoMapperOptions>(options =>
+            {
+                options.AddMaps<AbpProDomainModule>();
+            });
 #if DEBUG
             context.Services.Replace(ServiceDescriptor.Singleton<IEmailSender, NullEmailSender>());
 #endif

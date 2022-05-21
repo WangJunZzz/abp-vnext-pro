@@ -11,13 +11,12 @@ export class ServiceProxyBase {
     options.baseURL = import.meta.env.VITE_API_URL as string;
     const guard: boolean = this.urlGuard(options.url as string);
     const userStore = useUserStoreWithOut();
-
+    const { token, language } = this.buildRequestMessage();
     if (!guard) {
       if (userStore.checkUserLoginExpire) {
         router.replace(PageEnum.BASE_LOGIN);
         return;
       }
-      const { token, language } = this.buildRequestMessage();
       // 添加header
       options.headers = {
         'accept-language': language,
@@ -29,6 +28,7 @@ export class ServiceProxyBase {
       options.headers = {
         'Content-Type': 'application/json',
         __tenant: userStore.tenantId,
+        'accept-language': language,
       };
     }
 

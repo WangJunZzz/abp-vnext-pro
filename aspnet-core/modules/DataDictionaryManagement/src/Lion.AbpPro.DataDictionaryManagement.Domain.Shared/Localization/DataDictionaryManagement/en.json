@@ -6,6 +6,12 @@
     "Permission:DataDictionaryManagement": "DataDictionaryManagement",
     "Permission:Create": "Create",
     "Permission:Update": "Update",
-    "Permission:Delete": "Delete"
+    "Permission:Delete": "Delete",
+    
+    "Lion.AbpPro.DataDictionaryManagement:100001": "DataDictionary Exist",
+    "Lion.AbpPro.DataDictionaryManagement:100002": "DataDictionary Not Exist",
+    "Lion.AbpPro.DataDictionaryManagement:100003": "DataDictionaryDetail Exist",
+    "Lion.AbpPro.DataDictionaryManagement:100004": "DataDictionaryDetail Not Exist"
+    
   }
 }

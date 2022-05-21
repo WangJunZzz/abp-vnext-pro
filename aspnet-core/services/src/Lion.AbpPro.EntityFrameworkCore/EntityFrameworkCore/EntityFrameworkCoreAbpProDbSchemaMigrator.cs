@@ -12,8 +12,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
     {
         private readonly IServiceProvider _serviceProvider;
 
-        public EntityFrameworkCoreAbpProDbSchemaMigrator(
-            IServiceProvider serviceProvider)
+        public EntityFrameworkCoreAbpProDbSchemaMigrator(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }

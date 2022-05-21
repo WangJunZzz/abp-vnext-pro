@@ -26,7 +26,7 @@ export default {
   audit_httpMethod: 'Http方法',
   audit_httpStatusCode: 'Http状态码',
   audit_httpRequest: 'Http请求',
-  audit_ipAdrress: 'IP地址',
+  audit_ipAddress: 'IP地址',
   audit_time: '时间',
   audit_duration: '持续时间(ms)',
   audit_url: 'Url地址',
@@ -67,5 +67,11 @@ export default {
   editPasswordMessage: '输入的2次密码不一致',
   executionTime: '执行时间',
   executionDuration: '响应时间(毫秒)',
-
+  organizationUnitName: '名称',
+  parentOrganizationUnitName: '上级组织机构',
+  organizationUnitManagement: '组织机构管理',
+  createRootOrganizationUnit: '新增根机构',
+  organizationUnit: '组织机构',
+  member: '成员',
+  role: '角色',
 };

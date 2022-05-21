@@ -55,7 +55,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
                     await SendMessageToAllClientAsync(new SendNotificationDto(title, content, messageType));
                     break;
                 default:
-                    throw new UserFriendlyException("未知的消息类型");
+                    throw new BusinessException(NotificationManagementErrorCodes.MessageTypeUnknown);
             }
         }
 

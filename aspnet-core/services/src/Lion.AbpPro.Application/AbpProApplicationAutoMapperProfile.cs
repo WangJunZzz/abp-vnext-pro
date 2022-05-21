@@ -1,4 +1,5 @@
 using AutoMapper;
+using Lion.AbpPro.OrganizationUnits.Dto;
 using Lion.AbpPro.Users.Dtos;
 using Volo.Abp.Identity;
 
@@ -14,6 +15,11 @@ namespace Lion.AbpPro
             CreateMap<IdentityUser, ExportIdentityUserOutput>()
                 .ForMember(e => e.CreationTimeFormat, opt => opt.Ignore())
                 .ForMember(e => e.Status, opt => opt.Ignore());
+            CreateMap<OrganizationUnit, OrganizationUnitDto>();
+            CreateMap<IdentityUser, GetOrganizationUnitUserOutput>();
+            CreateMap<IdentityUser, GetUnAddUserOutput>();
+            CreateMap<IdentityRole, GetOrganizationUnitRoleOutput>();
+            CreateMap<IdentityRole, GetUnAddRoleOutput>();
         }
     }
 }

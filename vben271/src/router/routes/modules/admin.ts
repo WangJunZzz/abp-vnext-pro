@@ -34,6 +34,16 @@ const admin: AppRouteModule = {
       },
     },
     {
+      path: 'organizationUnit',
+      name: 'organizationUnit',
+      component: () => import('/@/views/admin/organizationUnits/OrganizationUnit.vue'),
+      meta: {
+        title: t('routes.admin.organizationUnitManagement'),
+        icon: 'ant-design:gold-outlined',
+        policy: 'System.OrganizationUnitManagement',
+      },
+    },
+    {
       path: 'settings',
       name: 'Settings',
       component: () => import('/@/views/admin/settings/Setting.vue'),

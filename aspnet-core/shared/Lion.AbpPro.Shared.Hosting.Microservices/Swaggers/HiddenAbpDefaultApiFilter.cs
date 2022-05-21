@@ -46,7 +46,9 @@ namespace Lion.AbpPro.Shared.Hosting.Microservices.Swaggers
                 "/api/identity/my-profile",
                 "/api/identity",
                 "/api/multi-tenancy/tenants",
-                "/api/setting-management/emailing"
+                "/api/setting-management/emailing",
+                "/configuration",
+                "/outputcache"
             };
         }
     }

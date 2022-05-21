@@ -75,5 +75,30 @@ namespace Lion.AbpPro.Extension.System
             var result = length == 10 ? start.AddSeconds(jsTime) : start.AddMilliseconds(jsTime);
             return result.ToUniversalTime();
         }
+        
+        /// <summary>
+        /// 获取指定日期 当天的最大时间
+        /// 例如 2021-09-10 11:22:33.123456 转换后 2021-09-10 23:59:59.9999999
+        /// </summary>
+        public static DateTime? ToCurrentDateMaxDateTime(this DateTime? dateTime)
+        {
+            return dateTime?.Date.AddDays(1).AddTicks(-1);
+        }
+
+        /// <summary>
+        /// 获取指定时间的下一秒
+        /// 例如 2021-09-10 11:11:11.1234567 转换后 2021-09-10 11:11:12.0000000
+        /// </summary>
+        public static DateTime? ToNextSecondDateTime(this DateTime? dateTime)
+        {
+            if (!dateTime.HasValue)
+            {
+                return null;
+            }
+
+            return new DateTime(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day, dateTime.Value.Hour,
+                    dateTime.Value.Minute, dateTime.Value.Second)
+                .AddSeconds(1);
+        }
     }
 }

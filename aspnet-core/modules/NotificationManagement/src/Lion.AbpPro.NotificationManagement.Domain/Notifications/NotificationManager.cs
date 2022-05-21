@@ -32,7 +32,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         {
             if (receiveIds is {Count: 0})
             {
-                throw new NotificationManagementDomainException("消息接收人不能为空");
+                throw new NotificationManagementDomainException(NotificationManagementErrorCodes.ReceiverNotNull);
             }
 
             var senderId = Guid.Empty;
@@ -113,7 +113,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         public async Task SetReadAsync(Guid id, Guid receiveId)
         {
             var notification = await _notificationRepository.FindByIdAsync(id);
-            if (notification == null) throw new NotificationManagementDomainException(message: "消息不存在");
+            if (notification == null) throw new NotificationManagementDomainException(NotificationManagementErrorCodes.MessageNotExist);
             if (notification.MessageType == MessageType.BroadCast)
             {
                 // 如果类型是广播消息，用户设置为已读，在插入一条数据
@@ -124,7 +124,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
                 var notificationSubscription =
                     notification.NotificationSubscriptions.FirstOrDefault(e => e.ReceiveId == receiveId);
                 if (notificationSubscription == null)
-                    throw new NotificationManagementDomainException(message: "当前用户未订阅该消息");
+                    throw new NotificationManagementDomainException(NotificationManagementErrorCodes.UserUnSubscription);
                 notificationSubscription.SetRead();
             }
 

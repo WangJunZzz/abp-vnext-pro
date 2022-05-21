@@ -1,8 +1,10 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Lion.AbpPro.Data;
+using Microsoft.Extensions.Configuration;
 using Serilog;
 using Volo.Abp;
 
@@ -11,28 +13,31 @@ namespace Lion.AbpPro.DbMigrator
     public class DbMigratorHostedService : IHostedService
     {
         private readonly IHostApplicationLifetime _hostApplicationLifetime;
-
-        public DbMigratorHostedService(IHostApplicationLifetime hostApplicationLifetime)
+        private readonly IConfiguration _configuration;
+        public DbMigratorHostedService(IHostApplicationLifetime hostApplicationLifetime,
+            IConfiguration configuration)
         {
             _hostApplicationLifetime = hostApplicationLifetime;
+            _configuration = configuration;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            using (var application = AbpApplicationFactory.Create<AbpProDbMigratorModule>(options =>
+            using (var application = await AbpApplicationFactory.CreateAsync<AbpProDbMigratorModule>(options =>
+                   {
+                       options.Services.ReplaceConfiguration(_configuration);
+                       options.UseAutofac();
+                       options.Services.AddLogging(c => c.AddSerilog());
+                   }))
             {
-                options.UseAutofac();
-                options.Services.AddLogging(c => c.AddSerilog());
-            }))
-            {
-                application.Initialize();
+                await application.InitializeAsync();
 
                 await application
                     .ServiceProvider
                     .GetRequiredService<AbpProDbMigrationService>()
                     .MigrateAsync();
 
-                application.Shutdown();
+                await application.ShutdownAsync();
 
                 _hostApplicationLifetime.StopApplication();
             }

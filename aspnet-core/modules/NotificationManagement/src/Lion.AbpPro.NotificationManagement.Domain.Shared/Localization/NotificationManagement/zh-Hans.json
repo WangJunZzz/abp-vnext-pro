@@ -2,6 +2,11 @@
   "culture": "zh-Hans",
   "texts": {
     "ManageYourProfile": "管理个人资料",
-    "SamplePageMessage": "NotificationManagement模块的示例页面"
+    "SamplePageMessage": "NotificationManagement模块的示例页面",
+
+    "Lion.AbpPro.NotificationManagement:100001": "接收人不能为空",
+    "Lion.AbpPro.NotificationManagement:100002": "消息不存在",
+    "Lion.AbpPro.NotificationManagement:100003": "未知的消息类型",
+    "Lion.AbpPro.NotificationManagement:100004": "当前用户未订阅消息"
   }
 }

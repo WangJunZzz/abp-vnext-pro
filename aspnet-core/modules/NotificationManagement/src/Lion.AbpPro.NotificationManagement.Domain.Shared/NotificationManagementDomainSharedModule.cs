@@ -23,14 +23,14 @@ namespace Lion.AbpPro.NotificationManagement
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Add<NotificationManagementResource>("en")
+                    .Add<NotificationManagementResource>(NotificationManagementConsts.DefaultCultureName)
                     .AddBaseTypes(typeof(AbpValidationResource))
                     .AddVirtualJson("/Localization/NotificationManagement");
             });
 
             Configure<AbpExceptionLocalizationOptions>(options =>
             {
-                options.MapCodeNamespace("NotificationManagement", typeof(NotificationManagementResource));
+                options.MapCodeNamespace(NotificationManagementConsts.NameSpace, typeof(NotificationManagementResource));
             });
         }
     }

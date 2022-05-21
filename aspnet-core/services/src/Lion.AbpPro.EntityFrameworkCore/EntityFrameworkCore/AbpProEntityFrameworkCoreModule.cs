@@ -52,11 +52,12 @@ namespace Lion.AbpPro.EntityFrameworkCore
             {
                 /* The main point to change your DBMS.
                  * See also AbpProMigrationsDbContextFactory for EF Core tooling. */
+                options.UseMySQL();
                 options.PreConfigure<AbpProDbContext>(options =>
                 {
                     options.DbContextOptions.UseBatchEF_MySQLPomelo();
                 });
-                options.UseMySQL();
+             
             });
         }
     }

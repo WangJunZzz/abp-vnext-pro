@@ -1,5 +1,5 @@
-import { FormSchema } from '/@/components/Table';
-import { BasicColumn } from '/@/components/Table';
+import { FormSchema } from "/@/components/Table";
+import { BasicColumn } from "/@/components/Table";
 import {
   RolesServiceProxy,
   PagingRoleListInput,
@@ -7,98 +7,99 @@ import {
   IdentityRoleCreateDto,
   PermissionsServiceProxy,
   IdInput,
-  GetPermissionInput,
-} from '/@/services/ServiceProxies';
-import { message } from 'ant-design-vue';
-import { useLoading } from '/@/components/Loading';
+  GetPermissionInput
+} from "/@/services/ServiceProxies";
+import { message } from "ant-design-vue";
+import { useLoading } from "/@/components/Loading";
 
-import { useI18n } from '/@/hooks/web/useI18n';
+import { useI18n } from "/@/hooks/web/useI18n";
+
 const { t } = useI18n();
 const [openFullLoading, closeFullLoading] = useLoading({
-  tip: 'Loading...',
+  tip: "Loading..."
 });
 export const tableColumns: BasicColumn[] = [
   {
-    title: t('routes.admin.userManagement_roleName'),
-    dataIndex: 'name',
+    title: t("routes.admin.userManagement_roleName"),
+    dataIndex: "name"
   },
   {
-    title: t('routes.admin.roleManagement_default'),
-    dataIndex: 'isDefault',
-    slots: { customRender: 'category' },
-  },
+    title: t("routes.admin.roleManagement_default"),
+    dataIndex: "isDefault",
+    slots: { customRender: "category" }
+  }
 ];
 
 export const searchFormSchema: FormSchema[] = [
   {
-    field: 'filter',
-    label: t('routes.admin.userManagement_roleName'),
-    component: 'Input',
-    colProps: { span: 8 },
-  },
+    field: "filter",
+    label: t("routes.admin.userManagement_roleName"),
+    component: "Input",
+    colProps: { span: 8 }
+  }
 ];
 
 export const createFormSchema: FormSchema[] = [
   {
-    field: 'name',
-    label: t('routes.admin.userManagement_roleName'),
-    component: 'Input',
+    field: "name",
+    label: t("routes.admin.userManagement_roleName"),
+    component: "Input",
     required: true,
-    colProps: { span: 18 },
+    colProps: { span: 18 }
   },
   {
-    field: 'isDefault',
-    component: 'RadioGroup',
-    label: t('routes.admin.roleManagement_default'),
+    field: "isDefault",
+    component: "RadioGroup",
+    label: t("routes.admin.roleManagement_default"),
     required: true,
     colProps: {
-      span: 18,
+      span: 18
     },
-    defaultValue: '0',
+    defaultValue: "0",
     componentProps: {
       options: [
         {
-          label: t('common.true'),
-          value: '1',
+          label: t("common.true"),
+          value: "1"
         },
         {
-          label: t('common.false'),
-          value: '0',
-        },
-      ],
-    },
-  },
+          label: t("common.false"),
+          value: "0"
+        }
+      ]
+    }
+  }
 ];
 
 export const editFormSchema: FormSchema[] = [
   {
-    field: 'name',
-    label: t('routes.admin.userManagement_roleName'),
-    component: 'Input',
+    field: "name",
+    label: t("routes.admin.userManagement_roleName"),
+    component: "Input",
     required: true,
-    colProps: { span: 18 },
+    colProps: { span: 18 }
   },
   {
-    field: 'isDefault',
-    component: 'RadioGroup',
-    label: t('routes.admin.roleManagement_default'),
+    field: "isDefault",
+    component: "RadioGroup",
+    label: t("routes.admin.roleManagement_default"),
     required: true,
     colProps: {
-      span: 18,
+      span: 18
     },
     componentProps: {
       options: [
         {
-          label: t('common.true'),
-          value: '1',
+          label: t("common.true"),
+          value: "1"
         },
         {
-          label: t('common.false'),
-          value: '0',
-        },
-      ],
-    },
-  },
+          label: t("common.false"),
+          value: "0"
+        }
+      ]
+    }
+  }
 ];
 
 /**
@@ -123,7 +124,7 @@ export async function deleteRoleAsync({ roleId, reload }) {
     request.id = roleId;
     await _roleServiceProxy.delete(request);
     closeFullLoading();
-    message.success(t('common.operationSuccess'));
+    message.success(t("common.operationSuccess"));
     reload();
   } catch (error) {
     closeFullLoading();
@@ -139,11 +140,11 @@ export async function createRoleAsync({ request, changeOkLoading, validate, clos
   await validate();
   let requestBody: IdentityRoleCreateDto = new IdentityRoleCreateDto();
   requestBody.name = request.name;
-  request.isDefault == '1' ? (requestBody.isDefault = true) : (requestBody.isDefault = false);
+  request.isDefault == "1" ? (requestBody.isDefault = true) : (requestBody.isDefault = false);
   const _roleServiceProxy = new RolesServiceProxy();
   await _roleServiceProxy.create(requestBody);
   changeOkLoading(false);
-  message.success(t('common.operationSuccess'));
+  message.success(t("common.operationSuccess"));
   closeModal();
 }
 
@@ -155,7 +156,7 @@ export async function createRoleAsync({ request, changeOkLoading, validate, clos
 export async function getRolePermissionAsync(roleName: string) {
   const _permissionsServiceProxy = new PermissionsServiceProxy();
   const request = new GetPermissionInput();
-  request.providerName = 'R';
+  request.providerName = "R";
   request.providerKey = roleName;
   return await _permissionsServiceProxy.tree(request);
 }

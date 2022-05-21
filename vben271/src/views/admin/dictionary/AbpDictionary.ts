@@ -66,7 +66,6 @@ export const dictionaryTypeTableColumns: BasicColumn[] = [
       customRender: "text"
     }
   }
-
 ];
 //字典项查询
 export const searchFormSchema: FormSchema[] = [
@@ -330,12 +329,12 @@ export async function getDictionaryTypeAsync(params: PagingDataDictionaryInput) 
 
 //新建字典类型
 export async function createDictionaryTypeAsync({
-                                                  request,
-                                                  changeOkLoading,
-                                                  closeModal,
-                                                  validate,
-                                                  resetFields
-                                                }) {
+  request,
+  changeOkLoading,
+  closeModal,
+  validate,
+  resetFields
+}) {
   changeOkLoading(true);
   await validate();
   const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();
@@ -365,12 +364,12 @@ export async function enableDictionaryAsync(input: SetDataDictinaryDetailInput) 
 
 //创建数据详情字典
 export async function createDetailsDictionaryAsync({
-                                                     request,
-                                                     changeOkLoading,
-                                                     validate,
-                                                     resetFields,
-                                                     closeModal
-                                                   }) {
+  request,
+  changeOkLoading,
+  validate,
+  resetFields,
+  closeModal
+}) {
   changeOkLoading(true);
   await validate();
   const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();
@@ -390,11 +389,11 @@ export async function getDictionaryDetailsAsync({ params }) {
 
 //编辑数据字典
 export async function editDetailsDictionaryAsync({
-                                                   request,
-                                                   changeOkLoading,
-                                                   validate,
-                                                   closeModal
-                                                 }) {
+  request,
+  changeOkLoading,
+  validate,
+  closeModal
+}) {
   changeOkLoading(true);
   await validate();
   const _dataDictionaryServiceProxy = new DataDictionaryServiceProxy();

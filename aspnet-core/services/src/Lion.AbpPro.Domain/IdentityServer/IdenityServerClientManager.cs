@@ -50,7 +50,7 @@ namespace Lion.AbpPro.IdentityServer
             string description, string allowedGrantTypes)
         {
             var entity = await _clientRepository.FindByClientIdAsync(clientId);
-            if (null != entity) throw new UserFriendlyException(message: "当前ClientId已存在");
+            if (null != entity) throw new BusinessException(AbpProDomainErrorCodes.ApiClientExist);
             entity = new Client(GuidGenerator.Create(), clientId)
             {
                 ClientName = clientName, Description = description,
@@ -108,7 +108,7 @@ namespace Lion.AbpPro.IdentityServer
             var client = await _clientRepository.FindByClientIdAsync(clientId);
             if (client == null)
             {
-                throw new UserFriendlyException(message: $"{clientId}不存在");
+                throw new BusinessException(AbpProDomainErrorCodes.ApiClientNotExist);
             }
 
             client.ClientName = clientName;
@@ -180,7 +180,7 @@ namespace Lion.AbpPro.IdentityServer
         public async Task<Client> UpdateScopesAsync(string clientId, List<string> scopes)
         {
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
+            if (client == null) throw new BusinessException(AbpProDomainErrorCodes.ApiClientNotExist);
             client.RemoveAllScopes();
           
             foreach (var item in scopes.Distinct())
@@ -201,7 +201,7 @@ namespace Lion.AbpPro.IdentityServer
         {
             uri = uri.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
+            if (client == null) throw new BusinessException(AbpProDomainErrorCodes.ApiClientNotExist);
             if (client.RedirectUris.Any(e => e.RedirectUri == uri.Trim()))
             {
                 return client;
@@ -220,7 +220,7 @@ namespace Lion.AbpPro.IdentityServer
         {
             uri = uri.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
+            if (client == null) throw new BusinessException(AbpProDomainErrorCodes.ApiClientNotExist);
             if (client.RedirectUris.Any(e => e.RedirectUri == uri.Trim()))
             {
                 client.RemoveRedirectUri(uri);
@@ -239,7 +239,7 @@ namespace Lion.AbpPro.IdentityServer
         {
             uri = uri.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
+            if (client == null) throw new BusinessException(AbpProDomainErrorCodes.ApiClientNotExist);
             if (client.PostLogoutRedirectUris.Any(e => e.PostLogoutRedirectUri == uri))
             {
                 return client;
@@ -256,7 +256,7 @@ namespace Lion.AbpPro.IdentityServer
         {
             uri = uri.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
+            if (client == null) throw new BusinessException(AbpProDomainErrorCodes.ApiClientNotExist);
             if (client.PostLogoutRedirectUris.Any(e => e.PostLogoutRedirectUri == uri))
             {
                 client.RemovePostLogoutRedirectUri(uri);
@@ -273,7 +273,7 @@ namespace Lion.AbpPro.IdentityServer
         {
             origin = origin.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
+            if (client == null) throw new BusinessException(AbpProDomainErrorCodes.ApiClientNotExist);
             if (client.AllowedCorsOrigins.Any(e => e.Origin == origin))
             {
                 return client;
@@ -292,7 +292,7 @@ namespace Lion.AbpPro.IdentityServer
         {
             origin = origin.Trim();
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
+            if (client == null) throw new BusinessException(AbpProDomainErrorCodes.ApiClientNotExist);
             if (client.AllowedCorsOrigins.Any(e => e.Origin == origin))
             {
                 client.RemoveCorsOrigin(origin);
@@ -305,7 +305,7 @@ namespace Lion.AbpPro.IdentityServer
         public async Task<Client> EnabledAsync(string clientId, bool enabled)
         {
             var client = await _clientRepository.FindByClientIdAsync(clientId);
-            if (client == null) throw new UserFriendlyException(message: $"{clientId}不存在");
+            if (client == null) throw new BusinessException(AbpProDomainErrorCodes.ApiClientNotExist);
             client.Enabled = enabled;
             return await _clientRepository.UpdateAsync(client);
         }
