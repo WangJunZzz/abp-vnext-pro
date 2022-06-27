@@ -1,23 +1,27 @@
 ﻿<Project>
 
 	<PropertyGroup>
-		<AbpPackageVersion>5.2.1</AbpPackageVersion>
-		<DotNetCoreCAPVersion>6.0.0</DotNetCoreCAPVersion>
-		<MicrosoftVersion>6.0.0</MicrosoftVersion>
+		<AbpPackageVersion>5.3.0</AbpPackageVersion>
+		<DotNetCoreCAPVersion>6.1.0</DotNetCoreCAPVersion>
+		<MicrosoftVersion>6.0.6</MicrosoftVersion>
+		<MicrosoftExtensionsHostingVersion>6.0.1</MicrosoftExtensionsHostingVersion>
+		<MicrosoftExtensionsHttpVersion>6.0.0</MicrosoftExtensionsHttpVersion>
 		<SystemComponentModelAnnotationsVersion>6.0.0-preview.4.21253.7</SystemComponentModelAnnotationsVersion>
 		<MicrosoftExtensionsDependencyModelVersion>6.0.0</MicrosoftExtensionsDependencyModelVersion>
 		<SwashbuckleVersion>6.2.3</SwashbuckleVersion>
 		<MicrosoftNETTestSdkVersion>17.0.0</MicrosoftNETTestSdkVersion>
-		<FreeSqlVersion>2.5.200</FreeSqlVersion>
+		<FreesqlVersion>3.0.100</FreesqlVersion>
+		<SwashbuckleVersion>6.3.1</SwashbuckleVersion>
+		<MicrosoftNETTestSdkVersion>17.2.0</MicrosoftNETTestSdkVersion>
 		<MiniProfilerVersion>4.2.22</MiniProfilerVersion>
 		<MicrosoftAspNetCoreHttpAbstractionsVersion>2.2.0</MicrosoftAspNetCoreHttpAbstractionsVersion>
-		<SerilogVersion>2.10.0</SerilogVersion>
-		<SerilogExtensionsLoggingVersion>3.0.1</SerilogExtensionsLoggingVersion>
+		<SerilogVersion>2.11.0</SerilogVersion>
+		<SerilogExtensionsLoggingVersion>3.1.0</SerilogExtensionsLoggingVersion>
 		<SerilogSinksAsyncVersion>1.5.0</SerilogSinksAsyncVersion>
 		<SerilogSinksFileVersion>5.0.0</SerilogSinksFileVersion>
-		<SerilogSinksConsoleVersion>4.0.0</SerilogSinksConsoleVersion>
-		<SerilogAspNetCoreVersion>4.1.0</SerilogAspNetCoreVersion>
-		<SerilogExceptionsVersion>7.0.0</SerilogExceptionsVersion>
+		<SerilogSinksConsoleVersion>4.0.1</SerilogSinksConsoleVersion>
+		<SerilogAspNetCoreVersion>5.0.0</SerilogAspNetCoreVersion>
+		<SerilogExceptionsVersion>8.2.0</SerilogExceptionsVersion>
 		<SerilogSettingsConfigurationVersion>3.3.0</SerilogSettingsConfigurationVersion>
 		<SerilogSinksElasticsearchVersion>8.4.1</SerilogSinksElasticsearchVersion>
 		<NewtonsoftJsonVersion>13.0.1</NewtonsoftJsonVersion>
@@ -28,9 +32,8 @@
 		<XunitVersion>2.4.1</XunitVersion>
 		<XunitrunnervisualstudioVersion>2.4.3</XunitrunnervisualstudioVersion>
 		<OcelotVersion>17.0.0</OcelotVersion>
-		<MagicodesIEExcelVersion>2.6.1</MagicodesIEExcelVersion>
-		<ZackEFCoreBatchVersion>6.0.11</ZackEFCoreBatchVersion>
-		<FreesqlVersion>3.0.100</FreesqlVersion>
+		<MagicodesIEExcelVersion>2.6.4</MagicodesIEExcelVersion>
+		<ZackEFCoreBatchVersion>6.0.15</ZackEFCoreBatchVersion>
 	</PropertyGroup>
 
 </Project>

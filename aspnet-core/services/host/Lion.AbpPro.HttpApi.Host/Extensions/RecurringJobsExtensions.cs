@@ -1,3 +1,4 @@
+using System;
 using Hangfire;
 using Lion.AbpPro.Extensions.Hangfire;
 using Lion.AbpPro.Jobs;
@@ -11,9 +12,8 @@ namespace Lion.AbpPro.Extensions
         public static void CreateRecurringJob(this ApplicationInitializationContext context)
         {
             using var scope = context.ServiceProvider.CreateScope();
-            var testJob =
-                scope.ServiceProvider.GetService<TestJob>();
-            RecurringJob.AddOrUpdate("测试Job", () => testJob.ExecuteAsync(), CronType.Minute(1));
+            var testJob = scope.ServiceProvider.GetService<TestJob>();
+            RecurringJob.AddOrUpdate("测试Job", () => testJob.ExecuteAsync(), CronType.Minute(1), TimeZoneInfo.Local);
         }
     }
 }

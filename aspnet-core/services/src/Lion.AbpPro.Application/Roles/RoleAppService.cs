@@ -31,7 +31,7 @@ namespace Lion.AbpPro.Roles
         /// <summary>
         /// 获取所有角色
         /// </summary>
-        /// <returns></returns>
+        [Authorize]
         public async Task<ListResultDto<IdentityRoleDto>> AllListAsync()
         {
             List<IdentityRole> source =

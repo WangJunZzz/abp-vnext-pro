@@ -15,8 +15,11 @@ using Microsoft.Extensions.Options;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Application.Dtos;
+using Volo.Abp.DependencyInjection;
+using Volo.Abp.EventBus;
 using Volo.Abp.Identity;
 using Volo.Abp.Users;
+using IdentityUser = Volo.Abp.Identity.IdentityUser;
 
 namespace Lion.AbpPro.Users
 {
@@ -28,19 +31,22 @@ namespace Lion.AbpPro.Users
         private readonly IIdentityUserRepository _identityUserRepository;
         private readonly IExcelExporter _excelExporter;
         private readonly IOptions<IdentityOptions> _options;
+        private readonly  IBulkImportUserRepository _bulkImportUserRepository;
         public UserAppService(
             IIdentityUserAppService identityUserAppService,
             IdentityUserManager userManager,
             IIdentityUserRepository userRepository,
             IExcelExporter excelExporter,
             IOptions<IdentityOptions> options,
-            NotificationManager notificationManager)
+            NotificationManager notificationManager,
+            IBulkImportUserRepository bulkImportUserRepository)
         {
             _identityUserAppService = identityUserAppService;
             _userManager = userManager;
             _identityUserRepository = userRepository;
             _excelExporter = excelExporter;
             _options = options;
+            _bulkImportUserRepository = bulkImportUserRepository;
         }
 
         /// <summary>
@@ -162,9 +168,26 @@ namespace Lion.AbpPro.Users
         [Authorize(AbpProPermissions.SystemManagement.UserEnable)]
         public async Task LockAsync(LockUserInput input)
         {
-            var identityUser = await _userManager.GetByIdAsync(input.UserId);
-            identityUser.SetIsActive(input.Locked);
-            await _userManager.UpdateAsync(identityUser);
+            var s = new IdentityUser(Guid.NewGuid(),Guid.NewGuid().ToString(),Guid.NewGuid().ToString()+"@qq.com");
+            
+            await _bulkImportUserRepository.BulkInsertAsync(new List<IdentityUser>(){s});
+           // throw new UserFriendlyException("Sdf");
+            // var identityUser = await _userManager.GetByIdAsync(input.UserId);
+            // identityUser.SetIsActive(input.Locked);
+            // await _userManager.UpdateAsync(identityUser);
         }
+    }
+}
+
+public class TestEvent
+{
+    public string Type { get; set; }
+}
+
+public class ttt : ILocalEventHandler<TestEvent>, ITransientDependency
+{
+    public async Task HandleEventAsync(TestEvent eventData)
+    {
+        var s = "1";
     }
 }

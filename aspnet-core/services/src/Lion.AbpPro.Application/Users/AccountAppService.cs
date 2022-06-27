@@ -28,22 +28,22 @@ namespace Lion.AbpPro.Users
         private readonly JwtOptions _jwtOptions;
         private readonly Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> _signInManager;
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IConfiguration _configuretion;
+        private readonly IConfiguration _configuration;
         private readonly Volo.Abp.Domain.Repositories.IRepository<IdentityRole> _identityRoleRepository;
-   
+
         public AccountAppService(
             IdentityUserManager userManager,
             IOptionsSnapshot<JwtOptions> jwtOptions,
             Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> signInManager,
             IHttpClientFactory httpClientFactory,
-            IConfiguration configuretion,
+            IConfiguration configuration,
             Volo.Abp.Domain.Repositories.IRepository<IdentityRole> identityRoleRepository)
         {
             _userManager = userManager;
             _jwtOptions = jwtOptions.Value;
             _signInManager = signInManager;
             _httpClientFactory = httpClientFactory;
-            _configuretion = configuretion;
+            _configuration = configuration;
             _identityRoleRepository = identityRoleRepository;
         }
 
@@ -94,12 +94,12 @@ namespace Lion.AbpPro.Users
             var headers = new Dictionary<string, string> { { "Accept", $"application/json" } };
             // 通过code获取access token
             var accessTokenUrl =
-                $"login/oauth/access_token?client_id={_configuretion.GetValue<string>("HttpClient:Github:ClientId")}&client_secret={_configuretion.GetValue<string>("HttpClient:Github:ClientSecret")}&code={code}";
+                $"login/oauth/access_token?client_id={_configuration.GetValue<string>("HttpClient:Github:ClientId")}&client_secret={_configuration.GetValue<string>("HttpClient:Github:ClientSecret")}&code={code}";
             var accessTokenResponse = await _httpClientFactory.GetAsync<GithubAccessTokenResponse>(HttpClientNameConsts.Github, accessTokenUrl, headers);
 
             // 获取github用户信息
             headers.Add("Authorization", $"token {accessTokenResponse.Access_token}");
-            headers.Add("User-Agent", _configuretion.GetValue<string>("HttpClient:GithubApi:ClientName"));
+            headers.Add("User-Agent", _configuration.GetValue<string>("HttpClient:GithubApi:ClientName"));
             var userResponse = await _httpClientFactory.GetAsync<LoginGithubResponse>(HttpClientNameConsts.GithubApi, "/user", headers);
 
             var user = await _userManager.FindByEmailAsync(userResponse.email);
@@ -140,7 +140,7 @@ namespace Lion.AbpPro.Users
 
         private async Task<LoginOutput> BuildResult(IdentityUser user)
         {
-            if (!user.IsActive)  throw new BusinessException(AbpProDomainErrorCodes.UserLockedOut);
+            if (!user.IsActive) throw new BusinessException(AbpProDomainErrorCodes.UserLockedOut);
             var roles = await _userManager.GetRolesAsync(user);
             if (roles == null || roles.Count == 0) throw new AbpAuthorizationException();
             var token = GenerateJwt(user.Id, user.UserName, user.Name, user.Email,

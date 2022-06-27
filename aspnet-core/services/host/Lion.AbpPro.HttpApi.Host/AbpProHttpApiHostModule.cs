@@ -42,7 +42,6 @@ using Microsoft.AspNetCore.Mvc;
 using Magicodes.ExporterAndImporter.Core;
 using Magicodes.ExporterAndImporter.Excel;
 using Microsoft.AspNetCore.Identity;
-using Volo.Abp.AspNetCore.ExceptionHandling;
 
 namespace Lion.AbpPro
 {
@@ -89,7 +88,7 @@ namespace Lion.AbpPro
         {
             var app = context.GetApplicationBuilder();
             var configuration = context.GetConfiguration();
-            app.UseRequestLog();
+            //app.UseRequestLog();
             app.UseAbpRequestLocalization();
             app.UseCorrelationId();
             app.UseStaticFiles();
