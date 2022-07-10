@@ -10,7 +10,7 @@
 import {ServiceProxyBase} from './ServiceProxyBase'
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, CancelToken } from 'axios';
 
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 
 export class AbpApiDefinitionServiceProxy extends ServiceProxyBase {
     private instance: AxiosInstance;

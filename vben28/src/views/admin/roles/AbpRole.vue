@@ -79,7 +79,7 @@ import { useI18n } from "/@/hooks/web/useI18n";
 import { Tag } from "ant-design-vue";
 
 export default defineComponent({
-  name: "AbpUser",
+  name: "AbpRole",
   components: {
     BasicTable,
     TableAction,
