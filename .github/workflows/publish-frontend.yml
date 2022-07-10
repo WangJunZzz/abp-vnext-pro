@@ -13,6 +13,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Install pnpm   
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 6.0.2
+
       - name: 编译|发布
         run: |
           cd vben28
