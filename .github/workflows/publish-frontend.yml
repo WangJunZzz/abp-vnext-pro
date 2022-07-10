@@ -15,8 +15,8 @@ jobs:
 
       - name: 编译|发布
         run: |
-          cd vben271
-          yarn
+          cd vben28
+          pnpm install
           npm run build
 
       - name: 部署->Vue
