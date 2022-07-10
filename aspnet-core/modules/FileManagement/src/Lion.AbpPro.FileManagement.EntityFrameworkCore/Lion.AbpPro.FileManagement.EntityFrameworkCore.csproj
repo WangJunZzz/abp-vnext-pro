@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(AbpPackageVersion)" />
+      
         <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
         <ProjectReference Include="..\Lion.AbpPro.FileManagement.Domain\Lion.AbpPro.FileManagement.Domain.csproj" />
     </ItemGroup>

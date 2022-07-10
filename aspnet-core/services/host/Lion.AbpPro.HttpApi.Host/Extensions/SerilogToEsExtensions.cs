@@ -1,12 +1,5 @@
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Serilog;
 using Serilog.Exceptions;
 using Serilog.Sinks.Elasticsearch;
-using System;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lion.AbpPro.Extensions
 {

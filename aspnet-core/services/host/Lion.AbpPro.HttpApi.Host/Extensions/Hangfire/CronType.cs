@@ -1,6 +1,3 @@
-using System;
-using Hangfire;
-
 namespace Lion.AbpPro.Extensions.Hangfire
 {
     /// <summary>

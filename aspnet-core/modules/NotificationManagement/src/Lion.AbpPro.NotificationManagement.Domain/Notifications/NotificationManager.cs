@@ -50,7 +50,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
             // 发送集成事件
             entity.AddCreatedNotificationDistributedEvent(new CreatedNotificationDistributedEvent(notificationEto));
-            return entity = await _notificationRepository.InsertAsync(entity);
+            return  await _notificationRepository.InsertAsync(entity);
         }
 
         /// <summary>

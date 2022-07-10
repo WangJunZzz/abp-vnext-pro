@@ -1,8 +1,4 @@
-﻿using Hangfire.Common;
-using Hangfire.States;
-using Serilog;
-
-namespace Lion.AbpPro.Extensions.Hangfire;
+﻿namespace Lion.AbpPro.Extensions.Hangfire;
 
 /// <summary>
 /// 重试最后一次

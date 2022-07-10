@@ -1,11 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-
-namespace Lion.AbpPro.Extensions.Middlewares;
+﻿namespace Lion.AbpPro.Extensions.Middlewares;
 
 public class RequestLogMiddleware
 {

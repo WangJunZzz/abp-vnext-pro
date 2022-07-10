@@ -1,12 +1,16 @@
 using System;
 using System.Linq;
+using Lion.AbpPro.CAP;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using Lion.AbpPro.FileManagement.EntityFrameworkCore;
+using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Savorboard.CAP.InMemoryMessageQueue;
 using StackExchange.Redis;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using Volo.Abp;
@@ -22,19 +26,20 @@ using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.VirtualFileSystem;
 
-namespace Lion.AbpPro.FileManagement;
+namespace Lion.AbpPro.NotificationManagement;
 
 [DependsOn(
-    typeof(FileManagementApplicationModule),
-    typeof(FileManagementEntityFrameworkCoreModule),
-    typeof(FileManagementHttpApiModule),
+    typeof(NotificationManagementApplicationModule),
+    typeof(NotificationManagementEntityFrameworkCoreModule),
+    typeof(NotificationManagementHttpApiModule),
     typeof(AbpAutofacModule),
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule),
+    typeof(AbpProAbpCapModule),
     typeof(AbpEntityFrameworkCoreMySQLModule)
 )]
-public class FileManagementHttpApiHostModule : AbpModule
+public class NotificationManagementHttpApiHostModule : AbpModule
 {
     private const string DefaultCorsPolicyName = "Default";
 
@@ -44,6 +49,7 @@ public class FileManagementHttpApiHostModule : AbpModule
         ConfigureSwaggerServices(context);
         ConfigAntiForgery();
         ConfigureLocalization();
+        ConfigureCap(context);
         ConfigureCache(context);
         ConfigureCors(context);
         ConfigDB();
@@ -53,7 +59,6 @@ public class FileManagementHttpApiHostModule : AbpModule
     {
         var app = context.GetApplicationBuilder();
         var env = context.GetEnvironment();
-        app.UseHttpsRedirection();
         app.UseCorrelationId();
         app.UseStaticFiles();
         app.UseRouting();
@@ -64,7 +69,7 @@ public class FileManagementHttpApiHostModule : AbpModule
         app.UseSwagger();
         app.UseAbpSwaggerUI(options =>
         {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "FileManagement API");
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "NotificationManagement API");
             options.DocExpansion(DocExpansion.None);
             options.DefaultModelExpandDepth(-2);
         });
@@ -78,7 +83,51 @@ public class FileManagementHttpApiHostModule : AbpModule
     /// </summary>
     private void ConfigureVirtualFileSystem()
     {
-        Configure<AbpVirtualFileSystemOptions>(options => { options.FileSets.AddEmbedded<FileManagementHttpApiHostModule>(); });
+        Configure<AbpVirtualFileSystemOptions>(options => { options.FileSets.AddEmbedded<NotificationManagementHttpApiHostModule>(); });
+    }
+
+    private void ConfigDB()
+    {
+        Configure<AbpDbContextOptions>(options =>
+        {
+            /* The main point to change your DBMS.
+             * See also OperationsMigrationsDbContextFactory for EF Core tooling. */
+            options.UseMySQL();
+        });
+    }
+
+    private void ConfigureCap(ServiceConfigurationContext context)
+    {
+        var configuration = context.Services.GetConfiguration();
+        var enabled = configuration.GetValue("Cap:Enabled", false);
+        if (enabled)
+        {
+            context.AddAbpCap(capOptions =>
+            {
+                capOptions.UseEntityFramework<NotificationManagementHttpApiHostMigrationsDbContext>();
+                capOptions.UseRabbitMQ(option =>
+                {
+                    option.HostName = configuration.GetValue<string>("Cap:RabbitMq:HostName");
+                    option.UserName = configuration.GetValue<string>("Cap:RabbitMq:UserName");
+                    option.Password = configuration.GetValue<string>("Cap:RabbitMq:Password");
+                });
+
+                var hostingEnvironment = context.Services.GetHostingEnvironment();
+                bool auth = !hostingEnvironment.IsDevelopment();
+                capOptions.UseDashboard(options => { options.UseAuth = auth; });
+            });
+        }
+        else
+        {
+            context.AddAbpCap(capOptions =>
+            {
+                capOptions.UseInMemoryStorage();
+                capOptions.UseInMemoryMessageQueue();
+                var hostingEnvironment = context.Services.GetHostingEnvironment();
+                bool auth = !hostingEnvironment.IsDevelopment();
+                capOptions.UseDashboard(options => { options.UseAuth = auth; });
+            });
+        }
     }
 
     /// <summary>
@@ -90,10 +139,8 @@ public class FileManagementHttpApiHostModule : AbpModule
         context.Services.AddSwaggerGen(
             options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "FileManagement API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "NotificationManagement API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
-
-           
 
 
                 #region 多语言
@@ -125,16 +172,6 @@ public class FileManagementHttpApiHostModule : AbpModule
     {
         Configure<AbpAntiForgeryOptions>(options => { options.AutoValidate = false; });
     }
-    private void ConfigDB()
-    {
-        Configure<AbpDbContextOptions>(options =>
-        {
-            /* The main point to change your DBMS.
-             * See also OperationsMigrationsDbContextFactory for EF Core tooling. */
-            options.UseMySQL();
-        });
-    }
-    
 
     /// <summary>
     ///     配置本地化
@@ -173,7 +210,7 @@ public class FileManagementHttpApiHostModule : AbpModule
     {
         Configure<AbpDistributedCacheOptions>(options =>
         {
-            options.KeyPrefix = "FileManagement:";
+            options.KeyPrefix = "NotificationManagement:";
             options.GlobalCacheEntryOptions = new DistributedCacheEntryOptions
             {
                 // 全局缓存有效时间

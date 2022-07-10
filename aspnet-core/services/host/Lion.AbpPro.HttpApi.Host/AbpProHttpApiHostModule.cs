@@ -1,48 +1,3 @@
-using Lion.AbpPro.ConfigurationOptions;
-using Lion.AbpPro.EntityFrameworkCore;
-using Lion.AbpPro.MultiTenancy;
-using Hangfire;
-using Hangfire.MySql;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using Savorboard.CAP.InMemoryMessageQueue;
-using StackExchange.Redis;
-using Swashbuckle.AspNetCore.SwaggerUI;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Lion.AbpPro.CAP;
-using Lion.AbpPro.Extensions;
-using Lion.AbpPro.Extensions.Hangfire;
-using Lion.AbpPro.Shared.Hosting.Microservices;
-using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.Builder;
-using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.MVC.Filters;
-using Lion.AbpPro.Shared.Hosting.Microservices.Swaggers;
-using Volo.Abp;
-using Volo.Abp.Account.Web;
-using Volo.Abp.AspNetCore.Authentication.JwtBearer;
-using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
-using Volo.Abp.AspNetCore.Serilog;
-using Volo.Abp.BackgroundJobs;
-using Volo.Abp.BackgroundJobs.Hangfire;
-using Volo.Abp.Caching;
-using Volo.Abp.Caching.StackExchangeRedis;
-using Volo.Abp.Modularity;
-using Microsoft.AspNetCore.Mvc;
-using Magicodes.ExporterAndImporter.Core;
-using Magicodes.ExporterAndImporter.Excel;
-using Microsoft.AspNetCore.Identity;
-
 namespace Lion.AbpPro
 {
     [DependsOn(
@@ -82,6 +37,8 @@ namespace Lion.AbpPro
             ConfigureMagicodes(context);
             ConfigureAbpExceptions(context);
             ConfigureIdentity(context);
+            ConfigureCap(context);
+            ConfigureAuditLog(context);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -317,14 +274,6 @@ namespace Lion.AbpPro
             context.Services.Configure<IdentityOptions>(options => { options.Lockout = new LockoutOptions() { AllowedForNewUsers = false }; });
         }
 
-        // private void ConfigureConventionalControllers()
-        // {
-        //     Configure<AbpAspNetCoreMvcOptions>(options =>
-        //     {
-        //         options.ConventionalControllers.Create(typeof(AbpProApplicationModule).Assembly);
-        //     });
-        // }
-
         private static void ConfigureSwaggerServices(ServiceConfigurationContext context)
         {
             context.Services.AddSwaggerGen(
@@ -425,6 +374,30 @@ namespace Lion.AbpPro
                     capOptions.UseDashboard(options => { options.UseAuth = auth; });
                 });
             }
+        }
+        
+        /// <summary>
+        /// 审计日志
+        /// </summary>
+        private void ConfigureAuditLog(ServiceConfigurationContext context)
+        {
+            Configure<AbpAuditingOptions>
+            (
+                options =>
+                {
+                    options.IsEnabled = true;
+                    options.EntityHistorySelectors.AddAllEntities();
+                    options.ApplicationName = "Lion.AbpPro";
+                }
+            );
+
+            Configure<AbpAspNetCoreAuditingOptions>(
+                options =>
+                {
+                    options.IgnoredUrls.Add("/AuditLogs/page");
+                    options.IgnoredUrls.Add("/hangfire/stats");
+                    options.IgnoredUrls.Add("/cap");
+                });
         }
     }
 }

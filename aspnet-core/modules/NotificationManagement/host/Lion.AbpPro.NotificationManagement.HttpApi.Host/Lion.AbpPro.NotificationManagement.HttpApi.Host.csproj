@@ -4,9 +4,9 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Lion.AbpPro.FileManagement</RootNamespace>
+    <RootNamespace>Lion.AbpPro.NotificationManagement</RootNamespace>
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
-    <UserSecretsId>Lion.AbpPro.FileManagement-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>
+    <UserSecretsId>Lion.AbpPro.NotificationManagement-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,9 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Lion.AbpPro.FileManagement.HttpApi\Lion.AbpPro.FileManagement.HttpApi.csproj" />
-    <ProjectReference Include="..\..\src\Lion.AbpPro.FileManagement.Application\Lion.AbpPro.FileManagement.Application.csproj" />
-    <ProjectReference Include="..\..\src\Lion.AbpPro.FileManagement.EntityFrameworkCore\Lion.AbpPro.FileManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\frameworks\CAP\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj" />
+    <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.HttpApi\Lion.AbpPro.NotificationManagement.HttpApi.csproj" />
+    <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.Application\Lion.AbpPro.NotificationManagement.Application.csproj" />
+    <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.EntityFrameworkCore\Lion.AbpPro.NotificationManagement.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

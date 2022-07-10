@@ -1,9 +1,3 @@
-using Lion.AbpPro.Localization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-
 namespace Lion.AbpPro
 {
     public class Startup

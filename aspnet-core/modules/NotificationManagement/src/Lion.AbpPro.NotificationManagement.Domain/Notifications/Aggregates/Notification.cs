@@ -13,7 +13,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
     /// <summary>
     /// 消息通知 
     /// </summary>
-    public partial class Notification : FullAuditedAggregateRoot<Guid>
+    public  class Notification : FullAuditedAggregateRoot<Guid>
     {
         /// <summary>
         /// 消息标题

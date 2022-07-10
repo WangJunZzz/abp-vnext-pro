@@ -1,9 +1,4 @@
-﻿using System;
-using Hangfire.Common;
-using Hangfire.States;
-using Hangfire.Storage;
-
-namespace Lion.AbpPro.Extensions.Hangfire;
+﻿namespace Lion.AbpPro.Extensions.Hangfire;
 
 public class AutoDeleteAfterSuccessAttributer : JobFilterAttribute, IApplyStateFilter
 {

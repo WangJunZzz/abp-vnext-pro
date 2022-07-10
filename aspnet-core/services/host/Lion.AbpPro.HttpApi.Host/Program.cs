@@ -1,12 +1,3 @@
-using System;
-using System.IO;
-using Lion.AbpPro.Extensions;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Serilog;
-using Serilog.Events;
-
 namespace Lion.AbpPro
 {
     public class Program

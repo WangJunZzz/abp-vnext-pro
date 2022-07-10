@@ -1,9 +1,4 @@
-using System;
-using Hangfire;
-using Lion.AbpPro.Extensions.Hangfire;
 using Lion.AbpPro.Jobs;
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp;
 
 namespace Lion.AbpPro.Extensions
 {

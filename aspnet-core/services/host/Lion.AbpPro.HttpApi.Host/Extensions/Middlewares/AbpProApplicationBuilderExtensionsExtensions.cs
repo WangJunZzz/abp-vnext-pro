@@ -1,6 +1,4 @@
-﻿using Lion.AbpPro.Extensions.Middlewares;
-
-namespace Microsoft.AspNetCore.Builder;
+﻿namespace Microsoft.AspNetCore.Builder;
 
 public static class AbpProApplicationBuilderExtensionsExtensions
 {
