@@ -180,34 +180,29 @@ namespace Lion.AbpPro
                                 return Task.CompletedTask;
                             }
 
-                            var accessToken =
-                                currentContext.Request.Query["access_token"].FirstOrDefault() ??
-                                currentContext.Request.Cookies[
-                                    AbpProHttpApiHostConst.DefaultCookieName];
+                            var accessToken = string.Empty;
+                            if (currentContext.HttpContext.Request.Headers.ContainsKey("Authorization"))
+                            {
+                                accessToken = currentContext.HttpContext.Request.Headers["Authorization"];
+                                if (!string.IsNullOrWhiteSpace(accessToken))
+                                {
+                                    accessToken = accessToken.Split(" ").LastOrDefault();
+                                }
+                            }
 
                             if (accessToken.IsNullOrWhiteSpace())
                             {
-                                return Task.CompletedTask;
+                                accessToken = currentContext.Request.Query["access_token"].FirstOrDefault();
                             }
 
-                            if (path.StartsWithSegments("/signalr"))
+                            if (accessToken.IsNullOrWhiteSpace())
                             {
-                                currentContext.Token = accessToken;
+                                accessToken = currentContext.Request.Cookies[AbpProHttpApiHostConst.DefaultCookieName];
                             }
 
+                            currentContext.Token = accessToken;
                             currentContext.Request.Headers.Remove("Authorization");
-                            currentContext.Request.Headers.Add("Authorization",
-                                $"Bearer {accessToken}");
-
-                            // 如果请求来自hangfire 或者cap
-                            if (path.ToString().StartsWith("/hangfire") ||
-                                path.ToString().StartsWith("/cap"))
-                            {
-                                // currentContext.HttpContext.Response.Headers.Remove(
-                                //     "X-Frame-Options");
-                                currentContext.Token = accessToken;
-                            }
-
+                            currentContext.Request.Headers.Add("Authorization", $"Bearer {accessToken}");
 
                             return Task.CompletedTask;
                         }
