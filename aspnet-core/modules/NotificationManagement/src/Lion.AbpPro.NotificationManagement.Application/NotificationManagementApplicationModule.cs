@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
-using Microsoft.Extensions.Configuration;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.SignalR;
 
@@ -22,39 +21,19 @@ namespace Lion.AbpPro.NotificationManagement
         {
             context.Services.AddAutoMapperObjectMapper<NotificationManagementApplicationModule>();
             Configure<AbpAutoMapperOptions>(options => { options.AddMaps<NotificationManagementApplicationModule>(validate: true); });
-
             ConfigurationSignalR(context);
         }
 
         private void ConfigurationSignalR(ServiceConfigurationContext context)
         {
             var redisConnection = context.Services.GetConfiguration()["Redis:Configuration"];
-            var redisConnectionStringList = redisConnection.Split(',', StringSplitOptions.RemoveEmptyEntries);
-            if (redisConnectionStringList == null || redisConnectionStringList.Length == 0)
+
+            if (redisConnection.IsNullOrWhiteSpace())
             {
-                throw new UserFriendlyException(message: "Redis连接字符串配置异常");
+                throw new UserFriendlyException(message: "Redis连接字符串未配置.");
             }
 
-            var password = string.Empty;
-            if (redisConnection.Contains("password"))
-            {
-                password = redisConnectionStringList[1].Split('=')[1];
-            }
-
-            var redisDatabaseId = 0;
-            if (redisConnection.Contains("defaultdatabase"))
-            {
-                redisDatabaseId = Convert.ToInt32(redisConnectionStringList[2].Split('=')[1]);
-            }
-
-
-            context.Services.AddSignalR().AddStackExchangeRedis(options =>
-            {
-                options.Configuration.ChannelPrefix = "Lion.AbpPro";
-                options.Configuration.DefaultDatabase = redisDatabaseId;
-                options.Configuration.Password = password;
-                options.Configuration.EndPoints.Add(redisConnectionStringList[0]);
-            });
+            context.Services.AddSignalR().AddStackExchangeRedis(redisConnection, options => { options.Configuration.ChannelPrefix = "Lion.AbpPro"; });
         }
     }
 }
