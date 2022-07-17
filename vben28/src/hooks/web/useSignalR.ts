@@ -1,62 +1,68 @@
 import * as signalR from '@microsoft/signalr';
 import { useMessage } from '/@/hooks/web/useMessage';
 import { useUserStoreWithOut } from '/@/store/modules/user';
-let connection;
+let connection:signalR.HubConnection;
 export function useSignalR() {
+
   /**
    * 开始连接SignalR
    */
-  function startConnect(): void {
-    connection = connectionsignalR();
-    //接收普通文本消息
-    connection.on('ReceiveTextMessageAsync', ReceiveTextMessageHandlerAsync);
-    //接收广播消息
-    connection.on('ReceiveBroadCastMessageAsync', ReceiveBroadCastMessageHandlerAsync);
-    //开始连接
-    connection.start();
+  async function startConnect() {
+     try {
+      connectionsignalR();
+      await connection.start();
+      } catch (err) {
+      console.log(err);
+      setTimeout(() => startConnect(), 5000);
+    }
   }
+
   /**
    * 关闭SignalR连接
    */
-  function closeConnect(): void {
+  function closeConnect(): void {8
     if (connection) {
       connection.stop();
     }
   }
 
-  /**
-   * 连接signalr
-   */
-  function connectionsignalR() {
+  async function connectionsignalR(){
     const userStore = useUserStoreWithOut();
     const token = userStore.getToken;
-
     const url = (import.meta.env.VITE_WEBSOCKE_URL as string) + '/signalr/notification';
     connection = new signalR.HubConnectionBuilder()
-      .withUrl(url, {
-        accessTokenFactory: () => token,
-        skipNegotiation: true,
-        transport: signalR.HttpTransportType.WebSockets,
-      })
-      .withAutomaticReconnect({
-        nextRetryDelayInMilliseconds: (retryContext) => {
-          //重连规则：重连次数<300：间隔1s;重试次数<3000:间隔3s;重试次数>3000:间隔30s
-          let count = retryContext.previousRetryCount / 300;
-          if (count < 1) {
-            //重试次数<300,间隔1s
-            return 1000;
-          } else if (count < 10) {
-            //重试次数>300:间隔5s
-            return 1000 * 5;
-          } //重试次数>3000:间隔30s
-          else {
-            return 1000 * 30;
-          }
-        },
-      })
-      .configureLogging(signalR.LogLevel.Information)
-      .build();
-    return connection;
+    .withUrl(url, {
+      accessTokenFactory: () => token,
+      skipNegotiation: true,
+      transport: signalR.HttpTransportType.WebSockets,
+    })  
+    .withAutomaticReconnect({
+      nextRetryDelayInMilliseconds: retryContext => {
+
+        //重连规则：重连次数<300：间隔1s;重试次数<3000:间隔3s;重试次数>3000:间隔30s
+        let count = retryContext.previousRetryCount / 300;
+        if (count < 1)//重试次数<300,间隔1s
+        {
+          return 1000;
+        }
+        else if (count < 10) //重试次数>300:间隔5s
+        {
+          return 1000 * 5;
+
+        }
+        else //重试次数>3000:间隔30s
+        {
+          return 1000 * 30;
+        }
+      }
+    })
+    .configureLogging(signalR.LogLevel.Debug)
+    .build();   
+
+      //接收普通文本消息
+      connection.on('ReceiveTextMessageAsync', ReceiveTextMessageHandlerAsync);
+      //接收广播消息
+      connection.on('ReceiveBroadCastMessageAsync', ReceiveBroadCastMessageHandlerAsync);
   }
 
   /**
