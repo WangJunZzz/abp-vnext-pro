@@ -196,7 +196,6 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// 消息设置为已读
         /// </summary>
         /// <param name="id">消息Id</param>
-        /// <param name="receiveId">接受人</param>
         public async Task SetReadAsync(Guid id)
         {
             if (_currentUser is not { IsAuthenticated: true }) throw new AbpAuthorizationException();

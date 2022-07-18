@@ -1,7 +1,7 @@
 ﻿<Project>
 
 	<PropertyGroup>
-		<AbpPackageVersion>5.3.1</AbpPackageVersion>
+		<AbpPackageVersion>5.3.2</AbpPackageVersion>
 		<DotNetCoreCAPVersion>6.1.0</DotNetCoreCAPVersion>
 		<InMemoryMessageQueueCAPVersion>6.0.0</InMemoryMessageQueueCAPVersion>
 		<MicrosoftVersion>6.0.6</MicrosoftVersion>
