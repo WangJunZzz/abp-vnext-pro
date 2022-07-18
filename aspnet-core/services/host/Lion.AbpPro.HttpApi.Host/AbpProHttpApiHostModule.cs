@@ -11,7 +11,6 @@ namespace Lion.AbpPro
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpAccountWebModule),
-        typeof(AbpBackgroundJobsHangfireModule),
         typeof(AbpProApplicationModule),
         typeof(AbpProAbpCapModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
@@ -111,6 +110,7 @@ namespace Lion.AbpPro
         private void ConfigureHangfireMysql(ServiceConfigurationContext context)
         {
             Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = true; });
+            context.Services.AddHangfireServer();
             context.Services.AddHangfire(config =>
             {
                 config.UseStorage(new MySqlStorage(

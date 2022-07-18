@@ -5,6 +5,7 @@ using Lion.AbpPro.NotificationManagement;
 using Volo.Abp.Account;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.AutoMapper;
+using Volo.Abp.BackgroundJobs.Hangfire;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
@@ -27,7 +28,8 @@ namespace Lion.AbpPro
         typeof(DataDictionaryManagementApplicationModule),
         typeof(NotificationManagementApplicationModule),
         typeof(FileManagementApplicationModule),
-        typeof(AbpProFreeSqlModule)
+        typeof(AbpProFreeSqlModule),
+        typeof(AbpBackgroundJobsHangfireModule)
         )]
     public class AbpProApplicationModule : AbpModule
     {
