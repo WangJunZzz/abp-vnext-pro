@@ -17,7 +17,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Enums
         /// 普通文本消息
         /// </summary>
         [Description("普通文本消息")]
-        Text = 20,
+        Common = 20,
 
     }
 }

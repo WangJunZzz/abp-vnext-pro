@@ -3,9 +3,12 @@
   "texts": {
     "ManageYourProfile":  "Manage your profile",
     "SamplePageMessage": "A sample page for the NotificationManagement module",
-    "Lion.AbpPro.NotificationManagement:100001": "ReceiverNotNull",
-    "Lion.AbpPro.NotificationManagement:100002": "MessageNotExist",
-    "Lion.AbpPro.NotificationManagement:100003": "MessageTypeUnknown",
-    "Lion.AbpPro.NotificationManagement:100004": "UserUnSubscription"
+    "Lion.AbpPro.NotificationManagement:100001": "Receiver Not Null",
+    "Lion.AbpPro.NotificationManagement:100002": "Message Not Exist",
+    "Lion.AbpPro.NotificationManagement:100003": "MessageType Unknown",
+    "Lion.AbpPro.NotificationManagement:100004": "User UnSubscription",
+    "Lion.AbpPro.NotificationManagement:100005": "Message Title NotNull",
+    "Lion.AbpPro.NotificationManagement:100006": "Message Content NotNull",
+    "Lion.AbpPro.NotificationManagement:100007": "Message Receiver NotNull"
   }
 }

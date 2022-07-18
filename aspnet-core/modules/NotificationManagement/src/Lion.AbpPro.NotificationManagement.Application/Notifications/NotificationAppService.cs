@@ -1,83 +1,104 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Lion.AbpPro.NotificationManagement.Hubs;
+using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
 using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
 using Lion.AbpPro.NotificationManagement.Notifications.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Users;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications
 {
+    [Authorize]
     public class NotificationAppService : NotificationManagementAppService, INotificationAppService
     {
-        private readonly IHubContext<NotificationHub, INotificationHub> _hubContext;
         private readonly NotificationManager _notificationManager;
         private readonly ICurrentUser _currentUser;
-        private readonly IDapperNotificationRepository _dapperNotificationRepository;
+
+
         public NotificationAppService(
-            IHubContext<NotificationHub, INotificationHub> hubContext,
             NotificationManager notificationManager,
-            ICurrentUser currentUser, 
-            IDapperNotificationRepository dapperNotificationRepository)
+            ICurrentUser currentUser)
         {
-            _hubContext = hubContext;
             _notificationManager = notificationManager;
             _currentUser = currentUser;
-            _dapperNotificationRepository = dapperNotificationRepository;
+        }
+
+
+        /// <summary>
+        /// 发送警告文本消息
+        /// </summary>
+        public async Task SendCommonWarningMessageAsync(SendCommonMessageInput input)
+        {
+            await _notificationManager.SendCommonWarningMessageAsync(input.Title, input.Content, input.ReceiveIds);
+        }
+
+        /// <summary>
+        /// 发送普通文本消息
+        /// </summary>
+        public async Task SendCommonInformationMessageAsync(SendCommonMessageInput input)
+        {
+            await _notificationManager.SendCommonInformationMessageAsync(input.Title, input.Content, input.ReceiveIds);
+        }
+
+        /// <summary>
+        /// 发送错误文本消息
+        /// </summary>
+        public async Task SendCommonErrorMessageAsync(SendCommonMessageInput input)
+        {
+            await _notificationManager.SendCommonErrorMessageAsync(input.Title, input.Content, input.ReceiveIds);
+        }
+
+        /// <summary>
+        /// 发送警告广播消息
+        /// </summary>
+        public async Task SendBroadCastWarningMessageAsync(SendBroadCastMessageInput input)
+        {
+            await _notificationManager.SendBroadCastWarningMessageAsync(input.Title, input.Content);
+        }
+
+        /// <summary>
+        /// 发送正常广播消息
+        /// </summary>
+        public async Task SendBroadCastInformationMessageAsync(SendBroadCastMessageInput input)
+        {
+            await _notificationManager.SendBroadCastInformationMessageAsync(input.Title, input.Content);
+        }
+
+        /// <summary>
+        /// 发送错误广播消息
+        /// </summary>
+        public async Task SendBroadCastErrorMessageAsync(SendBroadCastMessageInput input)
+        {
+            await _notificationManager.SendBroadCastErrorMessageAsync(input.Title, input.Content);
         }
 
         public Task SetReadAsync(SetReadInput input)
         {
-            return _notificationManager.SetReadAsync(input.Id, input.ReceiveId);
+            return _notificationManager.SetReadAsync(input.Id);
         }
         
-        public async Task CreateAsync(CreateNotificationInput input)
-        {
-            if (_currentUser.Id != null)
-                await _notificationManager.CreateAsync(input.Title, input.Content, _currentUser.Id.Value, input.ReceiveIds,
-                    input.MessageType);
-        }
-        
-        /// <summary>
-        /// 发送消息
-        /// </summary>
-        public async Task SendMessageAsync(string title, string content, MessageType messageType, List<string> users)
-        {
-            switch (messageType)
-            {
-                case MessageType.Text:
-                    await SendMessageToClientByUserIdAsync(new SendNotificationDto(title, content, messageType), users);
-                    break;
-                case MessageType.BroadCast:
-                    await SendMessageToAllClientAsync(new SendNotificationDto(title, content, messageType));
-                    break;
-                default:
-                    throw new BusinessException(NotificationManagementErrorCodes.MessageTypeUnknown);
-            }
-        }
 
         /// <summary>
         /// 分页获取用户普通文本消息
         /// </summary>
-        /// <param name="listInput"></param>
-        /// <returns></returns>
-        public async Task<PagedResultDto<PagingNotificationListOutput>> GetPageTextNotificationByUserIdAsync(
-            PagingNotificationListInput listInput)
+        public async Task<PagedResultDto<PagingNotificationListOutput>> GetPageCommonNotificationByUserIdAsync(PagingNotificationListInput listInput)
         {
-            if (!_currentUser.Id.HasValue)
+            if (_currentUser == null || !_currentUser.Id.HasValue)
             {
                 return null;
             }
 
-            var totalCount =
-                await _dapperNotificationRepository.GetPageTextNotificationCountByUserIdAsync(_currentUser.Id.Value);
-            var list = await _dapperNotificationRepository.GetPageTextNotificationByUserIdAsync(_currentUser.Id.Value,
-                listInput.PageSize,
-                listInput.SkipCount);
-            return new PagedResultDto<PagingNotificationListOutput>(totalCount, list);
+            var totalCount = await _notificationManager.GetPagingCountAsync(_currentUser.Id.Value, MessageType.Common);
+            var list = await _notificationManager.GetPagingListAsync(_currentUser.Id.Value, MessageType.Common, listInput.PageSize, listInput.SkipCount);
+            return new PagedResultDto<PagingNotificationListOutput>(totalCount, ObjectMapper.Map<List<Notification>, List<PagingNotificationListOutput>>(list));
         }
 
         /// <summary>
@@ -85,49 +106,11 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         /// <param name="listInput"></param>
         /// <returns></returns>
-        public async Task<PagedResultDto<PagingNotificationListOutput>> GetPageBroadCastNotificationByUserIdAsync(
-            PagingNotificationListInput listInput)
+        public async Task<PagedResultDto<PagingNotificationListOutput>> GetPageBroadCastNotificationByUserIdAsync(PagingNotificationListInput listInput)
         {
-            if (!_currentUser.Id.HasValue)
-            {
-                return null;
-            }
-
-            var totalCount =
-                await _dapperNotificationRepository.GetPageBroadCastNotificationCountByUserIdAsync(_currentUser.Id.Value);
-            var list = await _dapperNotificationRepository.GetPageBroadCastNotificationByUserIdAsync(_currentUser.Id.Value,
-                listInput.PageSize,
-                listInput.SkipCount);
-            return new PagedResultDto<PagingNotificationListOutput>(totalCount, list);
+            var totalCount = await _notificationManager.GetPagingCountAsync(null, MessageType.Common);
+            var list = await _notificationManager.GetPagingListAsync(null, MessageType.BroadCast, listInput.PageSize, listInput.SkipCount);
+            return new PagedResultDto<PagingNotificationListOutput>(totalCount, ObjectMapper.Map<List<Notification>, List<PagingNotificationListOutput>>(list));
         }
-        
-        /// <summary>
-        /// 发送消息指定客户端用户
-        /// </summary>
-        /// <param name="sendNotificationDto"></param>
-        /// <param name="users"></param>
-        /// <returns></returns>
-        private async Task SendMessageToClientByUserIdAsync(SendNotificationDto sendNotificationDto,
-            List<string> users)
-        {
-            if (users is {Count: > 0})
-            {
-                await _hubContext.Clients
-                    .Users(users.AsReadOnly().ToList())
-                    .ReceiveTextMessageAsync(sendNotificationDto);
-            }
-        }
-
-        /// <summary>
-        /// 发送消息到所有客户端
-        /// 广播消息
-        /// </summary>
-        /// <param name="sendNotificationDto"></param>
-        private async Task SendMessageToAllClientAsync(SendNotificationDto sendNotificationDto)
-        {
-            await _hubContext.Clients.All.ReceiveBroadCastMessageAsync(sendNotificationDto);
-        }
-        
-        
     }
 }

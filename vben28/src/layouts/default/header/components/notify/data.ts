@@ -44,7 +44,7 @@ export async function getTextAsync(): Promise<PagingNotificationListOutputPagedR
   let request = new PagingNotificationListInput();
   request.pageSize = 5;
   const _notificationServiceProxy = new NotificationServiceProxy();
-  return await _notificationServiceProxy.text(request);
+  return await _notificationServiceProxy.common(request);
 }
 
 export async function getBroadCastAsync(): Promise<PagingNotificationListOutputPagedResultDto> {

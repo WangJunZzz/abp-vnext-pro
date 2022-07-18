@@ -1,11 +1,8 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
-using Lion.AbpPro.NotificationManagement.Notifications.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
 using Volo.Abp.AspNetCore.Mvc;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications
@@ -24,23 +21,19 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
 
         /// <summary>
         /// 分页获取用户普通文本消息
-        /// </summary>
-        /// <param name="listInput"></param>
-        /// <returns></returns>
-        [HttpPost("Text")]
+        /// </summary>x
+        [HttpPost("Common")]
         [SwaggerOperation(summary: "分页查询普通消息", Tags = new[] { "Notification" })]
         public Task<PagedResultDto<PagingNotificationListOutput>>
-            GetPageTextNotificationByUserIdAsync(
+            GetPageCommonNotificationByUserIdAsync(
                 PagingNotificationListInput listInput)
         {
-            return _notificationAppService.GetPageTextNotificationByUserIdAsync(listInput);
+            return _notificationAppService.GetPageCommonNotificationByUserIdAsync(listInput);
         }
 
         /// <summary>
         /// 分页获取广播消息
         /// </summary>
-        /// <param name="listInput"></param>
-        /// <returns></returns>
         [HttpPost("BroadCast")]
         [SwaggerOperation(summary: "分页查询广播消息", Tags = new[] { "Notification" })]
         public Task<PagedResultDto<PagingNotificationListOutput>>
@@ -50,25 +43,53 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             return _notificationAppService.GetPageBroadCastNotificationByUserIdAsync(listInput);
         }
 
+        [HttpPost("SendCommonWarningMessage")]
+        [SwaggerOperation(summary: "发送警告文本消息", Tags = new[] { "Notification" })]
+        public Task SendCommonWarningMessageAsync(SendCommonMessageInput input)
+        {
+            return _notificationAppService.SendCommonWarningMessageAsync(input);
+        }
+
+        [HttpPost("SendCommonInformationMessage")]
+        [SwaggerOperation(summary: "发送普通文本消息", Tags = new[] { "Notification" })]
+        public Task SendCommonInformationMessageAsync(SendCommonMessageInput input)
+        {
+            return _notificationAppService.SendCommonInformationMessageAsync(input);
+        }
+
+        [HttpPost("SendCommonErrorMessage")]
+        [SwaggerOperation(summary: "发送错误文本消息", Tags = new[] { "Notification" })]
+        public Task SendCommonErrorMessageAsync(SendCommonMessageInput input)
+        {
+            return _notificationAppService.SendCommonErrorMessageAsync(input);
+        }
+
+        [HttpPost("SendBroadCastWarningMessage")]
+        [SwaggerOperation(summary: "发送警告广播消息", Tags = new[] { "Notification" })]
+        public Task SendBroadCastWarningMessageAsync(SendBroadCastMessageInput input)
+        {
+            return _notificationAppService.SendBroadCastWarningMessageAsync(input);
+        }
+
+        [HttpPost("SendBroadCastInformationMessage")]
+        [SwaggerOperation(summary: "发送正常广播消息", Tags = new[] { "Notification" })]
+        public Task SendBroadCastInformationMessageAsync(SendBroadCastMessageInput input)
+        {
+            return _notificationAppService.SendBroadCastInformationMessageAsync(input);
+        }
+
+        [HttpPost("SendBroadCastErrorMessage")]
+        [SwaggerOperation(summary: "发送错误广播消息", Tags = new[] { "Notification" })]
+        public Task SendBroadCastErrorMessageAsync(SendBroadCastMessageInput input)
+        {
+            return _notificationAppService.SendBroadCastErrorMessageAsync(input);
+        }
+
         [HttpPost("Read")]
         [SwaggerOperation(summary: "消息设置为已读", Tags = new[] { "Notification" })]
         public Task SetReadAsync(SetReadInput input)
         {
             return _notificationAppService.SetReadAsync(input);
-        }
-
-        [HttpPost("Create")]
-        [SwaggerOperation(summary: "创建消息-测试使用", Tags = new[] { "Notification" })]
-        public Task CreateAsync(CreateNotificationInput input)
-        {
-            return _notificationAppService.CreateAsync(input);
-        }
-
-        [HttpPost("SendMessage")]
-        [SwaggerOperation(summary: "发送消息-测试使用", Tags = new[] { "Notification" })]
-        public Task SendMessageAsync(string title, string content, MessageType messageType, List<string> users)
-        {
-            return _notificationAppService.SendMessageAsync(title, content, messageType, users);
         }
     }
 }

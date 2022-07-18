@@ -31,7 +31,7 @@
                 />
               </div>
               <div class="datetime">
-                {{ dateFormat(item.creationTime) }}
+                {{  formatToDateTime(item.creationTime) }}
               </div>
             </div>
           </template>
@@ -46,7 +46,7 @@
   import { useDesign } from '/@/hooks/web/useDesign';
   import { List, Tag, Typography } from 'ant-design-vue';
   import { PagingNotificationListOutput, SetReadInput } from '/@/services/ServiceProxies';
-  import { useUserStoreWithOut } from '/@/store/modules/user';
+  import { formatToDateTime } from '/@/utils/dateUtil';
   export default defineComponent({
     components: {
       [List.name]: List,
@@ -70,30 +70,16 @@
       },
     },
     setup() {
-      const userStore = useUserStoreWithOut();
-      const userInfo = userStore.getUserInfo;
 
       const onSetRead = async (record: PagingNotificationListOutput) => {
         let request = new SetReadInput();
         request.id = record.id;
-        request.receiveId = userInfo.userId as string;
         await setReadAsync(request);
         record.read = true;
         console.log(record);
       };
-      const dateFormat = (time) => {
-        let date = new Date(time);
-        let year = date.getFullYear();
-        let month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
-        let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-        let hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
-        let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-        let seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
-        // 拼接
-        return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
-      };
       const { prefixCls } = useDesign('header-notify-list');
-      return { prefixCls, dateFormat, onSetRead };
+      return { prefixCls, onSetRead,formatToDateTime };
     },
   });
 </script>

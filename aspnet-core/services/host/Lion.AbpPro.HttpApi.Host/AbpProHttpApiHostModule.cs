@@ -1,3 +1,6 @@
+using Volo.Abp.Localization;
+using Volo.Abp.Settings;
+
 namespace Lion.AbpPro
 {
     [DependsOn(
@@ -19,6 +22,7 @@ namespace Lion.AbpPro
         public override void OnPostApplicationInitialization(
             ApplicationInitializationContext context)
         {
+            // 应用程序初始化的时候注册hangfire
             context.CreateRecurringJob();
             base.OnPostApplicationInitialization(context);
         }

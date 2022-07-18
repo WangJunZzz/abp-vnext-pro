@@ -1,6 +1,7 @@
 using Lion.AbpPro.DataDictionaryManagement;
 using Lion.AbpPro.FileManagement;
 using Lion.AbpPro.Localization;
+using Lion.AbpPro.NotificationManagement;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Volo.Abp;
@@ -37,7 +38,8 @@ namespace Lion.AbpPro
         typeof(AbpSettingManagementDomainSharedModule),
         typeof(AbpTenantManagementDomainSharedModule),
         typeof(DataDictionaryManagementDomainSharedModule),
-        typeof(FileManagementDomainSharedModule)
+        typeof(FileManagementDomainSharedModule),
+        typeof(NotificationManagementDomainSharedModule)
     )]
     public class AbpProDomainSharedModule : AbpModule
     {

@@ -33,6 +33,11 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
         /// 消息类型
         /// </summary>
         public MessageType MessageType { get; private set; }
+        
+        /// <summary>
+        /// 消息等级
+        /// </summary>
+        public MessageLevel MessageLevel { get; private set; }
 
         /// <summary>
         /// 发送人
@@ -54,6 +59,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
             string title,
             string content,
             MessageType messageType,
+            MessageLevel messageLevel,
             Guid senderId
         ) : base(id)
         {
@@ -63,6 +69,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
                 title,
                 content,
                 messageType,
+                messageLevel,
                 senderId
             );
         }
@@ -71,12 +78,14 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
             string title,
             string content,
             MessageType messageType,
+            MessageLevel messageLevel,
             Guid senderId
         )
         {
             SetTitle(title);
             SetContent(content);
             SetMessageType(messageType);
+            SetMessageLevel(messageLevel);
             SetSenderId(senderId);
         }
 
@@ -102,7 +111,10 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
         {
             MessageType = messageType;
         }
-
+        private void SetMessageLevel(MessageLevel messageLevel)
+        {
+            MessageLevel = messageLevel;
+        }
         /// <summary>
         /// 新增非广播消息订阅人
         /// </summary>
@@ -136,13 +148,12 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
         }
 
         /// <summary>
-        /// 添加创建消息集成事件
+        /// 添加创建消息事件
         /// </summary>
-        /// <param name="createdNotificationDistributedEvent"></param>
-        public void AddCreatedNotificationDistributedEvent(
+        public void AddCreatedNotificationLocalEvent(
             CreatedNotificationDistributedEvent createdNotificationDistributedEvent)
         {
-            AddDistributedEvent(createdNotificationDistributedEvent);
+            AddLocalEvent(createdNotificationDistributedEvent);
         }
     }
 }

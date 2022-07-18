@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,11 +11,36 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
 {
     public interface INotificationAppService:IApplicationService
     {
+
         /// <summary>
-        /// 发送消息到客户端
+        /// 发送警告文本消息
         /// </summary>
-        /// <returns></returns>
-        Task SendMessageAsync(string title, string content, MessageType messageType, List<string> users);
+        Task SendCommonWarningMessageAsync(SendCommonMessageInput input);
+
+        /// <summary>
+        /// 发送普通文本消息
+        /// </summary>
+        Task SendCommonInformationMessageAsync(SendCommonMessageInput input);
+
+        /// <summary>
+        /// 发送错误文本消息
+        /// </summary>
+        Task SendCommonErrorMessageAsync(SendCommonMessageInput input);
+
+        /// <summary>
+        /// 发送警告广播消息
+        /// </summary>
+        Task SendBroadCastWarningMessageAsync(SendBroadCastMessageInput input);
+
+        /// <summary>
+        /// 发送正常广播消息
+        /// </summary>
+        Task SendBroadCastInformationMessageAsync(SendBroadCastMessageInput input);
+
+        /// <summary>
+        /// 发送错误广播消息
+        /// </summary>
+        Task SendBroadCastErrorMessageAsync(SendBroadCastMessageInput input);
         
         /// <summary>
         /// 消息设置为已读
@@ -24,19 +50,11 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         Task SetReadAsync(SetReadInput input);
         
         /// <summary>
-        /// 创建一个消息
-        /// 测试使用
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task CreateAsync(CreateNotificationInput input);
-        
-        /// <summary>
         /// 分页获取用户普通文本消息
         /// </summary>
         /// <param name="listInput"></param>
         /// <returns></returns>
-        Task<PagedResultDto<PagingNotificationListOutput>> GetPageTextNotificationByUserIdAsync(
+        Task<PagedResultDto<PagingNotificationListOutput>> GetPageCommonNotificationByUserIdAsync(
             PagingNotificationListInput listInput);
 
         /// <summary>

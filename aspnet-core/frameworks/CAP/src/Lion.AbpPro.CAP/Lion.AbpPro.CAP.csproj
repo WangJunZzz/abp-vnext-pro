@@ -5,7 +5,7 @@
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="5.1.1" />
+        <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="$(InMemoryMessageQueueCAPVersion)" />
         <PackageReference Include="Volo.Abp.Core" Version="$(AbpPackageVersion)" />
         <PackageReference Include="Volo.Abp.EventBus" Version="$(AbpPackageVersion)" />
         <PackageReference Include="DotNetCore.CAP" Version="$(DotNetCoreCAPVersion)" />

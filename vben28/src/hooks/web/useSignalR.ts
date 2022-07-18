@@ -71,13 +71,28 @@ export function useSignalR() {
    */
   function ReceiveTextMessageHandlerAsync(message: any) {
     console.log(message);
-
     const { notification } = useMessage();
-
-    notification.open({
-      message: message.title,
-      description: message.content,
-    });
+    if (message.messageLevel == 10) {
+      notification.error({
+        message: message.title,
+        description: message.content,
+      });
+    } else if (message.messageLevel == 20) {
+      notification.warn({
+        message: message.title,
+        description: message.content,
+      });
+    } else if (message.messageLevel == 30) {
+      notification.error({
+        message: message.title,
+        description: message.content,
+      });
+    } else {
+      notification.info({
+        message: message.title,
+        description: message.content,
+      });
+    }
   }
 
   /**
@@ -85,12 +100,29 @@ export function useSignalR() {
    * @param message 消息体
    */
   function ReceiveBroadCastMessageHandlerAsync(message: any) {
+  
     const { notification } = useMessage();
-
-    notification.open({
-      message: message.title,
-      description: message.content,
-    });
+    if (message.messageLevel == 10) {
+      notification.error({
+        message: message.title,
+        description: message.content,
+      });
+    } else if (message.messageLevel == 20) {
+      notification.warn({
+        message: message.title,
+        description: message.content,
+      });
+    } else if (message.messageLevel == 30) {
+      notification.error({
+        message: message.title,
+        description: message.content,
+      });
+    } else {
+      notification.info({
+        message: message.title,
+        description: message.content,
+      });
+    }
   }
 
   return { startConnect, closeConnect };

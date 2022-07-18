@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<AbpPackageVersion>5.3.1</AbpPackageVersion>
 		<DotNetCoreCAPVersion>6.1.0</DotNetCoreCAPVersion>
+		<InMemoryMessageQueueCAPVersion>6.0.0</InMemoryMessageQueueCAPVersion>
 		<MicrosoftVersion>6.0.6</MicrosoftVersion>
 		<MicrosoftExtensionsHostingVersion>6.0.1</MicrosoftExtensionsHostingVersion>
 		<MicrosoftExtensionsHttpVersion>6.0.0</MicrosoftExtensionsHttpVersion>

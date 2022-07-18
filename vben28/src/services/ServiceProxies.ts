@@ -4688,8 +4688,8 @@ export class NotificationServiceProxy extends ServiceProxyBase {
      * @param body (optional) 
      * @return Success
      */
-    text(body: PagingNotificationListInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingNotificationListOutputPagedResultDto> {
-        let url_ = this.baseUrl + "/Notification/Text";
+    common(body: PagingNotificationListInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingNotificationListOutputPagedResultDto> {
+        let url_ = this.baseUrl + "/Notification/Common";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -4714,11 +4714,11 @@ export class NotificationServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processText(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processCommon(_response));
         });
     }
 
-    protected processText(response: AxiosResponse): Promise<PagingNotificationListOutputPagedResultDto> {
+    protected processCommon(response: AxiosResponse): Promise<PagingNotificationListOutputPagedResultDto> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -4886,6 +4886,588 @@ export class NotificationServiceProxy extends ServiceProxyBase {
     }
 
     /**
+     * 发送警告文本消息
+     * @param body (optional) 
+     * @return Success
+     */
+    sendCommonWarningMessage(body: SendCommonMessageInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Notification/SendCommonWarningMessage";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processSendCommonWarningMessage(_response));
+        });
+    }
+
+    protected processSendCommonWarningMessage(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(null as any);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(null as any);
+    }
+
+    /**
+     * 发送普通文本消息
+     * @param body (optional) 
+     * @return Success
+     */
+    sendCommonInformationMessage(body: SendCommonMessageInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Notification/SendCommonInformationMessage";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processSendCommonInformationMessage(_response));
+        });
+    }
+
+    protected processSendCommonInformationMessage(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(null as any);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(null as any);
+    }
+
+    /**
+     * 发送错误文本消息
+     * @param body (optional) 
+     * @return Success
+     */
+    sendCommonErrorMessage(body: SendCommonMessageInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Notification/SendCommonErrorMessage";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processSendCommonErrorMessage(_response));
+        });
+    }
+
+    protected processSendCommonErrorMessage(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(null as any);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(null as any);
+    }
+
+    /**
+     * 发送警告广播消息
+     * @param body (optional) 
+     * @return Success
+     */
+    sendBroadCastWarningMessage(body: SendBroadCastMessageInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Notification/SendBroadCastWarningMessage";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processSendBroadCastWarningMessage(_response));
+        });
+    }
+
+    protected processSendBroadCastWarningMessage(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(null as any);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(null as any);
+    }
+
+    /**
+     * 发送正常广播消息
+     * @param body (optional) 
+     * @return Success
+     */
+    sendBroadCastInformationMessage(body: SendBroadCastMessageInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Notification/SendBroadCastInformationMessage";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processSendBroadCastInformationMessage(_response));
+        });
+    }
+
+    protected processSendBroadCastInformationMessage(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(null as any);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(null as any);
+    }
+
+    /**
+     * 发送错误广播消息
+     * @param body (optional) 
+     * @return Success
+     */
+    sendBroadCastErrorMessage(body: SendBroadCastMessageInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Notification/SendBroadCastErrorMessage";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processSendBroadCastErrorMessage(_response));
+        });
+    }
+
+    protected processSendBroadCastErrorMessage(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(null as any);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(null as any);
+    }
+
+    /**
      * 消息设置为已读
      * @param body (optional) 
      * @return Success
@@ -4920,215 +5502,6 @@ export class NotificationServiceProxy extends ServiceProxyBase {
     }
 
     protected processRead(response: AxiosResponse): Promise<void> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            return Promise.resolve<void>(null as any);
-
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<void>(null as any);
-    }
-
-    /**
-     * 创建消息-测试使用
-     * @param body (optional) 
-     * @return Success
-     */
-    create(body: CreateNotificationInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
-        let url_ = this.baseUrl + "/Notification/Create";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processCreate(_response));
-        });
-    }
-
-    protected processCreate(response: AxiosResponse): Promise<void> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            return Promise.resolve<void>(null as any);
-
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<void>(null as any);
-    }
-
-    /**
-     * 发送消息-测试使用
-     * @param title (optional) 
-     * @param content (optional) 
-     * @param messageType (optional) 
-     * @param body (optional) 
-     * @return Success
-     */
-    sendMessage(title: string | undefined, content: string | undefined, messageType: MessageType | undefined, body: string[] | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
-        let url_ = this.baseUrl + "/Notification/SendMessage?";
-        if (title === null)
-            throw new Error("The parameter 'title' cannot be null.");
-        else if (title !== undefined)
-            url_ += "title=" + encodeURIComponent("" + title) + "&";
-        if (content === null)
-            throw new Error("The parameter 'content' cannot be null.");
-        else if (content !== undefined)
-            url_ += "content=" + encodeURIComponent("" + content) + "&";
-        if (messageType === null)
-            throw new Error("The parameter 'messageType' cannot be null.");
-        else if (messageType !== undefined)
-            url_ += "messageType=" + encodeURIComponent("" + messageType) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processSendMessage(_response));
-        });
-    }
-
-    protected processSendMessage(response: AxiosResponse): Promise<void> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -11005,70 +11378,6 @@ export interface ICreateIdentityResourceInput {
     showInDiscoveryDocument: boolean;
 }
 
-export class CreateNotificationInput implements ICreateNotificationInput {
-    /** 消息标题 */
-    title!: string | undefined;
-    /** 消息内容 */
-    content!: string | undefined;
-    messageType!: MessageType;
-    /** 接收人
-如果消息类型是广播消息，接收人字段为空 */
-    receiveIds!: string[] | undefined;
-
-    constructor(data?: ICreateNotificationInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.title = _data["title"];
-            this.content = _data["content"];
-            this.messageType = _data["messageType"];
-            if (Array.isArray(_data["receiveIds"])) {
-                this.receiveIds = [] as any;
-                for (let item of _data["receiveIds"])
-                    this.receiveIds!.push(item);
-            }
-        }
-    }
-
-    static fromJS(data: any): CreateNotificationInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new CreateNotificationInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["title"] = this.title;
-        data["content"] = this.content;
-        data["messageType"] = this.messageType;
-        if (Array.isArray(this.receiveIds)) {
-            data["receiveIds"] = [];
-            for (let item of this.receiveIds)
-                data["receiveIds"].push(item);
-        }
-        return data;
-    }
-}
-
-export interface ICreateNotificationInput {
-    /** 消息标题 */
-    title: string | undefined;
-    /** 消息内容 */
-    content: string | undefined;
-    messageType: MessageType;
-    /** 接收人
-如果消息类型是广播消息，接收人字段为空 */
-    receiveIds: string[] | undefined;
-}
-
 export class CreateOrganizationUnitInput implements ICreateOrganizationUnitInput {
     displayName!: string;
     parentId!: string | undefined;
@@ -15536,10 +15845,17 @@ export enum LoginResultType {
     RequiresTwoFactor = 5,
 }
 
+/** 消息等级 */
+export enum MessageLevel {
+    Warning = 10,
+    Information = 20,
+    Error = 30,
+}
+
 /** 消息类型 */
 export enum MessageType {
     BroadCast = 10,
-    Text = 20,
+    Common = 20,
 }
 
 export class MethodParameterApiDescriptionModel implements IMethodParameterApiDescriptionModel {
@@ -17444,9 +17760,19 @@ export interface IPagingNotificationListInput {
 
 export class PagingNotificationListOutput implements IPagingNotificationListOutput {
     id!: string;
+    /** 消息标题 */
     title!: string | undefined;
+    /** 消息内容 */
     content!: string | undefined;
+    messageType!: MessageType;
+    readonly messageTypeDescription!: string | undefined;
+    messageLevel!: MessageLevel;
+    readonly messageLevelDescription!: string | undefined;
+    /** 发送人 */
+    senderId!: string;
+    /** 创建时间 */
     creationTime!: dayjs.Dayjs;
+    /** 是否已读 */
     read!: boolean;
 
     constructor(data?: IPagingNotificationListOutput) {
@@ -17463,6 +17789,11 @@ export class PagingNotificationListOutput implements IPagingNotificationListOutp
             this.id = _data["id"];
             this.title = _data["title"];
             this.content = _data["content"];
+            this.messageType = _data["messageType"];
+            (<any>this).messageTypeDescription = _data["messageTypeDescription"];
+            this.messageLevel = _data["messageLevel"];
+            (<any>this).messageLevelDescription = _data["messageLevelDescription"];
+            this.senderId = _data["senderId"];
             this.creationTime = _data["creationTime"] ? dayjs(_data["creationTime"].toString()) : <any>undefined;
             this.read = _data["read"];
         }
@@ -17480,6 +17811,11 @@ export class PagingNotificationListOutput implements IPagingNotificationListOutp
         data["id"] = this.id;
         data["title"] = this.title;
         data["content"] = this.content;
+        data["messageType"] = this.messageType;
+        data["messageTypeDescription"] = this.messageTypeDescription;
+        data["messageLevel"] = this.messageLevel;
+        data["messageLevelDescription"] = this.messageLevelDescription;
+        data["senderId"] = this.senderId;
         data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
         data["read"] = this.read;
         return data;
@@ -17488,9 +17824,19 @@ export class PagingNotificationListOutput implements IPagingNotificationListOutp
 
 export interface IPagingNotificationListOutput {
     id: string;
+    /** 消息标题 */
     title: string | undefined;
+    /** 消息内容 */
     content: string | undefined;
+    messageType: MessageType;
+    messageTypeDescription: string | undefined;
+    messageLevel: MessageLevel;
+    messageLevelDescription: string | undefined;
+    /** 发送人 */
+    senderId: string;
+    /** 创建时间 */
     creationTime: dayjs.Dayjs;
+    /** 是否已读 */
     read: boolean;
 }
 
@@ -18666,6 +19012,108 @@ export interface IReturnValueApiDescriptionModel {
     typeSimple: string | undefined;
 }
 
+export class SendBroadCastMessageInput implements ISendBroadCastMessageInput {
+    /** 消息标题 */
+    title!: string | undefined;
+    /** 消息内容 */
+    content!: string | undefined;
+
+    constructor(data?: ISendBroadCastMessageInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.title = _data["title"];
+            this.content = _data["content"];
+        }
+    }
+
+    static fromJS(data: any): SendBroadCastMessageInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new SendBroadCastMessageInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        data["content"] = this.content;
+        return data;
+    }
+}
+
+export interface ISendBroadCastMessageInput {
+    /** 消息标题 */
+    title: string | undefined;
+    /** 消息内容 */
+    content: string | undefined;
+}
+
+export class SendCommonMessageInput implements ISendCommonMessageInput {
+    /** 消息标题 */
+    title!: string | undefined;
+    /** 消息内容 */
+    content!: string | undefined;
+    /** 发送人 */
+    receiveIds!: string[] | undefined;
+
+    constructor(data?: ISendCommonMessageInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.title = _data["title"];
+            this.content = _data["content"];
+            if (Array.isArray(_data["receiveIds"])) {
+                this.receiveIds = [] as any;
+                for (let item of _data["receiveIds"])
+                    this.receiveIds!.push(item);
+            }
+        }
+    }
+
+    static fromJS(data: any): SendCommonMessageInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new SendCommonMessageInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        data["content"] = this.content;
+        if (Array.isArray(this.receiveIds)) {
+            data["receiveIds"] = [];
+            for (let item of this.receiveIds)
+                data["receiveIds"].push(item);
+        }
+        return data;
+    }
+}
+
+export interface ISendCommonMessageInput {
+    /** 消息标题 */
+    title: string | undefined;
+    /** 消息内容 */
+    content: string | undefined;
+    /** 发送人 */
+    receiveIds: string[] | undefined;
+}
+
 export class SendPasswordResetCodeDto implements ISendPasswordResetCodeDto {
     email!: string;
     appName!: string;
@@ -18760,7 +19208,6 @@ export interface ISetDataDictinaryDetailInput {
 
 export class SetReadInput implements ISetReadInput {
     id!: string;
-    receiveId!: string;
 
     constructor(data?: ISetReadInput) {
         if (data) {
@@ -18774,7 +19221,6 @@ export class SetReadInput implements ISetReadInput {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.receiveId = _data["receiveId"];
         }
     }
 
@@ -18788,14 +19234,12 @@ export class SetReadInput implements ISetReadInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["receiveId"] = this.receiveId;
         return data;
     }
 }
 
 export interface ISetReadInput {
     id: string;
-    receiveId: string;
 }
 
 export class SettingItemOutput implements ISettingItemOutput {
