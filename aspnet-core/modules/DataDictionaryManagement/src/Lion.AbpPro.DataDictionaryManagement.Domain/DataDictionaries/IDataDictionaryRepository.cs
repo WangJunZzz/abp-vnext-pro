@@ -1,10 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
-using Volo.Abp.Domain.Repositories;
-
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
     public interface IDataDictionaryRepository : IBasicRepository<DataDictionary, Guid>

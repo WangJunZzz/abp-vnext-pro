@@ -1,8 +1,3 @@
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using Lion.AbpPro.NotificationManagement.Notifications;
-using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
-
 namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore.Notifications
 {
     public static class EfCoreNotificationQueryableExtensions

@@ -1,5 +1,3 @@
-using Volo.Abp.Threading;
-
 namespace Lion.AbpPro
 {
     public static class AbpProGlobalFeatureConfigurator

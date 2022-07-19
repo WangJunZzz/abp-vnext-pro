@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lion.AbpPro.NotificationManagement.Notifications.Enums;
-using Volo.Abp.Application.Services;
-
-namespace Lion.AbpPro.NotificationManagement.Hubs;
+﻿namespace Lion.AbpPro.NotificationManagement.Hubs;
 
 public interface INotificationHubAppService : IApplicationService
 {

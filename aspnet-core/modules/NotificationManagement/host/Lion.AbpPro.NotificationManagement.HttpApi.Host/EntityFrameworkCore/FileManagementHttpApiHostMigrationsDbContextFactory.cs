@@ -1,9 +1,4 @@
-﻿using System.IO;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
-
-namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
+﻿namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
 
 public class NotificationManagementHttpApiHostMigrationsDbContextFactory : IDesignTimeDbContextFactory<NotificationManagementHttpApiHostMigrationsDbContext>
 {

@@ -1,7 +1,3 @@
-using Lion.AbpPro.Localization;
-using Volo.Abp.Localization;
-using Volo.Abp.Settings;
-
 namespace Lion.AbpPro.Settings
 {
     public class AbpProSettingDefinitionProvider : SettingDefinitionProvider

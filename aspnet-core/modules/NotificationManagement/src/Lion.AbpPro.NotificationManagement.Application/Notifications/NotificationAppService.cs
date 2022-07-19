@@ -1,19 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Lion.AbpPro.NotificationManagement.Hubs;
-using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
-using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
-using Lion.AbpPro.NotificationManagement.Notifications.Enums;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Volo.Abp;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Users;
-
 namespace Lion.AbpPro.NotificationManagement.Notifications
 {
     [Authorize]

@@ -1,6 +1,3 @@
-using System;
-using System.Threading.Tasks;
-
 namespace Lion.AbpPro.Jobs
 {
     public class TestJob : IRecurringJob

@@ -1,7 +1,3 @@
-using System.Threading.Tasks;
-using Volo.Abp.Modularity;
-using Xunit;
-
 namespace Lion.AbpPro.DataDictionaryManagement.Samples
 {
     /* Write your custom repository tests like that, in this project, as abstract classes.

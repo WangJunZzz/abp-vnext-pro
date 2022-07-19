@@ -1,10 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lion.AbpPro.Permissions;
-using Microsoft.AspNetCore.Authorization;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.AuditLogging;
-
 namespace Lion.AbpPro.AuditLogs
 {
     [Authorize(Policy = AbpProPermissions.SystemManagement.AuditLog)]

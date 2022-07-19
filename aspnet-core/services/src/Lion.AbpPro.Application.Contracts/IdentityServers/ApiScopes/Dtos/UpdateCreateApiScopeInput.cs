@@ -1,5 +1,3 @@
-using System;
-
 namespace Lion.AbpPro.IdentityServers.ApiScopes.Dtos
 {
     public class UpdateCreateApiScopeInput

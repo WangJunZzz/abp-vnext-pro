@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos
+﻿namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos
 {
     public class DeleteDataDictionaryDetailInput
     {

@@ -5,18 +5,18 @@
 
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Ocelot.Provider.Polly"/>
-        <PackageReference Include="Ocelot.Provider.Consul"/>
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI"/>
-        <PackageReference Include="Volo.Abp"/>
-        <PackageReference Include="Volo.Abp.AspNetCore"/>
-        <PackageReference Include="Volo.Abp.Autofac"/>
-        <PackageReference Include="Volo.Abp.Core"/>
-        <PackageReference Include="Volo.Abp.Swashbuckle"/>
-        <PackageReference Include="Swashbuckle.AspNetCore"/>
-        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks"/>
+        <PackageReference Include="Ocelot.Provider.Polly" />
+        <PackageReference Include="Ocelot.Provider.Consul" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
+        <PackageReference Include="Volo.Abp" />
+        <PackageReference Include="Volo.Abp.AspNetCore" />
+        <PackageReference Include="Volo.Abp.Autofac" />
+        <PackageReference Include="Volo.Abp.Core" />
+        <PackageReference Include="Volo.Abp.Swashbuckle" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj"/>
+        <ProjectReference Include="..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj" />
     </ItemGroup>
 </Project>

@@ -15,13 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations"  />
-    <PackageReference Include="Volo.Abp.Account.HttpApi"  />
-    <PackageReference Include="Volo.Abp.Identity.HttpApi"  />
-    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi"  />
-    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi"  />
-    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi"  />
-    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi"  />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
+    <PackageReference Include="Volo.Abp.Account.HttpApi" />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" />
+    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" />
+    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi" />
   </ItemGroup>
 
 </Project>

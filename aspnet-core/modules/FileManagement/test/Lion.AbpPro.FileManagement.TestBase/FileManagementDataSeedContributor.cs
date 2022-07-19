@@ -1,9 +1,3 @@
-using System.Threading.Tasks;
-using Volo.Abp.Data;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.Guids;
-using Volo.Abp.MultiTenancy;
-
 namespace Lion.AbpPro.FileManagement;
 
 public class FileManagementDataSeedContributor : IDataSeedContributor, ITransientDependency

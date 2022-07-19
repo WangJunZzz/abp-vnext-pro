@@ -1,10 +1,3 @@
-using System.Threading.Tasks;
-using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.AspNetCore.Mvc;
-
 namespace Lion.AbpPro.NotificationManagement.Notifications
 {
     [Route("Notification")]

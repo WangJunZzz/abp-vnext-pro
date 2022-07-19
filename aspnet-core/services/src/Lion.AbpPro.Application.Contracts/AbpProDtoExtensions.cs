@@ -1,7 +1,3 @@
-using Volo.Abp.Identity;
-using Volo.Abp.ObjectExtending;
-using Volo.Abp.Threading;
-
 namespace Lion.AbpPro
 {
     public static class AbpProDtoExtensions

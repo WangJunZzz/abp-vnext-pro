@@ -1,7 +1,3 @@
-using System;
-using System.Text;
-using Lion.AbpPro.Extension.Customs;
-
 namespace Lion.AbpPro.Extension.System.Text
 {
     /// <summary>

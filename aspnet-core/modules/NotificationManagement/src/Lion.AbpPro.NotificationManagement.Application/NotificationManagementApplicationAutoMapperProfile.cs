@@ -1,8 +1,3 @@
-using System.Linq;
-using AutoMapper;
-using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
-using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
-
 namespace Lion.AbpPro.NotificationManagement
 {
     public class NotificationManagementApplicationAutoMapperProfile : Profile

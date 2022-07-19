@@ -9,32 +9,32 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Serilog.AspNetCore"/>
-        <PackageReference Include="Serilog.Sinks.Async"/>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer"/>
-        <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis"/>
-        <PackageReference Include="Volo.Abp.Autofac"/>
-        <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis"/>
-        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy"/>
-        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL"/>
-        <PackageReference Include="Volo.Abp.AspNetCore.Serilog"/>
-        <PackageReference Include="Volo.Abp.Swashbuckle"/>
-        <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore"/>
-        <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore"/>
-        <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore"/>
+        <PackageReference Include="Serilog.AspNetCore" />
+        <PackageReference Include="Serilog.Sinks.Async" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+        <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" />
+        <PackageReference Include="Volo.Abp.Autofac" />
+        <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" />
+        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" />
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" />
+        <PackageReference Include="Volo.Abp.AspNetCore.Serilog" />
+        <PackageReference Include="Volo.Abp.Swashbuckle" />
+        <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" />
+        <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" />
+        <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.HttpApi\Lion.AbpPro.DataDictionaryManagement.HttpApi.csproj"/>
-        <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.Application\Lion.AbpPro.DataDictionaryManagement.Application.csproj"/>
-        <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.csproj"/>
+        <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.HttpApi\Lion.AbpPro.DataDictionaryManagement.HttpApi.csproj" />
+        <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.Application\Lion.AbpPro.DataDictionaryManagement.Application.csproj" />
+        <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Remove="Logs\**"/>
-        <Content Remove="Logs\**"/>
-        <EmbeddedResource Remove="Logs\**"/>
-        <None Remove="Logs\**"/>
+        <Compile Remove="Logs\**" />
+        <Content Remove="Logs\**" />
+        <EmbeddedResource Remove="Logs\**" />
+        <None Remove="Logs\**" />
     </ItemGroup>
 
 </Project>

@@ -1,11 +1,3 @@
-using System.Threading.Tasks;
-using Lion.AbpPro.Roles;
-using Lion.AbpPro.Roles.Dtos;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
-using Volo.Abp.Identity;
-
 namespace Lion.AbpPro.Controllers.Systems
 {
     [Route("Permissions")]

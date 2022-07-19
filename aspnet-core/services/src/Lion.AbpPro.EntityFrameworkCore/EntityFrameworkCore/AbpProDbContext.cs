@@ -1,30 +1,3 @@
-using Lion.AbpPro.DataDictionaryManagement;
-using Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore;
-using Lion.AbpPro.FileManagement.EntityFrameworkCore;
-using Lion.AbpPro.FileManagement.Files;
-using Lion.AbpPro.NotificationManagement;
-using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Volo.Abp.AuditLogging;
-using Volo.Abp.AuditLogging.EntityFrameworkCore;
-using Volo.Abp.BackgroundJobs;
-using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
-using Volo.Abp.Data;
-using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore.Modeling;
-using Volo.Abp.FeatureManagement;
-using Volo.Abp.FeatureManagement.EntityFrameworkCore;
-using Volo.Abp.Identity;
-using Volo.Abp.Identity.EntityFrameworkCore;
-using Volo.Abp.IdentityServer.EntityFrameworkCore;
-using Volo.Abp.PermissionManagement;
-using Volo.Abp.PermissionManagement.EntityFrameworkCore;
-using Volo.Abp.SettingManagement;
-using Volo.Abp.SettingManagement.EntityFrameworkCore;
-using Volo.Abp.TenantManagement;
-using Volo.Abp.TenantManagement.EntityFrameworkCore;
-using Volo.Abp.Users.EntityFrameworkCore;
-
 namespace Lion.AbpPro.EntityFrameworkCore
 {
     /* This is your actual DbContext used on runtime.

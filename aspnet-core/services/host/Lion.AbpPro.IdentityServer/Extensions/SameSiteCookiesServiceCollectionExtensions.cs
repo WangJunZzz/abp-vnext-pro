@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Lion.AbpPro.Extensions
 {
     public static class SameSiteCookiesServiceCollectionExtensions

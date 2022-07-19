@@ -1,6 +1,3 @@
-using AutoMapper;
-using Lion.AbpPro.FileManagement.Files.Dto;
-
 namespace Lion.AbpPro.FileManagement;
 
 public class FileManagementApplicationAutoMapperProfile : Profile

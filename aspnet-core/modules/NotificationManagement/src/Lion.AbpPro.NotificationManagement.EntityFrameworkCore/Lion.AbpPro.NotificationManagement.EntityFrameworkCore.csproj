@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore"  />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" />
     <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.Domain\Lion.AbpPro.NotificationManagement.Domain.csproj" />
   </ItemGroup>
 

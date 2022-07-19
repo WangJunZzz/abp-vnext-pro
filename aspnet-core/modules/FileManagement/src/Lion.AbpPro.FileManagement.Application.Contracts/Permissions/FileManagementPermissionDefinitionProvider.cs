@@ -1,7 +1,3 @@
-using Lion.AbpPro.FileManagement.Localization;
-using Volo.Abp.Authorization.Permissions;
-using Volo.Abp.Localization;
-
 namespace Lion.AbpPro.FileManagement.Permissions;
 
 public class FileManagementPermissionDefinitionProvider : PermissionDefinitionProvider

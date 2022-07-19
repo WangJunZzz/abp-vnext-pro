@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Lion.AbpPro.NotificationManagement.Localization;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Localization;
-
-namespace Lion.AbpPro.NotificationManagement.Notifications.Dtos;
+﻿namespace Lion.AbpPro.NotificationManagement.Notifications.Dtos;
 
 public class SendBroadCastMessageInput:IValidatableObject
 {

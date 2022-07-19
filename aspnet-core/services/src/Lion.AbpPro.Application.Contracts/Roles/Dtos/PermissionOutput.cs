@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Lion.AbpPro.Roles.Dtos
 {
     public class PermissionOutput {

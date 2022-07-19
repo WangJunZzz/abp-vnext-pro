@@ -1,15 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Aliyun.Acs.Core;
-using Aliyun.Acs.Core.Auth.Sts;
-using Aliyun.Acs.Core.Profile;
-using Lion.AbpPro.FileManagement.Files.Dto;
-using Lion.AbpPro.FileManagement.Permissions;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Configuration;
-using Volo.Abp.Application.Dtos;
-
-namespace Lion.AbpPro.FileManagement.Files;
+﻿namespace Lion.AbpPro.FileManagement.Files;
 
 [Authorize(FileManagementPermissions.FileManagement.Default)]
 public class FileAppService : FileManagementAppService, IFileAppService

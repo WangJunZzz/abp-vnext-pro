@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Validation"  />
+    <PackageReference Include="Volo.Abp.Validation" />
   </ItemGroup>
 
   <ItemGroup>

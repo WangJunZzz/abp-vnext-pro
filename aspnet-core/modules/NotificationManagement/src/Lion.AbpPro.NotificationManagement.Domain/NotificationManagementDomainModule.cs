@@ -1,9 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.AutoMapper;
-using Volo.Abp.Domain;
-using Volo.Abp.Modularity;
-using Lion.AbpPro.NotificationManagement.Notifications;
-
 namespace Lion.AbpPro.NotificationManagement
 {
     [DependsOn(

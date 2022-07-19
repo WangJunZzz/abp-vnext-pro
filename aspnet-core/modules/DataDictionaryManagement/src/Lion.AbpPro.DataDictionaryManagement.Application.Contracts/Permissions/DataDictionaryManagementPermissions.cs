@@ -1,5 +1,3 @@
-using Volo.Abp.Reflection;
-
 namespace Lion.AbpPro.DataDictionaryManagement.Permissions
 {
     public class DataDictionaryManagementPermissions

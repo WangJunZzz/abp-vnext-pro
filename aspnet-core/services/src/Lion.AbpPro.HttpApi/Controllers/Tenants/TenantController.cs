@@ -1,12 +1,6 @@
-using System.Threading.Tasks;
 using Lion.AbpPro.Tenants.Dtos;
-using Lion.AbpPro.Extension.Customs.Dtos;
 using Lion.AbpPro.Tenants;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
-using Volo.Abp.Application.Dtos;
 using Volo.Abp.AspNetCore.Mvc.MultiTenancy;
-using Volo.Abp.TenantManagement;
 
 namespace Lion.AbpPro.Controllers.Tenants
 {

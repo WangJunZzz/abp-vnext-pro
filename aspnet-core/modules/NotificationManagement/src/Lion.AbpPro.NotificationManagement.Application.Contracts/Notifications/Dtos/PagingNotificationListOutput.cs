@@ -1,7 +1,3 @@
-using System;
-using Lion.AbpPro.Extension.System;
-using Lion.AbpPro.NotificationManagement.Notifications.Enums;
-
 namespace Lion.AbpPro.NotificationManagement.Notifications.Dtos
 {
     public class PagingNotificationListOutput

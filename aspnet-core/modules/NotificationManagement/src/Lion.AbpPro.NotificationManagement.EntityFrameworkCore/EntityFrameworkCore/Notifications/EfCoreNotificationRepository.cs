@@ -1,15 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore;
-using Lion.AbpPro.NotificationManagement.Notifications;
-using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
-using Lion.AbpPro.NotificationManagement.Notifications.Enums;
-
 namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore.Notifications
 {
     /// <summary>

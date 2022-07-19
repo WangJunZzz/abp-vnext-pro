@@ -1,10 +1,3 @@
-using System;
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.Domain.Services;
-using Volo.Abp.EventBus.Distributed;
-using Volo.Abp.ObjectMapping;
-using Volo.Abp.Uow;
-
 namespace Lion.AbpPro.DataDictionaryManagement
 {
     public abstract class DataDictionaryDomainService : DomainService

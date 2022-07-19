@@ -8,11 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies"/>
-        <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.csproj"/>
-        <ProjectReference Include="..\Lion.AbpPro.DataDictionaryManagement.TestBase\Lion.AbpPro.DataDictionaryManagement.TestBase.csproj"/>
-        <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" />
+        <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.csproj" />
+        <ProjectReference Include="..\Lion.AbpPro.DataDictionaryManagement.TestBase\Lion.AbpPro.DataDictionaryManagement.TestBase.csproj" />
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" />
     </ItemGroup>
 
 </Project>

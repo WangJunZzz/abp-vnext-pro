@@ -1,8 +1,3 @@
-using System.Threading.Tasks;
-using Volo.Abp.Data;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.Identity;
-
 namespace Lion.AbpPro.Data.Seeds
 {
     public class UserDataSeedContributor : IDataSeedContributor, ITransientDependency

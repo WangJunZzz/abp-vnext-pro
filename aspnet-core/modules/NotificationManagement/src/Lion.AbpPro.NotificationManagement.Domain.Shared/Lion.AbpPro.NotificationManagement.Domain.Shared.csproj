@@ -9,8 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.Validation"  />
-        <PackageReference Include="Volo.Abp.AutoMapper"  />
+        <PackageReference Include="Volo.Abp.Validation" />
+        <PackageReference Include="Volo.Abp.AutoMapper" />
     </ItemGroup>
 
     <ItemGroup>

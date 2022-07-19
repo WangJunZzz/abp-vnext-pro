@@ -1,11 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp;
-using Volo.Abp.Modularity;
-using Volo.Abp.Testing;
-using Volo.Abp.Uow;
-
 namespace Lion.AbpPro.FileManagement;
 
 /* All test classes are derived from this class, directly or indirectly. */

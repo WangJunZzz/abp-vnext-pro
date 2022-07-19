@@ -1,11 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Lion.AbpPro.OrganizationUnits.Dto;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
-
-namespace Lion.AbpPro.OrganizationUnits;
+﻿namespace Lion.AbpPro.OrganizationUnits;
 
 public interface IOrganizationUnitAppService : IApplicationService
 {

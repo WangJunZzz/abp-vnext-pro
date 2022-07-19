@@ -1,11 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using Lion.AbpPro.Roles.Dtos;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
-using Volo.Abp.Identity;
-
 namespace Lion.AbpPro.Roles
 {
     public interface IRoleAppService : IApplicationService

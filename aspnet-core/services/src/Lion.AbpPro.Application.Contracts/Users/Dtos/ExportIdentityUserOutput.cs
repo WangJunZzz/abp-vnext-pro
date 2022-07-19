@@ -1,7 +1,4 @@
-﻿using System;
-using Magicodes.ExporterAndImporter.Core;
-
-namespace Lion.AbpPro.Users.Dtos
+﻿namespace Lion.AbpPro.Users.Dtos
 {
     public class ExportIdentityUserOutput
     {

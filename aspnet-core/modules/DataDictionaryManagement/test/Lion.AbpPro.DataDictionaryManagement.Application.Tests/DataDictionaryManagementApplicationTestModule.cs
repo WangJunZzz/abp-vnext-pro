@@ -1,5 +1,3 @@
-using Volo.Abp.Modularity;
-
 namespace Lion.AbpPro.DataDictionaryManagement
 {
     [DependsOn(

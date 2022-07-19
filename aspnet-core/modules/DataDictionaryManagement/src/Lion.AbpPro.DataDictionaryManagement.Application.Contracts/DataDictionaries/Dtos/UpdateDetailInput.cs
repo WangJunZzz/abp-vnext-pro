@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos
+﻿namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos
 {
     public class UpdateDetailInput
     {

@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.Identity;
-
-namespace Lion.AbpPro.Users;
+﻿namespace Lion.AbpPro.Users;
 
 public interface IBulkImportUserRepository : ITransientDependency
 {

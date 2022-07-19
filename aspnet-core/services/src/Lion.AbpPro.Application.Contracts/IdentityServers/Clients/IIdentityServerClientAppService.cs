@@ -1,9 +1,3 @@
-using System.Threading.Tasks;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Lion.AbpPro.IdentityServers.Clients.Dtos;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
-
 namespace Lion.AbpPro.IdentityServers.Clients
 {
     public interface IIdentityServerClientAppService : IApplicationService

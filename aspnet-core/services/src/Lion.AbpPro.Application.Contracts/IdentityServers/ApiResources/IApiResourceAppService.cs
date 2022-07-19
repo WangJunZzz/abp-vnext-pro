@@ -1,10 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Lion.AbpPro.IdentityServers.ApiResources.Dtos;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
-
 namespace Lion.AbpPro.IdentityServers.ApiResources
 {
     public interface IApiResourceAppService : IApplicationService

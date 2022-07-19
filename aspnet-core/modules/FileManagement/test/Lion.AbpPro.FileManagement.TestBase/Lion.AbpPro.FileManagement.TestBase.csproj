@@ -17,7 +17,7 @@
         <PackageReference Include="Volo.Abp.Autofac" />
         <PackageReference Include="Volo.Abp.Authorization" />
         <PackageReference Include="Volo.Abp.TestBase" />
-        <ProjectReference Include="..\..\src\Lion.AbpPro.FileManagement.Domain\Lion.AbpPro.FileManagement.Domain.csproj"/>
+        <ProjectReference Include="..\..\src\Lion.AbpPro.FileManagement.Domain\Lion.AbpPro.FileManagement.Domain.csproj" />
     </ItemGroup>
 
 </Project>

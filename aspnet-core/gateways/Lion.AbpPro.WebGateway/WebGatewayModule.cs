@@ -1,16 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Lion.AbpPro.Shared.Hosting.Gateways;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
-using Ocelot.Middleware;
-using Swashbuckle.AspNetCore.SwaggerUI;
-using Volo.Abp;
-using Volo.Abp.Modularity;
-
 namespace Lion.AbpPro.WebGateway
 {
     [DependsOn(

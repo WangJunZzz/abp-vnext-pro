@@ -1,6 +1,3 @@
-using System;
-using System.Threading.Tasks;
-
 namespace Lion.AbpPro.Users.Dtos
 {
     public class LoginStsResponse

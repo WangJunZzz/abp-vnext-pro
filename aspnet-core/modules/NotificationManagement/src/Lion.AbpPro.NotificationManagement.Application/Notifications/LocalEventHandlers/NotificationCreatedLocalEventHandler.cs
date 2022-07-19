@@ -1,17 +1,10 @@
-using System.Linq;
-using System.Threading.Tasks;
-using Lion.AbpPro.NotificationManagement.Hubs;
-using Lion.AbpPro.NotificationManagement.Notifications.DistributedEvents;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.EventBus;
-
 namespace Lion.AbpPro.NotificationManagement.Notifications.LocalEventHandlers
 {
     /// <summary>
     /// 创建消息事件处理
     /// </summary>
     public class NotificationCreatedLocalEventHandler : 
-            ILocalEventHandler<CreatedNotificationDistributedEvent>,
+            ILocalEventHandler<CreatedNotificationLocalEvent>,
             ITransientDependency
     {
         private readonly INotificationHubAppService _hubAppService;
@@ -21,7 +14,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.LocalEventHandlers
             _hubAppService = hubAppService;
         }
 
-        public virtual Task HandleEventAsync(CreatedNotificationDistributedEvent eventData)
+        public virtual Task HandleEventAsync(CreatedNotificationLocalEvent eventData)
         {
             return _hubAppService.SendMessageAsync(
                 eventData.NotificationEto.Id,

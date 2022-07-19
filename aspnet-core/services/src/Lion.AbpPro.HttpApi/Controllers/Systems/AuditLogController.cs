@@ -1,11 +1,3 @@
-using Lion.AbpPro.AuditLogs;
-using Lion.AbpPro.Permissions;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
-using System.Threading.Tasks;
-using Volo.Abp.Application.Dtos;
-
 namespace Lion.AbpPro.Controllers.Systems
 {
     [Route("AuditLogs")]

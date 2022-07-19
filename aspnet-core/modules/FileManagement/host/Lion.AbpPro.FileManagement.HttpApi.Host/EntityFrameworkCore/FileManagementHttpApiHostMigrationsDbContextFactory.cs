@@ -1,9 +1,4 @@
-﻿using System.IO;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
-
-namespace Lion.AbpPro.FileManagement.EntityFrameworkCore;
+﻿namespace Lion.AbpPro.FileManagement.EntityFrameworkCore;
 
 public class FileManagementHttpApiHostMigrationsDbContextFactory : IDesignTimeDbContextFactory<FileManagementHttpApiHostMigrationsDbContext>
 {

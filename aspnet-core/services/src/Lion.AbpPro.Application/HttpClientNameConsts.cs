@@ -1,6 +1,3 @@
-using System;
-using System.Threading.Tasks;
-
 namespace Lion.AbpPro
 {
     public static class HttpClientNameConsts

@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Lion.AbpPro.NotificationManagement.Notifications;
-using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
-using Lion.AbpPro.NotificationManagement.Notifications.Enums;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Volo.Abp;
-
-namespace Lion.AbpPro.NotificationManagement.Hubs;
+﻿namespace Lion.AbpPro.NotificationManagement.Hubs;
 
 public class NotificationHubAppService : NotificationManagementAppService, INotificationHubAppService
 {

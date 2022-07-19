@@ -1,9 +1,3 @@
-using System;
-using System.Linq;
-using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-
 namespace Lion.AbpPro.Shared.Hosting.Microservices.Swaggers
 {
     /// <summary>

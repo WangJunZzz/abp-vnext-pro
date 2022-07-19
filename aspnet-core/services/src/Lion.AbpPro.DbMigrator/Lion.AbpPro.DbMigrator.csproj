@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Serilog.Extensions.Logging"  />
-    <PackageReference Include="Serilog.Sinks.Async"  />
-    <PackageReference Include="Serilog.Sinks.File"  />
-    <PackageReference Include="Serilog.Sinks.Console"  />
-    <PackageReference Include="Volo.Abp.Autofac"  />
+    <PackageReference Include="Serilog.Extensions.Logging" />
+    <PackageReference Include="Serilog.Sinks.Async" />
+    <PackageReference Include="Serilog.Sinks.File" />
+    <PackageReference Include="Serilog.Sinks.Console" />
+    <PackageReference Include="Volo.Abp.Autofac" />
   </ItemGroup>
 
   <ItemGroup>

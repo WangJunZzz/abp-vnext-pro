@@ -1,7 +1,3 @@
-using Lion.AbpPro.NotificationManagement.Localization;
-using Volo.Abp.Authorization.Permissions;
-using Volo.Abp.Localization;
-
 namespace Lion.AbpPro.NotificationManagement.Permissions
 {
     public class NotificationManagementPermissionDefinitionProvider : PermissionDefinitionProvider

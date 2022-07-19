@@ -7,11 +7,11 @@
         <PackageReference Include="Ocelot" />
         <PackageReference Include="Ocelot.Provider.Consul" />
         <PackageReference Include="Ocelot.Provider.Polly" />
-        <PackageReference Include="Volo.Abp"  />
-        <PackageReference Include="Volo.Abp.AspNetCore"  />
-        <PackageReference Include="Volo.Abp.Autofac"  />
-        <PackageReference Include="Volo.Abp.Core"  />
-        <PackageReference Include="Volo.Abp.Swashbuckle"  />
-        <PackageReference Include="Swashbuckle.AspNetCore"  />
+        <PackageReference Include="Volo.Abp" />
+        <PackageReference Include="Volo.Abp.AspNetCore" />
+        <PackageReference Include="Volo.Abp.Autofac" />
+        <PackageReference Include="Volo.Abp.Core" />
+        <PackageReference Include="Volo.Abp.Swashbuckle" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
     </ItemGroup>
 </Project>

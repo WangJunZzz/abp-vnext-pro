@@ -1,16 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dto;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos;
-using Lion.AbpPro.DataDictionaryManagement.Permissions;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Lion.AbpPro.Extension.System;
-using Microsoft.AspNetCore.Authorization;
-using Volo.Abp.Application.Dtos;
-
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
     [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Default)]

@@ -1,10 +1,3 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries;
-using Xunit;
-using Shouldly;
-
 namespace Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.DataDictionaries
 {
     public class EfCoreDataDictionaryRepository_Tests : EfCoreDataDictionaryRepository_Tests<

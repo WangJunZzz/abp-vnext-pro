@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Lion.AbpPro.FileManagement.Files.Dto;
+﻿namespace Lion.AbpPro.FileManagement.Files.Dto;
 
 public class CreateFileInput
 {

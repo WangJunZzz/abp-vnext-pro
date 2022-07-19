@@ -1,8 +1,3 @@
-using Shouldly;
-using System.Threading.Tasks;
-using Volo.Abp.Identity;
-using Xunit;
-
 namespace Lion.AbpPro.Samples
 {
     /* This is just an example test class.

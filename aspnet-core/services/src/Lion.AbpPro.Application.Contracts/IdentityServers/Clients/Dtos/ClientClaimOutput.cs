@@ -1,5 +1,3 @@
-using System;
-
 namespace Lion.AbpPro.IdentityServers.Clients.Dtos
 {
     public class ClientClaimOutput

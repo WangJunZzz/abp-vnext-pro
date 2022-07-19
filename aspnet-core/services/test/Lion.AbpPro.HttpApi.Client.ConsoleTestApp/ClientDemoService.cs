@@ -1,8 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using Volo.Abp.Account;
-using Volo.Abp.DependencyInjection;
-
 namespace Lion.AbpPro.HttpApi.Client.ConsoleTestApp
 {
     public class ClientDemoService : ITransientDependency

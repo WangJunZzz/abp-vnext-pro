@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Volo.Abp.Auditing;
-
 namespace Lion.AbpPro.Users.Dtos
 {
     /// <summary>

@@ -1,11 +1,3 @@
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
-using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore.Sqlite;
-using Volo.Abp.Modularity;
-
 namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore
 {
     [DependsOn(

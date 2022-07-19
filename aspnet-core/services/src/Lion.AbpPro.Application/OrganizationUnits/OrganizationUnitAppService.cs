@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Lion.AbpPro.OrganizationUnits.Dto;
-using Lion.AbpPro.Permissions;
-using Microsoft.AspNetCore.Authorization;
-using Volo.Abp;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Identity;
-
-namespace Lion.AbpPro.OrganizationUnits;
+﻿namespace Lion.AbpPro.OrganizationUnits;
 
 [Authorize(AbpProPermissions.SystemManagement.OrganizationUnitManagement.Default)]
 public class OrganizationUnitAppService : AbpProAppService, IOrganizationUnitAppService

@@ -1,12 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
-using Lion.AbpPro.NotificationManagement.Notifications.Enums;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
-
 namespace Lion.AbpPro.NotificationManagement.Notifications
 {
     public interface INotificationAppService:IApplicationService

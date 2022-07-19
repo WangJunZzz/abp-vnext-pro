@@ -1,14 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lion.AbpPro.IdentityServers.IdentityResources;
-using Lion.AbpPro.IdentityServers.IdentityResources.Dtos;
-using Lion.AbpPro.Permissions;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
-using Volo.Abp.Application.Dtos;
-
 namespace Lion.AbpPro.Controllers.IdentityServers
 {
     [Route("IdentityServer/IdentityResource")]

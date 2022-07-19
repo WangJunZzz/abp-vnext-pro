@@ -1,8 +1,3 @@
-using System;
-using System.Runtime.Serialization;
-using Microsoft.Extensions.Logging;
-using Volo.Abp;
-
 namespace Lion.AbpPro.NotificationManagement
 {
     public class NotificationManagementDomainException : BusinessException

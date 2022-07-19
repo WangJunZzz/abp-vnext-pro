@@ -1,5 +1,3 @@
-using Volo.Abp.Settings;
-
 namespace Lion.AbpPro.DataDictionaryManagement.Settings
 {
     public class DataDictionaryManagementSettingDefinitionProvider : SettingDefinitionProvider

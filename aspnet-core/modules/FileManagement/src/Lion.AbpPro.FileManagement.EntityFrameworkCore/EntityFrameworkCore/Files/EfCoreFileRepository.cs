@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Lion.AbpPro.FileManagement.Files;
-using Microsoft.EntityFrameworkCore;
-using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore;
-
-namespace Lion.AbpPro.FileManagement.EntityFrameworkCore.Files;
+﻿namespace Lion.AbpPro.FileManagement.EntityFrameworkCore.Files;
 
 public class EfCoreFileRepository: EfCoreRepository<IFileManagementDbContext,Lion.AbpPro.FileManagement.Files.File, Guid>, IFileRepository
 {

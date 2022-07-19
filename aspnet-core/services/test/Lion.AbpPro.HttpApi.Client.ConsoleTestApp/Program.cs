@@ -1,7 +1,3 @@
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
 namespace Lion.AbpPro.HttpApi.Client.ConsoleTestApp
 {
     class Program

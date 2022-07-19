@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Http.Client"  />
+    <PackageReference Include="Volo.Abp.Http.Client" />
     <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.Application.Contracts\Lion.AbpPro.NotificationManagement.Application.Contracts.csproj" />
   </ItemGroup>
 

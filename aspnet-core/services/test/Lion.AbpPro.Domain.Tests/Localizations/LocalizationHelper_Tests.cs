@@ -1,11 +1,4 @@
-﻿using System;
-using Lion.AbpPro.Localization;
-using Lion.AbpPro.Localization.Extensions;
-using Shouldly;
-using Volo.Abp.Localization;
-using Xunit;
-
-namespace Lion.AbpPro.Localizations
+﻿namespace Lion.AbpPro.Localizations
 {
     public class LocalizationHelper_Tests:AbpProDomainTestBase
     {

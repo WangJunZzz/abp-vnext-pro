@@ -11,12 +11,12 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Lion.AbpPro.EntityFrameworkCore\Lion.AbpPro.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Lion.AbpPro.TestBase\Lion.AbpPro.TestBase.csproj" />
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite"  />
-    <PackageReference Include="Zack.EFCore.Batch.Sqlite_NET6"  />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" />
+    <PackageReference Include="Zack.EFCore.Batch.Sqlite_NET6" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk"  />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
   </ItemGroup>
 
 </Project>

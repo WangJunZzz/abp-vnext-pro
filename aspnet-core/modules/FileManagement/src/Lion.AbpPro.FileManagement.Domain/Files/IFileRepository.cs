@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Volo.Abp.Domain.Repositories;
-
-namespace Lion.AbpPro.FileManagement.Files;
+﻿namespace Lion.AbpPro.FileManagement.Files;
 
 public interface IFileRepository: IRepository<File, Guid>
 {

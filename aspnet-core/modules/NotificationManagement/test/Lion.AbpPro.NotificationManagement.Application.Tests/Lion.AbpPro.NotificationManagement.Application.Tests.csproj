@@ -9,8 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.Application\Lion.AbpPro.NotificationManagement.Application.csproj"/>
-        <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.Domain.Tests\Lion.AbpPro.NotificationManagement.Domain.Tests.csproj"/>
+        <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.Application\Lion.AbpPro.NotificationManagement.Application.csproj" />
+        <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.Domain.Tests\Lion.AbpPro.NotificationManagement.Domain.Tests.csproj" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" />
     </ItemGroup>
 

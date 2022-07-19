@@ -1,5 +1,3 @@
-using Volo.Abp.Modularity;
-
 namespace Lion.AbpPro.FileManagement.Samples;
 
 /* Write your custom repository tests like that, in this project, as abstract classes.

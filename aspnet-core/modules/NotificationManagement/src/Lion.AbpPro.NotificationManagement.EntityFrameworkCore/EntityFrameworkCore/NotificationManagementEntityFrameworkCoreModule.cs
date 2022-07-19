@@ -1,7 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.Modularity;
-
 namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore
 {
     [DependsOn(

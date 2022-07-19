@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using Serilog;
-
-namespace Lion.AbpPro.FileManagement;
+﻿namespace Lion.AbpPro.FileManagement;
 
 public class Program
 {

@@ -9,9 +9,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" />
-    <PackageReference Include="Volo.Abp.AspNetCore.SignalR"  />
-    <PackageReference Include="Volo.Abp.AutoMapper"  />
-    <PackageReference Include="Volo.Abp.Ddd.Application"  />
+    <PackageReference Include="Volo.Abp.AspNetCore.SignalR" />
+    <PackageReference Include="Volo.Abp.AutoMapper" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" />
     <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.Application.Contracts\Lion.AbpPro.NotificationManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.Domain\Lion.AbpPro.NotificationManagement.Domain.csproj" />
   </ItemGroup>

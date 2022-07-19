@@ -1,13 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Lion.AbpPro.OrganizationUnits;
-using Lion.AbpPro.OrganizationUnits.Dto;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
-using Volo.Abp.Application.Dtos;
-
-namespace Lion.AbpPro.Controllers.Systems;
+﻿namespace Lion.AbpPro.Controllers.Systems;
 
 [Route("OrganizationUnits")]
 public class OrganizationUnitController : AbpProController, IOrganizationUnitAppService

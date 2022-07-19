@@ -1,10 +1,4 @@
-﻿using System.Threading.Tasks;
-using Lion.AbpPro.FileManagement.Files.Dto;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
-using Volo.Abp.Application.Dtos;
-
-namespace Lion.AbpPro.FileManagement.Files;
+﻿namespace Lion.AbpPro.FileManagement.Files;
 
 [Route("Files")]
 public class FileController: FileManagementController, IFileAppService

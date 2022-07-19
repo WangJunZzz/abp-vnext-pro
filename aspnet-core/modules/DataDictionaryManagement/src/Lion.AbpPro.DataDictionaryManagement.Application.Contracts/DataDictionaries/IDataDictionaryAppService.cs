@@ -1,10 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
-
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
     public interface IDataDictionaryAppService : IApplicationService

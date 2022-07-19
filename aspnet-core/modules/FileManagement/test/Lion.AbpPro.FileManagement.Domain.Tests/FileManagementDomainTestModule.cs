@@ -1,6 +1,3 @@
-using Lion.AbpPro.FileManagement.EntityFrameworkCore;
-using Volo.Abp.Modularity;
-
 namespace Lion.AbpPro.FileManagement;
 
 /* Domain tests are configured to use the EF Core provider.

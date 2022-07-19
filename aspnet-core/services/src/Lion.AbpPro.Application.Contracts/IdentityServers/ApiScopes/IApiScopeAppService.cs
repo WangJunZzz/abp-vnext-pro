@@ -1,10 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lion.AbpPro.IdentityServers.ApiScopes.Dtos;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
-
 namespace Lion.AbpPro.IdentityServers.ApiScopes
 {
     public interface IApiScopeAppService : IApplicationService

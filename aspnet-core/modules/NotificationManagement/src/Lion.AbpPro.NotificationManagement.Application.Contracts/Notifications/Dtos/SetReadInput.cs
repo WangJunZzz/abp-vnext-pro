@@ -1,5 +1,3 @@
-using System;
-
 namespace Lion.AbpPro.NotificationManagement.Notifications.Dtos
 {
     public class SetReadInput

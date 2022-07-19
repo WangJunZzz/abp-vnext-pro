@@ -1,9 +1,4 @@
-﻿using System.Threading.Tasks;
-using Lion.AbpPro.Users;
-using Shouldly;
-using Xunit;
-
-namespace Lion.AbpPro.FreeSqlRepository.Tests.Users
+﻿namespace Lion.AbpPro.FreeSqlRepository.Tests.Users
 {
   
 

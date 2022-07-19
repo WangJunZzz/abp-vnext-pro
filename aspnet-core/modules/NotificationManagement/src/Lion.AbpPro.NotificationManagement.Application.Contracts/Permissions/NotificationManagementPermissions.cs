@@ -1,5 +1,3 @@
-using Volo.Abp.Reflection;
-
 namespace Lion.AbpPro.NotificationManagement.Permissions
 {
     public class NotificationManagementPermissions

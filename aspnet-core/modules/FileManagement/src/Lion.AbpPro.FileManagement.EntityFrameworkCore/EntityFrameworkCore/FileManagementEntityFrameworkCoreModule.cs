@@ -1,6 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.Modularity;
-
 namespace Lion.AbpPro.FileManagement.EntityFrameworkCore;
 
 [DependsOn(

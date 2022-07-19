@@ -1,25 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Net.Http;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using Lion.AbpPro.ConfigurationOptions;
-using Lion.AbpPro.Users.Dtos;
-using IdentityModel;
-using Lion.AbpPro.Extension.Customs.Http;
-using Lion.AbpPro.NotificationManagement.Notifications;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using Volo.Abp;
-using Volo.Abp.Authorization;
-using Volo.Abp.Identity;
-using Volo.Abp.Security.Claims;
-
-
 namespace Lion.AbpPro.Users
 {
     public class AccountAppService : AbpProAppService, IAccountAppService

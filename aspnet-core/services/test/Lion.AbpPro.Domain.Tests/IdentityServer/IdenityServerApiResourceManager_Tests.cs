@@ -1,11 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Linq;
-using Shouldly;
-using Volo.Abp;
-using Xunit;
-
 namespace Lion.AbpPro.IdentityServer
 {
     public class IdenityServerApiResourceManager_Tests : AbpProDomainTestBase

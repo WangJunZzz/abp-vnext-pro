@@ -1,0 +1,31 @@
+﻿// Global using directives
+
+global using System.IO;
+global using Lion.AbpPro.CAP;
+global using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Cors;
+global using Microsoft.AspNetCore.DataProtection;
+global using Microsoft.AspNetCore.Hosting;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Design;
+global using Microsoft.Extensions.Caching.Distributed;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.OpenApi.Models;
+global using Serilog;
+global using StackExchange.Redis;
+global using Swashbuckle.AspNetCore.SwaggerUI;
+global using Volo.Abp;
+global using Volo.Abp.AspNetCore.Mvc;
+global using Volo.Abp.AspNetCore.Mvc.AntiForgery;
+global using Volo.Abp.AspNetCore.Serilog;
+global using Volo.Abp.Autofac;
+global using Volo.Abp.Caching;
+global using Volo.Abp.Caching.StackExchangeRedis;
+global using Volo.Abp.EntityFrameworkCore;
+global using Volo.Abp.EntityFrameworkCore.MySQL;
+global using Volo.Abp.Localization;
+global using Volo.Abp.Modularity;
+global using Volo.Abp.Swashbuckle;
+global using Volo.Abp.VirtualFileSystem;

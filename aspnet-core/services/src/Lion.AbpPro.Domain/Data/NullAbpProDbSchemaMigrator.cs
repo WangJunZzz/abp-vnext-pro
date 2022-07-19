@@ -1,6 +1,3 @@
-using System.Threading.Tasks;
-using Volo.Abp.DependencyInjection;
-
 namespace Lion.AbpPro.Data
 {
     /* This is used if database provider does't define

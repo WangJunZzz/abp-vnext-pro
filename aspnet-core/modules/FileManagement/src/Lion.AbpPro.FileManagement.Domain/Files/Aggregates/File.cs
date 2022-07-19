@@ -1,8 +1,4 @@
-﻿using System;
-using Volo.Abp.Domain.Entities.Auditing;
-using Volo.Abp.MultiTenancy;
-
-namespace Lion.AbpPro.FileManagement.Files;
+﻿namespace Lion.AbpPro.FileManagement.Files;
 
 public class File: FullAuditedAggregateRoot<Guid>, IMultiTenant
 {

@@ -1,0 +1,33 @@
+﻿// Global using directives
+
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Net;
+global using System.Reflection;
+global using Consul;
+global using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.Extensions.DependencyInjection;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Cors;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc.ApiExplorer;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Options;
+global using Microsoft.OpenApi.Any;
+global using Microsoft.OpenApi.Models;
+global using Swashbuckle.AspNetCore.SwaggerGen;
+global using Volo.Abp;
+global using Volo.Abp.AspNetCore.ExceptionHandling;
+global using Volo.Abp.AspNetCore.Mvc.AntiForgery;
+global using Volo.Abp.Authorization;
+global using Volo.Abp.Autofac;
+global using Volo.Abp.DependencyInjection;
+global using Volo.Abp.Domain.Entities;
+global using Volo.Abp.ExceptionHandling;
+global using Volo.Abp.Localization;
+global using Volo.Abp.Modularity;
+global using Volo.Abp.Swashbuckle;
+global using Volo.Abp.UI.Navigation.Urls;
+global using Volo.Abp.Validation;

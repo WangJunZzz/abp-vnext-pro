@@ -1,12 +1,3 @@
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dto;
-using Volo.Abp;
-using Volo.Abp.Caching;
-
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
     public class DataDictionaryManager : DataDictionaryDomainService

@@ -1,24 +1,3 @@
-using Lion.AbpPro.CAP;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.OpenApi.Models;
-using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
-using StackExchange.Redis;
-using Swashbuckle.AspNetCore.SwaggerUI;
-using Volo.Abp;
-using Volo.Abp.AspNetCore.Mvc.AntiForgery;
-using Volo.Abp.AspNetCore.Serilog;
-using Volo.Abp.Autofac;
-using Volo.Abp.Caching;
-using Volo.Abp.Caching.StackExchangeRedis;
-using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore.MySQL;
-using Volo.Abp.Localization;
-using Volo.Abp.Modularity;
-using Volo.Abp.Swashbuckle;
-using Volo.Abp.VirtualFileSystem;
-
 namespace Lion.AbpPro.NotificationManagement;
 
 [DependsOn(

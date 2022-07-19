@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
 namespace Lion.AbpPro.Extension.Customs.Dtos
 {
 

@@ -1,15 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Lion.AbpPro.IdentityServer;
-using Lion.AbpPro.IdentityServers.ApiScopes.Dtos;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Lion.AbpPro.Permissions;
-using Microsoft.AspNetCore.Authorization;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.IdentityServer.ApiScopes;
-
 namespace Lion.AbpPro.IdentityServers.ApiScopes
 {
     [Authorize(Policy = AbpProPermissions.IdentityServer.ApiScope.Default)]

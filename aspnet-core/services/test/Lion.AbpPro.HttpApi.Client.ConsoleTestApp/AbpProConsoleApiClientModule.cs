@@ -1,10 +1,3 @@
-using System;
-using Microsoft.Extensions.DependencyInjection;
-using Polly;
-using Volo.Abp.Http.Client;
-using Volo.Abp.Http.Client.IdentityModel;
-using Volo.Abp.Modularity;
-
 namespace Lion.AbpPro.HttpApi.Client.ConsoleTestApp
 {
     [DependsOn(

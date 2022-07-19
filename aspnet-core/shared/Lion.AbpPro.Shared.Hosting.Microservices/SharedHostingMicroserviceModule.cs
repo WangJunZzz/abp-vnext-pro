@@ -1,16 +1,3 @@
-using System;
-using System.Linq;
-using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.AspNetCore.Mvc.AntiForgery;
-using Volo.Abp.Autofac;
-using Volo.Abp.Localization;
-using Volo.Abp.Modularity;
-using Volo.Abp.Swashbuckle;
-using Volo.Abp.UI.Navigation.Urls;
-
 namespace Lion.AbpPro.Shared.Hosting.Microservices
 {
     [DependsOn(

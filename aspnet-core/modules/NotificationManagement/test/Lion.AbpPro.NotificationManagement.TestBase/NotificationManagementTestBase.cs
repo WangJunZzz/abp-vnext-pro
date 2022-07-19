@@ -1,11 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp;
-using Volo.Abp.Modularity;
-using Volo.Abp.Uow;
-using Volo.Abp.Testing;
-
 namespace Lion.AbpPro.NotificationManagement
 {
     /* All test classes are derived from this class, directly or indirectly. */

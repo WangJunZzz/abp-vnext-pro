@@ -11,19 +11,19 @@
         <ProjectReference Include="..\..\..\modules\FileManagement\src\Lion.AbpPro.FileManagement.EntityFrameworkCore\Lion.AbpPro.FileManagement.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.EntityFrameworkCore\Lion.AbpPro.NotificationManagement.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\Lion.AbpPro.Domain\Lion.AbpPro.Domain.csproj" />
-        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL"  />
-        <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore"  />
-        <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore"  />
-        <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore"  />
-        <PackageReference Include="Volo.Abp.IdentityServer.EntityFrameworkCore"  />
-        <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore"  />
-        <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore"  />
-        <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore"  />
-        <PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore"  />
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" />
+        <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" />
+        <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" />
+        <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" />
+        <PackageReference Include="Volo.Abp.IdentityServer.EntityFrameworkCore" />
+        <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore" />
+        <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" />
+        <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" />
+        <PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" />
         <PackageReference Include="Zack.EFCore.Batch.MySQL.Pomelo_NET6" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" >
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
             <PrivateAssets>compile; contentFiles; build; buildMultitargeting; buildTransitive; analyzers; native</PrivateAssets>
         </PackageReference>

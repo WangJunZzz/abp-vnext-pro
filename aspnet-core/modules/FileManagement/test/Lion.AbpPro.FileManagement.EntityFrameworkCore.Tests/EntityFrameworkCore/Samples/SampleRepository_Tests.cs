@@ -1,5 +1,3 @@
-using Lion.AbpPro.FileManagement.Samples;
-
 namespace Lion.AbpPro.FileManagement.EntityFrameworkCore.Samples;
 
 public class SampleRepository_Tests : SampleRepository_Tests<FileManagementEntityFrameworkCoreTestModule>

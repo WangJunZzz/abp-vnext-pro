@@ -1,7 +1,3 @@
-using Lion.AbpPro.DataDictionaryManagement.Localization;
-using Volo.Abp.Authorization.Permissions;
-using Volo.Abp.Localization;
-
 namespace Lion.AbpPro.DataDictionaryManagement.Permissions
 {
     public class DataDictionaryManagementPermissionDefinitionProvider : PermissionDefinitionProvider

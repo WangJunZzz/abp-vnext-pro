@@ -1,9 +1,3 @@
-using Lion.AbpPro.Localization;
-using Volo.Abp.Authorization.Permissions;
-using Volo.Abp.Identity;
-using Volo.Abp.Localization;
-using Volo.Abp.MultiTenancy;
-
 namespace Lion.AbpPro.Permissions
 {
     public class AbpProPermissionDefinitionProvider : PermissionDefinitionProvider

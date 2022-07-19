@@ -9,12 +9,12 @@
 
     <ItemGroup>
         <PackageReference Include="Volo.Abp.Http.Client" />
-        <ProjectReference Include="..\Lion.AbpPro.FileManagement.Application.Contracts\Lion.AbpPro.FileManagement.Application.Contracts.csproj"/>
+        <ProjectReference Include="..\Lion.AbpPro.FileManagement.Application.Contracts\Lion.AbpPro.FileManagement.Application.Contracts.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="**\*generate-proxy.json"/>
-        <Content Remove="**\*generate-proxy.json"/>
+        <EmbeddedResource Include="**\*generate-proxy.json" />
+        <Content Remove="**\*generate-proxy.json" />
     </ItemGroup>
 
 </Project>

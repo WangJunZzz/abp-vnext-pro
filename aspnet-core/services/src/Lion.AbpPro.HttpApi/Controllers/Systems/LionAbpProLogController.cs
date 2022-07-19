@@ -1,12 +1,3 @@
-using System.Threading.Tasks;
-using Lion.AbpPro.ElasticSearchs;
-using Lion.AbpPro.ElasticSearchs.Dto;
-using Lion.AbpPro.Permissions;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
-
 namespace Lion.AbpPro.Controllers.Systems
 {
     [Route("EsLog")]

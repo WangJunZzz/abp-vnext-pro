@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Lion.AbpPro.OrganizationUnits.Dto;
+﻿namespace Lion.AbpPro.OrganizationUnits.Dto;
 
 public class AddUserToOrganizationUnitInput
 {

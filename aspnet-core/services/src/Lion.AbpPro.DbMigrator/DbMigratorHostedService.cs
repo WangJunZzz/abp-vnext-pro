@@ -1,13 +1,3 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Lion.AbpPro.Data;
-using Microsoft.Extensions.Configuration;
-using Serilog;
-using Volo.Abp;
-
 namespace Lion.AbpPro.DbMigrator
 {
     public class DbMigratorHostedService : IHostedService

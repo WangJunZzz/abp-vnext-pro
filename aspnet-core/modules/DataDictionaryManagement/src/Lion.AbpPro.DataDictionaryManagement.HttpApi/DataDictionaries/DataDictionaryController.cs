@@ -1,10 +1,3 @@
-using System.Threading.Tasks;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
-using Volo.Abp.Application.Dtos;
-
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
     [Route("DataDictionary")]

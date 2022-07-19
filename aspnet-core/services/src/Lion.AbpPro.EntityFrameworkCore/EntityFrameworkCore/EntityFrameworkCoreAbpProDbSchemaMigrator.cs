@@ -1,10 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Lion.AbpPro.Data;
-using Microsoft.EntityFrameworkCore;
-using Volo.Abp.DependencyInjection;
-
 namespace Lion.AbpPro.EntityFrameworkCore
 {
     public class EntityFrameworkCoreAbpProDbSchemaMigrator

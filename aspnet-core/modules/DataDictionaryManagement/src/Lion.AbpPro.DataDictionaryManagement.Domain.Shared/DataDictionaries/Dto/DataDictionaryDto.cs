@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dto
 {
     public class DataDictionaryDto

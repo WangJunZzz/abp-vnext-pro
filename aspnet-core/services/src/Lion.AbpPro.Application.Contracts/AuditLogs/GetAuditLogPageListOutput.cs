@@ -1,5 +1,3 @@
-using System;
-
 namespace Lion.AbpPro.AuditLogs
 {
     public class GetAuditLogPageListOutput

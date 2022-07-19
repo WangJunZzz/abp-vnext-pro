@@ -1,8 +1,3 @@
-using System.Collections.Generic;
-using System.Security.Claims;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.Security.Claims;
-
 namespace Lion.AbpPro.DataDictionaryManagement.Security
 {
     [Dependency(ReplaceServices = true)]

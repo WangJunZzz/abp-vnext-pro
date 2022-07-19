@@ -1,5 +1,3 @@
-using System;
-
 namespace Lion.AbpPro.Extension.System
 {
     /// <summary>

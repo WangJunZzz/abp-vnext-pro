@@ -1,6 +1,3 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos
 {
     public class SetDataDictinaryDetailInput

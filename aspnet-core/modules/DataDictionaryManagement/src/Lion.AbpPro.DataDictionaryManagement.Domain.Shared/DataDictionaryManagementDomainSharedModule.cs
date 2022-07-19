@@ -1,11 +1,3 @@
-using Volo.Abp.Modularity;
-using Volo.Abp.Localization;
-using Lion.AbpPro.DataDictionaryManagement.Localization;
-using Volo.Abp.Localization.ExceptionHandling;
-using Volo.Abp.Validation;
-using Volo.Abp.Validation.Localization;
-using Volo.Abp.VirtualFileSystem;
-
 namespace Lion.AbpPro.DataDictionaryManagement
 {
     [DependsOn(

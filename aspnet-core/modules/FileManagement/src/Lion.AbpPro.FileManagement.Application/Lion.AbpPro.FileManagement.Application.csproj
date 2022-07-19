@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.AutoMapper"/>
-        <PackageReference Include="Volo.Abp.Ddd.Application"/>
-        <PackageReference Include="Volo.Abp.BlobStoring.Aliyun"/>
-        <ProjectReference Include="..\Lion.AbpPro.FileManagement.Application.Contracts\Lion.AbpPro.FileManagement.Application.Contracts.csproj"/>
-        <ProjectReference Include="..\Lion.AbpPro.FileManagement.Domain\Lion.AbpPro.FileManagement.Domain.csproj"/>
+        <PackageReference Include="Volo.Abp.AutoMapper" />
+        <PackageReference Include="Volo.Abp.Ddd.Application" />
+        <PackageReference Include="Volo.Abp.BlobStoring.Aliyun" />
+        <ProjectReference Include="..\Lion.AbpPro.FileManagement.Application.Contracts\Lion.AbpPro.FileManagement.Application.Contracts.csproj" />
+        <ProjectReference Include="..\Lion.AbpPro.FileManagement.Domain\Lion.AbpPro.FileManagement.Domain.csproj" />
     </ItemGroup>
 
 </Project>

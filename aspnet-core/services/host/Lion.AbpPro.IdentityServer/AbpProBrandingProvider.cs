@@ -1,6 +1,3 @@
-using Volo.Abp.Ui.Branding;
-using Volo.Abp.DependencyInjection;
-
 namespace Lion.AbpPro
 {
     [Dependency(ReplaceServices = true)]

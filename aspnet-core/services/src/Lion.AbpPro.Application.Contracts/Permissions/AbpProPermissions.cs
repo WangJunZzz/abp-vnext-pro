@@ -1,5 +1,3 @@
-using Lion.AbpPro.IdentityServers.Clients;
-
 namespace Lion.AbpPro.Permissions
 {
     public static class AbpProPermissions

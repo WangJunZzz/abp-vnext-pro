@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations"  />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc"  />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" />
     <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.Application.Contracts\Lion.AbpPro.NotificationManagement.Application.Contracts.csproj" />
   </ItemGroup>
 

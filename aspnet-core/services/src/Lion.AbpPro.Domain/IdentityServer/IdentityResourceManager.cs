@@ -1,11 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Volo.Abp;
-using Volo.Abp.Domain.Services;
-using Volo.Abp.IdentityServer.IdentityResources;
-
 namespace Lion.AbpPro.IdentityServer
 {
     public class IdentityResourceManager : AbpProDomainService

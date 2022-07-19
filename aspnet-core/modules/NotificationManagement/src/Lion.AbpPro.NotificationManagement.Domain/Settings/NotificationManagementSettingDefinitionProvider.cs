@@ -1,5 +1,3 @@
-using Volo.Abp.Settings;
-
 namespace Lion.AbpPro.NotificationManagement.Settings
 {
     public class NotificationManagementSettingDefinitionProvider : SettingDefinitionProvider

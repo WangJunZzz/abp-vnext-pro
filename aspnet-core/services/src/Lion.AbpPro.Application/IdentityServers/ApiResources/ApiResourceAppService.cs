@@ -1,13 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lion.AbpPro.IdentityServer;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Lion.AbpPro.IdentityServers.ApiResources.Dtos;
-using Lion.AbpPro.Permissions;
-using Microsoft.AspNetCore.Authorization;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.IdentityServer.ApiResources;
-
 namespace Lion.AbpPro.IdentityServers.ApiResources
 {
     [Authorize(Policy = AbpProPermissions.IdentityServer.ApiResource.Default)]

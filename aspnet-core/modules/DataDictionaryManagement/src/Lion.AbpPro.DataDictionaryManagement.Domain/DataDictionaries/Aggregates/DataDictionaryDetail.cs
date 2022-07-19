@@ -1,7 +1,3 @@
-using System;
-using Lion.AbpPro.Extension.Customs;
-using Volo.Abp.Domain.Entities.Auditing;
-
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates
 {
     public class DataDictionaryDetail : AuditedEntity<Guid>

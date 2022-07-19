@@ -1,12 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Localization;
-using Volo.Abp;
-using Volo.Abp.DependencyInjection;
-using Microsoft.AspNetCore.Builder;
-
-
-namespace Lion.AbpPro.Localization
+﻿namespace Lion.AbpPro.Localization
 {
     public static class LocalizationHelper
     {

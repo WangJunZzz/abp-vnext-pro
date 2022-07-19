@@ -1,9 +1,3 @@
-using System.Linq;
-using System.Threading.Tasks;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos;
-using Shouldly;
-using Xunit;
-
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
     public class DataDictionaryAppService_Tests : DataDictionaryManagementApplicationTestBase

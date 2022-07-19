@@ -1,13 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using Lion.AbpPro.Users.Dtos;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Microsoft.AspNetCore.Mvc;
-using Volo.Abp.Account;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
-using Volo.Abp.Identity;
-
 namespace Lion.AbpPro.Users
 {
     public interface IUserAppService : IApplicationService

@@ -1,10 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Volo.Abp;
-using Volo.Abp.IdentityServer.ApiScopes;
-
 namespace Lion.AbpPro.IdentityServer
 {
     public class IdenityServerApiScopeManager : AbpProDomainService

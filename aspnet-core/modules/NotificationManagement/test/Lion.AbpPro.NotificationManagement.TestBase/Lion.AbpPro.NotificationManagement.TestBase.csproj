@@ -18,7 +18,7 @@
         <PackageReference Include="Volo.Abp.Autofac" />
         <PackageReference Include="Volo.Abp.Authorization" />
         <PackageReference Include="Volo.Abp.TestBase" />
-        <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.Domain\Lion.AbpPro.NotificationManagement.Domain.csproj"/>
+        <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.Domain\Lion.AbpPro.NotificationManagement.Domain.csproj" />
     </ItemGroup>
 
 </Project>

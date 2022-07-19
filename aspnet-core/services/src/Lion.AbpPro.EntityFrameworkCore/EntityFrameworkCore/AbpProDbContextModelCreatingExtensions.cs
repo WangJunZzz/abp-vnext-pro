@@ -1,6 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Volo.Abp;
-
 namespace Lion.AbpPro.EntityFrameworkCore
 {
     public static class AbpProDbContextModelCreatingExtensions

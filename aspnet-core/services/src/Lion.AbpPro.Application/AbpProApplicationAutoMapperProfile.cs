@@ -1,8 +1,3 @@
-using AutoMapper;
-using Lion.AbpPro.OrganizationUnits.Dto;
-using Lion.AbpPro.Users.Dtos;
-using Volo.Abp.Identity;
-
 namespace Lion.AbpPro
 {
     public class AbpProApplicationAutoMapperProfile : Profile

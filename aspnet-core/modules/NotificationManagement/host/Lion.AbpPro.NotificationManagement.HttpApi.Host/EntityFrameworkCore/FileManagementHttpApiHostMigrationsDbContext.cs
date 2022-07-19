@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore;
-
-namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
+﻿namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
 
 public class NotificationManagementHttpApiHostMigrationsDbContext : AbpDbContext<NotificationManagementHttpApiHostMigrationsDbContext>
 {

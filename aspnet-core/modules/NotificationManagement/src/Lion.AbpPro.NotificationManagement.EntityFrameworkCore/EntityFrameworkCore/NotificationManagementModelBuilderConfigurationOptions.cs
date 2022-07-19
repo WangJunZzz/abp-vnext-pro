@@ -1,6 +1,3 @@
-using JetBrains.Annotations;
-using Volo.Abp.EntityFrameworkCore.Modeling;
-
 namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore
 {
     public class NotificationManagementModelBuilderConfigurationOptions : AbpModelBuilderConfigurationOptions

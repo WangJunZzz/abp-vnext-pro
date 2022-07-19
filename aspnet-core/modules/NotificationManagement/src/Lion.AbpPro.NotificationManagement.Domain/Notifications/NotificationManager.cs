@@ -1,13 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
-using Lion.AbpPro.NotificationManagement.Notifications.DistributedEvents;
-using Lion.AbpPro.NotificationManagement.Notifications.Enums;
-using Lion.AbpPro.NotificationManagement.Notifications.Etos;
-using Volo.Abp.Authorization;
-using Volo.Abp.Users;
+using Lion.AbpPro.NotificationManagement.Notifications.LocalEvents;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications
 {
@@ -70,7 +61,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
 
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
             // 发送集成事件
-            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationDistributedEvent(notificationEto));
+            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
             await _notificationRepository.InsertAsync(entity);
         }
 
@@ -101,7 +92,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
 
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
             // 发送集成事件
-            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationDistributedEvent(notificationEto));
+            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
             await _notificationRepository.InsertAsync(entity);
         }
 
@@ -129,7 +120,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
 
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
             // 发送集成事件
-            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationDistributedEvent(notificationEto));
+            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
             await _notificationRepository.InsertAsync(entity);
         }
 
@@ -149,7 +140,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Warning, senderId);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
             // 发送集成事件
-            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationDistributedEvent(notificationEto));
+            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
             await _notificationRepository.InsertAsync(entity);
         }
 
@@ -169,7 +160,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Information, senderId);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
             // 发送集成事件
-            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationDistributedEvent(notificationEto));
+            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
             await _notificationRepository.InsertAsync(entity);
         }
 
@@ -188,7 +179,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
 
             var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Error, senderId);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
-            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationDistributedEvent(notificationEto));
+            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
             await _notificationRepository.InsertAsync(entity);
         }
 

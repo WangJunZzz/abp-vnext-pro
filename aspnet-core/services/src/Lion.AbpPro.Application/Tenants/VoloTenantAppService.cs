@@ -1,11 +1,3 @@
-using System.Threading.Tasks;
-using Lion.AbpPro.Extension.Customs.Dtos;
-using Lion.AbpPro.Tenants.Dtos;
-using Microsoft.AspNetCore.Authorization;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.AspNetCore.Mvc.MultiTenancy;
-using Volo.Abp.TenantManagement;
-
 namespace Lion.AbpPro.Tenants
 {
     public class VoloTenantAppService : AbpProAppService, IVoloTenantAppService

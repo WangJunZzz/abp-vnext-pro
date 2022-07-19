@@ -1,0 +1,32 @@
+﻿// Global using directives
+
+global using System;
+global using System.Collections.Generic;
+global using System.ComponentModel.DataAnnotations;
+global using System.Linq;
+global using System.Runtime.Serialization;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using AutoMapper;
+global using Lion.AbpPro.Extension.Customs;
+global using Lion.AbpPro.NotificationManagement.Notifications;
+global using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
+global using Lion.AbpPro.NotificationManagement.Notifications.LocalEvents;
+global using Lion.AbpPro.NotificationManagement.Notifications.Enums;
+global using Lion.AbpPro.NotificationManagement.Notifications.Etos;
+global using Lion.AbpPro.NotificationManagement.Notifications.MaxLengths;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Logging;
+global using Volo.Abp;
+global using Volo.Abp.Authorization;
+global using Volo.Abp.AutoMapper;
+global using Volo.Abp.Domain;
+global using Volo.Abp.Domain.Entities.Auditing;
+global using Volo.Abp.Domain.Repositories;
+global using Volo.Abp.Domain.Services;
+global using Volo.Abp.EventBus.Distributed;
+global using Volo.Abp.Modularity;
+global using Volo.Abp.ObjectMapping;
+global using Volo.Abp.Settings;
+global using Volo.Abp.Uow;
+global using Volo.Abp.Users;

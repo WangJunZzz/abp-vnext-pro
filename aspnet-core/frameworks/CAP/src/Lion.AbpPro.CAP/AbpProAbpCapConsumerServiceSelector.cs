@@ -1,15 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using DotNetCore.CAP;
-using DotNetCore.CAP.Internal;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.EventBus;
-using Volo.Abp.EventBus.Distributed;
-
 namespace Lion.AbpPro.CAP
 {
     [Dependency(ServiceLifetime.Singleton, ReplaceServices = true)]

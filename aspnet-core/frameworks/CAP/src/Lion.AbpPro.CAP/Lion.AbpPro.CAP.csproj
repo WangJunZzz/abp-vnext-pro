@@ -4,9 +4,9 @@
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.Core"/>
-        <PackageReference Include="Volo.Abp.EventBus"/>
-        <PackageReference Include="DotNetCore.CAP"/>
+        <PackageReference Include="Volo.Abp.Core" />
+        <PackageReference Include="Volo.Abp.EventBus" />
+        <PackageReference Include="DotNetCore.CAP" />
     </ItemGroup>
 
 </Project>

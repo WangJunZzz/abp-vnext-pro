@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lion.AbpPro.OrganizationUnits.Dto;
+﻿namespace Lion.AbpPro.OrganizationUnits.Dto;
 
 public class GetUnAddUserOutput
 {

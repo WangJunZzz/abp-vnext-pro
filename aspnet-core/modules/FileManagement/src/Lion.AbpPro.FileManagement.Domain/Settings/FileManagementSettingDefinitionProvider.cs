@@ -1,5 +1,3 @@
-using Volo.Abp.Settings;
-
 namespace Lion.AbpPro.FileManagement.Settings;
 
 public class FileManagementSettingDefinitionProvider : SettingDefinitionProvider

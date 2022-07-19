@@ -1,9 +1,4 @@
-﻿using Lion.AbpPro.FileManagement.Files;
-using Microsoft.EntityFrameworkCore;
-using Volo.Abp;
-using Volo.Abp.EntityFrameworkCore.Modeling;
-
-namespace Lion.AbpPro.FileManagement.EntityFrameworkCore;
+﻿namespace Lion.AbpPro.FileManagement.EntityFrameworkCore;
 
 public static class FileManagementDbContextModelCreatingExtensions
 {

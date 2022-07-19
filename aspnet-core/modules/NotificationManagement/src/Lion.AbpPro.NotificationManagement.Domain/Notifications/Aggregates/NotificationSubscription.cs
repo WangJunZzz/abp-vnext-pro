@@ -1,6 +1,3 @@
-using System;
-using Volo.Abp.Domain.Entities.Auditing;
-
 namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
 {
     /// <summary>

@@ -1,11 +1,3 @@
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.Application;
-using Volo.Abp.AutoMapper;
-using Volo.Abp.BlobStoring;
-using Volo.Abp.BlobStoring.Aliyun;
-using Volo.Abp.Modularity;
-
 namespace Lion.AbpPro.FileManagement;
 
 [DependsOn(

@@ -1,5 +1,3 @@
-using System;
-
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dto
 {
     public class DataDictionaryDetailDto

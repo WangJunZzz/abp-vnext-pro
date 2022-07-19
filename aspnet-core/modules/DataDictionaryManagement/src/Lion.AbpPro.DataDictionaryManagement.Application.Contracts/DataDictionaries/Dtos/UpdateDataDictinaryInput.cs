@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos
+﻿namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos
 {
     public class UpdateDataDictinaryInput
     {

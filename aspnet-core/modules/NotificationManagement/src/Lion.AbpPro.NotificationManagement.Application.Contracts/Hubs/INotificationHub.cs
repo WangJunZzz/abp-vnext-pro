@@ -1,6 +1,3 @@
-using System.Threading.Tasks;
-using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
-
 namespace Lion.AbpPro.NotificationManagement.Hubs
 {
     public interface INotificationHub

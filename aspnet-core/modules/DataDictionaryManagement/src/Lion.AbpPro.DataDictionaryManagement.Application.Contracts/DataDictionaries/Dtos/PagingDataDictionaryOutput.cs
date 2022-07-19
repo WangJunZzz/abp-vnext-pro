@@ -1,6 +1,3 @@
-using System;
-using Volo.Abp.Application.Dtos;
-
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dtos
 {
     public class PagingDataDictionaryOutput : EntityDto<Guid>

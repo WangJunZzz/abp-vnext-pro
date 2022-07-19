@@ -1,6 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore;
-
 namespace Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore
 {
     public class DataDictionaryManagementHttpApiHostMigrationsDbContext : AbpDbContext<DataDictionaryManagementHttpApiHostMigrationsDbContext>

@@ -1,13 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using Lion.AbpPro.Extension.Customs;
-using Lion.AbpPro.NotificationManagement.Notifications.DistributedEvents;
-using Lion.AbpPro.NotificationManagement.Notifications.Enums;
-using Lion.AbpPro.NotificationManagement.Notifications.MaxLengths;
-using Volo.Abp.Domain.Entities.Auditing;
-
 namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
 {
     /// <summary>
@@ -151,9 +141,9 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
         /// 添加创建消息事件
         /// </summary>
         public void AddCreatedNotificationLocalEvent(
-            CreatedNotificationDistributedEvent createdNotificationDistributedEvent)
+            CreatedNotificationLocalEvent createdNotificationLocalEvent)
         {
-            AddLocalEvent(createdNotificationDistributedEvent);
+            AddLocalEvent(createdNotificationLocalEvent);
         }
     }
 }

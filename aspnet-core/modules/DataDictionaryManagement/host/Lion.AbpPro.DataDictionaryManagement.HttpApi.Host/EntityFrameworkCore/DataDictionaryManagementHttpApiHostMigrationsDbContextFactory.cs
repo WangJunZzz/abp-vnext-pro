@@ -1,8 +1,3 @@
-using System.IO;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
-
 namespace Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore
 {
     public class DataDictionaryManagementHttpApiHostMigrationsDbContextFactory : IDesignTimeDbContextFactory<DataDictionaryManagementHttpApiHostMigrationsDbContext>

@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.Ddd.Domain"  />
+        <PackageReference Include="Volo.Abp.Ddd.Domain" />
      
         <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.Domain.Shared\Lion.AbpPro.NotificationManagement.Domain.Shared.csproj" />
     </ItemGroup>

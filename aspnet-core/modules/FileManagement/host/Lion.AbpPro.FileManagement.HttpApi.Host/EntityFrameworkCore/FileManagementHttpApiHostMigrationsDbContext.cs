@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore;
-
-namespace Lion.AbpPro.FileManagement.EntityFrameworkCore;
+﻿namespace Lion.AbpPro.FileManagement.EntityFrameworkCore;
 
 public class FileManagementHttpApiHostMigrationsDbContext : AbpDbContext<FileManagementHttpApiHostMigrationsDbContext>
 {

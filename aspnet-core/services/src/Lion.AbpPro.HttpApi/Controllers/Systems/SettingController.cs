@@ -1,10 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lion.AbpPro.Settings;
-using Lion.AbpPro.Settings.Dtos;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
-
 namespace Lion.AbpPro.Controllers.Systems
 {
     [Route("Settings")]

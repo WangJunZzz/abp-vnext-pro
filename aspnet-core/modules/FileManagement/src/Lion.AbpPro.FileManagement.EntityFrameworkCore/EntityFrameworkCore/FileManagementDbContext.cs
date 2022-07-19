@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Volo.Abp.Data;
-using Volo.Abp.EntityFrameworkCore;
-
-namespace Lion.AbpPro.FileManagement.EntityFrameworkCore;
+﻿namespace Lion.AbpPro.FileManagement.EntityFrameworkCore;
 
 [ConnectionStringName(FileManagementDbProperties.ConnectionStringName)]
 public class FileManagementDbContext : AbpDbContext<FileManagementDbContext>, IFileManagementDbContext

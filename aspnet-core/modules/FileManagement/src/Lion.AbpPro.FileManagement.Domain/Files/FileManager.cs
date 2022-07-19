@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Volo.Abp;
-using Volo.Abp.Domain.Services;
-
-namespace Lion.AbpPro.FileManagement.Files;
+﻿namespace Lion.AbpPro.FileManagement.Files;
 
 public class FileManager : DomainService
 {

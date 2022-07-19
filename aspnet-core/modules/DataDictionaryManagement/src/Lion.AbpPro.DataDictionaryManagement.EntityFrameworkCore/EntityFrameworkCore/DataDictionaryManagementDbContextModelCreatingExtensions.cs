@@ -1,9 +1,3 @@
-using System;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
-using Microsoft.EntityFrameworkCore;
-using Volo.Abp;
-using Volo.Abp.EntityFrameworkCore.Modeling;
-
 namespace Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore
 {
     public static class DataDictionaryManagementDbContextModelCreatingExtensions

@@ -1,17 +1,3 @@
-using Lion.AbpPro.DataDictionaryManagement;
-using Lion.AbpPro.FileManagement;
-using Localization.Resources.AbpUi;
-using Lion.AbpPro.Localization;
-using Lion.AbpPro.NotificationManagement;
-using Volo.Abp.Account;
-using Volo.Abp.FeatureManagement;
-using Volo.Abp.Identity;
-using Volo.Abp.Localization;
-using Volo.Abp.Modularity;
-using Volo.Abp.PermissionManagement.HttpApi;
-using Volo.Abp.SettingManagement;
-using Volo.Abp.TenantManagement;
-
 namespace Lion.AbpPro
 {
     [DependsOn(

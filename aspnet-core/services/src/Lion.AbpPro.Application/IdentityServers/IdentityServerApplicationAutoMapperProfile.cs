@@ -1,13 +1,3 @@
-using AutoMapper;
-using Lion.AbpPro.IdentityServers.ApiResources.Dtos;
-using Lion.AbpPro.IdentityServers.ApiScopes.Dtos;
-using Lion.AbpPro.IdentityServers.Clients.Dtos;
-using Lion.AbpPro.IdentityServers.IdentityResources.Dtos;
-using Volo.Abp.IdentityServer.ApiResources;
-using Volo.Abp.IdentityServer.ApiScopes;
-using Volo.Abp.IdentityServer.Clients;
-using Volo.Abp.IdentityServer.IdentityResources;
-
 namespace Lion.AbpPro.IdentityServers
 {
     public class IdentityServerApplicationAutoMapperProfile : Profile

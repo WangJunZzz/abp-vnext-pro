@@ -1,7 +1,3 @@
-using Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore;
-using Volo.Abp.AutoMapper;
-using Volo.Abp.Modularity;
-
 namespace Lion.AbpPro.DataDictionaryManagement
 {
     /* Domain tests are configured to use the EF Core provider.

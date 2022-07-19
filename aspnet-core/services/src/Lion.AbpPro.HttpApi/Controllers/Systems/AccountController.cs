@@ -1,8 +1,4 @@
-using System.Threading.Tasks;
-using Lion.AbpPro.Users;
-using Lion.AbpPro.Users.Dtos;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+using IAccountAppService = Lion.AbpPro.Users.IAccountAppService;
 
 namespace Lion.AbpPro.Controllers.Systems
 {

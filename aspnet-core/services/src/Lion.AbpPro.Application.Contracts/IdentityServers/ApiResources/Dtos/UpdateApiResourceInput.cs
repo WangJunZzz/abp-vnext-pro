@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Lion.AbpPro.IdentityServers.ApiResources.Dtos
 {
     public class UpdateApiResourceInput

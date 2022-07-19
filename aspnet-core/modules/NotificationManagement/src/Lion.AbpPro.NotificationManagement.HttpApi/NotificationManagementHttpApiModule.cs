@@ -1,10 +1,3 @@
-using Localization.Resources.AbpUi;
-using Lion.AbpPro.NotificationManagement.Localization;
-using Volo.Abp.AspNetCore.Mvc;
-using Volo.Abp.Localization;
-using Volo.Abp.Modularity;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Lion.AbpPro.NotificationManagement
 {
     [DependsOn(

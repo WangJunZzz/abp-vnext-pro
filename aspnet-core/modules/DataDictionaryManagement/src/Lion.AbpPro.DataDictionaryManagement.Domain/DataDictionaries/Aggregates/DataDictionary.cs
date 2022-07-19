@@ -1,11 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using Lion.AbpPro.Extension.Customs;
-using Volo.Abp.Domain.Entities.Auditing;
-using Volo.Abp.MultiTenancy;
-
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates
 {
     /// <summary>

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Lion.AbpPro.Users.Dtos
 {
     public class LoginOutput

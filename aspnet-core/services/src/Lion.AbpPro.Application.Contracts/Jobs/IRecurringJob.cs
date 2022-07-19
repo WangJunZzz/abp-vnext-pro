@@ -1,6 +1,3 @@
-using System.Threading.Tasks;
-using Volo.Abp.DependencyInjection;
-
 namespace Lion.AbpPro.Jobs
 {
     public interface IRecurringJob : ITransientDependency

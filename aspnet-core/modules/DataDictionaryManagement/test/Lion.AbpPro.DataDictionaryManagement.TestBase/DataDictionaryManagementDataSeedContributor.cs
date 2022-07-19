@@ -1,11 +1,3 @@
-using System.Threading.Tasks;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
-using Volo.Abp.Data;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.Guids;
-using Volo.Abp.MultiTenancy;
-
 namespace Lion.AbpPro.DataDictionaryManagement
 {
     public class DataDictionaryManagementDataSeedContributor : IDataSeedContributor, ITransientDependency

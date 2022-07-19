@@ -1,6 +1,3 @@
-using JetBrains.Annotations;
-using Volo.Abp.EntityFrameworkCore.Modeling;
-
 namespace Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore
 {
     public class DataDictionaryManagementModelBuilderConfigurationOptions : AbpModelBuilderConfigurationOptions

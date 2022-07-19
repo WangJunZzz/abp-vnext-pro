@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.Modularity;
-
-namespace Lion.AbpPro.FreeSqlRepository;
+﻿namespace Lion.AbpPro.FreeSqlRepository;
 
 public class AbpProFreeSqlModule : AbpModule
 {

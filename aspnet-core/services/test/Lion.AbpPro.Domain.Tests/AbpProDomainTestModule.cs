@@ -1,6 +1,3 @@
-using Lion.AbpPro.EntityFrameworkCore;
-using Volo.Abp.Modularity;
-
 namespace Lion.AbpPro
 {
     [DependsOn(

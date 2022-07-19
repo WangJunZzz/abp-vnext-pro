@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel"  />
+    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" />
     <ProjectReference Include="..\..\src\Lion.AbpPro.HttpApi.Client\Lion.AbpPro.HttpApi.Client.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,3 @@
-using System;
-using Volo.Abp.Application.Dtos;
-
 namespace Lion.AbpPro.IdentityServers.ApiScopes.Dtos
 {
     public class PagingApiScopeListOutput : EntityDto<Guid>

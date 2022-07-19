@@ -9,7 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" />
-        <ProjectReference Include="..\Lion.AbpPro.FileManagement.EntityFrameworkCore.Tests\Lion.AbpPro.FileManagement.EntityFrameworkCore.Tests.csproj"/>
+        <ProjectReference Include="..\Lion.AbpPro.FileManagement.EntityFrameworkCore.Tests\Lion.AbpPro.FileManagement.EntityFrameworkCore.Tests.csproj" />
     </ItemGroup>
 
 </Project>

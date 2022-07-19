@@ -1,22 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using IdentityServer4.Models;
-using Volo.Abp.Authorization.Permissions;
-using Volo.Abp.Data;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.Guids;
-using Volo.Abp.IdentityServer.ApiResources;
-using Volo.Abp.IdentityServer.ApiScopes;
-using Volo.Abp.IdentityServer.Clients;
-using Volo.Abp.IdentityServer.IdentityResources;
-using Volo.Abp.MultiTenancy;
-using Volo.Abp.PermissionManagement;
-using Volo.Abp.Uow;
-using ApiResource = Volo.Abp.IdentityServer.ApiResources.ApiResource;
-using ApiScope = Volo.Abp.IdentityServer.ApiScopes.ApiScope;
-using Client = Volo.Abp.IdentityServer.Clients.Client;
-
 namespace Lion.AbpPro.Data.Seeds
 {
     public class IdentityServerDataSeedContributor : IDataSeedContributor, ITransientDependency

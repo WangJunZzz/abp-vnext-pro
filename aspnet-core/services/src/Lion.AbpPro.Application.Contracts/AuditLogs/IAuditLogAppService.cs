@@ -1,7 +1,3 @@
-using System.Threading.Tasks;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
-
 namespace Lion.AbpPro.AuditLogs
 {
     public interface IAuditLogAppService : IApplicationService

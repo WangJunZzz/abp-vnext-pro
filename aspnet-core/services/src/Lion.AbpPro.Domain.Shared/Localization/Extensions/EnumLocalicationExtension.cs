@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-
-namespace Lion.AbpPro.Localization.Extensions
+﻿namespace Lion.AbpPro.Localization.Extensions
 {
     public static class EnumLocalicationExtension
     {

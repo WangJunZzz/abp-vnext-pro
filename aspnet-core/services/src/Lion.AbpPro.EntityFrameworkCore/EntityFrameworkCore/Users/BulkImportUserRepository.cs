@@ -1,13 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Lion.AbpPro.Users;
-using Microsoft.EntityFrameworkCore.Storage;
-using MySqlConnector;
-using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.Identity;
-
-namespace Lion.AbpPro.EntityFrameworkCore;
+﻿namespace Lion.AbpPro.EntityFrameworkCore;
 
 public class BulkImportUserRepository:IBulkImportUserRepository
 {

@@ -1,6 +1,3 @@
-using System;
-using Volo.Abp.Identity;
-
 namespace Lion.AbpPro.Roles.Dtos
 {
     public class UpdateRoleInput

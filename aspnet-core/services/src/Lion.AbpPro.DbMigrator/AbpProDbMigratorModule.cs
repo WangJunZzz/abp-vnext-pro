@@ -1,8 +1,3 @@
-using Lion.AbpPro.EntityFrameworkCore;
-using Volo.Abp.Autofac;
-using Volo.Abp.BackgroundJobs;
-using Volo.Abp.Modularity;
-
 namespace Lion.AbpPro.DbMigrator
 {
     [DependsOn(

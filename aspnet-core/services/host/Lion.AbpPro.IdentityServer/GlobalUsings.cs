@@ -1,0 +1,36 @@
+﻿// Global using directives
+
+global using System;
+global using System.Linq;
+global using Lion.AbpPro.EntityFrameworkCore;
+global using Lion.AbpPro.Extensions;
+global using Lion.AbpPro.Localization;
+global using Lion.AbpPro.MultiTenancy;
+global using Localization.Resources.AbpUi;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Cors;
+global using Microsoft.AspNetCore.DataProtection;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using StackExchange.Redis;
+global using Volo.Abp;
+global using Volo.Abp.Account;
+global using Volo.Abp.Account.Web;
+global using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
+global using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
+global using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
+global using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
+global using Volo.Abp.AspNetCore.Serilog;
+global using Volo.Abp.Auditing;
+global using Volo.Abp.Autofac;
+global using Volo.Abp.BackgroundJobs;
+global using Volo.Abp.Caching;
+global using Volo.Abp.Caching.StackExchangeRedis;
+global using Volo.Abp.DependencyInjection;
+global using Volo.Abp.Localization;
+global using Volo.Abp.Modularity;
+global using Volo.Abp.Ui.Branding;
+global using Volo.Abp.UI.Navigation.Urls;
+global using Volo.Abp.VirtualFileSystem;
