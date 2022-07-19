@@ -13,9 +13,9 @@ public static class FileManagementDbContextModelCreatingExtensions
         Check.NotNull(builder, nameof(builder));
 
 
-        builder.Entity<File>(b =>
+        builder.Entity<Lion.AbpPro.FileManagement.Files.File>(b =>
         {
-            b.ToTable(FileManagementDbProperties.DbTablePrefix + nameof(File), FileManagementDbProperties.DbSchema);
+            b.ToTable(FileManagementDbProperties.DbTablePrefix + nameof(Lion.AbpPro.FileManagement.Files.File), FileManagementDbProperties.DbSchema);
             b.HasIndex(q => q.FileName);
             b.HasIndex(q => q.CreationTime);
             b.ConfigureByConvention();

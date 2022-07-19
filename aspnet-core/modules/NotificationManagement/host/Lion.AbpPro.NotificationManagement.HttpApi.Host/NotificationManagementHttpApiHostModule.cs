@@ -1,16 +1,9 @@
-using System;
-using System.Linq;
 using Lion.AbpPro.CAP;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Savorboard.CAP.InMemoryMessageQueue;
 using StackExchange.Redis;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using Volo.Abp;
@@ -49,7 +42,6 @@ public class NotificationManagementHttpApiHostModule : AbpModule
         ConfigureSwaggerServices(context);
         ConfigAntiForgery();
         ConfigureLocalization();
-        ConfigureCap(context);
         ConfigureCache(context);
         ConfigureCors(context);
         ConfigDB();
@@ -96,39 +88,6 @@ public class NotificationManagementHttpApiHostModule : AbpModule
         });
     }
 
-    private void ConfigureCap(ServiceConfigurationContext context)
-    {
-        var configuration = context.Services.GetConfiguration();
-        var enabled = configuration.GetValue("Cap:Enabled", false);
-        if (enabled)
-        {
-            context.AddAbpCap(capOptions =>
-            {
-                capOptions.UseEntityFramework<NotificationManagementHttpApiHostMigrationsDbContext>();
-                capOptions.UseRabbitMQ(option =>
-                {
-                    option.HostName = configuration.GetValue<string>("Cap:RabbitMq:HostName");
-                    option.UserName = configuration.GetValue<string>("Cap:RabbitMq:UserName");
-                    option.Password = configuration.GetValue<string>("Cap:RabbitMq:Password");
-                });
-
-                var hostingEnvironment = context.Services.GetHostingEnvironment();
-                bool auth = !hostingEnvironment.IsDevelopment();
-                capOptions.UseDashboard(options => { options.UseAuth = auth; });
-            });
-        }
-        else
-        {
-            context.AddAbpCap(capOptions =>
-            {
-                capOptions.UseInMemoryStorage();
-                capOptions.UseInMemoryMessageQueue();
-                var hostingEnvironment = context.Services.GetHostingEnvironment();
-                bool auth = !hostingEnvironment.IsDevelopment();
-                capOptions.UseDashboard(options => { options.UseAuth = auth; });
-            });
-        }
-    }
 
     /// <summary>
     ///     配置SwaggerUI

@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\common.props" />
+  
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -14,12 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Account.HttpApi.Client" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.Identity.HttpApi.Client" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi.Client" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi.Client" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi.Client" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi.Client" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Account.HttpApi.Client"  />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi.Client"  />
+    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi.Client"  />
+    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi.Client"  />
+    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi.Client"  />
+    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi.Client"  />
   </ItemGroup>
 
 </Project>

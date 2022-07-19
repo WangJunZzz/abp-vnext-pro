@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="..\..\..\common.props" />
+    
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <RootNamespace>Lion.AbpPro</RootNamespace>
@@ -11,19 +11,19 @@
         <ProjectReference Include="..\..\..\modules\FileManagement\src\Lion.AbpPro.FileManagement.EntityFrameworkCore\Lion.AbpPro.FileManagement.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.EntityFrameworkCore\Lion.AbpPro.NotificationManagement.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\Lion.AbpPro.Domain\Lion.AbpPro.Domain.csproj" />
-        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.IdentityServer.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Zack.EFCore.Batch.MySQL.Pomelo_NET6" Version="$(ZackEFCoreBatchVersion)" />
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL"  />
+        <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore"  />
+        <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore"  />
+        <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore"  />
+        <PackageReference Include="Volo.Abp.IdentityServer.EntityFrameworkCore"  />
+        <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore"  />
+        <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore"  />
+        <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore"  />
+        <PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore"  />
+        <PackageReference Include="Zack.EFCore.Batch.MySQL.Pomelo_NET6" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(MicrosoftVersion)">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" >
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
             <PrivateAssets>compile; contentFiles; build; buildMultitargeting; buildTransitive; analyzers; native</PrivateAssets>
         </PackageReference>

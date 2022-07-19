@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\common.props" />
+  
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,19 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.TestBase" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.Autofac" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.Authorization" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.TestBase"  />
+    <PackageReference Include="Volo.Abp.Autofac"  />
+    <PackageReference Include="Volo.Abp.Authorization"  />
     <ProjectReference Include="..\..\src\Lion.AbpPro.Domain\Lion.AbpPro.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNETTestSdkVersion)" />
-    <PackageReference Include="NSubstitute" Version="$(NSubstituteVersion)" />
-    <PackageReference Include="Shouldly" Version="$(ShouldlyVersion)" />
-    <PackageReference Include="xunit" Version="$(XunitVersion)" />
-    <PackageReference Include="xunit.extensibility.execution" Version="$(XunitVersion)" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="$(XunitrunnervisualstudioVersion)" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk"  />
+    <PackageReference Include="NSubstitute"  />
+    <PackageReference Include="Shouldly"  />
+    <PackageReference Include="xunit"  />
+    <PackageReference Include="xunit.extensibility.execution"  />
+    <PackageReference Include="xunit.runner.visualstudio"  />
   </ItemGroup>
 
   <ItemGroup>

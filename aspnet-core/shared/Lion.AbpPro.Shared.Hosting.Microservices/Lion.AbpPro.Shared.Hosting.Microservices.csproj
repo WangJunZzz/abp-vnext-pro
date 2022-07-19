@@ -1,22 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="..\..\common.props" />
+    
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
 
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Ocelot.Provider.Polly" Version="$(OcelotVersion)" />
-        <PackageReference Include="Ocelot.Provider.Consul" Version="$(OcelotVersion)" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="$(SwashbuckleVersion)" />
-        <PackageReference Include="Volo.Abp" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.AspNetCore" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.Autofac" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.Core" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.Swashbuckle" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="$(SwashbuckleVersion)" />
-        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="$(MicrosoftVersion)" />
+        <PackageReference Include="Ocelot.Provider.Polly"/>
+        <PackageReference Include="Ocelot.Provider.Consul"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI"/>
+        <PackageReference Include="Volo.Abp"/>
+        <PackageReference Include="Volo.Abp.AspNetCore"/>
+        <PackageReference Include="Volo.Abp.Autofac"/>
+        <PackageReference Include="Volo.Abp.Core"/>
+        <PackageReference Include="Volo.Abp.Swashbuckle"/>
+        <PackageReference Include="Swashbuckle.AspNetCore"/>
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks"/>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj" />
+        <ProjectReference Include="..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj"/>
     </ItemGroup>
 </Project>

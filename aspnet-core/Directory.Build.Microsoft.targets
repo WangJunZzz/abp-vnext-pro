@@ -1,0 +1,22 @@
+﻿<Project>
+    <ItemGroup>
+        <PackageReference Update="Microsoft.Extensions.DependencyModel" Version="6.0.0"/>
+        <PackageReference Update="Microsoft.Extensions.Hosting" Version="6.0.1"/>
+        <PackageReference Update="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
+        <PackageReference Update="Microsoft.Extensions.Http" Version="6.0.0"/>
+        <PackageReference Update="Microsoft.CSharp" Version="4.7.0"/>
+        <PackageReference Update="Microsoft.CodeAnalysis.CSharp" Version="3.7.0"/>
+        <PackageReference Update="Microsoft.NET.Test.Sdk" Version="16.9.1"/>
+
+        <PackageReference Update="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.7" />
+        <PackageReference Update="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.7" />
+        <PackageReference Update="Microsoft.EntityFrameworkCore.Tools" Version="6.0.7"/>
+        <PackageReference Update="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="6.0.7"/>
+        <PackageReference Update="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.7"/>
+        <PackageReference Update="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="6.0.7"/>
+        <PackageReference Update="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.7"/>
+        <PackageReference Update="Microsoft.Extensions.Http.Polly" Version="6.0.7"/>
+        <PackageReference Update="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.7"/>
+        <PackageReference Update="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.7"/>
+    </ItemGroup>
+</Project>

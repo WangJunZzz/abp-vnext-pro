@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="../../../../common.props" />
+    
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNETTestSdkVersion)"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="$(MicrosoftVersion)"/>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" />
     <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.EntityFrameworkCore\Lion.AbpPro.NotificationManagement.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.TestBase\Lion.AbpPro.NotificationManagement.TestBase.csproj" />
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite"  />
   </ItemGroup>
 
 </Project>

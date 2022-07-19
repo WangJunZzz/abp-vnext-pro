@@ -1,18 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>Lion.AbpPro.DataDictionaryManagement</RootNamespace>
+    </PropertyGroup>
 
-  <Import Project="../../../../common.props" />
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.Http.Client"/>
+    </ItemGroup>
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Lion.AbpPro.DataDictionaryManagement</RootNamespace>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Volo.Abp.Http.Client" Version="$(AbpPackageVersion)" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Lion.AbpPro.DataDictionaryManagement.Application.Contracts\Lion.AbpPro.DataDictionaryManagement.Application.Contracts.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Lion.AbpPro.DataDictionaryManagement.Application.Contracts\Lion.AbpPro.DataDictionaryManagement.Application.Contracts.csproj"/>
+    </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="../../../../common.props" />
+    
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -9,12 +9,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.Validation" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.AutoMapper" Version="$(AbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.Validation"  />
+        <PackageReference Include="Volo.Abp.AutoMapper"  />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="$(MicrosoftVersion)" />
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" />
     </ItemGroup>
 
     <ItemGroup>

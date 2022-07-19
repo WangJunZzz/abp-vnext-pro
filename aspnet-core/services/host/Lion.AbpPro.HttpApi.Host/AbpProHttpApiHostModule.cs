@@ -1,6 +1,3 @@
-using Volo.Abp.Localization;
-using Volo.Abp.Settings;
-
 namespace Lion.AbpPro
 {
     [DependsOn(
@@ -139,8 +136,7 @@ namespace Lion.AbpPro
         /// <param name="context"></param>
         private void ConfigureMiniProfiler(ServiceConfigurationContext context)
         {
-            context.Services.AddMiniProfiler(options => options.RouteBasePath = "/profiler")
-                .AddEntityFramework();
+            context.Services.AddMiniProfiler(options => options.RouteBasePath = "/profiler").AddEntityFramework();
         }
 
         /// <summary>

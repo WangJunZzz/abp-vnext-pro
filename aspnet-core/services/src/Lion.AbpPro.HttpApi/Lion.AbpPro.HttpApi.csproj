@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\common.props" />
+  
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -15,13 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleVersion)" />
-    <PackageReference Include="Volo.Abp.Account.HttpApi" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.Identity.HttpApi" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations"  />
+    <PackageReference Include="Volo.Abp.Account.HttpApi"  />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi"  />
+    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi"  />
+    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi"  />
+    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi"  />
+    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi"  />
   </ItemGroup>
 
 </Project>

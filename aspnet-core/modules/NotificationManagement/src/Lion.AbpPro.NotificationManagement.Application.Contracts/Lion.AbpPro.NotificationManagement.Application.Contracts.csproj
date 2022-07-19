@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
- <Import Project="../../../../common.props" />
+ 
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.Authorization" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts"  />
+    <PackageReference Include="Volo.Abp.Authorization"  />
     <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.Domain.Shared\Lion.AbpPro.NotificationManagement.Domain.Shared.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\common.props" />
+  
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Serilog.Extensions.Logging" Version="$(SerilogExtensionsLoggingVersion)" />
-    <PackageReference Include="Serilog.Sinks.Async" Version="$(SerilogSinksAsyncVersion)" />
-    <PackageReference Include="Serilog.Sinks.File" Version="$(SerilogSinksFileVersion)" />
-    <PackageReference Include="Serilog.Sinks.Console" Version="$(SerilogSinksConsoleVersion)" />
-    <PackageReference Include="Volo.Abp.Autofac" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Serilog.Extensions.Logging"  />
+    <PackageReference Include="Serilog.Sinks.Async"  />
+    <PackageReference Include="Serilog.Sinks.File"  />
+    <PackageReference Include="Serilog.Sinks.Console"  />
+    <PackageReference Include="Volo.Abp.Autofac"  />
   </ItemGroup>
 
   <ItemGroup>

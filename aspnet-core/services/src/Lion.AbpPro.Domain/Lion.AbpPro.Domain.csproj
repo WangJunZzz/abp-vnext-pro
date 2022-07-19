@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\common.props" />
+  
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -15,16 +15,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Emailing" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.Identity.Domain" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.IdentityServer.Domain" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.IdentityServer" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Domain" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.Domain" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Emailing"  />
+    <PackageReference Include="Volo.Abp.Identity.Domain"  />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity"  />
+    <PackageReference Include="Volo.Abp.IdentityServer.Domain"  />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.IdentityServer"  />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain"  />
+    <PackageReference Include="Volo.Abp.AuditLogging.Domain"  />
+    <PackageReference Include="Volo.Abp.TenantManagement.Domain"  />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Domain"  />
+    <PackageReference Include="Volo.Abp.SettingManagement.Domain"  />
   </ItemGroup>
 
 </Project>

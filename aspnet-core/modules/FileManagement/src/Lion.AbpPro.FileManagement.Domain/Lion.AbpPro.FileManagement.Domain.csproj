@@ -1,6 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../../../../common.props" />
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -8,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.Ddd.Domain" Version="$(AbpPackageVersion)" />
-        <ProjectReference Include="..\Lion.AbpPro.FileManagement.Domain.Shared\Lion.AbpPro.FileManagement.Domain.Shared.csproj" />
+        <PackageReference Include="Volo.Abp.Ddd.Domain"/>
+        <ProjectReference Include="..\Lion.AbpPro.FileManagement.Domain.Shared\Lion.AbpPro.FileManagement.Domain.Shared.csproj"/>
     </ItemGroup>
 
 </Project>

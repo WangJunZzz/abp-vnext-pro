@@ -36,10 +36,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{2C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Solution Items", "0.Solution Items", "{2C4A6DB8-8D9E-42E6-B7C3-1EDB7B3DE22E}"
 	ProjectSection(SolutionItems) = preProject
-		common.props = common.props
-		Directory.Build.props = Directory.Build.props
 		global.json = global.json
 		NuGet.Config = NuGet.Config
+		Directory.Build.Microsoft.targets = Directory.Build.Microsoft.targets
+		Directory.Build.targets = Directory.Build.targets
+		Directory.Build.Volo.targets = Directory.Build.Volo.targets
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules", "modules", "{F8A8EB2A-2D4B-464F-9A13-F8F7B6A8FAA3}"

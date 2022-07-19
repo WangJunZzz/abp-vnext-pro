@@ -1,39 +1,38 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\common.props" />
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Lion.AbpPro</RootNamespace>
-    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>Lion.AbpPro</RootNamespace>
+        <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="$(MicrosoftAspNetCoreHttpAbstractionsVersion)" />
-    <PackageReference Include="Volo.Abp.Identity.Domain.Shared" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.IdentityServer.Domain.Shared" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain.Shared" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Domain.Shared" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.Domain.Shared" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Shared" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.SettingManagement.Domain.Shared" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="$(MicrosoftVersion)" />
-	<PackageReference Include="Magicodes.IE.Excel" Version="$(MagicodesIEExcelVersion)" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions"/>
+        <PackageReference Include="Volo.Abp.Identity.Domain.Shared"/>
+        <PackageReference Include="Volo.Abp.IdentityServer.Domain.Shared"/>
+        <PackageReference Include="Volo.Abp.BackgroundJobs.Domain.Shared"/>
+        <PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared"/>
+        <PackageReference Include="Volo.Abp.TenantManagement.Domain.Shared"/>
+        <PackageReference Include="Volo.Abp.FeatureManagement.Domain.Shared"/>
+        <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Shared"/>
+        <PackageReference Include="Volo.Abp.SettingManagement.Domain.Shared"/>
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded"/>
+        <PackageReference Include="Magicodes.IE.Excel"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\AbpPro\*.json" />
-    <Content Remove="Localization\AbpPro\*.json" />
-  
-   
-  </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="Localization\AbpPro\*.json"/>
+        <Content Remove="Localization\AbpPro\*.json"/>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj" />
-    <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Domain.Shared\Lion.AbpPro.DataDictionaryManagement.Domain.Shared.csproj" />
-    <ProjectReference Include="..\..\..\modules\FileManagement\src\Lion.AbpPro.FileManagement.Domain.Shared\Lion.AbpPro.FileManagement.Domain.Shared.csproj" />
-    <ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.Domain.Shared\Lion.AbpPro.NotificationManagement.Domain.Shared.csproj" />
-  </ItemGroup>
+
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj"/>
+        <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Domain.Shared\Lion.AbpPro.DataDictionaryManagement.Domain.Shared.csproj"/>
+        <ProjectReference Include="..\..\..\modules\FileManagement\src\Lion.AbpPro.FileManagement.Domain.Shared\Lion.AbpPro.FileManagement.Domain.Shared.csproj"/>
+        <ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.Domain.Shared\Lion.AbpPro.NotificationManagement.Domain.Shared.csproj"/>
+    </ItemGroup>
 
 </Project>

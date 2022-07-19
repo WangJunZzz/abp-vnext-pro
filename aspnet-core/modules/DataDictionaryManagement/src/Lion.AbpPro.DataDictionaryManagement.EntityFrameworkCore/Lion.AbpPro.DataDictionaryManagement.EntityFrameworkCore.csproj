@@ -1,15 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>Lion.AbpPro.DataDictionaryManagement</RootNamespace>
+    </PropertyGroup>
 
-  <Import Project="../../../../common.props" />
-
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Lion.AbpPro.DataDictionaryManagement</RootNamespace>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
-    <ProjectReference Include="..\Lion.AbpPro.DataDictionaryManagement.Domain\Lion.AbpPro.DataDictionaryManagement.Domain.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore"/>
+        <ProjectReference Include="..\Lion.AbpPro.DataDictionaryManagement.Domain\Lion.AbpPro.DataDictionaryManagement.Domain.csproj"/>
+    </ItemGroup>
 
 </Project>

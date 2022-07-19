@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../../../../common.props" />
+  
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -10,7 +10,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\src\Lion.AbpPro.FileManagement.Application\Lion.AbpPro.FileManagement.Application.csproj" />
         <ProjectReference Include="..\Lion.AbpPro.FileManagement.Domain.Tests\Lion.AbpPro.FileManagement.Domain.Tests.csproj" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNETTestSdkVersion)" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk"  />
     </ItemGroup>
 
 </Project>

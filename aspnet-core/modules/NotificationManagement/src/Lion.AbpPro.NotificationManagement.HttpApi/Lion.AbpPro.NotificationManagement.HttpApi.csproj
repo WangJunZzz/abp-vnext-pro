@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
- <Import Project="../../../../common.props" />
+ 
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleVersion)" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations"  />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc"  />
     <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.Application.Contracts\Lion.AbpPro.NotificationManagement.Application.Contracts.csproj" />
   </ItemGroup>
 

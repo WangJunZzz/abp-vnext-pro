@@ -60,7 +60,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
         public DbSet<TenantConnectionString> TenantConnectionStrings { get; }
         public DbSet<BackgroundJobRecord> BackgroundJobs { get; }
         public DbSet<AuditLog> AuditLogs { get; }
-        public DbSet<File> Files { get; }
+        public DbSet<Lion.AbpPro.FileManagement.Files.File> Files { get; }
         
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside AbpProDbContextModelCreatingExtensions.ConfigureAbpPro

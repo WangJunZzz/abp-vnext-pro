@@ -11,5 +11,5 @@ public interface IFileManagementDbContext : IEfCoreDbContext
     /* Add DbSet for each Aggregate Root here. Example:
      * DbSet<Question> Questions { get; }
      */
-    DbSet<File> Files { get; }
+    DbSet<Lion.AbpPro.FileManagement.Files.File> Files { get; }
 }

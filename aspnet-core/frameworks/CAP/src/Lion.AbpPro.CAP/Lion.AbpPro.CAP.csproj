@@ -1,18 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="..\..\..\..\common.props" />
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="$(InMemoryMessageQueueCAPVersion)" />
-        <PackageReference Include="Volo.Abp.Core" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Volo.Abp.EventBus" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="DotNetCore.CAP" Version="$(DotNetCoreCAPVersion)" />
-        <PackageReference Include="DotNetCore.CAP.MySql" Version="$(DotNetCoreCAPVersion)" />
-        <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="$(DotNetCoreCAPVersion)" />
-        <PackageReference Include="DotNetCore.CAP.Dashboard" Version="$(DotNetCoreCAPVersion)" />
-        <PackageReference Include="DotNetCore.CAP.InMemoryStorage" Version="$(DotNetCoreCAPVersion)" />
+        <PackageReference Include="Volo.Abp.Core"/>
+        <PackageReference Include="Volo.Abp.EventBus"/>
+        <PackageReference Include="DotNetCore.CAP"/>
     </ItemGroup>
 
 </Project>

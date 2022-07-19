@@ -62,7 +62,6 @@ global using Volo.Abp.AspNetCore.Serilog;
 global using Volo.Abp.Auditing;
 global using Volo.Abp.Authorization;
 global using Volo.Abp.BackgroundJobs;
-global using Volo.Abp.BackgroundJobs.Hangfire;
 global using Volo.Abp.Caching;
 global using Volo.Abp.Caching.StackExchangeRedis;
 global using Volo.Abp.DependencyInjection;

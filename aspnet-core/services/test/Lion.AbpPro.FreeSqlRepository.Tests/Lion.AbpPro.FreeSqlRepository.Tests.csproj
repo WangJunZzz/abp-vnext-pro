@@ -9,10 +9,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNETTestSdkVersion)" />
-        <PackageReference Include="FreeSql.Provider.Sqlite" Version="$(FreesqlVersion)" />
-        <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="$(AbpPackageVersion)" />
-        <PackageReference Include="Zack.EFCore.Batch.Sqlite_NET6" Version="$(ZackEFCoreBatchVersion)" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk"  />
+        <PackageReference Include="FreeSql.Provider.Sqlite"  />
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite"  />
+        <PackageReference Include="Zack.EFCore.Batch.Sqlite_NET6" />
     </ItemGroup>
 
     <ItemGroup>
