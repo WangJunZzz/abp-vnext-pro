@@ -9,13 +9,13 @@ export default {
     // support xxx.xxx.xxx
     fetchSetting: {
       // The field name of the current page passed to the background
-      pageField: 'page',
+      pageField: 'pageIndex',
       // The number field name of each page displayed in the background
       sizeField: 'pageSize',
       // Field name of the form data returned by the interface
       listField: 'items',
       // Total number of tables returned by the interface field name
-      totalField: 'total',
+      totalField: 'totalCount',
     },
     // Number of pages that can be selected
     pageSizeOptions: ['10', '50', '80', '100'],
