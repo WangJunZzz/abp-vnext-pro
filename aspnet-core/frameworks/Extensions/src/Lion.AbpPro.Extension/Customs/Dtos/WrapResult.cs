@@ -2,13 +2,13 @@
 {
     public class WrapResult<T>
     {
-        private bool Success { get; set; }
+        public bool Success { get; set; }
 
-        private string Message { get; set; }
+        public string Message { get; set; }
 
-        private T Data { get; set; }
+        public T Data { get; set; }
 
-        private int Code { get; set; }
+        public int Code { get; set; }
 
         public WrapResult()
         {

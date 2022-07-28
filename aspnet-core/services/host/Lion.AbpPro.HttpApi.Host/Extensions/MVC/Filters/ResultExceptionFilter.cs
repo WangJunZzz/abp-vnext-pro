@@ -1,27 +1,7 @@
-namespace Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.MVC.Filters
+namespace Lion.AbpPro.Extensions.MVC.Filters
 {
-    public sealed class ResultExceptionFilter : IFilterMetadata, IAsyncExceptionFilter, ITransientDependency
+    public sealed class ResultExceptionFilter :  IAsyncExceptionFilter, ITransientDependency
     {
-        private ILogger<ResultExceptionFilter> Logger { get; set; }
-
-        private readonly IExceptionToErrorInfoConverter _errorInfoConverter;
-        private readonly IHttpExceptionStatusCodeFinder _statusCodeFinder;
-        private readonly IJsonSerializer _jsonSerializer;
-        private readonly AbpExceptionHandlingOptions _exceptionHandlingOptions;
-
-        public ResultExceptionFilter(
-            IExceptionToErrorInfoConverter errorInfoConverter,
-            IHttpExceptionStatusCodeFinder statusCodeFinder,
-            IJsonSerializer jsonSerializer,
-            IOptions<AbpExceptionHandlingOptions> exceptionHandlingOptions)
-        {
-            _errorInfoConverter = errorInfoConverter;
-            _statusCodeFinder = statusCodeFinder;
-            _jsonSerializer = jsonSerializer;
-            _exceptionHandlingOptions = exceptionHandlingOptions.Value;
-            Logger = NullLogger<ResultExceptionFilter>.Instance;
-        }
-
         public async Task OnExceptionAsync(ExceptionContext context)
         {
             if (!ShouldHandleException(context))
@@ -29,78 +9,96 @@ namespace Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.MVC.Filt
                 return;
             }
 
-
             await HandleAndWrapException(context);
         }
 
         private bool ShouldHandleException(ExceptionContext context)
         {
-            if (context.ActionDescriptor.AsControllerActionDescriptor().ControllerTypeInfo.GetCustomAttributes(typeof(WrapResultAttribute), true).Any())
+            if (context.ActionDescriptor.AsControllerActionDescriptor().ControllerTypeInfo.GetCustomAttributes(typeof(DontWrapResultAttribute), true).Any())
             {
                 return true;
             }
 
-            if (context.ActionDescriptor.GetMethodInfo().GetCustomAttributes(typeof(WrapResultAttribute), true).Any())
+            if (context.ActionDescriptor.GetMethodInfo().GetCustomAttributes(typeof(DontWrapResultAttribute), true).Any())
             {
                 return true;
             }
-            
+
             return false;
         }
 
         private async Task HandleAndWrapException(ExceptionContext context)
         {
-            //TODO: Trigger an AbpExceptionHandled event or something like that.
+            var exceptionHandlingOptions = context.GetRequiredService<IOptions<AbpExceptionHandlingOptions>>().Value;
+            var exceptionToErrorInfoConverter = context.GetRequiredService<IExceptionToErrorInfoConverter>();
+            var remoteServiceErrorInfo = exceptionToErrorInfoConverter.Convert(context.Exception, options =>
+            {
+                options.SendExceptionsDetailsToClients = exceptionHandlingOptions.SendExceptionsDetailsToClients;
+                options.SendStackTraceToClients = exceptionHandlingOptions.SendStackTraceToClients;
+            });
 
-            context.HttpContext.Response.Headers.Add(AbpHttpConsts.AbpErrorFormat, "true");
-            var statusCode = (int)_statusCodeFinder.GetStatusCode(context.HttpContext, context.Exception);
-            context.HttpContext.Response.StatusCode = 200;
-
-            var remoteServiceErrorInfo = _errorInfoConverter.Convert(context.Exception, options => { options.SendExceptionsDetailsToClients = _exceptionHandlingOptions.SendExceptionsDetailsToClients; });
-            remoteServiceErrorInfo.Code = context.HttpContext.TraceIdentifier;
-            remoteServiceErrorInfo.Message = SimplifyMessage(context.Exception);
-            var result = new WrapResult<object>();
-            result.SetFail(remoteServiceErrorInfo.Message);
-
-            // HttpResponse
-            context.Result = new ObjectResult(result);
-
-            // 写日志
             var logLevel = context.Exception.GetLogLevel();
+
             var remoteServiceErrorInfoBuilder = new StringBuilder();
             remoteServiceErrorInfoBuilder.AppendLine($"---------- {nameof(RemoteServiceErrorInfo)} ----------");
-            remoteServiceErrorInfoBuilder.AppendLine(_jsonSerializer.Serialize(remoteServiceErrorInfo, indented: true));
-            Logger.LogWithLevel(logLevel, remoteServiceErrorInfoBuilder.ToString());
-            Logger.LogException(context.Exception, logLevel);
+            remoteServiceErrorInfoBuilder.AppendLine(context.GetRequiredService<IJsonSerializer>().Serialize(remoteServiceErrorInfo, indented: true));
 
-            await context.HttpContext
-                .RequestServices
-                .GetRequiredService<IExceptionNotifier>()
-                .NotifyAsync(
-                    new ExceptionNotificationContext(context.Exception)
-                );
+            var logger = context.GetService<ILogger<ResultExceptionFilter>>(NullLogger<ResultExceptionFilter>.Instance);
 
+            logger.LogWithLevel(logLevel, remoteServiceErrorInfoBuilder.ToString());
+
+            logger.LogException(context.Exception, logLevel);
+
+            await context.GetRequiredService<IExceptionNotifier>().NotifyAsync(new ExceptionNotificationContext(context.Exception));
+            context.HttpContext.Response.StatusCode = 200;
+            var result = SimplifyMessage(context);
+            context.Result = new ObjectResult(result);
             context.Exception = null; //Handled!
         }
 
-        private string SimplifyMessage(Exception error)
+        private WrapResult<object> SimplifyMessage(ExceptionContext context)
         {
-            switch (error)
+            var result = new WrapResult<object>();
+            var localizer = context.GetService<IStringLocalizer<AbpProResource>>();
+            switch (context.Exception)
             {
-                case AbpAuthorizationException e:
-                    return "Authenticate failure！";
-                case AbpValidationException e:
-                    return "Request param validate failure！";
-                case EntityNotFoundException e:
-                    return "not found the entity！";
-                case BusinessException e:
-                    return $"{e.Message}";
-                case NotImplementedException e:
-                    return "not implement！";
+                case AbpAuthorizationException:
+                    result.Code = 401;
+                    result.Message = "权限不足.";
+                    break;
+                case AbpValidationException:
+                    result.Code = 400;
+                    result.Message = "请求参数验证失败.";
+                    break;
+                case EntityNotFoundException:
+                    result.Code = 506;
+                    result.Message = "实体不存在.";
+                    break;
+                case NotImplementedException:
+                    result.Code = 507;
+                    result.Message = "未实现功能.";
+                    break;
                 default:
-                    return "server internal error！";
+                {
+                    result.Code = 500;
+                    if (context.Exception is IHasErrorCode codeException)
+                    {
+                        result.Message = localizer[codeException.Code];
+                        foreach (var key in context.Exception.Data.Keys)
+                        {
+                            result.Message = result.Message.Replace("{" + key + "}", context.Exception.Data[key]?.ToString());
+                        }
+                    }
+                    else
+                    {
+                        result.Message = context.Exception.Message;
+                    }
+
+                    break;
+                }
             }
+
+            return result;
         }
     }
-
 }
