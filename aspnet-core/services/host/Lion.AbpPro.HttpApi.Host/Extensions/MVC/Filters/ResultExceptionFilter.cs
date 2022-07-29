@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.Extensions.MVC.Filters
 {
-    public sealed class ResultExceptionFilter :  IAsyncExceptionFilter, ITransientDependency
+    public sealed class ResultExceptionFilter : IAsyncExceptionFilter, ITransientDependency
     {
         public async Task OnExceptionAsync(ExceptionContext context)
         {
@@ -63,35 +63,30 @@ namespace Lion.AbpPro.Extensions.MVC.Filters
             switch (context.Exception)
             {
                 case AbpAuthorizationException:
-                    result.Code = 401;
-                    result.Message = "权限不足.";
+                    result.SetFail("权限不足", 401);
                     break;
                 case AbpValidationException:
-                    result.Code = 400;
-                    result.Message = "请求参数验证失败.";
+                    result.SetFail("请求参数验证失败", 400);
                     break;
                 case EntityNotFoundException:
-                    result.Code = 506;
-                    result.Message = "实体不存在.";
+                    result.SetFail("实体不存在", 506);
                     break;
                 case NotImplementedException:
-                    result.Code = 507;
-                    result.Message = "未实现功能.";
+                    result.SetFail("未实现功能", 507);
                     break;
                 default:
                 {
-                    result.Code = 500;
                     if (context.Exception is IHasErrorCode codeException)
                     {
-                        result.Message = localizer[codeException.Code];
+                        result.SetFail(localizer[codeException.Code]);
                         foreach (var key in context.Exception.Data.Keys)
                         {
-                            result.Message = result.Message.Replace("{" + key + "}", context.Exception.Data[key]?.ToString());
+                            result.SetFail(result.Message.Replace("{" + key + "}", context.Exception.Data[key]?.ToString()));
                         }
                     }
                     else
                     {
-                        result.Message = context.Exception.Message;
+                        result.SetFail(context.Exception.Message);
                     }
 
                     break;
