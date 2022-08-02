@@ -7,7 +7,7 @@ namespace Lion.AbpPro.Permissions
         /// </summary>
         public static class SystemManagement
         {
-            public const string Default = "System";
+            public const string Default = "AbpIdentity";
             public const string UserEnable = Default + ".Users.Enable";
             public const string UserExport = Default + ".Users.Export";
             public const string AuditLog = Default + ".AuditLog";

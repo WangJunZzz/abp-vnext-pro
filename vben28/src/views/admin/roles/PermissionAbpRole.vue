@@ -1,16 +1,6 @@
 <template>
-  <BasicDrawer
-    @register="registerDrawer"
-    :title="t('routes.admin.roleManagement_permission')"
-    width="20%"
-  >
-    <BasicTree
-      :treeData="allPermissionsRef"
-      checkable
-      checkStrictly
-      ref="treeRef"
-      style="margin-bottom: 50px"
-    />
+  <BasicDrawer @register="registerDrawer" :maskClosable="false" :title="t('routes.admin.roleManagement_permission')" width="20%">
+    <BasicTree :treeData="allPermissionsRef"  checkable ref="treeRef" style="margin-bottom: 50px" />
     <div
       :style="{
         position: 'absolute',
@@ -24,39 +14,33 @@
         zIndex: 1,
       }"
     >
-      <a-button :style="{ marginRight: '8px' }" @click="closeDrawer"
-      >{{ t("common.cancelText") }}
-      </a-button>
-      <a-button type="primary" @click="submitRolePermissionAsync">
-        {{ t("common.saveText") }}
+      <a-button :style="{ marginRight: '8px' }" @click="closeDrawer">{{ t('common.cancelText') }} </a-button>
+      <a-button type="primary" @click="submitRolePermisstionAsync">
+        {{ t('common.saveText') }}
       </a-button>
     </div>
   </BasicDrawer>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, unref, toRaw } from "vue";
-import { BasicDrawer, useDrawerInner } from "/@/components/Drawer";
-import { getRolePermissionAsync, updateRolePermissionAsync } from "/@/views/admin/roles/AbpRole";
-import { useI18n } from "/@/hooks/web/useI18n";
-import { BasicTree, TreeActionType } from "/@/components/Tree/index";
-import { useUserStoreWithOut } from "/@/store/modules/user";
-import {
-  UpdateRolePermissionsInput,
-  UpdatePermissionDto,
-  UpdatePermissionsDto
-} from "/@/services/ServiceProxies";
-import { message } from "ant-design-vue";
-
+import { defineComponent, reactive, ref, unref } from 'vue';
+import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
+import { getRolePermissionAsync, updateRolePermissionAsync } from './AbpRole';
+import { useI18n } from '/@/hooks/web/useI18n';
+import { BasicTree, TreeActionType } from '/@/components/Tree/index';
+import { useUserStoreWithOut } from '/@/store/modules/user';
+import { UpdateRolePermissionsInput, UpdatePermissionDto, UpdatePermissionsDto } from '/@/services/ServiceProxies';
+import { message } from 'ant-design-vue';
 export default defineComponent({
-  name: "PermissionAbpRole",
+  name: 'PermissionAbpRole',
   components: { BasicDrawer, BasicTree },
-  setup: function() {
-    let roleName: string = "";
+  setup() {
+    let roleName: string = '';
     const { t } = useI18n();
     const [registerDrawer, { closeDrawer, setDrawerProps }] = useDrawerInner(async (data) => {
       roleName = data.record.name;
       await getRolePermissions(data.record.name);
+      //loading.value = false;
     });
     const treeRef = ref<Nullable<TreeActionType>>(null);
 
@@ -65,11 +49,10 @@ export default defineComponent({
     const getTree = () => {
       const tree = unref(treeRef);
       if (!tree) {
-        throw new Error("tree is null!");
+        throw new Error('tree is null!');
       }
       return tree;
     };
-
     /**
      * 获取权限信息并且构造权限树
      */
@@ -80,61 +63,49 @@ export default defineComponent({
       const permissions = await getRolePermissionAsync(roleName);
       totalRolePermissionsRef.push(...(permissions.allGrants as []));
       allPermissionsRef.push(...(permissions.permissions as []));
-      getTree().setCheckedKeys(permissions.grants as []);
+
+
+     getTree().setCheckedKeys(permissions.grants as []);
       setDrawerProps({ loading: false });
     };
 
-    const submitRolePermissionAsync = async () => {
+    const submitRolePermisstionAsync = async () => {
       let request: UpdateRolePermissionsInput = new UpdateRolePermissionsInput();
       request.updatePermissionsDto = new UpdatePermissionsDto();
-
-      let permissions: UpdatePermissionDto[] = [];
-      request.providerName = "R";
+      const keys = getTree().getCheckedKeys();
+      let permisstions: UpdatePermissionDto[] = [];
+      request.providerName = 'R';
       request.providerKey = roleName;
-      const { checked } = toRaw(getTree().getCheckedKeys()) as [];
-      if (checked == undefined) {
-        return;
-      }
-      const noSelectedPermissions = totalRolePermissionsRef.filter((e) => {
-        return !(checked.indexOf(e) > -1);
-      });
-      noSelectedPermissions.forEach((item: string) => {
-        if (item.includes(".")) {
-          let permission = new UpdatePermissionDto();
-          permission.name = item;
-          permission.isGranted = false;
-          permissions.push(permission);
-        }
-      });
-      checked.forEach((item: string) => {
-        if (item.includes(".")) {
-          let permission = new UpdatePermissionDto();
-          permission.name = item;
-          permission.isGranted = true;
-          permissions.push(permission);
-        }
-      });
-
-      request.updatePermissionsDto.permissions = permissions;
-
+      totalRolePermissionsRef.forEach((item:string)=>{
+         let permisstion = new UpdatePermissionDto();
+            permisstion.name = item;
+          if((keys as []).some(e=>e==item)){
+            permisstion.isGranted = true;
+            permisstions.push(permisstion);
+          }else{
+            permisstion.isGranted = false;
+            permisstions.push(permisstion);
+          }
+      })
+      request.updatePermissionsDto.permissions = permisstions;
       await updateRolePermissionAsync({ request, closeDrawer, setDrawerProps });
       const userStore = useUserStoreWithOut();
-      if (userStore.getUserInfo.roles.includes(roleName)) {
-        message.success(t("routes.admin.grantedMessage"));
+      if (userStore.getUserInfo.roles.some(e=>e==roleName)) {
+        message.success(t('routes.admin.grantedMessage'));
         await userStore.logout(true);
       } else {
-        message.success(t("common.operationSuccess"));
+        message.success(t('common.operationSuccess'));
       }
     };
     return {
       t,
       registerDrawer,
       allPermissionsRef,
-      submitRolePermissionAsync,
+      submitRolePermisstionAsync,
       closeDrawer,
-      treeRef
+      treeRef,
     };
-  }
+  },
 });
 </script>
 <style lang="less" scoped></style>

@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.IdentityServers.ApiResources
 {
-    [Authorize(Policy = AbpProPermissions.IdentityServer.ApiResource.Default)]
+    [Authorize]
     public class ApiResourceAppService : AbpProAppService, IApiResourceAppService
     {
         private readonly IdenityServerApiResourceManager _idenityServerApiResourceManager;

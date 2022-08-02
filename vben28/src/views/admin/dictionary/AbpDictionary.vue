@@ -18,7 +18,7 @@
 
         <template #toolbar>
           <a-button
-            v-auth="'System.DataDictionaryManagement.Create'"
+            v-auth="'AbpIdentity.DataDictionaryManagement.Create'"
             type="primary"
             preIcon="ant-design:plus-circle-outlined"
             @click="handleCreateType"
@@ -32,10 +32,12 @@
             :dropDownActions="[
               {
                 label: t('common.editText'),
+                auth:'AbpIdentity.DataDictionaryManagement.Update',
                 onClick: handleEditType.bind(null, record),
               },
               {
                 label: t('common.delText'),
+                 auth:'AbpIdentity.DataDictionaryManagement.Delete',
                 onClick: handleDeleteDictionaryType.bind(null, record),
               },
             ]"
@@ -46,7 +48,7 @@
       <BasicTable @register="registerTable" class="w-3/4 xl:w-4/5" size="small">
         <template #toolbar>
           <a-button
-            v-auth="'System.DataDictionaryManagement.Create'"
+            v-auth="'AbpIdentity.DataDictionaryManagement.Create'"
             preIcon="ant-design:plus-circle-outlined"
             type="primary"
             @click="handleCreate"
@@ -61,13 +63,13 @@
             :actions="[
               {
                 icon: 'ant-design:edit-outlined',
-                auth: 'System.DataDictionaryManagement.Update',
+                auth: 'AbpIdentity.DataDictionaryManagement.Update',
                 label: t('common.editText'),
                 onClick: handleEdit.bind(null, record),
               },
               {
                 icon: 'ic:outline-delete-outline',
-                auth: 'System.DataDictionaryManagement.Delete',
+                auth: 'AbpIdentity.DataDictionaryManagement.Delete',
                 label: t('common.delText'),
                 onClick: handleDelete.bind(null, record),
               },

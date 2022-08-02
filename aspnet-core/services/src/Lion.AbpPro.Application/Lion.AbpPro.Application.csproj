@@ -17,7 +17,7 @@
 
     <ItemGroup>
         <PackageReference Include="Volo.Abp.Account.Application" />
-        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.Contracts" />
+        <PackageReference Include="Volo.Abp.AspNetCore.Mvc" />
         <PackageReference Include="Volo.Abp.Identity.Application" />
         <PackageReference Include="Volo.Abp.PermissionManagement.Application" />
         <PackageReference Include="Volo.Abp.TenantManagement.Application" />

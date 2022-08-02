@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.ElasticSearches
 {
-    [Authorize(Policy = AbpProPermissions.SystemManagement.ES)]
+    [Authorize]
     public class LionAbpProLogAppService : ElasticsearchBasicService,ILionAbpProLogAppService
     {
         private readonly IConfiguration _configuration;
@@ -12,7 +12,7 @@ namespace Lion.AbpPro.ElasticSearches
         {
             _configuration = configuration;
         }
-
+        [Authorize(Policy = AbpProPermissions.SystemManagement.ES)]
         public async Task<CustomePagedResultDto<PagingElasticSearchLogOutput>> PaingAsync(PagingElasticSearchLogInput input)
         {
             var IndexName = _configuration.GetValue<string>("ElasticSearch:SearchIndexFormat");

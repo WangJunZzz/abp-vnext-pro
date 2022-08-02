@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.IdentityServers.ApiScopes
 {
-    [Authorize(Policy = AbpProPermissions.IdentityServer.ApiScope.Default)]
+    [Authorize]
     public class ApiScopeAppService : AbpProAppService, IApiScopeAppService
     {
         private readonly IdenityServerApiScopeManager _idenityServerApiScopeManager;

@@ -9,6 +9,7 @@ const tenant: AppRouteModule = {
     orderNo: 30,
     icon: 'ant-design:contacts-outlined',
     title: t('routes.tenant.tenantManagement'),
+    policy: 'AbpTenantManagement',
   },
   children: [
     {

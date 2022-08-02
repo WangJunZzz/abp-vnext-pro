@@ -11,6 +11,7 @@ const admin: AppRouteModule = {
     orderNo: 20,
     icon: 'ion:grid-outline',
     title: t('routes.admin.systemManagement'),
+    policy: 'AbpIdentity'
   },
   children: [
     {
@@ -40,7 +41,7 @@ const admin: AppRouteModule = {
       meta: {
         title: t('routes.admin.organizationUnitManagement'),
         icon: 'ant-design:gold-outlined',
-        policy: 'System.OrganizationUnitManagement',
+        policy: 'AbpIdentity.OrganizationUnitManagement',
       },
     },
     {
@@ -49,7 +50,7 @@ const admin: AppRouteModule = {
       component: () => import('/@/views/admin/settings/Setting.vue'),
       meta: {
         title: t('routes.admin.settingManagement'),
-        policy: 'System.Setting',
+        policy: 'AbpIdentity.Setting',
         icon: 'ant-design:unordered-list-outlined',
       },
     },
@@ -59,7 +60,7 @@ const admin: AppRouteModule = {
       component: () => import('/@/views/admin/auditLog/AuditLog.vue'),
       meta: {
         title: t('routes.admin.auditLog'),
-        policy: 'System.AuditLog',
+        policy: 'AbpIdentity.AuditLog',
         icon: 'ant-design:snippets-twotone',
       },
     },
@@ -69,7 +70,7 @@ const admin: AppRouteModule = {
       component: () => import('/@/views/admin/elasticSearch/ElasticSearch.vue'),
       meta: {
         title: t('routes.admin.esLogs'),
-        policy: 'System.ES',
+        policy: 'AbpIdentity.ES',
         icon: 'ant-design:snippets-twotone',
       },
     },
@@ -80,7 +81,7 @@ const admin: AppRouteModule = {
       meta: {
         title: t('routes.admin.dictionaryManagement'),
         icon: 'ant-design:table-outlined',
-        policy: 'System.DataDictionaryManagement',
+        policy: 'AbpIdentity.DataDictionaryManagement',
       },
     },
     {
@@ -90,7 +91,7 @@ const admin: AppRouteModule = {
       meta: {
         title: t('routes.admin.fileNameManagement'),
         icon: 'ant-design:snippets-outlined',
-        policy: 'System.FileManagement',
+        policy: 'AbpIdentity.FileManagement',
       },
     },
   ],

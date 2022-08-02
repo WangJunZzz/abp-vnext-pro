@@ -1,6 +1,6 @@
 ﻿namespace Lion.AbpPro.FileManagement.Files;
 
-[Authorize(FileManagementPermissions.FileManagement.Default)]
+[Authorize]
 public class FileAppService : FileManagementAppService, IFileAppService
 {
     private readonly FileManager _fileManager;

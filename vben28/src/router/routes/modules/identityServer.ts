@@ -10,6 +10,7 @@ const identityServer: AppRouteModule = {
     orderNo: 30,
     icon: 'ant-design:skin-outlined',
     title: t('routes.admin.identityServer'),
+    policy: 'IdentityServerManagement',
   },
   children: [
     {

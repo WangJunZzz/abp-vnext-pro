@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.Users
 {
-    [Authorize(Policy = IdentityPermissions.Users.Default)]
+    [Authorize]
     public class UserAppService : AbpProAppService, IUserAppService
     {
         private readonly IIdentityUserAppService _identityUserAppService;
@@ -25,8 +25,6 @@ namespace Lion.AbpPro.Users
         /// <summary>
         /// 分页查询用户
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         public async Task<PagedResultDto<IdentityUserDto>> ListAsync(PagingUserListInput input)
         {
             var request = new GetIdentityUsersInput

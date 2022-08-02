@@ -2,7 +2,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.Permissions
 {
     public class DataDictionaryManagementPermissions
     {
-        public const  string GroupName = "System";
+        public const  string GroupName = "AbpIdentity";
 
         public static class DataDictionaryManagement
         {

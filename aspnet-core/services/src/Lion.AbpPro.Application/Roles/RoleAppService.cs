@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.Roles
 {
-    [Authorize(Policy = IdentityPermissions.Roles.Default)]
+    [Authorize]
     public class RoleAppService : AbpProAppService, IRoleAppService
     {
         private readonly IIdentityRoleAppService _identityRoleAppService;
@@ -19,7 +19,7 @@ namespace Lion.AbpPro.Roles
         /// <summary>
         /// 获取所有角色
         /// </summary>
-        [Authorize]
+      
         public async Task<ListResultDto<IdentityRoleDto>> AllListAsync()
         {
             List<IdentityRole> source =

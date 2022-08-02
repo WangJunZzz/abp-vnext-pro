@@ -2,7 +2,7 @@ namespace Lion.AbpPro.FileManagement.Permissions;
 
 public class FileManagementPermissions
 {
-    public const  string GroupName = "System";
+    public const  string GroupName = "AbpIdentity";
 
     public static class FileManagement
     {

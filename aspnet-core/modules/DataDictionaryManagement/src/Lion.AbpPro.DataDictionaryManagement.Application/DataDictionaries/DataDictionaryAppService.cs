@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
-    [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Default)]
+    [Authorize]
     public class DataDictionaryAppService : DataDictionaryManagementAppService, IDataDictionaryAppService
     {
         /// <summary>
@@ -25,8 +25,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<PagedResultDto<PagingDataDictionaryOutput>> GetPagingListAsync(
-            PagingDataDictionaryInput input)
+        public async Task<PagedResultDto<PagingDataDictionaryOutput>> GetPagingListAsync(PagingDataDictionaryInput input)
         {
             var result = new PagedResultDto<PagingDataDictionaryOutput>();
             var totalCount = await _dataDictionaryRepository.GetPagingCountAsync(input.Filter);

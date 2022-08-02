@@ -4,10 +4,12 @@ namespace Lion.AbpPro.Roles
     public class RolePermissionAppService : AbpProAppService, IRolePermissionAppService
     {
         private readonly IPermissionAppService _rolePermissionAppService;
+        private readonly PermissionOptions _permissionOptions;
 
-        public RolePermissionAppService(IPermissionAppService rolePermissionAppService)
+        public RolePermissionAppService(IPermissionAppService rolePermissionAppService, IOptions<PermissionOptions> permissionOptions)
         {
             _rolePermissionAppService = rolePermissionAppService;
+            _permissionOptions = permissionOptions.Value;
         }
 
         /// <summary>
@@ -40,60 +42,55 @@ namespace Lion.AbpPro.Roles
         private PermissionOutput BuildTreeData(List<PermissionGroupDto> input)
         {
             var result = new PermissionOutput();
-            var excludes = new List<string>
-            {
-                "AbpIdentity.Users.ManagePermissions",
-                "FeatureManagement",
-                "FeatureManagement.ManageHostFeatures",
-                // "AbpTenantManagement",
-                // "AbpTenantManagement.Tenants",
-                // "AbpTenantManagement.Tenants.Create",
-                // "AbpTenantManagement.Tenants.Update",
-                // "AbpTenantManagement.Tenants.Delete",
-                "AbpTenantManagement.Tenants.ManageFeatures",
-                // "AbpTenantManagement.Tenants.ManageConnectionStrings",
-                "SettingManagement",
-                "SettingManagement.Emailing"
-            };
+
 
             var permissions = new List<PermissionTreeDto>();
+
             foreach (var group in input)
             {
-                if (excludes.Any(e => e == group.Name)) continue;
-                
+                if (_permissionOptions.IsExclude(group.Name)) continue;
+
                 // 获取分组信息
                 var groupPermission = new PermissionTreeDto
                 {
-                    Key = @group.Name,
-                    Title = @group.Name == "AbpIdentity"
-                        ? L["Permission:SystemManagement"]
-                        : @group.DisplayName
+                    Key = group.Name,
+                    Title = group.Name == "AbpIdentity"
+                        ? L[$"Permission:SystemManagement"]
+                        : group.DisplayName
                 };
-
+                result.Grants.Add(group.Name);
                 // 获取所有已授权和未授权权限集合
                 foreach (var item in group.Permissions)
                 {
+                    if (_permissionOptions.IsExclude(item.Name)) continue;
+
                     result.AllGrants.Add(item.Name);
                     if (item.IsGranted)
                     {
                         result.Grants.Add(item.Name);
                     }
+                    else
+                    {
+                        // 只要没有授权的，就移除顶级的分组
+                        result.Grants.Remove(group.Name);
+                        result.Grants.Remove(item.ParentName);
+                    }
                 }
-                
+
                 // 递归菜单
                 var childTreeMenu = RecursionMenu(group.Permissions, null);
 
                 groupPermission.Children.AddRange(childTreeMenu.Children);
+
                 permissions.Add(groupPermission);
             }
 
-            result.Permissions = permissions;
-            
 
+            result.Permissions = permissions;
             return result;
         }
-        
-        
+
+
         /// <summary>
         /// 递归菜单
         /// </summary>
@@ -102,7 +99,7 @@ namespace Lion.AbpPro.Roles
         {
             var tree = new PermissionTreeDto();
             var permissions = permissionGrantInfoDtos
-                .Where(e => e.ParentName == parentName).ToList();
+                .Where(e => e.ParentName == parentName && !_permissionOptions.IsExclude(e.Name)).ToList();
             foreach (var item in permissions)
             {
                 var child = new PermissionTreeDto
@@ -113,6 +110,7 @@ namespace Lion.AbpPro.Roles
                 child.Children.AddRange(RecursionMenu(permissionGrantInfoDtos, item.Name).Children);
                 tree.Children.Add(child);
             }
+
             return tree;
         }
     }

@@ -44,7 +44,7 @@
               onClick: handleDelete.bind(null, record),
             },
             {
-              auth: 'System.Users.Enable',
+              auth: 'AbpIdentity.Users.Enable',
               label: !record.isActive ? t('common.enabled') : t('common.disEnabled'),
               onClick: handleLock.bind(null, record),
             },

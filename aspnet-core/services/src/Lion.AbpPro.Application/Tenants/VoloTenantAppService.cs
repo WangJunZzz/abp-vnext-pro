@@ -1,5 +1,6 @@
 namespace Lion.AbpPro.Tenants
 {
+    [Authorize]
     public class VoloTenantAppService : AbpProAppService, IVoloTenantAppService
     {
         private readonly IAbpTenantAppService _abpTenantAppService;
@@ -19,7 +20,6 @@ namespace Lion.AbpPro.Tenants
         }
 
         
-        [Authorize(policy:TenantManagementPermissions.Tenants.Default)]
         public Task<PagedResultDto<TenantDto>> ListAsync(PagingTenantInput input)
         {
             var request = new GetTenantsInput

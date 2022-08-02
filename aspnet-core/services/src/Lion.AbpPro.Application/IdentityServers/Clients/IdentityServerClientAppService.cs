@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.IdentityServers.Clients
 {
-    [Authorize(Policy = AbpProPermissions.IdentityServer.Client.Default)]
+    [Authorize]
     public class IdentityServerClientAppService : AbpProAppService, IIdentityServerClientAppService
     {
         private readonly IdenityServerClientManager _idenityServerClientManager;

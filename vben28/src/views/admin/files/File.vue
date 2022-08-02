@@ -8,7 +8,7 @@
           :multiple="false"
           :show-upload-list="false"
           :customRequest="customRequest"
-          v-auth="'System.FileManagement.Upload'"
+          v-auth="'AbpIdentity.FileManagement.Upload'"
         >
           <a-button>
             <upload-outlined></upload-outlined>

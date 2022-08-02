@@ -1,3 +1,5 @@
+using Lion.AbpPro.Roles;
+
 namespace Lion.AbpPro
 {
     [DependsOn(
@@ -25,7 +27,18 @@ namespace Lion.AbpPro
                 options.AddMaps<AbpProApplicationModule>();
             });
             
-          
+            Configure<PermissionOptions>(options =>
+            {
+                options.Excludes.Add("AbpIdentity.Users.ManagePermissions");
+                options.Excludes.Add("AbpIdentity.UserLookup");
+                options.Excludes.Add("FeatureManagement");
+                options.Excludes.Add("FeatureManagement.ManageHostFeatures");
+                options.Excludes.Add("SettingManagement");
+                options.Excludes.Add("SettingManagement.Emailing");
+                options.Excludes.Add("AbpTenantManagement");
+                options.Excludes.Add("AbpTenantManagement.Tenants.ManageFeatures");
+                options.Excludes.Add("AbpTenantManagement.Tenants.ManageConnectionStrings");
+            });
         }
     }
 }
