@@ -198,8 +198,8 @@ export default defineComponent({
           label: t("common.editText"),
           handler: () => {
             let record = {
-              id: node.$attrs.node.key,
-              displayName: node.$attrs.node.title
+              id: node.eventKey,
+              displayName: node.title.props.name
             };
             EditOrganizationUnitModal(true, { record });
           },
