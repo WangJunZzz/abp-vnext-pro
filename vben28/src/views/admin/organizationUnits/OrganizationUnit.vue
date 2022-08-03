@@ -15,7 +15,7 @@
               type="primary"
               style="margin-left: 20px"
               size="small"
-              v-auth="'System.OrganizationUnitManagement.Create'"
+              v-auth="'AbpIdentity.OrganizationUnitManagement.Create'"
               @click="createRootOrganizationUnit"
             >
               {{ t("routes.admin.createRootOrganizationUnit") }}
@@ -31,7 +31,7 @@
                 <a-button
                   preIcon="ant-design:plus-circle-outlined"
                   type="primary"
-                  v-auth="'System.OrganizationUnitManagement.Update'"
+                  v-auth="'AbpIdentity.OrganizationUnitManagement.Update'"
                   @click="openAddUserToOrganizationUnitModal"
                 >
                   {{ t("common.createText") }}
@@ -43,7 +43,7 @@
                   {
                     icon: 'ant-design:delete-outlined',
                     label: t('common.delText'),
-                    auth:'System.OrganizationUnitManagement.Delete',
+                    auth:'AbpIdentity.OrganizationUnitManagement.Delete',
                     onClick: handleUserDelete.bind(null, record),
                   },
                  ]"
@@ -58,7 +58,7 @@
                 <a-button
                   preIcon="ant-design:plus-circle-outlined"
                   type="primary"
-                  v-auth="'System.OrganizationUnitManagement.Update'"
+                  v-auth="'AbpIdentity.OrganizationUnitManagement.Update'"
                   @click="openAddRoleToOrganizationUnitModal"
                 >
                   {{ t("common.createText") }}
@@ -71,7 +71,7 @@
                   {
                     icon: 'ant-design:delete-outlined',
                     label: t('common.delText'),
-                    auth:'System.OrganizationUnitManagement.Delete',
+                    auth:'AbpIdentity.OrganizationUnitManagement.Delete',
                     onClick: handleRoleDelete.bind(null, record),
                   },
                   ]"
