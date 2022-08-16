@@ -14,7 +14,7 @@
           preIcon="ant-design:cloud-download-outlined"
           type="primary"
           @click="handleExport"
-          v-auth="'System.Users.Export'"
+          v-auth="'AbpIdentity.Users.Export'"
         >
           {{ t("common.export") }}
         </a-button>
