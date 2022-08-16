@@ -10,7 +10,6 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" />
         <PackageReference Include="Volo.Abp.Identity.Domain.Shared" />
-        <PackageReference Include="Volo.Abp.IdentityServer.Domain.Shared" />
         <PackageReference Include="Volo.Abp.BackgroundJobs.Domain.Shared" />
         <PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared" />
         <PackageReference Include="Volo.Abp.TenantManagement.Domain.Shared" />

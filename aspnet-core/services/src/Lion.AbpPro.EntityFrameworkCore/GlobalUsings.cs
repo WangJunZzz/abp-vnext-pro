@@ -34,7 +34,6 @@ global using Volo.Abp.FeatureManagement;
 global using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 global using Volo.Abp.Identity;
 global using Volo.Abp.Identity.EntityFrameworkCore;
-global using Volo.Abp.IdentityServer.EntityFrameworkCore;
 global using Volo.Abp.Modularity;
 global using Volo.Abp.ObjectExtending;
 global using Volo.Abp.PermissionManagement;

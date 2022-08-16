@@ -3,7 +3,6 @@ namespace Lion.AbpPro.EntityFrameworkCore
     [DependsOn(
         typeof(AbpProDomainModule),
         typeof(AbpIdentityEntityFrameworkCoreModule),
-        typeof(AbpIdentityServerEntityFrameworkCoreModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
         typeof(AbpEntityFrameworkCoreMySQLModule),

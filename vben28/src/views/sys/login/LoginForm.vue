@@ -40,19 +40,7 @@
         </Button>
       </ACol>
     </ARow>
-    <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>
 
-    <div class="flex justify-evenly enter-x" :class="`${prefixCls}-sign-in-way`">
-      <a-button type="link" @click="useOidcLogin" aria-placeholder="sf"
-        ><LoginOutlined />
-      </a-button>
-
-      <a-button
-        type="link"
-        href="https://github.com/login/oauth/authorize?client_id=127fc528f611879fba03&state=abp"
-        ><GithubFilled />
-      </a-button>
-    </div>
   </Form>
 </template>
 <script lang="ts" setup>
@@ -78,7 +66,6 @@
     useLoginState,
     useFormRules,
     useFormValid,
-    useOidcLogin,
   } from './useLogin';
   import { useDesign } from '/@/hooks/web/useDesign';
   //import { onKeyStroke } from '@vueuse/core';

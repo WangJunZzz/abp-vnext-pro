@@ -22,7 +22,6 @@ global using Volo.Abp.DependencyInjection;
 global using Volo.Abp.FeatureManagement;
 global using Volo.Abp.Identity;
 global using Volo.Abp.Identity.Localization;
-global using Volo.Abp.IdentityServer;
 global using Volo.Abp.Localization;
 global using Volo.Abp.Localization.ExceptionHandling;
 global using Volo.Abp.Localization.Resources.AbpLocalization;

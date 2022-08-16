@@ -34,21 +34,23 @@ export function login(input: LoginInput): Promise<LoginOutput> {
  * @param token
  * @returns
  */
-export function id4(token: string): Promise<LoginOutput> {
-  const _accountServiceProxy = new AccountServiceProxy();
-  return _accountServiceProxy.id4(token);
-}
+// export function id4(token: string): Promise<LoginOutput> {
+//   const _accountServiceProxy = new AccountServiceProxy();
+//   return _accountServiceProxy.id4(token);
+
+// }
 
 /**
  * sts登录
  * @param token
  * @returns
  */
-export function github(code: string): Promise<LoginOutput> {
+// export function github(code: string): Promise<LoginOutput> {
 
-  const _accountServiceProxy = new AccountServiceProxy();
-  return _accountServiceProxy.github(code);
-}
+//   const _accountServiceProxy = new AccountServiceProxy();
+//   return _accountServiceProxy.github(code);
+ 
+// }
 
 /**
  * 获取应用程序配置

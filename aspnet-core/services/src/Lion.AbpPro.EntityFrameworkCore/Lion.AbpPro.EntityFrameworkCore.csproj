@@ -15,7 +15,6 @@
         <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" />
         <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" />
         <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" />
-        <PackageReference Include="Volo.Abp.IdentityServer.EntityFrameworkCore" />
         <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore" />
         <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" />
         <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" />

@@ -1,3 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+using IdentityModel;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using Volo.Abp;
+using Volo.Abp.Identity;
+using Volo.Abp.MultiTenancy;
+using Volo.Abp.Security.Claims;
+
+
 namespace Lion.AbpPro.Users
 {
     public class AccountAppService : AbpProAppService, IAccountAppService
@@ -5,24 +23,15 @@ namespace Lion.AbpPro.Users
         private readonly IdentityUserManager _userManager;
         private readonly JwtOptions _jwtOptions;
         private readonly Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> _signInManager;
-        private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IConfiguration _configuration;
-        private readonly Volo.Abp.Domain.Repositories.IRepository<IdentityRole> _identityRoleRepository;
 
         public AccountAppService(
             IdentityUserManager userManager,
             IOptionsSnapshot<JwtOptions> jwtOptions,
-            Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> signInManager,
-            IHttpClientFactory httpClientFactory,
-            IConfiguration configuration,
-            Volo.Abp.Domain.Repositories.IRepository<IdentityRole> identityRoleRepository)
+            Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
             _jwtOptions = jwtOptions.Value;
             _signInManager = signInManager;
-            _httpClientFactory = httpClientFactory;
-            _configuration = configuration;
-            _identityRoleRepository = identityRoleRepository;
         }
 
 
@@ -43,77 +52,7 @@ namespace Lion.AbpPro.Users
             return await BuildResult(user);
         }
 
-        /// <summary>
-        /// identityServer4第三方登录
-        /// </summary>
-        /// <returns></returns>
-        public async Task<LoginOutput> Id4LoginAsync(string accessToken)
-        {
-            // 通过access token 获取用户信息
-            Dictionary<string, string> headers = new Dictionary<string, string>
-                { { "Authorization", $"Bearer {accessToken}" } };
-            var response = await _httpClientFactory.GetAsync<LoginStsResponse>(HttpClientNameConsts.Sts, "connect/userinfo", headers);
-            var user = await _userManager.FindByNameAsync(response.name);
-            if (!user.IsActive)
-            {
-                throw new BusinessException(AbpProDomainErrorCodes.UserLockedOut);
-            }
-
-            return await BuildResult(user);
-        }
-
-        /// <summary>
-        /// github第三方登录
-        /// </summary>
-        /// <param name="code">授权码</param>
-        /// <returns></returns>
-        public async Task<LoginOutput> GithubLoginAsync(string code)
-        {
-            var headers = new Dictionary<string, string> { { "Accept", $"application/json" } };
-            // 通过code获取access token
-            var accessTokenUrl =
-                $"login/oauth/access_token?client_id={_configuration.GetValue<string>("HttpClient:Github:ClientId")}&client_secret={_configuration.GetValue<string>("HttpClient:Github:ClientSecret")}&code={code}";
-            var accessTokenResponse = await _httpClientFactory.GetAsync<GithubAccessTokenResponse>(HttpClientNameConsts.Github, accessTokenUrl, headers);
-
-            // 获取github用户信息
-            headers.Add("Authorization", $"token {accessTokenResponse.Access_token}");
-            headers.Add("User-Agent", _configuration.GetValue<string>("HttpClient:GithubApi:ClientName"));
-            var userResponse = await _httpClientFactory.GetAsync<LoginGithubResponse>(HttpClientNameConsts.GithubApi, "/user", headers);
-
-            var user = await _userManager.FindByEmailAsync(userResponse.email);
-            if (user != null) return await BuildResult(user);
-            return await RegisterAsync(userResponse.name, userResponse.email);
-        }
-
         #region 私有方法
-
-        /// <summary>
-        /// 注册用户
-        /// </summary>
-        /// <returns></returns>
-        private async Task<LoginOutput> RegisterAsync(string userName, string email, string password = "1q2w3E*")
-        {
-            var result = new LoginOutput();
-            var roles = await _identityRoleRepository.GetListAsync(e => e.IsDefault);
-            if (roles == null || roles.Count == 0) throw new AbpAuthorizationException();
-            var userId = GuidGenerator.Create();
-
-            var user = new IdentityUser(userId, userName, email)
-            {
-                Name = userName
-            };
-
-            roles.ForEach(e => { user.AddRole(e.Id); });
-            user.SetIsActive(true);
-            await _userManager.CreateAsync(user, password);
-            result.Token = GenerateJwt(user.Id, user.UserName, user.Name, user.Email,
-                user.TenantId.ToString(), roles.Select(e => e.Name).ToList());
-            result.Id = user.Id;
-            result.UserName = userName;
-            result.Name = userName;
-            result.Roles = roles.Select(e => e.Name).ToList();
-            return result;
-        }
 
 
         private async Task<LoginOutput> BuildResult(IdentityUser user)

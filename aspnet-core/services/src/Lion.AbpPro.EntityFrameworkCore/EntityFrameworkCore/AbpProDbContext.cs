@@ -63,7 +63,6 @@ namespace Lion.AbpPro.EntityFrameworkCore
             builder.ConfigureIdentity();
             builder.ConfigureFeatureManagement();
             builder.ConfigureTenantManagement();
-            builder.ConfigureIdentityServer();
             builder.ConfigureAbpPro();
 
 

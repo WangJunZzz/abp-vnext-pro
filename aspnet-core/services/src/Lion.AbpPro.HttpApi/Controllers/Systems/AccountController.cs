@@ -17,19 +17,6 @@ namespace Lion.AbpPro.Controllers.Systems
         {
             return _accountAppService.LoginAsync(input);
         }
-
-        [SwaggerOperation(summary: "登录", Tags = new[] {"Account"})]
-        [HttpPost("/api/app/account/login/id4")]
-        public Task<LoginOutput> Id4LoginAsync(string accessToken)
-        {
-            return _accountAppService.Id4LoginAsync(accessToken);
-        }
         
-        [SwaggerOperation(summary: "登录", Tags = new[] {"Account"})]
-        [HttpPost("/api/app/account/login/github")]
-        public Task<LoginOutput> GithubLoginAsync(string code)
-        {
-            return _accountAppService.GithubLoginAsync(code);
-        }
     }
 }

@@ -38,7 +38,6 @@
         <PackageReference Update="Volo.Abp.EntityFrameworkCore.Sqlite" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.Http.Client.IdentityModel" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.AspNetCore.MultiTenancy" Version="5.3.2"/>
-        <PackageReference Update="Volo.Abp.Account.Web.IdentityServer" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.Account.Application" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.Identity.Application" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.PermissionManagement.Application" Version="5.3.2"/>
@@ -54,8 +53,6 @@
         <PackageReference Update="Volo.Abp.SettingManagement.Application.Contracts" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.Emailing" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.PermissionManagement.Domain.Identity" Version="5.3.2"/>
-        <PackageReference Update="Volo.Abp.IdentityServer.Domain" Version="5.3.2"/>
-        <PackageReference Update="Volo.Abp.PermissionManagement.Domain.IdentityServer" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.BackgroundJobs.Domain" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.AuditLogging.Domain" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.TenantManagement.Domain" Version="5.3.2"/>
@@ -63,14 +60,12 @@
         <PackageReference Update="Volo.Abp.SettingManagement.Domain" Version="5.3.2"/>
 		<PackageReference Update="Volo.Abp.Identity.Domain" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.Identity.Domain.Shared" Version="5.3.2"/>
-        <PackageReference Update="Volo.Abp.IdentityServer.Domain.Shared" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.BackgroundJobs.Domain.Shared" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.AuditLogging.Domain.Shared" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.TenantManagement.Domain.Shared" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.FeatureManagement.Domain.Shared" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.PermissionManagement.Domain.Shared" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.SettingManagement.Domain.Shared" Version="5.3.2"/>
-        <PackageReference Update="Volo.Abp.IdentityServer.EntityFrameworkCore" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.Account.HttpApi" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.Identity.HttpApi" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.PermissionManagement.HttpApi" Version="5.3.2"/>

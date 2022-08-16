@@ -165,83 +165,60 @@ export const useUserStore = defineStore({
     },
 
     async id4Login(token: string, id_token: string) {
-      try {
-        // 获取token中的租户信息
-        const decoded: any = jwt_decode(token);
-        if (decoded.tenantid == undefined) {
-          this.setTenant('');
-        } else {
-          this.setTenant(decoded.tenantid);
-        }
+      console.log(token, id_token);
+      // try {
+      //   // 获取token中的租户信息
+      //   const decoded: any = jwt_decode(token);
+      //   if (decoded.tenantid == undefined) {
+      //     this.setTenant('');
+      //   } else {
+      //     this.setTenant(decoded.tenantid);
+      //   }
 
-        const data = await id4(token);
-        this.setToken(data.token as string);
+      //   const data = await id4(token);
+      //   this.setToken(data.token as string);
 
-        this.setUserInfo({
-          userId: decoded.sub as string,
-          username: data.userName as string,
-          realName: data.name as string,
-          roles: data.roles as [],
-          avatar: '',
-          isSts: true,
-          idToken: id_token,
-        });
-        await this.getAbpApplicationConfigurationAsync();
-        await router.replace(PageEnum.BASE_HOME);
-      } catch (error) {
-        this.setTenant('');
-        router.replace(PageEnum.BASE_LOGIN);
-      }
+      //   this.setUserInfo({
+      //     userId: decoded.sub as string,
+      //     username: data.userName as string,
+      //     realName: data.name as string,
+      //     roles: data.roles as [],
+      //     avatar: '',
+      //     isSts: true,
+      //     idToken: id_token,
+      //   });
+      //   await this.getAbpApplicationConfigurationAsync();
+      //   await router.replace(PageEnum.BASE_HOME);
+      // } catch (error) {
+      //   this.setTenant('');
+      //   router.replace(PageEnum.BASE_LOGIN);
+      // }
     },
 
     async githubLogin(code: string) {
-      try {
-        const data = await github(code);
-        this.setToken(data.token as string);
-        this.setTenant('');
-        this.setUserInfo({
-          userId: data.id as string,
-          username: data.userName as string,
-          realName: data.name as string,
-          roles: data.roles as [],
-          avatar: '',
-          isSts: false,
-          idToken: '',
-        });
-        await this.getAbpApplicationConfigurationAsync();
-        await router.replace(PageEnum.BASE_HOME);
-      } catch (error) {
-        this.setTenant('');
-        router.replace(PageEnum.BASE_LOGIN);
-      }
+      // try {
+      //   const data = await github(code);
+      //   this.setToken(data.token as string);
+      //   this.setTenant('');
+      //   this.setUserInfo({
+      //     userId: data.id as string,
+      //     username: data.userName as string,
+      //     realName: data.name as string,
+      //     roles: data.roles as [],
+      //     avatar: '',
+      //     isSts: false,
+      //     idToken: '',
+      //   });
+      //   await this.getAbpApplicationConfigurationAsync();
+      //   await router.replace(PageEnum.BASE_HOME);
+      // } catch (error) {
+      //   this.setTenant('');
+      //   router.replace(PageEnum.BASE_LOGIN);
+      // }
+      console.log(code);
     },
 
-    // async githubLogin(code: string) {
-    //   try {
-    //     debugger;
-    //     await githubLogin(code).then((res) => {
-    //       console.log(res);
-    //     });
-
-    //     // this.setToken(data.token as string);
-
-    //     // this.setUserInfo({
-    //     //   userId: decoded.sub as string,
-    //     //   username: data.userName as string,
-    //     //   realName: data.name as string,
-    //     //   roles: data.roles as [],
-    //     //   avatar: '',
-    //     //   isSts: true,
-    //     //   idToken: id_token,
-    //     // });
-    //     // await this.getAbpApplicationConfigurationAsync();
-    //     // await router.replace(PageEnum.BASE_HOME);
-    //   } catch (error) {
-    //     console.log(error);
-    //     //this.setTenant('');
-    //     router.replace(PageEnum.BASE_LOGIN);
-    //   }
-    // },
+  
     /**
      * @description: logout
      */
