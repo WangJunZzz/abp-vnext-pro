@@ -23,10 +23,7 @@ jobs:
       - name: 发布->Lion.AbpPro.HttpApi.Host
         run: dotnet publish aspnet-core/services/host/Lion.AbpPro.HttpApi.Host/Lion.AbpPro.HttpApi.Host.csproj -o Lion.AbpPro.HttpApi.Host
      
-      - name: 发布->Lion.AbpPro.IdentityServer
-        run: dotnet publish aspnet-core/services/host/Lion.AbpPro.IdentityServer/Lion.AbpPro.IdentityServer.csproj -o Lion.AbpPro.IdentityServer
-      
-      - name: 发布->Lion.AbpPro.IdentityServer
+      - name: 发布->Lion.AbpPro.WebGateway
         run: dotnet publish aspnet-core/gateways/Lion.AbpPro.WebGateway/Lion.AbpPro.WebGateway.csproj -o Lion.AbpPro.WebGateway
      
       - name: 部署->Lion.AbpPro.HttpApi.Host
@@ -35,16 +32,6 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-avzr --delete --exclude 'appsettings.json'"
           SOURCE: "Lion.AbpPro.HttpApi.Host"
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: "/root/wwwroot"
-     
-      - name: 部署->Lion.AbpPro.IdentityServer
-        uses: easingthemes/ssh-deploy@v2.2.11
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-avzr --delete --exclude 'appsettings.json'"
-          SOURCE: "Lion.AbpPro.IdentityServer"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: "/root/wwwroot"
