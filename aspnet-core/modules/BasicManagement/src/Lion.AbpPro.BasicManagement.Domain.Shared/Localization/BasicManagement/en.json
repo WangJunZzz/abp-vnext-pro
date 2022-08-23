@@ -1,0 +1,21 @@
+{
+  "culture": "en",
+  "texts": {
+    "MyAccount":  "My account",
+    "SamplePageMessage": "A sample page for the BasicManagement module",
+    "Permission:Query": "Query",
+    "Permission:Create": "Create",
+    "Permission:Update": "Update",
+    "Permission:Delete": "Delete",
+    "Permission:Export": "Export",
+    "Permission:Enable": "Enable|Disable",
+    "Permission:SystemManagement": "SystemManagement",
+    "Permission:AuditLogManagement": "AuditLog",
+    "Permission:HangfireManagement": "BackgroundTask",
+    "Permission:CapManagement": "IntegratedEvent",
+    "Permission:ESManagement": "ESManagement",
+    "Permission:SettingManagement": "SettingManagement",
+    "Permission:OrganizationUnitManagement": "OrganizationUnitManagement",
+    "Setting.Group.System": "System",
+  }
+}

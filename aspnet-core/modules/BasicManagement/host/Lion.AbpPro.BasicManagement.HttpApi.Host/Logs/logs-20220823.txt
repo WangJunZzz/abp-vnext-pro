@@ -1,0 +1,876 @@
+2022-08-23 22:20:03.435 +08:00 [INF] Loaded ABP modules:
+2022-08-23 22:20:03.463 +08:00 [INF] - Lion.AbpPro.BasicManagement.BasicManagementHttpApiHostModule
+2022-08-23 22:20:03.464 +08:00 [INF]   - Lion.AbpPro.BasicManagement.BasicManagementApplicationModule
+2022-08-23 22:20:03.464 +08:00 [INF]     - Lion.AbpPro.BasicManagement.BasicManagementDomainModule
+2022-08-23 22:20:03.465 +08:00 [INF]       - Volo.Abp.Domain.AbpDddDomainModule
+2022-08-23 22:20:03.465 +08:00 [INF]         - Volo.Abp.Auditing.AbpAuditingModule
+2022-08-23 22:20:03.466 +08:00 [INF]           - Volo.Abp.Data.AbpDataModule
+2022-08-23 22:20:03.468 +08:00 [INF]             - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2022-08-23 22:20:03.469 +08:00 [INF]               - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2022-08-23 22:20:03.481 +08:00 [INF]               - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2022-08-23 22:20:03.482 +08:00 [INF]             - Volo.Abp.Uow.AbpUnitOfWorkModule
+2022-08-23 22:20:03.483 +08:00 [INF]             - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2022-08-23 22:20:03.484 +08:00 [INF]           - Volo.Abp.Json.AbpJsonModule
+2022-08-23 22:20:03.484 +08:00 [INF]             - Volo.Abp.Timing.AbpTimingModule
+2022-08-23 22:20:03.485 +08:00 [INF]               - Volo.Abp.Localization.AbpLocalizationModule
+2022-08-23 22:20:03.485 +08:00 [INF]                 - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2022-08-23 22:20:03.486 +08:00 [INF]                 - Volo.Abp.Settings.AbpSettingsModule
+2022-08-23 22:20:03.487 +08:00 [INF]                   - Volo.Abp.Security.AbpSecurityModule
+2022-08-23 22:20:03.487 +08:00 [INF]                   - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2022-08-23 22:20:03.488 +08:00 [INF]           - Volo.Abp.Threading.AbpThreadingModule
+2022-08-23 22:20:03.488 +08:00 [INF]           - Volo.Abp.Auditing.AbpAuditingContractsModule
+2022-08-23 22:20:03.489 +08:00 [INF]         - Volo.Abp.EventBus.AbpEventBusModule
+2022-08-23 22:20:03.490 +08:00 [INF]           - Volo.Abp.Guids.AbpGuidsModule
+2022-08-23 22:20:03.490 +08:00 [INF]           - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2022-08-23 22:20:03.491 +08:00 [INF]           - Volo.Abp.DistributedLocking.AbpDistributedLockingAbstractionsModule
+2022-08-23 22:20:03.491 +08:00 [INF]         - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2022-08-23 22:20:03.492 +08:00 [INF]         - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2022-08-23 22:20:03.492 +08:00 [INF]         - Volo.Abp.Specifications.AbpSpecificationsModule
+2022-08-23 22:20:03.493 +08:00 [INF]       - Lion.AbpPro.BasicManagement.BasicManagementDomainSharedModule
+2022-08-23 22:20:03.493 +08:00 [INF]         - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2022-08-23 22:20:03.494 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2022-08-23 22:20:03.494 +08:00 [INF]         - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2022-08-23 22:20:03.495 +08:00 [INF]           - Volo.Abp.Validation.AbpValidationModule
+2022-08-23 22:20:03.496 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2022-08-23 22:20:03.496 +08:00 [INF]           - Volo.Abp.Users.AbpUsersDomainSharedModule
+2022-08-23 22:20:03.497 +08:00 [INF]           - Volo.Abp.Features.AbpFeaturesModule
+2022-08-23 22:20:03.499 +08:00 [INF]             - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2022-08-23 22:20:03.501 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2022-08-23 22:20:03.502 +08:00 [INF]         - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2022-08-23 22:20:03.502 +08:00 [INF]         - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2022-08-23 22:20:03.503 +08:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2022-08-23 22:20:03.503 +08:00 [INF]       - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2022-08-23 22:20:03.504 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2022-08-23 22:20:03.505 +08:00 [INF]           - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2022-08-23 22:20:03.505 +08:00 [INF]         - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2022-08-23 22:20:03.506 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2022-08-23 22:20:03.507 +08:00 [INF]         - Volo.Abp.Caching.AbpCachingModule
+2022-08-23 22:20:03.507 +08:00 [INF]           - Volo.Abp.Serialization.AbpSerializationModule
+2022-08-23 22:20:03.508 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityDomainModule
+2022-08-23 22:20:03.509 +08:00 [INF]         - Volo.Abp.Users.AbpUsersDomainModule
+2022-08-23 22:20:03.509 +08:00 [INF]           - Volo.Abp.Users.AbpUsersAbstractionModule
+2022-08-23 22:20:03.510 +08:00 [INF]       - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2022-08-23 22:20:03.510 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2022-08-23 22:20:03.511 +08:00 [INF]           - Volo.Abp.Authorization.AbpAuthorizationModule
+2022-08-23 22:20:03.512 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2022-08-23 22:20:03.512 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2022-08-23 22:20:03.515 +08:00 [INF]     - Lion.AbpPro.BasicManagement.BasicManagementApplicationContractsModule
+2022-08-23 22:20:03.515 +08:00 [INF]       - Volo.Abp.Application.AbpDddApplicationContractsModule
+2022-08-23 22:20:03.516 +08:00 [INF]       - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2022-08-23 22:20:03.517 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2022-08-23 22:20:03.517 +08:00 [INF]           - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2022-08-23 22:20:03.518 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2022-08-23 22:20:03.519 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementApplicationContractsModule
+2022-08-23 22:20:03.519 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2022-08-23 22:20:03.520 +08:00 [INF]     - Volo.Abp.Application.AbpDddApplicationModule
+2022-08-23 22:20:03.520 +08:00 [INF]       - Volo.Abp.Http.AbpHttpAbstractionsModule
+2022-08-23 22:20:03.521 +08:00 [INF]       - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2022-08-23 22:20:03.521 +08:00 [INF]     - Volo.Abp.Account.AbpAccountApplicationModule
+2022-08-23 22:20:03.522 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityApplicationModule
+2022-08-23 22:20:03.523 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2022-08-23 22:20:03.523 +08:00 [INF]       - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2022-08-23 22:20:03.524 +08:00 [INF]         - Volo.Abp.UI.AbpUiModule
+2022-08-23 22:20:03.524 +08:00 [INF]       - Volo.Abp.Emailing.AbpEmailingModule
+2022-08-23 22:20:03.525 +08:00 [INF]         - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2022-08-23 22:20:03.526 +08:00 [INF]           - Volo.Abp.TextTemplating.Scriban.AbpTextTemplatingScribanModule
+2022-08-23 22:20:03.526 +08:00 [INF]             - Volo.Abp.TextTemplating.AbpTextTemplatingCoreModule
+2022-08-23 22:20:03.527 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2022-08-23 22:20:03.527 +08:00 [INF]     - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2022-08-23 22:20:03.532 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementApplicationModule
+2022-08-23 22:20:03.533 +08:00 [INF]   - Lion.AbpPro.BasicManagement.EntityFrameworkCore.BasicManagementEntityFrameworkCoreModule
+2022-08-23 22:20:03.533 +08:00 [INF]     - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2022-08-23 22:20:03.534 +08:00 [INF]     - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2022-08-23 22:20:03.534 +08:00 [INF]       - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2022-08-23 22:20:03.535 +08:00 [INF]     - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2022-08-23 22:20:03.536 +08:00 [INF]     - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2022-08-23 22:20:03.536 +08:00 [INF]     - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2022-08-23 22:20:03.537 +08:00 [INF]     - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2022-08-23 22:20:03.537 +08:00 [INF]     - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2022-08-23 22:20:03.538 +08:00 [INF]     - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2022-08-23 22:20:03.539 +08:00 [INF]   - Lion.AbpPro.BasicManagement.BasicManagementHttpApiModule
+2022-08-23 22:20:03.539 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2022-08-23 22:20:03.540 +08:00 [INF]       - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2022-08-23 22:20:03.540 +08:00 [INF]         - Volo.Abp.Http.AbpHttpModule
+2022-08-23 22:20:03.541 +08:00 [INF]           - Volo.Abp.Minify.AbpMinifyModule
+2022-08-23 22:20:03.541 +08:00 [INF]       - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2022-08-23 22:20:03.542 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2022-08-23 22:20:03.543 +08:00 [INF]   - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2022-08-23 22:20:03.546 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2022-08-23 22:20:03.547 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2022-08-23 22:20:03.547 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2022-08-23 22:20:03.548 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2022-08-23 22:20:03.549 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2022-08-23 22:20:03.549 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2022-08-23 22:20:03.550 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2022-08-23 22:20:03.551 +08:00 [INF]     - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2022-08-23 22:20:03.551 +08:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2022-08-23 22:20:03.552 +08:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2022-08-23 22:20:03.553 +08:00 [INF]   - Volo.Abp.Caching.StackExchangeRedis.AbpCachingStackExchangeRedisModule
+2022-08-23 22:20:03.553 +08:00 [INF]   - Volo.Abp.EntityFrameworkCore.MySQL.AbpEntityFrameworkCoreMySQLModule
+2022-08-23 22:20:03.554 +08:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2022-08-23 22:20:03.554 +08:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2022-08-23 22:20:03.555 +08:00 [INF]   - Lion.AbpPro.Shared.Hosting.Microservices.SharedHostingMicroserviceModule
+2022-08-23 22:20:04.009 +08:00 [INF] Initialized all ABP modules.
+2022-08-23 22:20:04.060 +08:00 [INF] Now listening on: http://localhost:44324
+2022-08-23 22:20:04.062 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-08-23 22:20:04.064 +08:00 [INF] Hosting environment: Development
+2022-08-23 22:20:04.065 +08:00 [INF] Content root path: D:\github\WangJunZzz\abp-vnext-pro\aspnet-core\modules\BasicManagement\host\Lion.AbpPro.BasicManagement.HttpApi.Host
+2022-08-23 22:20:04.402 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/ - -
+2022-08-23 22:20:04.409 +08:00 [WRN] Failed to determine the https port for redirect.
+2022-08-23 22:20:05.138 +08:00 [ERR] Connection id "0HMK52A99DPT6", Request id "0HMK52A99DPT6:00000002": An unhandled exception was thrown by the application.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating Volo.Abp.AspNetCore.MultiTenancy.MultiTenancyMiddleware -> Volo.Abp.MultiTenancy.TenantConfigurationProvider -> Volo.Abp.TenantManagement.TenantStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.TenantManagement.AbpTenantManagementDomainModule, Volo.Abp.TenantManagement.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.TenantManagement.AbpTenantManagementDomainModule, Volo.Abp.TenantManagement.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+=====================================================================================
+IdentityUser -> LoginOutput (Destination member list)
+Volo.Abp.Identity.IdentityUser -> Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput (Destination member list)
+
+Unmapped properties:
+Token
+
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.<>c__DisplayClass2_1.<CreateMappings>g__ValidateAll|2(IConfigurationProvider config)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.CreateMappings(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Http.MiddlewareFactory.Create(Type middlewareType)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass6_1.<<UseMiddlewareInterface>b__1>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Volo.Abp.AspNetCore.Tracing.AbpCorrelationIdMiddleware.InvokeAsync(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass6_1.<<UseMiddlewareInterface>b__1>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2022-08-23 22:20:05.306 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/ - - - 500 0 - 904.5064ms
+2022-08-23 22:20:08.779 +08:00 [ERR] An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+=====================================================================================
+IdentityUser -> LoginOutput (Destination member list)
+Volo.Abp.Identity.IdentityUser -> Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput (Destination member list)
+
+Unmapped properties:
+Token
+
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.<>c__DisplayClass2_1.<CreateMappings>g__ValidateAll|2(IConfigurationProvider config)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.CreateMappings(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundWorkers.AsyncPeriodicBackgroundWorkerBase.DoWorkAsync()
+2022-08-23 22:20:08.803 +08:00 [ERR] ---------- Exception Data ----------
+ActivatorChain = Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor
+
+2022-08-23 22:20:13.839 +08:00 [ERR] An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+=====================================================================================
+IdentityUser -> LoginOutput (Destination member list)
+Volo.Abp.Identity.IdentityUser -> Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput (Destination member list)
+
+Unmapped properties:
+Token
+
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.<>c__DisplayClass2_1.<CreateMappings>g__ValidateAll|2(IConfigurationProvider config)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.CreateMappings(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundWorkers.AsyncPeriodicBackgroundWorkerBase.DoWorkAsync()
+2022-08-23 22:20:13.865 +08:00 [ERR] ---------- Exception Data ----------
+ActivatorChain = Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor
+
+2022-08-23 22:20:18.884 +08:00 [ERR] An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+=====================================================================================
+IdentityUser -> LoginOutput (Destination member list)
+Volo.Abp.Identity.IdentityUser -> Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput (Destination member list)
+
+Unmapped properties:
+Token
+
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.<>c__DisplayClass2_1.<CreateMappings>g__ValidateAll|2(IConfigurationProvider config)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.CreateMappings(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundWorkers.AsyncPeriodicBackgroundWorkerBase.DoWorkAsync()
+2022-08-23 22:20:18.910 +08:00 [ERR] ---------- Exception Data ----------
+ActivatorChain = Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor
+
+2022-08-23 22:20:23.921 +08:00 [ERR] An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+=====================================================================================
+IdentityUser -> LoginOutput (Destination member list)
+Volo.Abp.Identity.IdentityUser -> Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput (Destination member list)
+
+Unmapped properties:
+Token
+
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.<>c__DisplayClass2_1.<CreateMappings>g__ValidateAll|2(IConfigurationProvider config)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.CreateMappings(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundWorkers.AsyncPeriodicBackgroundWorkerBase.DoWorkAsync()
+2022-08-23 22:20:23.937 +08:00 [ERR] ---------- Exception Data ----------
+ActivatorChain = Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor
+
+2022-08-23 22:20:28.965 +08:00 [ERR] An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+=====================================================================================
+IdentityUser -> LoginOutput (Destination member list)
+Volo.Abp.Identity.IdentityUser -> Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput (Destination member list)
+
+Unmapped properties:
+Token
+
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.<>c__DisplayClass2_1.<CreateMappings>g__ValidateAll|2(IConfigurationProvider config)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.CreateMappings(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundWorkers.AsyncPeriodicBackgroundWorkerBase.DoWorkAsync()
+2022-08-23 22:20:28.994 +08:00 [ERR] ---------- Exception Data ----------
+ActivatorChain = Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor
+
+2022-08-23 22:20:34.011 +08:00 [ERR] An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+=====================================================================================
+IdentityUser -> LoginOutput (Destination member list)
+Volo.Abp.Identity.IdentityUser -> Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput (Destination member list)
+
+Unmapped properties:
+Token
+
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.<>c__DisplayClass2_1.<CreateMappings>g__ValidateAll|2(IConfigurationProvider config)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.CreateMappings(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundWorkers.AsyncPeriodicBackgroundWorkerBase.DoWorkAsync()
+2022-08-23 22:20:34.040 +08:00 [ERR] ---------- Exception Data ----------
+ActivatorChain = Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor
+
+2022-08-23 22:20:39.058 +08:00 [ERR] An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+=====================================================================================
+IdentityUser -> LoginOutput (Destination member list)
+Volo.Abp.Identity.IdentityUser -> Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput (Destination member list)
+
+Unmapped properties:
+Token
+
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.<>c__DisplayClass2_1.<CreateMappings>g__ValidateAll|2(IConfigurationProvider config)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.CreateMappings(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundWorkers.AsyncPeriodicBackgroundWorkerBase.DoWorkAsync()
+2022-08-23 22:20:39.083 +08:00 [ERR] ---------- Exception Data ----------
+ActivatorChain = Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor
+
+2022-08-23 22:20:44.107 +08:00 [ERR] An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+=====================================================================================
+IdentityUser -> LoginOutput (Destination member list)
+Volo.Abp.Identity.IdentityUser -> Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput (Destination member list)
+
+Unmapped properties:
+Token
+
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.<>c__DisplayClass2_1.<CreateMappings>g__ValidateAll|2(IConfigurationProvider config)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.CreateMappings(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundWorkers.AsyncPeriodicBackgroundWorkerBase.DoWorkAsync()
+2022-08-23 22:20:44.124 +08:00 [ERR] ---------- Exception Data ----------
+ActivatorChain = Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor
+
+2022-08-23 22:20:49.136 +08:00 [ERR] An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor.
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+=====================================================================================
+IdentityUser -> LoginOutput (Destination member list)
+Volo.Abp.Identity.IdentityUser -> Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput (Destination member list)
+
+Unmapped properties:
+Token
+
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.<>c__DisplayClass2_1.<CreateMappings>g__ValidateAll|2(IConfigurationProvider config)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.CreateMappings(IServiceProvider serviceProvider)
+   at Autofac.Extensions.DependencyInjection.AutofacRegistration.<>c__DisplayClass3_0.<Register>b__0(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Delegate.DelegateActivator.<ConfigurePipeline>b__2_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundJobs.BackgroundJobWorker.DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
+   at Volo.Abp.BackgroundWorkers.AsyncPeriodicBackgroundWorkerBase.DoWorkAsync()
+2022-08-23 22:20:49.152 +08:00 [ERR] ---------- Exception Data ----------
+ActivatorChain = Volo.Abp.BackgroundJobs.BackgroundJobStore -> Volo.Abp.ObjectMapping.DefaultObjectMapper`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> Volo.Abp.AutoMapper.AutoMapperAutoObjectMappingProvider`1[[Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule, Volo.Abp.BackgroundJobs.Domain, Version=5.3.2.0, Culture=neutral, PublicKeyToken=null]] -> λ:Volo.Abp.AutoMapper.IMapperAccessor -> λ:Volo.Abp.AutoMapper.MapperAccessor
+
+2022-08-23 22:21:24.843 +08:00 [INF] Loaded ABP modules:
+2022-08-23 22:21:24.869 +08:00 [INF] - Lion.AbpPro.BasicManagement.BasicManagementHttpApiHostModule
+2022-08-23 22:21:24.870 +08:00 [INF]   - Lion.AbpPro.BasicManagement.BasicManagementApplicationModule
+2022-08-23 22:21:24.870 +08:00 [INF]     - Lion.AbpPro.BasicManagement.BasicManagementDomainModule
+2022-08-23 22:21:24.871 +08:00 [INF]       - Volo.Abp.Domain.AbpDddDomainModule
+2022-08-23 22:21:24.871 +08:00 [INF]         - Volo.Abp.Auditing.AbpAuditingModule
+2022-08-23 22:21:24.872 +08:00 [INF]           - Volo.Abp.Data.AbpDataModule
+2022-08-23 22:21:24.872 +08:00 [INF]             - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2022-08-23 22:21:24.873 +08:00 [INF]               - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2022-08-23 22:21:24.873 +08:00 [INF]               - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2022-08-23 22:21:24.873 +08:00 [INF]             - Volo.Abp.Uow.AbpUnitOfWorkModule
+2022-08-23 22:21:24.874 +08:00 [INF]             - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2022-08-23 22:21:24.874 +08:00 [INF]           - Volo.Abp.Json.AbpJsonModule
+2022-08-23 22:21:24.875 +08:00 [INF]             - Volo.Abp.Timing.AbpTimingModule
+2022-08-23 22:21:24.875 +08:00 [INF]               - Volo.Abp.Localization.AbpLocalizationModule
+2022-08-23 22:21:24.876 +08:00 [INF]                 - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2022-08-23 22:21:24.876 +08:00 [INF]                 - Volo.Abp.Settings.AbpSettingsModule
+2022-08-23 22:21:24.877 +08:00 [INF]                   - Volo.Abp.Security.AbpSecurityModule
+2022-08-23 22:21:24.877 +08:00 [INF]                   - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2022-08-23 22:21:24.878 +08:00 [INF]           - Volo.Abp.Threading.AbpThreadingModule
+2022-08-23 22:21:24.880 +08:00 [INF]           - Volo.Abp.Auditing.AbpAuditingContractsModule
+2022-08-23 22:21:24.882 +08:00 [INF]         - Volo.Abp.EventBus.AbpEventBusModule
+2022-08-23 22:21:24.882 +08:00 [INF]           - Volo.Abp.Guids.AbpGuidsModule
+2022-08-23 22:21:24.883 +08:00 [INF]           - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2022-08-23 22:21:24.883 +08:00 [INF]           - Volo.Abp.DistributedLocking.AbpDistributedLockingAbstractionsModule
+2022-08-23 22:21:24.884 +08:00 [INF]         - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2022-08-23 22:21:24.884 +08:00 [INF]         - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2022-08-23 22:21:24.885 +08:00 [INF]         - Volo.Abp.Specifications.AbpSpecificationsModule
+2022-08-23 22:21:24.885 +08:00 [INF]       - Lion.AbpPro.BasicManagement.BasicManagementDomainSharedModule
+2022-08-23 22:21:24.886 +08:00 [INF]         - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2022-08-23 22:21:24.887 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2022-08-23 22:21:24.887 +08:00 [INF]         - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2022-08-23 22:21:24.888 +08:00 [INF]           - Volo.Abp.Validation.AbpValidationModule
+2022-08-23 22:21:24.888 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2022-08-23 22:21:24.889 +08:00 [INF]           - Volo.Abp.Users.AbpUsersDomainSharedModule
+2022-08-23 22:21:24.889 +08:00 [INF]           - Volo.Abp.Features.AbpFeaturesModule
+2022-08-23 22:21:24.890 +08:00 [INF]             - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2022-08-23 22:21:24.890 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2022-08-23 22:21:24.891 +08:00 [INF]         - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2022-08-23 22:21:24.891 +08:00 [INF]         - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2022-08-23 22:21:24.892 +08:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2022-08-23 22:21:24.892 +08:00 [INF]       - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2022-08-23 22:21:24.893 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2022-08-23 22:21:24.893 +08:00 [INF]           - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2022-08-23 22:21:24.894 +08:00 [INF]         - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2022-08-23 22:21:24.896 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2022-08-23 22:21:24.897 +08:00 [INF]         - Volo.Abp.Caching.AbpCachingModule
+2022-08-23 22:21:24.897 +08:00 [INF]           - Volo.Abp.Serialization.AbpSerializationModule
+2022-08-23 22:21:24.898 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityDomainModule
+2022-08-23 22:21:24.898 +08:00 [INF]         - Volo.Abp.Users.AbpUsersDomainModule
+2022-08-23 22:21:24.899 +08:00 [INF]           - Volo.Abp.Users.AbpUsersAbstractionModule
+2022-08-23 22:21:24.900 +08:00 [INF]       - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2022-08-23 22:21:24.900 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2022-08-23 22:21:24.901 +08:00 [INF]           - Volo.Abp.Authorization.AbpAuthorizationModule
+2022-08-23 22:21:24.901 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2022-08-23 22:21:24.902 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2022-08-23 22:21:24.902 +08:00 [INF]     - Lion.AbpPro.BasicManagement.BasicManagementApplicationContractsModule
+2022-08-23 22:21:24.903 +08:00 [INF]       - Volo.Abp.Application.AbpDddApplicationContractsModule
+2022-08-23 22:21:24.903 +08:00 [INF]       - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2022-08-23 22:21:24.904 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2022-08-23 22:21:24.905 +08:00 [INF]           - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2022-08-23 22:21:24.905 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2022-08-23 22:21:24.906 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementApplicationContractsModule
+2022-08-23 22:21:24.906 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2022-08-23 22:21:24.907 +08:00 [INF]     - Volo.Abp.Application.AbpDddApplicationModule
+2022-08-23 22:21:24.907 +08:00 [INF]       - Volo.Abp.Http.AbpHttpAbstractionsModule
+2022-08-23 22:21:24.908 +08:00 [INF]       - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2022-08-23 22:21:24.908 +08:00 [INF]     - Volo.Abp.Account.AbpAccountApplicationModule
+2022-08-23 22:21:24.909 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityApplicationModule
+2022-08-23 22:21:24.909 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2022-08-23 22:21:24.910 +08:00 [INF]       - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2022-08-23 22:21:24.915 +08:00 [INF]         - Volo.Abp.UI.AbpUiModule
+2022-08-23 22:21:24.915 +08:00 [INF]       - Volo.Abp.Emailing.AbpEmailingModule
+2022-08-23 22:21:24.916 +08:00 [INF]         - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2022-08-23 22:21:24.916 +08:00 [INF]           - Volo.Abp.TextTemplating.Scriban.AbpTextTemplatingScribanModule
+2022-08-23 22:21:24.917 +08:00 [INF]             - Volo.Abp.TextTemplating.AbpTextTemplatingCoreModule
+2022-08-23 22:21:24.917 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2022-08-23 22:21:24.918 +08:00 [INF]     - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2022-08-23 22:21:24.918 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementApplicationModule
+2022-08-23 22:21:24.919 +08:00 [INF]   - Lion.AbpPro.BasicManagement.EntityFrameworkCore.BasicManagementEntityFrameworkCoreModule
+2022-08-23 22:21:24.920 +08:00 [INF]     - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2022-08-23 22:21:24.920 +08:00 [INF]     - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2022-08-23 22:21:24.921 +08:00 [INF]       - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2022-08-23 22:21:24.921 +08:00 [INF]     - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2022-08-23 22:21:24.922 +08:00 [INF]     - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2022-08-23 22:21:24.922 +08:00 [INF]     - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2022-08-23 22:21:24.923 +08:00 [INF]     - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2022-08-23 22:21:24.923 +08:00 [INF]     - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2022-08-23 22:21:24.924 +08:00 [INF]     - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2022-08-23 22:21:24.925 +08:00 [INF]   - Lion.AbpPro.BasicManagement.BasicManagementHttpApiModule
+2022-08-23 22:21:24.925 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2022-08-23 22:21:24.928 +08:00 [INF]       - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2022-08-23 22:21:24.928 +08:00 [INF]         - Volo.Abp.Http.AbpHttpModule
+2022-08-23 22:21:24.929 +08:00 [INF]           - Volo.Abp.Minify.AbpMinifyModule
+2022-08-23 22:21:24.930 +08:00 [INF]       - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2022-08-23 22:21:24.931 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2022-08-23 22:21:24.931 +08:00 [INF]   - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2022-08-23 22:21:24.932 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2022-08-23 22:21:24.932 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2022-08-23 22:21:24.933 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2022-08-23 22:21:24.934 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2022-08-23 22:21:24.934 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2022-08-23 22:21:24.935 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2022-08-23 22:21:24.935 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2022-08-23 22:21:24.936 +08:00 [INF]     - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2022-08-23 22:21:24.936 +08:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2022-08-23 22:21:24.937 +08:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2022-08-23 22:21:24.937 +08:00 [INF]   - Volo.Abp.Caching.StackExchangeRedis.AbpCachingStackExchangeRedisModule
+2022-08-23 22:21:24.938 +08:00 [INF]   - Volo.Abp.EntityFrameworkCore.MySQL.AbpEntityFrameworkCoreMySQLModule
+2022-08-23 22:21:24.938 +08:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2022-08-23 22:21:24.939 +08:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2022-08-23 22:21:24.939 +08:00 [INF]   - Lion.AbpPro.Shared.Hosting.Microservices.SharedHostingMicroserviceModule
+2022-08-23 22:21:25.334 +08:00 [INF] Initialized all ABP modules.
+2022-08-23 22:21:25.376 +08:00 [INF] Now listening on: http://localhost:44324
+2022-08-23 22:21:25.378 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-08-23 22:21:25.379 +08:00 [INF] Hosting environment: Development
+2022-08-23 22:21:25.379 +08:00 [INF] Content root path: D:\github\WangJunZzz\abp-vnext-pro\aspnet-core\modules\BasicManagement\host\Lion.AbpPro.BasicManagement.HttpApi.Host
+2022-08-23 22:21:25.784 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/ - -
+2022-08-23 22:21:25.792 +08:00 [WRN] Failed to determine the https port for redirect.
+2022-08-23 22:21:28.295 +08:00 [INF] Executing endpoint 'Lion.AbpPro.BasicManagement.Controllers.HomeController.Index (Lion.AbpPro.BasicManagement.HttpApi.Host)'
+2022-08-23 22:21:28.317 +08:00 [INF] Route matched with {action = "Index", controller = "Home", area = "", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Index() on controller Lion.AbpPro.BasicManagement.Controllers.HomeController (Lion.AbpPro.BasicManagement.HttpApi.Host).
+2022-08-23 22:21:28.351 +08:00 [INF] Executing RedirectResult, redirecting to /swagger.
+2022-08-23 22:21:28.360 +08:00 [INF] Executed action Lion.AbpPro.BasicManagement.Controllers.HomeController.Index (Lion.AbpPro.BasicManagement.HttpApi.Host) in 36.344ms
+2022-08-23 22:21:28.364 +08:00 [INF] Executed endpoint 'Lion.AbpPro.BasicManagement.Controllers.HomeController.Index (Lion.AbpPro.BasicManagement.HttpApi.Host)'
+2022-08-23 22:21:28.383 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/ - - - 302 0 - 2599.4371ms
+2022-08-23 22:21:28.390 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/swagger - -
+2022-08-23 22:21:28.396 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/swagger - - - 301 0 - 5.4534ms
+2022-08-23 22:21:28.402 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/swagger/index.html - -
+2022-08-23 22:21:28.476 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 73.9537ms
+2022-08-23 22:21:28.521 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/swagger/swagger-ui.css - -
+2022-08-23 22:21:28.522 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/swagger/ui/abp.js - -
+2022-08-23 22:21:28.527 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/swagger/ui/abp.swagger.js - -
+2022-08-23 22:21:28.528 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/swagger/swagger-ui-bundle.js - -
+2022-08-23 22:21:28.530 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/swagger/swagger-ui-standalone-preset.js - -
+2022-08-23 22:21:28.547 +08:00 [INF] Sending file. Request path: '/swagger/ui/abp.js'. Physical path: 'N/A'
+2022-08-23 22:21:28.547 +08:00 [INF] Sending file. Request path: '/swagger/ui/abp.swagger.js'. Physical path: 'N/A'
+2022-08-23 22:21:28.553 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/swagger/ui/abp.js - - - 200 3122 application/javascript 30.6392ms
+2022-08-23 22:21:28.560 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/swagger/ui/abp.swagger.js - - - 200 1246 application/javascript 33.7304ms
+2022-08-23 22:21:28.571 +08:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2022-08-23 22:21:28.580 +08:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2022-08-23 22:21:28.584 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/swagger/swagger-ui.css - - - 200 143943 text/css 63.6951ms
+2022-08-23 22:21:28.585 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/swagger/swagger-ui-standalone-preset.js - - - 200 339486 application/javascript 55.0516ms
+2022-08-23 22:21:28.595 +08:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2022-08-23 22:21:28.597 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/swagger/swagger-ui-bundle.js - - - 200 1095087 application/javascript 68.6634ms
+2022-08-23 22:21:28.885 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/swagger/BasicManagement/swagger.json - -
+2022-08-23 22:21:28.932 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/swagger/favicon-32x32.png - -
+2022-08-23 22:21:28.948 +08:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2022-08-23 22:21:28.951 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/swagger/favicon-32x32.png - - - 200 628 image/png 18.9267ms
+2022-08-23 22:21:29.159 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/swagger/BasicManagement/swagger.json - - - 200 - application/json;charset=utf-8 273.8320ms
+2022-08-23 22:21:39.697 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/abp/Swashbuckle/SetCsrfCookie application/json -
+2022-08-23 22:21:39.700 +08:00 [INF] Executing endpoint 'Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle)'
+2022-08-23 22:21:39.702 +08:00 [INF] Route matched with {area = "Abp", action = "SetCsrfCookie", controller = "AbpSwashbuckle", page = ""}. Executing controller action with signature Void SetCsrfCookie() on controller Volo.Abp.Swashbuckle.AbpSwashbuckleController (Volo.Abp.Swashbuckle).
+2022-08-23 22:21:39.713 +08:00 [WRN] The cookie 'XSRF-TOKEN' has set 'SameSite=None' and must also set 'Secure'.
+2022-08-23 22:21:39.714 +08:00 [INF] Executed action Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle) in 10.3525ms
+2022-08-23 22:21:39.715 +08:00 [INF] Executed endpoint 'Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle)'
+2022-08-23 22:21:39.716 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/abp/Swashbuckle/SetCsrfCookie application/json - - 204 - - 18.5906ms
+2022-08-23 22:21:39.751 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44324/api/app/account/login application/json 46
+2022-08-23 22:21:39.753 +08:00 [INF] No CORS policy found for the specified request.
+2022-08-23 22:21:39.754 +08:00 [INF] Executing endpoint 'Lion.AbpPro.BasicManagement.Systems.AccountController.LoginAsync (Lion.AbpPro.BasicManagement.HttpApi)'
+2022-08-23 22:21:39.763 +08:00 [INF] Route matched with {action = "Login", controller = "Account", area = "", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput] LoginAsync(Lion.AbpPro.BasicManagement.Users.Dtos.LoginInput) on controller Lion.AbpPro.BasicManagement.Systems.AccountController (Lion.AbpPro.BasicManagement.HttpApi).
+2022-08-23 22:21:39.801 +08:00 [ERR] ---------- RemoteServiceErrorInfo ----------
+{
+  "code": null,
+  "message": "对不起,在处理你的请求期间,产生了一个服务器内部错误!",
+  "details": null,
+  "data": {
+    "ActivatorChain": "Lion.AbpPro.BasicManagement.Systems.AccountController -> Lion.AbpPro.BasicManagement.Users.AccountAppService"
+  },
+  "validationErrors": null
+}
+
+2022-08-23 22:21:39.803 +08:00 [ERR] An exception was thrown while activating Lion.AbpPro.BasicManagement.Systems.AccountController -> Lion.AbpPro.BasicManagement.Users.AccountAppService.
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating Lion.AbpPro.BasicManagement.Systems.AccountController -> Lion.AbpPro.BasicManagement.Users.AccountAppService.
+ ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'Lion.AbpPro.BasicManagement.Users.AccountAppService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'Microsoft.AspNetCore.Identity.SignInManager`1[Volo.Abp.Identity.IdentityUser] signInManager' of constructor 'Void .ctor(Volo.Abp.Identity.IdentityUserManager, Microsoft.Extensions.Options.IOptionsSnapshot`1[Lion.AbpPro.BasicManagement.ConfigurationOptions.JwtOptions], Microsoft.AspNetCore.Identity.SignInManager`1[Volo.Abp.Identity.IdentityUser])'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.GetAllBindings(ConstructorBinder[] availableConstructors, IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.<ConfigurePipeline>b__11_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Builder.RegistrationBuilder`3.<>c__DisplayClass41_0.<PropertiesAutowired>b__0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Extras.DynamicProxy.RegistrationExtensions.<>c__DisplayClass8_0`3.<EnableInterfaceInterceptors>b__1(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ScopeSelectionMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Controllers.ServiceBasedControllerActivator.Create(ControllerContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2022-08-23 22:21:39.845 +08:00 [ERR] ---------- Exception Data ----------
+ActivatorChain = Lion.AbpPro.BasicManagement.Systems.AccountController -> Lion.AbpPro.BasicManagement.Users.AccountAppService
+
+2022-08-23 22:21:39.853 +08:00 [INF] Executing ObjectResult, writing value of type 'Volo.Abp.Http.RemoteServiceErrorResponse'.
+2022-08-23 22:21:39.858 +08:00 [INF] Executed action Lion.AbpPro.BasicManagement.Systems.AccountController.LoginAsync (Lion.AbpPro.BasicManagement.HttpApi) in 93.438ms
+2022-08-23 22:21:39.862 +08:00 [INF] Executed endpoint 'Lion.AbpPro.BasicManagement.Systems.AccountController.LoginAsync (Lion.AbpPro.BasicManagement.HttpApi)'
+2022-08-23 22:21:40.175 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44324/api/app/account/login application/json 46 - 500 - application/json;+charset=utf-8 424.1464ms

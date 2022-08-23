@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro.BasicManagement</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <ProjectReference Include="..\Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests\Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests.csproj" />
+  </ItemGroup>
+
+</Project>
