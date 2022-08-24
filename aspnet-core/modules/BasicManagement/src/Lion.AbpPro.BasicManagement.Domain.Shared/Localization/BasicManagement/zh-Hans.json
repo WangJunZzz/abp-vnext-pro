@@ -13,10 +13,12 @@
     "Permission:SystemManagement": "系统管理",
     "Permission:HangfireManagement": "后台任务",
     "Permission:CapManagement": "集成事件",
-    "Permission:ESManagement": "ES日志",
     "Permission:SettingManagement": "设置管理",
     "Permission:OrganizationUnitManagement": "组织结构管理",
     
-    "Setting.Group.System": "系统"
+    "Setting.Group.System": "系统",
+    "Lion.AbpPro.BasicManagement:100001": "组织机构不存在",
+    "Lion.AbpPro.BasicManagement:100002": "用户被锁定",
+    "Lion.AbpPro.BasicManagement:100003": "用户名或者密码错误"
   }
 }

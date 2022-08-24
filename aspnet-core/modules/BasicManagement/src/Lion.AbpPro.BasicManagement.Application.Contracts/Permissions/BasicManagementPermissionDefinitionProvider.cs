@@ -16,7 +16,6 @@ public class BasicManagementPermissionDefinitionProvider : PermissionDefinitionP
 
         var auditManagement =
             abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.AuditLog, L("Permission:AuditLogManagement"));
-        var esManagement = abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.ES, L("Permission:ESManagement"));
         var settingManagement = abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.Setting, L("Permission:SettingManagement"));
         var organizationUnitManagement = abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.OrganizationUnit, L("Permission:OrganizationUnitManagement"));
         organizationUnitManagement.AddChild

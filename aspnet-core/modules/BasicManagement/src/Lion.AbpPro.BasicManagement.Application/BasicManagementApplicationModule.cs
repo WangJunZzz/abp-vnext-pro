@@ -7,6 +7,7 @@ using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
 using Volo.Abp.FeatureManagement;
+using Volo.Abp.Identity.AspNetCore;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 
@@ -16,6 +17,7 @@ namespace Lion.AbpPro.BasicManagement;
     typeof(BasicManagementDomainModule),
     typeof(BasicManagementApplicationContractsModule),
     typeof(AbpDddApplicationModule),
+    typeof(AbpIdentityAspNetCoreModule),
     typeof(AbpAutoMapperModule),
     typeof(AbpAccountApplicationModule),
     typeof(AbpIdentityApplicationModule),

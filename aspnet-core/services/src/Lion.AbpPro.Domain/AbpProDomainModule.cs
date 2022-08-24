@@ -1,15 +1,10 @@
+using Lion.AbpPro.BasicManagement;
+
 namespace Lion.AbpPro
 {
     [DependsOn(
         typeof(AbpProDomainSharedModule),
-        typeof(AbpAuditLoggingDomainModule),
-        typeof(AbpBackgroundJobsDomainModule),
-        typeof(AbpFeatureManagementDomainModule),
-        typeof(AbpIdentityDomainModule),
-        typeof(AbpPermissionManagementDomainIdentityModule),
-        typeof(AbpSettingManagementDomainModule),
-        typeof(AbpTenantManagementDomainModule),
-        typeof(AbpEmailingModule),
+        typeof(BasicManagementDomainModule),
         typeof(DataDictionaryManagementDomainModule),
         typeof(NotificationManagementDomainModule),
         typeof(FileManagementDomainModule)
@@ -18,17 +13,8 @@ namespace Lion.AbpPro
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            Configure<AbpMultiTenancyOptions>(options =>
-            {
-                options.IsEnabled = MultiTenancyConsts.IsEnabled;
-            });
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddMaps<AbpProDomainModule>();
-            });
-#if DEBUG
-            context.Services.Replace(ServiceDescriptor.Singleton<IEmailSender, NullEmailSender>());
-#endif
+            Configure<AbpMultiTenancyOptions>(options => { options.IsEnabled = MultiTenancyConsts.IsEnabled; });
+            Configure<AbpAutoMapperOptions>(options => { options.AddMaps<AbpProDomainModule>(); });
         }
     }
 }

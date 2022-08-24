@@ -1,0 +1,194 @@
+2022-08-24 13:26:53.260 +08:00 [INF] Loaded ABP modules:
+2022-08-24 13:26:53.307 +08:00 [INF] - Lion.AbpPro.BasicManagement.BasicManagementHttpApiHostModule
+2022-08-24 13:26:53.308 +08:00 [INF]   - Lion.AbpPro.BasicManagement.BasicManagementApplicationModule
+2022-08-24 13:26:53.309 +08:00 [INF]     - Lion.AbpPro.BasicManagement.BasicManagementDomainModule
+2022-08-24 13:26:53.309 +08:00 [INF]       - Volo.Abp.Domain.AbpDddDomainModule
+2022-08-24 13:26:53.310 +08:00 [INF]         - Volo.Abp.Auditing.AbpAuditingModule
+2022-08-24 13:26:53.311 +08:00 [INF]           - Volo.Abp.Data.AbpDataModule
+2022-08-24 13:26:53.311 +08:00 [INF]             - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2022-08-24 13:26:53.312 +08:00 [INF]               - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2022-08-24 13:26:53.328 +08:00 [INF]               - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2022-08-24 13:26:53.330 +08:00 [INF]             - Volo.Abp.Uow.AbpUnitOfWorkModule
+2022-08-24 13:26:53.332 +08:00 [INF]             - Volo.Abp.EventBus.Abstractions.AbpEventBusAbstractionsModule
+2022-08-24 13:26:53.333 +08:00 [INF]           - Volo.Abp.Json.AbpJsonModule
+2022-08-24 13:26:53.333 +08:00 [INF]             - Volo.Abp.Timing.AbpTimingModule
+2022-08-24 13:26:53.334 +08:00 [INF]               - Volo.Abp.Localization.AbpLocalizationModule
+2022-08-24 13:26:53.335 +08:00 [INF]                 - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2022-08-24 13:26:53.336 +08:00 [INF]                 - Volo.Abp.Settings.AbpSettingsModule
+2022-08-24 13:26:53.336 +08:00 [INF]                   - Volo.Abp.Security.AbpSecurityModule
+2022-08-24 13:26:53.337 +08:00 [INF]                   - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2022-08-24 13:26:53.338 +08:00 [INF]           - Volo.Abp.Threading.AbpThreadingModule
+2022-08-24 13:26:53.338 +08:00 [INF]           - Volo.Abp.Auditing.AbpAuditingContractsModule
+2022-08-24 13:26:53.339 +08:00 [INF]         - Volo.Abp.EventBus.AbpEventBusModule
+2022-08-24 13:26:53.340 +08:00 [INF]           - Volo.Abp.Guids.AbpGuidsModule
+2022-08-24 13:26:53.340 +08:00 [INF]           - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2022-08-24 13:26:53.341 +08:00 [INF]           - Volo.Abp.DistributedLocking.AbpDistributedLockingAbstractionsModule
+2022-08-24 13:26:53.342 +08:00 [INF]         - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2022-08-24 13:26:53.343 +08:00 [INF]         - Volo.Abp.ExceptionHandling.AbpExceptionHandlingModule
+2022-08-24 13:26:53.344 +08:00 [INF]         - Volo.Abp.Specifications.AbpSpecificationsModule
+2022-08-24 13:26:53.345 +08:00 [INF]       - Lion.AbpPro.BasicManagement.BasicManagementDomainSharedModule
+2022-08-24 13:26:53.346 +08:00 [INF]         - Volo.Abp.AuditLogging.AbpAuditLoggingDomainSharedModule
+2022-08-24 13:26:53.348 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainSharedModule
+2022-08-24 13:26:53.357 +08:00 [INF]         - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainSharedModule
+2022-08-24 13:26:53.359 +08:00 [INF]           - Volo.Abp.Validation.AbpValidationModule
+2022-08-24 13:26:53.365 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityDomainSharedModule
+2022-08-24 13:26:53.377 +08:00 [INF]           - Volo.Abp.Users.AbpUsersDomainSharedModule
+2022-08-24 13:26:53.383 +08:00 [INF]           - Volo.Abp.Features.AbpFeaturesModule
+2022-08-24 13:26:53.385 +08:00 [INF]             - Volo.Abp.Authorization.AbpAuthorizationAbstractionsModule
+2022-08-24 13:26:53.392 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainSharedModule
+2022-08-24 13:26:53.405 +08:00 [INF]         - Volo.Abp.SettingManagement.AbpSettingManagementDomainSharedModule
+2022-08-24 13:26:53.430 +08:00 [INF]         - Volo.Abp.TenantManagement.AbpTenantManagementDomainSharedModule
+2022-08-24 13:26:53.449 +08:00 [INF]       - Volo.Abp.AuditLogging.AbpAuditLoggingDomainModule
+2022-08-24 13:26:53.460 +08:00 [INF]       - Volo.Abp.BackgroundJobs.AbpBackgroundJobsDomainModule
+2022-08-24 13:26:53.466 +08:00 [INF]         - Volo.Abp.BackgroundJobs.AbpBackgroundJobsModule
+2022-08-24 13:26:53.468 +08:00 [INF]           - Volo.Abp.BackgroundJobs.AbpBackgroundJobsAbstractionsModule
+2022-08-24 13:26:53.470 +08:00 [INF]         - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2022-08-24 13:26:53.474 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementDomainModule
+2022-08-24 13:26:53.478 +08:00 [INF]         - Volo.Abp.Caching.AbpCachingModule
+2022-08-24 13:26:53.479 +08:00 [INF]           - Volo.Abp.Serialization.AbpSerializationModule
+2022-08-24 13:26:53.480 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityDomainModule
+2022-08-24 13:26:53.481 +08:00 [INF]         - Volo.Abp.Users.AbpUsersDomainModule
+2022-08-24 13:26:53.482 +08:00 [INF]           - Volo.Abp.Users.AbpUsersAbstractionModule
+2022-08-24 13:26:53.483 +08:00 [INF]       - Volo.Abp.PermissionManagement.Identity.AbpPermissionManagementDomainIdentityModule
+2022-08-24 13:26:53.484 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementDomainModule
+2022-08-24 13:26:53.485 +08:00 [INF]           - Volo.Abp.Authorization.AbpAuthorizationModule
+2022-08-24 13:26:53.487 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementDomainModule
+2022-08-24 13:26:53.489 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementDomainModule
+2022-08-24 13:26:53.498 +08:00 [INF]     - Lion.AbpPro.BasicManagement.BasicManagementApplicationContractsModule
+2022-08-24 13:26:53.499 +08:00 [INF]       - Volo.Abp.Application.AbpDddApplicationContractsModule
+2022-08-24 13:26:53.500 +08:00 [INF]       - Volo.Abp.Account.AbpAccountApplicationContractsModule
+2022-08-24 13:26:53.501 +08:00 [INF]         - Volo.Abp.Identity.AbpIdentityApplicationContractsModule
+2022-08-24 13:26:53.503 +08:00 [INF]           - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationContractsModule
+2022-08-24 13:26:53.504 +08:00 [INF]       - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationContractsModule
+2022-08-24 13:26:53.505 +08:00 [INF]       - Volo.Abp.SettingManagement.AbpSettingManagementApplicationContractsModule
+2022-08-24 13:26:53.510 +08:00 [INF]       - Volo.Abp.TenantManagement.AbpTenantManagementApplicationContractsModule
+2022-08-24 13:26:53.511 +08:00 [INF]     - Volo.Abp.Application.AbpDddApplicationModule
+2022-08-24 13:26:53.512 +08:00 [INF]       - Volo.Abp.Http.AbpHttpAbstractionsModule
+2022-08-24 13:26:53.514 +08:00 [INF]       - Volo.Abp.GlobalFeatures.AbpGlobalFeaturesModule
+2022-08-24 13:26:53.516 +08:00 [INF]     - Volo.Abp.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2022-08-24 13:26:53.517 +08:00 [INF]     - Volo.Abp.Account.AbpAccountApplicationModule
+2022-08-24 13:26:53.518 +08:00 [INF]       - Volo.Abp.Identity.AbpIdentityApplicationModule
+2022-08-24 13:26:53.529 +08:00 [INF]         - Volo.Abp.PermissionManagement.AbpPermissionManagementApplicationModule
+2022-08-24 13:26:53.531 +08:00 [INF]       - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2022-08-24 13:26:53.532 +08:00 [INF]         - Volo.Abp.UI.AbpUiModule
+2022-08-24 13:26:53.533 +08:00 [INF]       - Volo.Abp.Emailing.AbpEmailingModule
+2022-08-24 13:26:53.534 +08:00 [INF]         - Volo.Abp.TextTemplating.AbpTextTemplatingModule
+2022-08-24 13:26:53.535 +08:00 [INF]           - Volo.Abp.TextTemplating.Scriban.AbpTextTemplatingScribanModule
+2022-08-24 13:26:53.536 +08:00 [INF]             - Volo.Abp.TextTemplating.AbpTextTemplatingCoreModule
+2022-08-24 13:26:53.537 +08:00 [INF]     - Volo.Abp.TenantManagement.AbpTenantManagementApplicationModule
+2022-08-24 13:26:53.542 +08:00 [INF]     - Volo.Abp.FeatureManagement.AbpFeatureManagementApplicationModule
+2022-08-24 13:26:53.543 +08:00 [INF]     - Volo.Abp.SettingManagement.AbpSettingManagementApplicationModule
+2022-08-24 13:26:53.544 +08:00 [INF]   - Lion.AbpPro.BasicManagement.EntityFrameworkCore.BasicManagementEntityFrameworkCoreModule
+2022-08-24 13:26:53.545 +08:00 [INF]     - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2022-08-24 13:26:53.547 +08:00 [INF]     - Volo.Abp.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2022-08-24 13:26:53.548 +08:00 [INF]       - Volo.Abp.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2022-08-24 13:26:53.549 +08:00 [INF]     - Volo.Abp.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2022-08-24 13:26:53.549 +08:00 [INF]     - Volo.Abp.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2022-08-24 13:26:53.550 +08:00 [INF]     - Volo.Abp.BackgroundJobs.EntityFrameworkCore.AbpBackgroundJobsEntityFrameworkCoreModule
+2022-08-24 13:26:53.551 +08:00 [INF]     - Volo.Abp.AuditLogging.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2022-08-24 13:26:53.552 +08:00 [INF]     - Volo.Abp.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2022-08-24 13:26:53.559 +08:00 [INF]     - Volo.Abp.FeatureManagement.EntityFrameworkCore.AbpFeatureManagementEntityFrameworkCoreModule
+2022-08-24 13:26:53.561 +08:00 [INF]   - Lion.AbpPro.BasicManagement.BasicManagementHttpApiModule
+2022-08-24 13:26:53.563 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2022-08-24 13:26:53.564 +08:00 [INF]       - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2022-08-24 13:26:53.565 +08:00 [INF]         - Volo.Abp.Http.AbpHttpModule
+2022-08-24 13:26:53.566 +08:00 [INF]           - Volo.Abp.Minify.AbpMinifyModule
+2022-08-24 13:26:53.566 +08:00 [INF]       - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2022-08-24 13:26:53.567 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2022-08-24 13:26:53.568 +08:00 [INF]   - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2022-08-24 13:26:53.572 +08:00 [INF]     - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2022-08-24 13:26:53.572 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2022-08-24 13:26:53.573 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2022-08-24 13:26:53.574 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2022-08-24 13:26:53.575 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingAbstractionsModule
+2022-08-24 13:26:53.576 +08:00 [INF]       - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2022-08-24 13:26:53.577 +08:00 [INF]         - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2022-08-24 13:26:53.578 +08:00 [INF]     - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2022-08-24 13:26:53.579 +08:00 [INF]   - Volo.Abp.Autofac.AbpAutofacModule
+2022-08-24 13:26:53.580 +08:00 [INF]     - Volo.Abp.Castle.AbpCastleCoreModule
+2022-08-24 13:26:53.581 +08:00 [INF]   - Volo.Abp.Caching.StackExchangeRedis.AbpCachingStackExchangeRedisModule
+2022-08-24 13:26:53.582 +08:00 [INF]   - Volo.Abp.EntityFrameworkCore.MySQL.AbpEntityFrameworkCoreMySQLModule
+2022-08-24 13:26:53.586 +08:00 [INF]   - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2022-08-24 13:26:53.586 +08:00 [INF]   - Volo.Abp.Swashbuckle.AbpSwashbuckleModule
+2022-08-24 13:26:55.071 +08:00 [INF] Initialized all ABP modules.
+2022-08-24 13:26:55.132 +08:00 [INF] Now listening on: http://localhost:44324
+2022-08-24 13:26:55.135 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-08-24 13:26:55.137 +08:00 [INF] Hosting environment: Development
+2022-08-24 13:26:55.138 +08:00 [INF] Content root path: D:\github\WangJunZzz\abp-vnext-pro\aspnet-core\modules\BasicManagement\host\Lion.AbpPro.BasicManagement.HttpApi.Host
+2022-08-24 13:26:55.302 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/ - -
+2022-08-24 13:26:59.596 +08:00 [INF] Executing endpoint 'Lion.AbpPro.BasicManagement.Controllers.HomeController.Index (Lion.AbpPro.BasicManagement.HttpApi.Host)'
+2022-08-24 13:26:59.625 +08:00 [INF] Route matched with {action = "Index", controller = "Home", area = "", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Index() on controller Lion.AbpPro.BasicManagement.Controllers.HomeController (Lion.AbpPro.BasicManagement.HttpApi.Host).
+2022-08-24 13:26:59.664 +08:00 [INF] Executing RedirectResult, redirecting to /swagger.
+2022-08-24 13:26:59.672 +08:00 [INF] Executed action Lion.AbpPro.BasicManagement.Controllers.HomeController.Index (Lion.AbpPro.BasicManagement.HttpApi.Host) in 40.2794ms
+2022-08-24 13:26:59.684 +08:00 [INF] Executed endpoint 'Lion.AbpPro.BasicManagement.Controllers.HomeController.Index (Lion.AbpPro.BasicManagement.HttpApi.Host)'
+2022-08-24 13:26:59.721 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/ - - - 302 0 - 4419.2778ms
+2022-08-24 13:26:59.733 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/swagger - -
+2022-08-24 13:26:59.739 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/swagger - - - 301 0 - 6.0422ms
+2022-08-24 13:26:59.746 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/swagger/index.html - -
+2022-08-24 13:26:59.798 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 52.2946ms
+2022-08-24 13:27:00.125 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/swagger/BasicManagement/swagger.json - -
+2022-08-24 13:27:00.451 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/swagger/BasicManagement/swagger.json - - - 200 - application/json;charset=utf-8 326.7641ms
+2022-08-24 13:27:10.772 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:44324/abp/Swashbuckle/SetCsrfCookie application/json -
+2022-08-24 13:27:10.775 +08:00 [INF] Executing endpoint 'Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle)'
+2022-08-24 13:27:10.779 +08:00 [INF] Route matched with {area = "Abp", action = "SetCsrfCookie", controller = "AbpSwashbuckle", page = ""}. Executing controller action with signature Void SetCsrfCookie() on controller Volo.Abp.Swashbuckle.AbpSwashbuckleController (Volo.Abp.Swashbuckle).
+2022-08-24 13:27:10.792 +08:00 [WRN] The cookie 'XSRF-TOKEN' has set 'SameSite=None' and must also set 'Secure'.
+2022-08-24 13:27:10.794 +08:00 [INF] Executed action Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle) in 13.0704ms
+2022-08-24 13:27:10.795 +08:00 [INF] Executed endpoint 'Volo.Abp.Swashbuckle.AbpSwashbuckleController.SetCsrfCookie (Volo.Abp.Swashbuckle)'
+2022-08-24 13:27:10.796 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:44324/abp/Swashbuckle/SetCsrfCookie application/json - - 204 - - 24.2157ms
+2022-08-24 13:27:10.835 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44324/api/app/account/login application/json 46
+2022-08-24 13:27:10.838 +08:00 [INF] No CORS policy found for the specified request.
+2022-08-24 13:27:10.840 +08:00 [INF] Executing endpoint 'Lion.AbpPro.BasicManagement.Systems.AccountController.LoginAsync (Lion.AbpPro.BasicManagement.HttpApi)'
+2022-08-24 13:27:10.852 +08:00 [INF] Route matched with {action = "Login", controller = "Account", area = "", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput] LoginAsync(Lion.AbpPro.BasicManagement.Users.Dtos.LoginInput) on controller Lion.AbpPro.BasicManagement.Systems.AccountController (Lion.AbpPro.BasicManagement.HttpApi).
+2022-08-24 13:27:10.869 +08:00 [ERR] The antiforgery token could not be decrypted.
+2022-08-24 13:27:10.871 +08:00 [INF] Authorization failed for the request at filter 'Volo.Abp.AspNetCore.Mvc.AntiForgery.AbpAutoValidateAntiforgeryTokenAuthorizationFilter'.
+2022-08-24 13:27:10.875 +08:00 [INF] Executing StatusCodeResult, setting HTTP status code 400
+2022-08-24 13:27:10.876 +08:00 [INF] Executed action Lion.AbpPro.BasicManagement.Systems.AccountController.LoginAsync (Lion.AbpPro.BasicManagement.HttpApi) in 23.3032ms
+2022-08-24 13:27:10.877 +08:00 [INF] Executed endpoint 'Lion.AbpPro.BasicManagement.Systems.AccountController.LoginAsync (Lion.AbpPro.BasicManagement.HttpApi)'
+2022-08-24 13:27:11.232 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44324/api/app/account/login application/json 46 - 400 0 - 397.1138ms
+2022-08-24 13:27:21.937 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:44324/api/app/account/login application/json 46
+2022-08-24 13:27:21.939 +08:00 [INF] No CORS policy found for the specified request.
+2022-08-24 13:27:21.941 +08:00 [INF] Executing endpoint 'Lion.AbpPro.BasicManagement.Systems.AccountController.LoginAsync (Lion.AbpPro.BasicManagement.HttpApi)'
+2022-08-24 13:27:21.942 +08:00 [INF] Route matched with {action = "Login", controller = "Account", area = "", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Lion.AbpPro.BasicManagement.Users.Dtos.LoginOutput] LoginAsync(Lion.AbpPro.BasicManagement.Users.Dtos.LoginInput) on controller Lion.AbpPro.BasicManagement.Systems.AccountController (Lion.AbpPro.BasicManagement.HttpApi).
+2022-08-24 13:27:23.234 +08:00 [WRN] ---------- RemoteServiceErrorInfo ----------
+{
+  "code": "Lion.AbpPro.BasicManagement:100003",
+  "message": "用户名或者密码错误",
+  "details": null,
+  "data": {},
+  "validationErrors": null
+}
+
+2022-08-24 13:27:23.238 +08:00 [WRN] Exception of type 'Volo.Abp.BusinessException' was thrown.
+Volo.Abp.BusinessException: Exception of type 'Volo.Abp.BusinessException' was thrown.
+   at Lion.AbpPro.BasicManagement.Users.AccountAppService.LoginAsync(LoginInput input) in D:\github\WangJunZzz\abp-vnext-pro\aspnet-core\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Application\Users\AccountAppService.cs:line 39
+   at Castle.DynamicProxy.AsyncInterceptorBase.ProceedAsynchronous[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpMethodInvocationAdapterWithReturnValue`1.ProceedAsync()
+   at Volo.Abp.GlobalFeatures.GlobalFeatureInterceptor.InterceptAsync(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAsyncAbpInterceptorAdapter`1.InterceptAsync[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo, Func`3 proceed)
+   at Castle.DynamicProxy.AsyncInterceptorBase.ProceedAsynchronous[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpMethodInvocationAdapterWithReturnValue`1.ProceedAsync()
+   at Volo.Abp.Validation.ValidationInterceptor.InterceptAsync(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAsyncAbpInterceptorAdapter`1.InterceptAsync[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo, Func`3 proceed)
+   at Castle.DynamicProxy.AsyncInterceptorBase.ProceedAsynchronous[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpMethodInvocationAdapterWithReturnValue`1.ProceedAsync()
+   at Volo.Abp.Auditing.AuditingInterceptor.ProceedByLoggingAsync(IAbpMethodInvocation invocation, IAuditingHelper auditingHelper, IAuditLogScope auditLogScope)
+   at Volo.Abp.Auditing.AuditingInterceptor.InterceptAsync(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAsyncAbpInterceptorAdapter`1.InterceptAsync[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo, Func`3 proceed)
+   at Castle.DynamicProxy.AsyncInterceptorBase.ProceedAsynchronous[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo)
+   at Volo.Abp.Castle.DynamicProxy.CastleAbpMethodInvocationAdapterWithReturnValue`1.ProceedAsync()
+   at Volo.Abp.Uow.UnitOfWorkInterceptor.InterceptAsync(IAbpMethodInvocation invocation)
+   at Volo.Abp.Castle.DynamicProxy.CastleAsyncAbpInterceptorAdapter`1.InterceptAsync[TResult](IInvocation invocation, IInvocationProceedInfo proceedInfo, Func`3 proceed)
+   at lambda_method1387(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2022-08-24 13:27:23.297 +08:00 [WRN] Code:Lion.AbpPro.BasicManagement:100003
+2022-08-24 13:27:23.298 +08:00 [WRN] Details:
+2022-08-24 13:27:23.313 +08:00 [INF] Executing ObjectResult, writing value of type 'Volo.Abp.Http.RemoteServiceErrorResponse'.
+2022-08-24 13:27:23.322 +08:00 [INF] Executed action Lion.AbpPro.BasicManagement.Systems.AccountController.LoginAsync (Lion.AbpPro.BasicManagement.HttpApi) in 1378.6532ms
+2022-08-24 13:27:23.327 +08:00 [INF] Executed endpoint 'Lion.AbpPro.BasicManagement.Systems.AccountController.LoginAsync (Lion.AbpPro.BasicManagement.HttpApi)'
+2022-08-24 13:27:23.401 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:44324/api/app/account/login application/json 46 - 403 - application/json;+charset=utf-8 1463.5504ms

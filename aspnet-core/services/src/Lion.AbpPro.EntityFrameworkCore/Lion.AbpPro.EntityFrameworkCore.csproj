@@ -7,18 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.EntityFrameworkCore\Lion.AbpPro.BasicManagement.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\..\..\modules\FileManagement\src\Lion.AbpPro.FileManagement.EntityFrameworkCore\Lion.AbpPro.FileManagement.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.EntityFrameworkCore\Lion.AbpPro.NotificationManagement.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\Lion.AbpPro.Domain\Lion.AbpPro.Domain.csproj" />
         <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" />
-        <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" />
-        <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" />
-        <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" />
-        <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore" />
-        <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" />
-        <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" />
-        <PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" />
         <PackageReference Include="Zack.EFCore.Batch.MySQL.Pomelo_NET6" />
     </ItemGroup>
     <ItemGroup>

@@ -13,9 +13,11 @@
     "Permission:AuditLogManagement": "AuditLog",
     "Permission:HangfireManagement": "BackgroundTask",
     "Permission:CapManagement": "IntegratedEvent",
-    "Permission:ESManagement": "ESManagement",
     "Permission:SettingManagement": "SettingManagement",
     "Permission:OrganizationUnitManagement": "OrganizationUnitManagement",
     "Setting.Group.System": "System",
+    "Lion.AbpPro.BasicManagement:100001": "OrganizationUnit Not Exist",
+    "Lion.AbpPro.BasicManagement:100002": "UserLockedOut",
+    "Lion.AbpPro.BasicManagement:100003": "UserOrPasswordMismatch"
   }
 }

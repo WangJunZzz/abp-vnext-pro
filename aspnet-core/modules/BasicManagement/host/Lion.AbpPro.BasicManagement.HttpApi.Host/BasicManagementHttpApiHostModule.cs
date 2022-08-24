@@ -10,6 +10,7 @@ using StackExchange.Redis;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using Volo.Abp;
+using Volo.Abp.AspNetCore.ExceptionHandling;
 using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
@@ -17,8 +18,10 @@ using Volo.Abp.Caching;
 using Volo.Abp.Caching.StackExchangeRedis;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.MySQL;
+using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
+using Volo.Abp.VirtualFileSystem;
 
 namespace Lion.AbpPro.BasicManagement;
 
@@ -44,13 +47,17 @@ public class BasicManagementHttpApiHostModule : AbpModule
         ConfigureSwaggerServices(context);
         ConfigureJwtAuthentication(context);
         Configure<AbpDbContextOptions>(options => { options.UseMySQL(); });
+        Configure<AbpExceptionHandlingOptions>(options =>
+        {
+            options.SendExceptionsDetailsToClients = false;
+        });
+        ConfigureVirtualFileSystem(context);
     }
-
+  
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {
         var app = context.GetApplicationBuilder();
     
-        app.UseHttpsRedirection();
         app.UseCorrelationId();
         app.UseStaticFiles();
         app.UseRouting();
@@ -70,7 +77,17 @@ public class BasicManagementHttpApiHostModule : AbpModule
         app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints();
     }
-
+    /// <summary>
+    /// 配置虚拟文件系统
+    /// </summary>
+    /// <param name="context"></param>
+    private void ConfigureVirtualFileSystem(ServiceConfigurationContext context)
+    {
+        Configure<AbpVirtualFileSystemOptions>(options =>
+        {
+            options.FileSets.AddEmbedded<BasicManagementHttpApiHostModule>();
+        });
+    }
     /// <summary>
     /// Redis缓存
     /// </summary>

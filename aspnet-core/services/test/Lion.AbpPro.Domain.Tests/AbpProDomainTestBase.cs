@@ -4,7 +4,7 @@ namespace Lion.AbpPro
     {
         public AbpProDomainTestBase()
         {
-            ServiceProvider.InitializeLocalization();;
+            
         }
     }
 }

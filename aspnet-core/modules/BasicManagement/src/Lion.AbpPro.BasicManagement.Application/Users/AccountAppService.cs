@@ -29,6 +29,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         public async Task<LoginOutput> LoginAsync(LoginInput input)
         {
             var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
+         
             if (result.IsNotAllowed)
             {
                 throw new BusinessException(BasicManagementErrorCodes.UserLockedOut);
