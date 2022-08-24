@@ -40,11 +40,6 @@ Abp Vnext Vue 实现版本
 - [x] 审计日志
 - [x] 后台任务
 - [x] 集成事件
-- [x] IdentityServer4
-  - [x] 客户端管理
-  - [x] Api 资源管理
-  - [x] ApiScope 管理
-  - [x] Identity 资源管理
 - [x] SinglaR 消息通知(站内信)
 - [x] 多语言
 - [x] 数据字典
@@ -57,9 +52,27 @@ Abp Vnext Vue 实现版本
 
 ## 📦 安装
 
-- 下载代码生成器，Git 仓库(https://github.com/WangJunZzz/abp-vnext-pro-gui)
+- 安装Cli，Git 仓库(https://github.com/WangJunZzz/Lion.AbpPro.Cli)
+```bash
+dotnet tool install Lion.AbpPro.Cli -g
+```
+### 三个项目模板
+- 生成源码版本
 
-  ![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/gui.png)
+```bash
+lion.abp new abp-vnext-pro -c 公司名称 -p 项目名称 -o 输出路径(可选) -v 版本号(可选)
+```
+
+- nuget包形式的基础版本,包括abp自带的所有模块，已经pro的通知模块，数据字典模块 以及ocelot网关
+
+```bash
+lion.abp new abp-vnext-pro-basic -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 项目输出路径(可选).
+```
+
+- nuget包形式的基础版本,包括abp自带的所有模块，已经pro的通知模块，数据字典模块 无ocelot网关
+```bash
+lion.abp new abp-vnext-pro-basic-no-ocelot -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 项目输出路径(可选).
+```
 
 ## 🗺 开发路线
 
