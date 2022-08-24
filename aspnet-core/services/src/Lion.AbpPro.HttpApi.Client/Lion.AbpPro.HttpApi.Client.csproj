@@ -14,13 +14,6 @@
     <ProjectReference Include="..\Lion.AbpPro.Application.Contracts\Lion.AbpPro.Application.Contracts.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Volo.Abp.Account.HttpApi.Client" />
-    <PackageReference Include="Volo.Abp.Identity.HttpApi.Client" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi.Client" />
-    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi.Client" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi.Client" />
-    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi.Client" />
-  </ItemGroup>
+ 
 
 </Project>
