@@ -80,7 +80,7 @@ nav:
           - 前端: user-guide/zh/infrastructure/frontend.md
           - FreeSql: user-guide/zh/infrastructure/freesql.md          
       - 应用模块:
-          - 身份认证: user-guide/zh/modules/identity.md
+          - 基础模块: user-guide/zh/modules/basic.md
           - 设置(Setting): user-guide/zh/modules/setting.md          
           - 数据字典: user-guide/zh/modules/dic.md  
           - 文件管理: user-guide/zh/modules/file.md    

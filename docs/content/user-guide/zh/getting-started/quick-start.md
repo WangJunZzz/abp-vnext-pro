@@ -8,23 +8,49 @@
 - [redis](https://redis.io/docs/getting-started/installation/)
 - [rabbitmq 可选](https://www.rabbitmq.com/download.html)
 
-!!! info "Docker一键安装Mysql|Redis|Rabbitmq"
 
-    快速搭建必要环境，下载 [docker-compose.yaml](docker-compose.yaml) , 执行: docker-compose up -d
-
-
+## Docker启动MySql
+``` bash
+docker run --name mymysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1q2w3E* -d mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+```
+## Docker启动Redis
+``` bash
+docker run --name myredis -p 6379:6379 -d redis:latest redis-server
+```
+## Docker启动RabbitMq
+``` bash
+docker run -d --name myrabbitmq -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -p 15672:15672 -p 5672:5672 rabbitmq:management
+```
 ## 创建新项目
 
-### 直接Clone
+
+### 安装Cli工具
+- [仓库地址](https://github.com/WangJunZzz/Lion.AbpPro.Cli)
 
 ``` bash
- git clone https://github.com/WangJunZzz/abp-vnext-pro.git
+dotnet tool install Lion.AbpPro.Cli -g
 ```
 
-或者
+### 生成项目
 
-### GUI创建项目
-![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/gui.png)
+**提供了三个模板生成**
+- 生成源码版本
+
+```bash
+lion.abp new abp-vnext-pro -c 公司名称 -p 项目名称 -o 输出路径(可选) -v 版本号(可选)
+```
+
+- nuget包形式的基础版本,包括abp自带的所有模块，已经pro的通知模块，数据字典模块 以及ocelot网关
+
+```bash
+lion.abp new abp-vnext-pro-basic -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 项目输出路径(可选).
+```
+
+- nuget包形式的基础版本,包括abp自带的所有模块，已经pro的通知模块，数据字典模块 无ocelot网关
+```bash
+lion.abp new abp-vnext-pro-basic-no-ocelot -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 项目输出路径(可选).
+```
+
 
 ### 后端
 - 修改 HttpApi.Host-> appsettings.json 配置
@@ -46,9 +72,6 @@
 
     如果不需要使用Ocelot网关可以移除Lion.AbpPro.WebGateway项目，前端接口地址直接修改为Lion.AbpPro.HttpApi.Host的接口地址。
 
-!!! note IdentityServer4
-
-    如果不需要使用IdentityServer4可以移除Lion.AbpPro.IdentityServer项目，请参考如何如何移除IdentityServer4 
 
 - 多项目启动(HttpApi.Host,IdentityServer,WebGateway)，就能看到后台服务登陆页面，如下：
 ![](../../../img/login.png)
