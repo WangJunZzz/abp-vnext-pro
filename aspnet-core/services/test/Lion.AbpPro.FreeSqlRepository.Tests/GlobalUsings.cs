@@ -4,7 +4,6 @@ global using System.Threading.Tasks;
 global using Lion.AbpPro.EntityFrameworkCore;
 global using Lion.AbpPro.FreeSqlRepository;
 global using Lion.AbpPro.FreeSqlReppsitory.Tests;
-global using Lion.AbpPro.Localization;
 global using Lion.AbpPro.Users;
 global using Microsoft.Data.Sqlite;
 global using Microsoft.EntityFrameworkCore;
