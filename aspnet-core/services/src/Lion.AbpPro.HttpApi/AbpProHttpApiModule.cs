@@ -1,13 +1,10 @@
+using Lion.AbpPro.BasicManagement;
+
 namespace Lion.AbpPro
 {
     [DependsOn(
         typeof(AbpProApplicationContractsModule),
-        typeof(AbpAccountHttpApiModule),
-        typeof(AbpIdentityHttpApiModule),
-        typeof(AbpPermissionManagementHttpApiModule),
-        typeof(AbpTenantManagementHttpApiModule),
-        typeof(AbpFeatureManagementHttpApiModule),
-        typeof(AbpSettingManagementHttpApiModule),
+        typeof(BasicManagementHttpApiModule),
         typeof(DataDictionaryManagementHttpApiModule),
         typeof(NotificationManagementHttpApiModule),
         typeof(FileManagementHttpApiModule)

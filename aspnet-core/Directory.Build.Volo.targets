@@ -6,6 +6,7 @@
         <PackageReference Update="Volo.Abp.Ddd.Domain" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.AutoMapper" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.ObjectMapping" Version="5.3.2"/>
+        <PackageReference Update="Volo.Abp.Identity.AspNetCore" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.Caching" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.BlobStoring.Aliyun" Version="5.3.2"/>
         <PackageReference Update="Volo.Abp.BackgroundJobs" Version="5.3.2"/>

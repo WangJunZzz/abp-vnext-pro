@@ -173,6 +173,40 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{7FF93622-9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.NotificationManagement.HttpApi.Host", "modules\NotificationManagement\host\Lion.AbpPro.NotificationManagement.HttpApi.Host\Lion.AbpPro.NotificationManagement.HttpApi.Host.csproj", "{FA5E029F-1826-4C1E-8AED-6FA5C3362A3A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BasicManagement", "BasicManagement", "{C2FE6BA0-3DE5-403F-A91F-BCB9ADA5B068}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{4E6D558B-CA6D-4133-8701-FDC6F245DA37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF419621-2F14-45CE-AF1B-B688E1B21BCB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6464122A-1DC2-45E8-B599-4B5C32FBC85B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.HttpApi.Client", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.HttpApi.Client\Lion.AbpPro.BasicManagement.HttpApi.Client.csproj", "{97EE641B-69AB-40A6-B20B-4A7FD3B2681E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.HttpApi", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.HttpApi\Lion.AbpPro.BasicManagement.HttpApi.csproj", "{0EE57014-A75A-4E54-97B6-785C2F874EA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.EntityFrameworkCore", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.EntityFrameworkCore\Lion.AbpPro.BasicManagement.EntityFrameworkCore.csproj", "{4F5841EB-A0C9-4E89-AA02-376F2190F68D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Domain.Shared", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Domain.Shared\Lion.AbpPro.BasicManagement.Domain.Shared.csproj", "{C4E1B96F-7905-48ED-AD72-98F5983E65A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Domain", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Domain\Lion.AbpPro.BasicManagement.Domain.csproj", "{95385FBA-53E4-4144-B6FE-B5561081B9F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Application.Contracts", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Application.Contracts\Lion.AbpPro.BasicManagement.Application.Contracts.csproj", "{4D808FF7-C204-40F1-881D-21B27D8D290E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Application", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Application\Lion.AbpPro.BasicManagement.Application.csproj", "{354E0590-F6B2-43F5-A563-F543C498F3EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.TestBase", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.TestBase\Lion.AbpPro.BasicManagement.TestBase.csproj", "{47F2E236-E6BE-4F52-8389-5CF03BDC9B78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.HttpApi.Client.ConsoleTestApp", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.HttpApi.Client.ConsoleTestApp\Lion.AbpPro.BasicManagement.HttpApi.Client.ConsoleTestApp.csproj", "{1368FE7F-E1A7-4FD5-AF05-CFA59C0E0E69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests\Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests.csproj", "{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Domain.Tests", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.Domain.Tests\Lion.AbpPro.BasicManagement.Domain.Tests.csproj", "{2BACB63E-2830-4371-AEBB-E8089E3EB316}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Application.Tests", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.Application.Tests\Lion.AbpPro.BasicManagement.Application.Tests.csproj", "{19A28EF9-A5AE-4EC5-851C-D2547E5FE29C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.HttpApi.Host", "modules\BasicManagement\host\Lion.AbpPro.BasicManagement.HttpApi.Host\Lion.AbpPro.BasicManagement.HttpApi.Host.csproj", "{26765303-B9D8-457B-915C-ED869CEEB210}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -407,6 +441,58 @@ Global
 		{FA5E029F-1826-4C1E-8AED-6FA5C3362A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA5E029F-1826-4C1E-8AED-6FA5C3362A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA5E029F-1826-4C1E-8AED-6FA5C3362A3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97EE641B-69AB-40A6-B20B-4A7FD3B2681E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97EE641B-69AB-40A6-B20B-4A7FD3B2681E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97EE641B-69AB-40A6-B20B-4A7FD3B2681E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97EE641B-69AB-40A6-B20B-4A7FD3B2681E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EE57014-A75A-4E54-97B6-785C2F874EA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EE57014-A75A-4E54-97B6-785C2F874EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EE57014-A75A-4E54-97B6-785C2F874EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EE57014-A75A-4E54-97B6-785C2F874EA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F5841EB-A0C9-4E89-AA02-376F2190F68D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F5841EB-A0C9-4E89-AA02-376F2190F68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F5841EB-A0C9-4E89-AA02-376F2190F68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F5841EB-A0C9-4E89-AA02-376F2190F68D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4E1B96F-7905-48ED-AD72-98F5983E65A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E1B96F-7905-48ED-AD72-98F5983E65A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E1B96F-7905-48ED-AD72-98F5983E65A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E1B96F-7905-48ED-AD72-98F5983E65A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95385FBA-53E4-4144-B6FE-B5561081B9F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95385FBA-53E4-4144-B6FE-B5561081B9F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95385FBA-53E4-4144-B6FE-B5561081B9F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95385FBA-53E4-4144-B6FE-B5561081B9F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D808FF7-C204-40F1-881D-21B27D8D290E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D808FF7-C204-40F1-881D-21B27D8D290E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D808FF7-C204-40F1-881D-21B27D8D290E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D808FF7-C204-40F1-881D-21B27D8D290E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{354E0590-F6B2-43F5-A563-F543C498F3EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{354E0590-F6B2-43F5-A563-F543C498F3EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{354E0590-F6B2-43F5-A563-F543C498F3EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{354E0590-F6B2-43F5-A563-F543C498F3EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47F2E236-E6BE-4F52-8389-5CF03BDC9B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47F2E236-E6BE-4F52-8389-5CF03BDC9B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47F2E236-E6BE-4F52-8389-5CF03BDC9B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47F2E236-E6BE-4F52-8389-5CF03BDC9B78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1368FE7F-E1A7-4FD5-AF05-CFA59C0E0E69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1368FE7F-E1A7-4FD5-AF05-CFA59C0E0E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1368FE7F-E1A7-4FD5-AF05-CFA59C0E0E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1368FE7F-E1A7-4FD5-AF05-CFA59C0E0E69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BACB63E-2830-4371-AEBB-E8089E3EB316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BACB63E-2830-4371-AEBB-E8089E3EB316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BACB63E-2830-4371-AEBB-E8089E3EB316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BACB63E-2830-4371-AEBB-E8089E3EB316}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19A28EF9-A5AE-4EC5-851C-D2547E5FE29C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19A28EF9-A5AE-4EC5-851C-D2547E5FE29C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19A28EF9-A5AE-4EC5-851C-D2547E5FE29C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19A28EF9-A5AE-4EC5-851C-D2547E5FE29C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26765303-B9D8-457B-915C-ED869CEEB210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26765303-B9D8-457B-915C-ED869CEEB210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26765303-B9D8-457B-915C-ED869CEEB210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26765303-B9D8-457B-915C-ED869CEEB210}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -488,6 +574,23 @@ Global
 		{7971DF5A-B001-4751-8F40-D7752C612BF1} = {04DBDB01-70F4-4E06-B468-8F87850B22BE}
 		{7FF93622-971D-4B30-A5FC-72D729D26E29} = {EB2B8705-18E7-49E1-A565-93A6DE5570D5}
 		{FA5E029F-1826-4C1E-8AED-6FA5C3362A3A} = {7FF93622-971D-4B30-A5FC-72D729D26E29}
+		{C2FE6BA0-3DE5-403F-A91F-BCB9ADA5B068} = {F8A8EB2A-2D4B-464F-9A13-F8F7B6A8FAA3}
+		{4E6D558B-CA6D-4133-8701-FDC6F245DA37} = {C2FE6BA0-3DE5-403F-A91F-BCB9ADA5B068}
+		{AF419621-2F14-45CE-AF1B-B688E1B21BCB} = {C2FE6BA0-3DE5-403F-A91F-BCB9ADA5B068}
+		{6464122A-1DC2-45E8-B599-4B5C32FBC85B} = {C2FE6BA0-3DE5-403F-A91F-BCB9ADA5B068}
+		{97EE641B-69AB-40A6-B20B-4A7FD3B2681E} = {AF419621-2F14-45CE-AF1B-B688E1B21BCB}
+		{0EE57014-A75A-4E54-97B6-785C2F874EA4} = {AF419621-2F14-45CE-AF1B-B688E1B21BCB}
+		{4F5841EB-A0C9-4E89-AA02-376F2190F68D} = {AF419621-2F14-45CE-AF1B-B688E1B21BCB}
+		{C4E1B96F-7905-48ED-AD72-98F5983E65A5} = {AF419621-2F14-45CE-AF1B-B688E1B21BCB}
+		{95385FBA-53E4-4144-B6FE-B5561081B9F9} = {AF419621-2F14-45CE-AF1B-B688E1B21BCB}
+		{4D808FF7-C204-40F1-881D-21B27D8D290E} = {AF419621-2F14-45CE-AF1B-B688E1B21BCB}
+		{354E0590-F6B2-43F5-A563-F543C498F3EA} = {AF419621-2F14-45CE-AF1B-B688E1B21BCB}
+		{47F2E236-E6BE-4F52-8389-5CF03BDC9B78} = {6464122A-1DC2-45E8-B599-4B5C32FBC85B}
+		{1368FE7F-E1A7-4FD5-AF05-CFA59C0E0E69} = {6464122A-1DC2-45E8-B599-4B5C32FBC85B}
+		{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D} = {6464122A-1DC2-45E8-B599-4B5C32FBC85B}
+		{2BACB63E-2830-4371-AEBB-E8089E3EB316} = {6464122A-1DC2-45E8-B599-4B5C32FBC85B}
+		{19A28EF9-A5AE-4EC5-851C-D2547E5FE29C} = {6464122A-1DC2-45E8-B599-4B5C32FBC85B}
+		{26765303-B9D8-457B-915C-ED869CEEB210} = {4E6D558B-CA6D-4133-8701-FDC6F245DA37}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

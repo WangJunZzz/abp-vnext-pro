@@ -1,0 +1,16 @@
+2022-08-23 22:11:33.863 +08:00 [INF] Starting web host.
+2022-08-23 22:11:39.197 +08:00 [FTL] Host terminated unexpectedly!
+Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lion.AbpPro.BasicManagement.Program.Main(String[] args) in D:\github\WangJunZzz\abp-vnext-pro\aspnet-core\modules\BasicManagement\host\Lion.AbpPro.BasicManagement.HttpApi.Host\Program.cs:line 36
+2022-08-23 22:13:21.209 +08:00 [INF] Starting web host.
+2022-08-23 22:13:22.124 +08:00 [FTL] Host terminated unexpectedly!
+Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Lion.AbpPro.BasicManagement.Program.Main(String[] args) in D:\github\WangJunZzz\abp-vnext-pro\aspnet-core\modules\BasicManagement\host\Lion.AbpPro.BasicManagement.HttpApi.Host\Program.cs:line 36

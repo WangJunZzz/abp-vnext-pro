@@ -4,7 +4,7 @@
     {
         protected AbpProFreeSqlRepositoryTestBase()
         {
-            ServiceProvider.InitializeLocalization();
+            
         }
     }
 }

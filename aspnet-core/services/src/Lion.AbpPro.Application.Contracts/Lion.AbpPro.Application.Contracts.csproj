@@ -1,6 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -8,33 +7,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Application.Contracts\Lion.AbpPro.DataDictionaryManagement.Application.Contracts.csproj" />
-        <ProjectReference Include="..\..\..\modules\FileManagement\src\Lion.AbpPro.FileManagement.Application.Contracts\Lion.AbpPro.FileManagement.Application.Contracts.csproj" />
-        <ProjectReference Include="..\Lion.AbpPro.Domain.Shared\Lion.AbpPro.Domain.Shared.csproj" />
+        <ProjectReference Include="..\..\..\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Application.Contracts\Lion.AbpPro.BasicManagement.Application.Contracts.csproj"/>
+        <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Application.Contracts\Lion.AbpPro.DataDictionaryManagement.Application.Contracts.csproj"/>
+        <ProjectReference Include="..\..\..\modules\FileManagement\src\Lion.AbpPro.FileManagement.Application.Contracts\Lion.AbpPro.FileManagement.Application.Contracts.csproj"/>
+        <ProjectReference Include="..\Lion.AbpPro.Domain.Shared\Lion.AbpPro.Domain.Shared.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.Contracts" />
-        <PackageReference Include="Volo.Abp.ObjectExtending" />
-        <PackageReference Include="Volo.Abp.Account.Application.Contracts" />
-        <PackageReference Include="Volo.Abp.Identity.Application.Contracts" />
-        <PackageReference Include="Volo.Abp.PermissionManagement.Application.Contracts" />
-        <PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" />
-        <PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" />
-        <PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" />
-        <PackageReference Include="Magicodes.IE.Excel.AspNetCore" />
+
+        <PackageReference Include="Volo.Abp.ObjectExtending"/>
+
     </ItemGroup>
 
-    <ItemGroup>
-        <Compile Remove="AuditLogs\Dto\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <EmbeddedResource Remove="AuditLogs\Dto\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Remove="AuditLogs\Dto\**" />
-    </ItemGroup>
 
 </Project>

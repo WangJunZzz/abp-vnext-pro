@@ -1,13 +1,10 @@
+using Lion.AbpPro.BasicManagement;
+using Lion.AbpPro.BasicManagement.Localization;
+
 namespace Lion.AbpPro
 {
     [DependsOn(
-        typeof(AbpAuditLoggingDomainSharedModule),
-        typeof(AbpBackgroundJobsDomainSharedModule),
-        typeof(AbpFeatureManagementDomainSharedModule),
-        typeof(AbpIdentityDomainSharedModule),
-        typeof(AbpPermissionManagementDomainSharedModule),
-        typeof(AbpSettingManagementDomainSharedModule),
-        typeof(AbpTenantManagementDomainSharedModule),
+        typeof(BasicManagementDomainSharedModule),
         typeof(DataDictionaryManagementDomainSharedModule),
         typeof(FileManagementDomainSharedModule),
         typeof(NotificationManagementDomainSharedModule)
@@ -32,11 +29,8 @@ namespace Lion.AbpPro
                 options.Resources
                     .Add<AbpProResource>(AbpProDomainSharedConsts.DefaultCultureName)
                     .AddVirtualJson("/Localization/AbpPro")
-                    .AddBaseTypes(typeof(IdentityResource))
-                    .AddBaseTypes(typeof(AbpValidationResource))
-                    .AddBaseTypes(typeof(AbpLocalizationResource))
-                    .AddBaseTypes(typeof(AbpTimingResource))
-                    .AddBaseTypes(typeof(AbpSettingManagementResource));
+                    .AddBaseTypes(typeof(BasicManagementResource))
+                    .AddBaseTypes(typeof(AbpTimingResource));
 
                 options.DefaultResourceType = typeof(AbpProResource);
             });

@@ -1,0 +1,24 @@
+{
+  "culture": "zh-Hans",
+  "texts": {
+    "MyAccount": "我的账户",
+    "SamplePageMessage": "BasicManagement模块的示例页面",
+    "Permission:Query": "查询",
+    "Permission:Create": "创建",
+    "Permission:Update": "编辑",
+    "Permission:Delete": "删除",
+    "Permission:Export": "导出",
+    "Permission:Enable": "启用|禁用",
+    "Permission:AuditLogManagement": "审计日志",
+    "Permission:SystemManagement": "系统管理",
+    "Permission:HangfireManagement": "后台任务",
+    "Permission:CapManagement": "集成事件",
+    "Permission:SettingManagement": "设置管理",
+    "Permission:OrganizationUnitManagement": "组织结构管理",
+    
+    "Setting.Group.System": "系统",
+    "Lion.AbpPro.BasicManagement:100001": "组织机构不存在",
+    "Lion.AbpPro.BasicManagement:100002": "用户被锁定",
+    "Lion.AbpPro.BasicManagement:100003": "用户名或者密码错误"
+  }
+}

@@ -1,3 +1,5 @@
+using Volo.Abp.BackgroundJobs.Hangfire;
+
 namespace Lion.AbpPro
 {
     [DependsOn(
@@ -11,7 +13,8 @@ namespace Lion.AbpPro
         typeof(AbpProApplicationModule),
         typeof(AbpProAbpCapModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-        typeof(AbpCachingStackExchangeRedisModule)
+        typeof(AbpCachingStackExchangeRedisModule),
+        typeof(AbpBackgroundJobsHangfireModule)
     )]
     public class AbpProHttpApiHostModule : AbpModule
     {
@@ -28,13 +31,10 @@ namespace Lion.AbpPro
             var configuration = context.Services.GetConfiguration();
             ConfigureCache(context);
             ConfigureSwaggerServices(context);
-            ConfigureOptions(context);
             ConfigureJwtAuthentication(context, configuration);
             ConfigureHangfireMysql(context);
-            ConfigureCap(context);
             ConfigureHttpClient(context);
             ConfigureMiniProfiler(context);
-            ConfigureMagicodes(context);
             ConfigureAbpExceptions(context);
             ConfigureIdentity(context);
             ConfigureCap(context);
@@ -94,15 +94,7 @@ namespace Lion.AbpPro
             context.Services.AddMvc(options => { options.Filters.Add(typeof(ResultExceptionFilter)); });
         }
 
-        /// <summary>
-        /// 配置Magicodes.IE
-        /// Excel导入导出
-        /// </summary>
-        private void ConfigureMagicodes(ServiceConfigurationContext context)
-        {
-            context.Services.AddTransient<IExporter, ExcelExporter>();
-            context.Services.AddTransient<IExcelExporter, ExcelExporter>();
-        }
+   
 
         private void ConfigureHangfireMysql(ServiceConfigurationContext context)
         {
@@ -133,7 +125,6 @@ namespace Lion.AbpPro
         /// <summary>
         /// 配置MiniProfiler
         /// </summary>
-        /// <param name="context"></param>
         private void ConfigureMiniProfiler(ServiceConfigurationContext context)
         {
             context.Services.AddMiniProfiler(options => options.RouteBasePath = "/profiler").AddEntityFramework();
@@ -142,8 +133,6 @@ namespace Lion.AbpPro
         /// <summary>
         /// 配置JWT
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="configuration"></param>
         private void ConfigureJwtAuthentication(ServiceConfigurationContext context,
             IConfiguration configuration)
         {
@@ -210,15 +199,7 @@ namespace Lion.AbpPro
                 });
         }
 
-        /// <summary>
-        /// 配置options
-        /// </summary>
-        /// <param name="context"></param>
-        private void ConfigureOptions(ServiceConfigurationContext context)
-        {
-            context.Services.Configure<JwtOptions>(context.Services.GetConfiguration()
-                .GetSection("Jwt"));
-        }
+   
 
         /// <summary>
         /// Redis缓存

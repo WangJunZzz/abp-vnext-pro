@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro.BasicManagement</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" />
+    <ProjectReference Include="..\Lion.AbpPro.BasicManagement.Domain\Lion.AbpPro.BasicManagement.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

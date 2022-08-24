@@ -1,0 +1,23 @@
+{
+  "culture": "en",
+  "texts": {
+    "MyAccount":  "My account",
+    "SamplePageMessage": "A sample page for the BasicManagement module",
+    "Permission:Query": "Query",
+    "Permission:Create": "Create",
+    "Permission:Update": "Update",
+    "Permission:Delete": "Delete",
+    "Permission:Export": "Export",
+    "Permission:Enable": "Enable|Disable",
+    "Permission:SystemManagement": "SystemManagement",
+    "Permission:AuditLogManagement": "AuditLog",
+    "Permission:HangfireManagement": "BackgroundTask",
+    "Permission:CapManagement": "IntegratedEvent",
+    "Permission:SettingManagement": "SettingManagement",
+    "Permission:OrganizationUnitManagement": "OrganizationUnitManagement",
+    "Setting.Group.System": "System",
+    "Lion.AbpPro.BasicManagement:100001": "OrganizationUnit Not Exist",
+    "Lion.AbpPro.BasicManagement:100002": "UserLockedOut",
+    "Lion.AbpPro.BasicManagement:100003": "UserOrPasswordMismatch"
+  }
+}
