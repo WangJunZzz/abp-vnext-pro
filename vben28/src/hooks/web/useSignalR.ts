@@ -103,12 +103,12 @@ export function useSignalR() {
   
     const { notification } = useMessage();
     if (message.messageLevel == 10) {
-      notification.error({
+      notification.warn({
         message: message.title,
         description: message.content,
       });
     } else if (message.messageLevel == 20) {
-      notification.warn({
+      notification.info({
         message: message.title,
         description: message.content,
       });
