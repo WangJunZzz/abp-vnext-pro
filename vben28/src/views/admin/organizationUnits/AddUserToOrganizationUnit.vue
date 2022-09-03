@@ -35,8 +35,7 @@ export default defineComponent({
 
   setup(_, { emit }) {
     const { t } = useI18n();
-    const getTableAsync = async () => {
-      let request= new GetUnAddUserInput();
+    const getTableAsync = async (request:GetUnAddUserInput) => {
       request.organizationUnitId=organizationUnitId;
       request.filter=getForm().getFieldsValue().filter;
       return await GetUnAddUserAsync(request)

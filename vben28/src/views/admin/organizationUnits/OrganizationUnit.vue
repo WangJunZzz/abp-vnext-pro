@@ -120,7 +120,7 @@ import CreateOrganizationUnit from "./CreateOrganizationUnit.vue";
 import EditOrganizationUnit from "./EditOrganizationUnit.vue";
 import AddRoleToOrganizationUnit from "./AddRoleToOrganizationUnit.vue";
 import AddUserToOrganizationUnit from "./AddUserToOrganizationUnit.vue";
-
+import { usePermission } from '/@/hooks/web/usePermission';
 import { useModal } from "/@/components/Modal";
 import { useMessage } from "/@/hooks/web/useMessage";
 import { useI18n } from "/@/hooks/web/useI18n";
@@ -149,7 +149,7 @@ export default defineComponent({
     const [registerEditOrganizationUnit, { openModal: EditOrganizationUnitModal }] = useModal();
     const [registerAddRoleToOrganizationUnit, { openModal: AddRoleToOrganizationUnitModal }] = useModal();
     const [registerAddUserToOrganizationUnit, { openModal: AddUserToOrganizationUnitModal }] = useModal();
-
+    const { hasPermission } = usePermission();
     let organizationUnitId: string = "";
     const openAddUserToOrganizationUnitModal= ()=>{
       if(organizationUnitId)
@@ -180,10 +180,13 @@ export default defineComponent({
     }
 
     function getRightMenuList(node: any): ContextMenuItem[] {
-    
+      let create = hasPermission('AbpIdentity.OrganizationUnitManagement.Create');
+      let update = hasPermission('AbpIdentity.OrganizationUnitManagement.Update');
+      let deleted = hasPermission('AbpIdentity.OrganizationUnitManagement.Delete');
       return [
         {
           label: t("common.createText"),
+          hidden: !create,
           handler: () => {
             let record = {
               parentId: node.eventKey,
@@ -196,6 +199,7 @@ export default defineComponent({
         },
         {
           label: t("common.editText"),
+          hidden: !update,
           handler: () => {
             let record = {
               id: node.eventKey,
@@ -207,6 +211,7 @@ export default defineComponent({
         },
         {
           label: t("common.delText"),
+          hidden: !deleted,
           handler: () => {
             createConfirm({
               iconType: "warning",

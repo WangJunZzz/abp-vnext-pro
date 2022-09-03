@@ -35,8 +35,7 @@ export default defineComponent({
 
   setup(_, { emit }) {
     const { t } = useI18n();
-    const getTableAsync = async () => {
-      let request= new GetUnAddRoleInput();
+    const getTableAsync = async (request:GetUnAddRoleInput) => {
       request.organizationUnitId=organizationUnitId;
       return await getUnAddRolesAsync(request)
     };
@@ -59,7 +58,7 @@ export default defineComponent({
     let organizationUnitId = "";
     const [registerModal, { closeModal, changeOkLoading }] = useModalInner(async (data) => {
       organizationUnitId = data.organizationUnitId;
-      await reload();
+      await reload({ searchInfo: { organizationUnitId: organizationUnitId } });
     });
     //勾选事件
     let selectRoles:string[]=[];
