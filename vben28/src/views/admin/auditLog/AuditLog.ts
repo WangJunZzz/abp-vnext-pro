@@ -20,7 +20,22 @@ export const searchFormSchema: FormSchema[] = [
     colProps: {
       span: 6
     }
-  }
+  },
+  {
+    field: "hasException",
+    label: t("routes.admin.audit_hasException"),
+    component: "Select",
+    colProps: { span: 4 },
+    componentProps: ()=>{
+      return {
+        options: [
+          { label: t("routes.admin.audit_hasException_all"), value: null },
+          { label: t("routes.admin.audit_hasException_yes"), value: true },
+          { label: t("routes.admin.audit_hasException_no"), value: false },
+        ]
+      }
+    }
+  },
 ];
 
 export const tableColumns: BasicColumn[] = [
@@ -54,9 +69,15 @@ export const tableColumns: BasicColumn[] = [
     width: 150
   },
   {
-    title: "Exceptions",
+    title: t("routes.admin.executionMessage"),
     dataIndex: "exceptions",
-    
+    resizable:false,
+    width: 350,
+    customRender: ({ text }) => {
+      if (text) {
+        return text.toString();
+      }
+    }
   }
 ];
 
