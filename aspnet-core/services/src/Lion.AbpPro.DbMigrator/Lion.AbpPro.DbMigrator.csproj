@@ -13,7 +13,7 @@
     <PackageReference Include="Serilog.Sinks.File" />
     <PackageReference Include="Serilog.Sinks.Console" />
     <PackageReference Include="Volo.Abp.Autofac" />
-    <PackageReference Include="Microsoft.Extensions.Hosting"  />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +28,9 @@
     <EmbeddedResource Remove="Logs\**" />
     <None Remove="Logs\**" />
     <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.Production.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
