@@ -12,6 +12,9 @@ Title: Abp Vnext Pro
 - ABP vNext 社区版的UI不使用于实际项目开发。为此，结合Vben Admin 打造开箱即用的ABP vNext Pro。
 
 
+## 演示
+- [演示地址](http://abp.cncore.club/)
+
 ## 系统功能
 
 - [x] 用户管理
@@ -29,8 +32,6 @@ Title: Abp Vnext Pro
 - [x] 多租户
 - [x] 文件管理
 
-## 演示
-- [演示地址](http://120.24.194.14:8012/)
 
 ![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4login.png)
 ![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/01.png)

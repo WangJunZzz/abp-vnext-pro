@@ -4,7 +4,7 @@
 - 在Lion.AbpPro.HttpApi.Host目录下执行
 
 ```bash
-dotnet public -o publish
+dotnet publish -o publish
 ```
 
 - 生成 Docker 镜像
