@@ -71,6 +71,7 @@ export default {
     signUpFormTitle: 'Sign up',
     forgetFormTitle: 'Reset password',
     tenantFormTitle: 'Tenant sign in',
+    workWeChatFormTitle: 'WorkWeChat sign in',
     signInTitle: 'Backstage management system',
     signInDesc: 'Enter your personal details and get started!',
     policy: 'I agree to the xxx Privacy Policy',
