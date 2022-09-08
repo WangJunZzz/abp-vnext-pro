@@ -11,7 +11,6 @@
   const { t } = useI18n();
 
   const { getLoginState } = useLoginState();
-
   const getFormTitle = computed(() => {
     const titleObj = {
       [LoginStateEnum.RESET_PASSWORD]: t('sys.login.forgetFormTitle'),
@@ -20,6 +19,7 @@
       [LoginStateEnum.MOBILE]: t('sys.login.mobileSignInFormTitle'),
       [LoginStateEnum.QR_CODE]: t('sys.login.qrSignInFormTitle'),
       [LoginStateEnum.TENANT]: t('sys.login.tenantFormTitle'),
+      [LoginStateEnum.WORKWECHAT_QR_CODE]: t('sys.login.workWeChatFormTitle'),
     };
     return titleObj[unref(getLoginState)];
   });

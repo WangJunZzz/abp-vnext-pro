@@ -19,7 +19,6 @@
       });
       const userStore = useUserStore();
       async function openLoading(absolute: boolean) {
-        debugger;
         compState.absolute = absolute;
         compState.loading = true;
         try {

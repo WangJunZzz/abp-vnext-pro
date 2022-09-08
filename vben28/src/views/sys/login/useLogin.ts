@@ -11,6 +11,7 @@ export enum LoginStateEnum {
   MOBILE,
   QR_CODE,
   TENANT,
+  WORKWECHAT_QR_CODE,
 }
 
 const currentState = ref(LoginStateEnum.LOGIN);

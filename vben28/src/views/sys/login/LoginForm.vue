@@ -40,7 +40,13 @@
         </Button>
       </ACol>
     </ARow>
+ <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>
 
+    <div class="flex justify-evenly enter-x" :class="`${prefixCls}-sign-in-way`">
+            <a-button type="link" @click="workWechatLogin" aria-placeholder="sf"
+        ><WechatFilled/>
+      </a-button>
+    </div>
   </Form>
 </template>
 <script lang="ts" setup>
@@ -96,6 +102,10 @@
   //onKeyStroke('Enter', handleLogin);
 
   const getShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN);
+  function workWechatLogin(){
+    setLoginState(LoginStateEnum.WORKWECHAT_QR_CODE);
+    debugger
+  };
 
   async function handleLogin() {
     const data = await validForm();
