@@ -11,8 +11,8 @@
 ## 🔗 链接
 
 - [文档地址](http://doc.cncore.club/)
-- [演示地址 ](http://abp.cncore.club/)
-- [视频教程 ](https://www.bilibili.com/video/BV1pt4y1E7aZ)
+- [演示地址](http://116.205.176.173/)
+- [视频教程](https://www.bilibili.com/video/BV1pt4y1E7aZ)
 
 
 ## 📦 快速开始
