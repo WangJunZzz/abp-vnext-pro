@@ -6,7 +6,6 @@ namespace Lion.AbpPro
     [DependsOn(
         typeof(BasicManagementDomainSharedModule),
         typeof(DataDictionaryManagementDomainSharedModule),
-        typeof(FileManagementDomainSharedModule),
         typeof(NotificationManagementDomainSharedModule)
     )]
     public class AbpProDomainSharedModule : AbpModule

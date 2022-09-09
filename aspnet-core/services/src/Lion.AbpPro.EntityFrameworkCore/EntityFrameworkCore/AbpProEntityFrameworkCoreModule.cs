@@ -5,8 +5,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
         typeof(BasicManagementEntityFrameworkCoreModule),
         typeof(AbpEntityFrameworkCoreMySQLModule),
         typeof(DataDictionaryManagementEntityFrameworkCoreModule),
-        typeof(NotificationManagementEntityFrameworkCoreModule),
-        typeof(FileManagementEntityFrameworkCoreModule)
+        typeof(NotificationManagementEntityFrameworkCoreModule)
         )]
     public class AbpProEntityFrameworkCoreModule : AbpModule
     {

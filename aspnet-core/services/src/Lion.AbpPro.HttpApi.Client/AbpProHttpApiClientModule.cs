@@ -5,8 +5,7 @@ namespace Lion.AbpPro
     [DependsOn(
         typeof(AbpProApplicationContractsModule),
         typeof(BasicManagementHttpApiClientModule),
-        typeof(DataDictionaryManagementHttpApiClientModule),
-        typeof(FileManagementHttpApiClientModule)
+        typeof(DataDictionaryManagementHttpApiClientModule)
     )]
     public class AbpProHttpApiClientModule : AbpModule
     {

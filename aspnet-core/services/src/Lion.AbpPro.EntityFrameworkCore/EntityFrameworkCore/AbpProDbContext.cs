@@ -15,7 +15,6 @@ namespace Lion.AbpPro.EntityFrameworkCore
     [ConnectionStringName("Default")]
     public class AbpProDbContext : AbpDbContext<AbpProDbContext>, IAbpProDbContext,
         IBasicManagementDbContext,
-        IFileManagementDbContext,
         INotificationManagementDbContext,
         IDataDictionaryManagementDbContext
     {
@@ -32,7 +31,6 @@ namespace Lion.AbpPro.EntityFrameworkCore
         public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
         public DbSet<BackgroundJobRecord> BackgroundJobs { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
-        public DbSet<Lion.AbpPro.FileManagement.Files.File> Files { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<DataDictionary> DataDictionary { get;  set; }
        
@@ -65,8 +63,6 @@ namespace Lion.AbpPro.EntityFrameworkCore
             // 消息通知
             builder.ConfigureNotificationManagement();
             
-            // 文件管理
-            builder.ConfigureFileManagement();
         }
 
 

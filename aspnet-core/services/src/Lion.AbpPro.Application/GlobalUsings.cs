@@ -11,7 +11,6 @@ global using Lion.AbpPro.ElasticSearches.Dto;
 global using Lion.AbpPro.ElasticSearches.Providers;
 global using Lion.AbpPro.Extension.Customs.Dtos;
 global using Lion.AbpPro.Extension.System;
-global using Lion.AbpPro.FileManagement;
 global using Lion.AbpPro.FreeSqlRepository;
 global using Lion.AbpPro.NotificationManagement;
 global using Lion.AbpPro.Permissions;

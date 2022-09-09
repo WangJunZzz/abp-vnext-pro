@@ -84,16 +84,16 @@ const admin: AppRouteModule = {
         policy: 'AbpIdentity.DataDictionaryManagement',
       },
     },
-    {
-      path: 'files',
-      name: 'files',
-      component: () => import('/@/views/admin/files/File.vue'),
-      meta: {
-        title: t('routes.admin.fileNameManagement'),
-        icon: 'ant-design:snippets-outlined',
-        policy: 'AbpIdentity.FileManagement',
-      },
-    },
+    // {
+    //   path: 'files',
+    //   name: 'files',
+    //   component: () => import('/@/views/admin/files/File.vue'),
+    //   meta: {
+    //     title: t('routes.admin.fileNameManagement'),
+    //     icon: 'ant-design:snippets-outlined',
+    //     policy: 'AbpIdentity.FileManagement',
+    //   },
+    // },
   ],
 };
 

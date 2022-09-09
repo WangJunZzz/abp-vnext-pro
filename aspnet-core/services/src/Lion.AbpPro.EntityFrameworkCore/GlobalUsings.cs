@@ -10,8 +10,6 @@ global using Lion.AbpPro.BasicManagement.EntityFrameworkCore;
 global using Lion.AbpPro.Data;
 global using Lion.AbpPro.DataDictionaryManagement;
 global using Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore;
-global using Lion.AbpPro.FileManagement.EntityFrameworkCore;
-global using Lion.AbpPro.FileManagement.Files;
 global using Lion.AbpPro.NotificationManagement;
 global using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
 global using Lion.AbpPro.Users;

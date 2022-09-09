@@ -8,7 +8,6 @@ global using System.Reflection;
 global using System.Text;
 global using System.Threading.Tasks;
 global using Lion.AbpPro.DataDictionaryManagement;
-global using Lion.AbpPro.FileManagement;
 global using Lion.AbpPro.NotificationManagement;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Localization;

@@ -6,8 +6,7 @@ namespace Lion.AbpPro
         typeof(AbpProDomainSharedModule),
         typeof(AbpObjectExtendingModule),
         typeof(BasicManagementApplicationContractsModule),
-        typeof(DataDictionaryManagementApplicationContractsModule),
-        typeof(FileManagementApplicationContractsModule)
+        typeof(DataDictionaryManagementApplicationContractsModule)
     )]
     public class AbpProApplicationContractsModule : AbpModule
     {

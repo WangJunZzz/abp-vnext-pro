@@ -1,7 +1,6 @@
 ﻿// Global using directives
 
 global using Lion.AbpPro.DataDictionaryManagement;
-global using Lion.AbpPro.FileManagement;
 global using Microsoft.Extensions.DependencyInjection;
 global using Volo.Abp.Account;
 global using Volo.Abp.FeatureManagement;

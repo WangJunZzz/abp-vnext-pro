@@ -1,13 +1,10 @@
-using Lion.AbpPro.BasicManagement;
-
 namespace Lion.AbpPro
 {
     [DependsOn(
         typeof(AbpProDomainSharedModule),
         typeof(BasicManagementDomainModule),
         typeof(DataDictionaryManagementDomainModule),
-        typeof(NotificationManagementDomainModule),
-        typeof(FileManagementDomainModule)
+        typeof(NotificationManagementDomainModule)
     )]
     public class AbpProDomainModule : AbpModule
     {
