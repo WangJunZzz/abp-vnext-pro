@@ -22,6 +22,7 @@ namespace Lion.AbpPro.DbMigrator
             {
                 await application.InitializeAsync();
                 var conn = _configuration.GetValue<string>("ConnectionStrings:Default");
+                Console.WriteLine(conn);
                 await application
                     .ServiceProvider
                     .GetRequiredService<AbpProDbMigrationService>()
