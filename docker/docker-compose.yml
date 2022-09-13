@@ -13,7 +13,7 @@ services:
       MYSQL_ENABLE_SLOW_QUERY: 0   # 是否开启慢查询，0：不开启  1：开启
       MYSQL_LONG_QUERY_TIME: 5.0   # 慢查询超时时间
     ports:
-      - "3306:3306"
+      - "3306:3306"  
 
   redis:
     image: redis:6.2.6
@@ -35,46 +35,36 @@ services:
       - RABBITMQ_DEFAULT_PASS=1q2w3E*
 
   lion.abp.pro:
-    build: ../aspnet-core/services/host/Lion.AbpPro.HttpApi.Host
+    image: zzzwangjun/lion.abp.pro
     container_name: lion.abp.pro
     restart: always
     ports:
       - "8080:80"
     depends_on:
-      - mysql    
+      - mysql     
       - rabbitmq
       - redis  
       - lion.abp.pro.migrator    
     links:
       - mysql
       - redis
-      - rabbitmq
+      - rabbitmq     
 
   lion.abp.pro.migrator:
-    build: ../aspnet-core/services/src/Lion.AbpPro.DbMigrator
+    image: zzzwangjun/lion.abp.pro.migrator
     container_name: lion.abp.pro.migrator
     depends_on:
-      - mysql 
+      - mysql
     links:
       - mysql   
-
-  lion.abp.pro.gateway:
-    build: ../aspnet-core/gateways/Lion.AbpPro.WebGateway
-    container_name: lion.abp.pro.gateway
-    ports:
-      - "8081:80"    
-    depends_on:
-      - lion.abp.pro
-    links:
-      - lion.abp.pro   
+  
 
   lion.abp.pro.vben28:
-    build: ../vben28
+    image: zzzwangjun/lion.abp.pro.vben28
     container_name: lion.abp.pro.vben28
     ports:
       - "80:80"    
     depends_on:
-      - lion.abp.pro.gateway 
+      - lion.abp.pro 
     links:
-      - lion.abp.pro.gateway         
-
+      - lion.abp.pro
