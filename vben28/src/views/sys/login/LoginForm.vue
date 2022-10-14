@@ -40,17 +40,17 @@
         </Button>
       </ACol>
     </ARow>
- <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>
+    <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>
 
     <div class="flex justify-evenly enter-x" :class="`${prefixCls}-sign-in-way`">
-            <a-button type="link" @click="workWechatLogin" aria-placeholder="sf"
-        ><WechatFilled/>
+      <a-button type="link" @click="workWechatLogin" aria-placeholder="sf"
+        ><WechatFilled />
       </a-button>
     </div>
   </Form>
 </template>
 <script lang="ts" setup>
-  import { reactive, ref, toRaw, unref, computed } from 'vue';
+  import { reactive, ref, toRaw, unref, computed, watch } from 'vue';
 
   import { Checkbox, Form, Input, Row, Col, Button, Divider } from 'ant-design-vue';
   import {
@@ -67,15 +67,10 @@
   import { useMessage } from '/@/hooks/web/useMessage';
 
   import { useUserStore } from '/@/store/modules/user';
-  import {
-    LoginStateEnum,
-    useLoginState,
-    useFormRules,
-    useFormValid,
-  } from './useLogin';
+  import { LoginStateEnum, useLoginState, useFormRules, useFormValid } from './useLogin';
   import { useDesign } from '/@/hooks/web/useDesign';
   //import { onKeyStroke } from '@vueuse/core';
-
+  import { useRouter, useRoute } from 'vue-router';
   const ACol = Col;
   const ARow = Row;
   const FormItem = Form.Item;
@@ -96,16 +91,28 @@
     account: 'admin',
     password: '1q2w3E*',
   });
-
+  const router = useRouter();
+  const { currentRoute } = router;
   const { validForm } = useFormValid(formRef);
 
   //onKeyStroke('Enter', handleLogin);
+  const a = computed(() => {
+    const route = unref(currentRoute);
+    const query = route.query;
+    console.log(query);
+    debugger;
+    if (query) {
+      console.log(query);
+      debugger;
+    }
+    return;
+  });
 
   const getShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN);
-  function workWechatLogin(){
+
+  function workWechatLogin() {
     setLoginState(LoginStateEnum.WORKWECHAT_QR_CODE);
-    debugger
-  };
+  }
 
   async function handleLogin() {
     const data = await validForm();
@@ -118,7 +125,7 @@
           username: data.account,
           tenantId: '',
           mode: 'none', //不要默认的错误提示
-        })
+        }),
       );
       if (userInfo) {
         notification.success({
