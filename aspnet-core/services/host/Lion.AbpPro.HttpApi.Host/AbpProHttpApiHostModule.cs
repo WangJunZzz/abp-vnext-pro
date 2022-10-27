@@ -34,7 +34,6 @@ namespace Lion.AbpPro
             ConfigureJwtAuthentication(context, configuration);
             ConfigureHangfireMysql(context);
             ConfigureMiniProfiler(context);
-            ConfigureAbpExceptions(context);
             ConfigureIdentity(context);
             ConfigureCap(context);
             ConfigureAuditLog(context);
@@ -84,16 +83,6 @@ namespace Lion.AbpPro
             }
         }
 
-        /// <summary>
-        /// 异常处理
-        /// </summary>
-        /// <param name="context"></param>
-        private void ConfigureAbpExceptions(ServiceConfigurationContext context)
-        {
-            context.Services.AddMvc(options => { options.Filters.Add(typeof(ResultExceptionFilter)); });
-        }
-
-   
 
         private void ConfigureHangfireMysql(ServiceConfigurationContext context)
         {
@@ -198,7 +187,6 @@ namespace Lion.AbpPro
                 });
         }
 
-   
 
         /// <summary>
         /// Redis缓存
@@ -323,7 +311,7 @@ namespace Lion.AbpPro
                 });
             }
         }
-        
+
         /// <summary>
         /// 审计日志
         /// </summary>

@@ -19,8 +19,6 @@ global using Lion.AbpPro.Extension.Customs.Dtos;
 global using Lion.AbpPro.Extensions;
 global using Lion.AbpPro.Extensions.Hangfire;
 global using Lion.AbpPro.Extensions.Middlewares;
-global using Lion.AbpPro.Extensions.MVC.Filters;
-global using Lion.AbpPro.Extensions.System;
 global using Lion.AbpPro.MultiTenancy;
 global using Lion.AbpPro.Shared.Hosting.Microservices;
 global using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.Builder;
