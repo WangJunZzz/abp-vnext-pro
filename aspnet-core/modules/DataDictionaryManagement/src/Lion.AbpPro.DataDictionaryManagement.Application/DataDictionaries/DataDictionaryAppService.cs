@@ -56,7 +56,10 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             var details = entity.Details
                 .WhereIf(input.Filter.IsNotNullOrWhiteSpace(), e => (e.Code.Contains(input.Filter) || e.DisplayText.Contains(input.Filter)))
                 .OrderBy(e => e.Order)
-                .Take(input.PageSize).Skip(input.SkipCount).ToList();
+                .ThenBy(e=> e.CreationTime)
+                .Skip(input.SkipCount)
+                .Take(input.PageSize)
+                .ToList();
             if (details.Count == 0)
             {
                 return new PagedResultDto<PagingDataDictionaryDetailOutput>();
