@@ -29,7 +29,7 @@
         <PackageReference Include="Serilog.Sinks.Elasticsearch" />
         <PackageReference Include="Serilog.Sinks.File" />
         <PackageReference Include="Serilog.Sinks.Async" />
-        <PackageReference Include="Hangfire.MySqlStorage" />
+        <PackageReference Include="Hangfire.Redis.StackExchange" />
         <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
         <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" />
         <PackageReference Include="MiniProfiler.AspNetCore.Mvc" />

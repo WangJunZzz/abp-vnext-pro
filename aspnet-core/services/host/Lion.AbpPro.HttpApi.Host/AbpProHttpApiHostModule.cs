@@ -32,7 +32,7 @@ namespace Lion.AbpPro
             ConfigureCache(context);
             ConfigureSwaggerServices(context);
             ConfigureJwtAuthentication(context, configuration);
-            ConfigureHangfireMysql(context);
+            ConfigureHangfire(context);
             ConfigureMiniProfiler(context);
             ConfigureIdentity(context);
             ConfigureCap(context);
@@ -84,24 +84,13 @@ namespace Lion.AbpPro
         }
 
 
-        private void ConfigureHangfireMysql(ServiceConfigurationContext context)
+        private void ConfigureHangfire(ServiceConfigurationContext context)
         {
             Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = true; });
             context.Services.AddHangfireServer();
             context.Services.AddHangfire(config =>
             {
-                config.UseStorage(new MySqlStorage(
-                    context.Services.GetConfiguration().GetConnectionString("Default"),
-                    new MySqlStorageOptions()
-                    {
-                        //CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-                        //SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-                        //QueuePollInterval = TimeSpan.Zero,
-                        //UseRecommendedIsolationLevel = true,
-                        //DisableGlobalLocks = true
-                        JobExpirationCheckInterval = TimeSpan.FromMinutes(30),
-                        TablesPrefix = "Hangfire_"
-                    }));
+                config.UseRedisStorage(ConnectionMultiplexer.Connect(context.Services.GetConfiguration().GetConnectionString("Hangfire")));
                 var delaysInSeconds = new[] { 10, 60, 60 * 3 }; // 重试时间间隔
                 const int Attempts = 3; // 重试次数
                 config.UseFilter(new AutomaticRetryAttribute() { Attempts = Attempts, DelaysInSeconds = delaysInSeconds });

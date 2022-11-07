@@ -10,7 +10,6 @@ global using System.Threading.Tasks;
 global using Hangfire;
 global using Hangfire.Common;
 global using Hangfire.Dashboard;
-global using Hangfire.MySql;
 global using Hangfire.States;
 global using Hangfire.Storage;
 global using Lion.AbpPro.CAP;

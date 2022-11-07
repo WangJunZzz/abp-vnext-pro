@@ -41,7 +41,6 @@
         <PackageReference Update="xunit.runner.visualstudio" Version="2.4.3"/>
 
         <PackageReference Update="Hangfire.PostgreSql" Version="1.8.6"/>
-        <PackageReference Update="Hangfire.MySqlStorage" Version="2.0.3"/>
         <PackageReference Update="Hangfire.Redis.StackExchange" Version="1.8.5"/>
 
         <PackageReference Update="DotNetCore.CAP" Version="6.1.0"/>
