@@ -15,15 +15,15 @@ export class ServiceProxyBase {
     if (!guard) {
       if (userStore.checkUserLoginExpire) {
         router.replace(PageEnum.BASE_LOGIN);
-        return;
+      } else {
+        // 添加header
+        options.headers = {
+          'accept-language': language,
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+          __tenant: userStore.tenantId,
+        };
       }
-      // 添加header
-      options.headers = {
-        'accept-language': language,
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token,
-        __tenant: userStore.tenantId,
-      };
     } else {
       options.headers = {
         'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export class ServiceProxyBase {
   protected transformResult(
     _url: string,
     response: AxiosResponse,
-    processor: (response: AxiosResponse) => Promise<any>
+    processor: (response: AxiosResponse) => Promise<any>,
   ): Promise<any> {
     const { t } = useI18n();
 
