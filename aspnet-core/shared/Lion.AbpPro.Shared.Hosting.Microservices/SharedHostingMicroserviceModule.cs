@@ -1,3 +1,5 @@
+using Microservices.Microsoft.AspNetCore.Mvc.Filters;
+
 namespace Lion.AbpPro.Shared.Hosting.Microservices
 {
     [DependsOn(
@@ -17,20 +19,33 @@ namespace Lion.AbpPro.Shared.Hosting.Microservices
             ConfigureUrls(configuration);
             ConfigureConsul(context, configuration);
             ConfigAntiForgery();
+            ConfigureAbpExceptions(context);
         }
 
-  
+        /// <summary>
+        /// 异常处理
+        /// </summary>
+        private void ConfigureAbpExceptions(ServiceConfigurationContext context)
+        {
+            context.Services.AddMvc
+            (
+                options =>
+                {
+                    options.Filters.Add(typeof(LionExceptionFilter));
+                    options.Filters.Add(typeof(LionResultFilter));
+                }
+            );
+        }
+
         /// <summary>
         /// 阻止跨站点请求伪造
         /// https://docs.microsoft.com/zh-cn/aspnet/core/security/anti-request-forgery?view=aspnetcore-6.0
         /// </summary>
         private void ConfigAntiForgery()
         {
-            Configure<AbpAntiForgeryOptions>(options =>
-            {
-                options.AutoValidate = false;
-            });
+            Configure<AbpAntiForgeryOptions>(options => { options.AutoValidate = false; });
         }
+
         private void ConfigureConsul(ServiceConfigurationContext context,
             IConfiguration configuration)
         {
@@ -39,7 +54,6 @@ namespace Lion.AbpPro.Shared.Hosting.Microservices
                 context.Services.AddConsulConfig(configuration);
             }
         }
-
 
 
         /// <summary>
@@ -75,10 +89,7 @@ namespace Lion.AbpPro.Shared.Hosting.Microservices
         /// <param name="configuration"></param>
         private void ConfigureUrls(IConfiguration configuration)
         {
-            Configure<AppUrlOptions>(options =>
-            {
-                options.Applications["MVC"].RootUrl = configuration["App:SelfUrl"];
-            });
+            Configure<AppUrlOptions>(options => { options.Applications["MVC"].RootUrl = configuration["App:SelfUrl"]; });
         }
 
         /// <summary>

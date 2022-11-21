@@ -1,9 +1,11 @@
+using Lion.AbpPro.BasicManagement.Localization;
 using Lion.AbpPro.BasicManagement.Users.Dtos;
 using Magicodes.ExporterAndImporter.Excel;
 using Magicodes.ExporterAndImporter.Excel.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Account;
+using Volo.Abp.Identity.Localization;
 
 namespace Lion.AbpPro.BasicManagement.Users
 {
@@ -15,18 +17,22 @@ namespace Lion.AbpPro.BasicManagement.Users
         private readonly IIdentityUserRepository _identityUserRepository;
         private readonly IExcelExporter _excelExporter;
         private readonly IOptions<IdentityOptions> _options;
+        private readonly IStringLocalizer<IdentityResource> _localizer;
+
         public UserAppService(
             IIdentityUserAppService identityUserAppService,
             IdentityUserManager userManager,
             IIdentityUserRepository userRepository,
             IExcelExporter excelExporter,
-            IOptions<IdentityOptions> options)
+            IOptions<IdentityOptions> options,
+            IStringLocalizer<IdentityResource> localizer)
         {
             _identityUserAppService = identityUserAppService;
             _userManager = userManager;
             _identityUserRepository = userRepository;
             _excelExporter = excelExporter;
             _options = options;
+            _localizer = localizer;
         }
 
         /// <summary>
@@ -117,8 +123,6 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// <summary>
         /// 修改密码
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         public async Task<bool> ChangePasswordAsync(ChangePasswordInput input)
         {
             await _options.SetAsync();
@@ -134,7 +138,7 @@ namespace Lion.AbpPro.BasicManagement.Users
             }
 
             return !result.Succeeded
-                ? throw new UserFriendlyException(result?.Errors?.FirstOrDefault()?.Description)
+                ? throw new BusinessException("Volo.Abp.Identity:" + result?.Errors?.FirstOrDefault()?.Code)
                 : result.Succeeded;
         }
 
