@@ -14,5 +14,9 @@
     <ProjectReference Include="..\Lion.AbpPro.Domain.Shared\Lion.AbpPro.Domain.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Emailing"/>
+  </ItemGroup>
+
 
 </Project>
