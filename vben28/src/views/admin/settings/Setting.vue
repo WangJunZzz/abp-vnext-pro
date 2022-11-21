@@ -18,9 +18,9 @@
                       :checked="!(setting.value == 'false' || setting.value == false)"
                       @update:checked="(val) => (setting.value = val)"
                     >
-                      {{ setting.description }}
                     </a-checkbox>
                   </div>
+                  {{ setting.description }}
                 </a-form-item>
 
                 <a-button
