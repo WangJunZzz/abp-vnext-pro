@@ -14,6 +14,7 @@ namespace Lion.AbpPro.BasicManagement.Tenants
             _tenantAppService = tenantAppService;
         }
         
+        [AllowAnonymous]
         public async Task<FindTenantResultDto> FindTenantByNameAsync(FindTenantByNameInput input)
         {
             return await _abpTenantAppService.FindTenantByNameAsync(input.Name);
