@@ -12,12 +12,15 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" />
-    <ProjectReference Include="..\..\..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Localization\DataDictionaryManagement\*.json" />
     <Content Remove="Localization\DataDictionaryManagement\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\frameworks\src\Lion.AbpPro.Core\Lion.AbpPro.Core.csproj" />
   </ItemGroup>
 
 </Project>

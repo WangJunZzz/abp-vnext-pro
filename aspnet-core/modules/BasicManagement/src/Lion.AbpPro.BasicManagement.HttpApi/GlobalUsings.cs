@@ -10,7 +10,7 @@ global using Lion.AbpPro.BasicManagement.Settings.Dtos;
 global using Lion.AbpPro.BasicManagement.Tenants.Dtos;
 global using Lion.AbpPro.BasicManagement.Users;
 global using Lion.AbpPro.BasicManagement.Users.Dtos;
-global using Lion.AbpPro.Extension.Customs.Dtos;
+global using Lion.AbpPro.Core;
 global using Microsoft.AspNetCore.Mvc;
 global using Swashbuckle.AspNetCore.Annotations;
 global using Volo.Abp.Application.Dtos;

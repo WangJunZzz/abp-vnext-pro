@@ -4,7 +4,8 @@ namespace Lion.AbpPro.Shared.Hosting.Microservices
 {
     [DependsOn(
         typeof(AbpSwashbuckleModule),
-        typeof(AbpAutofacModule))]
+        typeof(AbpAutofacModule),
+        typeof(LionAbpProCoreModule))]
     public class SharedHostingMicroserviceModule : AbpModule
     {
         private const string DefaultCorsPolicyName = "Default";

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <AssemblyName>Lion.AbpPro.Localization</AssemblyName>
+        <RootNamespace />
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" />
+        <PackageReference Include="Volo.Abp.Autofac" />
+        <PackageReference Include="Volo.Abp.Localization" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Lion\AbpPro\Localization\Resources\*.json" />
+      <EmbeddedResource Include="Lion\AbpPro\Localization\Resources\*.json" />
+    </ItemGroup>
+</Project>

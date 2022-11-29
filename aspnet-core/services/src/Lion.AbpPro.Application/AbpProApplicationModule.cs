@@ -17,7 +17,6 @@ namespace Lion.AbpPro
             {
                 options.AddMaps<AbpProApplicationModule>();
             });
-            
         }
     }
 }

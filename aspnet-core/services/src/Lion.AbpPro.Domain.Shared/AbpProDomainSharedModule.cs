@@ -1,12 +1,14 @@
 using Lion.AbpPro.BasicManagement;
 using Lion.AbpPro.BasicManagement.Localization;
+using Lion.AbpPro.Core;
 
 namespace Lion.AbpPro
 {
     [DependsOn(
         typeof(BasicManagementDomainSharedModule),
         typeof(DataDictionaryManagementDomainSharedModule),
-        typeof(NotificationManagementDomainSharedModule)
+        typeof(NotificationManagementDomainSharedModule),
+        typeof(LionAbpProCoreModule)
     )]
     public class AbpProDomainSharedModule : AbpModule
     {

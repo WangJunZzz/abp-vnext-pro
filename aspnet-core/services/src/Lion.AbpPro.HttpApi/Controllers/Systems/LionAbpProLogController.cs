@@ -12,7 +12,7 @@ namespace Lion.AbpPro.Controllers.Systems
         
         [HttpPost("page")]
         [SwaggerOperation(summary: "分页获取Es日志", Tags = new[] { "EsLog" })]
-        public Task<CustomePagedResultDto<PagingElasticSearchLogOutput>> PaingAsync(PagingElasticSearchLogInput input)
+        public Task<CustomPagedResultDto<PagingElasticSearchLogOutput>> PaingAsync(PagingElasticSearchLogInput input)
         {
             return _companyNameAbpProLogAppService.PaingAsync(input);
         }

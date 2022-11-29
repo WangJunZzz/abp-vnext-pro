@@ -1,4 +1,6 @@
-﻿namespace Lion.AbpPro.BasicManagement;
+﻿using Lion.AbpPro.Core;
+
+namespace Lion.AbpPro.BasicManagement;
 
 [DependsOn(
     typeof(AbpAuditLoggingDomainSharedModule),
@@ -7,7 +9,8 @@
     typeof(AbpIdentityDomainSharedModule),
     typeof(AbpPermissionManagementDomainSharedModule),
     typeof(AbpSettingManagementDomainSharedModule),
-    typeof(AbpTenantManagementDomainSharedModule)
+    typeof(AbpTenantManagementDomainSharedModule),
+    typeof(LionAbpProCoreModule)
 )]
 public class BasicManagementDomainSharedModule : AbpModule
 {

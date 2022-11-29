@@ -85,8 +85,7 @@
         <PackageReference Update="Volo.Abp.EntityFrameworkCore" Version="6.0.1"/>
         <PackageReference Update="Volo.Abp.AspNetCore.TestBase" Version="6.0.1"/>
         <PackageReference Update="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="6.0.1"/>
-        <PackageReference Update="Volo.Abp.EventBus.Kafka" Version="6.0.1"/>
         <PackageReference Update="Volo.Abp.EventBus" Version="6.0.1"/>
-        <PackageReference Update="Volo.Abp.Kafka" Version="6.0.1"/>
+        <PackageReference Update="Volo.Abp.Localization" Version="6.0.1" />
     </ItemGroup>
 </Project>

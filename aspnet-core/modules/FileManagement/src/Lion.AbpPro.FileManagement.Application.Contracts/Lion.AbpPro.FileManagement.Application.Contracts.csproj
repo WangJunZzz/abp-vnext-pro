@@ -9,7 +9,6 @@
     <ItemGroup>
         <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" />
         <PackageReference Include="Volo.Abp.Authorization" />
-        <ProjectReference Include="..\..\..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj" />
         <ProjectReference Include="..\Lion.AbpPro.FileManagement.Domain.Shared\Lion.AbpPro.FileManagement.Domain.Shared.csproj" />
     </ItemGroup>
 

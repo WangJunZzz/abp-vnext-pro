@@ -14,7 +14,7 @@ global using Hangfire.States;
 global using Hangfire.Storage;
 global using Lion.AbpPro.CAP;
 global using Lion.AbpPro.EntityFrameworkCore;
-global using Lion.AbpPro.Extension.Customs.Dtos;
+global using Lion.AbpPro.Core;
 global using Lion.AbpPro.Extensions;
 global using Lion.AbpPro.Extensions.Hangfire;
 global using Lion.AbpPro.Extensions.Middlewares;

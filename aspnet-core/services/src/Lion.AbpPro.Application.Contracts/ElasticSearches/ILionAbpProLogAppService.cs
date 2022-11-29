@@ -9,6 +9,6 @@ namespace Lion.AbpPro.ElasticSearches
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<CustomePagedResultDto<PagingElasticSearchLogOutput>> PaingAsync(PagingElasticSearchLogInput input);
+        Task<CustomPagedResultDto<PagingElasticSearchLogOutput>> PaingAsync(PagingElasticSearchLogInput input);
     }
 }

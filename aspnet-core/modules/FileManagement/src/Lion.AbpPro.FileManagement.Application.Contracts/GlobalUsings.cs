@@ -1,7 +1,7 @@
 // Global using directives
 
 global using System.ComponentModel.DataAnnotations;
-global using Lion.AbpPro.Extension.Customs.Dtos;
+global using Lion.AbpPro.Core;
 global using Lion.AbpPro.FileManagement.Localization;
 global using Volo.Abp.Application;
 global using Volo.Abp.Authorization;

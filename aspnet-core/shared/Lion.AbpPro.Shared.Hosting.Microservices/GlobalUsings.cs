@@ -6,7 +6,7 @@ global using System.Linq;
 global using System.Net;
 global using System.Reflection;
 global using Consul;
-global using Lion.AbpPro.Extension.Customs.Dtos;
+global using Lion.AbpPro.Core;
 global using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.Extensions.DependencyInjection;
 global using Microsoft.AspNetCore.Builder;
 global using Microsoft.AspNetCore.Cors;
