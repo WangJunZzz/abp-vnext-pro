@@ -17,7 +17,6 @@
 
     <ItemGroup>
         <PackageReference Include="NEST" />
-        <PackageReference Include="Volo.Abp.BackgroundJobs.HangFire" />
     </ItemGroup>
 
 </Project>

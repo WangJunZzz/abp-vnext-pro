@@ -6,8 +6,7 @@ namespace Lion.AbpPro
         typeof(BasicManagementApplicationModule),
         typeof(DataDictionaryManagementApplicationModule),
         typeof(NotificationManagementApplicationModule),
-        typeof(AbpProFreeSqlModule),
-        typeof(AbpBackgroundJobsHangfireModule)
+        typeof(AbpProFreeSqlModule)
         )]
     public class AbpProApplicationModule : AbpModule
     {

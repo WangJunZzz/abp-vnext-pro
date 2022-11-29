@@ -18,7 +18,6 @@ global using Microsoft.Extensions.Configuration;
 global using Nest;
 global using Volo.Abp.Application.Services;
 global using Volo.Abp.AutoMapper;
-global using Volo.Abp.BackgroundJobs.Hangfire;
 global using Volo.Abp.DependencyInjection;
 global using Volo.Abp.Modularity;
 global using Profile = AutoMapper.Profile;

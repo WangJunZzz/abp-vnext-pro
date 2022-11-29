@@ -41,6 +41,7 @@
         <PackageReference Include="MiniProfiler.AspNetCore.Mvc" />
         <PackageReference Include="MiniProfiler.EntityFrameworkCore" />
         <PackageReference Include="MiniProfiler.Shared" />
+        <PackageReference Include="Volo.Abp.BackgroundJobs.HangFire" />
     </ItemGroup>
 
     <ItemGroup>
