@@ -1,3 +1,4 @@
+using Hangfire.Redis;
 using Swagger;
 using Volo.Abp.BackgroundJobs.Hangfire;
 
@@ -50,7 +51,7 @@ namespace Lion.AbpPro
             {
                 app.UseMiniProfiler();
             }
-           
+
             app.UseRouting();
             app.UseCors(AbpProHttpApiHostConst.DefaultCorsPolicyName);
             app.UseAuthentication();
@@ -91,11 +92,16 @@ namespace Lion.AbpPro
 
         private void ConfigureHangfire(ServiceConfigurationContext context)
         {
+            var redisStorageOptions = new RedisStorageOptions()
+            {
+                Db = context.Services.GetConfiguration().GetValue<int>("Hangfire:Redis:DB")
+            };
+
             Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = true; });
             context.Services.AddHangfireServer();
             context.Services.AddHangfire(config =>
             {
-                config.UseRedisStorage(ConnectionMultiplexer.Connect(context.Services.GetConfiguration().GetConnectionString("Hangfire")));
+                config.UseRedisStorage(ConnectionMultiplexer.Connect(context.Services.GetConfiguration().GetValue<string>("Hangfire:Redis:Host")), redisStorageOptions);
                 var delaysInSeconds = new[] { 10, 60, 60 * 3 }; // 重试时间间隔
                 const int Attempts = 3; // 重试次数
                 config.UseFilter(new AutomaticRetryAttribute() { Attempts = Attempts, DelaysInSeconds = delaysInSeconds });
@@ -113,14 +119,12 @@ namespace Lion.AbpPro
             {
                 context.Services.AddMiniProfiler(options => options.RouteBasePath = "/profiler").AddEntityFramework();
             }
-          
         }
 
         /// <summary>
         /// 配置JWT
         /// </summary>
-        private void ConfigureJwtAuthentication(ServiceConfigurationContext context,
-            IConfiguration configuration)
+        private void ConfigureJwtAuthentication(ServiceConfigurationContext context, IConfiguration configuration)
         {
             context.Services.AddAuthentication(options =>
                 {
@@ -333,7 +337,7 @@ namespace Lion.AbpPro
                     options.IgnoredUrls.Add("/cap");
                 });
         }
-        
+
         #endregion
     }
 }
