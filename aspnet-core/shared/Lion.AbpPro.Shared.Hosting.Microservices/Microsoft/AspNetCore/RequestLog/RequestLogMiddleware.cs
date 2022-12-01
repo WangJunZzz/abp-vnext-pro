@@ -1,4 +1,4 @@
-﻿namespace Lion.AbpPro.Extensions.Middlewares;
+﻿namespace Microsoft.AspNetCore.RequestLog;
 
 public class RequestLogMiddleware
 {

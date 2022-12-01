@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Microservices.Microsoft.AspNetCore.Mvc.Filters;
+namespace Microsoft.AspNetCore.Mvc.Filters;
 
 public sealed class LionExceptionFilter : IAsyncExceptionFilter, ITransientDependency
 {

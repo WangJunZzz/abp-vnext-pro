@@ -1,4 +1,4 @@
-namespace Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.Extensions.DependencyInjection
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {

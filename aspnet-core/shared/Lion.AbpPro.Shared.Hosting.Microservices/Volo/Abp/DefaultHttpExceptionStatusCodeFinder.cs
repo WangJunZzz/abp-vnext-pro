@@ -1,4 +1,4 @@
-namespace Lion.AbpPro.Shared.Hosting.Microservices.Volo.Abp
+namespace Volo.Abp
 {
     /// <summary>
     /// 修改Abp 返回状态码

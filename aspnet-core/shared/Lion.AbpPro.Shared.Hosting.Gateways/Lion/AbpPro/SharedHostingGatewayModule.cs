@@ -1,4 +1,4 @@
-namespace Lion.AbpPro.Shared.Hosting.Gateways
+namespace Lion.AbpPro
 {
     [DependsOn(
         typeof(AbpSwashbuckleModule),

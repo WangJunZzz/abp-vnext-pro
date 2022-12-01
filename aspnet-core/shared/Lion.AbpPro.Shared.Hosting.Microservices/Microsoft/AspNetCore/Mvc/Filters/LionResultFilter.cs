@@ -1,4 +1,4 @@
-﻿namespace Microservices.Microsoft.AspNetCore.Mvc.Filters;
+﻿namespace Microsoft.AspNetCore.Mvc.Filters;
 
 public class LionResultFilter : IResultFilter, ITransientDependency
 {

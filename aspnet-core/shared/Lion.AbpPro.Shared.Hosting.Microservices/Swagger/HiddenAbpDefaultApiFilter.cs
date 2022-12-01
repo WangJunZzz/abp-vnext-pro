@@ -1,4 +1,4 @@
-namespace Lion.AbpPro.Shared.Hosting.Microservices.Swaggers
+namespace Swagger
 {
     /// <summary>
     /// 在使用nswag的时候，原生默认的api导致生产的代理类存在问题

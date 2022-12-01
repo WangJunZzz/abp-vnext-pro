@@ -1,7 +1,4 @@
-using Serilog.Exceptions;
-using Serilog.Sinks.Elasticsearch;
-
-namespace Lion.AbpPro.Extensions
+namespace Serilog
 {
      public static class SerilogToEsExtensions
     {
