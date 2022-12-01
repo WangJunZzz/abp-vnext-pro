@@ -12,7 +12,6 @@
     "Permission:AuditLogManagement": "审计日志",
     "Permission:SystemManagement": "系统管理",
     "Permission:HangfireManagement": "后台任务",
-    "Permission:CapManagement": "集成事件",
     "Permission:SettingManagement": "设置管理",
     "Permission:OrganizationUnitManagement": "组织结构管理",
     

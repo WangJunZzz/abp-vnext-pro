@@ -13,7 +13,7 @@ namespace Lion.AbpPro
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpAccountWebModule),
         typeof(AbpProApplicationModule),
-        typeof(AbpProAbpCapModule),
+        typeof(LionAbpProCapModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpCachingStackExchangeRedisModule),
         typeof(AbpBackgroundJobsHangfireModule)
@@ -298,7 +298,9 @@ namespace Lion.AbpPro
 
                     var hostingEnvironment = context.Services.GetHostingEnvironment();
                     bool auth = !hostingEnvironment.IsDevelopment();
-                    capOptions.UseDashboard(options => { options.UseAuth = auth; });
+                    capOptions.UseDashboard(options => { options.UseAuth = auth;
+                        options.AuthorizationPolicy = LionAbpProCapPermissions.CapManagement.Cap;
+                    });
                 });
             }
             else

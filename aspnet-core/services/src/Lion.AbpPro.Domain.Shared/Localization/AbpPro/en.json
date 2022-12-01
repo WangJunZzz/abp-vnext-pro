@@ -14,7 +14,6 @@
     "Permission:SystemManagement": "SystemManagement",
     "Permission:AuditLogManagement": "AuditLog",
     "Permission:HangfireManagement": "BackgroundTask",
-    "Permission:CapManagement": "IntegratedEvent",
     "Permission:ESManagement": "ESManagement",
     "Permission:SettingManagement": "SettingManagement",
     "Permission:OrganizationUnitManagement": "OrganizationUnitManagement",

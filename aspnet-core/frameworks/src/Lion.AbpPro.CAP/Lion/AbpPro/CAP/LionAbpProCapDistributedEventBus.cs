@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.CAP;
 
-public class AbpProAbpCapDistributedEventBus :
+public class LionAbpProCapDistributedEventBus :
     EventBusBase,
     IDistributedEventBus,
     ISingletonDependency
@@ -12,7 +12,7 @@ public class AbpProAbpCapDistributedEventBus :
     private readonly ICapPublisher CapPublisher;
 
         
-    public AbpProAbpCapDistributedEventBus(IServiceScopeFactory serviceScopeFactory,
+    public LionAbpProCapDistributedEventBus(IServiceScopeFactory serviceScopeFactory,
         IOptions<AbpDistributedEventBusOptions> distributedEventBusOptions,
         ICapPublisher capPublisher,
         ICurrentTenant currentTenant,

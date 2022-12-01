@@ -8,7 +8,7 @@ namespace Lion.AbpPro.NotificationManagement;
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule),
-    typeof(AbpProAbpCapModule),
+    typeof(LionAbpProCapModule),
     typeof(AbpEntityFrameworkCoreMySQLModule)
 )]
 public class NotificationManagementHttpApiHostModule : AbpModule

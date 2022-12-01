@@ -12,7 +12,6 @@
     "Permission:SystemManagement": "SystemManagement",
     "Permission:AuditLogManagement": "AuditLog",
     "Permission:HangfireManagement": "BackgroundTask",
-    "Permission:CapManagement": "IntegratedEvent",
     "Permission:SettingManagement": "SettingManagement",
     "Permission:OrganizationUnitManagement": "OrganizationUnitManagement",
     "Setting.Group.System": "System",

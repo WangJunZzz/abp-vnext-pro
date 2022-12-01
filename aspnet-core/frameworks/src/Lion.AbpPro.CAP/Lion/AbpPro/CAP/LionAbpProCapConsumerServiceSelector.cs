@@ -2,7 +2,7 @@ namespace Lion.AbpPro.CAP;
 
 [Dependency(ServiceLifetime.Singleton, ReplaceServices = true)]
 [ExposeServices(typeof(IConsumerServiceSelector))]
-public sealed class AbpProAbpCapConsumerServiceSelector : ConsumerServiceSelector
+public sealed class LionAbpProCapConsumerServiceSelector : ConsumerServiceSelector
 {
     private AbpDistributedEventBusOptions AbpDistributedEventBusOptions { get; }
     private IServiceProvider ServiceProvider { get; }
@@ -10,7 +10,7 @@ public sealed class AbpProAbpCapConsumerServiceSelector : ConsumerServiceSelecto
     /// <summary>
     /// Creates a new <see cref="T:DotNetCore.CAP.Internal.ConsumerServiceSelector" />.
     /// </summary>
-    public AbpProAbpCapConsumerServiceSelector(
+    public LionAbpProCapConsumerServiceSelector(
         IServiceProvider serviceProvider, 
         IOptions<AbpDistributedEventBusOptions> distributedEventBusOptions) 
         : base(serviceProvider)
