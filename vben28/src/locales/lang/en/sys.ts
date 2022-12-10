@@ -101,5 +101,6 @@ export default {
     smsCode: 'SMS code',
     mobile: 'Mobile',
     tenant: 'Tenant',
+    tenantPlaceholder: 'Please input tenant',
   },
 };
