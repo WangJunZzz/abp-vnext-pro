@@ -1160,8 +1160,8 @@ export class DataDictionaryServiceProxy extends ServiceProxyBase {
      * @param body (optional) 
      * @return Success
      */
-    deleteDictinaryType(body: IdInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
-        let url_ = this.baseUrl + "/DataDictionary/deleteDictinaryType";
+    deleteDataDictionaryType(body: IdInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/DataDictionary/deleteDataDictionaryType";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -1185,11 +1185,11 @@ export class DataDictionaryServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processDeleteDictinaryType(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processDeleteDataDictionaryType(_response));
         });
     }
 
-    protected processDeleteDictinaryType(response: AxiosResponse): Promise<void> {
+    protected processDeleteDataDictionaryType(response: AxiosResponse): Promise<void> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -1347,312 +1347,6 @@ export class DataDictionaryServiceProxy extends ServiceProxyBase {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
         return Promise.resolve<void>(null as any);
-    }
-}
-
-export class FilesServiceProxy extends ServiceProxyBase {
-    private instance: AxiosInstance;
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(baseUrl?: string, instance?: AxiosInstance) {
-        super();
-        this.instance = instance ? instance : axios.create();
-        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
-    }
-
-    /**
-     * 获取上传文件临时Token
-     * @return Success
-     */
-    getFileToken(  cancelToken?: CancelToken | undefined): Promise<FileTokenOutput> {
-        let url_ = this.baseUrl + "/Files/getFileToken";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ = <AxiosRequestConfig>{
-            method: "GET",
-            url: url_,
-            headers: {
-                "Accept": "text/plain"
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processGetFileToken(_response));
-        });
-    }
-
-    protected processGetFileToken(response: AxiosResponse): Promise<FileTokenOutput> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = FileTokenOutput.fromJS(resultData200);
-            return Promise.resolve<FileTokenOutput>(result200);
-
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<FileTokenOutput>(null as any);
-    }
-
-    /**
-     * 创建文件
-     * @param body (optional) 
-     * @return Success
-     */
-    create(body: CreateFileInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
-        let url_ = this.baseUrl + "/Files/create";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processCreate(_response));
-        });
-    }
-
-    protected processCreate(response: AxiosResponse): Promise<void> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            return Promise.resolve<void>(null as any);
-
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<void>(null as any);
-    }
-
-    /**
-     * 分页查询
-     * @param body (optional) 
-     * @return Success
-     */
-    page(body: PagingFileInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingFileOutputPagedResultDto> {
-        let url_ = this.baseUrl + "/Files/page";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_ = <AxiosRequestConfig>{
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "text/plain"
-            },
-            cancelToken
-        };
-
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.instance.request(transformedOptions_);
-        }).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processPage(_response));
-        });
-    }
-
-    protected processPage(response: AxiosResponse): Promise<PagingFileOutputPagedResultDto> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (let k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = PagingFileOutputPagedResultDto.fromJS(resultData200);
-            return Promise.resolve<PagingFileOutputPagedResultDto>(result200);
-
-        } else if (status === 403) {
-            const _responseText = response.data;
-            let result403: any = null;
-            let resultData403  = _responseText;
-            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
-            return throwException("Forbidden", status, _responseText, _headers, result403);
-
-        } else if (status === 401) {
-            const _responseText = response.data;
-            let result401: any = null;
-            let resultData401  = _responseText;
-            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
-            return throwException("Unauthorized", status, _responseText, _headers, result401);
-
-        } else if (status === 400) {
-            const _responseText = response.data;
-            let result400: any = null;
-            let resultData400  = _responseText;
-            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
-            return throwException("Bad Request", status, _responseText, _headers, result400);
-
-        } else if (status === 404) {
-            const _responseText = response.data;
-            let result404: any = null;
-            let resultData404  = _responseText;
-            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
-            return throwException("Not Found", status, _responseText, _headers, result404);
-
-        } else if (status === 501) {
-            const _responseText = response.data;
-            let result501: any = null;
-            let resultData501  = _responseText;
-            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
-            return throwException("Server Error", status, _responseText, _headers, result501);
-
-        } else if (status === 500) {
-            const _responseText = response.data;
-            let result500: any = null;
-            let resultData500  = _responseText;
-            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
-            return throwException("Server Error", status, _responseText, _headers, result500);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<PagingFileOutputPagedResultDto>(null as any);
     }
 }
 
@@ -6827,6 +6521,7 @@ export class ApplicationConfigurationDto implements IApplicationConfigurationDto
     timing!: TimingDto;
     clock!: ClockDto;
     objectExtensions!: ObjectExtensionsDto;
+    extraProperties!: { [key: string]: any; } | undefined;
 
     constructor(data?: IApplicationConfigurationDto) {
         if (data) {
@@ -6850,6 +6545,13 @@ export class ApplicationConfigurationDto implements IApplicationConfigurationDto
             this.timing = _data["timing"] ? TimingDto.fromJS(_data["timing"]) : <any>undefined;
             this.clock = _data["clock"] ? ClockDto.fromJS(_data["clock"]) : <any>undefined;
             this.objectExtensions = _data["objectExtensions"] ? ObjectExtensionsDto.fromJS(_data["objectExtensions"]) : <any>undefined;
+            if (_data["extraProperties"]) {
+                this.extraProperties = {} as any;
+                for (let key in _data["extraProperties"]) {
+                    if (_data["extraProperties"].hasOwnProperty(key))
+                        (<any>this.extraProperties)![key] = _data["extraProperties"][key];
+                }
+            }
         }
     }
 
@@ -6873,6 +6575,13 @@ export class ApplicationConfigurationDto implements IApplicationConfigurationDto
         data["timing"] = this.timing ? this.timing.toJSON() : <any>undefined;
         data["clock"] = this.clock ? this.clock.toJSON() : <any>undefined;
         data["objectExtensions"] = this.objectExtensions ? this.objectExtensions.toJSON() : <any>undefined;
+        if (this.extraProperties) {
+            data["extraProperties"] = {};
+            for (let key in this.extraProperties) {
+                if (this.extraProperties.hasOwnProperty(key))
+                    (<any>data["extraProperties"])[key] = (<any>this.extraProperties)[key];
+            }
+        }
         return data;
     }
 }
@@ -6889,6 +6598,7 @@ export interface IApplicationConfigurationDto {
     timing: TimingDto;
     clock: ClockDto;
     objectExtensions: ObjectExtensionsDto;
+    extraProperties: { [key: string]: any; } | undefined;
 }
 
 export class ApplicationFeatureConfigurationDto implements IApplicationFeatureConfigurationDto {
@@ -7419,46 +7129,6 @@ export interface ICreateDataDictinaryInput {
     description: string | undefined;
 }
 
-export class CreateFileInput implements ICreateFileInput {
-    fileName!: string;
-    filePath!: string;
-
-    constructor(data?: ICreateFileInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.fileName = _data["fileName"];
-            this.filePath = _data["filePath"];
-        }
-    }
-
-    static fromJS(data: any): CreateFileInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new CreateFileInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["fileName"] = this.fileName;
-        data["filePath"] = this.filePath;
-        return data;
-    }
-}
-
-export interface ICreateFileInput {
-    fileName: string;
-    filePath: string;
-}
-
 export class CreateOrganizationUnitInput implements ICreateOrganizationUnitInput {
     displayName!: string;
     parentId!: string | undefined;
@@ -7809,74 +7479,6 @@ export class DeleteDataDictionaryDetailInput implements IDeleteDataDictionaryDet
 export interface IDeleteDataDictionaryDetailInput {
     dataDictionaryId: string;
     dataDictionayDetailId: string;
-}
-
-export class EmailSettingsDto implements IEmailSettingsDto {
-    smtpHost!: string | undefined;
-    smtpPort!: number;
-    smtpUserName!: string | undefined;
-    smtpPassword!: string | undefined;
-    smtpDomain!: string | undefined;
-    smtpEnableSsl!: boolean;
-    smtpUseDefaultCredentials!: boolean;
-    defaultFromAddress!: string | undefined;
-    defaultFromDisplayName!: string | undefined;
-
-    constructor(data?: IEmailSettingsDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.smtpHost = _data["smtpHost"];
-            this.smtpPort = _data["smtpPort"];
-            this.smtpUserName = _data["smtpUserName"];
-            this.smtpPassword = _data["smtpPassword"];
-            this.smtpDomain = _data["smtpDomain"];
-            this.smtpEnableSsl = _data["smtpEnableSsl"];
-            this.smtpUseDefaultCredentials = _data["smtpUseDefaultCredentials"];
-            this.defaultFromAddress = _data["defaultFromAddress"];
-            this.defaultFromDisplayName = _data["defaultFromDisplayName"];
-        }
-    }
-
-    static fromJS(data: any): EmailSettingsDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new EmailSettingsDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["smtpHost"] = this.smtpHost;
-        data["smtpPort"] = this.smtpPort;
-        data["smtpUserName"] = this.smtpUserName;
-        data["smtpPassword"] = this.smtpPassword;
-        data["smtpDomain"] = this.smtpDomain;
-        data["smtpEnableSsl"] = this.smtpEnableSsl;
-        data["smtpUseDefaultCredentials"] = this.smtpUseDefaultCredentials;
-        data["defaultFromAddress"] = this.defaultFromAddress;
-        data["defaultFromDisplayName"] = this.defaultFromDisplayName;
-        return data;
-    }
-}
-
-export interface IEmailSettingsDto {
-    smtpHost: string | undefined;
-    smtpPort: number;
-    smtpUserName: string | undefined;
-    smtpPassword: string | undefined;
-    smtpDomain: string | undefined;
-    smtpEnableSsl: boolean;
-    smtpUseDefaultCredentials: boolean;
-    defaultFromAddress: string | undefined;
-    defaultFromDisplayName: string | undefined;
 }
 
 export class EntityExtensionDto implements IEntityExtensionDto {
@@ -8489,162 +8091,6 @@ export class ExtensionPropertyUiTableDto implements IExtensionPropertyUiTableDto
 
 export interface IExtensionPropertyUiTableDto {
     isVisible: boolean;
-}
-
-export class FeatureDto implements IFeatureDto {
-    name!: string | undefined;
-    displayName!: string | undefined;
-    value!: string | undefined;
-    provider!: FeatureProviderDto;
-    description!: string | undefined;
-    valueType!: IStringValueType;
-    depth!: number;
-    parentName!: string | undefined;
-
-    constructor(data?: IFeatureDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.displayName = _data["displayName"];
-            this.value = _data["value"];
-            this.provider = _data["provider"] ? FeatureProviderDto.fromJS(_data["provider"]) : <any>undefined;
-            this.description = _data["description"];
-            this.valueType = _data["valueType"] ? IStringValueType.fromJS(_data["valueType"]) : <any>undefined;
-            this.depth = _data["depth"];
-            this.parentName = _data["parentName"];
-        }
-    }
-
-    static fromJS(data: any): FeatureDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new FeatureDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["displayName"] = this.displayName;
-        data["value"] = this.value;
-        data["provider"] = this.provider ? this.provider.toJSON() : <any>undefined;
-        data["description"] = this.description;
-        data["valueType"] = this.valueType ? this.valueType.toJSON() : <any>undefined;
-        data["depth"] = this.depth;
-        data["parentName"] = this.parentName;
-        return data;
-    }
-}
-
-export interface IFeatureDto {
-    name: string | undefined;
-    displayName: string | undefined;
-    value: string | undefined;
-    provider: FeatureProviderDto;
-    description: string | undefined;
-    valueType: IStringValueType;
-    depth: number;
-    parentName: string | undefined;
-}
-
-export class FeatureGroupDto implements IFeatureGroupDto {
-    name!: string | undefined;
-    displayName!: string | undefined;
-    features!: FeatureDto[] | undefined;
-
-    constructor(data?: IFeatureGroupDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.displayName = _data["displayName"];
-            if (Array.isArray(_data["features"])) {
-                this.features = [] as any;
-                for (let item of _data["features"])
-                    this.features!.push(FeatureDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): FeatureGroupDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new FeatureGroupDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["displayName"] = this.displayName;
-        if (Array.isArray(this.features)) {
-            data["features"] = [];
-            for (let item of this.features)
-                data["features"].push(item.toJSON());
-        }
-        return data;
-    }
-}
-
-export interface IFeatureGroupDto {
-    name: string | undefined;
-    displayName: string | undefined;
-    features: FeatureDto[] | undefined;
-}
-
-export class FeatureProviderDto implements IFeatureProviderDto {
-    name!: string | undefined;
-    key!: string | undefined;
-
-    constructor(data?: IFeatureProviderDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.key = _data["key"];
-        }
-    }
-
-    static fromJS(data: any): FeatureProviderDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new FeatureProviderDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["key"] = this.key;
-        return data;
-    }
-}
-
-export interface IFeatureProviderDto {
-    name: string | undefined;
-    key: string | undefined;
 }
 
 export class FileAggregateRoute implements IFileAggregateRoute {
@@ -9683,62 +9129,6 @@ export interface IFileServiceDiscoveryProvider {
     namespace: string | undefined;
 }
 
-export class FileTokenOutput implements IFileTokenOutput {
-    accessKeyId!: string | undefined;
-    accessKeySecret!: string | undefined;
-    token!: string | undefined;
-    expiration!: string | undefined;
-    bucket!: string | undefined;
-    region!: string | undefined;
-
-    constructor(data?: IFileTokenOutput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.accessKeyId = _data["accessKeyId"];
-            this.accessKeySecret = _data["accessKeySecret"];
-            this.token = _data["token"];
-            this.expiration = _data["expiration"];
-            this.bucket = _data["bucket"];
-            this.region = _data["region"];
-        }
-    }
-
-    static fromJS(data: any): FileTokenOutput {
-        data = typeof data === 'object' ? data : {};
-        let result = new FileTokenOutput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["accessKeyId"] = this.accessKeyId;
-        data["accessKeySecret"] = this.accessKeySecret;
-        data["token"] = this.token;
-        data["expiration"] = this.expiration;
-        data["bucket"] = this.bucket;
-        data["region"] = this.region;
-        return data;
-    }
-}
-
-export interface IFileTokenOutput {
-    accessKeyId: string | undefined;
-    accessKeySecret: string | undefined;
-    token: string | undefined;
-    expiration: string | undefined;
-    bucket: string | undefined;
-    region: string | undefined;
-}
-
 export class FindTenantByNameInput implements IFindTenantByNameInput {
     name!: string | undefined;
 
@@ -9977,50 +9367,6 @@ export class GetAuditLogPageListOutputPagedResultDto implements IGetAuditLogPage
 export interface IGetAuditLogPageListOutputPagedResultDto {
     items: GetAuditLogPageListOutput[] | undefined;
     totalCount: number;
-}
-
-export class GetFeatureListResultDto implements IGetFeatureListResultDto {
-    groups!: FeatureGroupDto[] | undefined;
-
-    constructor(data?: IGetFeatureListResultDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (Array.isArray(_data["groups"])) {
-                this.groups = [] as any;
-                for (let item of _data["groups"])
-                    this.groups!.push(FeatureGroupDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): GetFeatureListResultDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new GetFeatureListResultDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (Array.isArray(this.groups)) {
-            data["groups"] = [];
-            for (let item of this.groups)
-                data["groups"].push(item.toJSON());
-        }
-        return data;
-    }
-}
-
-export interface IGetFeatureListResultDto {
-    groups: FeatureGroupDto[] | undefined;
 }
 
 export class GetOrganizationUnitRoleInput implements IGetOrganizationUnitRoleInput {
@@ -10341,54 +9687,6 @@ export class GetPermissionInput implements IGetPermissionInput {
 export interface IGetPermissionInput {
     providerName: string;
     providerKey: string;
-}
-
-export class GetPermissionListResultDto implements IGetPermissionListResultDto {
-    entityDisplayName!: string | undefined;
-    groups!: PermissionGroupDto[] | undefined;
-
-    constructor(data?: IGetPermissionListResultDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.entityDisplayName = _data["entityDisplayName"];
-            if (Array.isArray(_data["groups"])) {
-                this.groups = [] as any;
-                for (let item of _data["groups"])
-                    this.groups!.push(PermissionGroupDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): GetPermissionListResultDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new GetPermissionListResultDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["entityDisplayName"] = this.entityDisplayName;
-        if (Array.isArray(this.groups)) {
-            data["groups"] = [];
-            for (let item of this.groups)
-                data["groups"].push(item.toJSON());
-        }
-        return data;
-    }
-}
-
-export interface IGetPermissionListResultDto {
-    entityDisplayName: string | undefined;
-    groups: PermissionGroupDto[] | undefined;
 }
 
 export class GetUnAddRoleInput implements IGetUnAddRoleInput {
@@ -10737,114 +10035,6 @@ export enum HttpStatusCode {
     ServiceUnavailable = 508,
     GatewayTimeout = 510,
     HttpVersionNotSupported = 511,
-}
-
-export class IStringValueType implements IIStringValueType {
-    readonly name!: string | undefined;
-    readonly properties!: { [key: string]: any; } | undefined;
-    validator!: IValueValidator;
-
-    constructor(data?: IIStringValueType) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            (<any>this).name = _data["name"];
-            if (_data["properties"]) {
-                (<any>this).properties = {} as any;
-                for (let key in _data["properties"]) {
-                    if (_data["properties"].hasOwnProperty(key))
-                        (<any>(<any>this).properties)![key] = _data["properties"][key];
-                }
-            }
-            this.validator = _data["validator"] ? IValueValidator.fromJS(_data["validator"]) : <any>undefined;
-        }
-    }
-
-    static fromJS(data: any): IStringValueType {
-        data = typeof data === 'object' ? data : {};
-        let result = new IStringValueType();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        if (this.properties) {
-            data["properties"] = {};
-            for (let key in this.properties) {
-                if (this.properties.hasOwnProperty(key))
-                    (<any>data["properties"])[key] = (<any>this.properties)[key];
-            }
-        }
-        data["validator"] = this.validator ? this.validator.toJSON() : <any>undefined;
-        return data;
-    }
-}
-
-export interface IIStringValueType {
-    name: string | undefined;
-    properties: { [key: string]: any; } | undefined;
-    validator: IValueValidator;
-}
-
-export class IValueValidator implements IIValueValidator {
-    readonly name!: string | undefined;
-    readonly properties!: { [key: string]: any; } | undefined;
-
-    constructor(data?: IIValueValidator) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            (<any>this).name = _data["name"];
-            if (_data["properties"]) {
-                (<any>this).properties = {} as any;
-                for (let key in _data["properties"]) {
-                    if (_data["properties"].hasOwnProperty(key))
-                        (<any>(<any>this).properties)![key] = _data["properties"][key];
-                }
-            }
-        }
-    }
-
-    static fromJS(data: any): IValueValidator {
-        data = typeof data === 'object' ? data : {};
-        let result = new IValueValidator();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        if (this.properties) {
-            data["properties"] = {};
-            for (let key in this.properties) {
-                if (this.properties.hasOwnProperty(key))
-                    (<any>data["properties"])[key] = (<any>this.properties)[key];
-            }
-        }
-        return data;
-    }
-}
-
-export interface IIValueValidator {
-    name: string | undefined;
-    properties: { [key: string]: any; } | undefined;
 }
 
 export class IanaTimeZone implements IIanaTimeZone {
@@ -11569,53 +10759,6 @@ export interface IIdentityUserUpdateDto {
     roleNames: string[] | undefined;
     password: string | undefined;
     concurrencyStamp: string | undefined;
-}
-
-export class IdentityUserUpdateRolesDto implements IIdentityUserUpdateRolesDto {
-    roleNames!: string[];
-
-    constructor(data?: IIdentityUserUpdateRolesDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-        if (!data) {
-            this.roleNames = [];
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (Array.isArray(_data["roleNames"])) {
-                this.roleNames = [] as any;
-                for (let item of _data["roleNames"])
-                    this.roleNames!.push(item);
-            }
-        }
-    }
-
-    static fromJS(data: any): IdentityUserUpdateRolesDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new IdentityUserUpdateRolesDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (Array.isArray(this.roleNames)) {
-            data["roleNames"] = [];
-            for (let item of this.roleNames)
-                data["roleNames"].push(item);
-        }
-        return data;
-    }
-}
-
-export interface IIdentityUserUpdateRolesDto {
-    roleNames: string[];
 }
 
 export class LanguageInfo implements ILanguageInfo {
@@ -12725,154 +11868,6 @@ export interface IPagingElasticSearchLogOutputCustomePagedResultDto {
     totalCount: number;
 }
 
-export class PagingFileInput implements IPagingFileInput {
-    pageIndex!: number;
-    pageSize!: number;
-    readonly skipCount!: number;
-    filter!: string | undefined;
-
-    constructor(data?: IPagingFileInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.pageIndex = _data["pageIndex"];
-            this.pageSize = _data["pageSize"];
-            (<any>this).skipCount = _data["skipCount"];
-            this.filter = _data["filter"];
-        }
-    }
-
-    static fromJS(data: any): PagingFileInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new PagingFileInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["pageIndex"] = this.pageIndex;
-        data["pageSize"] = this.pageSize;
-        data["skipCount"] = this.skipCount;
-        data["filter"] = this.filter;
-        return data;
-    }
-}
-
-export interface IPagingFileInput {
-    pageIndex: number;
-    pageSize: number;
-    skipCount: number;
-    filter: string | undefined;
-}
-
-export class PagingFileOutput implements IPagingFileOutput {
-    id!: string;
-    tenantId!: string | undefined;
-    fileName!: string | undefined;
-    filePath!: string | undefined;
-    creationTime!: dayjs.Dayjs;
-
-    constructor(data?: IPagingFileOutput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.id = _data["id"];
-            this.tenantId = _data["tenantId"];
-            this.fileName = _data["fileName"];
-            this.filePath = _data["filePath"];
-            this.creationTime = _data["creationTime"] ? dayjs(_data["creationTime"].toString()) : <any>undefined;
-        }
-    }
-
-    static fromJS(data: any): PagingFileOutput {
-        data = typeof data === 'object' ? data : {};
-        let result = new PagingFileOutput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        data["tenantId"] = this.tenantId;
-        data["fileName"] = this.fileName;
-        data["filePath"] = this.filePath;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        return data;
-    }
-}
-
-export interface IPagingFileOutput {
-    id: string;
-    tenantId: string | undefined;
-    fileName: string | undefined;
-    filePath: string | undefined;
-    creationTime: dayjs.Dayjs;
-}
-
-export class PagingFileOutputPagedResultDto implements IPagingFileOutputPagedResultDto {
-    items!: PagingFileOutput[] | undefined;
-    totalCount!: number;
-
-    constructor(data?: IPagingFileOutputPagedResultDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (Array.isArray(_data["items"])) {
-                this.items = [] as any;
-                for (let item of _data["items"])
-                    this.items!.push(PagingFileOutput.fromJS(item));
-            }
-            this.totalCount = _data["totalCount"];
-        }
-    }
-
-    static fromJS(data: any): PagingFileOutputPagedResultDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new PagingFileOutputPagedResultDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (Array.isArray(this.items)) {
-            data["items"] = [];
-            for (let item of this.items)
-                data["items"].push(item.toJSON());
-        }
-        data["totalCount"] = this.totalCount;
-        return data;
-    }
-}
-
-export interface IPagingFileOutputPagedResultDto {
-    items: PagingFileOutput[] | undefined;
-    totalCount: number;
-}
-
 export class PagingNotificationListInput implements IPagingNotificationListInput {
     pageIndex!: number;
     pageSize!: number;
@@ -13261,130 +12256,6 @@ export interface IParameterApiDescriptionModel {
     descriptorName: string | undefined;
 }
 
-export class PermissionGrantInfoDto implements IPermissionGrantInfoDto {
-    name!: string | undefined;
-    displayName!: string | undefined;
-    parentName!: string | undefined;
-    isGranted!: boolean;
-    allowedProviders!: string[] | undefined;
-    grantedProviders!: ProviderInfoDto[] | undefined;
-
-    constructor(data?: IPermissionGrantInfoDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.displayName = _data["displayName"];
-            this.parentName = _data["parentName"];
-            this.isGranted = _data["isGranted"];
-            if (Array.isArray(_data["allowedProviders"])) {
-                this.allowedProviders = [] as any;
-                for (let item of _data["allowedProviders"])
-                    this.allowedProviders!.push(item);
-            }
-            if (Array.isArray(_data["grantedProviders"])) {
-                this.grantedProviders = [] as any;
-                for (let item of _data["grantedProviders"])
-                    this.grantedProviders!.push(ProviderInfoDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): PermissionGrantInfoDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new PermissionGrantInfoDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["displayName"] = this.displayName;
-        data["parentName"] = this.parentName;
-        data["isGranted"] = this.isGranted;
-        if (Array.isArray(this.allowedProviders)) {
-            data["allowedProviders"] = [];
-            for (let item of this.allowedProviders)
-                data["allowedProviders"].push(item);
-        }
-        if (Array.isArray(this.grantedProviders)) {
-            data["grantedProviders"] = [];
-            for (let item of this.grantedProviders)
-                data["grantedProviders"].push(item.toJSON());
-        }
-        return data;
-    }
-}
-
-export interface IPermissionGrantInfoDto {
-    name: string | undefined;
-    displayName: string | undefined;
-    parentName: string | undefined;
-    isGranted: boolean;
-    allowedProviders: string[] | undefined;
-    grantedProviders: ProviderInfoDto[] | undefined;
-}
-
-export class PermissionGroupDto implements IPermissionGroupDto {
-    name!: string | undefined;
-    displayName!: string | undefined;
-    permissions!: PermissionGrantInfoDto[] | undefined;
-
-    constructor(data?: IPermissionGroupDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.displayName = _data["displayName"];
-            if (Array.isArray(_data["permissions"])) {
-                this.permissions = [] as any;
-                for (let item of _data["permissions"])
-                    this.permissions!.push(PermissionGrantInfoDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): PermissionGroupDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new PermissionGroupDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["displayName"] = this.displayName;
-        if (Array.isArray(this.permissions)) {
-            data["permissions"] = [];
-            for (let item of this.permissions)
-                data["permissions"].push(item.toJSON());
-        }
-        return data;
-    }
-}
-
-export interface IPermissionGroupDto {
-    name: string | undefined;
-    displayName: string | undefined;
-    permissions: PermissionGrantInfoDto[] | undefined;
-}
-
 export class PermissionOutput implements IPermissionOutput {
     grants!: string[] | undefined;
     allGrants!: string[] | undefined;
@@ -13505,92 +12376,17 @@ export interface IPermissionTreeDto {
     children: PermissionTreeDto[] | undefined;
 }
 
-export class ProfileDto implements IProfileDto {
-    readonly extraProperties!: { [key: string]: any; } | undefined;
-    userName!: string | undefined;
-    email!: string | undefined;
-    name!: string | undefined;
-    surname!: string | undefined;
-    phoneNumber!: string | undefined;
-    isExternal!: boolean;
-    hasPassword!: boolean;
-    concurrencyStamp!: string | undefined;
-
-    constructor(data?: IProfileDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (_data["extraProperties"]) {
-                (<any>this).extraProperties = {} as any;
-                for (let key in _data["extraProperties"]) {
-                    if (_data["extraProperties"].hasOwnProperty(key))
-                        (<any>(<any>this).extraProperties)![key] = _data["extraProperties"][key];
-                }
-            }
-            this.userName = _data["userName"];
-            this.email = _data["email"];
-            this.name = _data["name"];
-            this.surname = _data["surname"];
-            this.phoneNumber = _data["phoneNumber"];
-            this.isExternal = _data["isExternal"];
-            this.hasPassword = _data["hasPassword"];
-            this.concurrencyStamp = _data["concurrencyStamp"];
-        }
-    }
-
-    static fromJS(data: any): ProfileDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ProfileDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (this.extraProperties) {
-            data["extraProperties"] = {};
-            for (let key in this.extraProperties) {
-                if (this.extraProperties.hasOwnProperty(key))
-                    (<any>data["extraProperties"])[key] = (<any>this.extraProperties)[key];
-            }
-        }
-        data["userName"] = this.userName;
-        data["email"] = this.email;
-        data["name"] = this.name;
-        data["surname"] = this.surname;
-        data["phoneNumber"] = this.phoneNumber;
-        data["isExternal"] = this.isExternal;
-        data["hasPassword"] = this.hasPassword;
-        data["concurrencyStamp"] = this.concurrencyStamp;
-        return data;
-    }
-}
-
-export interface IProfileDto {
-    extraProperties: { [key: string]: any; } | undefined;
-    userName: string | undefined;
-    email: string | undefined;
-    name: string | undefined;
-    surname: string | undefined;
-    phoneNumber: string | undefined;
-    isExternal: boolean;
-    hasPassword: boolean;
-    concurrencyStamp: string | undefined;
-}
-
 export class PropertyApiDescriptionModel implements IPropertyApiDescriptionModel {
     name!: string | undefined;
     jsonName!: string | undefined;
     type!: string | undefined;
     typeSimple!: string | undefined;
     isRequired!: boolean;
+    minLength!: number | undefined;
+    maxLength!: number | undefined;
+    minimum!: string | undefined;
+    maximum!: string | undefined;
+    regex!: string | undefined;
 
     constructor(data?: IPropertyApiDescriptionModel) {
         if (data) {
@@ -13608,6 +12404,11 @@ export class PropertyApiDescriptionModel implements IPropertyApiDescriptionModel
             this.type = _data["type"];
             this.typeSimple = _data["typeSimple"];
             this.isRequired = _data["isRequired"];
+            this.minLength = _data["minLength"];
+            this.maxLength = _data["maxLength"];
+            this.minimum = _data["minimum"];
+            this.maximum = _data["maximum"];
+            this.regex = _data["regex"];
         }
     }
 
@@ -13625,6 +12426,11 @@ export class PropertyApiDescriptionModel implements IPropertyApiDescriptionModel
         data["type"] = this.type;
         data["typeSimple"] = this.typeSimple;
         data["isRequired"] = this.isRequired;
+        data["minLength"] = this.minLength;
+        data["maxLength"] = this.maxLength;
+        data["minimum"] = this.minimum;
+        data["maximum"] = this.maximum;
+        data["regex"] = this.regex;
         return data;
     }
 }
@@ -13635,110 +12441,11 @@ export interface IPropertyApiDescriptionModel {
     type: string | undefined;
     typeSimple: string | undefined;
     isRequired: boolean;
-}
-
-export class ProviderInfoDto implements IProviderInfoDto {
-    providerName!: string | undefined;
-    providerKey!: string | undefined;
-
-    constructor(data?: IProviderInfoDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.providerName = _data["providerName"];
-            this.providerKey = _data["providerKey"];
-        }
-    }
-
-    static fromJS(data: any): ProviderInfoDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ProviderInfoDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["providerName"] = this.providerName;
-        data["providerKey"] = this.providerKey;
-        return data;
-    }
-}
-
-export interface IProviderInfoDto {
-    providerName: string | undefined;
-    providerKey: string | undefined;
-}
-
-export class RegisterDto implements IRegisterDto {
-    readonly extraProperties!: { [key: string]: any; } | undefined;
-    userName!: string;
-    emailAddress!: string;
-    password!: string;
-    appName!: string;
-
-    constructor(data?: IRegisterDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (_data["extraProperties"]) {
-                (<any>this).extraProperties = {} as any;
-                for (let key in _data["extraProperties"]) {
-                    if (_data["extraProperties"].hasOwnProperty(key))
-                        (<any>(<any>this).extraProperties)![key] = _data["extraProperties"][key];
-                }
-            }
-            this.userName = _data["userName"];
-            this.emailAddress = _data["emailAddress"];
-            this.password = _data["password"];
-            this.appName = _data["appName"];
-        }
-    }
-
-    static fromJS(data: any): RegisterDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new RegisterDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (this.extraProperties) {
-            data["extraProperties"] = {};
-            for (let key in this.extraProperties) {
-                if (this.extraProperties.hasOwnProperty(key))
-                    (<any>data["extraProperties"])[key] = (<any>this.extraProperties)[key];
-            }
-        }
-        data["userName"] = this.userName;
-        data["emailAddress"] = this.emailAddress;
-        data["password"] = this.password;
-        data["appName"] = this.appName;
-        return data;
-    }
-}
-
-export interface IRegisterDto {
-    extraProperties: { [key: string]: any; } | undefined;
-    userName: string;
-    emailAddress: string;
-    password: string;
-    appName: string;
+    minLength: number | undefined;
+    maxLength: number | undefined;
+    minimum: string | undefined;
+    maximum: string | undefined;
+    regex: string | undefined;
 }
 
 export class RemoteServiceErrorInfo implements IRemoteServiceErrorInfo {
@@ -13977,50 +12684,6 @@ export interface IRemoveUserToOrganizationUnitInput {
     organizationUnitId: string;
 }
 
-export class ResetPasswordDto implements IResetPasswordDto {
-    userId!: string;
-    resetToken!: string;
-    password!: string;
-
-    constructor(data?: IResetPasswordDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.userId = _data["userId"];
-            this.resetToken = _data["resetToken"];
-            this.password = _data["password"];
-        }
-    }
-
-    static fromJS(data: any): ResetPasswordDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ResetPasswordDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["userId"] = this.userId;
-        data["resetToken"] = this.resetToken;
-        data["password"] = this.password;
-        return data;
-    }
-}
-
-export interface IResetPasswordDto {
-    userId: string;
-    resetToken: string;
-    password: string;
-}
-
 export class ReturnValueApiDescriptionModel implements IReturnValueApiDescriptionModel {
     type!: string | undefined;
     typeSimple!: string | undefined;
@@ -14151,54 +12814,6 @@ export interface ISendCommonMessageInput {
     title: string | undefined;
     content: string | undefined;
     receiveIds: string[] | undefined;
-}
-
-export class SendPasswordResetCodeDto implements ISendPasswordResetCodeDto {
-    email!: string;
-    appName!: string;
-    returnUrl!: string | undefined;
-    returnUrlHash!: string | undefined;
-
-    constructor(data?: ISendPasswordResetCodeDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.email = _data["email"];
-            this.appName = _data["appName"];
-            this.returnUrl = _data["returnUrl"];
-            this.returnUrlHash = _data["returnUrlHash"];
-        }
-    }
-
-    static fromJS(data: any): SendPasswordResetCodeDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new SendPasswordResetCodeDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["email"] = this.email;
-        data["appName"] = this.appName;
-        data["returnUrl"] = this.returnUrl;
-        data["returnUrlHash"] = this.returnUrlHash;
-        return data;
-    }
-}
-
-export interface ISendPasswordResetCodeDto {
-    email: string;
-    appName: string;
-    returnUrl: string | undefined;
-    returnUrlHash: string | undefined;
 }
 
 export class SetDataDictinaryDetailInput implements ISetDataDictinaryDetailInput {
@@ -14551,62 +13166,6 @@ export class TenantDtoPagedResultDto implements ITenantDtoPagedResultDto {
 export interface ITenantDtoPagedResultDto {
     items: TenantDto[] | undefined;
     totalCount: number;
-}
-
-export class TenantUpdateDto implements ITenantUpdateDto {
-    readonly extraProperties!: { [key: string]: any; } | undefined;
-    name!: string;
-    concurrencyStamp!: string | undefined;
-
-    constructor(data?: ITenantUpdateDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (_data["extraProperties"]) {
-                (<any>this).extraProperties = {} as any;
-                for (let key in _data["extraProperties"]) {
-                    if (_data["extraProperties"].hasOwnProperty(key))
-                        (<any>(<any>this).extraProperties)![key] = _data["extraProperties"][key];
-                }
-            }
-            this.name = _data["name"];
-            this.concurrencyStamp = _data["concurrencyStamp"];
-        }
-    }
-
-    static fromJS(data: any): TenantUpdateDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new TenantUpdateDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (this.extraProperties) {
-            data["extraProperties"] = {};
-            for (let key in this.extraProperties) {
-                if (this.extraProperties.hasOwnProperty(key))
-                    (<any>data["extraProperties"])[key] = (<any>this.extraProperties)[key];
-            }
-        }
-        data["name"] = this.name;
-        data["concurrencyStamp"] = this.concurrencyStamp;
-        return data;
-    }
-}
-
-export interface ITenantUpdateDto {
-    extraProperties: { [key: string]: any; } | undefined;
-    name: string;
-    concurrencyStamp: string | undefined;
 }
 
 export class TimeZone implements ITimeZone {
@@ -14965,158 +13524,6 @@ export interface IUpdateDetailInput {
     order: number;
 }
 
-export class UpdateEmailSettingsDto implements IUpdateEmailSettingsDto {
-    smtpHost!: string | undefined;
-    smtpPort!: number;
-    smtpUserName!: string | undefined;
-    smtpPassword!: string | undefined;
-    smtpDomain!: string | undefined;
-    smtpEnableSsl!: boolean;
-    smtpUseDefaultCredentials!: boolean;
-    defaultFromAddress!: string;
-    defaultFromDisplayName!: string;
-
-    constructor(data?: IUpdateEmailSettingsDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.smtpHost = _data["smtpHost"];
-            this.smtpPort = _data["smtpPort"];
-            this.smtpUserName = _data["smtpUserName"];
-            this.smtpPassword = _data["smtpPassword"];
-            this.smtpDomain = _data["smtpDomain"];
-            this.smtpEnableSsl = _data["smtpEnableSsl"];
-            this.smtpUseDefaultCredentials = _data["smtpUseDefaultCredentials"];
-            this.defaultFromAddress = _data["defaultFromAddress"];
-            this.defaultFromDisplayName = _data["defaultFromDisplayName"];
-        }
-    }
-
-    static fromJS(data: any): UpdateEmailSettingsDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new UpdateEmailSettingsDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["smtpHost"] = this.smtpHost;
-        data["smtpPort"] = this.smtpPort;
-        data["smtpUserName"] = this.smtpUserName;
-        data["smtpPassword"] = this.smtpPassword;
-        data["smtpDomain"] = this.smtpDomain;
-        data["smtpEnableSsl"] = this.smtpEnableSsl;
-        data["smtpUseDefaultCredentials"] = this.smtpUseDefaultCredentials;
-        data["defaultFromAddress"] = this.defaultFromAddress;
-        data["defaultFromDisplayName"] = this.defaultFromDisplayName;
-        return data;
-    }
-}
-
-export interface IUpdateEmailSettingsDto {
-    smtpHost: string | undefined;
-    smtpPort: number;
-    smtpUserName: string | undefined;
-    smtpPassword: string | undefined;
-    smtpDomain: string | undefined;
-    smtpEnableSsl: boolean;
-    smtpUseDefaultCredentials: boolean;
-    defaultFromAddress: string;
-    defaultFromDisplayName: string;
-}
-
-export class UpdateFeatureDto implements IUpdateFeatureDto {
-    name!: string | undefined;
-    value!: string | undefined;
-
-    constructor(data?: IUpdateFeatureDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.value = _data["value"];
-        }
-    }
-
-    static fromJS(data: any): UpdateFeatureDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new UpdateFeatureDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["value"] = this.value;
-        return data;
-    }
-}
-
-export interface IUpdateFeatureDto {
-    name: string | undefined;
-    value: string | undefined;
-}
-
-export class UpdateFeaturesDto implements IUpdateFeaturesDto {
-    features!: UpdateFeatureDto[] | undefined;
-
-    constructor(data?: IUpdateFeaturesDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (Array.isArray(_data["features"])) {
-                this.features = [] as any;
-                for (let item of _data["features"])
-                    this.features!.push(UpdateFeatureDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): UpdateFeaturesDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new UpdateFeaturesDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (Array.isArray(this.features)) {
-            data["features"] = [];
-            for (let item of this.features)
-                data["features"].push(item.toJSON());
-        }
-        return data;
-    }
-}
-
-export interface IUpdateFeaturesDto {
-    features: UpdateFeatureDto[] | undefined;
-}
-
 export class UpdateOrganizationUnitInput implements IUpdateOrganizationUnitInput {
     displayName!: string;
     id!: string;
@@ -15239,78 +13646,6 @@ export class UpdatePermissionsDto implements IUpdatePermissionsDto {
 
 export interface IUpdatePermissionsDto {
     permissions: UpdatePermissionDto[] | undefined;
-}
-
-export class UpdateProfileDto implements IUpdateProfileDto {
-    readonly extraProperties!: { [key: string]: any; } | undefined;
-    userName!: string | undefined;
-    email!: string | undefined;
-    name!: string | undefined;
-    surname!: string | undefined;
-    phoneNumber!: string | undefined;
-    concurrencyStamp!: string | undefined;
-
-    constructor(data?: IUpdateProfileDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (_data["extraProperties"]) {
-                (<any>this).extraProperties = {} as any;
-                for (let key in _data["extraProperties"]) {
-                    if (_data["extraProperties"].hasOwnProperty(key))
-                        (<any>(<any>this).extraProperties)![key] = _data["extraProperties"][key];
-                }
-            }
-            this.userName = _data["userName"];
-            this.email = _data["email"];
-            this.name = _data["name"];
-            this.surname = _data["surname"];
-            this.phoneNumber = _data["phoneNumber"];
-            this.concurrencyStamp = _data["concurrencyStamp"];
-        }
-    }
-
-    static fromJS(data: any): UpdateProfileDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new UpdateProfileDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (this.extraProperties) {
-            data["extraProperties"] = {};
-            for (let key in this.extraProperties) {
-                if (this.extraProperties.hasOwnProperty(key))
-                    (<any>data["extraProperties"])[key] = (<any>this.extraProperties)[key];
-            }
-        }
-        data["userName"] = this.userName;
-        data["email"] = this.email;
-        data["name"] = this.name;
-        data["surname"] = this.surname;
-        data["phoneNumber"] = this.phoneNumber;
-        data["concurrencyStamp"] = this.concurrencyStamp;
-        return data;
-    }
-}
-
-export interface IUpdateProfileDto {
-    extraProperties: { [key: string]: any; } | undefined;
-    userName: string | undefined;
-    email: string | undefined;
-    name: string | undefined;
-    surname: string | undefined;
-    phoneNumber: string | undefined;
-    concurrencyStamp: string | undefined;
 }
 
 export class UpdateRoleInput implements IUpdateRoleInput {
@@ -15523,118 +13858,6 @@ export class UpdateUserInput implements IUpdateUserInput {
 export interface IUpdateUserInput {
     userId: string;
     userInfo: IdentityUserUpdateDto;
-}
-
-export class UserData implements IUserData {
-    id!: string;
-    tenantId!: string | undefined;
-    userName!: string | undefined;
-    name!: string | undefined;
-    surname!: string | undefined;
-    email!: string | undefined;
-    emailConfirmed!: boolean;
-    phoneNumber!: string | undefined;
-    phoneNumberConfirmed!: boolean;
-
-    constructor(data?: IUserData) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.id = _data["id"];
-            this.tenantId = _data["tenantId"];
-            this.userName = _data["userName"];
-            this.name = _data["name"];
-            this.surname = _data["surname"];
-            this.email = _data["email"];
-            this.emailConfirmed = _data["emailConfirmed"];
-            this.phoneNumber = _data["phoneNumber"];
-            this.phoneNumberConfirmed = _data["phoneNumberConfirmed"];
-        }
-    }
-
-    static fromJS(data: any): UserData {
-        data = typeof data === 'object' ? data : {};
-        let result = new UserData();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        data["tenantId"] = this.tenantId;
-        data["userName"] = this.userName;
-        data["name"] = this.name;
-        data["surname"] = this.surname;
-        data["email"] = this.email;
-        data["emailConfirmed"] = this.emailConfirmed;
-        data["phoneNumber"] = this.phoneNumber;
-        data["phoneNumberConfirmed"] = this.phoneNumberConfirmed;
-        return data;
-    }
-}
-
-export interface IUserData {
-    id: string;
-    tenantId: string | undefined;
-    userName: string | undefined;
-    name: string | undefined;
-    surname: string | undefined;
-    email: string | undefined;
-    emailConfirmed: boolean;
-    phoneNumber: string | undefined;
-    phoneNumberConfirmed: boolean;
-}
-
-export class UserDataListResultDto implements IUserDataListResultDto {
-    items!: UserData[] | undefined;
-
-    constructor(data?: IUserDataListResultDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (Array.isArray(_data["items"])) {
-                this.items = [] as any;
-                for (let item of _data["items"])
-                    this.items!.push(UserData.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): UserDataListResultDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new UserDataListResultDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (Array.isArray(this.items)) {
-            data["items"] = [];
-            for (let item of this.items)
-                data["items"].push(item.toJSON());
-        }
-        return data;
-    }
-}
-
-export interface IUserDataListResultDto {
-    items: UserData[] | undefined;
 }
 
 export class UserLoginInfo implements IUserLoginInfo {

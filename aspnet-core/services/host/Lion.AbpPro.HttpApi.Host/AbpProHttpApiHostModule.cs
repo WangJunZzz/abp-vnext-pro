@@ -1,3 +1,5 @@
+using Hangfire.Redis;
+using Swagger;
 using Volo.Abp.BackgroundJobs.Hangfire;
 
 namespace Lion.AbpPro
@@ -11,18 +13,17 @@ namespace Lion.AbpPro
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpAccountWebModule),
         typeof(AbpProApplicationModule),
-        typeof(AbpProAbpCapModule),
+        typeof(LionAbpProCapModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpCachingStackExchangeRedisModule),
         typeof(AbpBackgroundJobsHangfireModule)
     )]
     public class AbpProHttpApiHostModule : AbpModule
     {
-        public override void OnPostApplicationInitialization(
-            ApplicationInitializationContext context)
+        public override void OnPostApplicationInitialization(ApplicationInitializationContext context)
         {
             // 应用程序初始化的时候注册hangfire
-            context.CreateRecurringJob();
+            //context.CreateRecurringJob();
             base.OnPostApplicationInitialization(context);
         }
 
@@ -43,11 +44,14 @@ namespace Lion.AbpPro
         {
             var app = context.GetApplicationBuilder();
             var configuration = context.GetConfiguration();
-            //app.UseRequestLog();
             app.UseAbpRequestLocalization();
             app.UseCorrelationId();
             app.UseStaticFiles();
-            app.UseMiniProfiler();
+            if (configuration.GetValue("MiniProfiler:Enabled", false))
+            {
+                app.UseMiniProfiler();
+            }
+
             app.UseRouting();
             app.UseCors(AbpProHttpApiHostConst.DefaultCorsPolicyName);
             app.UseAuthentication();
@@ -84,17 +88,24 @@ namespace Lion.AbpPro
         }
 
 
+        #region 私有配置
+
         private void ConfigureHangfire(ServiceConfigurationContext context)
         {
+            var redisStorageOptions = new RedisStorageOptions()
+            {
+                Db = context.Services.GetConfiguration().GetValue<int>("Hangfire:Redis:DB")
+            };
+
             Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = true; });
             context.Services.AddHangfireServer();
             context.Services.AddHangfire(config =>
             {
-                config.UseRedisStorage(ConnectionMultiplexer.Connect(context.Services.GetConfiguration().GetConnectionString("Hangfire")));
+                config.UseRedisStorage(ConnectionMultiplexer.Connect(context.Services.GetConfiguration().GetValue<string>("Hangfire:Redis:Host")), redisStorageOptions);
                 var delaysInSeconds = new[] { 10, 60, 60 * 3 }; // 重试时间间隔
                 const int Attempts = 3; // 重试次数
                 config.UseFilter(new AutomaticRetryAttribute() { Attempts = Attempts, DelaysInSeconds = delaysInSeconds });
-                config.UseFilter(new AutoDeleteAfterSuccessAttributer(TimeSpan.FromDays(7)));
+                config.UseFilter(new AutoDeleteAfterSuccessAttribute(TimeSpan.FromDays(7)));
                 config.UseFilter(new JobRetryLastFilter(Attempts));
             });
         }
@@ -104,14 +115,16 @@ namespace Lion.AbpPro
         /// </summary>
         private void ConfigureMiniProfiler(ServiceConfigurationContext context)
         {
-            context.Services.AddMiniProfiler(options => options.RouteBasePath = "/profiler").AddEntityFramework();
+            if (context.Services.GetConfiguration().GetValue("MiniProfiler:Enabled", false))
+            {
+                context.Services.AddMiniProfiler(options => options.RouteBasePath = "/profiler").AddEntityFramework();
+            }
         }
 
         /// <summary>
         /// 配置JWT
         /// </summary>
-        private void ConfigureJwtAuthentication(ServiceConfigurationContext context,
-            IConfiguration configuration)
+        private void ConfigureJwtAuthentication(ServiceConfigurationContext context, IConfiguration configuration)
         {
             context.Services.AddAuthentication(options =>
                 {
@@ -199,7 +212,7 @@ namespace Lion.AbpPro
             context.Services.Configure<IdentityOptions>(options => { options.Lockout = new LockoutOptions() { AllowedForNewUsers = false }; });
         }
 
-        private static void ConfigureSwaggerServices(ServiceConfigurationContext context)
+        private void ConfigureSwaggerServices(ServiceConfigurationContext context)
         {
             context.Services.AddSwaggerGen(
                 options =>
@@ -285,7 +298,9 @@ namespace Lion.AbpPro
 
                     var hostingEnvironment = context.Services.GetHostingEnvironment();
                     bool auth = !hostingEnvironment.IsDevelopment();
-                    capOptions.UseDashboard(options => { options.UseAuth = auth; });
+                    capOptions.UseDashboard(options => { options.UseAuth = auth;
+                        options.AuthorizationPolicy = LionAbpProCapPermissions.CapManagement.Cap;
+                    });
                 });
             }
             else
@@ -324,5 +339,7 @@ namespace Lion.AbpPro
                     options.IgnoredUrls.Add("/cap");
                 });
         }
+
+        #endregion
     }
 }

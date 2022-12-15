@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\frameworks\CAP\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj" />
+    <ProjectReference Include="..\..\..\..\frameworks\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj" />
     <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.HttpApi\Lion.AbpPro.NotificationManagement.HttpApi.csproj" />
     <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.Application\Lion.AbpPro.NotificationManagement.Application.csproj" />
     <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.EntityFrameworkCore\Lion.AbpPro.NotificationManagement.EntityFrameworkCore.csproj" />

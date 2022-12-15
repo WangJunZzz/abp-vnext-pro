@@ -95,5 +95,6 @@ export default {
     smsCode: '短信验证码',
     mobile: '手机号码',
     tenant: '租户',
+    tenantPlaceholder: '请输入租户',
   },
 };

@@ -78,7 +78,8 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
                 GuidGenerator.Create(),
                 code,
                 displayText,
-                description
+                description,
+                CurrentTenant.Id
             );
 
             return await _dataDictionaryRepository.InsertAsync(entity);
@@ -124,13 +125,13 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// </summary>
         public async Task<DataDictionary> SetStatus(
             Guid dataDictionaryId,
-            Guid dataDictionayDetailId,
+            Guid dataDictionaryDetailId,
             bool isEnabled)
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
             if (entity == null)
                 throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryNotExist);
-            var detail = entity.Details.FirstOrDefault(e => e.Id == dataDictionayDetailId);
+            var detail = entity.Details.FirstOrDefault(e => e.Id == dataDictionaryDetailId);
             if (null == detail)
             {
                 throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryDetailExist);
@@ -145,7 +146,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// </summary>
         public async Task<DataDictionary> UpdateDetailAsync(
             Guid dataDictionaryId,
-            Guid dataDictionayDetailId,
+            Guid dataDictionaryDetailId,
             string displayText,
             string description,
             int order)
@@ -153,7 +154,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
             if (entity == null)
                 throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryNotExist);
-            var detail = entity.Details.FirstOrDefault(e => e.Id == dataDictionayDetailId);
+            var detail = entity.Details.FirstOrDefault(e => e.Id == dataDictionaryDetailId);
             if (null == detail)
             {
                 throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryDetailNotExist);
@@ -161,7 +162,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 
             detail.UpdateDetail
             (
-                dataDictionayDetailId,
+                dataDictionaryDetailId,
                 displayText,
                 description,
                 order
@@ -201,7 +202,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task DeleteDictinaryTypeAsync(Guid id)
+        public async Task DeleteDataDictionaryTypeAsync(Guid id)
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(id);
             if (entity == null)

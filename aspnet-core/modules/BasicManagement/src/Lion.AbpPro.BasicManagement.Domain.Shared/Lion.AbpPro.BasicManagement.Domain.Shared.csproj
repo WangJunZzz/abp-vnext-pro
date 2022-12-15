@@ -23,5 +23,10 @@
         <EmbeddedResource Include="Localization\BasicManagement\*.json" />
         <Content Remove="Localization\BasicManagement\*.json" />
     </ItemGroup>
+    
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\frameworks\src\Lion.AbpPro.Core\Lion.AbpPro.Core.csproj" />
+    </ItemGroup>
 
 </Project>

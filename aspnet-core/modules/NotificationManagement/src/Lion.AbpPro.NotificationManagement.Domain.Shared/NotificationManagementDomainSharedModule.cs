@@ -1,7 +1,10 @@
+using Lion.AbpPro.Core;
+
 namespace Lion.AbpPro.NotificationManagement
 {
     [DependsOn(
-        typeof(AbpValidationModule)
+        typeof(AbpValidationModule),
+        typeof(LionAbpProCoreModule)
     )]
     public class NotificationManagementDomainSharedModule : AbpModule
     {

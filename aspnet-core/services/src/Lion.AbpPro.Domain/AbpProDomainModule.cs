@@ -4,7 +4,8 @@ namespace Lion.AbpPro
         typeof(AbpProDomainSharedModule),
         typeof(BasicManagementDomainModule),
         typeof(DataDictionaryManagementDomainModule),
-        typeof(NotificationManagementDomainModule)
+        typeof(NotificationManagementDomainModule),
+        typeof(AbpEmailingModule)
     )]
     public class AbpProDomainModule : AbpModule
     {

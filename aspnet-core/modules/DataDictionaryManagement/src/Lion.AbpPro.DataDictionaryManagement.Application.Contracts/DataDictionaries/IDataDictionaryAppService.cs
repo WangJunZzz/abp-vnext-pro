@@ -48,7 +48,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task DeleteDictinaryTypeAsync(IdInput input);
+        Task DeleteDataDictionaryTypeAsync(IdInput input);
 
         /// <summary>
         /// 修改数据字典

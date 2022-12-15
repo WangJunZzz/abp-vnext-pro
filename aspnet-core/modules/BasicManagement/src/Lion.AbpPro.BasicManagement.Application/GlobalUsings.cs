@@ -1,11 +1,11 @@
 ﻿// Global using directives
 
 global using System.Globalization;
-global using AutoMapper.Internal.Mappers;
 global using Lion.AbpPro.BasicManagement.OrganizationUnits.Dto;
 global using Lion.AbpPro.BasicManagement.Permissions;
+global using Lion.AbpPro.BasicManagement.Roles.Dtos;
 global using Lion.AbpPro.BasicManagement.Tenants.Dtos;
-global using Lion.AbpPro.Extension.Customs.Dtos;
+global using Lion.AbpPro.Core;
 global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Localization;

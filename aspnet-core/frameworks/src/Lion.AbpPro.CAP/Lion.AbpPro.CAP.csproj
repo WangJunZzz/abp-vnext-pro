@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <RootNamespace />
+        <AssemblyName>Lion.AbpPro.CAP</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.Authorization.Abstractions" />
+        <PackageReference Include="Volo.Abp.Core" />
+        <PackageReference Include="Volo.Abp.EventBus" />
+        <PackageReference Include="DotNetCore.CAP" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Lion.AbpPro.Localization\Lion.AbpPro.Localization.csproj" />
+    </ItemGroup>
+</Project>

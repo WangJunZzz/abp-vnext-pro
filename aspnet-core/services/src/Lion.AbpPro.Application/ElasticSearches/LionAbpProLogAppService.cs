@@ -13,7 +13,7 @@ namespace Lion.AbpPro.ElasticSearches
             _configuration = configuration;
         }
         [Authorize(Policy = AbpProPermissions.SystemManagement.ES)]
-        public async Task<CustomePagedResultDto<PagingElasticSearchLogOutput>> PaingAsync(PagingElasticSearchLogInput input)
+        public async Task<CustomPagedResultDto<PagingElasticSearchLogOutput>> PaingAsync(PagingElasticSearchLogInput input)
         {
             var IndexName = _configuration.GetValue<string>("ElasticSearch:SearchIndexFormat");
             // 默认查询当天
@@ -52,7 +52,7 @@ namespace Lion.AbpPro.ElasticSearches
 
             if (result.HitsMetadata != null)
             {
-                return new CustomePagedResultDto<PagingElasticSearchLogOutput>
+                return new CustomPagedResultDto<PagingElasticSearchLogOutput>
                 (
                     result.HitsMetadata.Total.Value,
                     ObjectMapper

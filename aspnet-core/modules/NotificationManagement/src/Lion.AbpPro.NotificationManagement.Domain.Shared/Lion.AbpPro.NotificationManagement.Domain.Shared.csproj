@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj" />
+      <ProjectReference Include="..\..\..\..\frameworks\src\Lion.AbpPro.Core\Lion.AbpPro.Core.csproj" />
     </ItemGroup>
 
 

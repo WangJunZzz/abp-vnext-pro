@@ -1,3 +1,5 @@
+using Volo.Abp.AutoMapper;
+
 namespace Lion.AbpPro.DataDictionaryManagement
 {
     [DependsOn(

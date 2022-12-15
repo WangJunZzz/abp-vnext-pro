@@ -2,21 +2,47 @@
     
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <RootNamespace>/</RootNamespace>
+        <RootNamespace />
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Ocelot.Provider.Polly" />
         <PackageReference Include="Ocelot.Provider.Consul" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
         <PackageReference Include="Volo.Abp" />
         <PackageReference Include="Volo.Abp.AspNetCore" />
         <PackageReference Include="Volo.Abp.Autofac" />
         <PackageReference Include="Volo.Abp.Core" />
         <PackageReference Include="Volo.Abp.Swashbuckle" />
-        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" />
+        <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" />
+
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+        <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" />
         <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
     </ItemGroup>
+    
     <ItemGroup>
-        <ProjectReference Include="..\..\frameworks\Extensions\src\Lion.AbpPro.Extension\Lion.AbpPro.Extension.csproj" />
+        <PackageReference Include="Serilog" />
+        <PackageReference Include="Serilog.AspNetCore" />
+        <PackageReference Include="Serilog.Exceptions" />
+        <PackageReference Include="Serilog.Extensions.Logging" />
+        <PackageReference Include="Serilog.Settings.Configuration" />
+        <PackageReference Include="Serilog.Sinks.Console" />
+        <PackageReference Include="Serilog.Sinks.Elasticsearch" />
+        <PackageReference Include="Serilog.Sinks.File" />
+        <PackageReference Include="Volo.Abp.AspNetCore.Serilog" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="MiniProfiler.AspNetCore.Mvc" />
+        <PackageReference Include="MiniProfiler.EntityFrameworkCore" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\frameworks\src\Lion.AbpPro.Core\Lion.AbpPro.Core.csproj" />
     </ItemGroup>
 </Project>

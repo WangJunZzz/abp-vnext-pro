@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <BasicTable @register="registerTable" size="small">
       <template #toolbar>
@@ -111,4 +111,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped></style> -->

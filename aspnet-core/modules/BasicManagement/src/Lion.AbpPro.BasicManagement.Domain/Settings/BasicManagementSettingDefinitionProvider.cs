@@ -10,13 +10,13 @@ public class BasicManagementSettingDefinitionProvider : SettingDefinitionProvide
     {
         //Define your own settings here. Example:
         //context.Add(new SettingDefinition(BasicManagementSettings.MySetting1));
-        OverrideDefalutSettings(context);
+        OverrideDefaultSettings(context);
     }
 
     /// <summary>
     /// 重写默认setting添加自定义属性
     /// </summary>
-    private static void OverrideDefalutSettings(ISettingDefinitionContext context)
+    private static void OverrideDefaultSettings(ISettingDefinitionContext context)
     {
         context.GetOrNull("Abp.Identity.Password.RequiredLength")
             .WithProperty(BasicManagementSettings.Group.Default,
@@ -54,6 +54,7 @@ public class BasicManagementSettingDefinitionProvider : SettingDefinitionProvide
             .WithProperty(BasicManagementSettings.ControlType.Default,
                 BasicManagementSettings.ControlType.TypeCheckBox);
     }
+    
 
     private static LocalizableString L(string name)
     {

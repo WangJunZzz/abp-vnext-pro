@@ -8,7 +8,7 @@ global using System.Runtime.Serialization;
 global using System.Threading;
 global using System.Threading.Tasks;
 global using AutoMapper;
-global using Lion.AbpPro.Extension.Customs;
+global using Lion.AbpPro.Core;
 global using Lion.AbpPro.NotificationManagement.Notifications;
 global using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
 global using Lion.AbpPro.NotificationManagement.Notifications.LocalEvents;

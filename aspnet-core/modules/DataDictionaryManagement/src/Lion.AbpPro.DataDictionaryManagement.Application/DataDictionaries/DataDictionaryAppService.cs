@@ -116,10 +116,11 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 
 
         [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Delete)]
-        public Task DeleteDictinaryTypeAsync(IdInput input)
+        public Task DeleteDataDictionaryTypeAsync(IdInput input)
         {
-            return _dataDictionaryManager.DeleteDictinaryTypeAsync(input.Id);
+            return _dataDictionaryManager.DeleteDataDictionaryTypeAsync(input.Id);
         }
+        
         [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Update)]
         public  Task UpdateAsync(UpdateDataDictinaryInput input)
         {

@@ -1,4 +1,3 @@
-using Lion.AbpPro.BasicManagement.Roles.Dtos;
 using Volo.Abp.PermissionManagement;
 
 namespace Lion.AbpPro.BasicManagement.Roles

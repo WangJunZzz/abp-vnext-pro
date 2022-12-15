@@ -19,6 +19,7 @@ global using Volo.Abp.AutoMapper;
 global using Volo.Abp.Data;
 global using Volo.Abp.DependencyInjection;
 global using Volo.Abp.Domain.Services;
+global using Volo.Abp.Emailing;
 global using Volo.Abp.EventBus.Distributed;
 global using Volo.Abp.Identity;
 global using Volo.Abp.Localization;
