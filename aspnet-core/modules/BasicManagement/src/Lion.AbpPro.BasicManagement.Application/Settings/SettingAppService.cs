@@ -46,10 +46,10 @@ namespace Lion.AbpPro.BasicManagement.Settings
 
                     item.SettingItemOutput.Add(new SettingItemOutput(
                         itemDefinition.Name,
-                        itemDefinition.DisplayName.Localize(_factory),
+                        itemDefinition.DisplayName?.Localize(_factory),
                         value,
                         type,
-                        itemDefinition.Description.Localize(_factory)));
+                        itemDefinition.Description?.Localize(_factory)));
                 }
             }
 
