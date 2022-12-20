@@ -17,22 +17,19 @@ namespace Lion.AbpPro.BasicManagement.Users
         private readonly IIdentityUserRepository _identityUserRepository;
         private readonly IExcelExporter _excelExporter;
         private readonly IOptions<IdentityOptions> _options;
-        private readonly IStringLocalizer<IdentityResource> _localizer;
 
         public UserAppService(
             IIdentityUserAppService identityUserAppService,
             IdentityUserManager userManager,
             IIdentityUserRepository userRepository,
             IExcelExporter excelExporter,
-            IOptions<IdentityOptions> options,
-            IStringLocalizer<IdentityResource> localizer)
+            IOptions<IdentityOptions> options)
         {
             _identityUserAppService = identityUserAppService;
             _userManager = userManager;
             _identityUserRepository = userRepository;
             _excelExporter = excelExporter;
             _options = options;
-            _localizer = localizer;
         }
 
         /// <summary>
