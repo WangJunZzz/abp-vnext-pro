@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Account;
 using Volo.Abp.Identity.Localization;
+using IdentityRole = Volo.Abp.Identity.IdentityRole;
 
 namespace Lion.AbpPro.BasicManagement.Users
 {
@@ -114,7 +115,10 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// <returns></returns>
         public async Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(IdInput input)
         {
-            return await _identityUserAppService.GetRolesAsync(input.Id);
+            var roles = await _identityUserRepository.GetRolesAsync(input.Id);
+            return new ListResultDto<IdentityRoleDto>(
+                ObjectMapper.Map<List<IdentityRole>, List<IdentityRoleDto>>(roles)
+            );
         }
 
         /// <summary>
