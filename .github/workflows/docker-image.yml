@@ -1,4 +1,4 @@
-name: 部署
+name: Docker-Images
 on:
   push:
     tags:
@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Dotnet 6.x
+      - name: Install Dotnet 7.x
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "7.0"
+          dotnet-version: 7.0.x
           include-prerelease: True
       - name: Build
         run: dotnet build aspnet-core/Lion.AbpPro.sln
