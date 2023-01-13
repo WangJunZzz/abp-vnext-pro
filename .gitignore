@@ -251,26 +251,6 @@ paket-files/
 .idea/
 *.sln.iml
 
-# Zzz
-content/src/Zzz.Web/Logs/*
-content/src/Zzz.Web.Host/Logs/*
-content/src/Zzz.IdentityServer/Logs/*
-content/src/Zzz.HttpApi.Host/Logs/*
-content/src/Zzz.HttpApi.Host/Logs/*
-content/src/Zzz.DbMigrator/Logs/*
-/content/aspnetcore/src/Zzz.HttpApi.Host/App_Data
-/aspnet-core/services/src/CompanyName.ProjectName.HttpApi.Host/Logs
-/aspnet-core/services/src/CompanyName.ProjectName.IdentityServer/appsettings.Production.json
-/aspnet-core/services/src/CompanyName.ProjectName.HttpApi.Host/appsettings.Production.json
-/aspnet-core/services/host/CompanyName.ProjectName.HttpApi.Host/appsettings.Production.json
-/aspnet-core/services/host/CompanyName.ProjectName.HttpApi.Host/Logs
-/aspnet-core/services/host/CompanyName.ProjectName.IdentityServer/Logs
-/vben271/dist.zip
-/aspnet-core/services/host/CompanyName.ProjectName.HttpApi.Host/publish.zip
-/aspnet-core/services/host/CompanyName.ProjectName.IdentityServer/appsettings.Production.json
-/aspnet-core/services/host/CompanyName.ProjectName.IdentityServer/publish.zip
-vben271/yarn.lock
-/vben271/_nginx.zip
 /aspnet-core/services/host/Lion.AbpPro.HttpApi.Host/logs
 /aspnet-core/services/host/Lion.AbpPro.IdentityServer/Logs
 /aspnet-core/services/host/Lion.AbpPro.IdentityServer/Logs
@@ -281,5 +261,4 @@ aspnet-core/services/host/Lion.AbpPro.Web.Blazor.Server/Logs/logs.txt
 /nupkgs
 /aspnet-core/Lion.AbpPro.sln.DotSettings
 /aspnet-core/services/host/Lion.AbpPro.HttpApi.Host/logs
-/vben271/package-lock.json
 /docs/site
