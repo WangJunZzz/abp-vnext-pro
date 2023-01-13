@@ -35,7 +35,6 @@ extra:
     - icon: "fontawesome/brands/github"
       link: "https://github.com/WangJunZzz/abp-vnext-pro"
 
-
 # Extensions
 markdown_extensions:
   - markdown.extensions.admonition
@@ -78,24 +77,24 @@ nav:
       - 基础设施:
           - 配置: user-guide/zh/infrastructure/config.md
           - 前端: user-guide/zh/infrastructure/frontend.md
-          - FreeSql: user-guide/zh/infrastructure/freesql.md          
+          - FreeSql: user-guide/zh/infrastructure/freesql.md
       - 应用模块:
           - 基础模块: user-guide/zh/modules/basic.md
-          - 设置(Setting): user-guide/zh/modules/setting.md          
-          - 数据字典: user-guide/zh/modules/dic.md  
-          - 文件管理: user-guide/zh/modules/file.md    
+          - 设置(Setting): user-guide/zh/modules/setting.md
+          - 数据字典: user-guide/zh/modules/dic.md
+          - 文件管理: user-guide/zh/modules/file.md
           - 实时通信: user-guide/zh/modules/signalr.md
       - 扩展:
-          - 统一返回值格式: user-guide/zh/extension/统一返回值格式.md  
-          - Magicodes.IE: user-guide/zh/extension/MagicodesIE.md                  
+          - 统一返回值格式: user-guide/zh/extension/统一返回值格式.md
+          - Magicodes.IE: user-guide/zh/extension/MagicodesIE.md
       - 部署:
           - Docker: user-guide/zh/deploy/docker.md
-          - Github自动化部署: user-guide/zh/deploy/github.md                 
+          - Github自动化部署: user-guide/zh/deploy/github.md
   - 常见问题:
       - 问题: user-guide/zh/problem/problem.md
-  - Release:   
-      - 发行说明: about/release-notes.md   
+  - Release:
+      - 升级指南: about/6.0-7.0.md
+      - 发行说明: about/release-notes.md
   - 关于:
       - Contact Us: about/contact-us.md
-      - License: about/license.md      
-
+      - License: about/license.md
