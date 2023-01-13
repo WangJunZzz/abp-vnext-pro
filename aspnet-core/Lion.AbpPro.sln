@@ -186,8 +186,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.TestBase", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.TestBase\Lion.AbpPro.BasicManagement.TestBase.csproj", "{47F2E236-E6BE-4F52-8389-5CF03BDC9B78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.HttpApi.Client.ConsoleTestApp", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.HttpApi.Client.ConsoleTestApp\Lion.AbpPro.BasicManagement.HttpApi.Client.ConsoleTestApp.csproj", "{1368FE7F-E1A7-4FD5-AF05-CFA59C0E0E69}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests\Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests.csproj", "{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Domain.Tests", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.Domain.Tests\Lion.AbpPro.BasicManagement.Domain.Tests.csproj", "{2BACB63E-2830-4371-AEBB-E8089E3EB316}"
@@ -468,10 +466,6 @@ Global
 		{47F2E236-E6BE-4F52-8389-5CF03BDC9B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47F2E236-E6BE-4F52-8389-5CF03BDC9B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47F2E236-E6BE-4F52-8389-5CF03BDC9B78}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1368FE7F-E1A7-4FD5-AF05-CFA59C0E0E69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1368FE7F-E1A7-4FD5-AF05-CFA59C0E0E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1368FE7F-E1A7-4FD5-AF05-CFA59C0E0E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1368FE7F-E1A7-4FD5-AF05-CFA59C0E0E69}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -595,7 +589,6 @@ Global
 		{4D808FF7-C204-40F1-881D-21B27D8D290E} = {AF419621-2F14-45CE-AF1B-B688E1B21BCB}
 		{354E0590-F6B2-43F5-A563-F543C498F3EA} = {AF419621-2F14-45CE-AF1B-B688E1B21BCB}
 		{47F2E236-E6BE-4F52-8389-5CF03BDC9B78} = {6464122A-1DC2-45E8-B599-4B5C32FBC85B}
-		{1368FE7F-E1A7-4FD5-AF05-CFA59C0E0E69} = {6464122A-1DC2-45E8-B599-4B5C32FBC85B}
 		{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D} = {6464122A-1DC2-45E8-B599-4B5C32FBC85B}
 		{2BACB63E-2830-4371-AEBB-E8089E3EB316} = {6464122A-1DC2-45E8-B599-4B5C32FBC85B}
 		{19A28EF9-A5AE-4EC5-851C-D2547E5FE29C} = {6464122A-1DC2-45E8-B599-4B5C32FBC85B}

@@ -1,11 +1,12 @@
-﻿namespace Lion.AbpPro.BasicManagement.ApplicationConfigurations;
+﻿using Volo.Abp.Localization.External;
+
+namespace Lion.AbpPro.BasicManagement.ApplicationConfigurations;
 
 [Dependency(ReplaceServices = true)]
 public class LionAbpApplicationConfigurationAppService : ApplicationService, IAbpApplicationConfigurationAppService
 {
     private readonly AbpLocalizationOptions _localizationOptions;
     private readonly AbpMultiTenancyOptions _multiTenancyOptions;
-    private readonly IServiceProvider _serviceProvider;
     private readonly IAbpAuthorizationPolicyProvider _abpAuthorizationPolicyProvider;
     private readonly IPermissionDefinitionManager _permissionDefinitionManager;
     private readonly DefaultAuthorizationPolicyProvider _defaultAuthorizationPolicyProvider;
@@ -23,7 +24,6 @@ public class LionAbpApplicationConfigurationAppService : ApplicationService, IAb
     public LionAbpApplicationConfigurationAppService(
         IOptions<AbpLocalizationOptions> localizationOptions,
         IOptions<AbpMultiTenancyOptions> multiTenancyOptions,
-        IServiceProvider serviceProvider,
         IAbpAuthorizationPolicyProvider abpAuthorizationPolicyProvider,
         IPermissionDefinitionManager permissionDefinitionManager,
         DefaultAuthorizationPolicyProvider defaultAuthorizationPolicyProvider,
@@ -38,7 +38,6 @@ public class LionAbpApplicationConfigurationAppService : ApplicationService, IAb
         IOptions<AbpClockOptions> abpClockOptions,
         ICachedObjectExtensionsDtoService cachedObjectExtensionsDtoService)
     {
-        _serviceProvider = serviceProvider;
         _abpAuthorizationPolicyProvider = abpAuthorizationPolicyProvider;
         _permissionDefinitionManager = permissionDefinitionManager;
         _defaultAuthorizationPolicyProvider = defaultAuthorizationPolicyProvider;
@@ -56,7 +55,7 @@ public class LionAbpApplicationConfigurationAppService : ApplicationService, IAb
         _multiTenancyOptions = multiTenancyOptions.Value;
     }
 
-    public virtual async Task<ApplicationConfigurationDto> GetAsync()
+    public virtual async Task<ApplicationConfigurationDto> GetAsync(ApplicationConfigurationRequestOptions options)
     {
         //TODO: Optimize & cache..?
 
@@ -66,7 +65,7 @@ public class LionAbpApplicationConfigurationAppService : ApplicationService, IAb
         {
             Auth = await GetAuthConfigAsync(),
             Features = await GetFeaturesConfigAsync(),
-            Localization = await GetLocalizationConfigAsync(),
+            //Localization = await GetLocalizationConfigAsync(),
             CurrentUser = GetCurrentUser(),
             Setting = await GetSettingConfigAsync(),
             MultiTenancy = GetMultiTenancy(),
@@ -75,6 +74,11 @@ public class LionAbpApplicationConfigurationAppService : ApplicationService, IAb
             Clock = GetClockConfig(),
             ObjectExtensions = _cachedObjectExtensionsDtoService.Get()
         };
+
+        if (options.IncludeLocalizationResources)
+        {
+            result.Localization = await GetLocalizationConfigAsync(options);
+        }
 
         Logger.LogDebug("Executed AbpApplicationConfigurationAppService.GetAsync().");
 
@@ -129,7 +133,7 @@ public class LionAbpApplicationConfigurationAppService : ApplicationService, IAb
 
         foreach (var policyName in policyNames)
         {
-            if (await _defaultAuthorizationPolicyProvider.GetPolicyAsync(policyName) == null && _permissionDefinitionManager.GetOrNull(policyName) != null)
+            if (await _defaultAuthorizationPolicyProvider.GetPolicyAsync(policyName) == null && _permissionDefinitionManager.GetOrNullAsync(policyName) != null)
             {
                 abpPolicyNames.Add(policyName);
             }
@@ -141,7 +145,7 @@ public class LionAbpApplicationConfigurationAppService : ApplicationService, IAb
 
         foreach (var policyName in otherPolicyNames)
         {
-            authConfig.Policies[policyName] = true;
+            //authConfig.Policies[policyName] = true;
 
             if (await _authorizationService.IsGrantedAsync(policyName))
             {
@@ -152,7 +156,7 @@ public class LionAbpApplicationConfigurationAppService : ApplicationService, IAb
         var result = await _permissionChecker.IsGrantedAsync(abpPolicyNames.ToArray());
         foreach (var (key, value) in result.Result)
         {
-            authConfig.Policies[key] = true;
+            //authConfig.Policies[key] = true;
             if (value == PermissionGrantResult.Granted)
             {
                 authConfig.GrantedPolicies[key] = true;
@@ -208,26 +212,42 @@ public class LionAbpApplicationConfigurationAppService : ApplicationService, IAb
     }
 
 
-    protected virtual async Task<ApplicationLocalizationConfigurationDto> GetLocalizationConfigAsync()
+    protected virtual async Task<ApplicationLocalizationConfigurationDto> GetLocalizationConfigAsync(
+        ApplicationConfigurationRequestOptions options)
     {
         var localizationConfig = new ApplicationLocalizationConfigurationDto();
 
         localizationConfig.Languages.AddRange(await _languageProvider.GetLanguagesAsync());
 
-        foreach (var resource in _localizationOptions.Resources.Values)
+        if (options.IncludeLocalizationResources)
         {
-            var dictionary = new Dictionary<string, string>();
+            var resourceNames = _localizationOptions
+                .Resources
+                .Values
+                .Select(x => x.ResourceName)
+                .Union(
+                    await LazyServiceProvider
+                        .LazyGetRequiredService<IExternalLocalizationStore>()
+                        .GetResourceNamesAsync()
+                );
 
-            var localizer = _serviceProvider.GetRequiredService(
-                typeof(IStringLocalizer<>).MakeGenericType(resource.ResourceType)
-            ) as IStringLocalizer;
-
-            foreach (var localizedString in localizer.GetAllStrings())
+            foreach (var resourceName in resourceNames)
             {
-                dictionary[localizedString.Name] = localizedString.Value;
-            }
+                var dictionary = new Dictionary<string, string>();
 
-            localizationConfig.Values[resource.ResourceName] = dictionary;
+                var localizer = await StringLocalizerFactory
+                    .CreateByResourceNameOrNullAsync(resourceName);
+
+                if (localizer != null)
+                {
+                    foreach (var localizedString in await localizer.GetAllStringsAsync())
+                    {
+                        dictionary[localizedString.Name] = localizedString.Value;
+                    }
+                }
+
+                localizationConfig.Values[resourceName] = dictionary;
+            }
         }
 
         localizationConfig.CurrentCulture = GetCurrentCultureInfo();
@@ -294,7 +314,7 @@ public class LionAbpApplicationConfigurationAppService : ApplicationService, IAb
     {
         var result = new ApplicationFeatureConfigurationDto();
 
-        foreach (var featureDefinition in _featureDefinitionManager.GetAll())
+        foreach (var featureDefinition in await _featureDefinitionManager.GetAllAsync())
         {
             if (!featureDefinition.IsVisibleToClients)
             {

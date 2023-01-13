@@ -38,17 +38,16 @@
 
         <PackageReference Update="xunit" Version="2.4.1"/>
         <PackageReference Update="xunit.extensibility.execution" Version="2.4.1"/>
-        <PackageReference Update="xunit.runner.visualstudio" Version="2.4.3"/>
-        
+        <PackageReference Update="xunit.runner.visualstudio" Version="2.4.5"/>
+
         <PackageReference Update="Hangfire.Redis.StackExchange" Version="1.8.5"/>
 
-        <PackageReference Update="DotNetCore.CAP" Version="6.2.1"/>
-        <PackageReference Update="DotNetCore.CAP.Dashboard" Version="6.2.1"/>
-        <PackageReference Update="DotNetCore.CAP.Mysql" Version="6.2.1"/>
-        <PackageReference Update="DotNetCore.CAP.Kafka" Version="6.2.1"/>
-        <PackageReference Update="DotNetCore.CAP.RabbitMQ" Version="6.2.1"/>
-        <PackageReference Update="DotNetCore.CAP.InMemoryStorage" Version="6.2.1"/>
-        <PackageReference Update="Savorboard.CAP.InMemoryMessageQueue" Version="6.0.0"/>
+        <PackageReference Update="DotNetCore.CAP" Version="7.0.2"/>
+        <PackageReference Update="DotNetCore.CAP.Dashboard" Version="7.0.2"/>
+        <PackageReference Update="DotNetCore.CAP.Mysql" Version="7.0.2"/>
+        <PackageReference Update="DotNetCore.CAP.RabbitMQ" Version="7.0.2"/>
+        <PackageReference Update="DotNetCore.CAP.InMemoryStorage" Version="7.0.2"/>
+        <PackageReference Update="Savorboard.CAP.InMemoryMessageQueue" Version="7.0.0"/>
 
         <PackageReference Update="Swashbuckle.AspNetCore.SwaggerUI" Version="6.3.1"/>
         <PackageReference Update="Swashbuckle.AspNetCore" Version="6.3.1"/>
@@ -66,7 +65,7 @@
 
         <PackageReference Update="Magicodes.IE.Excel" Version="2.7.0"/>
         <PackageReference Update="Magicodes.IE.Excel.AspNetCore" Version="2.7.0"/>
-        
+
         <PackageReference Update="MiniProfiler.AspNetCore.Mvc" Version="4.2.22"/>
         <PackageReference Update="MiniProfiler.EntityFrameworkCore" Version="4.2.22"/>
         <PackageReference Update="MiniProfiler.Shared" Version="4.2.22"/>
@@ -81,8 +80,6 @@
         <PackageReference Update="Polly" Version="7.2.3"/>
         <PackageReference Update="Confluent.Kafka" Version="1.8.2.0"/>
 
-        
-        <PackageReference Update="Newtonsoft.Json" Version="13.0.1"/>
 
         <!-- Idenity 一下三个包升级到最新版导致鉴权不通过-->
         <PackageReference Update="Microsoft.IdentityModel.Tokens" Version="6.10.0"/>

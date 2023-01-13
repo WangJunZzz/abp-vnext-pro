@@ -24,7 +24,6 @@ global using Microsoft.Extensions.Logging.Abstractions;
 global using Microsoft.Extensions.Options;
 global using Microsoft.OpenApi.Any;
 global using Microsoft.OpenApi.Models;
-global using Newtonsoft.Json;
 global using Serilog;
 global using Serilog.Exceptions;
 global using Serilog.Sinks.Elasticsearch;

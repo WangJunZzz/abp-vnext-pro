@@ -3,7 +3,7 @@
   
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>Lion.AbpPro.NotificationManagement</RootNamespace>
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
     <UserSecretsId>Lion.AbpPro.NotificationManagement-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>

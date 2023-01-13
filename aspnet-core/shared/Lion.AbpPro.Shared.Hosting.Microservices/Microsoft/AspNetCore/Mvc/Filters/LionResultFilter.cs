@@ -1,4 +1,6 @@
-﻿namespace Microsoft.AspNetCore.Mvc.Filters;
+﻿using System.Text.Json;
+
+namespace Microsoft.AspNetCore.Mvc.Filters;
 
 public class LionResultFilter : IResultFilter, ITransientDependency
 {
@@ -7,7 +9,8 @@ public class LionResultFilter : IResultFilter, ITransientDependency
         // 如果是page 直接return
         if (context.ActionDescriptor.IsPageAction()) return;
 
-        var controllerHasDontWrapResultAttribute = context.ActionDescriptor.AsControllerActionDescriptor().ControllerTypeInfo.GetCustomAttributes(typeof(WrapResultAttribute), true).Any();
+        var controllerHasDontWrapResultAttribute =
+            context.ActionDescriptor.AsControllerActionDescriptor().ControllerTypeInfo.GetCustomAttributes(typeof(WrapResultAttribute), true).Any();
         var controllerActionHasDontWrapResultAttribute = context.ActionDescriptor.GetMethodInfo().GetCustomAttributes(typeof(WrapResultAttribute), true).Any();
         if (controllerHasDontWrapResultAttribute || controllerActionHasDontWrapResultAttribute)
         {
@@ -18,11 +21,13 @@ public class LionResultFilter : IResultFilter, ITransientDependency
                 result.SetSuccess(((ObjectResult)context.Result).Value);
             }
 
+            var jsonSerializer = context.GetService<IJsonSerializer>();
+
             context.Result = new ContentResult()
             {
                 StatusCode = (int)HttpStatusCode.OK,
                 ContentType = "application/json;charset=utf-8",
-                Content = JsonConvert.SerializeObject(result)
+                Content = jsonSerializer.Serialize(result)
             };
         }
     }

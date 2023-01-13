@@ -3,7 +3,8 @@
 [ConnectionStringName(BasicManagementDbProperties.ConnectionStringName)]
 public class BasicManagementDbContext : AbpDbContext<BasicManagementDbContext>, IBasicManagementDbContext
 {
-   
+    public DbSet<FeatureGroupDefinitionRecord> FeatureGroups { get; set; }
+    public DbSet<FeatureDefinitionRecord> Features { get; set; }
     public DbSet<FeatureValue> FeatureValues { get; set; }
     public DbSet<IdentityUser> Users { get; set; }
     public DbSet<IdentityRole> Roles { get; set; }
@@ -11,6 +12,8 @@ public class BasicManagementDbContext : AbpDbContext<BasicManagementDbContext>, 
     public DbSet<OrganizationUnit> OrganizationUnits { get; set; }
     public DbSet<IdentitySecurityLog> SecurityLogs { get; set; }
     public DbSet<IdentityLinkUser> LinkUsers { get; set; }
+    public DbSet<PermissionGroupDefinitionRecord> PermissionGroups { get; set; }
+    public DbSet<PermissionDefinitionRecord> Permissions { get; set; }
     public DbSet<PermissionGrant> PermissionGrants { get; set; }
     public DbSet<Setting> Settings { get; set; }
     public DbSet<Tenant> Tenants { get; set; }

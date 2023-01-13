@@ -1,16 +1,20 @@
-﻿namespace Lion.AbpPro.NotificationManagement.Hubs;
+﻿using Volo.Abp.Json;
+
+namespace Lion.AbpPro.NotificationManagement.Hubs;
 
 public class NotificationHubAppService : NotificationManagementAppService, INotificationHubAppService
 {
     private readonly IHubContext<NotificationHub, INotificationHub> _hubContext;
     private readonly ILogger<NotificationAppService> _logger;
-
+    private readonly IJsonSerializer _jsonSerializer;
     public NotificationHubAppService(
         IHubContext<NotificationHub, INotificationHub> hubContext,
-        ILogger<NotificationAppService> logger)
+        ILogger<NotificationAppService> logger, 
+        IJsonSerializer jsonSerializer)
     {
         _hubContext = hubContext;
         _logger = logger;
+        _jsonSerializer = jsonSerializer;
     }
 
     /// <summary>
@@ -41,11 +45,11 @@ public class NotificationHubAppService : NotificationManagementAppService, INoti
             await _hubContext.Clients
                 .Users(users.AsReadOnly().ToList())
                 .ReceiveTextMessageAsync(sendNotificationDto);
-            _logger.LogInformation($"通知模块收到消息：{JsonConvert.SerializeObject(sendNotificationDto)},发送给：{JsonConvert.SerializeObject(users)}");
+            _logger.LogInformation($"通知模块收到消息：{_jsonSerializer.Serialize(sendNotificationDto)},发送给：{_jsonSerializer.Serialize(users)}");
         }
         else
         {
-            _logger.LogWarning($"消息未指定发送人:{JsonConvert.SerializeObject(sendNotificationDto)}");
+            _logger.LogWarning($"消息未指定发送人:{_jsonSerializer.Serialize(sendNotificationDto)}");
         }
     }
 
@@ -56,6 +60,6 @@ public class NotificationHubAppService : NotificationManagementAppService, INoti
     private async Task SendMessageToAllClientAsync(SendNotificationDto sendNotificationDto)
     {
         await _hubContext.Clients.All.ReceiveBroadCastMessageAsync(sendNotificationDto);
-        _logger.LogInformation($"通知模块收到消息：{JsonConvert.SerializeObject(sendNotificationDto)}");
+        _logger.LogInformation($"通知模块收到消息：{_jsonSerializer.Serialize(sendNotificationDto)}");
     }
 }

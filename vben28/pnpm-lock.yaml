@@ -14,7 +14,7 @@ specifiers:
   '@iconify/json': ^2.1.30
   '@logicflow/core': ^1.1.13
   '@logicflow/extension': ^1.1.13
-  '@microsoft/signalr': ^6.0.6
+  '@microsoft/signalr': ^7.0.2
   '@purge-icons/generated': ^0.8.1
   '@types/codemirror': ^5.60.5
   '@types/crypto-js': ^4.1.1
@@ -69,7 +69,7 @@ specifiers:
   mockjs: ^1.1.0
   npm-run-all: ^4.1.5
   nprogress: ^0.2.0
-  nswag: ^13.16.1
+  nswag: ^13.18.2
   oidc-client: ^1.11.5
   path-to-regexp: ^6.2.0
   picocolors: ^1.0.0
@@ -126,7 +126,7 @@ dependencies:
   '@iconify/iconify': 2.2.1
   '@logicflow/core': 1.1.13
   '@logicflow/extension': 1.1.13
-  '@microsoft/signalr': registry.npmmirror.com/@microsoft/signalr/6.0.6
+  '@microsoft/signalr': registry.npmmirror.com/@microsoft/signalr/7.0.2
   '@vue/runtime-core': 3.2.33
   '@vue/shared': 3.2.33
   '@vueuse/core': 8.3.0_vue@3.2.33
@@ -145,7 +145,7 @@ dependencies:
   lodash-es: 4.17.21
   mockjs: 1.1.0
   nprogress: 0.2.0
-  nswag: registry.npmmirror.com/nswag/13.16.1
+  nswag: registry.npmmirror.com/nswag/13.18.2
   oidc-client: registry.npmmirror.com/oidc-client/1.11.5
   path-to-regexp: 6.2.0
   pinia: 2.0.12_ifhmkzsxec62ezvqv7qmanm4bq
@@ -2054,7 +2054,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 17.0.25
+      '@types/node': registry.npmmirror.com/@types/node/17.0.25
     dev: true
 
   /@types/imagemin-gifsicle/7.0.1:
@@ -4766,7 +4766,7 @@ packages:
     dependencies:
       graceful-fs: 4.2.10
       jsonfile: 4.0.0
-      universalify: 0.1.2
+      universalify: registry.npmmirror.com/universalify/0.1.2
     dev: true
 
   /functional-red-black-tree/1.0.1:
@@ -8370,11 +8370,6 @@ packages:
     resolution: {integrity: sha512-isyNax3wXoKaulPDZWHQqbmIx1k2tb9fb3GGDBRxCscfYV2Ch7WxPArBsFEG8s/safwXTT7H4QGhaIkTp9447w==}
     dev: true
 
-  /universalify/0.1.2:
-    resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
-    engines: {node: '>= 4.0.0'}
-    dev: true
-
   /universalify/2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
     engines: {node: '>= 10.0.0'}
@@ -9191,14 +9186,14 @@ packages:
     dev: true
     optional: true
 
-  registry.npmmirror.com/@microsoft/signalr/6.0.6:
-    resolution: {integrity: sha512-3dTLtgwEXUeE9R/3NZQslh1B2WbppeHVXdnpvSZc7Yz+tP5Yiw3KCVUHwKUVnYmd9/2v3DaI/pvCdihrss49zA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@microsoft/signalr/-/signalr-6.0.6.tgz}
+  registry.npmmirror.com/@microsoft/signalr/7.0.2:
+    resolution: {integrity: sha512-U+o33K2m6nnMojZzBrjrApKgYfiQ0A0t4I2F5oFJObgfzRSDS9v0YoYgkmva5nbPftUp3YcR5XmH0S/1+BZT6Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@microsoft/signalr/-/signalr-7.0.2.tgz}
     name: '@microsoft/signalr'
-    version: 6.0.6
+    version: 7.0.2
     dependencies:
       abort-controller: registry.npmmirror.com/abort-controller/3.0.0
-      eventsource: registry.npmmirror.com/eventsource/1.1.2
-      fetch-cookie: registry.npmmirror.com/fetch-cookie/0.11.0
+      eventsource: registry.npmmirror.com/eventsource/2.0.2
+      fetch-cookie: registry.npmmirror.com/fetch-cookie/2.1.0
       node-fetch: registry.npmmirror.com/node-fetch/2.6.7
       ws: registry.npmmirror.com/ws/7.5.8
     transitivePeerDependencies:
@@ -10157,11 +10152,11 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  registry.npmmirror.com/eventsource/1.1.2:
-    resolution: {integrity: sha512-xAH3zWhgO2/3KIniEKYPr8plNSzlGINOUqYj0m0u7AB81iRw8b/3E73W6AuU+6klLbaSFmZnaETQ2lXPfAydrA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/eventsource/-/eventsource-1.1.2.tgz}
+  registry.npmmirror.com/eventsource/2.0.2:
+    resolution: {integrity: sha512-IzUmBGPR3+oUG9dUeXynyNmf91/3zUSJg1lCktzKw47OXuhco54U3r9B7O4XX+Rb1Itm9OZ2b0RkTs10bICOxA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/eventsource/-/eventsource-2.0.2.tgz}
     name: eventsource
-    version: 1.1.2
-    engines: {node: '>=0.12.0'}
+    version: 2.0.2
+    engines: {node: '>=12.0.0'}
     dev: false
 
   registry.npmmirror.com/execa/0.7.0:
@@ -10254,12 +10249,12 @@ packages:
       pend: registry.npmmirror.com/pend/1.2.0
     dev: true
 
-  registry.npmmirror.com/fetch-cookie/0.11.0:
-    resolution: {integrity: sha512-BQm7iZLFhMWFy5CZ/162sAGjBfdNWb7a8LEqqnzsHFhxT/X/SVj/z2t2nu3aJvjlbQkrAlTUApplPRjWyH4mhA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/fetch-cookie/-/fetch-cookie-0.11.0.tgz}
+  registry.npmmirror.com/fetch-cookie/2.1.0:
+    resolution: {integrity: sha512-39+cZRbWfbibmj22R2Jy6dmTbAWC+oqun1f1FzQaNurkPDUP4C38jpeZbiXCR88RKRVDp8UcDrbFXkNhN+NjYg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/fetch-cookie/-/fetch-cookie-2.1.0.tgz}
     name: fetch-cookie
-    version: 0.11.0
-    engines: {node: '>=8'}
+    version: 2.1.0
     dependencies:
+      set-cookie-parser: registry.npmmirror.com/set-cookie-parser/2.5.1
       tough-cookie: registry.npmmirror.com/tough-cookie/4.0.0
     dev: false
 
@@ -11111,10 +11106,10 @@ packages:
       path-key: registry.npmmirror.com/path-key/2.0.1
     dev: true
 
-  registry.npmmirror.com/nswag/13.16.1:
-    resolution: {integrity: sha512-L/ll7TeMaYMVPGTT8T9MrEVP1FjSod8/quRB9WuFPdvgFAsDILBwVuSifghzaX9DXmo1G5C22xmE1/53EPywig==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nswag/-/nswag-13.16.1.tgz}
+  registry.npmmirror.com/nswag/13.18.2:
+    resolution: {integrity: sha512-7OpG9WkrZUO2+9I7hgQsaAHujsP/tCaIs7ML2B4wUuFLjSsG6lHucyrREyVO/h9l3MM/Cw4RlEGFBbluWhgeYg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nswag/-/nswag-13.18.2.tgz}
     name: nswag
-    version: 13.16.1
+    version: 13.18.2
     engines: {npm: '>=3.10.8'}
     hasBin: true
     dev: false
@@ -11645,6 +11640,12 @@ packages:
     dependencies:
       randombytes: registry.npmmirror.com/randombytes/2.1.0
 
+  registry.npmmirror.com/set-cookie-parser/2.5.1:
+    resolution: {integrity: sha512-1jeBGaKNGdEq4FgIrORu/N570dwoPYio8lSoYLWmX7sQ//0JY08Xh9o5pBcgmHQ/MbsYp/aZnOe1s1lIsbLprQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/set-cookie-parser/-/set-cookie-parser-2.5.1.tgz}
+    name: set-cookie-parser
+    version: 2.5.1
+    dev: false
+
   registry.npmmirror.com/setprototypeof/1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/setprototypeof/-/setprototypeof-1.2.0.tgz}
     name: setprototypeof
@@ -12021,7 +12022,6 @@ packages:
     name: universalify
     version: 0.1.2
     engines: {node: '>= 4.0.0'}
-    dev: false
 
   registry.npmmirror.com/universalify/2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/universalify/-/universalify-2.0.0.tgz}
