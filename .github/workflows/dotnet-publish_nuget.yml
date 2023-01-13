@@ -12,7 +12,7 @@ jobs:
       - name: Install Dotnet 6.x
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "6.0"
+          dotnet-version: "7.0"
           include-prerelease: True
       - name: Setting Version
         id: vars

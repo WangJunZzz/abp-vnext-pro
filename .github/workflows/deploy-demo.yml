@@ -12,7 +12,7 @@ jobs:
       - name: Install Dotnet 6.x
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "6.0"
+          dotnet-version: "7.0"
           include-prerelease: True
       - name: Build
         run: dotnet build aspnet-core/Lion.AbpPro.sln
@@ -20,29 +20,28 @@ jobs:
       - name: Run Xunit
         run: dotnet test aspnet-core/services/test/Lion.AbpPro.Domain.Tests/Lion.AbpPro.Domain.Tests.csproj
 
-      - name:  Publish Lion.AbpPro.HttpApi.Host
+      - name: Publish Lion.AbpPro.HttpApi.Host
         run: dotnet publish aspnet-core/services/host/Lion.AbpPro.HttpApi.Host/Lion.AbpPro.HttpApi.Host.csproj -o aspnet-core/services/host/Lion.AbpPro.HttpApi.Host/publish
 
-      - name:  Publish Lion.AbpPro.DbMigrator
+      - name: Publish Lion.AbpPro.DbMigrator
         run: dotnet publish aspnet-core/services/src/Lion.AbpPro.DbMigrator/Lion.AbpPro.DbMigrator.csproj -o aspnet-core/services/src/Lion.AbpPro.DbMigrator/publish
 
       - name: Setting Version
         id: vars
         run: echo ::set-output name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
 
-    # docker login
+      # docker login
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # 设置 docker 环境
+      # 设置 docker 环境
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-
-    # build 并且 push docker 镜像
+      # build 并且 push docker 镜像
       - name: Push Lion.AbpPro.HttpApi.Host Image
         uses: docker/build-push-action@v2
         with:
@@ -66,7 +65,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install pnpm   
+      - name: Install pnpm
         uses: pnpm/action-setup@v2.2.2
         with:
           version: 6.0.2
@@ -81,21 +80,21 @@ jobs:
         id: vars
         run: echo ::set-output name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
 
-    # docker login
+      # docker login
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # 设置 docker 环境
+      # 设置 docker 环境
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-    # build 并且 push docker 镜像
+      # build 并且 push docker 镜像
       - name: Push Vue3 Image
         uses: docker/build-push-action@v2
         with:
           context: vben28
           push: true
-          tags: zzzwangjun/lion.abp.pro.vben28:${{ steps.vars.outputs.RELEASE_VERSION }}         
+          tags: zzzwangjun/lion.abp.pro.vben28:${{ steps.vars.outputs.RELEASE_VERSION }}
