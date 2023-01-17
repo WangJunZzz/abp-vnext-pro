@@ -3,7 +3,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
     /// <summary>
     /// 消息订阅者 
     /// </summary>
-    public partial class NotificationSubscription : FullAuditedEntity<Guid>
+    public  class NotificationSubscription : FullAuditedEntity<Guid>
     {
         /// <summary>
         /// 订阅人
@@ -41,10 +41,10 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
             ReceiveId = receiveId;
         }
 
-        public void SetRead()
+        public void SetRead(DateTime readTime)
         {
             Read = true;
-            ReadTime = DateTime.Now;
+            ReadTime = readTime;
         }
     }
 }

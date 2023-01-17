@@ -1,6 +1,7 @@
 using Hangfire.Redis;
 using Swagger;
 using Volo.Abp.BackgroundJobs.Hangfire;
+using Volo.Abp.Timing;
 
 namespace Lion.AbpPro
 {

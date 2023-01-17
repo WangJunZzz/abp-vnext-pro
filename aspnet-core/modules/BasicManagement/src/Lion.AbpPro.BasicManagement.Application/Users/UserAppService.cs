@@ -72,7 +72,7 @@ namespace Lion.AbpPro.BasicManagement.Users
                 .GetListAsync(request.Sorting, request.MaxResultCount, request.SkipCount, request.Filter);
             var result = ObjectMapper.Map<List<Volo.Abp.Identity.IdentityUser>, List<ExportIdentityUserOutput>>(source);
             var bytes = await _excelExporter.ExportAsByteArray<ExportIdentityUserOutput>(result);
-            return new XlsxFileResult(bytes: bytes, fileDownloadName: $"用户导出列表{DateTime.Now:yyyyMMdd}");
+            return new XlsxFileResult(bytes: bytes, fileDownloadName: $"用户导出列表{Clock.Now:yyyyMMdd}");
         }
 
         /// <summary>

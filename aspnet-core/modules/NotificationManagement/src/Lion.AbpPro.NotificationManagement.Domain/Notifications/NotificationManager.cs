@@ -190,14 +190,14 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         public async Task SetReadAsync(Guid id)
         {
             if (_currentUser is not { IsAuthenticated: true }) throw new AbpAuthorizationException();
-            
+
             var notification = await _notificationRepository.FindByIdAsync(id);
-            
+
             if (notification == null) throw new NotificationManagementDomainException(NotificationManagementErrorCodes.MessageNotExist);
             if (notification.MessageType == MessageType.BroadCast)
             {
                 //如果类型是广播消息，用户设置为已读，在插入一条数据
-                notification.AddBroadCastNotificationSubscription(GuidGenerator.Create(), _currentUser.GetId());
+                notification.AddBroadCastNotificationSubscription(GuidGenerator.Create(), _currentUser.GetId(), Clock.Now);
                 return;
             }
             else
@@ -205,7 +205,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
                 var notificationSubscription = notification.NotificationSubscriptions.FirstOrDefault(e => e.ReceiveId == _currentUser.GetId());
                 if (notificationSubscription == null)
                     throw new NotificationManagementDomainException(NotificationManagementErrorCodes.UserUnSubscription);
-                notificationSubscription.SetRead();
+                notificationSubscription.SetRead(Clock.Now);
             }
 
             await _notificationRepository.UpdateAsync(notification);

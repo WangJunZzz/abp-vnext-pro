@@ -3,6 +3,7 @@ using Lion.AbpPro.BasicManagement.ConfigurationOptions;
 using Lion.AbpPro.BasicManagement.Users;
 using Lion.AbpPro.BasicManagement.Users.Dtos;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Volo.Abp.Timing;
 
 
 namespace Lion.AbpPro.Pages
@@ -13,14 +14,17 @@ namespace Lion.AbpPro.Pages
         private readonly ILogger<Login> _logger;
         private readonly IHostEnvironment _hostEnvironment;
         private readonly JwtOptions _jwtOptions;
+        private readonly IClock _clock;
         public Login(IAccountAppService accountAppService,
             ILogger<Login> logger,
             IHostEnvironment hostEnvironment,
-            IOptionsSnapshot<JwtOptions> jwtOptions)
+            IOptionsSnapshot<JwtOptions> jwtOptions, 
+            IClock clock)
         {
             _accountAppService = accountAppService;
             _logger = logger;
             _hostEnvironment = hostEnvironment;
+            _clock = clock;
             _jwtOptions = jwtOptions.Value;
         }
 
@@ -42,7 +46,7 @@ namespace Lion.AbpPro.Pages
             {
                 var options = new CookieOptions
                 {
-                    Expires = DateTime.Now.AddHours(_jwtOptions.ExpirationTime),
+                    Expires = _clock.Now.AddHours(_jwtOptions.ExpirationTime),
                     SameSite = SameSiteMode.Unspecified,
                 };
 

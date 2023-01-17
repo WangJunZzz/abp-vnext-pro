@@ -4,7 +4,7 @@ namespace Lion.AbpPro.Jobs
     {
         public Task ExecuteAsync()
         {
-            Console.WriteLine($"job 测试- {DateTime.Now}");
+            Console.WriteLine($"job 测试");
             return Task.CompletedTask;
         }
     }

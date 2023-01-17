@@ -1,24 +1,27 @@
 namespace Lion.AbpPro.ElasticSearches
 {
     [Authorize]
-    public class LionAbpProLogAppService : ElasticsearchBasicService,ILionAbpProLogAppService
+    public class LionAbpProLogAppService : ElasticsearchBasicService, ILionAbpProLogAppService
     {
         private readonly IConfiguration _configuration;
+
         // 时区
         private const string TimeZone = "Asia/Shanghai";
+
         public LionAbpProLogAppService(
             IElasticsearchProvider elasticsearchProvider,
             IConfiguration configuration) : base(elasticsearchProvider)
         {
             _configuration = configuration;
         }
+
         [Authorize(Policy = AbpProPermissions.SystemManagement.ES)]
         public async Task<CustomPagedResultDto<PagingElasticSearchLogOutput>> PaingAsync(PagingElasticSearchLogInput input)
         {
             var IndexName = _configuration.GetValue<string>("ElasticSearch:SearchIndexFormat");
             // 默认查询当天
-            input.StartCreationTime = input.StartCreationTime?.AddMilliseconds(-1) ??DateTime.Now.Date.AddMilliseconds(-1);
-            input.EndCreationTime =input.EndCreationTime?.AddDays(1).AddMilliseconds(-1) ??DateTime.Now.Date.AddDays(1).AddMilliseconds(-1);
+            input.StartCreationTime = input.StartCreationTime?.AddMilliseconds(-1) ?? Clock.Now.Date.AddMilliseconds(-1);
+            input.EndCreationTime = input.EndCreationTime?.AddDays(1).AddMilliseconds(-1) ?? Clock.Now.Date.AddDays(1).AddMilliseconds(-1);
             var mustFilters = new List<Func<QueryContainerDescriptor<PagingElasticSearchLogDto>, QueryContainer>>();
             if (input.StartCreationTime.HasValue)
             {
@@ -36,7 +39,7 @@ namespace Lion.AbpPro.ElasticSearches
             {
                 mustFilters.Add
                 (
-                    t =>t.MatchPhrase(f => f.Field(fd => fd.Message).Query(input.Filter.Trim()))
+                    t => t.MatchPhrase(f => f.Field(fd => fd.Message).Query(input.Filter.Trim()))
                 );
             }
 

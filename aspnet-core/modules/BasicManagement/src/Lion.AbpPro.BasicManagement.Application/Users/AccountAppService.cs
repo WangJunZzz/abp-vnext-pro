@@ -29,7 +29,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         public async Task<LoginOutput> LoginAsync(LoginInput input)
         {
             var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
-         
+
             if (result.IsNotAllowed)
             {
                 throw new BusinessException(BasicManagementErrorCodes.UserLockedOut);
@@ -45,7 +45,6 @@ namespace Lion.AbpPro.BasicManagement.Users
         }
 
         #region 私有方法
-
 
         private async Task<LoginOutput> BuildResult(IdentityUser user)
         {
@@ -67,8 +66,8 @@ namespace Lion.AbpPro.BasicManagement.Users
         private string GenerateJwt(Guid userId, string userName, string name, string email,
             string tenantId, List<string> roles)
         {
-            var dateNow = DateTime.Now;
-            var expirationTime = dateNow + TimeSpan.FromHours(_jwtOptions.ExpirationTime);
+            var dateNow = Clock.Now;
+            var expirationTime = dateNow.AddHours(_jwtOptions.ExpirationTime);
             var key = Encoding.ASCII.GetBytes(_jwtOptions.SecurityKey);
 
             var claims = new List<Claim>
@@ -90,7 +89,8 @@ namespace Lion.AbpPro.BasicManagement.Users
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = expirationTime,
+                Expires = expirationTime, // token 过期时间
+                NotBefore = dateNow,    // token 签发时间
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
             };

@@ -1,6 +1,7 @@
 ﻿using Lion.AbpPro.BasicManagement.Localization;
 using Volo.Abp.Localization;
 using Volo.Abp.Settings;
+using Volo.Abp.Timing;
 
 namespace Lion.AbpPro.BasicManagement.Settings;
 
@@ -18,6 +19,22 @@ public class BasicManagementSettingDefinitionProvider : SettingDefinitionProvide
     /// </summary>
     private static void OverrideDefaultSettings(ISettingDefinitionContext context)
     {
+        context.Add(
+            new SettingDefinition(TimingSettingNames.TimeZone,
+                    "China Standard Time",
+                    L("DisplayName:Abp.Timing.Timezone"),
+                    L("Description:Abp.Timing.Timezone"))
+                .WithProperty(BasicManagementSettings.Group.Default,
+                    BasicManagementSettings.Group.SystemManagement)
+                .WithProperty(BasicManagementSettings.ControlType.Default,
+                    BasicManagementSettings.ControlType.TypeText));
+
+        context.GetOrNull("Abp.Identity.Password.RequiredLength")
+            .WithProperty(BasicManagementSettings.Group.Default,
+                BasicManagementSettings.Group.SystemManagement)
+            .WithProperty(BasicManagementSettings.ControlType.Default,
+                BasicManagementSettings.ControlType.Number);
+
         context.GetOrNull("Abp.Identity.Password.RequiredLength")
             .WithProperty(BasicManagementSettings.Group.Default,
                 BasicManagementSettings.Group.SystemManagement)
@@ -54,7 +71,7 @@ public class BasicManagementSettingDefinitionProvider : SettingDefinitionProvide
             .WithProperty(BasicManagementSettings.ControlType.Default,
                 BasicManagementSettings.ControlType.TypeCheckBox);
     }
-    
+
 
     private static LocalizableString L(string name)
     {

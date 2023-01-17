@@ -3,7 +3,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
     /// <summary>
     /// 消息通知 
     /// </summary>
-    public  class Notification : FullAuditedAggregateRoot<Guid>
+    public class Notification : FullAuditedAggregateRoot<Guid>
     {
         /// <summary>
         /// 消息标题
@@ -23,7 +23,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
         /// 消息类型
         /// </summary>
         public MessageType MessageType { get; private set; }
-        
+
         /// <summary>
         /// 消息等级
         /// </summary>
@@ -101,15 +101,15 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
         {
             MessageType = messageType;
         }
+
         private void SetMessageLevel(MessageLevel messageLevel)
         {
             MessageLevel = messageLevel;
         }
+
         /// <summary>
         /// 新增非广播消息订阅人
         /// </summary>
-        /// <param name="notificationSubscriptionId"></param>
-        /// <param name="receiveId"></param>
         public void AddNotificationSubscription(Guid notificationSubscriptionId, Guid receiveId)
         {
             if (NotificationSubscriptions.Any(e => e.ReceiveId == receiveId)) return;
@@ -120,10 +120,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
         /// <summary>
         /// 新增消息类型为广播订阅人
         /// </summary>
-        /// <param name="notificationSubscriptionId"></param>
-        /// <param name="receiveId"></param>
-        public void AddBroadCastNotificationSubscription(Guid notificationSubscriptionId,
-            Guid receiveId)
+        public void AddBroadCastNotificationSubscription(Guid notificationSubscriptionId, Guid receiveId, DateTime readTime)
         {
             if (NotificationSubscriptions.Any(e => e.ReceiveId == receiveId))
             {
@@ -132,7 +129,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
             else
             {
                 var temp = new NotificationSubscription(notificationSubscriptionId, receiveId);
-                temp.SetRead();
+                temp.SetRead(readTime);
                 NotificationSubscriptions.Add(temp);
             }
         }
