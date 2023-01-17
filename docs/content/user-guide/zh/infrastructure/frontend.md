@@ -1,14 +1,14 @@
 # 前端
+
 [Vben Admin 文档](https://vvbin.cn/doc-next/)
 
-
 ## 代码生成
+
 !!! info "前端接口，参数，自动生成，全部采用 Post 方式"
+
 - 所有访问后端接口代码自动生成 [NSwag](https://github.com/RicoSuter/NSwag)
 
-
-
-###  配置代理的地址
+### 配置代理的地址
 
 - nswag->nswag.json
 
@@ -16,7 +16,7 @@
   "documentGenerator": {
     "fromDocument": {
       // 代理地址，只有生成的时候用，不区分环境
-      "url": "http://localhost:44315/swagger/v1/swagger.json", 
+      "url": "http://localhost:44315/swagger/v1/swagger.json",
     }
   }
 ```
@@ -27,7 +27,7 @@
 npm run nswag
 ```
 
-### 后端Api格式
+### 后端 Api 格式
 
 ```csharp
 // 一定要打Tags，因为前端会根据这个生成代理类
@@ -40,9 +40,10 @@ public Task<LoginOutput> LoginAsync(LoginInput input)
 ```
 
 ## 前端多环境
-  - .env.development 和.env.production
-  - VITE_API_URL:后端接口地址
-  - VITE_AUTH_URL:IdentityServer接口地址
+
+- .env.development 和.env.production
+- VITE_API_URL:后端接口地址
+- VITE_WEBSOCKE_URL: WEBSOCKE 地址
 
 ## 权限配置
 
@@ -102,15 +103,25 @@ export default tenant;
             },
             {
               auth: 'System.Users.Enable', // 按钮权限
-              label: !record.isActive ? t('common.enabled') : t('common.disEnabled'),
+              label: !record.isActive
+                ? t('common.enabled')
+                : t('common.disEnabled'),
               onClick: handleLock.bind(null, record),
             },
           ]"
         />
       </template>
     </BasicTable>
-    <CreateAbpUser @register="registerCreateAbpUserModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
-    <EditAbpUser @register="registerEditAbpUserModal" @reload="reload" :bodyStyle="{ 'padding-top': '0' }" />
+    <CreateAbpUser
+      @register="registerCreateAbpUserModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
+    />
+    <EditAbpUser
+      @register="registerEditAbpUserModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
+    />
   </div>
 </template>
 ```

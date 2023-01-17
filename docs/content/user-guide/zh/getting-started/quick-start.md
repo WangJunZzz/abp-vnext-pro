@@ -66,7 +66,6 @@ lion.abp new abp-vnext-pro-basic-no-ocelot -c 公司名称 -p 项目名称 -v �
   - Redis 连接字符串
   - RabbitMq(如果不需要启用设置为 false)
   - Es 地址即可(如果没有 es 也可以运行,只是前端 es 日志页面无法使用而已，不影响后端项目启动)
-- 修改 IdentityServer-> appsettings.json 数据库连接字符串
 - 修改 DbMigrator-> appsettings.json 数据库连接字符串
 - 右键单击.DbMigrator 项目,设置为启动项目运行，按 F5(或 Ctrl + F5) 运行应用程序. 它将具有如下所示的输出:
   ![](../../../img/migrating.png)
@@ -95,5 +94,5 @@ pnpm install
 ### 启动项目
 
 ```bash
-npm run dev
+pnpm run dev
 ```
