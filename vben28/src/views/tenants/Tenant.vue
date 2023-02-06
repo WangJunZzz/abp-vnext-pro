@@ -23,11 +23,11 @@
             },
           ]"
           :dropDownActions="[
-            {
-              auth: 'AbpTenantManagement.Tenants.ManageConnectionStrings',
-              label: t('routes.tenant.connectionString'),
-              onClick: handleConnectionString.bind(null, record),
-            },
+            // {
+            //   auth: 'AbpTenantManagement.Tenants.ManageConnectionStrings',
+            //   label: t('routes.tenant.connectionString'),
+            //   onClick: handleConnectionString.bind(null, record),
+            // },
             {
               auth: 'AbpTenantManagement.Tenants.Delete',
               label: t('common.delText'),
@@ -61,7 +61,12 @@
   import { useModal } from '/@/components/Modal';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
 
-  import { getTenantListAsync, tableColumns, searchFormSchema, deleteTenantAsync } from "/@/views/tenants/Tenant";
+  import {
+    getTenantListAsync,
+    tableColumns,
+    searchFormSchema,
+    deleteTenantAsync,
+  } from '/@/views/tenants/Tenant';
   import CreateTenant from './CreateTenant.vue';
 
   import EditConnectionString from './EditConnectionString.vue';
