@@ -10,11 +10,11 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// </summary>
         private readonly IDataDictionaryRepository _dataDictionaryRepository;
 
-        private readonly DataDictionaryManager _dataDictionaryManager;
+        private readonly IDataDictionaryManager _dataDictionaryManager;
 
         public DataDictionaryAppService(
             IDataDictionaryRepository dataDictionaryRepository,
-            DataDictionaryManager dataDictionaryManager)
+            IDataDictionaryManager dataDictionaryManager)
         {
             _dataDictionaryRepository = dataDictionaryRepository;
             _dataDictionaryManager = dataDictionaryManager;

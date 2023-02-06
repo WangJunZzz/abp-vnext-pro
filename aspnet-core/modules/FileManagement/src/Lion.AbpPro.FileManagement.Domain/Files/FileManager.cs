@@ -1,6 +1,6 @@
 ﻿namespace Lion.AbpPro.FileManagement.Files;
 
-public class FileManager : DomainService
+public class FileManager : DomainService, IFileManager
 {
     private readonly IFileRepository _fileRepository;
 

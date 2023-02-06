@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
-    public class DataDictionaryManager : DataDictionaryDomainService
+    public class DataDictionaryManager : DataDictionaryDomainService, IDataDictionaryManager
     {
         private readonly IDataDictionaryRepository _dataDictionaryRepository;
         private readonly IDistributedCache<DataDictionaryDto> _cache;

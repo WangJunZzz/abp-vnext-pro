@@ -2,7 +2,7 @@ using Lion.AbpPro.NotificationManagement.Notifications.LocalEvents;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications
 {
-    public class NotificationManager : NotificationManagementDomainService
+    public class NotificationManager : NotificationManagementDomainService, INotificationManager
     {
         private readonly INotificationRepository _notificationRepository;
 

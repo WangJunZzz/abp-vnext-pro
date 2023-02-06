@@ -3,12 +3,12 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
     [Authorize]
     public class NotificationAppService : NotificationManagementAppService, INotificationAppService
     {
-        private readonly NotificationManager _notificationManager;
+        private readonly INotificationManager _notificationManager;
         private readonly ICurrentUser _currentUser;
 
 
         public NotificationAppService(
-            NotificationManager notificationManager,
+            INotificationManager notificationManager,
             ICurrentUser currentUser)
         {
             _notificationManager = notificationManager;

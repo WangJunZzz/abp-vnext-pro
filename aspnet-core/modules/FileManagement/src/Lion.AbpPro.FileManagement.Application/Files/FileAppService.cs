@@ -3,10 +3,10 @@
 [Authorize]
 public class FileAppService : FileManagementAppService, IFileAppService
 {
-    private readonly FileManager _fileManager;
+    private readonly IFileManager _fileManager;
     private readonly IConfiguration _configuration;
 
-    public FileAppService(FileManager fileManager, IConfiguration configuration)
+    public FileAppService(IFileManager fileManager, IConfiguration configuration)
     {
         _fileManager = fileManager;
         _configuration = configuration;
