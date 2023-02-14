@@ -1,3 +1,5 @@
+using Volo.Abp.Guids;
+
 namespace Lion.AbpPro.EntityFrameworkCore
 {
     [DependsOn(
@@ -23,6 +25,11 @@ namespace Lion.AbpPro.EntityFrameworkCore
                 options.AddDefaultRepositories(includeAllEntities: true);
             });
 
+            Configure<AbpSequentialGuidGeneratorOptions>(options =>
+            {
+                options.DefaultSequentialGuidType = SequentialGuidType.SequentialAsString;
+            });
+            
             Configure<AbpDbContextOptions>(options =>
             {
                 /* The main point to change your DBMS.
