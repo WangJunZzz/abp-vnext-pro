@@ -137,6 +137,7 @@ public static class DateTimeExtensions
 
     /// <summary>
     /// 转为秒级时间戳
+    /// <param name="dateTime">时间</param>
     /// <param name="timeZoneInfo">默认 TimeZoneInfo.Utc</param>
     /// </summary>
     public static long ToSecondTimeStamp(this DateTime dateTime, TimeZoneInfo timeZoneInfo = null)
@@ -149,6 +150,7 @@ public static class DateTimeExtensions
 
     /// <summary>
     /// 转为秒级时间戳
+    /// <param name="dateTime">时间</param>
     /// <param name="timeZoneInfo">默认 TimeZoneInfo.Utc</param>
     /// </summary>
     public static long? ToSecondTimeStamp(this DateTime? dateTime, TimeZoneInfo timeZoneInfo = null)
@@ -162,6 +164,7 @@ public static class DateTimeExtensions
 
     /// <summary>
     /// 转为毫秒级时间戳
+    /// <param name="dateTime">时间</param>
     /// <param name="timeZoneInfo">默认 TimeZoneInfo.Utc</param>
     /// </summary>
     public static long ToMilliSecondTimeStamp(this DateTime dateTime, TimeZoneInfo timeZoneInfo = null)
@@ -187,6 +190,7 @@ public static class DateTimeExtensions
 
     /// <summary>
     /// 秒级时间戳转为时间
+    /// <param name="dateTime">时间</param>
     /// <param name="timeZoneInfo">默认 TimeZoneInfo.Utc</param>
     /// </summary>
     public static DateTime ToDateTimeBySecondTimeStamp(this long timestamp, TimeZoneInfo timeZoneInfo = null)
@@ -199,6 +203,7 @@ public static class DateTimeExtensions
 
     /// <summary>
     /// 秒级时间戳转为时间
+    /// <param name="timestamp">时间戳</param>
     /// <param name="timeZoneInfo">默认 TimeZoneInfo.Utc</param>
     /// </summary>
     public static DateTime? ToDateTimeBySecondTimeStamp(this long? timestamp, TimeZoneInfo timeZoneInfo = null)
@@ -212,6 +217,7 @@ public static class DateTimeExtensions
 
     /// <summary>
     /// 毫秒级时间戳转为时间
+    /// <param name="timestamp">时间戳</param>
     /// <param name="timeZoneInfo">默认 TimeZoneInfo.Utc</param>
     /// </summary>
     public static DateTime ToDateTimeByMilliSecondTimeStamp(this long timestamp, TimeZoneInfo timeZoneInfo = null)
@@ -224,6 +230,7 @@ public static class DateTimeExtensions
 
     /// <summary>
     /// 毫秒级时间戳转为时间
+    /// <param name="timestamp">时间戳</param>
     /// <param name="timeZoneInfo">默认 TimeZoneInfo.Utc</param>
     /// </summary>
     public static DateTime? ToDateTimeByMilliSecondTimeStamp(this long? timestamp, TimeZoneInfo timeZoneInfo = null)

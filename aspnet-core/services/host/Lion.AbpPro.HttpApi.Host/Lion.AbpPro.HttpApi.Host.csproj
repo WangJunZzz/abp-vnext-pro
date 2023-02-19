@@ -31,7 +31,6 @@
         <PackageReference Include="Serilog.Sinks.Async" />
         <PackageReference Include="Hangfire.Redis.StackExchange" />
         <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
-        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" />
         <PackageReference Include="MiniProfiler.AspNetCore.Mvc" />
         <PackageReference Include="DotNetCore.CAP.MySql" />
         <PackageReference Include="DotNetCore.CAP.RabbitMQ" />
