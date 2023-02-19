@@ -5,14 +5,14 @@ on:
       - "*"
 
 jobs:
-  Push-DockerHub:
+  Push-Nuget:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Install Dotnet 7.x
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 7.0.x
+          dotnet-version: 7.0.102
           include-prerelease: True
       - name: Setting Version
         id: vars
