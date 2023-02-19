@@ -13,6 +13,7 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <RepositoryUrl>https://github.com/WangJunZzz/abp-vnext-pro</RepositoryUrl>
         <PackageIconUrl>https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/06.jpg</PackageIconUrl>
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
