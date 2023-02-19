@@ -6,15 +6,20 @@
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <Version>1.0.0</Version>
+        <Description>Abp vNext Pro</Description>
         <NoWarn>$(NoWarn);CS1591;CS0436;NU1504</NoWarn>
         <AbpProjectType>app</AbpProjectType>
         <ImplicitUsings>true</ImplicitUsings>
         <Authors>WangJunZzz</Authors>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <RepositoryUrl>https://github.com/WangJunZzz/abp-vnext-pro</RepositoryUrl>
-        <PackageIconUrl>https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/06.jpg</PackageIconUrl>
+        <PackageIcon>icon.png</PackageIcon>
         <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)icon.png" Pack="true" PackagePath=""/>
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Update="Humanizer.Core.zh-Hans" Version="2.14.1"/>
