@@ -79,7 +79,10 @@ public class SharedHostingMicroserviceModule : AbpModule
                     .SetIsOriginAllowedToAllowWildcardSubdomains()
                     .AllowAnyHeader()
                     .AllowAnyMethod()
-                    .AllowCredentials();
+                    .AllowCredentials()
+                    // https://www.cnblogs.com/JulianHuang/p/14225515.html
+                    // https://learn.microsoft.com/zh-cn/aspnet/core/security/cors?view=aspnetcore-7.0
+                    .SetPreflightMaxAge((TimeSpan.FromHours(24)));
             });
         });
     }
