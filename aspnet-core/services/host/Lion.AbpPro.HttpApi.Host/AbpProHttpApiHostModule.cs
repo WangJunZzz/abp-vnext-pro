@@ -99,14 +99,13 @@ namespace Lion.AbpPro
             };
 
             Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = true; });
-            context.Services.AddHangfireServer();
             context.Services.AddHangfire(config =>
             {
-                config.UseRedisStorage(ConnectionMultiplexer.Connect(context.Services.GetConfiguration().GetValue<string>("Hangfire:Redis:Host")), redisStorageOptions);
+                config.UseRedisStorage(ConnectionMultiplexer.Connect(context.Services.GetConfiguration().GetValue<string>("Hangfire:Redis:Host")), redisStorageOptions).WithJobExpirationTimeout(TimeSpan.FromDays(7));
                 var delaysInSeconds = new[] { 10, 60, 60 * 3 }; // 重试时间间隔
                 const int Attempts = 3; // 重试次数
                 config.UseFilter(new AutomaticRetryAttribute() { Attempts = Attempts, DelaysInSeconds = delaysInSeconds });
-                config.UseFilter(new AutoDeleteAfterSuccessAttribute(TimeSpan.FromDays(7)));
+                //config.UseFilter(new AutoDeleteAfterSuccessAttribute(TimeSpan.FromDays(7)));
                 config.UseFilter(new JobRetryLastFilter(Attempts));
             });
         }
