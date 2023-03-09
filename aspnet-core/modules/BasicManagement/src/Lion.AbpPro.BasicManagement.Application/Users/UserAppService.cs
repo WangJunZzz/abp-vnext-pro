@@ -132,15 +132,15 @@ namespace Lion.AbpPro.BasicManagement.Users
             if (identityUser.PasswordHash == null)
             {
                 result = await _userManager.AddPasswordAsync(identityUser, input.NewPassword);
+                result.CheckErrors();
             }
             else
             {
                 result = await _userManager.ChangePasswordAsync(identityUser, input.CurrentPassword, input.NewPassword);
+                result.CheckErrors();
             }
 
-            return !result.Succeeded
-                ? throw new BusinessException("Volo.Abp.Identity:" + result?.Errors?.FirstOrDefault()?.Code)
-                : result.Succeeded;
+            return result.Succeeded;
         }
 
         /// <summary>
