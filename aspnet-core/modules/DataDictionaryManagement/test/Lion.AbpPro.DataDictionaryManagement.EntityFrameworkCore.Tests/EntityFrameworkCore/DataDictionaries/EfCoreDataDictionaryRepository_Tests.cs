@@ -14,14 +14,14 @@ namespace Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.DataDictionar
         public async Task Test_FindByIdAsync_Ok()
         {
             var entity =
-                await _dataDictionaryRepository.FindByIdAsync(DataDictionaryManagementConsts.SeedDataDictionaryId,
+                await _dataDictionaryRepository.FindByIdAsync(DataDictionaryManagementTestConsts.SeedDataDictionaryId,
                     true);
             entity.DisplayText.ShouldBe("性别");
             entity.Details.Count.ShouldBe(3);
             entity.Details.FirstOrDefault(e => e.Code == "None").IsEnabled.ShouldBeFalse();
 
             var noDetailEntity =
-                await _dataDictionaryRepository.FindByIdAsync(DataDictionaryManagementConsts.SeedDataDictionaryId,
+                await _dataDictionaryRepository.FindByIdAsync(DataDictionaryManagementTestConsts.SeedDataDictionaryId,
                     false);
             noDetailEntity.Details.Count.ShouldBe(0);
         }

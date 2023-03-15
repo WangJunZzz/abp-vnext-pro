@@ -114,7 +114,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
         {
             if (NotificationSubscriptions.Any(e => e.ReceiveId == receiveId)) return;
             NotificationSubscriptions.Add(
-                new NotificationSubscription(notificationSubscriptionId, receiveId));
+                new NotificationSubscription(notificationSubscriptionId, Id, receiveId));
         }
 
         /// <summary>
@@ -126,12 +126,10 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
             {
                 return;
             }
-            else
-            {
-                var temp = new NotificationSubscription(notificationSubscriptionId, receiveId);
-                temp.SetRead(readTime);
-                NotificationSubscriptions.Add(temp);
-            }
+
+            var temp = new NotificationSubscription(notificationSubscriptionId, Id, receiveId);
+            temp.SetRead(readTime);
+            NotificationSubscriptions.Add(temp);
         }
 
         /// <summary>

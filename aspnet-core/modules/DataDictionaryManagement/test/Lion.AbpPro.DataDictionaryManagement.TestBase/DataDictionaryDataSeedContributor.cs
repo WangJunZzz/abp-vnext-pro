@@ -22,7 +22,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
                 var gender = await _dataDictionaryRepository.FindByCodeAsync("Gender");
                 if (gender == null)
                 {
-                    var id = context is {TenantId: null} ? DataDictionaryManagementConsts.SeedDataDictionaryId : _guidGenerator.Create();
+                    var id = context is {TenantId: null} ? DataDictionaryManagementTestConsts.SeedDataDictionaryId : _guidGenerator.Create();
                     var entity = new DataDictionary(id, "Gender", "性别", "单元测试", context?.TenantId);
                     entity.AddDetail(_guidGenerator.Create(), "Man", "男", 1, "单元测试");
                     entity.AddDetail(_guidGenerator.Create(), "WoMan", "女", 2, "单元测试");

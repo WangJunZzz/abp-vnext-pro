@@ -18,7 +18,7 @@ namespace Lion.AbpPro.NotificationManagement.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("_Abp_DatabaseProvider", EfCoreDatabaseProvider.MySql)
-                .HasAnnotation("ProductVersion", "6.0.6")
+                .HasAnnotation("ProductVersion", "7.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Lion.AbpPro.NotificationManagement.Notifications.Aggregates.Notification", b =>
@@ -72,6 +72,9 @@ namespace Lion.AbpPro.NotificationManagement.Migrations
                         .HasColumnType("char(36)")
                         .HasColumnName("LastModifierId");
 
+                    b.Property<int>("MessageLevel")
+                        .HasColumnType("int");
+
                     b.Property<int>("MessageType")
                         .HasColumnType("int");
 
@@ -124,7 +127,7 @@ namespace Lion.AbpPro.NotificationManagement.Migrations
                         .HasColumnType("char(36)")
                         .HasColumnName("LastModifierId");
 
-                    b.Property<Guid?>("NotificationId")
+                    b.Property<Guid>("NotificationId")
                         .HasColumnType("char(36)");
 
                     b.Property<bool>("Read")
@@ -147,7 +150,9 @@ namespace Lion.AbpPro.NotificationManagement.Migrations
                 {
                     b.HasOne("Lion.AbpPro.NotificationManagement.Notifications.Aggregates.Notification", null)
                         .WithMany("NotificationSubscriptions")
-                        .HasForeignKey("NotificationId");
+                        .HasForeignKey("NotificationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Lion.AbpPro.NotificationManagement.Notifications.Aggregates.Notification", b =>

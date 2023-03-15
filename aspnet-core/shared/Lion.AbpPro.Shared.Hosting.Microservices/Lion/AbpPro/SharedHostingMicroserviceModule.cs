@@ -48,8 +48,7 @@ public class SharedHostingMicroserviceModule : AbpModule
         Configure<AbpAntiForgeryOptions>(options => { options.AutoValidate = false; });
     }
 
-    private void ConfigureConsul(ServiceConfigurationContext context,
-        IConfiguration configuration)
+    private void ConfigureConsul(ServiceConfigurationContext context,IConfiguration configuration)
     {
         if (configuration.GetValue<bool>("Consul:Enabled", false))
         {
@@ -115,7 +114,6 @@ public class SharedHostingMicroserviceModule : AbpModule
     /// <summary>
     /// 健康检查
     /// </summary>
-    /// <param name="context"></param>
     private void ConfigureHealthChecks(ServiceConfigurationContext context)
     {
         // TODO 检查数据库和redis是否正常 AspNetCore.HealthChecks.Redis AspNetCore.HealthChecks.MySql

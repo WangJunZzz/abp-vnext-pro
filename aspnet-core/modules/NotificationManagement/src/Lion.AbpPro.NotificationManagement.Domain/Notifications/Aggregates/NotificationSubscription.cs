@@ -6,6 +6,11 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
     public  class NotificationSubscription : FullAuditedEntity<Guid>
     {
         /// <summary>
+        /// 消息Id
+        /// </summary>
+        public Guid NotificationId { get; set; }
+        
+        /// <summary>
         /// 订阅人
         /// </summary>
         public Guid ReceiveId { get; private set; }
@@ -27,15 +32,20 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
 
         public NotificationSubscription(
             Guid id,
+            Guid notificationId,
             Guid receiveId
         ) : base(id)
         {
+            SetNotificationId(notificationId);
             SetReceiveId(receiveId);
             Read = false;
             ReadTime = null;
         }
 
-
+        private void SetNotificationId(Guid notificationId)
+        {
+            NotificationId = notificationId;
+        }
         private void SetReceiveId(Guid receiveId)
         {
             ReceiveId = receiveId;

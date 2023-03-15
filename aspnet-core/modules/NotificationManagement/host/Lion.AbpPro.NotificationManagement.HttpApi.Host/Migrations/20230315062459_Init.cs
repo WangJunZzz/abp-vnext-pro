@@ -5,8 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Lion.AbpPro.NotificationManagement.Migrations
 {
+    /// <inheritdoc />
     public partial class Init : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
@@ -22,6 +24,7 @@ namespace Lion.AbpPro.NotificationManagement.Migrations
                     Content = table.Column<string>(type: "varchar(1024)", maxLength: 1024, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     MessageType = table.Column<int>(type: "int", nullable: false),
+                    MessageLevel = table.Column<int>(type: "int", nullable: false),
                     SenderId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     ExtraProperties = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -46,10 +49,10 @@ namespace Lion.AbpPro.NotificationManagement.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    NotificationId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     ReceiveId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     Read = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     ReadTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    NotificationId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
                     LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -65,7 +68,8 @@ namespace Lion.AbpPro.NotificationManagement.Migrations
                         name: "FK_NotificationSubscription_Notification_NotificationId",
                         column: x => x.NotificationId,
                         principalTable: "Notification",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -75,6 +79,7 @@ namespace Lion.AbpPro.NotificationManagement.Migrations
                 column: "NotificationId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

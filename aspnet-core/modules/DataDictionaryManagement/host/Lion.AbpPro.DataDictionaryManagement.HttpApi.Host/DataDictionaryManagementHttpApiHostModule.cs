@@ -25,7 +25,7 @@ namespace Lion.AbpPro.DataDictionaryManagement
             // {
             //     options.IsEnabled = MultiTenancyConsts.IsEnabled;
             // });
-
+            context.Services.AddAlwaysAllowAuthorization();
             ConfigureSwaggerServices(context);
             ConfigureCache(context);
             ConfigureCors(context);
