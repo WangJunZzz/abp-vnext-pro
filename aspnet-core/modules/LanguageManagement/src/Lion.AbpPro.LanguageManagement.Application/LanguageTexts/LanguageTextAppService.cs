@@ -1,6 +1,3 @@
-using System.Globalization;
-using Volo.Abp.Json;
-
 namespace Lion.AbpPro.LanguageManagement.LanguageTexts;
 
 /// <summary>

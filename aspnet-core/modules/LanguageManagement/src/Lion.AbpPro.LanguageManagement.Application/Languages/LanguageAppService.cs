@@ -6,10 +6,10 @@ namespace Lion.AbpPro.LanguageManagement.Languages;
 [Authorize]
 public class LanguageAppService : ApplicationService, ILanguageAppService
 {
-    private readonly LanguageManager _languageManager;
+    private readonly ILanguageManager _languageManager;
     private readonly ISettingManager _settingManager;
 
-    public LanguageAppService(LanguageManager languageManager, ISettingManager settingManager)
+    public LanguageAppService(ILanguageManager languageManager, ISettingManager settingManager)
     {
         _languageManager = languageManager;
         _settingManager = settingManager;

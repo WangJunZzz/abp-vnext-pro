@@ -24,14 +24,7 @@ public interface ILanguageTextRepository : IBasicRepository<LanguageText, Guid>
     /// 查询语言文本
     /// </summary>
     Task<List<LanguageText>> FindAsync(string cultureName, string resourceName);
-
-    /// <summary>
-    /// 查询语言文本
-    /// </summary>
-    /// <param name="cultureName">语言</param>
-    /// <param name="resourceName">资源名称</param>
-    Task<LanguageText> FindOneAsync(string cultureName, string resourceName);
-
+    
     /// <summary>
     /// 查询语言文本
     /// </summary>

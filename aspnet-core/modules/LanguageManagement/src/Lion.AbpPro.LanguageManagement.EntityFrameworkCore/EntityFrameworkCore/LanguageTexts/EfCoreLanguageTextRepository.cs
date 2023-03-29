@@ -60,19 +60,6 @@ public class EfCoreLanguageTextRepository :
     /// </summary>
     /// <param name="cultureName">语言</param>
     /// <param name="resourceName">资源名称</param>
-    public async Task<LanguageText> FindOneAsync(string cultureName, string resourceName)
-    {
-        return await (await GetDbSetAsync())
-            .Where(e => e.CultureName == cultureName)
-            .Where(e => e.ResourceName == resourceName)
-            .FirstOrDefaultAsync();
-    }
-
-    /// <summary>
-    /// 查询语言文本
-    /// </summary>
-    /// <param name="cultureName">语言</param>
-    /// <param name="resourceName">资源名称</param>
     /// <param name="name">名称</param>
     public async Task<LanguageText> FindAsync(string cultureName, string resourceName, string name)
     {
