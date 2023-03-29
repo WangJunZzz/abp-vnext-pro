@@ -1,11 +1,14 @@
+using Lion.AbpPro.LanguageManagement;
+
 namespace Lion.AbpPro
 {
     [DependsOn(
         typeof(AbpProDomainSharedModule),
+        typeof(AbpEmailingModule),
         typeof(BasicManagementDomainModule),
         typeof(DataDictionaryManagementDomainModule),
         typeof(NotificationManagementDomainModule),
-        typeof(AbpEmailingModule)
+        typeof(LanguageManagementDomainModule)
     )]
     public class AbpProDomainModule : AbpModule
     {

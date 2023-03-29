@@ -8,7 +8,7 @@
           @click="openCreateAbpUserModal"
           v-auth="'AbpIdentity.Users.Create'"
         >
-          {{ t("common.createText") }}
+          {{ t('common.createText') }}
         </a-button>
         <a-button
           preIcon="ant-design:cloud-download-outlined"
@@ -16,16 +16,16 @@
           @click="handleExport"
           v-auth="'AbpIdentity.Users.Export'"
         >
-          {{ t("common.export") }}
+          {{ t('common.export') }}
         </a-button>
       </template>
-    <template #bodyCell="{ column, record }">
-      <template v-if="column.key === 'isActive'">
-            <Tag :color="record.isActive ? 'green' : 'red'">
-          {{ record.isActive ? t("common.enabled") : t("common.disEnabled") }}
-        </Tag>
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'isActive'">
+          <Tag :color="record.isActive ? 'green' : 'red'">
+            {{ record.isActive ? t('common.enabled') : t('common.disEnabled') }}
+          </Tag>
+        </template>
       </template>
-    </template>
 
       <template #action="{ record }">
         <TableAction
@@ -66,116 +66,116 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { useMessage } from "/@/hooks/web/useMessage";
-import { BasicTable, useTable, TableAction } from "/@/components/Table";
-import {
-  tableColumns,
-  searchFormSchema,
-  getTableListAsync,
-  deleteUserAsync,
-  lockUserAsync,
-  exportAsync
-} from "/@/views/admin/users/AbpUser";
-import { useModal } from "/@/components/Modal";
-import CreateAbpUser from "./CreateAbpUser.vue";
-import EditAbpUser from "./EditAbpUser.vue";
-import { message } from "ant-design-vue";
-import { useI18n } from "/@/hooks/web/useI18n";
-import { LockUserInput } from "/@/services/ServiceProxies";
-import { Tag } from "ant-design-vue";
+  import { defineComponent } from 'vue';
+  import { useMessage } from '/@/hooks/web/useMessage';
+  import { BasicTable, useTable, TableAction } from '/@/components/Table';
+  import {
+    tableColumns,
+    searchFormSchema,
+    getTableListAsync,
+    deleteUserAsync,
+    lockUserAsync,
+    exportAsync,
+  } from '/@/views/admin/users/AbpUser';
+  import { useModal } from '/@/components/Modal';
+  import CreateAbpUser from './CreateAbpUser.vue';
+  import EditAbpUser from './EditAbpUser.vue';
+  import { message } from 'ant-design-vue';
+  import { useI18n } from '/@/hooks/web/useI18n';
+  import { LockUserInput } from '/@/services/ServiceProxies';
+  import { Tag } from 'ant-design-vue';
 
-export default defineComponent({
-  name: "AbpUser",
-  components: {
-    BasicTable,
-    TableAction,
-    CreateAbpUser,
-    EditAbpUser,
-    Tag
-  },
-  setup() {
-    const { createConfirm } = useMessage();
-    const { t } = useI18n();
-    const [registerCreateAbpUserModal, { openModal: openCreateAbpUserModal }] = useModal();
+  export default defineComponent({
+    name: 'AbpUser',
+    components: {
+      BasicTable,
+      TableAction,
+      CreateAbpUser,
+      EditAbpUser,
+      Tag,
+    },
+    setup() {
+      const { createConfirm } = useMessage();
+      const { t } = useI18n();
+      const [registerCreateAbpUserModal, { openModal: openCreateAbpUserModal }] = useModal();
 
-    const [registerEditAbpUserModal, { openModal: openEditAbpUserModal }] = useModal();
+      const [registerEditAbpUserModal, { openModal: openEditAbpUserModal }] = useModal();
 
-    // table配置
-    const [registerTable, { reload, getForm }] = useTable({
-      columns: tableColumns,
-      formConfig: {
-        labelWidth: 70,
-        schemas: searchFormSchema
-      },
-      api: getTableListAsync,
-      showTableSetting: true,
-      useSearchForm: true,
-      bordered: true,
-      canResize: true,
-      showIndexColumn: true,
-      actionColumn: {
-        width: 120,
-        title: t("common.action"),
-        dataIndex: "action",
-        slots: {
-          customRender: "action"
+      // table配置
+      const [registerTable, { reload, getForm }] = useTable({
+        columns: tableColumns,
+        formConfig: {
+          labelWidth: 70,
+          schemas: searchFormSchema,
         },
-        fixed: "right"
-      }
-    });
-
-    // 编辑用户
-    const handleEdit = (record: Recordable) => {
-      openEditAbpUserModal(true, {
-        record: record
+        api: getTableListAsync,
+        showTableSetting: true,
+        useSearchForm: true,
+        bordered: true,
+        canResize: true,
+        showIndexColumn: true,
+        actionColumn: {
+          width: 120,
+          title: t('common.action'),
+          dataIndex: 'action',
+          slots: {
+            customRender: 'action',
+          },
+          fixed: 'right',
+        },
       });
-    };
 
-    // 删除用户
-    const handleDelete = async (record: Recordable) => {
-      if (record.name == "admin") {
-        message.error("admin not delete");
-        return;
-      } else {
-        let msg = t("common.askDelete");
-        createConfirm({
-          iconType: "warning",
-          title: t("common.tip"),
-          content: msg,
-          onOk: async () => {
-            await deleteUserAsync({ userId: record.id, reload });
-          }
+      // 编辑用户
+      const handleEdit = (record: Recordable) => {
+        openEditAbpUserModal(true, {
+          record: record,
         });
-      }
-    };
+      };
 
-    const handleLock = async (record: Recordable) => {
-      let request = new LockUserInput();
-      request.userId = record.id;
-      request.locked = !record.isActive;
-      await lockUserAsync(request);
-      message.success(t("common.operationSuccess"));
-      await reload();
-    };
-    const handleExport = () => {
-      const { getFieldsValue } = getForm();
-      let request = getFieldsValue();
-      exportAsync({ request });
-    };
-    return {
-      registerTable,
-      handleEdit,
-      handleDelete,
-      getTableListAsync,
-      registerCreateAbpUserModal,
-      openCreateAbpUserModal,
-      registerEditAbpUserModal,
-      t,
-      reload,
-      handleLock,
-      handleExport
-    };
-  }
-});
+      // 删除用户
+      const handleDelete = async (record: Recordable) => {
+        if (record.name == 'admin') {
+          message.error('admin not delete');
+          return;
+        } else {
+          let msg = t('common.askDelete');
+          createConfirm({
+            iconType: 'warning',
+            title: t('common.tip'),
+            content: msg,
+            onOk: async () => {
+              await deleteUserAsync({ userId: record.id, reload });
+            },
+          });
+        }
+      };
+
+      const handleLock = async (record: Recordable) => {
+        let request = new LockUserInput();
+        request.userId = record.id;
+        request.locked = !record.isActive;
+        await lockUserAsync(request);
+        message.success(t('common.operationSuccess'));
+        await reload();
+      };
+      const handleExport = () => {
+        const { getFieldsValue } = getForm();
+        let request = getFieldsValue();
+        exportAsync({ request });
+      };
+      return {
+        registerTable,
+        handleEdit,
+        handleDelete,
+        getTableListAsync,
+        registerCreateAbpUserModal,
+        openCreateAbpUserModal,
+        registerEditAbpUserModal,
+        t,
+        reload,
+        handleLock,
+        handleExport,
+      };
+    },
+  });
 </script>

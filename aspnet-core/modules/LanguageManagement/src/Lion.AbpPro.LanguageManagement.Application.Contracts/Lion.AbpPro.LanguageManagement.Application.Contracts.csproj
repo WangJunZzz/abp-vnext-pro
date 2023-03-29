@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+	<TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>Lion.AbpPro.LanguageManagement</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" />
+    <PackageReference Include="Volo.Abp.Authorization" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lion.AbpPro.LanguageManagement.Domain.Shared\Lion.AbpPro.LanguageManagement.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

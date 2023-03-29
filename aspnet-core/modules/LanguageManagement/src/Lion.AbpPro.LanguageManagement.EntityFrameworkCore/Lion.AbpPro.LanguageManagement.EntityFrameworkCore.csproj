@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>Lion.AbpPro.LanguageManagement</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore" />
+        <ProjectReference Include="..\Lion.AbpPro.LanguageManagement.Domain\Lion.AbpPro.LanguageManagement.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

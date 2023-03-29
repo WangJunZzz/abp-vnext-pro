@@ -8,6 +8,7 @@ namespace Lion.AbpPro.ElasticSearches
         // 时区
         private const string TimeZone = "Asia/Shanghai";
 
+        
         public LionAbpProLogAppService(
             IElasticsearchProvider elasticsearchProvider,
             IConfiguration configuration) : base(elasticsearchProvider)
@@ -39,7 +40,7 @@ namespace Lion.AbpPro.ElasticSearches
             {
                 mustFilters.Add
                 (
-                    t => t.MatchPhrase(f => f.Field(fd => fd.Message).Query(input.Filter.Trim()))
+                    t => t.Match(f => f.Field(fd => fd.Message).Query(input.Filter.Trim()).Fuzziness(Fuzziness.Auto))
                 );
             }
 

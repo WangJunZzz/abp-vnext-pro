@@ -15,6 +15,7 @@ global using Lion.AbpPro.NotificationManagement;
 global using Lion.AbpPro.Permissions;
 global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.Localization;
 global using Nest;
 global using Volo.Abp.Application.Services;
 global using Volo.Abp.AutoMapper;

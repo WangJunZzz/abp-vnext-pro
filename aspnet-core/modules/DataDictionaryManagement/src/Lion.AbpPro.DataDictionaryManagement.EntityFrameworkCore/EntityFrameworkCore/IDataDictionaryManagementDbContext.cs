@@ -6,6 +6,6 @@ namespace Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore
         /* Add DbSet for each Aggregate Root here. Example:
          * DbSet<Question> Questions { get; }
          */
-        DbSet<DataDictionary> DataDictionary { get; }
+        DbSet<DataDictionary> DataDictionaries { get; }
     }
 }

@@ -1,4 +1,7 @@
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
+using Lion.AbpPro.LanguageManagement.EntityFrameworkCore;
+using Lion.AbpPro.LanguageManagement.Languages.Aggregates;
+using Lion.AbpPro.LanguageManagement.LanguageTexts.Aggregates;
 using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
 
 namespace Lion.AbpPro.EntityFrameworkCore
@@ -16,7 +19,8 @@ namespace Lion.AbpPro.EntityFrameworkCore
     public class AbpProDbContext : AbpDbContext<AbpProDbContext>, IAbpProDbContext,
         IBasicManagementDbContext,
         INotificationManagementDbContext,
-        IDataDictionaryManagementDbContext
+        IDataDictionaryManagementDbContext,
+        ILanguageManagementDbContext
     {
         public DbSet<IdentityUser> Users { get; set; }
         public DbSet<IdentityRole> Roles { get; set; }
@@ -36,8 +40,10 @@ namespace Lion.AbpPro.EntityFrameworkCore
         public DbSet<BackgroundJobRecord> BackgroundJobs { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
         public DbSet<Notification> Notifications { get; set; }
-        public DbSet<DataDictionary> DataDictionary { get;  set; }
-       
+        public DbSet<DataDictionary> DataDictionaries { get;  set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<LanguageText> LanguageTexts { get; set; }
+        
         public AbpProDbContext(DbContextOptions<AbpProDbContext> options)
             : base(options)
         {
@@ -49,6 +55,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
             // 如何设置表前缀
             // Abp框架表前缀 Abp得不建议修改表前缀
             // AbpCommonDbProperties.DbTablePrefix = "xxx";
+            
             // 数据字典表前缀
             //DataDictionaryManagementDbProperties=“xxx”
             // 通知模块
@@ -67,8 +74,9 @@ namespace Lion.AbpPro.EntityFrameworkCore
             // 消息通知
             builder.ConfigureNotificationManagement();
             
+            // 多语言
+            builder.ConfigureLanguageManagement();
         }
-
 
     }
 }

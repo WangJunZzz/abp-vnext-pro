@@ -208,6 +208,38 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Localization.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Core.Tests", "frameworks\test\Lion.AbpPro.Core.Tests\Lion.AbpPro.Core.Tests.csproj", "{A7206D58-8107-4BB9-8962-30C845ACB6DC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LanguageManagement", "LanguageManagement", "{073D8348-DDEE-42EE-B34B-888A68FA296D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{ED9C412B-0D49-46A3-B11F-669D2DC4A4EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2F21DF25-C489-4BCD-8460-41BF0500E17F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{3FE23400-A323-46ED-A7F4-30BFF8916D64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.Domain.Shared", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Domain.Shared\Lion.AbpPro.LanguageManagement.Domain.Shared.csproj", "{42812354-1C2C-45C0-91FE-056851CFA835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.Domain", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Domain\Lion.AbpPro.LanguageManagement.Domain.csproj", "{7491214D-0335-47F2-9AE8-92A68CA0EA75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.EntityFrameworkCore", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.EntityFrameworkCore\Lion.AbpPro.LanguageManagement.EntityFrameworkCore.csproj", "{451999B4-0BE6-4ADD-9B8F-5905AEF63D94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.Application.Contracts", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Application.Contracts\Lion.AbpPro.LanguageManagement.Application.Contracts.csproj", "{84592572-EC8B-49A3-8F42-83438F0CEE97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.Application", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Application\Lion.AbpPro.LanguageManagement.Application.csproj", "{4AA19933-C5EE-47BC-8AC7-688D02117F69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.HttpApi", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.HttpApi\Lion.AbpPro.LanguageManagement.HttpApi.csproj", "{E63AA900-9DF1-4E11-9D36-6F325F3BCB11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.HttpApi.Client", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.HttpApi.Client\Lion.AbpPro.LanguageManagement.HttpApi.Client.csproj", "{626C3566-C5D5-4A1C-B9BB-A766C1608B86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.HttpApi.Host", "modules\LanguageManagement\host\Lion.AbpPro.LanguageManagement.HttpApi.Host\Lion.AbpPro.LanguageManagement.HttpApi.Host.csproj", "{25A9FE86-420E-4B21-A1D4-6BFE76E79790}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.TestBase", "modules\LanguageManagement\test\Lion.AbpPro.LanguageManagement.TestBase\Lion.AbpPro.LanguageManagement.TestBase.csproj", "{C662D24D-4EB6-425E-B63B-CAD944ABF689}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.Domain.Tests", "modules\LanguageManagement\test\Lion.AbpPro.LanguageManagement.Domain.Tests\Lion.AbpPro.LanguageManagement.Domain.Tests.csproj", "{8872921C-5BF9-4B4C-B882-6AF8CC78D2CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.EntityFrameworkCore.Tests", "modules\LanguageManagement\test\Lion.AbpPro.LanguageManagement.EntityFrameworkCore.Tests\Lion.AbpPro.LanguageManagement.EntityFrameworkCore.Tests.csproj", "{E5994C85-C1C2-44F3-BF10-3277CA6CF2C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.Application.Tests", "modules\LanguageManagement\test\Lion.AbpPro.LanguageManagement.Application.Tests\Lion.AbpPro.LanguageManagement.Application.Tests.csproj", "{15852D6F-4110-4B98-B89D-5747777E8908}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -502,6 +534,54 @@ Global
 		{A7206D58-8107-4BB9-8962-30C845ACB6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7206D58-8107-4BB9-8962-30C845ACB6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7206D58-8107-4BB9-8962-30C845ACB6DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42812354-1C2C-45C0-91FE-056851CFA835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42812354-1C2C-45C0-91FE-056851CFA835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42812354-1C2C-45C0-91FE-056851CFA835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42812354-1C2C-45C0-91FE-056851CFA835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7491214D-0335-47F2-9AE8-92A68CA0EA75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7491214D-0335-47F2-9AE8-92A68CA0EA75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7491214D-0335-47F2-9AE8-92A68CA0EA75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7491214D-0335-47F2-9AE8-92A68CA0EA75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{451999B4-0BE6-4ADD-9B8F-5905AEF63D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{451999B4-0BE6-4ADD-9B8F-5905AEF63D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{451999B4-0BE6-4ADD-9B8F-5905AEF63D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{451999B4-0BE6-4ADD-9B8F-5905AEF63D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84592572-EC8B-49A3-8F42-83438F0CEE97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84592572-EC8B-49A3-8F42-83438F0CEE97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84592572-EC8B-49A3-8F42-83438F0CEE97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84592572-EC8B-49A3-8F42-83438F0CEE97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AA19933-C5EE-47BC-8AC7-688D02117F69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AA19933-C5EE-47BC-8AC7-688D02117F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AA19933-C5EE-47BC-8AC7-688D02117F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AA19933-C5EE-47BC-8AC7-688D02117F69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E63AA900-9DF1-4E11-9D36-6F325F3BCB11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E63AA900-9DF1-4E11-9D36-6F325F3BCB11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E63AA900-9DF1-4E11-9D36-6F325F3BCB11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E63AA900-9DF1-4E11-9D36-6F325F3BCB11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{626C3566-C5D5-4A1C-B9BB-A766C1608B86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{626C3566-C5D5-4A1C-B9BB-A766C1608B86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{626C3566-C5D5-4A1C-B9BB-A766C1608B86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{626C3566-C5D5-4A1C-B9BB-A766C1608B86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25A9FE86-420E-4B21-A1D4-6BFE76E79790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25A9FE86-420E-4B21-A1D4-6BFE76E79790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25A9FE86-420E-4B21-A1D4-6BFE76E79790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25A9FE86-420E-4B21-A1D4-6BFE76E79790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C662D24D-4EB6-425E-B63B-CAD944ABF689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C662D24D-4EB6-425E-B63B-CAD944ABF689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C662D24D-4EB6-425E-B63B-CAD944ABF689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C662D24D-4EB6-425E-B63B-CAD944ABF689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8872921C-5BF9-4B4C-B882-6AF8CC78D2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8872921C-5BF9-4B4C-B882-6AF8CC78D2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8872921C-5BF9-4B4C-B882-6AF8CC78D2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8872921C-5BF9-4B4C-B882-6AF8CC78D2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5994C85-C1C2-44F3-BF10-3277CA6CF2C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5994C85-C1C2-44F3-BF10-3277CA6CF2C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5994C85-C1C2-44F3-BF10-3277CA6CF2C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5994C85-C1C2-44F3-BF10-3277CA6CF2C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15852D6F-4110-4B98-B89D-5747777E8908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15852D6F-4110-4B98-B89D-5747777E8908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15852D6F-4110-4B98-B89D-5747777E8908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15852D6F-4110-4B98-B89D-5747777E8908}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -600,6 +680,22 @@ Global
 		{EFC415F8-872F-4C7E-8645-31A51481BCFC} = {CC2EBB07-A070-4158-AB37-A0C0BBAEA9F5}
 		{800A02FA-EA70-4492-9A93-13C820692F1D} = {EFC415F8-872F-4C7E-8645-31A51481BCFC}
 		{A7206D58-8107-4BB9-8962-30C845ACB6DC} = {EFC415F8-872F-4C7E-8645-31A51481BCFC}
+		{073D8348-DDEE-42EE-B34B-888A68FA296D} = {F8A8EB2A-2D4B-464F-9A13-F8F7B6A8FAA3}
+		{ED9C412B-0D49-46A3-B11F-669D2DC4A4EB} = {073D8348-DDEE-42EE-B34B-888A68FA296D}
+		{2F21DF25-C489-4BCD-8460-41BF0500E17F} = {073D8348-DDEE-42EE-B34B-888A68FA296D}
+		{3FE23400-A323-46ED-A7F4-30BFF8916D64} = {073D8348-DDEE-42EE-B34B-888A68FA296D}
+		{42812354-1C2C-45C0-91FE-056851CFA835} = {2F21DF25-C489-4BCD-8460-41BF0500E17F}
+		{7491214D-0335-47F2-9AE8-92A68CA0EA75} = {2F21DF25-C489-4BCD-8460-41BF0500E17F}
+		{451999B4-0BE6-4ADD-9B8F-5905AEF63D94} = {2F21DF25-C489-4BCD-8460-41BF0500E17F}
+		{84592572-EC8B-49A3-8F42-83438F0CEE97} = {2F21DF25-C489-4BCD-8460-41BF0500E17F}
+		{4AA19933-C5EE-47BC-8AC7-688D02117F69} = {2F21DF25-C489-4BCD-8460-41BF0500E17F}
+		{E63AA900-9DF1-4E11-9D36-6F325F3BCB11} = {2F21DF25-C489-4BCD-8460-41BF0500E17F}
+		{626C3566-C5D5-4A1C-B9BB-A766C1608B86} = {2F21DF25-C489-4BCD-8460-41BF0500E17F}
+		{25A9FE86-420E-4B21-A1D4-6BFE76E79790} = {ED9C412B-0D49-46A3-B11F-669D2DC4A4EB}
+		{C662D24D-4EB6-425E-B63B-CAD944ABF689} = {3FE23400-A323-46ED-A7F4-30BFF8916D64}
+		{8872921C-5BF9-4B4C-B882-6AF8CC78D2CF} = {3FE23400-A323-46ED-A7F4-30BFF8916D64}
+		{E5994C85-C1C2-44F3-BF10-3277CA6CF2C9} = {3FE23400-A323-46ED-A7F4-30BFF8916D64}
+		{15852D6F-4110-4B98-B89D-5747777E8908} = {3FE23400-A323-46ED-A7F4-30BFF8916D64}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

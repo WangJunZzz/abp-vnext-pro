@@ -101,7 +101,8 @@ namespace Lion.AbpPro
             Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = true; });
             context.Services.AddHangfire(config =>
             {
-                config.UseRedisStorage(ConnectionMultiplexer.Connect(context.Services.GetConfiguration().GetValue<string>("Hangfire:Redis:Host")), redisStorageOptions).WithJobExpirationTimeout(TimeSpan.FromDays(7));
+                config.UseRedisStorage(ConnectionMultiplexer.Connect(context.Services.GetConfiguration().GetValue<string>("Hangfire:Redis:Host")), redisStorageOptions)
+                    .WithJobExpirationTimeout(TimeSpan.FromDays(7));
                 var delaysInSeconds = new[] { 10, 60, 60 * 3 }; // 重试时间间隔
                 const int Attempts = 3; // 重试次数
                 config.UseFilter(new AutomaticRetryAttribute() { Attempts = Attempts, DelaysInSeconds = delaysInSeconds });
@@ -298,7 +299,9 @@ namespace Lion.AbpPro
 
                     var hostingEnvironment = context.Services.GetHostingEnvironment();
                     bool auth = !hostingEnvironment.IsDevelopment();
-                    capOptions.UseDashboard(options => { options.UseAuth = auth;
+                    capOptions.UseDashboard(options =>
+                    {
+                        options.UseAuth = auth;
                         options.AuthorizationPolicy = LionAbpProCapPermissions.CapManagement.Cap;
                     });
                 });
