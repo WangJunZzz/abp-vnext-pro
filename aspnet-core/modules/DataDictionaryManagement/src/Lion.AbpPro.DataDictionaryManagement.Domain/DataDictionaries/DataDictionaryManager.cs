@@ -170,17 +170,16 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             return await _dataDictionaryRepository.UpdateAsync(entity);
         }
 
-        public async Task DeleteAsync(Guid dataDictionaryId, Guid dataDictionayDetailId)
+        public async Task DeleteAsync(Guid dataDictionaryId, Guid dataDictionaryDetailId)
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
             if (entity == null)
                 throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryNotExist);
-            var detail = entity.Details.FirstOrDefault(e => e.Id == dataDictionayDetailId);
+            var detail = entity.Details.FirstOrDefault(e => e.Id == dataDictionaryDetailId);
             if (null == detail)
             {
                 throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryDetailNotExist);
             }
-
             entity.Details.Remove(detail);
             await _dataDictionaryRepository.UpdateAsync(entity);
         }
@@ -193,7 +192,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
             if (entity == null)
                 throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryNotExist);
-            entity.Update(dataDictionaryId, displayText, description);
+            entity.Update(displayText, description);
             return await _dataDictionaryRepository.UpdateAsync(entity);
         }
 

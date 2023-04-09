@@ -52,7 +52,7 @@ public interface IDataDictionaryManager
         string description,
         int order);
 
-    Task DeleteAsync(Guid dataDictionaryId, Guid dataDictionayDetailId);
+    Task DeleteAsync(Guid dataDictionaryId, Guid dataDictionaryDetailId);
 
     Task<DataDictionary> UpdateAsync(
         Guid dataDictionaryId,

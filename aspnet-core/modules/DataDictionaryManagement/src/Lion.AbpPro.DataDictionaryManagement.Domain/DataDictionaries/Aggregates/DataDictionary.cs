@@ -84,15 +84,15 @@ public class DataDictionary : FullAuditedAggregateRoot<Guid>, IMultiTenant
         Description = description ?? string.Empty;
     }
 
-    public void AddDetail(Guid dataDictionayDetailId, string code, string displayText, int order = 1,
+    public void AddDetail(Guid dataDictionaryDetailId, string code, string displayText, int order = 1,
         string description = "", bool isEnabled = true)
     {
         if (Details.Any(e => e.Code == code.Trim()))
         {
-            throw new DataDictionaryDomainException(message: "数据字典项已存在");
+            throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryDetailExist);
         }
 
-        Details.Add(new DataDictionaryDetail(dataDictionayDetailId, Id, code, displayText, order, isEnabled,
+        Details.Add(new DataDictionaryDetail(dataDictionaryDetailId, Id, code, displayText, order, isEnabled,
             description));
     }
 
@@ -101,13 +101,13 @@ public class DataDictionary : FullAuditedAggregateRoot<Guid>, IMultiTenant
         var detail = Details.FirstOrDefault(item => item.Code == detailCode);
         if (null == detail)
         {
-            throw new DataDictionaryDomainException(message: "数据字典项不存在");
+            throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryDetailNotExist);
         }
 
         Details.Remove(detail);
     }
 
-    public void Update(Guid dataDictionayDetailId,string displayText,string description)
+    public void Update(string displayText,string description)
     {
         SetDescription(description);
         SetDisplayText(displayText);
