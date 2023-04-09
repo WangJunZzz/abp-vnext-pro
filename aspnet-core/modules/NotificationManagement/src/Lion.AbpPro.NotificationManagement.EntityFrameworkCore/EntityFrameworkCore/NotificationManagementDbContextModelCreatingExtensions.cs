@@ -9,14 +9,14 @@ namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore
 
             builder.Entity<Notification>(b =>
             {
-                b.ToTable(NotificationManagementDbProperties.DbTablePrefix + nameof(Notification),NotificationManagementDbProperties.DbSchema);
+                b.ToTable(NotificationManagementDbProperties.DbTablePrefix + "Notifications", NotificationManagementDbProperties.DbSchema);
                 b.HasMany(e => e.NotificationSubscriptions).WithOne().HasForeignKey(uc => uc.NotificationId).IsRequired();
                 b.ConfigureByConvention();
             });
-            
+
             builder.Entity<NotificationSubscription>(b =>
             {
-                b.ToTable(NotificationManagementDbProperties.DbTablePrefix + nameof(NotificationSubscription),NotificationManagementDbProperties.DbSchema);
+                b.ToTable(NotificationManagementDbProperties.DbTablePrefix + "NotificationSubscriptions", NotificationManagementDbProperties.DbSchema);
                 b.ConfigureByConvention();
             });
         }

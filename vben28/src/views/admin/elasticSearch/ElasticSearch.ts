@@ -4,18 +4,14 @@ import { useI18n } from '/@/hooks/web/useI18n';
 
 const { t } = useI18n();
 import { formatToDateTime, dateUtil } from '/@/utils/dateUtil';
-import {
-  EsLogServiceProxy,
-  PagingElasticSearchLogInput,
-  PagingElasticSearchLogOutputCustomePagedResultDto,
-} from '/@/services/ServiceProxies';
+import { EsLogServiceProxy, PagingElasticSearchLogInput } from '/@/services/ServiceProxies';
 
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'filter',
     component: 'Input',
     label: t('common.key'),
-    labelWidth: 80,
+    labelWidth: 120,
     colProps: {
       span: 6,
     },
@@ -54,9 +50,7 @@ export const tableColumns: BasicColumn[] = [
  * @param request
  * @returns
  */
-export async function getElasticSearchLogAsync(
-  request: PagingElasticSearchLogInput,
-): Promise<PagingElasticSearchLogOutputCustomePagedResultDto> {
+export async function getElasticSearchLogAsync(request: PagingElasticSearchLogInput) {
   const _elasticSearchServiceProxy = new EsLogServiceProxy();
   return await _elasticSearchServiceProxy.page(request);
 }

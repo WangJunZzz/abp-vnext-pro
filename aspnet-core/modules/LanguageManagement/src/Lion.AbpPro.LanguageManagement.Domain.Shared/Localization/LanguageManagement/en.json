@@ -1,0 +1,20 @@
+{
+  "culture": "en",
+  "texts": {
+    "ManageYourProfile":  "Manage your profile",
+    "SamplePageMessage": "A sample page for the LanguageManagement module",
+    "Permission:LanguageManagement": "LanguageManagement",
+    "Permission:Languages": "Languages",
+    "Permission:LanguageTexts": "LanguageText",
+    "Permission:Create": "Create",
+    "Permission:Update": "Update",
+    "Permission:Delete": "Delete",
+    "Permission:LanguagesChangeDefault": "Change Default Language",
+    "Lion.AbpPro.LanguageManagement:100001": "The selected culture is not valid!  Make sure you enter a valid culture name",
+    "Lion.AbpPro.LanguageManagement:100002": "Language resources not found",
+    "Lion.AbpPro.LanguageManagement:100003": "Language not found",
+    "Lion.AbpPro.LanguageManagement:100004": "Language exists",
+    "Lion.AbpPro.LanguageManagement:100005": "'{Name}' not found",
+    "Lion.AbpPro.LanguageManagement:100006": "'{Name}'exists"
+  }
+}

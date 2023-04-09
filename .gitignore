@@ -262,3 +262,4 @@ aspnet-core/services/host/Lion.AbpPro.Web.Blazor.Server/Logs/logs.txt
 /aspnet-core/Lion.AbpPro.sln.DotSettings
 /aspnet-core/services/host/Lion.AbpPro.HttpApi.Host/logs
 /docs/site
+/aspnet-core/modules/LanguageManagement/host/Lion.AbpPro.LanguageManagement.HttpApi.Host/Logs

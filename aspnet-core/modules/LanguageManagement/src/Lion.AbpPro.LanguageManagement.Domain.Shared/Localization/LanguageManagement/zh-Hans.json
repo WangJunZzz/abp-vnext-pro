@@ -1,0 +1,20 @@
+{
+  "culture": "zh-Hans",
+  "texts": {
+    "ManageYourProfile": "管理个人资料",
+    "SamplePageMessage": "LanguageManagement模块的示例页面",
+    "Permission:LanguageManagement": "语言管理",
+    "Permission:Languages": "语言",
+    "Permission:LanguageTexts": "语言文本",
+    "Permission:Create": "创建",
+    "Permission:Update": "编辑",
+    "Permission:Delete": "删除",
+    "Permission:LanguagesChangeDefault": "修改默认语言",
+    "Lion.AbpPro.LanguageManagement:100001": "所选区域性无效!确保输入有效的区域性名称",
+    "Lion.AbpPro.LanguageManagement:100002": "语言资源未找到",
+    "Lion.AbpPro.LanguageManagement:100003": "语言未找到",
+    "Lion.AbpPro.LanguageManagement:100004": "语言已存在",
+    "Lion.AbpPro.LanguageManagement:100005": "'{Name}'未找到",
+    "Lion.AbpPro.LanguageManagement:100006": "'{Name}'已存在"
+  }
+}

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>Lion.AbpPro.LanguageManagement</RootNamespace>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Lion.AbpPro.LanguageManagement.Application\Lion.AbpPro.LanguageManagement.Application.csproj" />
+        <ProjectReference Include="..\Lion.AbpPro.LanguageManagement.Domain.Tests\Lion.AbpPro.LanguageManagement.Domain.Tests.csproj" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    </ItemGroup>
+
+</Project>

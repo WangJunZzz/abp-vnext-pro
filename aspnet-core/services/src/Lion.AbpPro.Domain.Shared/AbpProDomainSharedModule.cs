@@ -1,14 +1,16 @@
 using Lion.AbpPro.BasicManagement;
 using Lion.AbpPro.BasicManagement.Localization;
 using Lion.AbpPro.Core;
+using Lion.AbpPro.LanguageManagement;
 
 namespace Lion.AbpPro
 {
     [DependsOn(
+        typeof(LionAbpProCoreModule),
         typeof(BasicManagementDomainSharedModule),
         typeof(DataDictionaryManagementDomainSharedModule),
         typeof(NotificationManagementDomainSharedModule),
-        typeof(LionAbpProCoreModule)
+        typeof(LanguageManagementDomainSharedModule)
     )]
     public class AbpProDomainSharedModule : AbpModule
     {
@@ -20,11 +22,8 @@ namespace Lion.AbpPro
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            Configure<AbpVirtualFileSystemOptions>(options =>
-            {
-                options.FileSets.AddEmbedded<AbpProDomainSharedModule>(AbpProDomainSharedConsts.NameSpace);
-            });
-          
+            Configure<AbpVirtualFileSystemOptions>(options => { options.FileSets.AddEmbedded<AbpProDomainSharedModule>(AbpProDomainSharedConsts.NameSpace); });
+
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
@@ -36,12 +35,7 @@ namespace Lion.AbpPro
                 options.DefaultResourceType = typeof(AbpProResource);
             });
 
-            Configure<AbpExceptionLocalizationOptions>(options =>
-            {
-                options.MapCodeNamespace(AbpProDomainSharedConsts.NameSpace, typeof(AbpProResource));
-            });
+            Configure<AbpExceptionLocalizationOptions>(options => { options.MapCodeNamespace(AbpProDomainSharedConsts.NameSpace, typeof(AbpProResource)); });
         }
-
-       
     }
 }

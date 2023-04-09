@@ -1,4 +1,5 @@
 using Lion.AbpPro.BasicManagement;
+using Lion.AbpPro.LanguageManagement;
 
 namespace Lion.AbpPro
 {
@@ -6,7 +7,8 @@ namespace Lion.AbpPro
         typeof(AbpProDomainSharedModule),
         typeof(AbpObjectExtendingModule),
         typeof(BasicManagementApplicationContractsModule),
-        typeof(DataDictionaryManagementApplicationContractsModule)
+        typeof(DataDictionaryManagementApplicationContractsModule),
+        typeof(LanguageManagementApplicationContractsModule)
     )]
     public class AbpProApplicationContractsModule : AbpModule
     {

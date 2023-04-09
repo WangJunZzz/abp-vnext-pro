@@ -87,7 +87,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DataDictionary", (string)null);
+                    b.ToTable("AbpDataDictionaries", (string)null);
                 });
 
             modelBuilder.Entity("Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates.DataDictionaryDetail", b =>
@@ -133,7 +133,169 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasIndex("DataDictionaryId");
 
-                    b.ToTable("DataDictionaryDetail", (string)null);
+                    b.ToTable("AbpDataDictionaryDetails", (string)null);
+                });
+
+            modelBuilder.Entity("Lion.AbpPro.LanguageManagement.LanguageTexts.Aggregates.LanguageText", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<string>("CultureName")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)")
+                        .HasComment("语言名称");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("longtext")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)")
+                        .HasComment("名称");
+
+                    b.Property<string>("ResourceName")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)")
+                        .HasComment("资源名称");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("TenantId");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)")
+                        .HasComment("值");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TenantId", "ResourceName", "CultureName");
+
+                    b.ToTable("AbpLanguageTexts", (string)null);
+                });
+
+            modelBuilder.Entity("Lion.AbpPro.LanguageManagement.Languages.Aggregates.Language", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<string>("CultureName")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)")
+                        .HasComment("语言名称");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)")
+                        .HasComment("显示名称");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("longtext")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<string>("FlagIcon")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasComment("图标");
+
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("UiCultureName")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)")
+                        .HasComment("Ui语言名称");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CultureName")
+                        .IsUnique();
+
+                    b.ToTable("AbpLanguages", (string)null);
                 });
 
             modelBuilder.Entity("Lion.AbpPro.NotificationManagement.Notifications.Aggregates.Notification", b =>
@@ -202,7 +364,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Notification", (string)null);
+                    b.ToTable("AbpNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Lion.AbpPro.NotificationManagement.Notifications.Aggregates.NotificationSubscription", b =>
@@ -256,7 +418,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasIndex("NotificationId");
 
-                    b.ToTable("NotificationSubscription", (string)null);
+                    b.ToTable("AbpNotificationSubscriptions", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>

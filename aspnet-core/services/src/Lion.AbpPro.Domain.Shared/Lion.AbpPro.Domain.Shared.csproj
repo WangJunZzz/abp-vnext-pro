@@ -18,6 +18,7 @@
         <ProjectReference Include="..\..\..\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Domain.Shared\Lion.AbpPro.BasicManagement.Domain.Shared.csproj" />
         <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Domain.Shared\Lion.AbpPro.DataDictionaryManagement.Domain.Shared.csproj" />
         <ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.Domain.Shared\Lion.AbpPro.NotificationManagement.Domain.Shared.csproj" />
+        <ProjectReference Include="..\..\..\modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Domain.Shared\Lion.AbpPro.LanguageManagement.Domain.Shared.csproj" />
     </ItemGroup>
 
 </Project>

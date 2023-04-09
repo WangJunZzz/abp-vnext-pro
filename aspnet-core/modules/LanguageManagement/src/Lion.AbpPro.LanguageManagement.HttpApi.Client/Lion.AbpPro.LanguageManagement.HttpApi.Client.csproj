@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  
+    <PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>Lion.AbpPro.LanguageManagement</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.Http.Client" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Lion.AbpPro.LanguageManagement.Application.Contracts\Lion.AbpPro.LanguageManagement.Application.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>

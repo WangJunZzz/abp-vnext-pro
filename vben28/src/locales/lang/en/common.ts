@@ -33,5 +33,9 @@ export default {
   status: 'Status',
   active: 'IsActive',
   download: 'DownLoad',
-  export:"Export"
+  export: 'Export',
+  isEnabled: 'IsEnabled',
+  default: 'Default',
+  name: 'Name',
+  value: 'Value',
 };

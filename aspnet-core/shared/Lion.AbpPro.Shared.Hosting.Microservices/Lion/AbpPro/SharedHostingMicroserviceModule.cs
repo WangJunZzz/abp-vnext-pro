@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.DataProtection;
 using StackExchange.Redis;
 using Volo.Abp.Caching;
+using Volo.Abp.Settings;
 
 namespace Lion.AbpPro;
 
@@ -23,7 +24,13 @@ public class SharedHostingMicroserviceModule : AbpModule
         ConfigAntiForgery();
         ConfigureAbpExceptions(context);
     }
-    
+
+    public override void OnApplicationInitialization(ApplicationInitializationContext context)
+    {
+        // 设置默认语言为简体中文
+        context.ServiceProvider.GetRequiredService<ISettingDefinitionManager>().Get(LocalizationSettingNames.DefaultLanguage).DefaultValue = "zh-Hans";  
+    }
+
     /// <summary>
     /// 异常处理
     /// </summary>

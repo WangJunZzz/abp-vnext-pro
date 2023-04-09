@@ -1,3 +1,4 @@
+using Lion.AbpPro.LanguageManagement.EntityFrameworkCore;
 using Volo.Abp.Guids;
 
 namespace Lion.AbpPro.EntityFrameworkCore
@@ -7,7 +8,8 @@ namespace Lion.AbpPro.EntityFrameworkCore
         typeof(BasicManagementEntityFrameworkCoreModule),
         typeof(AbpEntityFrameworkCoreMySQLModule),
         typeof(DataDictionaryManagementEntityFrameworkCoreModule),
-        typeof(NotificationManagementEntityFrameworkCoreModule)
+        typeof(NotificationManagementEntityFrameworkCoreModule),
+        typeof(LanguageManagementEntityFrameworkCoreModule)
         )]
     public class AbpProEntityFrameworkCoreModule : AbpModule
     {

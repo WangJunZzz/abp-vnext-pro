@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>Lion.AbpPro.LanguageManagement</RootNamespace>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" />
+        <ProjectReference Include="..\..\src\Lion.AbpPro.LanguageManagement.EntityFrameworkCore\Lion.AbpPro.LanguageManagement.EntityFrameworkCore.csproj" />
+        <ProjectReference Include="..\Lion.AbpPro.LanguageManagement.TestBase\Lion.AbpPro.LanguageManagement.TestBase.csproj" />
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" />
+    </ItemGroup>
+
+</Project>
