@@ -60,7 +60,10 @@ namespace Lion.AbpPro.BasicManagement.Roles
                         ? L[$"Permission:SystemManagement"]
                         : group.DisplayName
                 };
-                result.Grants.Add(group.Name);
+                if (group.Permissions.Any(p => p.IsGranted == true && p.Name.StartsWith(group.Name)))
+                {
+                    result.Grants.Add(group.Name);
+                }
                 // 获取所有已授权和未授权权限集合
                 foreach (var item in group.Permissions)
                 {
@@ -71,12 +74,12 @@ namespace Lion.AbpPro.BasicManagement.Roles
                     {
                         result.Grants.Add(item.Name);
                     }
-                    else
-                    {
-                        // 只要没有授权的，就移除顶级的分组
-                        result.Grants.Remove(group.Name);
-                        result.Grants.Remove(item.ParentName);
-                    }
+                    //else
+                    //{
+                    //    // 只要没有授权的，就移除顶级的分组
+                    //    result.Grants.Remove(group.Name);
+                    //    result.Grants.Remove(item.ParentName);
+                    //}
                 }
 
                 // 递归菜单
