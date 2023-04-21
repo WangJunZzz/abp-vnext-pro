@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.BasicManagement.Roles;
 
-[Authorize]
+[Authorize(Policy = IdentityPermissions.Roles.Default)]
 public class RoleAppService : BasicManagementAppService, IRoleAppService
 {
     private readonly IIdentityRoleAppService _identityRoleAppService;

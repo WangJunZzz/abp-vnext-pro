@@ -3,7 +3,7 @@ namespace Lion.AbpPro.LanguageManagement.LanguageTexts;
 /// <summary>
 /// 语言文本
 /// </summary>
-[Authorize]
+[Authorize(LanguageManagementPermissions.LanguageTexts.Default)]
 public class LanguageTextAppService : ApplicationService, ILanguageTextAppService
 {
     private readonly ILanguageTextManager _languageTextManager;

@@ -17,30 +17,24 @@ namespace Lion.AbpPro.BasicManagement.Roles
         /// <summary>
         /// 获取所有权限
         /// </summary>
-        /// <returns></returns>
         public async Task<PermissionOutput> GetPermissionAsync(GetPermissionInput input)
         {
-            var permissions =
-                await _rolePermissionAppService.GetAsync(input.ProviderName, input.ProviderKey);
+            var permissions = await _rolePermissionAppService.GetAsync(input.ProviderName, input.ProviderKey);
             return BuildTreeData(permissions.Groups);
         }
 
         /// <summary>
         /// 更新权限
         /// </summary>
-        /// <param name="input"></param>
         [Authorize(IdentityPermissions.Roles.ManagePermissions)]
         public async Task UpdatePermissionAsync(UpdateRolePermissionsInput input)
         {
-            await _rolePermissionAppService.UpdateAsync(input.ProviderName, input.ProviderKey,
-                input.UpdatePermissionsDto);
+            await _rolePermissionAppService.UpdateAsync(input.ProviderName, input.ProviderKey, input.UpdatePermissionsDto);
         }
 
         /// <summary>
         /// 生成权限树
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         private PermissionOutput BuildTreeData(List<PermissionGroupDto> input)
         {
             var result = new PermissionOutput();

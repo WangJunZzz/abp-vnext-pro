@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.BasicManagement.AuditLogs
 {
-    [Authorize]
+    [Authorize(Policy = BasicManagementPermissions.SystemManagement.AuditLog)]
     public class AuditLogAppService : BasicManagementAppService, IAuditLogAppService
     {
         private readonly IAuditLogRepository _auditLogRepository;

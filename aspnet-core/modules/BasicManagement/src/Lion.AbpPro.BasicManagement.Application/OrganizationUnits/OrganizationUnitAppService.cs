@@ -1,6 +1,6 @@
 ﻿namespace Lion.AbpPro.BasicManagement.OrganizationUnits;
 
-[Authorize]
+[Authorize(Policy = BasicManagementPermissions.SystemManagement.OrganizationUnitManagement.Default)]
 public class OrganizationUnitAppService : BasicManagementAppService, IOrganizationUnitAppService
 {
     private readonly OrganizationUnitManager _organizationUnitManager;

@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.BasicManagement.Tenants
 {
-    [Authorize]
+    [Authorize(TenantManagementPermissions.Tenants.Default)]
     public class VoloTenantAppService : BasicManagementAppService, IVoloTenantAppService
     {
         private readonly IAbpTenantAppService _abpTenantAppService;

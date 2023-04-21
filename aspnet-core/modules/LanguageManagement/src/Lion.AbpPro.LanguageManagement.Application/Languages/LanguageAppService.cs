@@ -3,7 +3,7 @@ namespace Lion.AbpPro.LanguageManagement.Languages;
 /// <summary>
 /// 语言
 /// </summary>
-[Authorize]
+[Authorize(LanguageManagementPermissions.Languages.Default)]
 public class LanguageAppService : ApplicationService, ILanguageAppService
 {
     private readonly ILanguageManager _languageManager;

@@ -1,16 +1,14 @@
-using Lion.AbpPro.BasicManagement.Localization;
 using Lion.AbpPro.BasicManagement.Users.Dtos;
 using Magicodes.ExporterAndImporter.Excel;
 using Magicodes.ExporterAndImporter.Excel.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Account;
-using Volo.Abp.Identity.Localization;
 using IdentityRole = Volo.Abp.Identity.IdentityRole;
 
 namespace Lion.AbpPro.BasicManagement.Users
 {
-    [Authorize]
+    [Authorize(IdentityPermissions.Users.Default)]
     public class UserAppService : BasicManagementAppService, IUserAppService
     {
         private readonly IIdentityUserAppService _identityUserAppService;
@@ -57,7 +55,6 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// <summary>
         /// 用户导出列表
         /// </summary>
-        /// <returns></returns>
         [Authorize(BasicManagementPermissions.SystemManagement.UserExport)]
         public async Task<ActionResult> ExportAsync(PagingUserListInput input)
         {
@@ -78,8 +75,6 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// <summary>
         /// 新增用户
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         [Authorize(IdentityPermissions.Users.Create)]
         public async Task<IdentityUserDto> CreateAsync(IdentityUserCreateDto input)
         {
@@ -91,8 +86,6 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// <summary>
         /// 更新用户
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         [Authorize(IdentityPermissions.Users.Update)]
         public virtual async Task<IdentityUserDto> UpdateAsync(UpdateUserInput input)
         {
@@ -112,7 +105,6 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// <summary>
         /// 获取用户角色信息
         /// </summary>
-        /// <returns></returns>
         public async Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(IdInput input)
         {
             var roles = await _identityUserRepository.GetRolesAsync(input.Id);

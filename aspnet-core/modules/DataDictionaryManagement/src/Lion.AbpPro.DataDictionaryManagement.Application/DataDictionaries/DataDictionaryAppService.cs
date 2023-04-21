@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
-    [Authorize]
+    [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Default)]
     public class DataDictionaryAppService : DataDictionaryManagementAppService, IDataDictionaryAppService
     {
         /// <summary>
@@ -23,8 +23,6 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <summary>
         /// 分页查询字典项
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         public async Task<PagedResultDto<PagingDataDictionaryOutput>> GetPagingListAsync(PagingDataDictionaryInput input)
         {
             var result = new PagedResultDto<PagingDataDictionaryOutput>();
@@ -43,8 +41,6 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <summary>
         /// 分页查询字典项明细
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         public async Task<PagedResultDto<PagingDataDictionaryDetailOutput>> GetPagingDetailListAsync(
             PagingDataDictionaryDetailInput input)
         {
@@ -73,7 +69,6 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <summary>
         /// 创建字典类型
         /// </summary>
-        /// <returns></returns>
         [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Create)]
         public Task CreateAsync(CreateDataDictinaryInput input)
         {
