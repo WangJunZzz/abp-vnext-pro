@@ -39,6 +39,7 @@ namespace Lion.AbpPro
             ConfigureIdentity(context);
             ConfigureCap(context);
             ConfigureAuditLog(context);
+            ConfigurationSignalR(context);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -213,6 +214,18 @@ namespace Lion.AbpPro
             context.Services.Configure<IdentityOptions>(options => { options.Lockout = new LockoutOptions() { AllowedForNewUsers = false }; });
         }
 
+        private void ConfigurationSignalR(ServiceConfigurationContext context)
+        {
+            var redisConnection = context.Services.GetConfiguration()["Redis:Configuration"];
+
+            if (redisConnection.IsNullOrWhiteSpace())
+            {
+                throw new UserFriendlyException(message: "Redis连接字符串未配置.");
+            }
+
+            context.Services.AddSignalR().AddStackExchangeRedis(redisConnection, options => { options.Configuration.ChannelPrefix = "Lion.AbpPro"; });
+        }
+        
         private void ConfigureSwaggerServices(ServiceConfigurationContext context)
         {
             context.Services.AddSwaggerGen(
