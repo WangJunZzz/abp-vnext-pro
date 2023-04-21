@@ -1,6 +1,6 @@
 <template>
   <BasicDrawer @register="registerDrawer" :maskClosable="false" :title="t('routes.admin.roleManagement_permission')" width="20%">
-    <BasicTree :treeData="allPermissionsRef"  checkable ref="treeRef" style="margin-bottom: 50px" />
+    <BasicTree :treeData="allPermissionsRef" @check="handleCheck" :checkStrictly="'false'" checkable ref="treeRef" style="margin-bottom: 50px" />
     <div
       :style="{
         position: 'absolute',
@@ -79,7 +79,7 @@ export default defineComponent({
       totalRolePermissionsRef.forEach((item:string)=>{
          let permisstion = new UpdatePermissionDto();
             permisstion.name = item;
-          if((keys as []).some(e=>e==item)){
+          if((keys.checked as []).some(e=>e==item)){
             permisstion.isGranted = true;
             permisstions.push(permisstion);
           }else{
@@ -97,6 +97,19 @@ export default defineComponent({
         message.success(t('common.operationSuccess'));
       }
     };
+
+    // 自定义级联选中
+    const handleCheck = (checkedKeys, e) => {
+      if (e.checked === true) {
+        // 新增权限时，向下级联选中
+        var filteredKeys = totalRolePermissionsRef.filter(key => key.startsWith(e.node.key));
+        checkedKeys.checked = checkedKeys.checked.concat(filteredKeys.filter(key => checkedKeys.checked.indexOf(key) === -1));
+      } else {
+        // 取消权限时，向下级联反选
+        checkedKeys.checked = checkedKeys.checked.filter(key => !key.startsWith(e.node.key));
+      }
+    }
+
     return {
       t,
       registerDrawer,
@@ -104,6 +117,7 @@ export default defineComponent({
       submitRolePermisstionAsync,
       closeDrawer,
       treeRef,
+      handleCheck,
     };
   },
 });
