@@ -79,7 +79,7 @@ export default defineComponent({
       totalRolePermissionsRef.forEach((item:string)=>{
          let permisstion = new UpdatePermissionDto();
             permisstion.name = item;
-          if((keys.checked as []).some(e=>e==item)){
+          if (((keys.checked ? keys.checked : keys) as []).some((e) => e == item)) {
             permisstion.isGranted = true;
             permisstions.push(permisstion);
           }else{
