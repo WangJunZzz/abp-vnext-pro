@@ -14,63 +14,65 @@
   ],
   "MinimumLevel": {
     // 默认全局日志级别
-    "Default": "Information", 
-    "Override": { 
-      //名称空间为 Microsoft 日志级别        
-      "Microsoft": "Information", 
-      //名称空间为 Volo.Abp 日志级别      
-      "Volo.Abp": "Information",  
+    "Default": "Information",
+    "Override": {
+      //名称空间为 Microsoft 日志级别
+      "Microsoft": "Information",
+      //名称空间为 Volo.Abp 日志级别
+      "Volo.Abp": "Information",
       //名称空间为 Hangfire 日志级别
-      "Hangfire": "Information", 
-      //名称空间为 DotNetCore.CAP 日志级别 
-      "DotNetCore.CAP": "Information",  
+      "Hangfire": "Information",
+      //名称空间为 DotNetCore.CAP 日志级别
+      "DotNetCore.CAP": "Information",
       //名称空间为 Serilog.AspNetCore 日志级别
-      "Serilog.AspNetCore": "Information", 
+      "Serilog.AspNetCore": "Information",
       //名称空间为 Microsoft.EntityFrameworkCore 日志级别
-      "Microsoft.EntityFrameworkCore": "Warning", 
+      "Microsoft.EntityFrameworkCore": "Warning",
       //名称空间为 Microsoft.AspNetCore 日志级别
-      "Microsoft.AspNetCore": "Information" 
+      "Microsoft.AspNetCore": "Information"
     }
   },
   "WriteTo": [
     {
       // 输出到控制台日志
-      "Name": "Console"  
+      "Name": "Console"
     },
     {
       // 输出到文件
-      "Name": "File", 
+      "Name": "File",
       "Args": {
         "path": "logs/logs-.txt",
          // 按天输出
-        "rollingInterval": "Day" 
+        "rollingInterval": "Day"
       }
     }
   ]
 }
 ```
 
-### 写入ES
-!!! WARNING "先决条件：搭建好ES环境"
+### 写入 ES
+
+!!! WARNING "先决条件：搭建好 ES 环境"
+
 - Enabled:是否启用
-- Url:es地址
-- IndexFormat:es索引
+- Url:es 地址
+- IndexFormat:es 索引
 - UserName:用户名
 - Password:密码
-- SearchIndexFormat:es日志查询索引模式
+- SearchIndexFormat:es 日志查询索引模式
 
 ```json
 "ElasticSearch": {
-  "Enabled": "false", 
-  "Url": "http://es.cn", 
-  "IndexFormat": "Lion.AbpPro.development.{0:yyyy.MM.dd}", 
-  "UserName": "elastic", 
+  "Enabled": "false",
+  "Url": "http://es.cn",
+  "IndexFormat": "Lion.AbpPro.development.{0:yyyy.MM.dd}",
+  "UserName": "elastic",
   "Password": "aVVhjQ95RP7nbwNy",
-  "SearchIndexFormat": "Lion.AbpPro.development*" 
+  "SearchIndexFormat": "Lion.AbpPro.development*"
 },
 ```
 
-- 查看Lion.AbpPro.HttpApi.Host.Program.cs
+- 查看 Lion.AbpPro.HttpApi.Host.Program.cs
 
 ```csharp
 public class Program
@@ -78,7 +80,7 @@ public class Program
     public static void Main(string[] args)
     {
         CreateHostBuilder(args).Build().Run();
-      
+
     }
     private static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -97,16 +99,17 @@ public class Program
 }
 ```
 
-
 ## 跨域(CORS)
 
 - 允许指定策略
+
 ```json
 "App": {
     // 逗号分隔
     "CorsOrigins": "http://*.com,http://localhost:4200"
   },
 ```
+
 - 配置跨域
 
 ```csharp
@@ -140,27 +143,12 @@ private void ConfigureCors(ServiceConfigurationContext context)
 - Issuer:签发主体
 - SecurityKey:密钥
 - ExpirationTime:过期时间(单位小时)
+
 ```json
   "Jwt": {
-    "Audience": "Lion.AbpPro", 
+    "Audience": "Lion.AbpPro",
     "SecurityKey": "dzehzRz9a8asdfasfdadfasdfasdfafsdadfasbasdf=",
-    "Issuer": "Lion.AbpPro", 
+    "Issuer": "Lion.AbpPro",
     "ExpirationTime": 30
   }
-```
-
-## CAP
-!!! WARNING "如果要切换其他中间件请参考 [dotnetcore.cap](https://cap.dotnetcore.xyz/)"
-
-- Enabled: 是否启用
-- RabbitMq：Mq配置
-```json
-"Cap": {
-  "Enabled": "true",
-  "RabbitMq": {
-    "HostName": "localhost",
-    "UserName": "admin",
-    "Password": "admin"
-  }
-}
 ```

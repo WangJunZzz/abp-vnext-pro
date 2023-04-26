@@ -78,6 +78,7 @@ nav:
           - 配置: user-guide/zh/infrastructure/config.md
           - 前端: user-guide/zh/infrastructure/frontend.md
           - FreeSql: user-guide/zh/infrastructure/freesql.md
+          - 分布式事件: user-guide/zh/infrastructure/cap.md
       - 应用模块:
           - 基础模块: user-guide/zh/modules/basic.md
           - 设置(Setting): user-guide/zh/modules/setting.md

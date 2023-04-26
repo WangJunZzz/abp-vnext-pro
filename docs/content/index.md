@@ -31,6 +31,7 @@ Title: Abp Vnext Pro
 - [x] Setting 管理
 - [x] 多租户
 - [x] 文件管理
+- [x] 多语言管理
 
 ![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4login.png)
 ![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/01.png)
