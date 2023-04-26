@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace />
+        <AssemblyName>Lion.AbpPro.CAP.EntityFrameworkCore</AssemblyName>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj" />
+    </ItemGroup>
+</Project>

@@ -1,19 +1,14 @@
 namespace Lion.AbpPro.CAP;
 
-[Dependency(ServiceLifetime.Singleton, ReplaceServices = true)]
-[ExposeServices(typeof(IConsumerServiceSelector))]
-public sealed class LionAbpProCapConsumerServiceSelector : ConsumerServiceSelector
+public class LionAbpProCapConsumerServiceSelector : ConsumerServiceSelector, ISingletonDependency
 {
-    private AbpDistributedEventBusOptions AbpDistributedEventBusOptions { get; }
-    private IServiceProvider ServiceProvider { get; }
+    protected AbpDistributedEventBusOptions AbpDistributedEventBusOptions { get; }
+    protected IServiceProvider ServiceProvider { get; }
 
     /// <summary>
     /// Creates a new <see cref="T:DotNetCore.CAP.Internal.ConsumerServiceSelector" />.
     /// </summary>
-    public LionAbpProCapConsumerServiceSelector(
-        IServiceProvider serviceProvider, 
-        IOptions<AbpDistributedEventBusOptions> distributedEventBusOptions) 
-        : base(serviceProvider)
+    public LionAbpProCapConsumerServiceSelector(IServiceProvider serviceProvider, IOptions<AbpDistributedEventBusOptions> distributedEventBusOptions) : base(serviceProvider)
     {
         ServiceProvider = serviceProvider;
         AbpDistributedEventBusOptions = distributedEventBusOptions.Value;
@@ -22,7 +17,7 @@ public sealed class LionAbpProCapConsumerServiceSelector : ConsumerServiceSelect
     protected override IEnumerable<ConsumerExecutorDescriptor> FindConsumersFromInterfaceTypes(IServiceProvider provider)
     {
         var executorDescriptorList = base.FindConsumersFromInterfaceTypes(provider).ToList();
-            
+
         //handlers
         var handlers = AbpDistributedEventBusOptions.Handlers;
 
@@ -35,8 +30,9 @@ public sealed class LionAbpProCapConsumerServiceSelector : ConsumerServiceSelect
                 {
                     continue;
                 }
+
                 var genericArgs = @interface.GetGenericArguments();
-                    
+
                 if (genericArgs.Length != 1)
                 {
                     continue;
@@ -51,17 +47,18 @@ public sealed class LionAbpProCapConsumerServiceSelector : ConsumerServiceSelect
 
                     descriptor.Attribute.Group = descriptor.Attribute.Group.Insert(
                         descriptor.Attribute.Group.LastIndexOf(".", StringComparison.Ordinal), $".{count}");
-                            
+
                     executorDescriptorList.Add(descriptor);
                 }
-                        
+
                 //Subscribe(genericArgs[0], new IocEventHandlerFactory(ServiceScopeFactory, handler));
             }
         }
+
         return executorDescriptorList;
     }
 
-    private IEnumerable<ConsumerExecutorDescriptor> GetHandlerDescription(Type eventType,Type typeInfo)
+    protected virtual IEnumerable<ConsumerExecutorDescriptor> GetHandlerDescription(Type eventType, Type typeInfo)
     {
         var serviceTypeInfo = typeof(IDistributedEventHandler<>)
             .MakeGenericType(eventType);

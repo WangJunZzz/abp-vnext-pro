@@ -1,4 +1,5 @@
 using Hangfire.Redis;
+using Lion.AbpPro.CAP.EntityFrameworkCore;
 using Swagger;
 using Volo.Abp.BackgroundJobs.Hangfire;
 using Volo.Abp.Timing;
@@ -15,6 +16,7 @@ namespace Lion.AbpPro
         typeof(AbpAccountWebModule),
         typeof(AbpProApplicationModule),
         typeof(LionAbpProCapModule),
+        typeof(LionAbpProCapEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpCachingStackExchangeRedisModule),
         typeof(AbpBackgroundJobsHangfireModule)
@@ -302,6 +304,7 @@ namespace Lion.AbpPro
             {
                 context.AddAbpCap(capOptions =>
                 {
+                    capOptions.SetCapDbConnectionString(configuration["ConnectionStrings:Default"]);
                     capOptions.UseEntityFramework<AbpProDbContext>();
                     capOptions.UseRabbitMQ(option =>
                     {
@@ -326,7 +329,7 @@ namespace Lion.AbpPro
                     capOptions.UseInMemoryStorage();
                     capOptions.UseInMemoryMessageQueue();
                     var hostingEnvironment = context.Services.GetHostingEnvironment();
-                    bool auth = !hostingEnvironment.IsDevelopment();
+                    var auth = !hostingEnvironment.IsDevelopment();
                     capOptions.UseDashboard(options => { options.UseAuth = auth; });
                 });
             }

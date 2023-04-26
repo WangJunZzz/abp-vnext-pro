@@ -44,6 +44,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.CAP.EntityFrameworkCore\Lion.AbpPro.CAP.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj" />
         <ProjectReference Include="..\..\..\shared\Lion.AbpPro.Shared.Hosting.Microservices\Lion.AbpPro.Shared.Hosting.Microservices.csproj" />
         <ProjectReference Include="..\..\src\Lion.AbpPro.Application\Lion.AbpPro.Application.csproj" />

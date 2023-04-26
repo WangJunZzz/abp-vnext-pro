@@ -1,24 +1,21 @@
 namespace Lion.AbpPro.CAP;
 
-public class LionAbpProCapDistributedEventBus :
-    EventBusBase,
-    IDistributedEventBus,
-    ISingletonDependency
+public class LionAbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, ISingletonDependency
 {
-    private AbpDistributedEventBusOptions AbpDistributedEventBusOptions { get; }
-    private ConcurrentDictionary<Type, List<IEventHandlerFactory>> HandlerFactories { get; }
-    private ConcurrentDictionary<string, Type> EventTypes { get; }
+    protected AbpDistributedEventBusOptions AbpDistributedEventBusOptions { get; }
+    protected readonly ICapPublisher CapPublisher;
 
-    private readonly ICapPublisher CapPublisher;
+    //TODO: Accessing to the List<IEventHandlerFactory> may not be thread-safe!
+    protected ConcurrentDictionary<Type, List<IEventHandlerFactory>> HandlerFactories { get; }
+    protected ConcurrentDictionary<string, Type> EventTypes { get; }
 
-        
     public LionAbpProCapDistributedEventBus(IServiceScopeFactory serviceScopeFactory,
         IOptions<AbpDistributedEventBusOptions> distributedEventBusOptions,
         ICapPublisher capPublisher,
+        IUnitOfWorkManager unitOfWorkManager,
         ICurrentTenant currentTenant,
-        UnitOfWorkManager unitOfWorkManager,
         IEventHandlerInvoker eventHandlerInvoker)
-        : base(serviceScopeFactory, currentTenant,unitOfWorkManager,eventHandlerInvoker)
+        : base(serviceScopeFactory, currentTenant, unitOfWorkManager, eventHandlerInvoker)
     {
         CapPublisher = capPublisher;
         AbpDistributedEventBusOptions = distributedEventBusOptions.Value;
@@ -82,36 +79,63 @@ public class LionAbpProCapDistributedEventBus :
         GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Clear());
     }
 
-    protected override Task PublishToEventBusAsync(Type eventType, object eventData)
-    {
-        throw new NotImplementedException();
-    }
-
-    protected override void AddToUnitOfWork(IUnitOfWork unitOfWork, UnitOfWorkEventRecord eventRecord)
-    {
-        throw new NotImplementedException();
-    }
-
     public IDisposable Subscribe<TEvent>(IDistributedEventHandler<TEvent> handler) where TEvent : class
     {
         return Subscribe(typeof(TEvent), handler);
     }
 
-    public async Task PublishAsync<TEvent>(TEvent eventData, bool onUnitOfWorkComplete = true,
+    public virtual Task PublishAsync<TEvent>(TEvent eventData, bool onUnitOfWorkComplete = true,
         bool useOutbox = true) where TEvent : class
     {
-        var eventName = EventNameAttribute.GetNameOrDefault(typeof(TEvent));
-        await CapPublisher.PublishAsync(eventName, eventData);
-
+        return PublishAsync(typeof(TEvent), eventData, onUnitOfWorkComplete, useOutbox);
     }
 
-    public async Task PublishAsync(Type eventType, object eventData, bool onUnitOfWorkComplete = true,
+    public virtual async Task PublishAsync(Type eventType, object eventData, bool onUnitOfWorkComplete = true,
         bool useOutbox = true)
+    {
+        if (onUnitOfWorkComplete && UnitOfWorkManager.Current != null)
+        {
+            AddToUnitOfWork(
+                UnitOfWorkManager.Current,
+                new UnitOfWorkEventRecord(eventType, eventData, EventOrderGenerator.GetNext(), useOutbox)
+            );
+            return;
+        }
+
+        if (useOutbox && UnitOfWorkManager.Current != null)
+        {
+            if (UnitOfWorkManager.Current is not LionAbpProCapUnitOfWork capUnitOfWork || capUnitOfWork.CapTransaction is null)
+            {
+                UnitOfWorkManager.Current.OnCompleted(async () =>
+                {
+                    await PublishToEventBusAsync(eventType, eventData);
+                });
+            }
+            else
+            {
+                using (CapPublisher.UseTransaction(capUnitOfWork.CapTransaction))
+                {
+                    // Use CAP transactional outbox
+                    await PublishToEventBusAsync(eventType, eventData);
+                }
+            }
+
+            return;
+        }
+
+        await PublishToEventBusAsync(eventType, eventData);
+    }
+
+    protected override async Task PublishToEventBusAsync(Type eventType, object eventData)
     {
         var eventName = EventNameAttribute.GetNameOrDefault(eventType);
         await CapPublisher.PublishAsync(eventName, eventData);
     }
-        
+
+    protected override void AddToUnitOfWork(IUnitOfWork unitOfWork, UnitOfWorkEventRecord eventRecord)
+    {
+        unitOfWork.AddOrReplaceDistributedEvent(eventRecord);
+    }
 
     protected override IEnumerable<EventTypeWithEventHandlerFactories> GetHandlerFactories(Type eventType)
     {

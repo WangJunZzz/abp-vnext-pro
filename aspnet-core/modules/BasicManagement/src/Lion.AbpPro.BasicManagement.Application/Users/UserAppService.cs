@@ -4,6 +4,7 @@ using Magicodes.ExporterAndImporter.Excel.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Account;
+using Volo.Abp.Uow;
 using IdentityRole = Volo.Abp.Identity.IdentityRole;
 
 namespace Lion.AbpPro.BasicManagement.Users
@@ -80,7 +81,12 @@ namespace Lion.AbpPro.BasicManagement.Users
         {
             // abp 5.0 之后新增字段,是否运行用户登录，默认设置为true
             input.IsActive = true;
-            return await _identityUserAppService.CreateAsync(input);
+            using (var uow = UnitOfWorkManager.Begin(new AbpUnitOfWorkOptions() { IsTransactional = true }, true))
+            {
+                await _identityUserAppService.CreateAsync(input);
+                await uow.CompleteAsync();
+            }
+            return null;
         }
 
         /// <summary>
@@ -90,7 +96,12 @@ namespace Lion.AbpPro.BasicManagement.Users
         public virtual async Task<IdentityUserDto> UpdateAsync(UpdateUserInput input)
         {
             input.UserInfo.IsActive = true;
-            return await _identityUserAppService.UpdateAsync(input.UserId, input.UserInfo);
+            using (var uow = UnitOfWorkManager.Begin(new AbpUnitOfWorkOptions() { IsTransactional = true }, true))
+            {
+                await _identityUserAppService.UpdateAsync(input.UserId, input.UserInfo);
+            }
+
+            return null;
         }
 
         /// <summary>
