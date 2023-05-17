@@ -68,9 +68,12 @@ public class LanguageTextManager : LanguageManagementDomainService, ILanguageTex
             entity = new LanguageText(GuidGenerator.Create(), cultureName, resourceName, name, value, CurrentTenant.Id);
             await _languageTextRepository.InsertAsync(entity);
         }
-
-        entity.Update(cultureName, resourceName, name, value);
-        entity = await _languageTextRepository.UpdateAsync(entity);
+        else
+        {
+            entity.Update(cultureName, resourceName, name, value);
+            entity = await _languageTextRepository.UpdateAsync(entity);
+        }
+        
         return _objectMapper.Map<LanguageText, LanguageTextDto>(entity);
     }
 
