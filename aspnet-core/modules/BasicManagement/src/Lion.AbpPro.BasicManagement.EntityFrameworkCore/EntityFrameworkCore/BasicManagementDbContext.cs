@@ -12,6 +12,7 @@ public class BasicManagementDbContext : AbpDbContext<BasicManagementDbContext>, 
     public DbSet<OrganizationUnit> OrganizationUnits { get; set; }
     public DbSet<IdentitySecurityLog> SecurityLogs { get; set; }
     public DbSet<IdentityLinkUser> LinkUsers { get; set; }
+    public DbSet<IdentityUserDelegation> UserDelegations { get; set; }
     public DbSet<PermissionGroupDefinitionRecord> PermissionGroups { get; set; }
     public DbSet<PermissionDefinitionRecord> Permissions { get; set; }
     public DbSet<PermissionGrant> PermissionGrants { get; set; }
