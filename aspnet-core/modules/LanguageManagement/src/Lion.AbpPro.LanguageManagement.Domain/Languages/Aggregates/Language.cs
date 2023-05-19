@@ -87,7 +87,6 @@ public class Language : FullAuditedAggregateRoot<Guid>, ILanguageInfo
     /// </summary>        
     private void SetFlagIcon(string flagIcon)
     {
-        Guard.Length(flagIcon, nameof(flagIcon), 128, 0);
         FlagIcon = flagIcon;
     }
 
