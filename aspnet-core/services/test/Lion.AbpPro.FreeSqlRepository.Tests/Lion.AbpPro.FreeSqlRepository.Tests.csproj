@@ -12,7 +12,6 @@
         <PackageReference Include="Microsoft.NET.Test.Sdk" />
         <PackageReference Include="FreeSql.Provider.Sqlite" />
         <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" />
-        <PackageReference Include="Zack.EFCore.Batch.Sqlite_NET6" />
     </ItemGroup>
 
     <ItemGroup>

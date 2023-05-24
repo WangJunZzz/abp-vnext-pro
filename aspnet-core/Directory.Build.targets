@@ -80,8 +80,6 @@
         <PackageReference Update="prometheus-net.AspNetCore" Version="5.0.2"/>
         <PackageReference Update="Aliyun.OSS.SDK.NetCore" Version="2.13.0"/>
 
-        <PackageReference Update="Zack.EFCore.Batch.MySQL.Pomelo_NET6" Version="6.1.3"/>
-        <PackageReference Update="Zack.EFCore.Batch.Sqlite_NET6" Version="6.1.3"/>
 
         <PackageReference Update="Polly" Version="7.2.3"/>
         <PackageReference Update="Confluent.Kafka" Version="1.8.2.0"/>

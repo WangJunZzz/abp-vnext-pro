@@ -27,10 +27,6 @@ public class AbpProFreeSqlRepositoryTestModule : AbpModule
 
         services.Configure<AbpDbContextOptions>(options =>
         {
-            options.PreConfigure<AbpProDbContext>(options =>
-            {
-                options.DbContextOptions.UseBatchEF_Sqlite();
-            });
             options.Configure(context =>
             {
                 context.DbContextOptions.UseSqlite(_sqliteConnection);
