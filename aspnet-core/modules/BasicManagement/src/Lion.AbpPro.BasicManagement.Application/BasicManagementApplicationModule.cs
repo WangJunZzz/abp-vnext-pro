@@ -45,7 +45,7 @@ public class BasicManagementApplicationModule : AbpModule
             options.Excludes.Add("FeatureManagement.ManageHostFeatures");
             options.Excludes.Add("SettingManagement");
             options.Excludes.Add("SettingManagement.Emailing");
-            options.Excludes.Add("AbpTenantManagement");
+            // options.Excludes.Add("AbpTenantManagement");
             options.Excludes.Add("AbpTenantManagement.Tenants.ManageFeatures");
             options.Excludes.Add("AbpTenantManagement.Tenants.ManageConnectionStrings");
         });
