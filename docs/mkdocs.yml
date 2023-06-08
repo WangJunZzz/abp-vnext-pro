@@ -18,6 +18,7 @@ theme:
   palette:
     primary: "deep purple"
     accent: "indigo"
+    scheme: slate
   language: en
   include_sidebar: true
   logo: "img/logo.svg"
@@ -92,7 +93,8 @@ nav:
           - Docker: user-guide/zh/deploy/docker.md
           - Github自动化部署: user-guide/zh/deploy/github.md
   - 常见问题:
-      - 问题: user-guide/zh/problem/problem.md
+      - 编译: user-guide/zh/problem/problem.md
+      - EFCore: user-guide/zh/problem/ef.md
   - Release:
       - 升级指南: about/6.0-7.0.md
       - 发行说明: about/release-notes.md

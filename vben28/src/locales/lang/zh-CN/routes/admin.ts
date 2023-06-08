@@ -43,6 +43,9 @@ export default {
   audit_hasException_all: '全部',
   audit_hasException_yes: '是',
   audit_hasException_no: '否',
+  audit_serviceName: '服务名',
+  audit_methodName: '方法名',
+  audit_parameters: '参数',
   grantedMessage: '授权成功，请重新登录.',
   close: '关闭',
 

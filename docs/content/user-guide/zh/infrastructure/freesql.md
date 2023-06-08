@@ -1,4 +1,5 @@
-### CQRS
+# CQRS
+
 CQRS:命令查询职责隔离,命令是指 插入、修改、删除，就是更改数据的动作.通过 Freesql 解决单一数据模型带来的查询尴尬场面。
 当前架构下，Freesql 和 ef 不在一个事务，最好实现就是用来做查询，比如分页查询。
 ![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/cqrs.png)
