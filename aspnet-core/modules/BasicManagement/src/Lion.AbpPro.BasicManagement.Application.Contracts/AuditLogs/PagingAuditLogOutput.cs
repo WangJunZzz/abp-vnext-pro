@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.BasicManagement.AuditLogs
 {
-    public class GetAuditLogPageListOutput
+    public class PagingAuditLogOutput
     {
         public string ApplicationName { get; set; }
 
@@ -16,7 +16,7 @@ namespace Lion.AbpPro.BasicManagement.AuditLogs
 
         public Guid? ImpersonatorTenantId { get; set; }
 
-        public  DateTime ExecutionTime { get; set; }
+        public string ExecutionTime { get; set; }
 
         public int ExecutionDuration { get; set; }
 
@@ -39,5 +39,9 @@ namespace Lion.AbpPro.BasicManagement.AuditLogs
         public string Comments { get; set; }
 
         public int? HttpStatusCode { get; set; }
+
+        public List<PagingEntityChangeOutput> EntityChanges { get; set; }
+
+        public List<PagingAuditLogActionOutput> Actions { get; set; }
     }
 }

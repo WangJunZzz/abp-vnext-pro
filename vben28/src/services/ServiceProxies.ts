@@ -481,7 +481,7 @@ export class AuditLogsServiceProxy extends ServiceProxyBase {
      * @param body (optional) 
      * @return Success
      */
-    page(body: PagingAuditLogListInput | undefined , cancelToken?: CancelToken | undefined): Promise<GetAuditLogPageListOutputPagedResultDto> {
+    page(body: PagingAuditLogInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingAuditLogOutputPagedResultDto> {
         let url_ = this.baseUrl + "/AuditLogs/page";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -511,7 +511,7 @@ export class AuditLogsServiceProxy extends ServiceProxyBase {
         });
     }
 
-    protected processPage(response: AxiosResponse): Promise<GetAuditLogPageListOutputPagedResultDto> {
+    protected processPage(response: AxiosResponse): Promise<PagingAuditLogOutputPagedResultDto> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -525,8 +525,8 @@ export class AuditLogsServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = GetAuditLogPageListOutputPagedResultDto.fromJS(resultData200);
-            return Promise.resolve<GetAuditLogPageListOutputPagedResultDto>(result200);
+            result200 = PagingAuditLogOutputPagedResultDto.fromJS(resultData200);
+            return Promise.resolve<PagingAuditLogOutputPagedResultDto>(result200);
 
         } else if (status === 403) {
             const _responseText = response.data;
@@ -574,7 +574,7 @@ export class AuditLogsServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<GetAuditLogPageListOutputPagedResultDto>(null as any);
+        return Promise.resolve<PagingAuditLogOutputPagedResultDto>(null as any);
     }
 }
 
@@ -8912,6 +8912,12 @@ export interface IDeleteLanguageInput {
     id: string;
 }
 
+export enum EntityChangeType {
+    Created = 0,
+    Updated = 1,
+    Deleted = 2,
+}
+
 export class EntityExtensionDto implements IEntityExtensionDto {
     properties!: { [key: string]: ExtensionPropertyDto; } | undefined;
     configuration!: { [key: string]: any; } | undefined;
@@ -10644,162 +10650,6 @@ export interface IFindTenantResultDto {
     isActive: boolean;
 }
 
-export class GetAuditLogPageListOutput implements IGetAuditLogPageListOutput {
-    applicationName!: string | undefined;
-    userId!: string | undefined;
-    userName!: string | undefined;
-    tenantId!: string | undefined;
-    tenantName!: string | undefined;
-    impersonatorUserId!: string | undefined;
-    impersonatorTenantId!: string | undefined;
-    executionTime!: dayjs.Dayjs;
-    executionDuration!: number;
-    clientIpAddress!: string | undefined;
-    clientName!: string | undefined;
-    clientId!: string | undefined;
-    correlationId!: string | undefined;
-    browserInfo!: string | undefined;
-    httpMethod!: string | undefined;
-    url!: string | undefined;
-    exceptions!: string | undefined;
-    comments!: string | undefined;
-    httpStatusCode!: number | undefined;
-
-    constructor(data?: IGetAuditLogPageListOutput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.applicationName = _data["applicationName"];
-            this.userId = _data["userId"];
-            this.userName = _data["userName"];
-            this.tenantId = _data["tenantId"];
-            this.tenantName = _data["tenantName"];
-            this.impersonatorUserId = _data["impersonatorUserId"];
-            this.impersonatorTenantId = _data["impersonatorTenantId"];
-            this.executionTime = _data["executionTime"] ? dayjs(_data["executionTime"].toString()) : <any>undefined;
-            this.executionDuration = _data["executionDuration"];
-            this.clientIpAddress = _data["clientIpAddress"];
-            this.clientName = _data["clientName"];
-            this.clientId = _data["clientId"];
-            this.correlationId = _data["correlationId"];
-            this.browserInfo = _data["browserInfo"];
-            this.httpMethod = _data["httpMethod"];
-            this.url = _data["url"];
-            this.exceptions = _data["exceptions"];
-            this.comments = _data["comments"];
-            this.httpStatusCode = _data["httpStatusCode"];
-        }
-    }
-
-    static fromJS(data: any): GetAuditLogPageListOutput {
-        data = typeof data === 'object' ? data : {};
-        let result = new GetAuditLogPageListOutput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["applicationName"] = this.applicationName;
-        data["userId"] = this.userId;
-        data["userName"] = this.userName;
-        data["tenantId"] = this.tenantId;
-        data["tenantName"] = this.tenantName;
-        data["impersonatorUserId"] = this.impersonatorUserId;
-        data["impersonatorTenantId"] = this.impersonatorTenantId;
-        data["executionTime"] = this.executionTime ? this.executionTime.toISOString() : <any>undefined;
-        data["executionDuration"] = this.executionDuration;
-        data["clientIpAddress"] = this.clientIpAddress;
-        data["clientName"] = this.clientName;
-        data["clientId"] = this.clientId;
-        data["correlationId"] = this.correlationId;
-        data["browserInfo"] = this.browserInfo;
-        data["httpMethod"] = this.httpMethod;
-        data["url"] = this.url;
-        data["exceptions"] = this.exceptions;
-        data["comments"] = this.comments;
-        data["httpStatusCode"] = this.httpStatusCode;
-        return data;
-    }
-}
-
-export interface IGetAuditLogPageListOutput {
-    applicationName: string | undefined;
-    userId: string | undefined;
-    userName: string | undefined;
-    tenantId: string | undefined;
-    tenantName: string | undefined;
-    impersonatorUserId: string | undefined;
-    impersonatorTenantId: string | undefined;
-    executionTime: dayjs.Dayjs;
-    executionDuration: number;
-    clientIpAddress: string | undefined;
-    clientName: string | undefined;
-    clientId: string | undefined;
-    correlationId: string | undefined;
-    browserInfo: string | undefined;
-    httpMethod: string | undefined;
-    url: string | undefined;
-    exceptions: string | undefined;
-    comments: string | undefined;
-    httpStatusCode: number | undefined;
-}
-
-export class GetAuditLogPageListOutputPagedResultDto implements IGetAuditLogPageListOutputPagedResultDto {
-    items!: GetAuditLogPageListOutput[] | undefined;
-    totalCount!: number;
-
-    constructor(data?: IGetAuditLogPageListOutputPagedResultDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (Array.isArray(_data["items"])) {
-                this.items = [] as any;
-                for (let item of _data["items"])
-                    this.items!.push(GetAuditLogPageListOutput.fromJS(item));
-            }
-            this.totalCount = _data["totalCount"];
-        }
-    }
-
-    static fromJS(data: any): GetAuditLogPageListOutputPagedResultDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new GetAuditLogPageListOutputPagedResultDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (Array.isArray(this.items)) {
-            data["items"] = [];
-            for (let item of this.items)
-                data["items"].push(item.toJSON());
-        }
-        data["totalCount"] = this.totalCount;
-        return data;
-    }
-}
-
-export interface IGetAuditLogPageListOutputPagedResultDto {
-    items: GetAuditLogPageListOutput[] | undefined;
-    totalCount: number;
-}
-
 export class GetOrganizationUnitRoleInput implements IGetOrganizationUnitRoleInput {
     /** 当前页面.默认从1开始 */
     pageIndex!: number;
@@ -11966,6 +11816,7 @@ export class IdentityUserDto implements IIdentityUserDto {
     lockoutEnabled!: boolean;
     lockoutEnd!: dayjs.Dayjs | undefined;
     concurrencyStamp!: string | undefined;
+    entityVersion!: number;
 
     constructor(data?: IIdentityUserDto) {
         if (data) {
@@ -12005,6 +11856,7 @@ export class IdentityUserDto implements IIdentityUserDto {
             this.lockoutEnabled = _data["lockoutEnabled"];
             this.lockoutEnd = _data["lockoutEnd"] ? dayjs(_data["lockoutEnd"].toString()) : <any>undefined;
             this.concurrencyStamp = _data["concurrencyStamp"];
+            this.entityVersion = _data["entityVersion"];
         }
     }
 
@@ -12044,6 +11896,7 @@ export class IdentityUserDto implements IIdentityUserDto {
         data["lockoutEnabled"] = this.lockoutEnabled;
         data["lockoutEnd"] = this.lockoutEnd ? this.lockoutEnd.toISOString() : <any>undefined;
         data["concurrencyStamp"] = this.concurrencyStamp;
+        data["entityVersion"] = this.entityVersion;
         return data;
     }
 }
@@ -12070,6 +11923,7 @@ export interface IIdentityUserDto {
     lockoutEnabled: boolean;
     lockoutEnd: dayjs.Dayjs | undefined;
     concurrencyStamp: string | undefined;
+    entityVersion: number;
 }
 
 export class IdentityUserDtoPagedResultDto implements IIdentityUserDtoPagedResultDto {
@@ -13199,7 +13053,87 @@ export interface IPageLanguageTextOutputPagedResultDto {
     totalCount: number;
 }
 
-export class PagingAuditLogListInput implements IPagingAuditLogListInput {
+export class PagingAuditLogActionOutput implements IPagingAuditLogActionOutput {
+    id!: string;
+    tenantId!: string | undefined;
+    auditLogId!: string;
+    serviceName!: string | undefined;
+    methodName!: string | undefined;
+    parameters!: string | undefined;
+    executionTime!: string | undefined;
+    executionDuration!: number;
+    extraProperties!: { [key: string]: any; } | undefined;
+
+    constructor(data?: IPagingAuditLogActionOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.tenantId = _data["tenantId"];
+            this.auditLogId = _data["auditLogId"];
+            this.serviceName = _data["serviceName"];
+            this.methodName = _data["methodName"];
+            this.parameters = _data["parameters"];
+            this.executionTime = _data["executionTime"];
+            this.executionDuration = _data["executionDuration"];
+            if (_data["extraProperties"]) {
+                this.extraProperties = {} as any;
+                for (let key in _data["extraProperties"]) {
+                    if (_data["extraProperties"].hasOwnProperty(key))
+                        (<any>this.extraProperties)![key] = _data["extraProperties"][key];
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): PagingAuditLogActionOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingAuditLogActionOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["tenantId"] = this.tenantId;
+        data["auditLogId"] = this.auditLogId;
+        data["serviceName"] = this.serviceName;
+        data["methodName"] = this.methodName;
+        data["parameters"] = this.parameters;
+        data["executionTime"] = this.executionTime;
+        data["executionDuration"] = this.executionDuration;
+        if (this.extraProperties) {
+            data["extraProperties"] = {};
+            for (let key in this.extraProperties) {
+                if (this.extraProperties.hasOwnProperty(key))
+                    (<any>data["extraProperties"])[key] = (<any>this.extraProperties)[key];
+            }
+        }
+        return data;
+    }
+}
+
+export interface IPagingAuditLogActionOutput {
+    id: string;
+    tenantId: string | undefined;
+    auditLogId: string;
+    serviceName: string | undefined;
+    methodName: string | undefined;
+    parameters: string | undefined;
+    executionTime: string | undefined;
+    executionDuration: number;
+    extraProperties: { [key: string]: any; } | undefined;
+}
+
+export class PagingAuditLogInput implements IPagingAuditLogInput {
     /** 当前页面.默认从1开始 */
     pageIndex!: number;
     /** 每页多少条.每页显示多少记录 */
@@ -13216,6 +13150,8 @@ export class PagingAuditLogListInput implements IPagingAuditLogListInput {
     httpMethod!: string | undefined;
     /** 请求地址 */
     url!: string | undefined;
+    /** 用户Id */
+    userId!: string | undefined;
     /** 用户名 */
     userName!: string | undefined;
     /** 应用程序名称 */
@@ -13229,8 +13165,10 @@ export class PagingAuditLogListInput implements IPagingAuditLogListInput {
     /** 是否有异常 */
     hasException!: boolean | undefined;
     httpStatusCode!: HttpStatusCode;
+    /** 客户端IP */
+    clientIpAddress!: string | undefined;
 
-    constructor(data?: IPagingAuditLogListInput) {
+    constructor(data?: IPagingAuditLogInput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -13249,6 +13187,7 @@ export class PagingAuditLogListInput implements IPagingAuditLogListInput {
             this.endTime = _data["endTime"] ? dayjs(_data["endTime"].toString()) : <any>undefined;
             this.httpMethod = _data["httpMethod"];
             this.url = _data["url"];
+            this.userId = _data["userId"];
             this.userName = _data["userName"];
             this.applicationName = _data["applicationName"];
             this.correlationId = _data["correlationId"];
@@ -13256,12 +13195,13 @@ export class PagingAuditLogListInput implements IPagingAuditLogListInput {
             this.minExecutionDuration = _data["minExecutionDuration"];
             this.hasException = _data["hasException"];
             this.httpStatusCode = _data["httpStatusCode"];
+            this.clientIpAddress = _data["clientIpAddress"];
         }
     }
 
-    static fromJS(data: any): PagingAuditLogListInput {
+    static fromJS(data: any): PagingAuditLogInput {
         data = typeof data === 'object' ? data : {};
-        let result = new PagingAuditLogListInput();
+        let result = new PagingAuditLogInput();
         result.init(data);
         return result;
     }
@@ -13276,6 +13216,7 @@ export class PagingAuditLogListInput implements IPagingAuditLogListInput {
         data["endTime"] = this.endTime ? this.endTime.toISOString() : <any>undefined;
         data["httpMethod"] = this.httpMethod;
         data["url"] = this.url;
+        data["userId"] = this.userId;
         data["userName"] = this.userName;
         data["applicationName"] = this.applicationName;
         data["correlationId"] = this.correlationId;
@@ -13283,11 +13224,12 @@ export class PagingAuditLogListInput implements IPagingAuditLogListInput {
         data["minExecutionDuration"] = this.minExecutionDuration;
         data["hasException"] = this.hasException;
         data["httpStatusCode"] = this.httpStatusCode;
+        data["clientIpAddress"] = this.clientIpAddress;
         return data;
     }
 }
 
-export interface IPagingAuditLogListInput {
+export interface IPagingAuditLogInput {
     /** 当前页面.默认从1开始 */
     pageIndex: number;
     /** 每页多少条.每页显示多少记录 */
@@ -13304,6 +13246,8 @@ export interface IPagingAuditLogListInput {
     httpMethod: string | undefined;
     /** 请求地址 */
     url: string | undefined;
+    /** 用户Id */
+    userId: string | undefined;
     /** 用户名 */
     userName: string | undefined;
     /** 应用程序名称 */
@@ -13317,6 +13261,188 @@ export interface IPagingAuditLogListInput {
     /** 是否有异常 */
     hasException: boolean | undefined;
     httpStatusCode: HttpStatusCode;
+    /** 客户端IP */
+    clientIpAddress: string | undefined;
+}
+
+export class PagingAuditLogOutput implements IPagingAuditLogOutput {
+    applicationName!: string | undefined;
+    userId!: string | undefined;
+    userName!: string | undefined;
+    tenantId!: string | undefined;
+    tenantName!: string | undefined;
+    impersonatorUserId!: string | undefined;
+    impersonatorTenantId!: string | undefined;
+    executionTime!: string | undefined;
+    executionDuration!: number;
+    clientIpAddress!: string | undefined;
+    clientName!: string | undefined;
+    clientId!: string | undefined;
+    correlationId!: string | undefined;
+    browserInfo!: string | undefined;
+    httpMethod!: string | undefined;
+    url!: string | undefined;
+    exceptions!: string | undefined;
+    comments!: string | undefined;
+    httpStatusCode!: number | undefined;
+    entityChanges!: PagingEntityChangeOutput[] | undefined;
+    actions!: PagingAuditLogActionOutput[] | undefined;
+
+    constructor(data?: IPagingAuditLogOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.applicationName = _data["applicationName"];
+            this.userId = _data["userId"];
+            this.userName = _data["userName"];
+            this.tenantId = _data["tenantId"];
+            this.tenantName = _data["tenantName"];
+            this.impersonatorUserId = _data["impersonatorUserId"];
+            this.impersonatorTenantId = _data["impersonatorTenantId"];
+            this.executionTime = _data["executionTime"];
+            this.executionDuration = _data["executionDuration"];
+            this.clientIpAddress = _data["clientIpAddress"];
+            this.clientName = _data["clientName"];
+            this.clientId = _data["clientId"];
+            this.correlationId = _data["correlationId"];
+            this.browserInfo = _data["browserInfo"];
+            this.httpMethod = _data["httpMethod"];
+            this.url = _data["url"];
+            this.exceptions = _data["exceptions"];
+            this.comments = _data["comments"];
+            this.httpStatusCode = _data["httpStatusCode"];
+            if (Array.isArray(_data["entityChanges"])) {
+                this.entityChanges = [] as any;
+                for (let item of _data["entityChanges"])
+                    this.entityChanges!.push(PagingEntityChangeOutput.fromJS(item));
+            }
+            if (Array.isArray(_data["actions"])) {
+                this.actions = [] as any;
+                for (let item of _data["actions"])
+                    this.actions!.push(PagingAuditLogActionOutput.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagingAuditLogOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingAuditLogOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["applicationName"] = this.applicationName;
+        data["userId"] = this.userId;
+        data["userName"] = this.userName;
+        data["tenantId"] = this.tenantId;
+        data["tenantName"] = this.tenantName;
+        data["impersonatorUserId"] = this.impersonatorUserId;
+        data["impersonatorTenantId"] = this.impersonatorTenantId;
+        data["executionTime"] = this.executionTime;
+        data["executionDuration"] = this.executionDuration;
+        data["clientIpAddress"] = this.clientIpAddress;
+        data["clientName"] = this.clientName;
+        data["clientId"] = this.clientId;
+        data["correlationId"] = this.correlationId;
+        data["browserInfo"] = this.browserInfo;
+        data["httpMethod"] = this.httpMethod;
+        data["url"] = this.url;
+        data["exceptions"] = this.exceptions;
+        data["comments"] = this.comments;
+        data["httpStatusCode"] = this.httpStatusCode;
+        if (Array.isArray(this.entityChanges)) {
+            data["entityChanges"] = [];
+            for (let item of this.entityChanges)
+                data["entityChanges"].push(item.toJSON());
+        }
+        if (Array.isArray(this.actions)) {
+            data["actions"] = [];
+            for (let item of this.actions)
+                data["actions"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IPagingAuditLogOutput {
+    applicationName: string | undefined;
+    userId: string | undefined;
+    userName: string | undefined;
+    tenantId: string | undefined;
+    tenantName: string | undefined;
+    impersonatorUserId: string | undefined;
+    impersonatorTenantId: string | undefined;
+    executionTime: string | undefined;
+    executionDuration: number;
+    clientIpAddress: string | undefined;
+    clientName: string | undefined;
+    clientId: string | undefined;
+    correlationId: string | undefined;
+    browserInfo: string | undefined;
+    httpMethod: string | undefined;
+    url: string | undefined;
+    exceptions: string | undefined;
+    comments: string | undefined;
+    httpStatusCode: number | undefined;
+    entityChanges: PagingEntityChangeOutput[] | undefined;
+    actions: PagingAuditLogActionOutput[] | undefined;
+}
+
+export class PagingAuditLogOutputPagedResultDto implements IPagingAuditLogOutputPagedResultDto {
+    items!: PagingAuditLogOutput[] | undefined;
+    totalCount!: number;
+
+    constructor(data?: IPagingAuditLogOutputPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(PagingAuditLogOutput.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): PagingAuditLogOutputPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingAuditLogOutputPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+}
+
+export interface IPagingAuditLogOutputPagedResultDto {
+    items: PagingAuditLogOutput[] | undefined;
+    totalCount: number;
 }
 
 export class PagingDataDictionaryDetailInput implements IPagingDataDictionaryDetailInput {
@@ -13811,6 +13937,162 @@ export class PagingElasticSearchLogOutputCustomPagedResultDto implements IPaging
 export interface IPagingElasticSearchLogOutputCustomPagedResultDto {
     items: PagingElasticSearchLogOutput[] | undefined;
     totalCount: number;
+}
+
+export class PagingEntityChangeOutput implements IPagingEntityChangeOutput {
+    id!: string;
+    auditLogId!: string;
+    tenantId!: string | undefined;
+    changeTime!: string | undefined;
+    changeType!: EntityChangeType;
+    changeTypeDescription!: string | undefined;
+    entityTenantId!: string | undefined;
+    entityId!: string | undefined;
+    entityTypeFullName!: string | undefined;
+    propertyChanges!: PagingEntityPropertyChangeOutput[] | undefined;
+    extraProperties!: { [key: string]: any; } | undefined;
+
+    constructor(data?: IPagingEntityChangeOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.auditLogId = _data["auditLogId"];
+            this.tenantId = _data["tenantId"];
+            this.changeTime = _data["changeTime"];
+            this.changeType = _data["changeType"];
+            this.changeTypeDescription = _data["changeTypeDescription"];
+            this.entityTenantId = _data["entityTenantId"];
+            this.entityId = _data["entityId"];
+            this.entityTypeFullName = _data["entityTypeFullName"];
+            if (Array.isArray(_data["propertyChanges"])) {
+                this.propertyChanges = [] as any;
+                for (let item of _data["propertyChanges"])
+                    this.propertyChanges!.push(PagingEntityPropertyChangeOutput.fromJS(item));
+            }
+            if (_data["extraProperties"]) {
+                this.extraProperties = {} as any;
+                for (let key in _data["extraProperties"]) {
+                    if (_data["extraProperties"].hasOwnProperty(key))
+                        (<any>this.extraProperties)![key] = _data["extraProperties"][key];
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): PagingEntityChangeOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingEntityChangeOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["auditLogId"] = this.auditLogId;
+        data["tenantId"] = this.tenantId;
+        data["changeTime"] = this.changeTime;
+        data["changeType"] = this.changeType;
+        data["changeTypeDescription"] = this.changeTypeDescription;
+        data["entityTenantId"] = this.entityTenantId;
+        data["entityId"] = this.entityId;
+        data["entityTypeFullName"] = this.entityTypeFullName;
+        if (Array.isArray(this.propertyChanges)) {
+            data["propertyChanges"] = [];
+            for (let item of this.propertyChanges)
+                data["propertyChanges"].push(item.toJSON());
+        }
+        if (this.extraProperties) {
+            data["extraProperties"] = {};
+            for (let key in this.extraProperties) {
+                if (this.extraProperties.hasOwnProperty(key))
+                    (<any>data["extraProperties"])[key] = (<any>this.extraProperties)[key];
+            }
+        }
+        return data;
+    }
+}
+
+export interface IPagingEntityChangeOutput {
+    id: string;
+    auditLogId: string;
+    tenantId: string | undefined;
+    changeTime: string | undefined;
+    changeType: EntityChangeType;
+    changeTypeDescription: string | undefined;
+    entityTenantId: string | undefined;
+    entityId: string | undefined;
+    entityTypeFullName: string | undefined;
+    propertyChanges: PagingEntityPropertyChangeOutput[] | undefined;
+    extraProperties: { [key: string]: any; } | undefined;
+}
+
+export class PagingEntityPropertyChangeOutput implements IPagingEntityPropertyChangeOutput {
+    id!: string;
+    tenantId!: string | undefined;
+    entityChangeId!: string;
+    newValue!: string | undefined;
+    originalValue!: string | undefined;
+    propertyName!: string | undefined;
+    propertyTypeFullName!: string | undefined;
+
+    constructor(data?: IPagingEntityPropertyChangeOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.tenantId = _data["tenantId"];
+            this.entityChangeId = _data["entityChangeId"];
+            this.newValue = _data["newValue"];
+            this.originalValue = _data["originalValue"];
+            this.propertyName = _data["propertyName"];
+            this.propertyTypeFullName = _data["propertyTypeFullName"];
+        }
+    }
+
+    static fromJS(data: any): PagingEntityPropertyChangeOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingEntityPropertyChangeOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["tenantId"] = this.tenantId;
+        data["entityChangeId"] = this.entityChangeId;
+        data["newValue"] = this.newValue;
+        data["originalValue"] = this.originalValue;
+        data["propertyName"] = this.propertyName;
+        data["propertyTypeFullName"] = this.propertyTypeFullName;
+        return data;
+    }
+}
+
+export interface IPagingEntityPropertyChangeOutput {
+    id: string;
+    tenantId: string | undefined;
+    entityChangeId: string;
+    newValue: string | undefined;
+    originalValue: string | undefined;
+    propertyName: string | undefined;
+    propertyTypeFullName: string | undefined;
 }
 
 export class PagingNotificationListInput implements IPagingNotificationListInput {

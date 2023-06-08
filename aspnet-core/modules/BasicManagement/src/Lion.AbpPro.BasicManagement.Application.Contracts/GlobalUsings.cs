@@ -7,5 +7,6 @@ global using Lion.AbpPro.Core;
 global using Volo.Abp.Application.Dtos;
 global using Volo.Abp.Application.Services;
 global using Volo.Abp.AspNetCore.Mvc.MultiTenancy;
+global using Volo.Abp.Data;
 global using Volo.Abp.PermissionManagement;
 global using Volo.Abp.TenantManagement;

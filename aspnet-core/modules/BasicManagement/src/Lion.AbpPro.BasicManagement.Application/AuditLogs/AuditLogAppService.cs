@@ -10,45 +10,52 @@ namespace Lion.AbpPro.BasicManagement.AuditLogs
             _auditLogRepository = auditLogRepository;
         }
 
+
         /// <summary>
         /// 分页查询审计日志
         /// </summary>
         [Authorize(Policy = BasicManagementPermissions.SystemManagement.AuditLog)]
-        public async Task<PagedResultDto<GetAuditLogPageListOutput>> GetListAsync(PagingAuditLogListInput input)
+        public async Task<PagedResultDto<PagingAuditLogOutput>> GetListAsync(PagingAuditLogInput input)
         {
+            var totalCount = await _auditLogRepository.GetCountAsync(
+                input.StartTime,
+                input.EndTime,
+                input.HttpMethod,
+                input.Url,
+                input.UserId,
+                input.UserName,
+                input.ApplicationName,
+                input.ClientIpAddress,
+                input.CorrelationId,
+                input.MaxExecutionDuration,
+                input.MinExecutionDuration,
+                input.HasException,
+                input.HttpStatusCode);
+            if (totalCount == 0)
+            {
+                return new PagedResultDto<PagingAuditLogOutput>();
+            }
+
             var list = await _auditLogRepository.GetListAsync(
                 input.Sorting,
                 input.PageSize,
                 input.SkipCount,
-                input.StartTime?.Date,
-                input.EndTime?.Date,
+                input.StartTime,
+                input.EndTime,
                 input.HttpMethod,
                 input.Url,
-                null,
+                input.UserId,
                 input.UserName,
                 input.ApplicationName,
-                input.CorrelationId,
-                null,
-                input.MaxExecutionDuration,
-                input.MinExecutionDuration,
-                input.HasException,
-                input.HttpStatusCode);
-            var totalCount = await _auditLogRepository.GetCountAsync(
-                input.StartTime?.Date,
-                input.EndTime?.Date,
-                input.HttpMethod,
-                input.Url,
-                null,
-                input.UserName,
-                input.ApplicationName,
-                null,
+                input.ClientIpAddress,
                 input.CorrelationId,
                 input.MaxExecutionDuration,
                 input.MinExecutionDuration,
                 input.HasException,
-                input.HttpStatusCode);
-            return new PagedResultDto<GetAuditLogPageListOutput>(totalCount,
-                ObjectMapper.Map<List<AuditLog>, List<GetAuditLogPageListOutput>>(list));
+                input.HttpStatusCode,
+                true);
+
+            return new PagedResultDto<PagingAuditLogOutput>(totalCount, ObjectMapper.Map<List<AuditLog>, List<PagingAuditLogOutput>>(list));
         }
     }
 }

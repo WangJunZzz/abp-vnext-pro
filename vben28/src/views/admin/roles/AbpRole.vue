@@ -1,13 +1,13 @@
 <template>
   <div>
     <BasicTable @register="registerTable" size="small">
-    <template #bodyCell="{ column, record }">
-      <template v-if="column.key === 'isDefault'">
-        <Tag :color="record.isDefault ? 'red' : 'green'">
-          {{ record.isDefault ? "是" : "否" }}
-        </Tag>
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'isDefault'">
+          <Tag :color="record.isDefault ? 'red' : 'green'">
+            {{ record.isDefault ? '是' : '否' }}
+          </Tag>
+        </template>
       </template>
-    </template>
       <template #toolbar>
         <a-button
           type="primary"
@@ -15,7 +15,7 @@
           @click="openCreateAbpRoleModal"
           v-auth="'AbpIdentity.Roles.Create'"
         >
-          {{ t("common.createText") }}
+          {{ t('common.createText') }}
         </a-button>
       </template>
 
@@ -66,102 +66,107 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { BasicTable, useTable, TableAction } from "/@/components/Table";
-import { tableColumns, searchFormSchema, getTableListAsync, deleteRoleAsync } from "/@/views/admin/roles/AbpRole";
-import { useModal } from "/@/components/Modal";
-import CreateAbpRole from "./CreateAbpRole.vue";
-import PermissionAbpRole from "./PermissionAbpRole.vue";
-import EditAbpRole from "./EditAbpRole.vue";
-import { useMessage } from "/@/hooks/web/useMessage";
-import { useDrawer } from "/@/components/Drawer";
-import { useI18n } from "/@/hooks/web/useI18n";
-import { Tag } from "ant-design-vue";
+  import { defineComponent } from 'vue';
+  import { BasicTable, useTable, TableAction } from '/@/components/Table';
+  import {
+    tableColumns,
+    searchFormSchema,
+    getTableListAsync,
+    deleteRoleAsync,
+  } from '/@/views/admin/roles/AbpRole';
+  import { useModal } from '/@/components/Modal';
+  import CreateAbpRole from './CreateAbpRole.vue';
+  import PermissionAbpRole from './PermissionAbpRole.vue';
+  import EditAbpRole from './EditAbpRole.vue';
+  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useDrawer } from '/@/components/Drawer';
+  import { useI18n } from '/@/hooks/web/useI18n';
+  import { Tag } from 'ant-design-vue';
 
-export default defineComponent({
-  name: "AbpRole",
-  components: {
-    BasicTable,
-    TableAction,
-    CreateAbpRole,
-    PermissionAbpRole,
-    EditAbpRole,
-    Tag
-  },
-  setup() {
-    const { createConfirm } = useMessage();
-    const { t } = useI18n();
-    const [registerPermissionAbpRoleModal, { openDrawer: openPermissionAbpRoleDrawer }] =
-      useDrawer();
+  export default defineComponent({
+    name: 'AbpRole',
+    components: {
+      BasicTable,
+      TableAction,
+      CreateAbpRole,
+      PermissionAbpRole,
+      EditAbpRole,
+      Tag,
+    },
+    setup() {
+      const { createConfirm } = useMessage();
+      const { t } = useI18n();
+      const [registerPermissionAbpRoleModal, { openDrawer: openPermissionAbpRoleDrawer }] =
+        useDrawer();
 
-    const [registerCreateAbpRoleModal, { openModal: openCreateAbpRoleModal }] = useModal();
+      const [registerCreateAbpRoleModal, { openModal: openCreateAbpRoleModal }] = useModal();
 
-    const [registerEditAbpRoleModal, { openModal: openEditAbpRoleModal }] = useModal();
+      const [registerEditAbpRoleModal, { openModal: openEditAbpRoleModal }] = useModal();
 
-    // table配置
-    const [registerTable, { reload }] = useTable({
-      columns: tableColumns,
-      formConfig: {
-        labelWidth: 70,
-        schemas: searchFormSchema
-      },
-      api: getTableListAsync,
-      showTableSetting: true,
-      useSearchForm: true,
-      bordered: true,
-      canResize: true,
-      showIndexColumn: true,
-      actionColumn: {
-        width: 200,
-        title: t("common.action"),
-        dataIndex: "action",
-        slots: {
-          customRender: "action"
+      // table配置
+      const [registerTable, { reload }] = useTable({
+        columns: tableColumns,
+        formConfig: {
+          labelWidth: 70,
+          schemas: searchFormSchema,
         },
-        fixed: "right"
-      }
-    });
-
-    // 角色编辑
-    const handleEdit = (record: Recordable) => {
-      openEditAbpRoleModal(true, {
-        record: record
+        api: getTableListAsync,
+        showTableSetting: true,
+        useSearchForm: true,
+        bordered: true,
+        canResize: true,
+        showIndexColumn: true,
+        actionColumn: {
+          width: 200,
+          title: t('common.action'),
+          dataIndex: 'action',
+          slots: {
+            customRender: 'action',
+          },
+          fixed: 'right',
+        },
       });
-    };
 
-    // 角色授权
-    const handlePermission = (record: Recordable) => {
-      openPermissionAbpRoleDrawer(true, {
-        record: record
-      });
-    };
+      // 角色编辑
+      const handleEdit = (record: Recordable) => {
+        openEditAbpRoleModal(true, {
+          record: record,
+        });
+      };
 
-    // 删除角色
-    const handleDelete = async (record: Recordable) => {
-      let msg = t("common.askDelete");
-      createConfirm({
-        iconType: "warning",
-        title: t("common.tip"),
-        content: msg,
-        onOk: async () => {
-          await deleteRoleAsync({ roleId: record.id, reload });
-        }
-      });
-    };
+      // 角色授权
+      const handlePermission = (record: Recordable) => {
+        openPermissionAbpRoleDrawer(true, {
+          record: record,
+        });
+      };
 
-    return {
-      t,
-      registerTable,
-      handleEdit,
-      handleDelete,
-      handlePermission,
-      getTableListAsync,
-      registerCreateAbpRoleModal,
-      openCreateAbpRoleModal,
-      registerPermissionAbpRoleModal,
-      registerEditAbpRoleModal,
-      reload
-    };
-  }
-});
+      // 删除角色
+      const handleDelete = async (record: Recordable) => {
+        let msg = t('common.askDelete');
+        createConfirm({
+          iconType: 'warning',
+          title: t('common.tip'),
+          content: msg,
+          onOk: async () => {
+            await deleteRoleAsync({ roleId: record.id, reload });
+          },
+        });
+      };
+
+      return {
+        t,
+        registerTable,
+        handleEdit,
+        handleDelete,
+        handlePermission,
+        getTableListAsync,
+        registerCreateAbpRoleModal,
+        openCreateAbpRoleModal,
+        registerPermissionAbpRoleModal,
+        registerEditAbpRoleModal,
+        reload,
+      };
+    },
+  });
 </script>

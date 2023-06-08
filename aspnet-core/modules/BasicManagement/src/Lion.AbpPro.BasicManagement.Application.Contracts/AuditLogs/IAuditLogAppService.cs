@@ -7,6 +7,6 @@ namespace Lion.AbpPro.BasicManagement.AuditLogs
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultDto<GetAuditLogPageListOutput>> GetListAsync(PagingAuditLogListInput input);
+        Task<PagedResultDto<PagingAuditLogOutput>> GetListAsync(PagingAuditLogInput input);
     }
 }

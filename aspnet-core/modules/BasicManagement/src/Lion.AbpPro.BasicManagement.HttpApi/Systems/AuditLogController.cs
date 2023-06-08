@@ -12,7 +12,7 @@ namespace Lion.AbpPro.BasicManagement.Systems
 
         [HttpPost("page")]
         [SwaggerOperation(summary: "分页获取审计日志信息", Tags = new[] {"AuditLogs"})]
-        public Task<PagedResultDto<GetAuditLogPageListOutput>> GetListAsync(PagingAuditLogListInput input)
+        public Task<PagedResultDto<PagingAuditLogOutput>> GetListAsync(PagingAuditLogInput input)
         {
             return _auditLogAppService.GetListAsync(input);
         }

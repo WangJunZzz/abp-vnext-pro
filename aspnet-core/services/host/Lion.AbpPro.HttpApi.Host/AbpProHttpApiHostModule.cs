@@ -355,7 +355,9 @@ namespace Lion.AbpPro
                 {
                     options.IgnoredUrls.Add("/AuditLogs/page");
                     options.IgnoredUrls.Add("/hangfire/stats");
+                    options.IgnoredUrls.Add("/hangfire/recurring/trigger");
                     options.IgnoredUrls.Add("/cap");
+                    options.IgnoredUrls.Add("/");
                 });
         }
 

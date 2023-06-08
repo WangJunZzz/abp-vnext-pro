@@ -2,7 +2,7 @@ using System.Net;
 
 namespace Lion.AbpPro.BasicManagement.AuditLogs
 {
-    public class PagingAuditLogListInput : PagingBase
+    public class PagingAuditLogInput : PagingBase
     {
         /// <summary>
         /// 排序
@@ -29,6 +29,12 @@ namespace Lion.AbpPro.BasicManagement.AuditLogs
         /// </summary>
         public string Url { get; set; }
 
+        
+        /// <summary>
+        /// 用户Id
+        /// </summary>
+        public Guid? UserId { get; set; }
+        
         /// <summary>
         /// 用户名
         /// </summary>
@@ -63,5 +69,10 @@ namespace Lion.AbpPro.BasicManagement.AuditLogs
         /// http 状态码
         /// </summary>
         public HttpStatusCode? HttpStatusCode { get; set; }
+        
+        /// <summary>
+        /// 客户端IP
+        /// </summary>
+        public string ClientIpAddress { get; set; }
     }
 }
