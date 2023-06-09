@@ -145,7 +145,7 @@ namespace Lion.AbpPro
                             ValidateIssuer = true,
                             ValidateAudience = true,
                             ValidateLifetime = true,
-                            //ClockSkew = TimeSpan.Zero,
+                            ClockSkew = TimeSpan.Zero,
                             ValidIssuer = configuration["Jwt:Issuer"],
                             ValidAudience = configuration["Jwt:Audience"],
                             IssuerSigningKey =

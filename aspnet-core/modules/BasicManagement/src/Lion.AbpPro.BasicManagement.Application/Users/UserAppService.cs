@@ -81,12 +81,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         {
             // abp 5.0 之后新增字段,是否运行用户登录，默认设置为true
             input.IsActive = true;
-            using (var uow = UnitOfWorkManager.Begin(new AbpUnitOfWorkOptions() { IsTransactional = true }, true))
-            {
-                await _identityUserAppService.CreateAsync(input);
-                await uow.CompleteAsync();
-            }
-            return null;
+            return await _identityUserAppService.CreateAsync(input);
         }
 
         /// <summary>
@@ -96,12 +91,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         public virtual async Task<IdentityUserDto> UpdateAsync(UpdateUserInput input)
         {
             input.UserInfo.IsActive = true;
-            using (var uow = UnitOfWorkManager.Begin(new AbpUnitOfWorkOptions() { IsTransactional = true }, true))
-            {
-                await _identityUserAppService.UpdateAsync(input.UserId, input.UserInfo);
-            }
-
-            return null;
+            return await _identityUserAppService.UpdateAsync(input.UserId, input.UserInfo);
         }
 
         /// <summary>
