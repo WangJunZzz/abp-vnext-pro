@@ -38,4 +38,6 @@ export default {
   default: 'Default',
   name: 'Name',
   value: 'Value',
+  parameterValidationFailure: 'Parameter Validation Failure',
+  permissionDenied: 'Permission Denied',
 };

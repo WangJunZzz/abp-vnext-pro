@@ -41,4 +41,6 @@ export default {
   default: '默认',
   name: '名称',
   value: '值',
+  parameterValidationFailure: '参数验证失败',
+  permissionDenied: '权限不足',
 };
