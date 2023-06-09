@@ -75,6 +75,7 @@ export const tableColumns: BasicColumn[] = [
       return formatToDateTime(text);
     },
     width: 150,
+    sorter: true,
   },
   {
     title: t('routes.admin.executionDuration'),

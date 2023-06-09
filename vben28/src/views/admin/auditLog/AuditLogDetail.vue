@@ -13,13 +13,11 @@
     setup() {
       const { t } = useI18n();
       const auditLogInfo = ref({});
-      let entityChanges;
       const [register] = useDrawerInner((data) => {
-        console.log(JSON.stringify(data.record));
         auditLogInfo.value = unref(data.record);
       });
 
-      return { t, register, entityChanges, auditLogInfo };
+      return { t, register, auditLogInfo };
     },
   });
 </script>
