@@ -243,10 +243,10 @@ public static class ReplaceHelper
                 "<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\BasicManagement\\src\\Lion.AbpPro.BasicManagement.FreeSqlRepository\\Lion.AbpPro.BasicManagement.FreeSqlRepository.csproj\"/>",
                 "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository\"/>")
             .Replace("<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\BasicManagement\\src\\Lion.AbpPro.BasicManagement.HttpApi\\Lion.AbpPro.BasicManagement.HttpApi.csproj\"/>",
-                "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository.HttpApi\"/>")
+                "<PackageReference Include=\"Lion.AbpPro.BasicManagement.HttpApi\"/>")
             .Replace(
                 "<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\BasicManagement\\src\\Lion.AbpPro.BasicManagement.HttpApi.Client\\Lion.AbpPro.BasicManagement.HttpApi.Client.csproj\"/>",
-                "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository.HttpApi.Client\"/>");
+                "<PackageReference Include=\"Lion.AbpPro.BasicManagement.HttpApi.Client\"/>");
     }
 
     public static string ReplacePackageReferenceDataDictionaryManagement(this string content)
@@ -272,10 +272,10 @@ public static class ReplaceHelper
                 "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository\"/>")
             .Replace(
                 "<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\DataDictionaryManagement\\src\\Lion.AbpPro.DataDictionaryManagement.HttpApi\\Lion.AbpPro.DataDictionaryManagement.HttpApi.csproj\"/>",
-                "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository.HttpApi\"/>")
+                "<PackageReference Include=\"Lion.AbpPro.DataDictionaryManagement.HttpApi\"/>")
             .Replace(
                 "<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\DataDictionaryManagement\\src\\Lion.AbpPro.DataDictionaryManagement.HttpApi.Client\\Lion.AbpPro.DataDictionaryManagement.HttpApi.Client.csproj\"/>",
-                "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository.HttpApi.Client\"/>");
+                "<PackageReference Include=\"Lion.AbpPro.DataDictionaryManagement.HttpApi.Client\"/>");
     }
 
     public static string ReplacePackageReferenceFileManagement(this string content)
@@ -299,10 +299,10 @@ public static class ReplaceHelper
                 "<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\FileManagement\\src\\Lion.AbpPro.FileManagement.FreeSqlRepository\\Lion.AbpPro.FileManagement.FreeSqlRepository.csproj\"/>",
                 "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository\"/>")
             .Replace("<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\FileManagement\\src\\Lion.AbpPro.FileManagement.HttpApi\\Lion.AbpPro.FileManagement.HttpApi.csproj\"/>",
-                "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository.HttpApi\"/>")
+                "<PackageReference Include=\"Lion.AbpPro.FileManagement.HttpApi\"/>")
             .Replace(
                 "<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\FileManagement\\src\\Lion.AbpPro.FileManagement.HttpApi.Client\\Lion.AbpPro.FileManagement.HttpApi.Client.csproj\"/>",
-                "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository.HttpApi.Client\"/>");
+                "<PackageReference Include=\"Lion.AbpPro.FileManagement.HttpApi.Client\"/>");
     }
 
     public static string ReplacePackageReferenceLanguageManagement(this string content)
@@ -328,10 +328,10 @@ public static class ReplaceHelper
                 "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository\"/>")
             .Replace(
                 "<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\LanguageManagement\\src\\Lion.AbpPro.LanguageManagement.HttpApi\\Lion.AbpPro.LanguageManagement.HttpApi.csproj\"/>",
-                "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository.HttpApi\"/>")
+                "<PackageReference Include=\"Lion.AbpPro.LanguageManagement.HttpApi\"/>")
             .Replace(
                 "<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\LanguageManagement\\src\\Lion.AbpPro.LanguageManagement.HttpApi.Client\\Lion.AbpPro.LanguageManagement.HttpApi.Client.csproj\"/>",
-                "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository.HttpApi.Client\"/>");
+                "<PackageReference Include=\"Lion.AbpPro.LanguageManagement.HttpApi.Client\"/>");
     }
 
     public static string ReplacePackageReferenceNotificationManagement(this string content)
@@ -357,9 +357,9 @@ public static class ReplaceHelper
                 "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository\"/>")
             .Replace(
                 "<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\NotificationManagement\\src\\Lion.AbpPro.NotificationManagement.HttpApi\\Lion.AbpPro.NotificationManagement.HttpApi.csproj\"/>",
-                "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository.HttpApi\"/>")
+                "<PackageReference Include=\"Lion.AbpPro.NotificationManagement.HttpApi\"/>")
             .Replace(
                 "<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\NotificationManagement\\src\\Lion.AbpPro.NotificationManagement.HttpApi.Client\\Lion.AbpPro.NotificationManagement.HttpApi.Client.csproj\"/>",
-                "<PackageReference Include=\"Lion.AbpPro.FreeSqlRepository.HttpApi.Client\"/>");
+                "<PackageReference Include=\"Lion.AbpPro.NotificationManagement.HttpApi.Client\"/>");
     }
 }
