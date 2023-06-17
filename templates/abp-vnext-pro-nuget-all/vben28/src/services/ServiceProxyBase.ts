@@ -15,15 +15,15 @@ export class ServiceProxyBase {
     if (!guard) {
       if (userStore.checkUserLoginExpire) {
         router.replace(PageEnum.BASE_LOGIN);
-        return;
+      } else {
+        // 添加header
+        options.headers = {
+          'accept-language': language,
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+          __tenant: userStore.tenantId,
+        };
       }
-      // 添加header
-      options.headers = {
-        'accept-language': language,
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token,
-        __tenant: userStore.tenantId,
-      };
     } else {
       options.headers = {
         'Content-Type': 'application/json',
@@ -37,21 +37,23 @@ export class ServiceProxyBase {
   protected transformResult(
     _url: string,
     response: AxiosResponse,
-    processor: (response: AxiosResponse) => Promise<any>
+    processor: (response: AxiosResponse) => Promise<any>,
   ): Promise<any> {
     const { t } = useI18n();
 
-    if (response.status == 401 || response.status == 403 || response.status == 302) {
+    if (response.status == 401) {
       message.error(t('common.authorityText'));
       router.replace(PageEnum.BASE_LOGIN);
+    } else if (response.status == 403) {
+      message.error(t('common.permissionDenied'));
     } else if (response.status == 400) {
       Modal.error({
-        title: '验证失败',
+        title: t('common.parameterValidationFailure'),
         content: response.data.error.validationErrors[0].message,
       });
     } else if (response.status >= 500) {
       Modal.error({
-        title: '请求异常',
+        title: t('common.systemErrorText'),
         content: response.data.error.message,
       });
     }
