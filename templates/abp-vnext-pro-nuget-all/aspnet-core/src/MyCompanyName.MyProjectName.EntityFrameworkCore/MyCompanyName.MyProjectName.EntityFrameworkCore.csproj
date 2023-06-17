@@ -9,10 +9,14 @@
     <ItemGroup>
         <ProjectReference Include="..\MyCompanyName.MyProjectName.Domain\MyCompanyName.MyProjectName.Domain.csproj" />
         <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" />
-        <PackageReference Include="Lion.AbpPro.BasicManagement.EntityFrameworkCore" />
-        <PackageReference Include="Lion.AbpPro.NotificationManagement.EntityFrameworkCore" />
-        <PackageReference Include="Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore" />
     </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.EntityFrameworkCore\Lion.AbpPro.BasicManagement.EntityFrameworkCore.csproj" />
+        <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.EntityFrameworkCore\Lion.AbpPro.NotificationManagement.EntityFrameworkCore.csproj" />
+        <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.csproj" />
+    </ItemGroup>
+    
     <ItemGroup>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>

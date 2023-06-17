@@ -1,8 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-
+<Project Sdk="Microsoft.NET.Sdk">
+    
     <PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
     </PropertyGroup>
 
@@ -11,11 +10,13 @@
     </ItemGroup>
 
     <ItemGroup>
-
-        <PackageReference Include="Lion.AbpPro.BasicManagement.Application.Contracts"/>
-        <PackageReference Include="Lion.AbpPro.NotificationManagement.Application.Contracts"/>
-        <PackageReference Include="Lion.AbpPro.DataDictionaryManagement.Application.Contracts"/>
+        <PackageReference Include="Volo.Abp.ObjectExtending"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Application.Contracts\Lion.AbpPro.BasicManagement.Application.Contracts.csproj" />
+        <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.Application.Contracts\Lion.AbpPro.NotificationManagement.Application.Contracts.csproj" />
+        <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Application.Contracts\Lion.AbpPro.DataDictionaryManagement.Application.Contracts.csproj" />
+    </ItemGroup>
 
 </Project>

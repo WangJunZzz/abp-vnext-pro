@@ -1,4 +1,4 @@
-﻿namespace Lion.AbpPro.Cli.Cryptography;
+﻿namespace Lion.AbpPro.Cli.Utils;
 
 public static class TokenHelper
 {

@@ -20,7 +20,7 @@ public class LionAbpProOptions
     /// <summary>
     /// 解密 Github Token
     /// </summary>
-    public string DecryptToken => Cryptography.TokenHelper.Decrypt(Token);
+    public string DecryptToken => TokenHelper.Decrypt(Token);
     
     /// <summary>
     /// 模板信息

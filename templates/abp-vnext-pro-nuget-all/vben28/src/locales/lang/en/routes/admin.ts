@@ -35,7 +35,6 @@ export default {
   audit_url: 'URL',
   audit_entityInfo: 'EntityInformation',
   audit_message: 'Message',
-  audit_hasException: 'HasException',
   audit_hasException_all: 'All',
   audit_hasException_yes: 'Yes',
   audit_hasException_no: 'No',

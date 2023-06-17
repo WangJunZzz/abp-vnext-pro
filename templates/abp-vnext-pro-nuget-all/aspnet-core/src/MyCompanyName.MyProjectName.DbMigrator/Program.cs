@@ -36,7 +36,7 @@ namespace MyCompanyName.MyProjectName.DbMigrator
 
                         otpions.AddJsonFile(appSettingFileName, optional: true);
                     }
-                )                
+                )
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<DbMigratorHostedService>();

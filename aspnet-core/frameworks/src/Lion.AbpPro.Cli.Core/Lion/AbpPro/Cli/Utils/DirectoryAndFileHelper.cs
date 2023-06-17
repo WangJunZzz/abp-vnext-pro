@@ -1,6 +1,4 @@
-﻿using Volo.Abp.Domain.Services;
-
-namespace Lion.AbpPro.Cli.Zip;
+﻿namespace Lion.AbpPro.Cli.Utils;
 
 public static class DirectoryAndFileHelper 
 {

@@ -1,3 +1,6 @@
+using Lion.AbpPro;
+using Swagger;
+
 namespace MyCompanyName.MyProjectName
 {
     [DependsOn(
@@ -14,7 +17,6 @@ namespace MyCompanyName.MyProjectName
     )]
     public class MyProjectNameHttpApiHostModule : AbpModule
     {
-        
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             var configuration = context.Services.GetConfiguration();
@@ -30,6 +32,8 @@ namespace MyCompanyName.MyProjectName
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
             var app = context.GetApplicationBuilder();
+            var configuration = context.GetConfiguration();
+
             app.UseAbpRequestLocalization();
             app.UseCorrelationId();
             app.UseStaticFiles();
@@ -57,8 +61,14 @@ namespace MyCompanyName.MyProjectName
 
             app.UseUnitOfWork();
             app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
-         
+
+
+            if (configuration.GetValue("Consul:Enabled", false))
+            {
+                app.UseConsul();
+            }
         }
+
         private void ConfigurationSignalR(ServiceConfigurationContext context)
         {
             var redisConnection = context.Services.GetConfiguration()["Redis:Configuration"];
@@ -70,6 +80,7 @@ namespace MyCompanyName.MyProjectName
 
             context.Services.AddSignalR().AddStackExchangeRedis(redisConnection, options => { options.Configuration.ChannelPrefix = "Lion.AbpPro"; });
         }
+
         /// <summary>
         /// 配置MiniProfiler
         /// </summary>
@@ -81,7 +92,8 @@ namespace MyCompanyName.MyProjectName
         /// <summary>
         /// 配置JWT
         /// </summary>
-        private void ConfigureJwtAuthentication(ServiceConfigurationContext context, IConfiguration configuration)
+        private void ConfigureJwtAuthentication(ServiceConfigurationContext context,
+            IConfiguration configuration)
         {
             context.Services.AddAuthentication(options =>
                 {
@@ -146,7 +158,6 @@ namespace MyCompanyName.MyProjectName
                 });
         }
 
-   
 
         /// <summary>
         /// Redis缓存
@@ -161,7 +172,6 @@ namespace MyCompanyName.MyProjectName
                 .AddDataProtection()
                 .PersistKeysToStackExchangeRedis(redis, "MyProjectName-Protection-Keys");
         }
-
 
 
         /// <summary>
@@ -240,7 +250,6 @@ namespace MyCompanyName.MyProjectName
         }
 
 
-    
         /// <summary>
         /// 审计日志
         /// </summary>

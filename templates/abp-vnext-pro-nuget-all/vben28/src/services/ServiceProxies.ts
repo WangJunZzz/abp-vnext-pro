@@ -136,10 +136,15 @@ export class AbpApplicationConfigurationServiceProxy extends ServiceProxyBase {
     }
 
     /**
+     * @param includeLocalizationResources (optional) 
      * @return Success
      */
-    applicationConfiguration(  cancelToken?: CancelToken | undefined): Promise<ApplicationConfigurationDto> {
-        let url_ = this.baseUrl + "/api/abp/application-configuration";
+    applicationConfiguration(includeLocalizationResources: boolean | undefined , cancelToken?: CancelToken | undefined): Promise<ApplicationConfigurationDto> {
+        let url_ = this.baseUrl + "/api/abp/application-configuration?";
+        if (includeLocalizationResources === null)
+            throw new Error("The parameter 'includeLocalizationResources' cannot be null.");
+        else if (includeLocalizationResources !== undefined)
+            url_ += "IncludeLocalizationResources=" + encodeURIComponent("" + includeLocalizationResources) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <AxiosRequestConfig>{
@@ -228,6 +233,122 @@ export class AbpApplicationConfigurationServiceProxy extends ServiceProxyBase {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
         return Promise.resolve<ApplicationConfigurationDto>(null as any);
+    }
+}
+
+export class AbpApplicationLocalizationServiceProxy extends ServiceProxyBase {
+    private instance: AxiosInstance;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, instance?: AxiosInstance) {
+        super();
+        this.instance = instance ? instance : axios.create();
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param onlyDynamics (optional) 
+     * @return Success
+     */
+    applicationLocalization(cultureName: string, onlyDynamics: boolean | undefined , cancelToken?: CancelToken | undefined): Promise<ApplicationLocalizationDto> {
+        let url_ = this.baseUrl + "/api/abp/application-localization?";
+        if (cultureName === undefined || cultureName === null)
+            throw new Error("The parameter 'cultureName' must be defined and cannot be null.");
+        else
+            url_ += "CultureName=" + encodeURIComponent("" + cultureName) + "&";
+        if (onlyDynamics === null)
+            throw new Error("The parameter 'onlyDynamics' cannot be null.");
+        else if (onlyDynamics !== undefined)
+            url_ += "OnlyDynamics=" + encodeURIComponent("" + onlyDynamics) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ = <AxiosRequestConfig>{
+            method: "GET",
+            url: url_,
+            headers: {
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processApplicationLocalization(_response));
+        });
+    }
+
+    protected processApplicationLocalization(response: AxiosResponse): Promise<ApplicationLocalizationDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = ApplicationLocalizationDto.fromJS(resultData200);
+            return Promise.resolve<ApplicationLocalizationDto>(result200);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<ApplicationLocalizationDto>(null as any);
     }
 }
 
@@ -6333,7 +6454,6 @@ export interface IApplicationApiDescriptionModel {
 }
 
 export class ApplicationAuthConfigurationDto implements IApplicationAuthConfigurationDto {
-    policies!: { [key: string]: boolean; } | undefined;
     grantedPolicies!: { [key: string]: boolean; } | undefined;
 
     constructor(data?: IApplicationAuthConfigurationDto) {
@@ -6347,13 +6467,6 @@ export class ApplicationAuthConfigurationDto implements IApplicationAuthConfigur
 
     init(_data?: any) {
         if (_data) {
-            if (_data["policies"]) {
-                this.policies = {} as any;
-                for (let key in _data["policies"]) {
-                    if (_data["policies"].hasOwnProperty(key))
-                        (<any>this.policies)![key] = _data["policies"][key];
-                }
-            }
             if (_data["grantedPolicies"]) {
                 this.grantedPolicies = {} as any;
                 for (let key in _data["grantedPolicies"]) {
@@ -6373,13 +6486,6 @@ export class ApplicationAuthConfigurationDto implements IApplicationAuthConfigur
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        if (this.policies) {
-            data["policies"] = {};
-            for (let key in this.policies) {
-                if (this.policies.hasOwnProperty(key))
-                    (<any>data["policies"])[key] = (<any>this.policies)[key];
-            }
-        }
         if (this.grantedPolicies) {
             data["grantedPolicies"] = {};
             for (let key in this.grantedPolicies) {
@@ -6392,7 +6498,6 @@ export class ApplicationAuthConfigurationDto implements IApplicationAuthConfigur
 }
 
 export interface IApplicationAuthConfigurationDto {
-    policies: { [key: string]: boolean; } | undefined;
     grantedPolicies: { [key: string]: boolean; } | undefined;
 }
 
@@ -6582,6 +6687,7 @@ export interface IApplicationGlobalFeatureConfigurationDto {
 
 export class ApplicationLocalizationConfigurationDto implements IApplicationLocalizationConfigurationDto {
     values!: { [key: string]: { [key: string]: string; }; } | undefined;
+    resources!: { [key: string]: ApplicationLocalizationResourceDto; } | undefined;
     languages!: LanguageInfo[] | undefined;
     currentCulture!: CurrentCultureDto;
     defaultResourceName!: string | undefined;
@@ -6604,6 +6710,13 @@ export class ApplicationLocalizationConfigurationDto implements IApplicationLoca
                 for (let key in _data["values"]) {
                     if (_data["values"].hasOwnProperty(key))
                         (<any>this.values)![key] = _data["values"][key];
+                }
+            }
+            if (_data["resources"]) {
+                this.resources = {} as any;
+                for (let key in _data["resources"]) {
+                    if (_data["resources"].hasOwnProperty(key))
+                        (<any>this.resources)![key] = _data["resources"][key] ? ApplicationLocalizationResourceDto.fromJS(_data["resources"][key]) : new ApplicationLocalizationResourceDto();
                 }
             }
             if (Array.isArray(_data["languages"])) {
@@ -6646,6 +6759,13 @@ export class ApplicationLocalizationConfigurationDto implements IApplicationLoca
                     (<any>data["values"])[key] = (<any>this.values)[key];
             }
         }
+        if (this.resources) {
+            data["resources"] = {};
+            for (let key in this.resources) {
+                if (this.resources.hasOwnProperty(key))
+                    (<any>data["resources"])[key] = this.resources[key] ? this.resources[key].toJSON() : <any>undefined;
+            }
+        }
         if (Array.isArray(this.languages)) {
             data["languages"] = [];
             for (let item of this.languages)
@@ -6673,11 +6793,120 @@ export class ApplicationLocalizationConfigurationDto implements IApplicationLoca
 
 export interface IApplicationLocalizationConfigurationDto {
     values: { [key: string]: { [key: string]: string; }; } | undefined;
+    resources: { [key: string]: ApplicationLocalizationResourceDto; } | undefined;
     languages: LanguageInfo[] | undefined;
     currentCulture: CurrentCultureDto;
     defaultResourceName: string | undefined;
     languagesMap: { [key: string]: NameValue[]; } | undefined;
     languageFilesMap: { [key: string]: NameValue[]; } | undefined;
+}
+
+export class ApplicationLocalizationDto implements IApplicationLocalizationDto {
+    resources!: { [key: string]: ApplicationLocalizationResourceDto; } | undefined;
+
+    constructor(data?: IApplicationLocalizationDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (_data["resources"]) {
+                this.resources = {} as any;
+                for (let key in _data["resources"]) {
+                    if (_data["resources"].hasOwnProperty(key))
+                        (<any>this.resources)![key] = _data["resources"][key] ? ApplicationLocalizationResourceDto.fromJS(_data["resources"][key]) : new ApplicationLocalizationResourceDto();
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): ApplicationLocalizationDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ApplicationLocalizationDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (this.resources) {
+            data["resources"] = {};
+            for (let key in this.resources) {
+                if (this.resources.hasOwnProperty(key))
+                    (<any>data["resources"])[key] = this.resources[key] ? this.resources[key].toJSON() : <any>undefined;
+            }
+        }
+        return data;
+    }
+}
+
+export interface IApplicationLocalizationDto {
+    resources: { [key: string]: ApplicationLocalizationResourceDto; } | undefined;
+}
+
+export class ApplicationLocalizationResourceDto implements IApplicationLocalizationResourceDto {
+    texts!: { [key: string]: string; } | undefined;
+    baseResources!: string[] | undefined;
+
+    constructor(data?: IApplicationLocalizationResourceDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (_data["texts"]) {
+                this.texts = {} as any;
+                for (let key in _data["texts"]) {
+                    if (_data["texts"].hasOwnProperty(key))
+                        (<any>this.texts)![key] = _data["texts"][key];
+                }
+            }
+            if (Array.isArray(_data["baseResources"])) {
+                this.baseResources = [] as any;
+                for (let item of _data["baseResources"])
+                    this.baseResources!.push(item);
+            }
+        }
+    }
+
+    static fromJS(data: any): ApplicationLocalizationResourceDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ApplicationLocalizationResourceDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (this.texts) {
+            data["texts"] = {};
+            for (let key in this.texts) {
+                if (this.texts.hasOwnProperty(key))
+                    (<any>data["texts"])[key] = (<any>this.texts)[key];
+            }
+        }
+        if (Array.isArray(this.baseResources)) {
+            data["baseResources"] = [];
+            for (let item of this.baseResources)
+                data["baseResources"].push(item);
+        }
+        return data;
+    }
+}
+
+export interface IApplicationLocalizationResourceDto {
+    texts: { [key: string]: string; } | undefined;
+    baseResources: string[] | undefined;
 }
 
 export class ApplicationSettingConfigurationDto implements IApplicationSettingConfigurationDto {
@@ -6808,6 +7037,7 @@ export class ControllerApiDescriptionModel implements IControllerApiDescriptionM
     controllerName!: string | undefined;
     controllerGroupName!: string | undefined;
     isRemoteService!: boolean;
+    isIntegrationService!: boolean;
     apiVersion!: string | undefined;
     type!: string | undefined;
     interfaces!: ControllerInterfaceApiDescriptionModel[] | undefined;
@@ -6827,6 +7057,7 @@ export class ControllerApiDescriptionModel implements IControllerApiDescriptionM
             this.controllerName = _data["controllerName"];
             this.controllerGroupName = _data["controllerGroupName"];
             this.isRemoteService = _data["isRemoteService"];
+            this.isIntegrationService = _data["isIntegrationService"];
             this.apiVersion = _data["apiVersion"];
             this.type = _data["type"];
             if (Array.isArray(_data["interfaces"])) {
@@ -6856,6 +7087,7 @@ export class ControllerApiDescriptionModel implements IControllerApiDescriptionM
         data["controllerName"] = this.controllerName;
         data["controllerGroupName"] = this.controllerGroupName;
         data["isRemoteService"] = this.isRemoteService;
+        data["isIntegrationService"] = this.isIntegrationService;
         data["apiVersion"] = this.apiVersion;
         data["type"] = this.type;
         if (Array.isArray(this.interfaces)) {
@@ -6878,6 +7110,7 @@ export interface IControllerApiDescriptionModel {
     controllerName: string | undefined;
     controllerGroupName: string | undefined;
     isRemoteService: boolean;
+    isIntegrationService: boolean;
     apiVersion: string | undefined;
     type: string | undefined;
     interfaces: ControllerInterfaceApiDescriptionModel[] | undefined;
@@ -6886,6 +7119,8 @@ export interface IControllerApiDescriptionModel {
 
 export class ControllerInterfaceApiDescriptionModel implements IControllerInterfaceApiDescriptionModel {
     type!: string | undefined;
+    name!: string | undefined;
+    methods!: InterfaceMethodApiDescriptionModel[] | undefined;
 
     constructor(data?: IControllerInterfaceApiDescriptionModel) {
         if (data) {
@@ -6899,6 +7134,12 @@ export class ControllerInterfaceApiDescriptionModel implements IControllerInterf
     init(_data?: any) {
         if (_data) {
             this.type = _data["type"];
+            this.name = _data["name"];
+            if (Array.isArray(_data["methods"])) {
+                this.methods = [] as any;
+                for (let item of _data["methods"])
+                    this.methods!.push(InterfaceMethodApiDescriptionModel.fromJS(item));
+            }
         }
     }
 
@@ -6912,12 +7153,20 @@ export class ControllerInterfaceApiDescriptionModel implements IControllerInterf
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["type"] = this.type;
+        data["name"] = this.name;
+        if (Array.isArray(this.methods)) {
+            data["methods"] = [];
+            for (let item of this.methods)
+                data["methods"].push(item.toJSON());
+        }
         return data;
     }
 }
 
 export interface IControllerInterfaceApiDescriptionModel {
     type: string | undefined;
+    name: string | undefined;
+    methods: InterfaceMethodApiDescriptionModel[] | undefined;
 }
 
 export class CreateDataDictinaryDetailInput implements ICreateDataDictinaryDetailInput {
@@ -10646,6 +10895,58 @@ export interface IIdentityUserUpdateDto {
     roleNames: string[] | undefined;
     password: string | undefined;
     concurrencyStamp: string | undefined;
+}
+
+export class InterfaceMethodApiDescriptionModel implements IInterfaceMethodApiDescriptionModel {
+    name!: string | undefined;
+    parametersOnMethod!: MethodParameterApiDescriptionModel[] | undefined;
+    returnValue!: ReturnValueApiDescriptionModel;
+
+    constructor(data?: IInterfaceMethodApiDescriptionModel) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            if (Array.isArray(_data["parametersOnMethod"])) {
+                this.parametersOnMethod = [] as any;
+                for (let item of _data["parametersOnMethod"])
+                    this.parametersOnMethod!.push(MethodParameterApiDescriptionModel.fromJS(item));
+            }
+            this.returnValue = _data["returnValue"] ? ReturnValueApiDescriptionModel.fromJS(_data["returnValue"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): InterfaceMethodApiDescriptionModel {
+        data = typeof data === 'object' ? data : {};
+        let result = new InterfaceMethodApiDescriptionModel();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        if (Array.isArray(this.parametersOnMethod)) {
+            data["parametersOnMethod"] = [];
+            for (let item of this.parametersOnMethod)
+                data["parametersOnMethod"].push(item.toJSON());
+        }
+        data["returnValue"] = this.returnValue ? this.returnValue.toJSON() : <any>undefined;
+        return data;
+    }
+}
+
+export interface IInterfaceMethodApiDescriptionModel {
+    name: string | undefined;
+    parametersOnMethod: MethodParameterApiDescriptionModel[] | undefined;
+    returnValue: ReturnValueApiDescriptionModel;
 }
 
 export class LanguageInfo implements ILanguageInfo {

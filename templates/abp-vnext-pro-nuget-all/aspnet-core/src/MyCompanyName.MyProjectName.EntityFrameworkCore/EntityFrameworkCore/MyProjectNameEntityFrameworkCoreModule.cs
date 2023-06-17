@@ -27,6 +27,10 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
                  * default repositories only for aggregate roots */
                 options.AddDefaultRepositories(includeAllEntities: true);
             });
+            Configure<AbpSequentialGuidGeneratorOptions>(options =>
+            {
+                options.DefaultSequentialGuidType = SequentialGuidType.SequentialAsString;
+            });
             Configure<AbpDbContextOptions>(options =>
             {
                 /* The main point to change your DBMS.

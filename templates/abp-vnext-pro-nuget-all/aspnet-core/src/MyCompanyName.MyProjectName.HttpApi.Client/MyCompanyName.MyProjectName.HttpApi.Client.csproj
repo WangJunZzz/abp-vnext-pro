@@ -12,10 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-
-    <PackageReference Include="Lion.AbpPro.BasicManagement.HttpApi.Client"/>
-    <PackageReference Include="Lion.AbpPro.NotificationManagement.HttpApi.Client"/>
-    <PackageReference Include="Lion.AbpPro.DataDictionaryManagement.HttpApi.Client"/>
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.HttpApi.Client\Lion.AbpPro.BasicManagement.HttpApi.Client.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.HttpApi.Client\Lion.AbpPro.NotificationManagement.HttpApi.Client.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.HttpApi.Client\Lion.AbpPro.DataDictionaryManagement.HttpApi.Client.csproj" />
   </ItemGroup>
-
+  
 </Project>

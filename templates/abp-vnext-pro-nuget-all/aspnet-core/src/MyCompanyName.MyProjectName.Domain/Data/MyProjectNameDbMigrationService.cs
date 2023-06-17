@@ -3,6 +3,7 @@ namespace MyCompanyName.MyProjectName.Data
     public class MyProjectNameDbMigrationService : ITransientDependency
     {
         public ILogger<MyProjectNameDbMigrationService> Logger { get; set; }
+
         private readonly IDataSeeder _dataSeeder;
         private readonly IEnumerable<IMyProjectNameDbSchemaMigrator> _dbSchemaMigrators;
         private readonly ITenantRepository _tenantRepository;

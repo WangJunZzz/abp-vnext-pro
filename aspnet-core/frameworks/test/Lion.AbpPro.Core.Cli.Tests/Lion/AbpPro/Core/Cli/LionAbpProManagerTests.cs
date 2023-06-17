@@ -29,11 +29,4 @@ public sealed class LionAbpProManagerTests : LionAbpProCoreCliTestBase
         var result1= await _lionAbpProManager.CheckSourceCodeVersionAsync("1.2.2.3");
         result1.ShouldBe(false);
     }
-
-    [Fact]
-    public async Task DownloadAsync()
-    {
-        //await _lionAbpProManager.DownloadAsync("7.2.2.3");
-      
-    }
 }

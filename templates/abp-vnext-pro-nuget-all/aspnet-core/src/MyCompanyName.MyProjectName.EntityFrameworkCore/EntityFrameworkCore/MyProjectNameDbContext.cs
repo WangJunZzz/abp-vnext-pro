@@ -50,9 +50,9 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
-            base.OnModelCreating(builder);
             
+            base.OnModelCreating(builder);
+
             builder.ConfigureMyProjectName();
 
             // 基础模块
@@ -64,5 +64,6 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
             //数据字典
             builder.ConfigureDataDictionaryManagement();
         }
+
     }
 }

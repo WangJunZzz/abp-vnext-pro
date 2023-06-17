@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\..\aspnet-core\shared\Lion.AbpPro.Shared.Hosting.Gateways\Lion.AbpPro.Shared.Hosting.Gateways.csproj" />
+    </ItemGroup>
+</Project>
