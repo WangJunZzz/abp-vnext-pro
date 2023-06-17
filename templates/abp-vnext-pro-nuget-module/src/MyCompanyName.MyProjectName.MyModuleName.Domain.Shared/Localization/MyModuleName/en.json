@@ -1,0 +1,12 @@
+{
+  "culture": "en",
+  "texts": {
+    "ManageYourProfile":  "Manage your profile",
+    "SamplePageMessage": "A sample page for the MyModuleName module",
+    "Permission:MyModuleName": "MyModuleName",
+    "Permission:Create": "Create",
+    "Permission:Update": "Update",
+    "Permission:Delete": "Delete"
+    
+  }
+}

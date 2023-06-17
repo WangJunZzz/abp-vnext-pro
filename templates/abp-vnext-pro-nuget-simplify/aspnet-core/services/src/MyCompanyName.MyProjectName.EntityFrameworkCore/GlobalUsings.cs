@@ -1,0 +1,30 @@
+// Global using directives
+
+global using System;
+global using System.Collections.Generic;
+global using System.IO;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using MyCompanyName.MyProjectName.Data;
+global using MyCompanyName.MyProjectName.Users;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Design;
+global using Microsoft.EntityFrameworkCore.Storage;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using MySqlConnector;
+global using Volo.Abp;
+global using Volo.Abp.AuditLogging;
+global using Volo.Abp.BackgroundJobs;
+global using Volo.Abp.Data;
+global using Volo.Abp.DependencyInjection;
+global using Volo.Abp.EntityFrameworkCore;
+global using Volo.Abp.EntityFrameworkCore.MySQL;
+global using Volo.Abp.FeatureManagement;
+global using Volo.Abp.Identity;
+global using Volo.Abp.Modularity;
+global using Volo.Abp.PermissionManagement;
+global using Volo.Abp.SettingManagement;
+global using Volo.Abp.TenantManagement;
+global using Volo.Abp.Threading;

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>MyCompanyName.MyProjectName.MyModuleName</RootNamespace>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.MyModuleName.Application\MyCompanyName.MyProjectName.MyModuleName.Application.csproj" />
+        <ProjectReference Include="..\MyCompanyName.MyProjectName.MyModuleName.Domain.Tests\MyCompanyName.MyProjectName.MyModuleName.Domain.Tests.csproj" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    </ItemGroup>
+
+</Project>

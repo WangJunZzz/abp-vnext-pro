@@ -1,0 +1,14 @@
+{
+  "culture": "zh-Hant",
+  "texts": {
+    "Menu:Home": "首頁",
+    "Welcome": "歡迎",
+    "LongWelcomeMessage": "歡迎來到此應用程式. 這是一個基於ABP框架的起始專案. 有關更多訊息, 請瀏覽 abp.io.",
+    "Permissions:Query": "查询",
+    "Permissions:Create": "创建",
+    "Permissions:Update": "更新",
+    "Permissions:Delete": "删除",
+    "Permissions:Enable": "启用|禁用",
+    "Permissions:AuditLogManagement": "审计日志"
+  }
+}

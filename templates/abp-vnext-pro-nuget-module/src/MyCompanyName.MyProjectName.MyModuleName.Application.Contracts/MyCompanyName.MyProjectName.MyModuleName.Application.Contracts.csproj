@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+	<TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>MyCompanyName.MyProjectName.MyModuleName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" />
+    <PackageReference Include="Volo.Abp.Authorization" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyCompanyName.MyProjectName.MyModuleName.Domain.Shared\MyCompanyName.MyProjectName.MyModuleName.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

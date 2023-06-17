@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
+        <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Localization\MyProjectName\*.json" />
+        <Content Remove="Localization\MyProjectName\*.json" />
+
+
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Lion.AbpPro.Core"/>
+        <PackageReference Include="Lion.AbpPro.BasicManagement.Domain.Shared"/>
+        <PackageReference Include="Lion.AbpPro.NotificationManagement.Domain.Shared"/>
+        <PackageReference Include="Lion.AbpPro.DataDictionaryManagement.Domain.Shared"/>
+    </ItemGroup>
+
+</Project>

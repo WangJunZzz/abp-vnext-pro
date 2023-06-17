@@ -1,0 +1,150 @@
+﻿using System.Diagnostics;
+using Lion.AbpPro.Cli.SourceCode;
+
+namespace Lion.AbpPro.Cli.Commands;
+
+public class NewCommand : IConsoleCommand, ITransientDependency
+{
+    public const string Name = "new";
+    private readonly ILogger<NewCommand> _logger;
+    private readonly AbpCliOptions _abpCliOptions;
+    private readonly IServiceScopeFactory _serviceScopeFactory;
+    private readonly Options.LionAbpProOptions _options;
+    private readonly ISourceCodeManager _sourceCodeManager;
+
+    public NewCommand(
+        IOptions<AbpCliOptions> abpCliOptions,
+        ILogger<NewCommand> logger,
+        IServiceScopeFactory serviceScopeFactory,
+        IOptions<Options.LionAbpProOptions> options,
+        ISourceCodeManager sourceCodeManager)
+    {
+        _logger = logger;
+        _serviceScopeFactory = serviceScopeFactory;
+        _sourceCodeManager = sourceCodeManager;
+        _options = options.Value;
+        _abpCliOptions = abpCliOptions.Value;
+    }
+
+    public async Task ExecuteAsync(CommandLineArgs commandLineArgs)
+    {
+        #region 参数获取
+
+        var context = new SourceCodeContext
+        {
+            OldCompanyName = _options.OldCompanyName,
+            OldProjectName = _options.OldProjectName
+        };
+        // 检查模板是否正确
+        var template = commandLineArgs.Options.GetOrNull(CommandOptions.Template.Short, CommandOptions.Template.Long);
+        if (template.IsNullOrWhiteSpace())
+        {
+            _logger.LogError("请输入模板名称");
+            GetUsageInfo();
+            return;
+        }
+
+        var templateOptions = _options.Templates.FirstOrDefault(e => e.Name == template);
+        if (templateOptions == null)
+        {
+            _logger.LogError("模板类型不正确");
+            GetUsageInfo();
+            return;
+        }
+
+        context.RepositoryId = _options.RepositoryId;
+        context.Token = _options.DecryptToken;
+        context.Owner = _options.Owner;
+        context.TemplateName = templateOptions.Name;
+        context.TemplateKey = templateOptions.Key;
+        context.IsSource = templateOptions.IsSource;
+        context.ExcludeFiles = templateOptions.ExcludeFiles;
+        context.ReplaceSuffix = templateOptions.ReplaceSuffix;
+        // if (commandLineArgs.Target.IsNullOrWhiteSpace())
+        // {
+        //     GetUsageInfo();
+        //     return;
+        // }
+
+        //校验是否输入公司名称
+        context.CompanyName = commandLineArgs.Options.GetOrNull(CommandOptions.Company.Short, CommandOptions.Company.Long);
+        if (context.CompanyName.IsNullOrWhiteSpace())
+        {
+            _logger.LogError("请输入公司名称");
+            GetUsageInfo();
+            return;
+        }
+
+        //校验是否输入项目名称
+        context.ProjectName = commandLineArgs.Options.GetOrNull(CommandOptions.Project.Short, CommandOptions.Project.Long);
+        if (context.ProjectName.IsNullOrWhiteSpace())
+        {
+            _logger.LogError("请输入项目名称");
+            GetUsageInfo();
+            return;
+        }
+
+        var outputFolder = commandLineArgs.Options.GetOrNull(CommandOptions.OutputFolder.Short, CommandOptions.OutputFolder.Long);
+
+        outputFolder = outputFolder != null ? Path.GetFullPath(outputFolder) : Directory.GetCurrentDirectory();
+
+        context.OutputFolder = outputFolder;
+        //版本
+        var version = commandLineArgs.Options.GetOrNull(CommandOptions.Version.Short, CommandOptions.Version.Long);
+
+        #endregion
+
+        // 获取源码
+        context.TemplateFile = await _sourceCodeManager.GetAsync(version);
+
+        // 解压
+        _sourceCodeManager.ExtractProjectZip(context);
+
+        // 替换模板
+        _sourceCodeManager.ReplaceTemplates(context);
+
+        // 打开文件夹
+        Process.Start("explorer.exe", context.OutputFolder);
+    }
+
+    public void GetUsageInfo()
+    {
+        var sb = new StringBuilder();
+
+        sb.AppendLine("查看命令帮助:");
+        sb.AppendLine("    lion.abp help");
+        sb.AppendLine("命令列表:");
+
+        foreach (var command in _abpCliOptions.Commands.ToArray())
+        {
+            string shortDescription;
+
+            using (var scope = _serviceScopeFactory.CreateScope())
+            {
+                shortDescription = ((IConsoleCommand)scope.ServiceProvider
+                    .GetRequiredService(command.Value)).GetShortDescription();
+            }
+
+            sb.Append("    > ");
+            sb.Append(command.Key);
+            sb.Append(string.IsNullOrWhiteSpace(shortDescription) ? "" : ":");
+            sb.Append(" ");
+            sb.AppendLine(shortDescription);
+        }
+
+        _logger.LogInformation(sb.ToString());
+    }
+
+    public string GetShortDescription()
+    {
+        var message = Environment.NewLine;
+        message += $"           > lion.abp new abp-vnext-pro -c 公司名称 -p 项目名称 -v 版本(默认LastRelease)";
+        message += Environment.NewLine;
+        message += $"           > lion.abp new abp-vnext-pro-basic -c 公司名称 -p 项目名称 -v 版本(默认LastRelease)";
+        message += Environment.NewLine;
+        message += $"           > lion.abp new abp-vnext-pro-basic-no-ocelot -c 公司名称 -p 项目名称 -v 版本(默认LastRelease)";
+        message += Environment.NewLine;
+        message += $"           > lion.abp new abp-vnext-pro-module -c 公司名称 -p 项目名称 -m 模块名称 -v 版本(默认LastRelease)";
+        return message;
+    }
+}

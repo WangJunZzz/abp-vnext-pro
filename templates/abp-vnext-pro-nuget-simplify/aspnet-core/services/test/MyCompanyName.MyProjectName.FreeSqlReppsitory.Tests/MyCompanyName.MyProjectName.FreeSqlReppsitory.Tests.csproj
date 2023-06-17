@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.FreeSqlRepository\MyCompanyName.MyProjectName.FreeSqlRepository.csproj" />
+	  <ProjectReference Include="..\MyCompanyName.MyProjectName.TestBase\MyCompanyName.MyProjectName.TestBase.csproj" />
+	</ItemGroup>
+
+</Project>

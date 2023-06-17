@@ -1,0 +1,59 @@
+version: '3'
+services:
+  mysql:
+    image: bitnami/mysql:8.0.30
+    container_name: mysql
+    restart: always    
+    environment:
+      MYSQL_ROOT_USER: "root"   # 管理员账户名
+      MYSQL_ROOT_PASSWORD: "1q2w3E*"   # 管理员密码
+      MYSQL_AUTHENTICATION_PLUGIN: "mysql_native_password"   # 认证插件
+      MYSQL_CHARACTER_SET: utf8mb4   # 默认字符集（服务器级别）
+      MYSQL_COLLATE: utf8mb4_unicode_ci   # 默认排序规则（服务器级别）
+      MYSQL_ENABLE_SLOW_QUERY: 0   # 是否开启慢查询，0：不开启  1：开启
+      MYSQL_LONG_QUERY_TIME: 5.0   # 慢查询超时时间
+    ports:
+      - "3306:3306"
+
+  redis:
+    image: redis:6.2.6
+    container_name: redis
+    restart: always
+    ports:
+      - 6379:6379
+    command: ["redis-server", "--appendonly", "yes", "--requirepass","1q2w3E*"]     
+
+
+  lion.abp.pro:
+    build: ./aspnet-core/host/MyCompanyName.MyProjectName.HttpApi.Host
+    container_name: lion.abp.pro
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql    
+      - redis  
+      - lion.abp.pro.migrator    
+    links:
+      - mysql
+      - redis
+
+  lion.abp.pro.migrator:
+    build: ./aspnet-core/src/MyCompanyName.MyProjectName.DbMigrator
+    container_name: lion.abp.pro.migrator
+    depends_on:
+      - mysql 
+    links:
+      - mysql   
+
+
+  lion.abp.pro.vben28:
+    build: ./vben28
+    container_name: lion.abp.pro.vben28
+    ports:
+      - "80:80"    
+    depends_on:
+      - lion.abp.pro 
+    links:
+      - lion.abp.pro         
+
