@@ -93,7 +93,8 @@ lion.abp new abp-vnext-pro-basic-no-ocelot -c 公司名称 -p 项目名称 -v �
   - `wip` 开发中
 
 ## ✒️交流
-- QQ 群：686933575
+- QQ 1群：<s>686933575(已满)</s> 
+- QQ 2群：862717726
 
 ## 💖赞助
 - Star就是对该项目的最大肯定!
