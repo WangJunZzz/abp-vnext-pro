@@ -45,7 +45,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\..\..\..\aspnet-core\shared\Lion.AbpPro.Shared.Hosting.Microservices\Lion.AbpPro.Shared.Hosting.Microservices.csproj"/>
     </ItemGroup>
-    
+
     <ItemGroup>
         <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.Application\MyCompanyName.MyProjectName.Application.csproj"/>
         <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.EntityFrameworkCore\MyCompanyName.MyProjectName.EntityFrameworkCore.csproj"/>

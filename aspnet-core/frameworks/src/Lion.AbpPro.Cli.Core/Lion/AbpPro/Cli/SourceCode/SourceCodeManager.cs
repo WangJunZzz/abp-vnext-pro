@@ -34,8 +34,11 @@ public class SourceCodeManager : ITransientDependency, ISourceCodeManager
 
         var localCacheFile = Path.Combine(CliPaths.TemplateCache, _options.RepositoryId + "-" + version + ".zip");
 
+        DirectoryHelper.DeleteIfExists(Path.Combine(CliPaths.TemplateCache, _options.RepositoryId + "-" + version), true);
+        
         _logger.LogInformation($"Lion AbpPro Version:{version}");
         _logger.LogInformation($"模板生成中......");
+
         if (!File.Exists(localCacheFile))
         {
             return new TemplateFile(version, localCacheFile, await _lionAbpProManager.DownloadAsync(version, localCacheFile));

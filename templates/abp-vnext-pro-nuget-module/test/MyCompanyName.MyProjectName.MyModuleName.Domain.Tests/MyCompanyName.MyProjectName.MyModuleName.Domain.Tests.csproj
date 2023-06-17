@@ -8,8 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" />
-        <ProjectReference Include="..\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.Tests\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.Tests.csproj" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+        <ProjectReference Include="..\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.Tests\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.Tests.csproj"/>
     </ItemGroup>
 
 </Project>

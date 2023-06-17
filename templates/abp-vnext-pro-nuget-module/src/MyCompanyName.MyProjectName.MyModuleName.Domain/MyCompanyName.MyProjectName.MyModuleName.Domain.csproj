@@ -1,16 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <RootNamespace>MyCompanyName.MyProjectName.MyModuleName</RootNamespace>
-  </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Volo.Abp.Ddd.Domain" />
-    <PackageReference Include="Volo.Abp.Caching" />
-    <PackageReference Include="Volo.Abp.AutoMapper" />
-   
-    <ProjectReference Include="..\MyCompanyName.MyProjectName.MyModuleName.Domain.Shared\MyCompanyName.MyProjectName.MyModuleName.Domain.Shared.csproj" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>MyCompanyName.MyProjectName.MyModuleName</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.Ddd.Domain"/>
+        <PackageReference Include="Volo.Abp.Caching"/>
+        <PackageReference Include="Volo.Abp.AutoMapper"/>
+
+        <ProjectReference Include="..\MyCompanyName.MyProjectName.MyModuleName.Domain.Shared\MyCompanyName.MyProjectName.MyModuleName.Domain.Shared.csproj"/>
+    </ItemGroup>
 
 </Project>

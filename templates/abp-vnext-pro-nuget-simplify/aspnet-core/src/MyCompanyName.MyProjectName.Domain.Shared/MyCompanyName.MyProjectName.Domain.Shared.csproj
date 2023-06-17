@@ -9,7 +9,7 @@
         <EmbeddedResource Include="Localization\MyProjectName\*.json"/>
         <Content Remove="Localization\MyProjectName\*.json"/>
     </ItemGroup>
-    
+
 
     <ItemGroup>
         <ProjectReference Include="..\..\..\..\..\aspnet-core\frameworks\src\Lion.AbpPro.Core\Lion.AbpPro.Core.csproj"/>

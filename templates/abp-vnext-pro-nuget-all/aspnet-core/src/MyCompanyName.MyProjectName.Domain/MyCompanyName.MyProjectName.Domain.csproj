@@ -1,23 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
+    </PropertyGroup>
 
-  
+    <ItemGroup>
+        <ProjectReference Include="..\MyCompanyName.MyProjectName.Domain.Shared\MyCompanyName.MyProjectName.Domain.Shared.csproj"/>
+    </ItemGroup>
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Lion.AbpPro.BasicManagement.Domain" />
-    <PackageReference Include="Lion.AbpPro.NotificationManagement.Domain" />
-    <PackageReference Include="Lion.AbpPro.DataDictionaryManagement.Domain" />
-    <ProjectReference Include="..\MyCompanyName.MyProjectName.Domain.Shared\MyCompanyName.MyProjectName.Domain.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Domain\Lion.AbpPro.BasicManagement.Domain.csproj" />
-    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.Domain\Lion.AbpPro.NotificationManagement.Domain.csproj" />
-    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Domain\Lion.AbpPro.DataDictionaryManagement.Domain.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Domain\Lion.AbpPro.BasicManagement.Domain.csproj"/>
+        <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.Domain\Lion.AbpPro.NotificationManagement.Domain.csproj"/>
+        <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Domain\Lion.AbpPro.DataDictionaryManagement.Domain.csproj"/>
+    </ItemGroup>
 
 </Project>

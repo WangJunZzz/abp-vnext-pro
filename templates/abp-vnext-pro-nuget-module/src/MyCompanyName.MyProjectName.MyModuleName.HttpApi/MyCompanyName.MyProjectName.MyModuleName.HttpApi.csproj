@@ -6,9 +6,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
-        <PackageReference Include="Volo.Abp.AspNetCore.Mvc" />
-        <ProjectReference Include="..\MyCompanyName.MyProjectName.MyModuleName.Application.Contracts\MyCompanyName.MyProjectName.MyModuleName.Application.Contracts.csproj" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations"/>
+        <PackageReference Include="Volo.Abp.AspNetCore.Mvc"/>
+        <ProjectReference Include="..\MyCompanyName.MyProjectName.MyModuleName.Application.Contracts\MyCompanyName.MyProjectName.MyModuleName.Application.Contracts.csproj"/>
     </ItemGroup>
 
 </Project>

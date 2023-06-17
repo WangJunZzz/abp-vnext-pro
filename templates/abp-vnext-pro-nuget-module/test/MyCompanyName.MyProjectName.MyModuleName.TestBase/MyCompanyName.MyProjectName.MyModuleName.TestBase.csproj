@@ -8,16 +8,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" />
-        <PackageReference Include="NSubstitute" />
-        <PackageReference Include="Shouldly" />
-        <PackageReference Include="xunit" />
-        <PackageReference Include="xunit.extensibility.execution" />
-        <PackageReference Include="xunit.runner.visualstudio" />
-        <PackageReference Include="Volo.Abp.Autofac" />
-        <PackageReference Include="Volo.Abp.Authorization" />
-        <PackageReference Include="Volo.Abp.TestBase" />
-        <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.MyModuleName.Domain\MyCompanyName.MyProjectName.MyModuleName.Domain.csproj" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+        <PackageReference Include="NSubstitute"/>
+        <PackageReference Include="Shouldly"/>
+        <PackageReference Include="xunit"/>
+        <PackageReference Include="xunit.extensibility.execution"/>
+        <PackageReference Include="xunit.runner.visualstudio"/>
+        <PackageReference Include="Volo.Abp.Autofac"/>
+        <PackageReference Include="Volo.Abp.Authorization"/>
+        <PackageReference Include="Volo.Abp.TestBase"/>
+        <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.MyModuleName.Domain\MyCompanyName.MyProjectName.MyModuleName.Domain.csproj"/>
     </ItemGroup>
 
 </Project>
