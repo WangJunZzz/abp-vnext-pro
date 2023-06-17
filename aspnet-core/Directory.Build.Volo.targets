@@ -1,6 +1,7 @@
 ﻿<Project>
     <ItemGroup>
         <PackageReference Update="Volo.Abp.Autofac" Version="7.2.2"/>
+        <PackageReference Update="Volo.Abp.Threading" Version="7.2.2"/>
         <PackageReference Update="Volo.Abp.Json" Version="7.2.2"/>
         <PackageReference Update="Volo.Abp.Validation" Version="7.2.2"/>
         <PackageReference Update="Volo.Abp.Ddd.Domain" Version="7.2.2"/>

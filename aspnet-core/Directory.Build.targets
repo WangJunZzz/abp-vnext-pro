@@ -83,7 +83,7 @@
 
         <PackageReference Update="Polly" Version="7.2.3"/>
         <PackageReference Update="Confluent.Kafka" Version="1.8.2.0"/>
-
+        <PackageReference Update="Octokit" Version="2.0.0" />
 
         <!-- Idenity 一下三个包升级到最新版导致鉴权不通过-->
         <PackageReference Update="Microsoft.IdentityModel.Tokens" Version="6.10.0"/>

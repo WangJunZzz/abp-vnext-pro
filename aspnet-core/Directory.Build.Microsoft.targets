@@ -1,7 +1,6 @@
 ﻿<Project>
     <ItemGroup>
         <PackageReference Update="Microsoft.Extensions.DependencyModel" Version="7.0.2"/>
-        <PackageReference Update="Microsoft.Extensions.Http" Version="7.0.2"/>
         <PackageReference Update="Microsoft.Extensions.Diagnostics.HealthChecks" Version="7.0.2"/>
         <PackageReference Update="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.2"/>
         <PackageReference Update="Microsoft.EntityFrameworkCore.Tools" Version="7.0.2"/>
@@ -14,6 +13,8 @@
         <PackageReference Update="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.2"/>
         
         <PackageReference Update="Microsoft.Extensions.Hosting" Version="7.0.0" />
+        <PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+        <PackageReference Update="Microsoft.Extensions.Http" Version="7.0.0"/>
         
         <PackageReference Update="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0"/>
         <PackageReference Update="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>

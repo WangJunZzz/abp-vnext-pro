@@ -242,6 +242,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.CAP.EntityFrameworkCore", "frameworks\src\Lion.AbpPro.CAP.EntityFrameworkCore\Lion.AbpPro.CAP.EntityFrameworkCore.csproj", "{68C902A2-A604-4F3A-879D-37941C00C7A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Cli.Core", "frameworks\src\Lion.AbpPro.Cli.Core\Lion.AbpPro.Cli.Core.csproj", "{8D5BD955-FFDC-4895-927F-624C42B64A92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Cli", "frameworks\src\Lion.AbpPro.Cli\Lion.AbpPro.Cli.csproj", "{B7A68103-D527-421F-8247-5D169A7F8931}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -588,6 +592,14 @@ Global
 		{68C902A2-A604-4F3A-879D-37941C00C7A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68C902A2-A604-4F3A-879D-37941C00C7A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68C902A2-A604-4F3A-879D-37941C00C7A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D5BD955-FFDC-4895-927F-624C42B64A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D5BD955-FFDC-4895-927F-624C42B64A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D5BD955-FFDC-4895-927F-624C42B64A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D5BD955-FFDC-4895-927F-624C42B64A92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7A68103-D527-421F-8247-5D169A7F8931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7A68103-D527-421F-8247-5D169A7F8931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7A68103-D527-421F-8247-5D169A7F8931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7A68103-D527-421F-8247-5D169A7F8931}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -703,6 +715,8 @@ Global
 		{E5994C85-C1C2-44F3-BF10-3277CA6CF2C9} = {3FE23400-A323-46ED-A7F4-30BFF8916D64}
 		{15852D6F-4110-4B98-B89D-5747777E8908} = {3FE23400-A323-46ED-A7F4-30BFF8916D64}
 		{68C902A2-A604-4F3A-879D-37941C00C7A9} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
+		{8D5BD955-FFDC-4895-927F-624C42B64A92} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
+		{B7A68103-D527-421F-8247-5D169A7F8931} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}
