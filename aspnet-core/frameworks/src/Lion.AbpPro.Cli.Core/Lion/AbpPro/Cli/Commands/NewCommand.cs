@@ -30,11 +30,7 @@ public class NewCommand : IConsoleCommand, ITransientDependency
     {
         #region 参数获取
 
-        var context = new SourceCodeContext
-        {
-            OldCompanyName = _options.OldCompanyName,
-            OldProjectName = _options.OldProjectName
-        };
+        var context = new SourceCodeContext();
         // 检查模板是否正确
         var template = commandLineArgs.Options.GetOrNull(CommandOptions.Template.Short, CommandOptions.Template.Long);
         if (template.IsNullOrWhiteSpace())
@@ -60,6 +56,8 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         context.IsSource = templateOptions.IsSource;
         context.ExcludeFiles = templateOptions.ExcludeFiles;
         context.ReplaceSuffix = templateOptions.ReplaceSuffix;
+        context.OldCompanyName = templateOptions.OldCompanyName;
+        context.OldProjectName = templateOptions.OldProjectName;
         // if (commandLineArgs.Target.IsNullOrWhiteSpace())
         // {
         //     GetUsageInfo();
@@ -138,13 +136,13 @@ public class NewCommand : IConsoleCommand, ITransientDependency
     public string GetShortDescription()
     {
         var message = Environment.NewLine;
-        message += $"           > lion.abp new abp-vnext-pro -c 公司名称 -p 项目名称 -v 版本(默认LastRelease)";
+        message += $"           > lion.abp new -t pro -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录";
         message += Environment.NewLine;
-        message += $"           > lion.abp new abp-vnext-pro-basic -c 公司名称 -p 项目名称 -v 版本(默认LastRelease)";
+        message += $"           > lion.abp new -t pro.all -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录";
         message += Environment.NewLine;
-        message += $"           > lion.abp new abp-vnext-pro-basic-no-ocelot -c 公司名称 -p 项目名称 -v 版本(默认LastRelease)";
+        message += $"           > lion.abp new -t pro.simplify -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录";
         message += Environment.NewLine;
-        message += $"           > lion.abp new abp-vnext-pro-module -c 公司名称 -p 项目名称 -m 模块名称 -v 版本(默认LastRelease)";
+        message += $"           > lion.abp new -t pro.module-c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录";
         return message;
     }
 }

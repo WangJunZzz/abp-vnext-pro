@@ -63,7 +63,7 @@ public static class DirectoryAndFileHelper
                 CopyFolder(folder, dest); //构建目标路径,递归复制文件
             }
         }
-        catch (Exception)
+        catch
         {
             throw new UserFriendlyException("复制文件失败！");
         }

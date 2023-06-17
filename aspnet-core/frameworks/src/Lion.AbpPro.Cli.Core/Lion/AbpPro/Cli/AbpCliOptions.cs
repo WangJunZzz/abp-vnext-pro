@@ -6,9 +6,9 @@ public class AbpCliOptions
 
 
     /// <summary>
-    /// Default value: "abppro".
+    /// Default value: "lion.abp".
     /// </summary>
-    public string ToolName { get; set; } = "abppro";
+    public string ToolName { get; set; } = "lion.abp";
 
     public AbpCliOptions()
     {

@@ -26,8 +26,5 @@ public class LionAbpProOptions
     /// 模板信息
     /// </summary>
     public List<LionAbpProTemplateOptions> Templates { get; set; }
-    
-    public string OldCompanyName { get; set; }= "Lion";
-
-    public string OldProjectName { get; set; } = "AbpPro";
+ 
 }

@@ -115,21 +115,28 @@ public class SourceCodeManager : ITransientDependency, ISourceCodeManager
 
     public void ReplaceTemplates(SourceCodeContext context)
     {
-        ReplaceHelper.ReplaceTemplates(context.ExtractProjectPath, context.OldCompanyName, context.OldProjectName, context.CompanyName, context.ProjectName, context.ReplaceSuffix);
-        if (context.IsSource)
+        try
         {
-            context.TemplateFolder = context.ExtractProjectPath;
-        }
-        else
-        {
-            // 获取本地源码地址
-            context.TemplateFolder = Path.Combine(context.ExtractProjectPath, _options.RepositoryId + "-" + context.TemplateFile.Version, "templates", context.TemplateKey);
-        }
+            ReplaceHelper.ReplaceTemplates(context.ExtractProjectPath, context.OldCompanyName, context.OldProjectName, context.CompanyName, context.ProjectName, context.ReplaceSuffix);
+            if (context.IsSource)
+            {
+                context.TemplateFolder = context.ExtractProjectPath;
+            }
+            else
+            {
+                // 获取本地源码地址
+                context.TemplateFolder = Path.Combine(context.ExtractProjectPath, "templates", context.TemplateKey);
+            }
 
-        context.OutputFolder = Path.Combine(context.OutputFolder, context.CompanyName + "." + context.ProjectName);
-        DirectoryHelper.DeleteIfExists(context.OutputFolder, true);
-        DirectoryAndFileHelper.CopyFolder(context.TemplateFolder, context.OutputFolder, context.ExcludeFiles);
-        DirectoryHelper.DeleteIfExists(context.ExtractProjectPath, true);
-        _logger.LogInformation($"OutputFolder:{context.OutputFolder}");
+            context.OutputFolder = Path.Combine(context.OutputFolder, context.CompanyName + "." + context.ProjectName);
+            DirectoryHelper.DeleteIfExists(context.OutputFolder, true);
+            DirectoryAndFileHelper.CopyFolder(context.TemplateFolder, context.OutputFolder, context.ExcludeFiles);
+
+            _logger.LogInformation($"OutputFolder:{context.OutputFolder}");
+        }
+        finally
+        {
+            DirectoryHelper.DeleteIfExists(context.ExtractProjectPath, true);
+        }
     }
 }

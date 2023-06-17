@@ -4,8 +4,8 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>net7.0</TargetFramework>
         <PackAsTool>true</PackAsTool>
-        <PackageId>abp-pro-cli</PackageId>
-        <ToolCommandName>abppro</ToolCommandName>
+        <PackageId>Lion.AbpPro.Cli</PackageId>
+        <ToolCommandName>lion.abp</ToolCommandName>
         <RootNamespace />
     </PropertyGroup>
 
