@@ -18,7 +18,7 @@
 
 ## 📦 快速开始
 
-- 安装Cli，[Git 仓库](https://github.com/WangJunZzz/Lion.AbpPro.Cli)
+- 安装Cli
 ```bash
 dotnet tool install Lion.AbpPro.Cli -g
 ```
