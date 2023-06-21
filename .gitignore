@@ -263,3 +263,5 @@ aspnet-core/services/host/Lion.AbpPro.Web.Blazor.Server/Logs/logs.txt
 /aspnet-core/services/host/Lion.AbpPro.HttpApi.Host/logs
 /docs/site
 /aspnet-core/modules/LanguageManagement/host/Lion.AbpPro.LanguageManagement.HttpApi.Host/Logs
+/aspnet-core/frameworks/test/Lion.AbpPro.EntityFrameworkCore.Mysql.Tests/Logs
+/aspnet-core/frameworks/test/Lion.AbpPro.EntityFrameworkCore.Mysql.Tests/wwwroot/libs
