@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Lion.AbpPro.EntityFrameworkCore.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="7.2.2" />
+    <ProjectReference Include="..\Lion.AbpPro.EntityFrameworkCore.Tests.Application.Contracts\Lion.AbpPro.EntityFrameworkCore.Tests.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

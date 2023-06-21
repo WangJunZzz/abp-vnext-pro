@@ -1,0 +1,1 @@
+# 本类库扩展方法借鉴杨中科 https://github.com/yangzhongke/Zack.EFCore.Batch

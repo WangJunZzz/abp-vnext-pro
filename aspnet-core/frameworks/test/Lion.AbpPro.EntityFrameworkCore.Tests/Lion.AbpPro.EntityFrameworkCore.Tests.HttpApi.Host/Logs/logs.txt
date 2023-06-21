@@ -1,0 +1,17 @@
+2023-06-19 17:39:32.267 +08:00 [INF] Starting web host.
+2023-06-19 17:39:35.122 +08:00 [FTL] Host terminated unexpectedly!
+Volo.Abp.AbpInitializationException: An error occurred during ConfigureServicesAsync phase of the module Lion.AbpPro.EntityFrameworkCore.Tests.TestsHttpApiHostModule, Lion.AbpPro.EntityFrameworkCore.Tests.HttpApi.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null. See the inner exception for details.
+ ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at Microsoft.Extensions.DependencyInjection.AbpSwaggerGenServiceCollectionExtensions.AddAbpSwaggerGenWithOAuth(IServiceCollection services, String authority, Dictionary`2 scopes, Action`1 setupAction, String authorizationEndpoint, String tokenEndpoint)
+   at Lion.AbpPro.EntityFrameworkCore.Tests.TestsHttpApiHostModule.ConfigureServices(ServiceConfigurationContext context) in D:\github\WangJunZzz\abp-vnext-pro\aspnet-core\frameworks\test\Lion.AbpPro.EntityFrameworkCore.Tests\Lion.AbpPro.EntityFrameworkCore.Tests.HttpApi.Host\TestsHttpApiHostModule.cs:line 80
+   at Volo.Abp.Modularity.AbpModule.ConfigureServicesAsync(ServiceConfigurationContext context)
+   at Volo.Abp.AbpApplicationBase.ConfigureServicesAsync()
+   --- End of inner exception stack trace ---
+   at Volo.Abp.AbpApplicationBase.ConfigureServicesAsync()
+   at Volo.Abp.AbpApplicationFactory.CreateAsync[TStartupModule](IServiceCollection services, Action`1 optionsAction)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionApplicationExtensions.AddApplicationAsync[TStartupModule](IServiceCollection services, Action`1 optionsAction)
+   at Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.AddApplicationAsync[TStartupModule](WebApplicationBuilder builder, Action`1 optionsAction)
+   at Lion.AbpPro.EntityFrameworkCore.Tests.Program.Main(String[] args) in D:\github\WangJunZzz\abp-vnext-pro\aspnet-core\frameworks\test\Lion.AbpPro.EntityFrameworkCore.Tests\Lion.AbpPro.EntityFrameworkCore.Tests.HttpApi.Host\Program.cs:line 35
+2023-06-19 17:54:04.532 +08:00 [INF] Starting web host.
+2023-06-19 17:56:12.444 +08:00 [INF] Starting web host.
+2023-06-19 18:00:24.441 +08:00 [INF] Starting web host.
