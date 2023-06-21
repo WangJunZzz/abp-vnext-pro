@@ -70,28 +70,31 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - 文档（中文）:
-      - 入门:
-          - 快速开始: user-guide/zh/getting-started/quick-start.md
-          - 介绍: user-guide/zh/getting-started/introduction.md
-          - 贡献: user-guide/zh/getting-started/contributing.md
-      - 基础设施:
-          - 配置: user-guide/zh/infrastructure/config.md
-          - 前端: user-guide/zh/infrastructure/frontend.md
-          - FreeSql: user-guide/zh/infrastructure/freesql.md
-          - 分布式事件: user-guide/zh/infrastructure/cap.md
-      - 应用模块:
-          - 基础模块: user-guide/zh/modules/basic.md
-          - 设置(Setting): user-guide/zh/modules/setting.md
-          - 数据字典: user-guide/zh/modules/dic.md
-          - 文件管理: user-guide/zh/modules/file.md
-          - 实时通信: user-guide/zh/modules/signalr.md
-      - 扩展:
-          - 统一返回值格式: user-guide/zh/extension/统一返回值格式.md
-          - Magicodes.IE: user-guide/zh/extension/MagicodesIE.md
-      - 部署:
-          - Docker: user-guide/zh/deploy/docker.md
-          - Github自动化部署: user-guide/zh/deploy/github.md
+  - 入门:
+      - 快速开始: user-guide/zh/getting-started/quick-start.md
+      - 介绍: user-guide/zh/getting-started/introduction.md
+      - 贡献: user-guide/zh/getting-started/contributing.md
+  - 基础设施:
+      - 配置: user-guide/zh/infrastructure/config.md
+      - 前端: user-guide/zh/infrastructure/frontend.md
+      - FreeSql: user-guide/zh/infrastructure/freesql.md
+      - 分布式事件: user-guide/zh/infrastructure/cap.md
+      - 批量操作: user-guide/zh/infrastructure/batch.md
+  - 应用模块:
+      - 基础模块: user-guide/zh/modules/basic.md
+      - 设置(Setting): user-guide/zh/modules/setting.md
+      - 数据字典: user-guide/zh/modules/dic.md
+      - 文件管理: user-guide/zh/modules/file.md
+      - 实时通信: user-guide/zh/modules/signalr.md
+  - 扩展:
+      - 统一返回值格式: user-guide/zh/extension/统一返回值格式.md
+      - Magicodes.IE: user-guide/zh/extension/MagicodesIE.md
+  - 常见问题:
+      - 编译: user-guide/zh/problem/problem.md
+      - EFCore: user-guide/zh/problem/ef.md
+  - 部署:
+      - Docker: user-guide/zh/deploy/docker.md
+      - Github自动化部署: user-guide/zh/deploy/github.md
   - 常见问题:
       - 编译: user-guide/zh/problem/problem.md
       - EFCore: user-guide/zh/problem/ef.md

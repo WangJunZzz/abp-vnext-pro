@@ -31,7 +31,7 @@ docker run -d --name myrabbitmq -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAU
 
 ### 安装 Cli 工具
 
-- [仓库地址](https://github.com/WangJunZzz/Lion.AbpPro.Cli)
+- 安装 Cli
 
 ```bash
 dotnet tool install Lion.AbpPro.Cli -g
@@ -39,24 +39,30 @@ dotnet tool install Lion.AbpPro.Cli -g
 
 ### 生成项目
 
-**提供了三个模板生成**
-
 - 生成源码版本
 
 ```bash
-lion.abp new abp-vnext-pro -c 公司名称 -p 项目名称 -v 版本号(默认LastRelease)
+lion.abp new -t pro -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录
 ```
 
-- nuget 包形式的基础版本,包括 abp 自带的所有模块，已经 pro 的通知模块，数据字典模块 以及 ocelot 网关
+- nuget 包形式的网关基础版本
+  - abp 自带的所有模块，pro 的通知模块，数据字典模块 以及 ocelot 网关。
 
 ```bash
-lion.abp new abp-vnext-pro-basic -c 公司名称 -p 项目名称 -v 版本(默认LastRelease)
+lion.abp new -t pro.all -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录
 ```
 
-- nuget 包形式的基础版本,包括 abp 自带的所有模块，已经 pro 的通知模块，数据字典模块 无 ocelot 网关
+- nuget 包形式的基础版本
+  - abp 自带的所有模块，pro 的通知模块，数据字典模块 无 ocelot 网关
 
 ```bash
-lion.abp new abp-vnext-pro-basic-no-ocelot -c 公司名称 -p 项目名称 -v 版本(默认LastRelease)
+lion.abp new -t pro.simplify -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录
+```
+
+- 模块
+
+```bash
+lion.abp new -t pro.module -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录
 ```
 
 ### 后端
