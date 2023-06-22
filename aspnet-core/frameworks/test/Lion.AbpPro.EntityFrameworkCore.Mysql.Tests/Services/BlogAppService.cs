@@ -87,22 +87,7 @@ public class BlogAppService : ApplicationService
         await _identityRoleManager.CreateAsync(new IdentityRole(GuidGenerator.Create(), GuidGenerator.Create().ToString()));
         throw new UserFriendlyException("test");
     }
-
-    public async Task CreateManualAsync()
-    {
-        var list = new List<Blog>
-        {
-            new Blog()
-            {
-                Name = "001",
-                //CreationTime = Clock.Now,
-            }
-        };
-
-        await _blogRepository.InsertManyAsync(list);
-    }
-
-
+    
     /// <summary>
     /// 批量更新
     /// <see cref="https://learn.microsoft.com/zh-cn/ef/core/saving/execute-insert-update-delete"/>
