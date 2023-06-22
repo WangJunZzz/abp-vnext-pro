@@ -58,6 +58,7 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         context.ReplaceSuffix = templateOptions.ReplaceSuffix;
         context.OldCompanyName = templateOptions.OldCompanyName;
         context.OldProjectName = templateOptions.OldProjectName;
+        context.OldModuleName = templateOptions.OldModuleName;
         // if (commandLineArgs.Target.IsNullOrWhiteSpace())
         // {
         //     GetUsageInfo();
@@ -78,6 +79,15 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         if (context.ProjectName.IsNullOrWhiteSpace())
         {
             _logger.LogError("请输入项目名称");
+            GetUsageInfo();
+            return;
+        }
+
+        //校验是否输入项目名称
+        context.ModuleName = commandLineArgs.Options.GetOrNull(CommandOptions.Module.Short, CommandOptions.Module.Long);
+        if (context.TemplateKey == "abp-vnext-pro-nuget-module" && context.ModuleName.IsNullOrWhiteSpace())
+        {
+            _logger.LogError("请输入模块名称");
             GetUsageInfo();
             return;
         }

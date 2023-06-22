@@ -48,7 +48,8 @@ public class AbpProCliCoreModule : AbpModule
                     //ExcludeFiles = "aspnet-core,vben28,abp-vnext-pro-nuget-all,abp-vnext-pro-nuget-simplify,docs,.github,LICENSE,Readme.md",
                     ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env",
                     OldCompanyName = "MyCompanyName",
-                    OldProjectName = "MyProjectName"
+                    OldProjectName = "MyProjectName",
+                    OldModuleName = "MyModuleName",
                 },
             };
         });

@@ -40,9 +40,11 @@ public class LionAbpProTemplateOptions
     /// 是否源码版本
     /// </summary>
     public bool IsSource { get; set; }
-    
-        
-    public string OldCompanyName { get; set; }
 
-    public string OldProjectName { get; set; } 
+
+    public string OldCompanyName { get; set; } = string.Empty;
+
+    public string OldProjectName { get; set; } = string.Empty;
+    
+    public string OldModuleName { get; set; } = string.Empty;
 }

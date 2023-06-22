@@ -35,7 +35,7 @@ public class SourceCodeManager : ITransientDependency, ISourceCodeManager
         var localCacheFile = Path.Combine(CliPaths.TemplateCache, _options.RepositoryId + "-" + version + ".zip");
 
         DirectoryHelper.DeleteIfExists(Path.Combine(CliPaths.TemplateCache, _options.RepositoryId + "-" + version), true);
-        
+
         _logger.LogInformation($"Lion AbpPro Version:{version}");
         _logger.LogInformation($"模板生成中......");
 
@@ -120,7 +120,16 @@ public class SourceCodeManager : ITransientDependency, ISourceCodeManager
     {
         try
         {
-            ReplaceHelper.ReplaceTemplates(context.ExtractProjectPath, context.OldCompanyName, context.OldProjectName, context.CompanyName, context.ProjectName, context.ReplaceSuffix);
+            ReplaceHelper.ReplaceTemplates(
+                context.ExtractProjectPath,
+                context.OldCompanyName,
+                context.OldProjectName,
+                context.OldModuleName,
+                context.CompanyName,
+                context.ProjectName,
+                context.ModuleName,
+                context.ReplaceSuffix);
+
             if (context.IsSource)
             {
                 context.TemplateFolder = context.ExtractProjectPath;

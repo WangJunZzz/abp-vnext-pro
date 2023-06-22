@@ -27,6 +27,11 @@ public class SourceCodeContext
     /// </summary>
     public string OldProjectName { get; set; }
     /// <summary>
+    /// 替换ModuleName
+    /// </summary>
+    public string OldModuleName { get; set; }
+    
+    /// <summary>
     /// New CompanyName
     /// </summary>
     public string CompanyName { get; set; }
@@ -34,6 +39,12 @@ public class SourceCodeContext
     /// New ProjectName
     /// </summary>
     public string ProjectName { get; set; }
+    
+    /// <summary>
+    /// New ModuleName
+    /// </summary>
+    public string ModuleName { get; set; }
+    
     /// <summary>
     /// 输入文件夹
     /// </summary>
