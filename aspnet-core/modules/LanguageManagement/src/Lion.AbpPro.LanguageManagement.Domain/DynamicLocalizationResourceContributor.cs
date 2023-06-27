@@ -4,13 +4,14 @@ public class DynamicLocalizationResourceContributor : ILocalizationResourceContr
 {
     private IDynamicResourceLocalizer DynamicResourceLocalizer;
     private LocalizationResourceBase Resource;
-
+    private ILanguageProvider LanguageProvider;
     public bool IsDynamic => true;
 
     public void Initialize(LocalizationResourceInitializationContext context)
     {
         Resource = context.Resource;
         DynamicResourceLocalizer = context.ServiceProvider.GetRequiredService<IDynamicResourceLocalizer>();
+        LanguageProvider = context.ServiceProvider.GetRequiredService<ILanguageProvider>();
     }
 
     public LocalizedString GetOrNull(string cultureName, string name)
@@ -31,8 +32,7 @@ public class DynamicLocalizationResourceContributor : ILocalizationResourceContr
 
     public async Task<IEnumerable<string>> GetSupportedCulturesAsync()
     {
-        // TODO 
-        await Task.CompletedTask;
-        return null;
+        var languages = await LanguageProvider.GetLanguagesAsync();
+        return languages.Select(e=>e.CultureName).ToList();
     }
 }
