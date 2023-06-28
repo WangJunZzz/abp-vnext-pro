@@ -1,58 +1,91 @@
-﻿namespace System.Text;
-
-public class StringBuilderExtensionsTest
+﻿namespace System.Text
 {
-    [Fact]
-    public void TrimTest()
+    public class StringBuilderExtensionsTest
     {
-        var sb = new StringBuilder("   hello world  ");
-        sb.Trim().ToString().ShouldBe("hello world");
-    }
-
-    [Fact]
-    public void TrimStartTest()
-    {
-        var sb = new StringBuilder();
-        sb.TrimStart('a').ToString().ShouldBe(string.Empty);
-
-        sb.Append("asdfgef");
-        sb.TrimStart('a').ToString().ShouldBe("sdfgef");
-
-        sb.Insert(0, "   ");
-        sb.TrimStart().ToString().ShouldBe("sdfgef");
-
-        sb.TrimStart("sdf").ToString().ShouldBe("gef");
-
-        sb.TrimStart("gef").ToString().ShouldBe(string.Empty);
-    }
-
-    [Fact]
-    public void TrimEndTest()
-    {
-        var sb = new StringBuilder("asdfgef");
-
-        sb.TrimEnd((string)null).ToString().ShouldBe("asdfgef");
-
-        sb.TrimEnd('a').ToString().ShouldBe("asdfgef");
-
-        sb.TrimEnd('f').ToString().ShouldBe("asdfge");
-
-        sb.Append("   ");
-        sb.TrimEnd().ToString().ShouldBe("asdfge");
-
-        sb.TrimEnd(new[] { 'g', 'e' }).ToString().ShouldBe("asdf");
-        sb.TrimEnd("asdf").ToString().ShouldBe(string.Empty);
-    }
-
-    [Fact]
-    public void SubStringTest()
-    {
-        var sb = new StringBuilder("asdfgef");
-        Should.Throw<ArgumentOutOfRangeException>(() =>
+        [Fact]
+        public void TrimStart_RemovesLeadingWhitespace()
         {
-            sb.SubString(0, 8);
-        });
-        sb.SubString(0, 3).ToString().ShouldBe("asd");
+            var sb = new StringBuilder("  hello");
+            sb.TrimStart();
+            sb.ToString().ShouldBe("hello");
+        }
 
+        [Fact]
+        public void TrimStart_RemovesLeadingChar()
+        {
+            var sb = new StringBuilder("***hello");
+            sb.TrimStart('*');
+            sb.ToString().ShouldBe("hello");
+        }
+
+        [Fact]
+        public void TrimStart_RemovesLeadingChars()
+        {
+            var sb = new StringBuilder("###hello");
+            sb.TrimStart(new char[] { '#' });
+            sb.ToString().ShouldBe("hello");
+        }
+
+        [Fact]
+        public void TrimStart_RemovesLeadingString()
+        {
+            var sb = new StringBuilder("world of warcraft");
+            sb.TrimStart("world of");
+            sb.ToString().ShouldBe(" warcraft");
+        }
+
+        [Fact]
+        public void TrimEnd_RemovesTrailingWhitespace()
+        {
+            var sb = new StringBuilder("world    ");
+            sb.TrimEnd();
+            sb.ToString().ShouldBe("world");
+        }
+
+        [Fact]
+        public void TrimEnd_RemovesTrailingChar()
+        {
+            var sb = new StringBuilder("hello***");
+            sb.TrimEnd('*');
+            sb.ToString().ShouldBe("hello");
+        }
+
+        [Fact]
+        public void TrimEnd_RemovesTrailingChars()
+        {
+            var sb = new StringBuilder("hello###");
+            sb.TrimEnd(new char[] { '#' });
+            sb.ToString().ShouldBe("hello");
+        }
+
+        [Fact]
+        public void TrimEnd_RemovesTrailingString()
+        {
+            var sb = new StringBuilder("world of warcraft");
+            sb.TrimEnd("of warcraft");
+            sb.ToString().ShouldBe("world ");
+        }
+
+        [Fact]
+        public void Trim_RemovesLeadingAndTrailingWhitespace()
+        {
+            var sb = new StringBuilder("   foo   ");
+            sb.Trim();
+            sb.ToString().ShouldBe("foo");
+        }
+
+        [Fact]
+        public void Substring_ReturnsSubstringWithCorrectLength()
+        {
+            var sb = new StringBuilder("abcdefg");
+            sb.SubString(1, 3).ShouldBe("bcd");
+        }
+
+        [Fact]
+        public void Substring_ThrowsExceptionWhenStartPlusLengthIsGreaterThanLength()
+        {
+            var sb = new StringBuilder("abcdefg");
+            Should.Throw<ArgumentOutOfRangeException>(() => sb.SubString(2, 6));
+        }
     }
 }

@@ -1,13 +1,10 @@
-﻿using System.ComponentModel;
-
-namespace System.Reflection;
+﻿namespace System.Reflection;
 
 /// <summary>
 /// 成员<see cref="MemberInfo"/>的扩展辅助操作方法
 /// </summary>
 public static class MemberInfoExtensions
 {
-    
     /// <summary>
     /// 获取成员元数据的Description特性描述信息。
     /// </summary>

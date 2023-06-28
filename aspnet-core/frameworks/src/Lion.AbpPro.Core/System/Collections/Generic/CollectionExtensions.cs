@@ -35,10 +35,10 @@ public static class CollectionExtensions
     public static void AddIfNotExist<T>(this ICollection<T> collection, T value, Func<T, bool> existFunc = null)
     {
         if (collection is null) throw new ArgumentNullException();
-        var exists = existFunc == null ? collection!.Contains(value) : collection!.Any(existFunc);
+        var exists = existFunc == null ? collection.Contains(value) : collection.Any(existFunc);
         if (!exists)
         {
-            collection!.Add(value);
+            collection.Add(value);
         }
     }
 

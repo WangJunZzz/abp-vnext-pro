@@ -197,48 +197,4 @@ public static class StringBuilderExtensions
 
         return new string(cs);
     }
-
-    public static StringBuilder AppendLineWithControlChar(this StringBuilder stringBuilder, StringBuilder sb, string newLine)
-    {
-        if (stringBuilder is null) throw new ArgumentNullException();
-        stringBuilder = AppendWithControlChar(stringBuilder, sb.ToString());
-        return stringBuilder.Append(newLine);
-    }
-
-    public static StringBuilder AppendLineWithControlChar(this StringBuilder stringBuilder, string str, string newLine)
-    {
-        if (stringBuilder is null) throw new ArgumentNullException();
-        stringBuilder = AppendWithControlChar(stringBuilder, str);
-        return stringBuilder.Append(newLine);
-    }
-
-    public static StringBuilder AppendWithControlChar(this StringBuilder stringBuilder, StringBuilder sb)
-    {
-        if (stringBuilder is null) throw new ArgumentNullException();
-        return AppendWithControlChar(stringBuilder, sb.ToString());
-    }
-
-    public static StringBuilder AppendWithControlChar(this StringBuilder stringBuilder, string str)
-    {
-        if (str.Contains('\b'))
-        {
-            foreach (var c in str)
-            {
-                if (c == '\b')
-                {
-                    stringBuilder.Length--;
-                }
-                else
-                {
-                    stringBuilder.Append(c);
-                }
-            }
-        }
-        else
-        {
-            stringBuilder.Append(str);
-        }
-
-        return stringBuilder;
-    }
 }

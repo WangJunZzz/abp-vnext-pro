@@ -37,38 +37,7 @@ public static class DateTimeExtensions
         };
         return weeks.Contains(dateTime.DayOfWeek);
     }
-
-    /// <summary>
-    /// 获取时间相对唯一字符串
-    /// </summary>
-    /// <param name="dateTime"></param>
-    /// <param name="millisecond">是否使用毫秒</param>
-    /// <returns></returns>
-    public static string ToUniqueString(this DateTime dateTime, bool millisecond = false)
-    {
-        var seconds = dateTime.Hour * 3600 + dateTime.Minute * 60 + dateTime.Second;
-        var value = $"{dateTime:yyyy}{dateTime.DayOfYear}{seconds}";
-        if (millisecond)
-        {
-            return value + dateTime.ToString("fff");
-        }
-
-        return value;
-    }
-
-    /// <summary>
-    /// 将时间转换为JS时间格式(Date.getTime())
-    /// </summary>
-    /// <param name="dateTime"></param>
-    /// <param name="millisecond">是否使用毫秒</param>
-    public static string ToJsGetTime(this DateTime dateTime, bool millisecond = true)
-    {
-        var utc = dateTime.ToUniversalTime();
-        var span = utc.Subtract(new DateTime(1970, 1, 1));
-        return Math.Round(millisecond ? span.TotalMilliseconds : span.TotalSeconds).ToString(CultureInfo.InvariantCulture);
-    }
-
-
+    
     /// <summary>
     /// 将时间类型转成int类型. 例如 2021-09-01 => 20210901
     /// </summary>
@@ -89,7 +58,7 @@ public static class DateTimeExtensions
 
     /// <summary>
     /// 获取指定日期 当天的最大时间
-    /// 例如 2021-09-10 11:22:33.123456 转换后 2021-09-10 23:59:59.9999999
+    /// 例如 2021-09-10 11:22:33.123 转换后 2021-09-10 23:59:59.999
     /// </summary>
     public static DateTime? ToCurrentDateMaxDateTime(this DateTime? dateTime)
     {
@@ -98,11 +67,11 @@ public static class DateTimeExtensions
 
     /// <summary>
     /// 获取指定日期 当天的最大时间
-    /// 例如 2021-09-10 11:22:33.123456 转换后 2021-09-10 23:59:59.9999999
+    /// 例如 2021-09-10 11:22:33.123 转换后 2021-09-10 23:59:59.999
     /// </summary>
     public static DateTime ToCurrentDateMaxDateTime(this DateTime dateTime)
     {
-        return dateTime.Date.AddDays(1).AddTicks(-1);
+        return dateTime.Date.AddDays(1).AddMilliseconds(-1);
     }
 
     /// <summary>
@@ -110,7 +79,7 @@ public static class DateTimeExtensions
     /// </summary>
     public static DateTime? ToCurrentDateMinDateTime(this DateTime? dateTime)
     {
-        return dateTime?.Date.AddTicks(1);
+        return dateTime?.Date;
     }
 
     /// <summary>
@@ -118,7 +87,7 @@ public static class DateTimeExtensions
     /// </summary>
     public static DateTime ToCurrentDateMinDateTime(this DateTime dateTime)
     {
-        return dateTime.Date.AddTicks(1);
+        return dateTime.Date;
     }
 
     /// <summary>
@@ -138,55 +107,42 @@ public static class DateTimeExtensions
     /// <summary>
     /// 转为秒级时间戳
     /// <param name="dateTime">时间</param>
-    /// <param name="timeZoneInfo">默认 TimeZoneInfo.Utc</param>
+    /// <remarks>
+    ///时间戳实际就是当前时间距离1970年1月1日0点0时0分0秒（转换成北京时间是1970年1月1日8点0时0分0秒）距离你要计算的时间的秒数或者毫秒数 一般来说：我们用的时间戳到秒的话是10位，到毫秒的话是13位
+    /// </remarks>
     /// </summary>
-    public static long ToSecondTimeStamp(this DateTime dateTime, TimeZoneInfo timeZoneInfo = null)
+    public static long ToUnixTimeSeconds(this DateTime dateTime)
     {
-        timeZoneInfo ??= TimeZoneInfo.Utc;
-        var dtStart = TimeZoneInfo.ConvertTimeFromUtc(new DateTime(1970, 1, 1, 0, 0, 0), timeZoneInfo);
-        long timeStamp = Convert.ToInt32((dateTime - dtStart).TotalSeconds);
-        return timeStamp;
+        return (new DateTimeOffset(dateTime)).ToUnixTimeSeconds();
     }
 
     /// <summary>
     /// 转为秒级时间戳
     /// <param name="dateTime">时间</param>
-    /// <param name="timeZoneInfo">默认 TimeZoneInfo.Utc</param>
     /// </summary>
-    public static long? ToSecondTimeStamp(this DateTime? dateTime, TimeZoneInfo timeZoneInfo = null)
+    public static long? ToUnixTimeSeconds(this DateTime? dateTime)
     {
         if (!dateTime.HasValue) return null;
-        timeZoneInfo ??= TimeZoneInfo.Utc;
-        var dtStart = TimeZoneInfo.ConvertTimeFromUtc(new DateTime(1970, 1, 1, 0, 0, 0), timeZoneInfo);
-        long timeStamp = Convert.ToInt32((dateTime.Value - dtStart).TotalSeconds);
-        return timeStamp;
+        return (new DateTimeOffset(dateTime.Value)).ToUnixTimeSeconds();
     }
 
     /// <summary>
     /// 转为毫秒级时间戳
     /// <param name="dateTime">时间</param>
-    /// <param name="timeZoneInfo">默认 TimeZoneInfo.Utc</param>
     /// </summary>
-    public static long ToMilliSecondTimeStamp(this DateTime dateTime, TimeZoneInfo timeZoneInfo = null)
+    public static long? ToUnixTimeMilliseconds(this DateTime dateTime)
     {
-        timeZoneInfo ??= TimeZoneInfo.Utc;
-        var dtStart = TimeZoneInfo.ConvertTimeFromUtc(new DateTime(1970, 1, 1, 0, 0, 0), timeZoneInfo);
-        var timeStamp = Convert.ToInt64((dateTime - dtStart).TotalMilliseconds);
-        return timeStamp;
+        return (new DateTimeOffset(dateTime)).ToUnixTimeMilliseconds();
     }
 
     /// <summary>
     /// 转为毫秒级时间戳
     /// <param name="dateTime">时间</param>
-    /// <param name="timeZoneInfo">默认 TimeZoneInfo.Utc</param>
     /// </summary>
-    public static long? ToMilliSecondTimeStamp(this DateTime? dateTime, TimeZoneInfo timeZoneInfo = null)
+    public static long? ToUnixTimeMilliseconds(this DateTime? dateTime)
     {
         if (!dateTime.HasValue) return null;
-        timeZoneInfo ??= TimeZoneInfo.Utc;
-        var dtStart = TimeZoneInfo.ConvertTimeFromUtc(new DateTime(1970, 1, 1, 0, 0, 0), timeZoneInfo);
-        var timeStamp = Convert.ToInt64((dateTime.Value - dtStart).TotalMilliseconds);
-        return timeStamp;
+        return (new DateTimeOffset(dateTime.Value)).ToUnixTimeMilliseconds();
     }
 
     /// <summary>

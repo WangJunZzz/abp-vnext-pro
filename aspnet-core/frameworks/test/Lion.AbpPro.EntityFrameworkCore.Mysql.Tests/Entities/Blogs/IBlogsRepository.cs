@@ -1,7 +1,6 @@
-using Lion.AbpPro.EntityFrameworkCore.Tests.Entities.Blogs;
 using Volo.Abp.Domain.Repositories;
 
-namespace Lion.AbpPro.EntityFrameworkCore.Tests.Blogs;
+namespace Lion.AbpPro.EntityFrameworkCore.Tests.Entities.Blogs;
 
 public interface IBlogRepository : IBasicRepository<Blog, Guid>
 {
