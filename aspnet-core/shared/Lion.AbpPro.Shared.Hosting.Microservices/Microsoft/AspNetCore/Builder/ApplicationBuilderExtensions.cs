@@ -52,5 +52,28 @@ namespace Microsoft.AspNetCore.Builder
         {
             return app.UseMiddleware<RequestLogMiddleware>();
         }
+        
+        /// <summary>
+        /// 多语言中间件
+        /// <remarks>浏览器传递的请求头：Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6而abp钟简体中文为：zh-Hans</remarks>
+        /// <example>
+        /// app.UseLionRequestLocalization();
+        /// </example>
+        /// </summary>
+        public static IApplicationBuilder UseLionRequestLocalization(this IApplicationBuilder app)
+        {
+            if (app == null)
+            {
+                throw new ArgumentNullException(nameof(app));
+            }
+
+            return app.UseAbpRequestLocalization(options =>
+            {
+                // 移除自带header解析器
+                options.RequestCultureProviders.RemoveAll(provider=> provider is AcceptLanguageHeaderRequestCultureProvider);
+                // 添加header解析器
+                options.RequestCultureProviders.Add(new LionAcceptLanguageHeaderRequestCultureProvider());
+            });
+        }
     }
 }

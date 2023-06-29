@@ -24,13 +24,7 @@ public class SharedHostingMicroserviceModule : AbpModule
         ConfigAntiForgery();
         ConfigureAbpExceptions(context);
     }
-
-    public override void OnApplicationInitialization(ApplicationInitializationContext context)
-    {
-        // 设置默认语言为简体中文
-        context.ServiceProvider.GetRequiredService<ISettingDefinitionManager>().Get(LocalizationSettingNames.DefaultLanguage).DefaultValue = "zh-Hans";  
-    }
-
+    
     /// <summary>
     /// 异常处理
     /// </summary>
@@ -55,7 +49,7 @@ public class SharedHostingMicroserviceModule : AbpModule
         Configure<AbpAntiForgeryOptions>(options => { options.AutoValidate = false; });
     }
 
-    private void ConfigureConsul(ServiceConfigurationContext context,IConfiguration configuration)
+    private void ConfigureConsul(ServiceConfigurationContext context, IConfiguration configuration)
     {
         if (configuration.GetValue<bool>("Consul:Enabled", false))
         {
@@ -92,7 +86,6 @@ public class SharedHostingMicroserviceModule : AbpModule
             });
         });
     }
-
 
 
     /// <summary>

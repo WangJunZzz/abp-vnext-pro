@@ -1,5 +1,6 @@
 using Hangfire.Redis;
 using Lion.AbpPro.CAP.EntityFrameworkCore;
+using Microsoft.AspNetCore.Localization;
 using Swagger;
 using Volo.Abp.BackgroundJobs.Hangfire;
 using Volo.Abp.Timing;
@@ -42,13 +43,18 @@ namespace Lion.AbpPro
             ConfigureCap(context);
             ConfigureAuditLog(context);
             ConfigurationSignalR(context);
+            context.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                //options.RequestCultureProviders.RemoveAll(provider => provider is AcceptLanguageHeaderRequestCultureProvider);
+                options.RequestCultureProviders.Add(new LionAcceptLanguageHeaderRequestCultureProvider());
+            });
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
             var app = context.GetApplicationBuilder();
             var configuration = context.GetConfiguration();
-            app.UseAbpRequestLocalization();
+            app.UseLionRequestLocalization();
             app.UseCorrelationId();
             app.UseStaticFiles();
             if (configuration.GetValue("MiniProfiler:Enabled", false))
