@@ -1,3 +1,5 @@
+using Volo.Abp.Data;
+
 namespace MyCompanyName.MyProjectName.DbMigrator
 {
     public class DbMigratorHostedService : IHostedService
@@ -18,6 +20,8 @@ namespace MyCompanyName.MyProjectName.DbMigrator
                        options.Services.ReplaceConfiguration(_configuration);
                        options.UseAutofac();
                        options.Services.AddLogging(c => c.AddSerilog());
+                       // https://github.com/abpframework/abp/pull/15208
+                       options.AddDataMigrationEnvironment();
                    }))
             {
                 await application.InitializeAsync();
