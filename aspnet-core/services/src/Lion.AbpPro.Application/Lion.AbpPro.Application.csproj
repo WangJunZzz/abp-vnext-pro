@@ -16,8 +16,4 @@
         <ProjectReference Include="..\Lion.AbpPro.FreeSqlRepository\Lion.AbpPro.FreeSqlRepository.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="NEST" />
-    </ItemGroup>
-
 </Project>

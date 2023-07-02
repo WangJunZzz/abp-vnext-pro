@@ -8,8 +8,6 @@ namespace Lion.AbpPro.Permissions
         public static class SystemManagement
         {
             public const string Default = "AbpIdentity";
-            public const string ES = Default + ".ES";
-      
         }
         
     }
