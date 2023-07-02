@@ -65,16 +65,6 @@ const admin: AppRouteModule = {
       },
     },
     {
-      path: 'esLogs',
-      name: 'ESLogs',
-      component: () => import('/@/views/admin/elasticSearch/ElasticSearch.vue'),
-      meta: {
-        title: t('routes.admin.esLogs'),
-        policy: 'AbpIdentity.ES',
-        icon: 'ant-design:snippets-twotone',
-      },
-    },
-    {
       path: 'dataDictionary',
       name: 'dataDictionary',
       component: () => import('/@/views/admin/dictionary/AbpDictionary.vue'),
@@ -104,16 +94,6 @@ const admin: AppRouteModule = {
         policy: 'AbpIdentity.LanguageTexts',
       },
     },
-    // {
-    //   path: 'files',
-    //   name: 'files',
-    //   component: () => import('/@/views/admin/files/File.vue'),
-    //   meta: {
-    //     title: t('routes.admin.fileNameManagement'),
-    //     icon: 'ant-design:snippets-outlined',
-    //     policy: 'AbpIdentity.FileManagement',
-    //   },
-    // },
   ],
 };
 
