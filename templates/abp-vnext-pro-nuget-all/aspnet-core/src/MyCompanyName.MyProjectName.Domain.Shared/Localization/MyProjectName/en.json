@@ -24,19 +24,6 @@
     "Description:Setting.Group.Other.Github": "Github",
     "Enum:TestType:Created:1":"Created",
     "Enum:TestType:Cancel:1":"Cancel",
-    "Enum:TestType:Delete:1":"Delete",
-
-    "MyCompanyName.MyProjectName:100001": "OrganizationUnit Not Exist",
-    "MyCompanyName.MyProjectName:100002": "UserLockedOut",
-    "MyCompanyName.MyProjectName:100003": "UserOrPasswordMismatch",
-    "MyCompanyName.MyProjectName:100004": "ApiResource Not Exist",
-    "MyCompanyName.MyProjectName:100005": "ApiResource  Exist",
-    "MyCompanyName.MyProjectName:100006": "ApiScope Not Exist",
-    "MyCompanyName.MyProjectName:100007": "ApiScope  Exist",
-    "MyCompanyName.MyProjectName:100008": "ApiClient Not Exist",
-    "MyCompanyName.MyProjectName:100009": "ApiClient  Exist",
-    "MyCompanyName.MyProjectName:100010": "IdentityResource Not Exist",
-    "MyCompanyName.MyProjectName:100011": "IdentityResource  Exist"
-    
+    "Enum:TestType:Delete:1":"Delete"
   }
 }
