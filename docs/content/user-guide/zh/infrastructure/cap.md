@@ -9,7 +9,7 @@
   - Lion.AbpPro.CAP.EntityFrameworkCore
   - DotNetCore.CAP.MySql (如果是其它数据库,请安装对应类型)
   - DotNetCore.CAP.RabbitMQ (如果是其它中间件,请安装对应类型)
-- 添加 [DependsOn(typeof(LionAbpProCapEntityFrameworkCoreModule))] 到你的项目模块类.
+- 添加 [DependsOn(typeof(AbpProCapEntityFrameworkCoreModule))] 到你的项目模块类.
 
 ## 配置
 

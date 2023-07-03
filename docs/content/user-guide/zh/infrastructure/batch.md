@@ -7,7 +7,7 @@ EFCore7.0 之后,提供了批量更新和批量删除,但是不提供批量新�
 
 - 添加以下 NuGet 包到你的项目
   - Lion.AbpPro.EntityFrameworkCore.Mysql
-- 添加 [DependsOn(typeof(LionAbpProEntityFrameworkCoreMysqlModule))] 到你的项目模块类.
+- 添加 [DependsOn(typeof(AbpProEntityFrameworkCoreMysqlModule))] 到你的项目模块类.
 
 ## 原理
 
