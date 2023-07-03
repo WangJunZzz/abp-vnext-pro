@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.Core;
 
-[Serializable]
+
 public class CustomListResultDto<T> 
 {
     public IReadOnlyList<T> Items

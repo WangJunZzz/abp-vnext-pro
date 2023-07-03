@@ -20,14 +20,16 @@ namespace Lion.AbpPro
         {
             using (CultureHelper.Use("en"))
             {
-                _stringLocalizer["Welcome"].Value
-                    .ShouldBe("Welcome");
+                _stringLocalizer["Welcome"].Value.ShouldBe("Welcome");
+                _stringLocalizer[AbpProLocalizationErrorCodes.ErrorCode100001].Value.ShouldBe("The start page must be greater than or equal to 1");
+                _stringLocalizer[AbpProLocalizationErrorCodes.ErrorCode100003,"Name"].Value.ShouldBe("Name can not be empty");
             }
 
             using (CultureHelper.Use("zh-Hans"))
             {
-                _stringLocalizer["Welcome"].Value
-                    .ShouldBe("欢迎");
+                _stringLocalizer["Welcome"].Value.ShouldBe("欢迎");
+                _stringLocalizer[AbpProLocalizationErrorCodes.ErrorCode100001].Value.ShouldBe("起始页必须大于等于1");
+                _stringLocalizer[AbpProLocalizationErrorCodes.ErrorCode100003,"Name"].Value.ShouldBe("Name不能为空");
             }
         }
     }

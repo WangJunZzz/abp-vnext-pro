@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace Lion.AbpPro.LanguageManagement.LanguageTexts;
 
 /// <summary>

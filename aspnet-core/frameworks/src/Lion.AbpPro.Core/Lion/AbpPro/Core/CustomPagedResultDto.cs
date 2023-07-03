@@ -1,6 +1,5 @@
 namespace Lion.AbpPro.Core;
 
-[Serializable]
 public class CustomPagedResultDto<T> : CustomListResultDto<T>
 {
     public long TotalCount { get; set; }

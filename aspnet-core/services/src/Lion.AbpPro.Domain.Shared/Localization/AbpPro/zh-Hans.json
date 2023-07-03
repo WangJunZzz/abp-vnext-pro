@@ -25,18 +25,6 @@
     "Description:Setting.Group.Other.Github": "Github",
     "Enum:TestType:Created:1":"创建",
     "Enum:TestType:Cancel:1":"取消",
-    "Enum:TestType:Delete:1":"删除",
-    
-    "Lion.AbpPro:100001": "组织机构不存在",
-    "Lion.AbpPro:100002": "用户被锁定",
-    "Lion.AbpPro:100003": "用户名或者密码错误",
-    "Lion.AbpPro:100004": "ApiResource不存在",
-    "Lion.AbpPro:100005": "ApiResource  已存在",
-    "Lion.AbpPro:100006": "ApiScope 不存在",
-    "Lion.AbpPro:100007": "ApiScope  已存在",
-    "Lion.AbpPro:100008": "ApiClient 不存在",
-    "Lion.AbpPro:100009": "ApiClient  已存在",
-    "Lion.AbpPro:100010": "IdentityResource 不存在",
-    "Lion.AbpPro:100011": "IdentityResource  已存在"
+    "Enum:TestType:Delete:1":"删除"
   }
 }

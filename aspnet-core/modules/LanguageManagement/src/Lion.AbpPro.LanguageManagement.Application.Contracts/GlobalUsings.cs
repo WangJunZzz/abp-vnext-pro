@@ -2,12 +2,16 @@
 
 global using System;
 global using System.Collections.Generic;
+global using System.ComponentModel.DataAnnotations;
 global using System.Linq;
 global using System.Text;
 global using System.Threading;
 global using System.Threading.Tasks;
 global using Lion.AbpPro.Core;
 global using Lion.AbpPro.LanguageManagement.Localization;
+global using Lion.AbpPro.Localization;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Localization;
 global using Volo.Abp.Application;
 global using Volo.Abp.Application.Dtos;
 global using Volo.Abp.Application.Services;

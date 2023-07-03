@@ -2,6 +2,9 @@
   "culture": "zh-Hans",
   "texts": {
     "Welcome": "欢迎",
-    "Permission:Cap": "CAP面板"
+    "Permission:Cap": "CAP面板",
+    "Lion.AbpPro:100001": "起始页必须大于等于1",
+    "Lion.AbpPro:100002": "每页最大记录数不能超过100000",
+    "Lion.AbpPro:100003": "{0}不能为空"
   }
 }

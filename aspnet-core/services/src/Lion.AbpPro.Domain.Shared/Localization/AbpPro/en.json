@@ -24,19 +24,6 @@
     "Description:Setting.Group.Other.Github": "Github",
     "Enum:TestType:Created:1":"Created",
     "Enum:TestType:Cancel:1":"Cancel",
-    "Enum:TestType:Delete:1":"Delete",
-
-    "Lion.AbpPro:100001": "OrganizationUnit Not Exist",
-    "Lion.AbpPro:100002": "UserLockedOut",
-    "Lion.AbpPro:100003": "UserOrPasswordMismatch",
-    "Lion.AbpPro:100004": "ApiResource Not Exist",
-    "Lion.AbpPro:100005": "ApiResource  Exist",
-    "Lion.AbpPro:100006": "ApiScope Not Exist",
-    "Lion.AbpPro:100007": "ApiScope  Exist",
-    "Lion.AbpPro:100008": "ApiClient Not Exist",
-    "Lion.AbpPro:100009": "ApiClient  Exist",
-    "Lion.AbpPro:100010": "IdentityResource Not Exist",
-    "Lion.AbpPro:100011": "IdentityResource  Exist"
-    
+    "Enum:TestType:Delete:1":"Delete"
   }
 }

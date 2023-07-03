@@ -112,9 +112,7 @@ public static class Guard
     /// </summary>
     /// <param name="value"></param>
     /// <param name="valueName">参数名称。</param>
-    public static Guid NotEmpty(
-        Guid value,
-        string valueName)
+    public static Guid NotEmpty(Guid value, string valueName)
     {
         if (value == Guid.Empty)
         {
@@ -130,9 +128,7 @@ public static class Guard
     /// <typeparam name="T">集合项的类型。</typeparam>
     /// <param name="list"></param>
     /// <param name="valueName">参数名称。</param>
-    public static void NotNullOrEmpty<T>(
-        IReadOnlyList<T> list,
-        string valueName)
+    public static void NotNullOrEmpty<T>(IReadOnlyList<T> list, string valueName)
     {
         if (null == list || !list.Any())
         {

@@ -21,14 +21,21 @@ namespace Lion.AbpPro.BasicManagement.Users.Dtos
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            var localization = validationContext.GetRequiredService<IStringLocalizer<AbpProLocalizationResource>>();
             if (Name.IsNullOrWhiteSpace())
             {
-                yield return new ValidationResult("Email can not be null", new[] { "Email" });
+                yield return new ValidationResult(
+                    localization[AbpProLocalizationErrorCodes.ErrorCode100003, nameof(Name)],
+                    new[] { "Name" }
+                );
             }
 
             if (Password.IsNullOrWhiteSpace())
             {
-                yield return new ValidationResult("Password can not be null", new[] { "Password" });
+                yield return new ValidationResult(
+                    localization[AbpProLocalizationErrorCodes.ErrorCode100003, nameof(Password)],
+                    new[] { "Password" }
+                );
             }
         }
     }

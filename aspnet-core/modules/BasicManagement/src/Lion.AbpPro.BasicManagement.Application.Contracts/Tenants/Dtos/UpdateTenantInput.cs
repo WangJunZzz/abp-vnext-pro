@@ -1,9 +1,21 @@
 namespace Lion.AbpPro.BasicManagement.Tenants.Dtos
 {
-    public class UpdateTenantInput
+    public class UpdateTenantInput : IValidatableObject
     {
         public Guid Id { get; set; }
 
-        [Required(ErrorMessage = "租户名称不能为空")] public string Name { get; set; }
+        public string Name { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var localization = validationContext.GetRequiredService<IStringLocalizer<AbpProLocalizationResource>>();
+            if (Name.IsNullOrWhiteSpace())
+            {
+                yield return new ValidationResult(
+                    localization[AbpProLocalizationErrorCodes.ErrorCode100003, nameof(Name)],
+                    new[] { nameof(Name) }
+                );
+            }
+        }
     }
 }
