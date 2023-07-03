@@ -1,6 +1,6 @@
 ﻿namespace Microsoft.AspNetCore.Localization;
 
-public class LionAcceptLanguageHeaderRequestCultureProvider : AcceptLanguageHeaderRequestCultureProvider
+public class AbpProAcceptLanguageHeaderRequestCultureProvider : AcceptLanguageHeaderRequestCultureProvider
 {
     public override async Task<ProviderCultureResult> DetermineProviderCultureResult(HttpContext httpContext)
     {

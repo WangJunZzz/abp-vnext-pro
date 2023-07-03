@@ -9,7 +9,7 @@ namespace Lion.AbpPro
 {
     [DependsOn(
         typeof(AbpProHttpApiModule),
-        typeof(SharedHostingMicroserviceModule),
+        typeof(AbpProSharedHostingMicroserviceModule),
         typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
         typeof(AbpProEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
@@ -46,7 +46,7 @@ namespace Lion.AbpPro
             context.Services.Configure<RequestLocalizationOptions>(options =>
             {
                 //options.RequestCultureProviders.RemoveAll(provider => provider is AcceptLanguageHeaderRequestCultureProvider);
-                options.RequestCultureProviders.Add(new LionAcceptLanguageHeaderRequestCultureProvider());
+                options.RequestCultureProviders.Add(new AbpProAcceptLanguageHeaderRequestCultureProvider());
             });
         }
 

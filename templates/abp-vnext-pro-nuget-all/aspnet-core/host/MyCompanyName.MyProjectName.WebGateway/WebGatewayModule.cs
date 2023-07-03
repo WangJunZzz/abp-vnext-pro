@@ -1,7 +1,7 @@
 namespace MyCompanyName.MyProjectName.WebGateway
 {
     [DependsOn(
-        typeof(SharedHostingGatewayModule))]
+        typeof(AbpProSharedHostingGatewayModule))]
     public class WebGatewayModule : AbpModule
     {
         private const string DefaultCorsPolicyName = "Default";

@@ -2,7 +2,7 @@
 
 namespace Microsoft.AspNetCore.Mvc.Filters;
 
-public class LionResultFilter : IResultFilter, ITransientDependency
+public class AbpProResultFilter : IResultFilter, ITransientDependency
 {
     public void OnResultExecuting(ResultExecutingContext context)
     {

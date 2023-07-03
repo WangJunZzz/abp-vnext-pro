@@ -72,7 +72,7 @@ namespace Microsoft.AspNetCore.Builder
                 // 移除自带header解析器
                 options.RequestCultureProviders.RemoveAll(provider=> provider is AcceptLanguageHeaderRequestCultureProvider);
                 // 添加header解析器
-                options.RequestCultureProviders.Add(new LionAcceptLanguageHeaderRequestCultureProvider());
+                options.RequestCultureProviders.Add(new AbpProAcceptLanguageHeaderRequestCultureProvider());
             });
         }
     }

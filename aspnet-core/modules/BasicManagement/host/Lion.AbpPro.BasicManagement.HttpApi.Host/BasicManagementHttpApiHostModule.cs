@@ -34,7 +34,7 @@ namespace Lion.AbpPro.BasicManagement;
     typeof(AbpEntityFrameworkCoreMySQLModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule),
-    typeof(SharedHostingMicroserviceModule)
+    typeof(AbpProSharedHostingMicroserviceModule)
 )]
 public class BasicManagementHttpApiHostModule : AbpModule
 {

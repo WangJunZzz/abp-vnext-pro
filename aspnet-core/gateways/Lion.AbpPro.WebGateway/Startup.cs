@@ -4,7 +4,7 @@ namespace Lion.AbpPro.WebGateway
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddApplication<WebGatewayModule>();
+            services.AddApplication<AbpProWebGatewayModule>();
         }
 
         public void Configure(IApplicationBuilder app)

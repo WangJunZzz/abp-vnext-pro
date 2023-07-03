@@ -3,7 +3,7 @@ namespace Lion.AbpPro
     [DependsOn(
         typeof(AbpSwashbuckleModule),
         typeof(AbpAutofacModule))]
-    public class SharedHostingGatewayModule : AbpModule
+    public class AbpProSharedHostingGatewayModule : AbpModule
     {
    
         public override void ConfigureServices(ServiceConfigurationContext context)

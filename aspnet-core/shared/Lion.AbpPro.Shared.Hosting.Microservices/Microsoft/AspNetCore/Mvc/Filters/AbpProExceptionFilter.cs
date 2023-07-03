@@ -2,7 +2,7 @@ using System.Text;
 
 namespace Microsoft.AspNetCore.Mvc.Filters;
 
-public sealed class LionExceptionFilter : IAsyncExceptionFilter, ITransientDependency
+public sealed class AbpProExceptionFilter : IAsyncExceptionFilter, ITransientDependency
 {
     public async Task OnExceptionAsync(ExceptionContext context)
     {
@@ -45,7 +45,7 @@ public sealed class LionExceptionFilter : IAsyncExceptionFilter, ITransientDepen
         remoteServiceErrorInfoBuilder.AppendLine($"---------- {nameof(RemoteServiceErrorInfo)} ----------");
         remoteServiceErrorInfoBuilder.AppendLine(context.GetRequiredService<IJsonSerializer>().Serialize(remoteServiceErrorInfo, indented: true));
 
-        var logger = context.GetService<ILogger<LionExceptionFilter>>(NullLogger<LionExceptionFilter>.Instance);
+        var logger = context.GetService<ILogger<AbpProExceptionFilter>>(NullLogger<AbpProExceptionFilter>.Instance);
 
         logger.LogWithLevel(logLevel, remoteServiceErrorInfoBuilder.ToString());
 

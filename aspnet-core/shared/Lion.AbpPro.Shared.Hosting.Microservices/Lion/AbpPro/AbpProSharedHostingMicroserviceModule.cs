@@ -9,7 +9,7 @@ namespace Lion.AbpPro;
     typeof(AbpSwashbuckleModule),
     typeof(AbpAutofacModule),
     typeof(AbpProCoreModule))]
-public class SharedHostingMicroserviceModule : AbpModule
+public class AbpProSharedHostingMicroserviceModule : AbpModule
 {
     private const string DefaultCorsPolicyName = "Default";
 
@@ -34,8 +34,8 @@ public class SharedHostingMicroserviceModule : AbpModule
         (
             options =>
             {
-                options.Filters.Add(typeof(LionExceptionFilter));
-                options.Filters.Add(typeof(LionResultFilter));
+                options.Filters.Add(typeof(AbpProExceptionFilter));
+                options.Filters.Add(typeof(AbpProResultFilter));
             }
         );
     }
