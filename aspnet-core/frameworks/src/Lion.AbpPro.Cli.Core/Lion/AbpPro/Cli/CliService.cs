@@ -1,7 +1,4 @@
-﻿using Lion.AbpPro.Cli.Commands;
-using Volo.Abp.Domain.Services;
-
-namespace Lion.AbpPro.Cli;
+﻿namespace Lion.AbpPro.Cli;
 
 public class CliService : DomainService
 {

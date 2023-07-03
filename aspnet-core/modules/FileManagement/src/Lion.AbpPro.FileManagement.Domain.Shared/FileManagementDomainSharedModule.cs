@@ -4,7 +4,7 @@ namespace Lion.AbpPro.FileManagement;
 
 [DependsOn(
     typeof(AbpValidationModule),
-    typeof(LionAbpProCoreModule)
+    typeof(AbpProCoreModule)
 )]
 public class FileManagementDomainSharedModule : AbpModule
 {

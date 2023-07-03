@@ -1,6 +1,4 @@
-﻿using Lion.AbpPro.Cli.Commands;
-
-namespace Lion.AbpPro.Cli.Args;
+﻿namespace Lion.AbpPro.Cli.Args;
 
 public class CommandLineArgs
 {

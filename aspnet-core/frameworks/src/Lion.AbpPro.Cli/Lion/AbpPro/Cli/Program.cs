@@ -1,12 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Serilog;
-using Serilog.Events;
-using Volo.Abp;
-
-namespace Lion.AbpPro.Cli;
+﻿namespace Lion.AbpPro.Cli;
 
 public class Program
 {

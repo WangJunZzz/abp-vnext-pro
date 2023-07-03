@@ -4,7 +4,7 @@ namespace Lion.AbpPro.LanguageManagement
 {
     [DependsOn(
         typeof(AbpValidationModule),
-        typeof(LionAbpProCoreModule)
+        typeof(AbpProCoreModule)
     )]
     public class LanguageManagementDomainSharedModule : AbpModule
     {

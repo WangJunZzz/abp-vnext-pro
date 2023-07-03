@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Runtime.InteropServices;
-
-namespace Lion.AbpPro.Cli.Utils;
+﻿namespace Lion.AbpPro.Cli.Utils;
 
 public class CmdHelper : ITransientDependency
 {

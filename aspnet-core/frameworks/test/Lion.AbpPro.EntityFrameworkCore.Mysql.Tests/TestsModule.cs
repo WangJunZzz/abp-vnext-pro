@@ -103,7 +103,7 @@ namespace Lion.AbpPro.EntityFrameworkCore.Tests;
     typeof(AbpSettingManagementHttpApiModule),
     typeof(AbpSettingManagementWebModule),
     
-    typeof(LionAbpProEntityFrameworkCoreMysqlModule)
+    typeof(AbpProEntityFrameworkCoreMysqlModule)
 )]
 public class TestsModule : AbpModule
 {

@@ -3,14 +3,14 @@ namespace Lion.AbpPro.Cli.SourceCode;
 public class SourceCodeManager : ITransientDependency, ISourceCodeManager
 {
     private readonly ILogger<SourceCodeManager> _logger;
-    private readonly ILionAbpProManager _lionAbpProManager;
-    private readonly LionAbpProOptions _options;
+    private readonly IAbpProManager _abpProManager;
+    private readonly AbpProCliOptions _cliOptions;
 
-    public SourceCodeManager(ILogger<SourceCodeManager> logger, IOptions<Options.LionAbpProOptions> options, ILionAbpProManager lionAbpProManager)
+    public SourceCodeManager(ILogger<SourceCodeManager> logger, IOptions<Options.AbpProCliOptions> options, IAbpProManager abpProManager)
     {
         _logger = logger;
-        _lionAbpProManager = lionAbpProManager;
-        _options = options.Value;
+        _abpProManager = abpProManager;
+        _cliOptions = options.Value;
     }
 
     /// <summary>
@@ -19,29 +19,29 @@ public class SourceCodeManager : ITransientDependency, ISourceCodeManager
     /// <param name="version">版本</param>
     public async Task<TemplateFile> GetAsync(string version)
     {
-        var latestVersion = await _lionAbpProManager.GetLatestSourceCodeVersionAsync();
+        var latestVersion = await _abpProManager.GetLatestSourceCodeVersionAsync();
         if (version == null)
         {
             version = latestVersion ?? throw new Exception("请检查版本是否正确");
         }
         else
         {
-            if (!await _lionAbpProManager.CheckSourceCodeVersionAsync(version))
+            if (!await _abpProManager.CheckSourceCodeVersionAsync(version))
             {
                 throw new Exception("没有找到指定的版本: " + version);
             }
         }
 
-        var localCacheFile = Path.Combine(CliPaths.TemplateCache, _options.RepositoryId + "-" + version + ".zip");
+        var localCacheFile = Path.Combine(CliPaths.TemplateCache, _cliOptions.RepositoryId + "-" + version + ".zip");
 
-        DirectoryHelper.DeleteIfExists(Path.Combine(CliPaths.TemplateCache, _options.RepositoryId + "-" + version), true);
+        DirectoryHelper.DeleteIfExists(Path.Combine(CliPaths.TemplateCache, _cliOptions.RepositoryId + "-" + version), true);
 
         _logger.LogInformation($"Lion AbpPro Version:{version}");
         _logger.LogInformation($"模板生成中......");
 
         if (!File.Exists(localCacheFile))
         {
-            return new TemplateFile(version, localCacheFile, await _lionAbpProManager.DownloadAsync(version, localCacheFile));
+            return new TemplateFile(version, localCacheFile, await _abpProManager.DownloadAsync(version, localCacheFile));
         }
         else
         {
@@ -91,7 +91,7 @@ public class SourceCodeManager : ITransientDependency, ISourceCodeManager
             }
         }
 
-        context.ExtractProjectPath = Path.Combine(CliPaths.TemplateCache, _options.RepositoryId + "-" + context.TemplateFile.Version);
+        context.ExtractProjectPath = Path.Combine(CliPaths.TemplateCache, _cliOptions.RepositoryId + "-" + context.TemplateFile.Version);
     }
 
     public void MoveTemplate(SourceCodeContext context)

@@ -16,8 +16,8 @@ namespace Lion.AbpPro
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpAccountWebModule),
         typeof(AbpProApplicationModule),
-        typeof(LionAbpProCapModule),
-        typeof(LionAbpProCapEntityFrameworkCoreModule),
+        typeof(AbpProCapModule),
+        typeof(AbpProCapEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpCachingStackExchangeRedisModule),
         typeof(AbpBackgroundJobsHangfireModule)
@@ -243,7 +243,7 @@ namespace Lion.AbpPro
                     options.MapType<FileContentResult>(() => new OpenApiSchema() { Type = "file" });
 
                     options.SwaggerDoc("AbpPro",
-                        new OpenApiInfo { Title = "LionAbpPro API", Version = "v1" });
+                        new OpenApiInfo { Title = "AbpPro API", Version = "v1" });
                     options.DocInclusionPredicate((docName, description) => true);
                     options.EnableAnnotations(); // 启用注解
                     options.DocumentFilter<HiddenAbpDefaultApiFilter>();
@@ -324,7 +324,7 @@ namespace Lion.AbpPro
                     capOptions.UseDashboard(options =>
                     {
                         options.UseAuth = auth;
-                        options.AuthorizationPolicy = LionAbpProCapPermissions.CapManagement.Cap;
+                        options.AuthorizationPolicy = AbpProCapPermissions.CapManagement.Cap;
                     });
                 });
             }

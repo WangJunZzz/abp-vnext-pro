@@ -10,7 +10,7 @@ namespace Lion.AbpPro.BasicManagement;
     typeof(AbpPermissionManagementDomainSharedModule),
     typeof(AbpSettingManagementDomainSharedModule),
     typeof(AbpTenantManagementDomainSharedModule),
-    typeof(LionAbpProCoreModule)
+    typeof(AbpProCoreModule)
 )]
 public class BasicManagementDomainSharedModule : AbpModule
 {

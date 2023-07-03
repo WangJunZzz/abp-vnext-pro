@@ -10,7 +10,7 @@ namespace MyCompanyName.MyProjectName
         typeof(BasicManagementDomainSharedModule),
         typeof(NotificationManagementDomainSharedModule),
         typeof(DataDictionaryManagementDomainSharedModule),
-        typeof(LionAbpProCoreModule)
+        typeof(AbpProCoreModule)
     )]
     public class MyProjectNameDomainSharedModule : AbpModule
     {

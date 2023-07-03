@@ -4,7 +4,7 @@ namespace MyCompanyName.MyProjectName.MyModuleName
 {
     [DependsOn(
         typeof(AbpValidationModule),
-        typeof(LionAbpProCoreModule)
+        typeof(AbpProCoreModule)
     )]
     public class MyModuleNameDomainSharedModule : AbpModule
     {

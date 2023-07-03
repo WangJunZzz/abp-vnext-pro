@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using Lion.AbpPro.Cli.SourceCode;
-
-namespace Lion.AbpPro.Cli.Commands;
+﻿namespace Lion.AbpPro.Cli.Commands;
 
 public class NewCommand : IConsoleCommand, ITransientDependency
 {
@@ -9,20 +6,20 @@ public class NewCommand : IConsoleCommand, ITransientDependency
     private readonly ILogger<NewCommand> _logger;
     private readonly AbpCliOptions _abpCliOptions;
     private readonly IServiceScopeFactory _serviceScopeFactory;
-    private readonly Options.LionAbpProOptions _options;
+    private readonly Options.AbpProCliOptions _cliOptions;
     private readonly ISourceCodeManager _sourceCodeManager;
 
     public NewCommand(
         IOptions<AbpCliOptions> abpCliOptions,
         ILogger<NewCommand> logger,
         IServiceScopeFactory serviceScopeFactory,
-        IOptions<Options.LionAbpProOptions> options,
+        IOptions<Options.AbpProCliOptions> options,
         ISourceCodeManager sourceCodeManager)
     {
         _logger = logger;
         _serviceScopeFactory = serviceScopeFactory;
         _sourceCodeManager = sourceCodeManager;
-        _options = options.Value;
+        _cliOptions = options.Value;
         _abpCliOptions = abpCliOptions.Value;
     }
 
@@ -40,7 +37,7 @@ public class NewCommand : IConsoleCommand, ITransientDependency
             return;
         }
 
-        var templateOptions = _options.Templates.FirstOrDefault(e => e.Name == template);
+        var templateOptions = _cliOptions.Templates.FirstOrDefault(e => e.Name == template);
         if (templateOptions == null)
         {
             _logger.LogError("模板类型不正确");
@@ -48,9 +45,9 @@ public class NewCommand : IConsoleCommand, ITransientDependency
             return;
         }
 
-        context.RepositoryId = _options.RepositoryId;
-        context.Token = _options.DecryptToken;
-        context.Owner = _options.Owner;
+        context.RepositoryId = _cliOptions.RepositoryId;
+        context.Token = _cliOptions.DecryptToken;
+        context.Owner = _cliOptions.Owner;
         context.TemplateName = templateOptions.Name;
         context.TemplateKey = templateOptions.Key;
         context.IsSource = templateOptions.IsSource;

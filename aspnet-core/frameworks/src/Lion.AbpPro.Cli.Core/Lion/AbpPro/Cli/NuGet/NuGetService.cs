@@ -1,7 +1,4 @@
-﻿using Volo.Abp.Domain.Services;
-using Volo.Abp.Json;
-
-namespace Lion.AbpPro.Cli.NuGet;
+﻿namespace Lion.AbpPro.Cli.NuGet;
 
 public class NuGetService : DomainService
 {

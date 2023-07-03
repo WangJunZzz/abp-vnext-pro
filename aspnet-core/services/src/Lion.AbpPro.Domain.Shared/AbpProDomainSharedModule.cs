@@ -6,7 +6,7 @@ using Lion.AbpPro.LanguageManagement;
 namespace Lion.AbpPro
 {
     [DependsOn(
-        typeof(LionAbpProCoreModule),
+        typeof(AbpProCoreModule),
         typeof(BasicManagementDomainSharedModule),
         typeof(DataDictionaryManagementDomainSharedModule),
         typeof(NotificationManagementDomainSharedModule),

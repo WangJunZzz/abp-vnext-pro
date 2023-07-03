@@ -4,7 +4,7 @@ namespace Lion.AbpPro.DataDictionaryManagement
 {
     [DependsOn(
         typeof(AbpValidationModule),
-        typeof(LionAbpProCoreModule)
+        typeof(AbpProCoreModule)
     )]
     public class DataDictionaryManagementDomainSharedModule : AbpModule
     {

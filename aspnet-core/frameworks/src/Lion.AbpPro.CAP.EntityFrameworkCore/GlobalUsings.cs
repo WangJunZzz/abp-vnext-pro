@@ -2,6 +2,7 @@
 
 global using System.Collections.Concurrent;
 global using DotNetCore.CAP;
+global using Lion.AbpPro.CAP.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Storage;
 global using Microsoft.Extensions.DependencyInjection;
