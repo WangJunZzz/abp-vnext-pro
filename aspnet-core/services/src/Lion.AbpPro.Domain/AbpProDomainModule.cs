@@ -1,5 +1,3 @@
-using Lion.AbpPro.LanguageManagement;
-
 namespace Lion.AbpPro
 {
     [DependsOn(
@@ -14,7 +12,6 @@ namespace Lion.AbpPro
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            Configure<AbpMultiTenancyOptions>(options => { options.IsEnabled = MultiTenancyConsts.IsEnabled; });
             Configure<AbpAutoMapperOptions>(options => { options.AddMaps<AbpProDomainModule>(); });
         }
     }

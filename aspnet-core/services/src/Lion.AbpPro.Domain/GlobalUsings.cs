@@ -9,6 +9,7 @@ global using System.Runtime.InteropServices;
 global using System.Threading.Tasks;
 global using Lion.AbpPro.BasicManagement;
 global using Lion.AbpPro.DataDictionaryManagement;
+global using Lion.AbpPro.LanguageManagement;
 global using Lion.AbpPro.MultiTenancy;
 global using Lion.AbpPro.NotificationManagement;
 global using Lion.AbpPro.Users.Dto;

@@ -24,4 +24,11 @@
     <ProjectReference Include="..\Lion.AbpPro.BasicManagement.Domain\Lion.AbpPro.BasicManagement.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.aspnetcore.mvc\7.2.2\contentFiles\any\net7.0\Volo.Abp.AspNetCore.Mvc.abppkg.json" />
+    <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.aspnetcore.mvc\7.2.2\contentFiles\any\net7.0\Volo.Abp.AspNetCore.Mvc.abppkg.analyze.json" />
+    <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.identity.aspnetcore\7.2.2\contentFiles\any\net7.0\Volo.Abp.Identity.AspNetCore.abppkg.json" />
+    <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.identity.aspnetcore\7.2.2\contentFiles\any\net7.0\Volo.Abp.Identity.AspNetCore.abppkg.analyze.json" />
+  </ItemGroup>
+
 </Project>

@@ -1,10 +1,3 @@
-using Hangfire.Redis;
-using Lion.AbpPro.CAP.EntityFrameworkCore;
-using Microsoft.AspNetCore.Localization;
-using Swagger;
-using Volo.Abp.BackgroundJobs.Hangfire;
-using Volo.Abp.Timing;
-
 namespace Lion.AbpPro
 {
     [DependsOn(
@@ -43,25 +36,20 @@ namespace Lion.AbpPro
             ConfigureCap(context);
             ConfigureAuditLog(context);
             ConfigurationSignalR(context);
-            context.Services.Configure<RequestLocalizationOptions>(options =>
-            {
-                //options.RequestCultureProviders.RemoveAll(provider => provider is AcceptLanguageHeaderRequestCultureProvider);
-                options.RequestCultureProviders.Add(new AbpProAcceptLanguageHeaderRequestCultureProvider());
-            });
+            ConfigurationMultiTenancy();
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
             var app = context.GetApplicationBuilder();
             var configuration = context.GetConfiguration();
-            app.UseLionRequestLocalization();
+            app.UseAbpProRequestLocalization();
             app.UseCorrelationId();
             app.UseStaticFiles();
             if (configuration.GetValue("MiniProfiler:Enabled", false))
             {
                 app.UseMiniProfiler();
             }
-
             app.UseRouting();
             app.UseCors(AbpProHttpApiHostConst.DefaultCorsPolicyName);
             app.UseAuthentication();
@@ -82,7 +70,6 @@ namespace Lion.AbpPro
 
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
-
             app.UseUnitOfWork();
             app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
             app.UseHangfireDashboard("/hangfire", new DashboardOptions()
@@ -367,6 +354,10 @@ namespace Lion.AbpPro
                 });
         }
 
+        private void ConfigurationMultiTenancy()
+        {
+            Configure<AbpMultiTenancyOptions>(options => { options.IsEnabled = MultiTenancyConsts.IsEnabled; });
+        }
         #endregion
     }
 }

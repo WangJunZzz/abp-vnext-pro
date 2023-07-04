@@ -1,6 +1,3 @@
-using Lion.AbpPro.BasicManagement;
-using Lion.AbpPro.LanguageManagement;
-
 namespace Lion.AbpPro
 {
     [DependsOn(

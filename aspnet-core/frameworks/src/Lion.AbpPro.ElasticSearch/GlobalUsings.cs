@@ -3,6 +3,7 @@
 global using System.Collections.Concurrent;
 global using System.Runtime.Serialization;
 global using Elasticsearch.Net;
+global using Lion.AbpPro.ElasticSearch.Exceptions;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Options;
 global using Nest;

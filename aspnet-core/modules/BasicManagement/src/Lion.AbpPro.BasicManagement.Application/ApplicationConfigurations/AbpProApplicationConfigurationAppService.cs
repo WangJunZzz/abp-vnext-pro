@@ -3,7 +3,7 @@
 namespace Lion.AbpPro.BasicManagement.ApplicationConfigurations;
 
 [Dependency(ReplaceServices = true)]
-public class LionAbpApplicationConfigurationAppService : ApplicationService, IAbpApplicationConfigurationAppService
+public class AbpProApplicationConfigurationAppService : ApplicationService, IAbpApplicationConfigurationAppService
 {
     private readonly AbpLocalizationOptions _localizationOptions;
     private readonly AbpMultiTenancyOptions _multiTenancyOptions;
@@ -21,7 +21,7 @@ public class LionAbpApplicationConfigurationAppService : ApplicationService, IAb
     private readonly AbpClockOptions _abpClockOptions;
     private readonly ICachedObjectExtensionsDtoService _cachedObjectExtensionsDtoService;
 
-    public LionAbpApplicationConfigurationAppService(
+    public AbpProApplicationConfigurationAppService(
         IOptions<AbpLocalizationOptions> localizationOptions,
         IOptions<AbpMultiTenancyOptions> multiTenancyOptions,
         IAbpAuthorizationPolicyProvider abpAuthorizationPolicyProvider,

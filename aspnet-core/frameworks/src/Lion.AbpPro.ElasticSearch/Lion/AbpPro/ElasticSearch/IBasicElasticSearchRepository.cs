@@ -1,6 +1,4 @@
-﻿using Lion.AbpPro.ElasticSearch.Exceptions;
-
-namespace Lion.AbpPro.ElasticSearch;
+﻿namespace Lion.AbpPro.ElasticSearch;
 
 public interface IBasicElasticSearchRepository<TEntity> where TEntity : class, IElasticSearchEntity
 {
