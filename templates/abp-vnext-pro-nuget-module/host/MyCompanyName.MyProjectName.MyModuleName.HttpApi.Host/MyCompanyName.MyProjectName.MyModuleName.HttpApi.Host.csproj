@@ -7,32 +7,36 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Serilog.AspNetCore"/>
-        <PackageReference Include="Serilog.Sinks.Async"/>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer"/>
-        <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis"/>
-        <PackageReference Include="Volo.Abp.Autofac"/>
-        <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis"/>
-        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy"/>
-        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL"/>
-        <PackageReference Include="Volo.Abp.AspNetCore.Serilog"/>
-        <PackageReference Include="Volo.Abp.Swashbuckle"/>
-        <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore"/>
-        <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore"/>
-        <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore"/>
+        <PackageReference Include="Serilog.AspNetCore" />
+        <PackageReference Include="Serilog.Sinks.Async" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+        <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" />
+        <PackageReference Include="Volo.Abp.Autofac" />
+        <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" />
+        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" />
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" />
+        <PackageReference Include="Volo.Abp.AspNetCore.Serilog" />
+        <PackageReference Include="Volo.Abp.Swashbuckle" />
+        <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" />
+        <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" />
+        <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.MyModuleName.HttpApi\MyCompanyName.MyProjectName.MyModuleName.HttpApi.csproj"/>
-        <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.MyModuleName.Application\MyCompanyName.MyProjectName.MyModuleName.Application.csproj"/>
-        <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.csproj"/>
+        <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.MyModuleName.HttpApi\MyCompanyName.MyProjectName.MyModuleName.HttpApi.csproj" />
+        <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.MyModuleName.Application\MyCompanyName.MyProjectName.MyModuleName.Application.csproj" />
+        <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Remove="Logs\**"/>
-        <Content Remove="Logs\**"/>
-        <EmbeddedResource Remove="Logs\**"/>
-        <None Remove="Logs\**"/>
+        <Compile Remove="Logs\**" />
+        <Content Remove="Logs\**" />
+        <EmbeddedResource Remove="Logs\**" />
+        <None Remove="Logs\**" />
+        <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.aspnetcore.mvc.ui.multitenancy\7.2.2\contentFiles\any\net7.0\Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.abppkg.json" />
+        <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.aspnetcore.mvc.ui.multitenancy\7.2.2\contentFiles\any\net7.0\Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.abppkg.analyze.json" />
+        <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.aspnetcore.serilog\7.2.2\contentFiles\any\net7.0\Volo.Abp.AspNetCore.Serilog.abppkg.json" />
+        <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.aspnetcore.serilog\7.2.2\contentFiles\any\net7.0\Volo.Abp.AspNetCore.Serilog.abppkg.analyze.json" />
     </ItemGroup>
 
 </Project>
