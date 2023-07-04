@@ -128,7 +128,8 @@ public class SourceCodeManager : ITransientDependency, ISourceCodeManager
                 context.CompanyName,
                 context.ProjectName,
                 context.ModuleName,
-                context.ReplaceSuffix);
+                context.ReplaceSuffix,
+                context.TemplateFile.Version);
 
             if (context.IsSource)
             {

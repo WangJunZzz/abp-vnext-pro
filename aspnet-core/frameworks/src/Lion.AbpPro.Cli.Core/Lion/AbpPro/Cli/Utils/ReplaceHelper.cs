@@ -2,13 +2,20 @@
 
 public static class ReplaceHelper
 {
-
-    public static void ReplaceTemplates(string sourcePath, string oldCompanyName, string oldProjectName, string oldModuleName, string companyName, string projectName, string moduleName,
-        string replaceSuffix)
+    public static void ReplaceTemplates(
+        string sourcePath,
+        string oldCompanyName,
+        string oldProjectName,
+        string oldModuleName,
+        string companyName,
+        string projectName,
+        string moduleName,
+        string replaceSuffix,
+        string version)
     {
         try
         {
-            RenameTemplate(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, replaceSuffix);
+            RenameTemplate(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, replaceSuffix, version);
         }
         catch (Exception ex)
         {
@@ -16,19 +23,35 @@ public static class ReplaceHelper
         }
     }
 
-    private static void RenameTemplate(string sourcePath, string oldCompanyName, string oldProjectName, string oldModuleName, string companyName, string projectName, string moduleName,
-        string replaceSuffix)
+    private static void RenameTemplate(
+        string sourcePath,
+        string oldCompanyName,
+        string oldProjectName,
+        string oldModuleName,
+        string companyName,
+        string projectName,
+        string moduleName,
+        string replaceSuffix,
+        string version)
     {
-        RenameAllDirectories(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName);
-        RenameAllFileNameAndContent(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, replaceSuffix);
+        RenameAllDirectories(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version);
+        RenameAllFileNameAndContent(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, replaceSuffix, version);
     }
 
-    private static void RenameAllDirectories(string sourcePath, string oldCompanyName, string oldProjectName, string oldModuleName, string companyName, string projectName, string moduleName)
+    private static void RenameAllDirectories(
+        string sourcePath,
+        string oldCompanyName,
+        string oldProjectName,
+        string oldModuleName,
+        string companyName,
+        string projectName,
+        string moduleName,
+        string version)
     {
         var directories = Directory.GetDirectories(sourcePath);
         foreach (var subDirectory in directories)
         {
-            RenameAllDirectories(subDirectory, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName);
+            RenameAllDirectories(subDirectory, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version);
 
             var directoryInfo = new DirectoryInfo(subDirectory);
             if (directoryInfo.Name.Contains(oldCompanyName) ||
@@ -36,7 +59,7 @@ public static class ReplaceHelper
                 directoryInfo.Name.Contains(oldModuleName))
             {
                 var oldDirectoryName = directoryInfo.Name;
-                var newDirectoryName = oldDirectoryName.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName);
+                var newDirectoryName = oldDirectoryName.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version);
 
                 var newDirectoryPath = Path.Combine(directoryInfo.Parent?.FullName, newDirectoryName);
 
@@ -47,10 +70,18 @@ public static class ReplaceHelper
             }
         }
     }
-    
 
-    private static void RenameAllFileNameAndContent(string sourcePath, string oldCompanyName, string oldProjectName, string oldModuleName, string companyName, string projectName, string moduleName,
-        string replaceSuffix)
+
+    private static void RenameAllFileNameAndContent(
+        string sourcePath,
+        string oldCompanyName,
+        string oldProjectName,
+        string oldModuleName,
+        string companyName,
+        string projectName,
+        string moduleName,
+        string replaceSuffix,
+        string version)
     {
         var list = new DirectoryInfo(sourcePath)
             .GetFiles()
@@ -62,7 +93,7 @@ public static class ReplaceHelper
         {
             // 改文件内容
             var oldContents = File.ReadAllText(fileInfo.FullName, encoding);
-            var newContents = oldContents.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName);
+            var newContents = oldContents.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version);
 
             // 文件名包含模板关键字
             if (fileInfo.Name.Contains(oldCompanyName)
@@ -70,7 +101,7 @@ public static class ReplaceHelper
                 || fileInfo.Name.Contains(oldModuleName))
             {
                 var oldFileName = fileInfo.Name;
-                var newFileName = oldFileName.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName);
+                var newFileName = oldFileName.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version);
 
                 var newFilePath = Path.Combine(fileInfo.DirectoryName, newFileName);
                 // 无变化才重命名
@@ -87,19 +118,28 @@ public static class ReplaceHelper
 
         foreach (var subDirectory in Directory.GetDirectories(sourcePath))
         {
-            RenameAllFileNameAndContent(subDirectory, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, replaceSuffix);
+            RenameAllFileNameAndContent(subDirectory, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, replaceSuffix, version);
         }
     }
-    
 
-    private static string CustomReplace(this string content, string oldCompanyName, string oldProjectName, string oldModuleName, string companyName, string projectName, string moduleName)
+
+    private static string CustomReplace(
+        this string content,
+        string oldCompanyName,
+        string oldProjectName,
+        string oldModuleName,
+        string companyName,
+        string projectName,
+        string moduleName,
+        string version)
     {
         var result = content.ReplacePackageReferenceBasicManagement()
             .ReplacePackageReferenceLanguageManagement()
             .ReplacePackageReferenceFileManagement()
             .ReplacePackageReferenceDataDictionaryManagement()
             .ReplacePackageReferenceNotificationManagement()
-            .ReplacePackageReferenceCore();
+            .ReplacePackageReferenceCore()
+            .ReplaceLionPackageVersion(version);
 
         if (oldModuleName.IsNullOrWhiteSpace() || oldModuleName.IsNullOrWhiteSpace())
         {
@@ -117,5 +157,4 @@ public static class ReplaceHelper
 
         return result;
     }
-
 }

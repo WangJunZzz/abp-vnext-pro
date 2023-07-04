@@ -156,4 +156,9 @@ public static class ReplacePackageReferenceExtensions
                 "<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\NotificationManagement\\src\\Lion.AbpPro.NotificationManagement.HttpApi.Client\\Lion.AbpPro.NotificationManagement.HttpApi.Client.csproj\"/>",
                 "<PackageReference Include=\"Lion.AbpPro.NotificationManagement.HttpApi.Client\"/>");
     }
+
+    public static string ReplaceLionPackageVersion(this string context, string version)
+    {
+        return context.Replace("MyVersion", version);
+    }
 }
