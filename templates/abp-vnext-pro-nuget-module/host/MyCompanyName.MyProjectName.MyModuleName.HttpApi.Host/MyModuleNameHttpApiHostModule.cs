@@ -1,3 +1,5 @@
+using Volo.Abp.MultiTenancy;
+
 namespace MyCompanyName.MyProjectName.MyModuleName
 {
     [DependsOn(
@@ -17,6 +19,7 @@ namespace MyCompanyName.MyProjectName.MyModuleName
     public class MyModuleNameHttpApiHostModule : AbpModule
     {
         private const string DefaultCorsPolicyName = "Default";
+        private const bool MultiTenancyIsEnabled = true;
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
@@ -26,6 +29,7 @@ namespace MyCompanyName.MyProjectName.MyModuleName
             ConfigureDB();
             ConfigureLocalization();
             ConfigureVirtualFileSystem(context);
+            ConfigurationMultiTenancy();
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -49,6 +53,11 @@ namespace MyCompanyName.MyProjectName.MyModuleName
             app.UseRouting();
             app.UseCors(DefaultCorsPolicyName);
             app.UseAuthentication();
+            
+            if (MultiTenancyIsEnabled)
+            {
+                app.UseMultiTenancy();
+            }
             app.UseAbpRequestLocalization();
             app.UseAuthorization();
             app.UseSwagger();
@@ -66,6 +75,10 @@ namespace MyCompanyName.MyProjectName.MyModuleName
             app.UseConfiguredEndpoints();
         }
         
+        private void ConfigurationMultiTenancy()
+        {
+            Configure<AbpMultiTenancyOptions>(options => { options.IsEnabled = MultiTenancyIsEnabled; });
+        }
         /// <summary>
         /// 配置跨域
         /// </summary>

@@ -48,6 +48,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.FreeSqlRepository", "src\MyCompanyName.MyProjectName.FreeSqlRepository\MyCompanyName.MyProjectName.FreeSqlRepository.csproj", "{27C7A0E6-4C2E-4AFF-9DE7-1F526DDC0D18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.WebGateway", "host\MyCompanyName.MyProjectName.WebGateway\MyCompanyName.MyProjectName.WebGateway.csproj", "{9C009501-0ED2-4930-B020-C8D06FE28E44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +116,10 @@ Global
 		{27C7A0E6-4C2E-4AFF-9DE7-1F526DDC0D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27C7A0E6-4C2E-4AFF-9DE7-1F526DDC0D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27C7A0E6-4C2E-4AFF-9DE7-1F526DDC0D18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C009501-0ED2-4930-B020-C8D06FE28E44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C009501-0ED2-4930-B020-C8D06FE28E44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C009501-0ED2-4930-B020-C8D06FE28E44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C009501-0ED2-4930-B020-C8D06FE28E44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,6 +140,7 @@ Global
 		{AA94D832-1CCC-4715-95A9-A483F23A1A5D} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{FB20372D-6C96-4733-9AAC-12522F15CAA6} = {8C1B8C6C-C518-4290-B070-622CCA6004DA}
 		{27C7A0E6-4C2E-4AFF-9DE7-1F526DDC0D18} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{9C009501-0ED2-4930-B020-C8D06FE28E44} = {8C1B8C6C-C518-4290-B070-622CCA6004DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}
