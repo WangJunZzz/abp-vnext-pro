@@ -41,7 +41,7 @@ namespace Lion.AbpPro.BasicManagement.Settings
                 {
                     var value = await SettingProvider.GetOrNullAsync(itemDefinition.Name);
                     var type = itemDefinition.Properties
-                        .FirstOrDefault(f => f.Key == BasicManagementSettings.ControlType.Default).Value
+                        .FirstOrDefault(f => f.Key == AbpProSettingConsts.ControlType.Default).Value
                         .ToString();
 
                     item.SettingItemOutput.Add(new SettingItemOutput(
@@ -62,12 +62,12 @@ namespace Lion.AbpPro.BasicManagement.Settings
             {
                 // The key of the settingValues is in camel_Case, like "setting_Abp_Localization_DefaultLanguage",
                 // change it to "Abp.Localization.DefaultLanguage" form
-                if (!kv.Key.StartsWith(BasicManagementSettings.Prefix))
+                if (!kv.Key.StartsWith(AbpProSettingConsts.Prefix))
                 {
                     continue;
                 }
 
-                string name = kv.Key.RemovePreFix(BasicManagementSettings.Prefix);
+                string name = kv.Key.RemovePreFix(AbpProSettingConsts.Prefix);
                 var setting = _settingDefinitionManager.GetOrNull(name);
                 if (setting == null)
                 {

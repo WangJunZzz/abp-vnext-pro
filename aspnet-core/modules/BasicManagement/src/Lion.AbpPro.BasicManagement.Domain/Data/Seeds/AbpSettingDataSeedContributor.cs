@@ -1,7 +1,6 @@
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Guids;
-using Volo.Abp.Localization;
 
 namespace Lion.AbpPro.BasicManagement.Data.Seeds
 {
