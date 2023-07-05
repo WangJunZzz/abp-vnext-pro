@@ -42,10 +42,10 @@
         <Content Remove="Logs\**" />
         <EmbeddedResource Remove="Logs\**" />
         <None Remove="Logs\**" />
-        <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.aspnetcore.mvc.ui.multitenancy\7.2.2\contentFiles\any\net7.0\Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.abppkg.json" />
-        <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.aspnetcore.mvc.ui.multitenancy\7.2.2\contentFiles\any\net7.0\Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.abppkg.analyze.json" />
-        <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.aspnetcore.serilog\7.2.2\contentFiles\any\net7.0\Volo.Abp.AspNetCore.Serilog.abppkg.json" />
-        <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.aspnetcore.serilog\7.2.2\contentFiles\any\net7.0\Volo.Abp.AspNetCore.Serilog.abppkg.analyze.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*.json" />
     </ItemGroup>
 
 </Project>

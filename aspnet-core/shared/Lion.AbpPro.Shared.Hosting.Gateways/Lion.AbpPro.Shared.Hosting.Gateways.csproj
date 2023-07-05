@@ -16,7 +16,6 @@
         <PackageReference Include="Swashbuckle.AspNetCore" />
     </ItemGroup>
     <ItemGroup>
-      <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.aspnetcore\7.2.2\contentFiles\any\net7.0\Volo.Abp.AspNetCore.abppkg.json" />
-      <Content Remove="C:\Users\wangjun\.nuget\packages\volo.abp.aspnetcore\7.2.2\contentFiles\any\net7.0\Volo.Abp.AspNetCore.abppkg.analyze.json" />
+        <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*.json" />
     </ItemGroup>
 </Project>
