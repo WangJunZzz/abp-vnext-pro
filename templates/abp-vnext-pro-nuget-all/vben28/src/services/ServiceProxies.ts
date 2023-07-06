@@ -7177,8 +7177,8 @@ export interface IControllerInterfaceApiDescriptionModel {
 
 export class CreateDataDictinaryDetailInput implements ICreateDataDictinaryDetailInput {
     id!: string;
-    code!: string;
-    displayText!: string;
+    code!: string | undefined;
+    displayText!: string | undefined;
     description!: string | undefined;
     order!: number;
 
@@ -7221,15 +7221,15 @@ export class CreateDataDictinaryDetailInput implements ICreateDataDictinaryDetai
 
 export interface ICreateDataDictinaryDetailInput {
     id: string;
-    code: string;
-    displayText: string;
+    code: string | undefined;
+    displayText: string | undefined;
     description: string | undefined;
     order: number;
 }
 
 export class CreateDataDictinaryInput implements ICreateDataDictinaryInput {
-    code!: string;
-    displayText!: string;
+    code!: string | undefined;
+    displayText!: string | undefined;
     description!: string | undefined;
 
     constructor(data?: ICreateDataDictinaryInput) {
@@ -7266,13 +7266,13 @@ export class CreateDataDictinaryInput implements ICreateDataDictinaryInput {
 }
 
 export interface ICreateDataDictinaryInput {
-    code: string;
-    displayText: string;
+    code: string | undefined;
+    displayText: string | undefined;
     description: string | undefined;
 }
 
 export class CreateOrganizationUnitInput implements ICreateOrganizationUnitInput {
-    displayName!: string;
+    displayName!: string | undefined;
     parentId!: string | undefined;
 
     constructor(data?: ICreateOrganizationUnitInput) {
@@ -7307,7 +7307,7 @@ export class CreateOrganizationUnitInput implements ICreateOrganizationUnitInput
 }
 
 export interface ICreateOrganizationUnitInput {
-    displayName: string;
+    displayName: string | undefined;
     parentId: string | undefined;
 }
 
@@ -9654,8 +9654,8 @@ export interface IGetOrganizationUnitUserOutputPagedResultDto {
 }
 
 export class GetPermissionInput implements IGetPermissionInput {
-    providerName!: string;
-    providerKey!: string;
+    providerName!: string | undefined;
+    providerKey!: string | undefined;
 
     constructor(data?: IGetPermissionInput) {
         if (data) {
@@ -9689,8 +9689,8 @@ export class GetPermissionInput implements IGetPermissionInput {
 }
 
 export interface IGetPermissionInput {
-    providerName: string;
-    providerKey: string;
+    providerName: string | undefined;
+    providerKey: string | undefined;
 }
 
 export class GetUnAddRoleInput implements IGetUnAddRoleInput {
@@ -10588,13 +10588,13 @@ export class IdentityUserDto implements IIdentityUserDto {
             }
         }
         data["id"] = this.id;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime.toLocaleString() : <any>undefined;
         data["creatorId"] = this.creatorId;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toLocaleString() : <any>undefined;
         data["lastModifierId"] = this.lastModifierId;
         data["isDeleted"] = this.isDeleted;
         data["deleterId"] = this.deleterId;
-        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toLocaleString() : <any>undefined;
         data["tenantId"] = this.tenantId;
         data["userName"] = this.userName;
         data["name"] = this.name;
@@ -10605,7 +10605,7 @@ export class IdentityUserDto implements IIdentityUserDto {
         data["phoneNumberConfirmed"] = this.phoneNumberConfirmed;
         data["isActive"] = this.isActive;
         data["lockoutEnabled"] = this.lockoutEnabled;
-        data["lockoutEnd"] = this.lockoutEnd ? this.lockoutEnd.toISOString() : <any>undefined;
+        data["lockoutEnd"] = this.lockoutEnd ? this.lockoutEnd.toLocaleString() : <any>undefined;
         data["concurrencyStamp"] = this.concurrencyStamp;
         data["entityVersion"] = this.entityVersion;
         return data;
@@ -11567,8 +11567,8 @@ export class PagingAuditLogInput implements IPagingAuditLogInput {
         data["pageSize"] = this.pageSize;
         data["skipCount"] = this.skipCount;
         data["sorting"] = this.sorting;
-        data["startTime"] = this.startTime ? this.startTime.toISOString() : <any>undefined;
-        data["endTime"] = this.endTime ? this.endTime.toISOString() : <any>undefined;
+        data["startTime"] = this.startTime ? this.startTime.toLocaleString() : <any>undefined;
+        data["endTime"] = this.endTime ? this.endTime.toLocaleString() : <any>undefined;
         data["httpMethod"] = this.httpMethod;
         data["url"] = this.url;
         data["userId"] = this.userId;
@@ -12398,7 +12398,7 @@ export class PagingNotificationListOutput implements IPagingNotificationListOutp
         data["messageLevel"] = this.messageLevel;
         data["messageLevelDescription"] = this.messageLevelDescription;
         data["senderId"] = this.senderId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime.toLocaleString() : <any>undefined;
         data["read"] = this.read;
         return data;
     }
@@ -13868,7 +13868,7 @@ export interface ITypeApiDescriptionModel {
 
 export class UpdateConnectionStringInput implements IUpdateConnectionStringInput {
     id!: string;
-    connectionString!: string;
+    connectionString!: string | undefined;
 
     constructor(data?: IUpdateConnectionStringInput) {
         if (data) {
@@ -13903,13 +13903,13 @@ export class UpdateConnectionStringInput implements IUpdateConnectionStringInput
 
 export interface IUpdateConnectionStringInput {
     id: string;
-    connectionString: string;
+    connectionString: string | undefined;
 }
 
 export class UpdateDataDictinaryInput implements IUpdateDataDictinaryInput {
     id!: string;
-    code!: string;
-    displayText!: string;
+    code!: string | undefined;
+    displayText!: string | undefined;
     description!: string | undefined;
 
     constructor(data?: IUpdateDataDictinaryInput) {
@@ -13949,15 +13949,15 @@ export class UpdateDataDictinaryInput implements IUpdateDataDictinaryInput {
 
 export interface IUpdateDataDictinaryInput {
     id: string;
-    code: string;
-    displayText: string;
+    code: string | undefined;
+    displayText: string | undefined;
     description: string | undefined;
 }
 
 export class UpdateDetailInput implements IUpdateDetailInput {
     dataDictionaryId!: string;
     id!: string;
-    displayText!: string;
+    displayText!: string | undefined;
     description!: string | undefined;
     order!: number;
 
@@ -14001,13 +14001,13 @@ export class UpdateDetailInput implements IUpdateDetailInput {
 export interface IUpdateDetailInput {
     dataDictionaryId: string;
     id: string;
-    displayText: string;
+    displayText: string | undefined;
     description: string | undefined;
     order: number;
 }
 
 export class UpdateOrganizationUnitInput implements IUpdateOrganizationUnitInput {
-    displayName!: string;
+    displayName!: string | undefined;
     id!: string;
 
     constructor(data?: IUpdateOrganizationUnitInput) {
@@ -14042,7 +14042,7 @@ export class UpdateOrganizationUnitInput implements IUpdateOrganizationUnitInput
 }
 
 export interface IUpdateOrganizationUnitInput {
-    displayName: string;
+    displayName: string | undefined;
     id: string;
 }
 
@@ -14171,8 +14171,8 @@ export interface IUpdateRoleInput {
 }
 
 export class UpdateRolePermissionsInput implements IUpdateRolePermissionsInput {
-    providerName!: string;
-    providerKey!: string;
+    providerName!: string | undefined;
+    providerKey!: string | undefined;
     updatePermissionsDto!: UpdatePermissionsDto;
 
     constructor(data?: IUpdateRolePermissionsInput) {
@@ -14209,8 +14209,8 @@ export class UpdateRolePermissionsInput implements IUpdateRolePermissionsInput {
 }
 
 export interface IUpdateRolePermissionsInput {
-    providerName: string;
-    providerKey: string;
+    providerName: string | undefined;
+    providerKey: string | undefined;
     updatePermissionsDto: UpdatePermissionsDto;
 }
 
@@ -14264,7 +14264,7 @@ export interface IUpdateSettingInput {
 
 export class UpdateTenantInput implements IUpdateTenantInput {
     id!: string;
-    name!: string;
+    name!: string | undefined;
 
     constructor(data?: IUpdateTenantInput) {
         if (data) {
@@ -14299,7 +14299,7 @@ export class UpdateTenantInput implements IUpdateTenantInput {
 
 export interface IUpdateTenantInput {
     id: string;
-    name: string;
+    name: string | undefined;
 }
 
 export class UpdateUserInput implements IUpdateUserInput {
