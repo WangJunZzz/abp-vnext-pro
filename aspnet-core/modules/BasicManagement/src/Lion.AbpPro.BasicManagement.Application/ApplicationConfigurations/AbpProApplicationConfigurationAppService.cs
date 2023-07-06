@@ -3,6 +3,7 @@
 namespace Lion.AbpPro.BasicManagement.ApplicationConfigurations;
 
 [Dependency(ReplaceServices = true)]
+[ExposeServices(typeof(IAbpApplicationConfigurationAppService))]
 public class AbpProApplicationConfigurationAppService : ApplicationService, IAbpApplicationConfigurationAppService
 {
     private readonly AbpLocalizationOptions _localizationOptions;
