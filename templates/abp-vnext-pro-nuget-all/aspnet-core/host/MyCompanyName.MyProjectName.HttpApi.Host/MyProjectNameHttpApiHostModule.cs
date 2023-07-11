@@ -32,7 +32,7 @@ namespace MyCompanyName.MyProjectName
             var app = context.GetApplicationBuilder();
             var configuration = context.GetConfiguration();
 
-            app.UseAbpRequestLocalization();
+            app.UseAbpProRequestLocalization();
             app.UseCorrelationId();
             app.UseStaticFiles();
             app.UseMiniProfiler();

@@ -31,7 +31,7 @@ public class MyProjectNameHttpApiHostModule : AbpModule
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {
         var app = context.GetApplicationBuilder();
-        app.UseAbpRequestLocalization();
+        app.UseAbpProRequestLocalization();
         app.UseCorrelationId();
         app.UseStaticFiles();
         app.UseMiniProfiler();

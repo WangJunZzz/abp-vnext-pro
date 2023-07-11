@@ -1,11 +1,3 @@
-using Lion.AbpPro.BasicManagement.EntityFrameworkCore;
-using Lion.AbpPro.DataDictionaryManagement;
-using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
-using Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore;
-using Lion.AbpPro.NotificationManagement;
-using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
-using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
-
 namespace MyCompanyName.MyProjectName.EntityFrameworkCore
 {
     /* This is your actual DbContext used on runtime.
@@ -21,7 +13,8 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
     public class MyProjectNameDbContext : AbpDbContext<MyProjectNameDbContext>, IMyProjectNameDbContext,
         IBasicManagementDbContext,
         INotificationManagementDbContext,
-        IDataDictionaryManagementDbContext
+        IDataDictionaryManagementDbContext,
+        ILanguageManagementDbContext
     {
         public DbSet<IdentityUser> Users { get; set; }
         public DbSet<IdentityRole> Roles { get; set; }
@@ -43,6 +36,8 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
         public DbSet<AuditLog> AuditLogs { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<DataDictionary> DataDictionaries { get; set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<LanguageText> LanguageTexts { get; set; }
         public MyProjectNameDbContext(DbContextOptions<MyProjectNameDbContext> options)
             : base(options)
         {
@@ -63,6 +58,9 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
             
             //数据字典
             builder.ConfigureDataDictionaryManagement();
+            
+            // 多语言
+            builder.ConfigureLanguageManagement();
         }
 
     }

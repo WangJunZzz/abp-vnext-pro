@@ -1,5 +1,6 @@
 using Lion.AbpPro.BasicManagement;
 using Lion.AbpPro.DataDictionaryManagement;
+using Lion.AbpPro.LanguageManagement;
 using Lion.AbpPro.NotificationManagement;
 
 namespace MyCompanyName.MyProjectName
@@ -8,7 +9,8 @@ namespace MyCompanyName.MyProjectName
         typeof(MyProjectNameApplicationContractsModule),
         typeof(BasicManagementHttpApiClientModule),
         typeof(NotificationManagementHttpApiClientModule),
-        typeof(DataDictionaryManagementHttpApiClientModule)
+        typeof(DataDictionaryManagementHttpApiClientModule),
+        typeof(LanguageManagementHttpApiClientModule)
     )]
     public class MyProjectNameHttpApiClientModule : AbpModule
     {

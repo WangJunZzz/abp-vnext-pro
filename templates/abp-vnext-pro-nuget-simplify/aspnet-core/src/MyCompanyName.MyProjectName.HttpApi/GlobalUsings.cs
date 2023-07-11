@@ -2,6 +2,8 @@
 
 
 global using Lion.AbpPro.BasicManagement;
+global using Lion.AbpPro.DataDictionaryManagement;
+global using Lion.AbpPro.LanguageManagement;
 global using Lion.AbpPro.NotificationManagement;
 global using Localization.Resources.AbpUi;
 global using Microsoft.AspNetCore.Mvc;

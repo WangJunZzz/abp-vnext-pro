@@ -11,7 +11,7 @@ const admin: AppRouteModule = {
     orderNo: 20,
     icon: 'ion:grid-outline',
     title: t('routes.admin.systemManagement'),
-    policy: 'AbpIdentity'
+    policy: 'AbpIdentity',
   },
   children: [
     {
@@ -73,7 +73,27 @@ const admin: AppRouteModule = {
         icon: 'ant-design:table-outlined',
         policy: 'AbpIdentity.DataDictionaryManagement',
       },
-    }
+    },
+    {
+      path: 'language',
+      name: 'language',
+      component: () => import('/@/views/admin/language/Index.vue'),
+      meta: {
+        title: t('routes.admin.languageManagement'),
+        icon: 'ant-design:read-outlined',
+        policy: 'AbpIdentity.Languages',
+      },
+    },
+    {
+      path: 'languageText',
+      name: 'languageText',
+      component: () => import('/@/views/admin/languageText/Index.vue'),
+      meta: {
+        title: t('routes.admin.languageTextManagement'),
+        icon: 'ant-design:font-size-outlined',
+        policy: 'AbpIdentity.LanguageTexts',
+      },
+    },
   ],
 };
 

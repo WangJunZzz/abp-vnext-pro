@@ -2,6 +2,10 @@
 
 global using System;
 global using System.Threading.Tasks;
+global using Lion.AbpPro.BasicManagement;
+global using Lion.AbpPro.DataDictionaryManagement;
+global using Lion.AbpPro.LanguageManagement;
+global using Lion.AbpPro.NotificationManagement;
 global using Volo.Abp.Application.Services;
 global using Volo.Abp.Authorization.Permissions;
 global using Volo.Abp.DependencyInjection;

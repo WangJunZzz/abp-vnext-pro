@@ -1,7 +1,3 @@
-using Lion.AbpPro.BasicManagement;
-using Lion.AbpPro.DataDictionaryManagement;
-using Lion.AbpPro.NotificationManagement;
-
 namespace MyCompanyName.MyProjectName
 {
     [DependsOn(
@@ -9,7 +5,8 @@ namespace MyCompanyName.MyProjectName
         typeof(AbpObjectExtendingModule),
         typeof(BasicManagementApplicationContractsModule),
         typeof(NotificationManagementApplicationContractsModule),
-        typeof(DataDictionaryManagementApplicationContractsModule)
+        typeof(DataDictionaryManagementApplicationContractsModule),
+        typeof(LanguageManagementApplicationContractsModule)
     )]
     public class MyProjectNameApplicationContractsModule : AbpModule
     {

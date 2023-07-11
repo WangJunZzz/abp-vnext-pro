@@ -5,6 +5,8 @@ global using System.Collections.Generic;
 global using System.Linq;
 global using System.Threading.Tasks;
 global using Lion.AbpPro.BasicManagement;
+global using Lion.AbpPro.DataDictionaryManagement;
+global using Lion.AbpPro.LanguageManagement;
 global using Lion.AbpPro.NotificationManagement;
 global using MyCompanyName.MyProjectName.FreeSqlRepository;
 global using MyCompanyName.MyProjectName.Permissions;

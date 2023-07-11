@@ -1,12 +1,11 @@
-using Lion.AbpPro.DataDictionaryManagement;
-
 namespace MyCompanyName.MyProjectName
 {
     [DependsOn(
         typeof(MyProjectNameApplicationContractsModule),
         typeof(BasicManagementHttpApiModule),
         typeof(NotificationManagementHttpApiModule),
-        typeof(DataDictionaryManagementHttpApiModule)
+        typeof(DataDictionaryManagementHttpApiModule),
+        typeof(LanguageManagementHttpApiModule)
         )]
     public class MyProjectNameHttpApiModule : AbpModule
     {
