@@ -4,9 +4,10 @@ namespace Lion.AbpPro.LanguageManagement.Settings
     {
         public override void Define(ISettingDefinitionContext context)
         {
-            /* Define module settings here.
-             * Use names from LanguageManagementSettings class.
-             */
+            var languageManagementSettings = context.GetOrNull(LocalizationSettingNames.DefaultLanguage)
+                .WithProperty(LanguageManagementSettings.Group.Default, LanguageManagementSettings.Group.SystemManagement)
+                .WithProperty(AbpProSettingConsts.ControlType.Default, AbpProSettingConsts.ControlType.TypeText);
+            languageManagementSettings.DefaultValue = "zh-Hans";
         }
     }
 }

@@ -14,11 +14,6 @@ public class BasicManagementSettingDefinitionProvider : SettingDefinitionProvide
     /// </summary>
     private static void OverrideDefaultSettings(ISettingDefinitionContext context)
     {
-
-       context.GetOrNull(LocalizationSettingNames.DefaultLanguage)
-            .WithProperty(BasicManagementSettings.Group.Default, BasicManagementSettings.Group.SystemManagement)
-            .WithProperty(AbpProSettingConsts.ControlType.Default, AbpProSettingConsts.ControlType.TypeText);
-        
         context.Add(
             new SettingDefinition(TimingSettingNames.TimeZone,
                     "China Standard Time",
