@@ -266,3 +266,4 @@ aspnet-core/services/host/Lion.AbpPro.Web.Blazor.Server/Logs/logs.txt
 /aspnet-core/frameworks/test/Lion.AbpPro.EntityFrameworkCore.Mysql.Tests/Logs
 /aspnet-core/frameworks/test/Lion.AbpPro.EntityFrameworkCore.Mysql.Tests/wwwroot/libs
 /templates/abp-vnext-pro-nuget-all/aspnet-core/host/MyCompanyName.MyProjectName.HttpApi.Host/logs
+/templates/abp-vnext-pro-nuget-simplify/aspnet-core/host/MyCompanyName.MyProjectName.HttpApi.Host/logs
