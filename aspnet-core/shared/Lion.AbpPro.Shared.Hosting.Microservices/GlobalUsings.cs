@@ -1,6 +1,7 @@
 ﻿// Global using directives
 
 global using System;
+global using System.Collections.Concurrent;
 global using System.Collections.Generic;
 global using System.Linq;
 global using System.Net;
@@ -29,6 +30,7 @@ global using Microsoft.OpenApi.Models;
 global using Serilog;
 global using Serilog.Exceptions;
 global using Serilog.Sinks.Elasticsearch;
+global using Swashbuckle.AspNetCore.Swagger;
 global using Swashbuckle.AspNetCore.SwaggerGen;
 global using Volo.Abp;
 global using Volo.Abp.AspNetCore.ExceptionHandling;
