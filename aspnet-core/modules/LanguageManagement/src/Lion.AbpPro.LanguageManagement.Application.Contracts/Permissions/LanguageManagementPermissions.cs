@@ -17,14 +17,14 @@ namespace Lion.AbpPro.LanguageManagement.Permissions
 
             public const string Create = "AbpIdentity.LanguageTexts.Create";
             
-            public const string Edit = "AbpIdentity.LanguageTexts.Edit";
+            public const string Update = "AbpIdentity.LanguageTexts.Update";
         }
 
         public class Languages
         {
             public const string Default = "AbpIdentity.Languages";
 
-            public const string Edit = "AbpIdentity.Languages.Edit";
+            public const string Update = "AbpIdentity.Languages.Update";
 
             public const string Create = "AbpIdentity.Languages.Create";
 

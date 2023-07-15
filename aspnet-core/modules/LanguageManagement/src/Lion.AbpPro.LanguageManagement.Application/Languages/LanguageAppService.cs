@@ -59,7 +59,7 @@ public class LanguageAppService : ApplicationService, ILanguageAppService
     /// <summary>
     /// 编辑语言
     /// </summary>
-    [Authorize(LanguageManagementPermissions.Languages.Edit)]
+    [Authorize(LanguageManagementPermissions.Languages.Update)]
     public Task UpdateAsync(UpdateLanguageInput input)
     {
         return _languageManager.UpdateAsync(

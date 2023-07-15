@@ -115,7 +115,7 @@ public class LanguageTextAppService : ApplicationService, ILanguageTextAppServic
     /// <summary>
     /// 编辑语言文本
     /// </summary>
-    [Authorize(LanguageManagementPermissions.LanguageTexts.Edit)]
+    [Authorize(LanguageManagementPermissions.LanguageTexts.Update)]
     public async Task UpdateAsync(UpdateLanguageTextInput input)
     {
         var localizedString = await GetLocalizedStringAsync(input.ResourceName, input.CultureName, input.Name);

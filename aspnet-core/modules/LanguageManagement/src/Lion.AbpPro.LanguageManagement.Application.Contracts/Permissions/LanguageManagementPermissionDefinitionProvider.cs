@@ -8,16 +8,16 @@ namespace Lion.AbpPro.LanguageManagement.Permissions
             // var languageManagement = context.AddGroup(LanguageManagementPermissions.GroupName, L("Permission:LanguageManagement"));
 
 
-            var languages = abpIdentityGroup.AddPermission(LanguageManagementPermissions.Languages.Default, L("Permission:Languages"));
-            languages.AddChild(LanguageManagementPermissions.Languages.Create, L("Permission:Create"));
-            languages.AddChild(LanguageManagementPermissions.Languages.Edit, L("Permission:Edit"));
-            languages.AddChild(LanguageManagementPermissions.Languages.Delete, L("Permission:Delete"));
-            languages.AddChild(LanguageManagementPermissions.Languages.ChangeDefault, L("Permission:LanguagesChangeDefault"));
+            var languages = abpIdentityGroup.AddPermission(LanguageManagementPermissions.Languages.Default, L("Permission:Languages"), multiTenancySide: MultiTenancySides.Both);
+            languages.AddChild(LanguageManagementPermissions.Languages.Create, L("Permission:Create"), multiTenancySide: MultiTenancySides.Both);
+            languages.AddChild(LanguageManagementPermissions.Languages.Update, L("Permission:Update"), multiTenancySide: MultiTenancySides.Both);
+            languages.AddChild(LanguageManagementPermissions.Languages.Delete, L("Permission:Delete"), multiTenancySide: MultiTenancySides.Both);
+            languages.AddChild(LanguageManagementPermissions.Languages.ChangeDefault, L("Permission:LanguagesChangeDefault"), multiTenancySide: MultiTenancySides.Both);
 
 
-            var languageTexts = abpIdentityGroup.AddPermission(LanguageManagementPermissions.LanguageTexts.Default, L("Permission:LanguageTexts"));
-            languageTexts.AddChild(LanguageManagementPermissions.LanguageTexts.Edit, L("Permission:Edit"));
-            languageTexts.AddChild(LanguageManagementPermissions.LanguageTexts.Create, L("Permission:Create"));
+            var languageTexts = abpIdentityGroup.AddPermission(LanguageManagementPermissions.LanguageTexts.Default, L("Permission:LanguageTexts"), multiTenancySide: MultiTenancySides.Both);
+            languageTexts.AddChild(LanguageManagementPermissions.LanguageTexts.Update, L("Permission:Update"), multiTenancySide: MultiTenancySides.Both);
+            languageTexts.AddChild(LanguageManagementPermissions.LanguageTexts.Create, L("Permission:Create"), multiTenancySide: MultiTenancySides.Both);
         }
 
         private static LocalizableString L(string name)

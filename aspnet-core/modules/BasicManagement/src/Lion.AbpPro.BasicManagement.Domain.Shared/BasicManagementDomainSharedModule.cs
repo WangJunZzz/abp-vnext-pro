@@ -25,11 +25,7 @@ public class BasicManagementDomainSharedModule : AbpModule
         {
             options.Resources
                 .Add<BasicManagementResource>(BasicManagementConsts.DefaultCultureName)
-                .AddVirtualJson("/Localization/BasicManagement")
-                .AddBaseTypes(typeof(IdentityResource))
-                .AddBaseTypes(typeof(AbpValidationResource))
-                .AddBaseTypes(typeof(AbpLocalizationResource))
-                .AddBaseTypes(typeof(AbpSettingManagementResource));
+                .AddVirtualJson("/Localization/BasicManagement");
 
             options.DefaultResourceType = typeof(BasicManagementResource);
         });

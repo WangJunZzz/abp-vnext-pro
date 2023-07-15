@@ -19,4 +19,5 @@ global using Volo.Abp.Authorization;
 global using Volo.Abp.Authorization.Permissions;
 global using Volo.Abp.Localization;
 global using Volo.Abp.Modularity;
+global using Volo.Abp.MultiTenancy;
 global using Volo.Abp.Reflection;

@@ -6,6 +6,7 @@
           preIcon="ant-design:plus-circle-outlined"
           type="primary"
           @click="openCreateLanguageModal"
+          v-auth="'AbpIdentity.Languages.Create'"
         >
           {{ t('common.createText') }}
         </a-button>
@@ -28,12 +29,14 @@
             {
               icon: 'clarity:note-edit-line',
               label: t('common.editText'),
+              auth: 'AbpIdentity.Languages.Update',
               onClick: handleEdit.bind(null, record),
             },
             {
               icon: 'ant-design:delete-outlined',
               color: 'error',
               label: t('common.delText'),
+              auth: 'AbpIdentity.Languages.Update',
               popConfirm: {
                 title: t('common.askDelete'),
                 placement: 'left',

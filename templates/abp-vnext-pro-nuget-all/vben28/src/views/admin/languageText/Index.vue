@@ -6,6 +6,7 @@
           preIcon="ant-design:plus-circle-outlined"
           type="primary"
           @click="openCreateLanguageTextModal"
+          v-auth="'AbpIdentity.LanguageTexts.Create'"
         >
           {{ t('common.createText') }}
         </a-button>
@@ -17,6 +18,7 @@
             {
               icon: 'clarity:note-edit-line',
               label: t('common.editText'),
+              auth: 'AbpIdentity.LanguageTexts.Update',
               onClick: handleEdit.bind(null, record),
             },
           ]"

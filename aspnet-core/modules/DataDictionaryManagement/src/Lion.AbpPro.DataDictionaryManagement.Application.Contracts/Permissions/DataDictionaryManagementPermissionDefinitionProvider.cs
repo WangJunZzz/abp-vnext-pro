@@ -7,10 +7,10 @@ namespace Lion.AbpPro.DataDictionaryManagement.Permissions
             var abpIdentityGroup = context.GetGroup("AbpIdentity");
 
             var dataDictionaryManagement = abpIdentityGroup.AddPermission(DataDictionaryManagementPermissions.DataDictionaryManagement.Default,
-                L("Permission:DataDictionaryManagement"));
-            dataDictionaryManagement.AddChild(DataDictionaryManagementPermissions.DataDictionaryManagement.Create, L("Permission:Create"));
-            dataDictionaryManagement.AddChild(DataDictionaryManagementPermissions.DataDictionaryManagement.Update, L("Permission:Update"));
-            dataDictionaryManagement.AddChild(DataDictionaryManagementPermissions.DataDictionaryManagement.Delete, L("Permission:Delete"));
+                L("Permission:DataDictionaryManagement"), multiTenancySide: MultiTenancySides.Both);
+            dataDictionaryManagement.AddChild(DataDictionaryManagementPermissions.DataDictionaryManagement.Create, L("Permission:Create"), multiTenancySide: MultiTenancySides.Both);
+            dataDictionaryManagement.AddChild(DataDictionaryManagementPermissions.DataDictionaryManagement.Update, L("Permission:Update"), multiTenancySide: MultiTenancySides.Both);
+            dataDictionaryManagement.AddChild(DataDictionaryManagementPermissions.DataDictionaryManagement.Delete, L("Permission:Delete"), multiTenancySide: MultiTenancySides.Both);
         }
 
         private static LocalizableString L(string name)
