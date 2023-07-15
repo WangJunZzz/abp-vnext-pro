@@ -12,8 +12,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Lion.AbpPro.Migrations
 {
     [DbContext(typeof(AbpProDbContext))]
-    [Migration("20230320050728_AddLanguageDefault")]
-    partial class AddLanguageDefault
+    [Migration("20230715011337_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -90,7 +90,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DataDictionary", (string)null);
+                    b.ToTable("AbpDataDictionaries", (string)null);
                 });
 
             modelBuilder.Entity("Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates.DataDictionaryDetail", b =>
@@ -136,7 +136,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasIndex("DataDictionaryId");
 
-                    b.ToTable("DataDictionaryDetail", (string)null);
+                    b.ToTable("AbpDataDictionaryDetails", (string)null);
                 });
 
             modelBuilder.Entity("Lion.AbpPro.LanguageManagement.LanguageTexts.Aggregates.LanguageText", b =>
@@ -263,8 +263,8 @@ namespace Lion.AbpPro.Migrations
                         .HasColumnName("ExtraProperties");
 
                     b.Property<string>("FlagIcon")
-                        .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)")
                         .HasComment("图标");
 
                     b.Property<bool>("IsDefault")
@@ -294,6 +294,9 @@ namespace Lion.AbpPro.Migrations
                         .HasComment("Ui语言名称");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CultureName")
+                        .IsUnique();
 
                     b.ToTable("AbpLanguages", (string)null);
                 });
@@ -364,7 +367,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Notification", (string)null);
+                    b.ToTable("AbpNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Lion.AbpPro.NotificationManagement.Notifications.Aggregates.NotificationSubscription", b =>
@@ -418,7 +421,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasIndex("NotificationId");
 
-                    b.ToTable("NotificationSubscription", (string)null);
+                    b.ToTable("AbpNotificationSubscriptions", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
@@ -936,6 +939,9 @@ namespace Lion.AbpPro.Migrations
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
 
+                    b.Property<int>("EntityVersion")
+                        .HasColumnType("int");
+
                     b.Property<string>("ExtraProperties")
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
@@ -1120,6 +1126,9 @@ namespace Lion.AbpPro.Migrations
                         .HasDefaultValue(false)
                         .HasColumnName("EmailConfirmed");
 
+                    b.Property<int>("EntityVersion")
+                        .HasColumnType("int");
+
                     b.Property<string>("ExtraProperties")
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
@@ -1147,6 +1156,9 @@ namespace Lion.AbpPro.Migrations
                     b.Property<Guid?>("LastModifierId")
                         .HasColumnType("char(36)")
                         .HasColumnName("LastModifierId");
+
+                    b.Property<DateTimeOffset?>("LastPasswordChangeTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("LockoutEnabled")
                         .ValueGeneratedOnAdd()
@@ -1195,6 +1207,9 @@ namespace Lion.AbpPro.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)")
                         .HasColumnName("SecurityStamp");
+
+                    b.Property<bool>("ShouldChangePasswordOnNextLogin")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Surname")
                         .HasMaxLength(64)
@@ -1256,6 +1271,32 @@ namespace Lion.AbpPro.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("AbpUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Volo.Abp.Identity.IdentityUserDelegation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("SourceUserId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("TargetUserId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AbpUserDelegations", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentityUserLogin", b =>
@@ -1396,6 +1437,9 @@ namespace Lion.AbpPro.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("varchar(128)")
                         .HasColumnName("DisplayName");
+
+                    b.Property<int>("EntityVersion")
+                        .HasColumnType("int");
 
                     b.Property<string>("ExtraProperties")
                         .HasColumnType("longtext")
@@ -1626,6 +1670,9 @@ namespace Lion.AbpPro.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("DeletionTime");
+
+                    b.Property<int>("EntityVersion")
+                        .HasColumnType("int");
 
                     b.Property<string>("ExtraProperties")
                         .HasColumnType("longtext")
