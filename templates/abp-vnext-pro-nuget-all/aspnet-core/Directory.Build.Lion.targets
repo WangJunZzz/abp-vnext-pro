@@ -29,6 +29,13 @@
         <PackageReference Update="Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore" Version="MyVersion"/>
         <PackageReference Update="Lion.AbpPro.DataDictionaryManagement.HttpApi" Version="MyVersion"/>
         <PackageReference Update="Lion.AbpPro.DataDictionaryManagement.HttpApi.Client" Version="MyVersion"/>
-        
+
+        <PackageReference Update="Lion.AbpPro.LanguageManagement.Application" Version="MyVersion"/>
+        <PackageReference Update="Lion.AbpPro.LanguageManagement.Application.Contracts" Version="MyVersion"/>
+        <PackageReference Update="Lion.AbpPro.LanguageManagement.Domain" Version="MyVersion"/>
+        <PackageReference Update="Lion.AbpPro.LanguageManagement.Domain.Shared" Version="MyVersion"/>
+        <PackageReference Update="Lion.AbpPro.LanguageManagement.EntityFrameworkCore" Version="MyVersion"/>
+        <PackageReference Update="Lion.AbpPro.LanguageManagement.HttpApi" Version="MyVersion"/>
+        <PackageReference Update="Lion.AbpPro.LanguageManagement.HttpApi.Client" Version="MyVersion"/>
     </ItemGroup>
 </Project>
