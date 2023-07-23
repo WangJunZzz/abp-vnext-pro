@@ -55,7 +55,7 @@
     "lodash-es": "^4.17.21",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
-    "nswag": "^13.16.1",
+    "nswag": "^13.18.2",
     "path-to-regexp": "^6.2.0",
     "pinia": "2.0.12",
     "print-js": "^1.6.0",
