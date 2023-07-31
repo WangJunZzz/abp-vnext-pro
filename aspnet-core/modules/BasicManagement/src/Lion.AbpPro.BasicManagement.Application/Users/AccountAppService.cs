@@ -83,7 +83,7 @@ namespace Lion.AbpPro.BasicManagement.Users
 
             foreach (var item in roles)
             {
-                claims.Add(new Claim(JwtClaimTypes.Role, item));
+                claims.Add(new Claim(AbpClaimTypes.Role, item));
             }
 
             var tokenDescriptor = new SecurityTokenDescriptor()
