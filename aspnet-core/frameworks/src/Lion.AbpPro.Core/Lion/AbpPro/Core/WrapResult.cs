@@ -8,24 +8,24 @@ public class WrapResult<T>
 
     public T Data { get; private set; }
 
-    public int Code { get; private set; }
+    public string Code { get; private set; }
 
     public WrapResult()
     {
         Success = true;
         Message = "Success";
         Data = default;
-        Code = 200;
+        Code = "200";
     }
 
-    public void SetSuccess(T data, string message = "Success", int code = 200)
+    public void SetSuccess(T data, string message = "Success", string code = "200")
     {
         Success = true;
         Data = data;
         Code = code;
     }
 
-    public void SetFail(string message = "Fail", int code = 500)
+    public void SetFail(string message = "Fail", string code = "500")
     {
         Success = false;
         Message = message;

@@ -5,6 +5,11 @@
     "Permission:Cap": "CAP面板",
     "Lion.AbpPro:100001": "起始页必须大于等于1",
     "Lion.AbpPro:100002": "每页最大记录数不能超过100000",
-    "Lion.AbpPro:100003": "{0}不能为空"
+    "Lion.AbpPro:100003": "{0}不能为空",
+    "Lion.AbpPro:PermissionDenied": "权限不足",
+    "Lion.AbpPro:ParameterValidationFailed": "请求参数验证失败",
+    "Lion.AbpPro:EntityNotFound": "实体不存在",
+    "Lion.AbpPro:Unimplemented ": "未实现功能",
+    "Lion.AbpPro:DbUpdateConcurrency ": "数据已被修改,请重新提交."
   }
 }

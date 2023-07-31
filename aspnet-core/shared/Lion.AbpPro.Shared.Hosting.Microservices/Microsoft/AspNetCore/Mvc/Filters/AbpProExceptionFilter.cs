@@ -1,4 +1,9 @@
 using System.Text;
+using Lion.AbpPro;
+using Lion.AbpPro.Localization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
+using Volo.Abp.Localization.ExceptionHandling;
 
 namespace Microsoft.AspNetCore.Mvc.Filters;
 
@@ -61,23 +66,46 @@ public sealed class AbpProExceptionFilter : IAsyncExceptionFilter, ITransientDep
     private WrapResult<object> SimplifyMessage(ExceptionContext context)
     {
         var result = new WrapResult<object>();
+        var localizer = context.GetRequiredService<IStringLocalizer<AbpProLocalizationResource>>();
         switch (context.Exception)
         {
             case AbpAuthorizationException:
-                result.SetFail("权限不足", 401);
+                result.SetFail(localizer["Lion.AbpPro:PermissionDenied"], "401");
                 break;
-            case AbpValidationException:
-                result.SetFail("请求参数验证失败", 400);
+            case AbpValidationException validationException:
+                var errorMessage = localizer["Lion.AbpPro:ParameterValidationFailed"] + ";" + validationException.ValidationErrors.JoinAsString(";");
+                result.SetFail(errorMessage, "400");
                 break;
             case EntityNotFoundException:
-                result.SetFail("实体不存在", 506);
+                result.SetFail(localizer["Lion.AbpPro:EntityNotFound"], "506");
                 break;
             case NotImplementedException:
-                result.SetFail("未实现功能", 507);
+                result.SetFail(localizer["Lion.AbpPro:Unimplemented"], "507");
+                break;
+            case DbUpdateConcurrencyException:
+                result.SetFail(localizer["Lion.AbpPro:DbUpdateConcurrency"], "508");
                 break;
             default:
             {
-                result.SetFail(context.Exception.Message);
+                if (context.Exception is IHasErrorCode codeException)
+                {
+                    var exceptionConverter = context.GetRequiredService<IAbpProExceptionConverter>();
+                    var message = exceptionConverter.TryToLocalizeExceptionMessage(context.Exception);
+                    if (codeException.Code.IsNullOrWhiteSpace())
+                    {
+                        // TODO 没有code，不应该出现这个情况。
+                        result.SetFail(context.Exception.Message);
+                    }
+                    else
+                    {
+                        result.SetFail(message, codeException.Code);
+                    }
+                }
+                else
+                {
+                    result.SetFail(context.Exception.Message);
+                }
+
                 break;
             }
         }

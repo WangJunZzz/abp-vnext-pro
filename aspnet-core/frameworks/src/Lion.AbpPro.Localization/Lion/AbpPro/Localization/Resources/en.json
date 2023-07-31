@@ -5,6 +5,11 @@
     "Permission:Cap": "CAP Dashboard",
     "Lion.AbpPro:100001": "The start page must be greater than or equal to 1",
     "Lion.AbpPro:100002": "The maximum number of records per page cannot exceed 100,000",
-    "Lion.AbpPro:100003": "{0} can not be empty"
+    "Lion.AbpPro:100003": "{0} can not be empty",
+    "Lion.AbpPro:PermissionDenied": "Permission Denied",
+    "Lion.AbpPro:ParameterValidationFailed": "Parameter Validation Failed",
+    "Lion.AbpPro:EntityNotFound": "Entity Not Found",
+    "Lion.AbpPro:Unimplemented ": "Unimplemented",
+    "Lion.AbpPro:DbUpdateConcurrency ": "The data has been modified, please resubmit"
   }
 }
