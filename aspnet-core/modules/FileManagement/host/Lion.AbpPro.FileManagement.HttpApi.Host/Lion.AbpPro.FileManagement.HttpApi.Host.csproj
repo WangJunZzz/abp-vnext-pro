@@ -17,7 +17,7 @@
         <PackageReference Include="Serilog.Sinks.Console" />
         <PackageReference Include="Serilog.Sinks.Elasticsearch" />
         <PackageReference Include="Serilog.Sinks.File" />
-        <PackageReference Include="IdentityModel" />
+<!--        <PackageReference Include="IdentityModel" />-->
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
         <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />

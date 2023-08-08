@@ -6,7 +6,10 @@ namespace Lion.AbpPro.Extensions.Hangfire
     {
         public static void CreateRecurringJob(this ApplicationInitializationContext context)
         {
-            RecurringJob.AddOrUpdate<TestJob>("测试Job", t => t.ExecuteAsync(), CronType.Minute(1),TimeZoneInfo.Local);
+            RecurringJob.AddOrUpdate<TestJob>("测试Job", e => e.ExecuteAsync(), CronType.Minute(1), new RecurringJobOptions()
+            {
+                TimeZone = TimeZoneInfo.Local
+            });
         }
     }
 }

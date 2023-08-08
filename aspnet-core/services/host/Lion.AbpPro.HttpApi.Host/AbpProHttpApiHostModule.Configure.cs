@@ -112,7 +112,7 @@ public partial class AbpProHttpApiHostModule
         Configure<AbpDistributedCacheOptions>(
             options => { options.KeyPrefix = "AbpPro:"; });
         var configuration = context.Services.GetConfiguration();
-        var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
+        var redis = ConnectionMultiplexer.Connect(configuration.GetValue<string>("Redis:Configuration"));
         context.Services
             .AddDataProtection()
             .PersistKeysToStackExchangeRedis(redis, "AbpPro-Protection-Keys");

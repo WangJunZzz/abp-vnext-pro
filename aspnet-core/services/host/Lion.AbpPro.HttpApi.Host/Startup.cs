@@ -25,6 +25,7 @@ namespace Lion.AbpPro
         /// <summary>
         /// 程序首次访问接口速度慢，事先预热
         /// </summary>
+        [Obsolete("请使用Lion.AbpPro.Starter模块,实现IAbpProStarterContributor")]
         private void ConfigurePreheat()
         {
             var url = _configuration.GetValue<string>("App:SelfUrl");

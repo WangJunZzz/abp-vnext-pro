@@ -398,6 +398,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.ElasticSearch.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.EntityFrameworkCore.Tests", "frameworks\test\Lion.AbpPro.EntityFrameworkCore.Mysql.Tests\Lion.AbpPro.EntityFrameworkCore.Tests.csproj", "{FFD342DF-87A5-4642-B694-58714C506883}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Starter", "frameworks\src\Lion.AbpPro.Starter\Lion.AbpPro.Starter.csproj", "{187AEDA5-8323-45B4-90F6-A2F5574DEB25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -948,6 +950,10 @@ Global
 		{FFD342DF-87A5-4642-B694-58714C506883}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFD342DF-87A5-4642-B694-58714C506883}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFD342DF-87A5-4642-B694-58714C506883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{187AEDA5-8323-45B4-90F6-A2F5574DEB25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{187AEDA5-8323-45B4-90F6-A2F5574DEB25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{187AEDA5-8323-45B4-90F6-A2F5574DEB25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{187AEDA5-8323-45B4-90F6-A2F5574DEB25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1128,6 +1134,7 @@ Global
 		{4E9F48F8-4EBB-4D47-BC10-35760EE4F645} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
 		{A9824877-9F0C-4E33-BEFC-1DD62A365C75} = {EFC415F8-872F-4C7E-8645-31A51481BCFC}
 		{FFD342DF-87A5-4642-B694-58714C506883} = {EFC415F8-872F-4C7E-8645-31A51481BCFC}
+		{187AEDA5-8323-45B4-90F6-A2F5574DEB25} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

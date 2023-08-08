@@ -7,7 +7,7 @@
 
     <ItemGroup>
         <PackageReference Include="FreeSql"/>
-        <PackageReference Include="FreeSql.Provider.MySql"/>
+        <PackageReference Include="FreeSql.Provider.MysqlConnector"/>
     </ItemGroup>
 
     <ItemGroup>

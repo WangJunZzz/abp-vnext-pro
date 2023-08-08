@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.ComponentModel.Annotations" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Lion.AbpPro.Localization\Lion.AbpPro.Localization.csproj" />
     </ItemGroup>
 </Project>

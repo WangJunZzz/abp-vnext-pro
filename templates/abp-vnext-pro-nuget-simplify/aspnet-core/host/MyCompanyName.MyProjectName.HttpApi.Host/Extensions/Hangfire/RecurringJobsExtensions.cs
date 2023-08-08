@@ -1,14 +1,15 @@
 using MyCompanyName.MyProjectName.Jobs;
 
-namespace MyCompanyName.MyProjectName.Extensions
+namespace MyCompanyName.MyProjectName.Extensions.Hangfire
 {
     public static class RecurringJobsExtensions
     {
         public static void CreateRecurringJob(this ApplicationInitializationContext context)
         {
-            using var scope = context.ServiceProvider.CreateScope();
-            var testJob = scope.ServiceProvider.GetService<TestJob>();
-            RecurringJob.AddOrUpdate("测试Job", () => testJob.ExecuteAsync(), CronType.Minute(1), TimeZoneInfo.Local);
+            RecurringJob.AddOrUpdate<TestJob>("测试Job", e => e.ExecuteAsync(), CronType.Minute(1), new RecurringJobOptions()
+            {
+                TimeZone = TimeZoneInfo.Local
+            });
         }
     }
 }

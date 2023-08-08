@@ -69,7 +69,7 @@ namespace MyCompanyName.MyProjectName
 
         private void ConfigurationSignalR(ServiceConfigurationContext context)
         {
-            var redisConnection = context.Services.GetConfiguration()["Redis:Configuration"];
+            var redisConnection = context.Services.GetConfiguration().GetValue<string>("Redis:Configuration");
 
             if (redisConnection.IsNullOrWhiteSpace())
             {
