@@ -23,7 +23,7 @@ public class FileAppService : FileManagementAppService, IFileAppService
         var request = new AssumeRoleRequest()
         {
             RoleArn = _configuration.GetValue<string>("AliYun:OSS:RoleArn"),
-            RoleSessionName = "YH.Wms"
+            RoleSessionName = "Lion.AbpPro"
         };
         var response = client.GetAcsResponse(request);
 
