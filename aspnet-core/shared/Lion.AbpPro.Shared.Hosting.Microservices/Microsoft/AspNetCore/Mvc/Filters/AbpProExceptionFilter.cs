@@ -64,7 +64,6 @@ public class AbpProExceptionFilter : AbpExceptionFilter
         }
         else
         {
-            context.HttpContext.Response.Headers.Add(AbpHttpConsts.AbpErrorFormat, "true");
             context.HttpContext.Response.StatusCode = (int)context
                 .GetRequiredService<IHttpExceptionStatusCodeFinder>()
                 .GetStatusCode(context.HttpContext, context.Exception);
