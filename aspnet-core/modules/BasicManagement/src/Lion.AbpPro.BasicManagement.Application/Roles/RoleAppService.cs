@@ -20,7 +20,7 @@ public class RoleAppService : BasicManagementAppService, IRoleAppService
     /// 获取所有角色
     /// </summary>
       
-    public async Task<ListResultDto<IdentityRoleDto>> AllListAsync()
+    public virtual async Task<ListResultDto<IdentityRoleDto>> AllListAsync()
     {
         List<IdentityRole> source =
             await _roleRepository.GetListAsync()
@@ -34,7 +34,7 @@ public class RoleAppService : BasicManagementAppService, IRoleAppService
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
-    public async Task<PagedResultDto<IdentityRoleDto>> ListAsync(PagingRoleListInput input)
+    public virtual async Task<PagedResultDto<IdentityRoleDto>> ListAsync(PagingRoleListInput input)
     {
         var request = new GetIdentityRolesInput
         {
@@ -58,7 +58,7 @@ public class RoleAppService : BasicManagementAppService, IRoleAppService
     /// <param name="input"></param>
     /// <returns></returns>
     [Authorize(IdentityPermissions.Roles.Create)]
-    public async Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input)
+    public virtual async Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input)
     {
         return await _identityRoleAppService.CreateAsync(input);
     }
@@ -67,7 +67,7 @@ public class RoleAppService : BasicManagementAppService, IRoleAppService
     /// 更新角色
     /// </summary>
     [Authorize(IdentityPermissions.Roles.Update)]
-    public async Task<IdentityRoleDto> UpdateAsync(UpdateRoleInput input)
+    public virtual async Task<IdentityRoleDto> UpdateAsync(UpdateRoleInput input)
     {
         return await _identityRoleAppService.UpdateAsync(input.RoleId, input.RoleInfo);
     }
@@ -77,7 +77,7 @@ public class RoleAppService : BasicManagementAppService, IRoleAppService
     /// 删除角色
     /// </summary>
     [Authorize(IdentityPermissions.Roles.Delete)]
-    public async Task DeleteAsync(IdInput input)
+    public virtual async Task DeleteAsync(IdInput input)
     {
         await _identityRoleAppService.DeleteAsync(input.Id);
     }

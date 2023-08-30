@@ -25,7 +25,7 @@ public class LanguageTextAppService : ApplicationService, ILanguageTextAppServic
     /// <summary>
     /// 获取所有资源
     /// </summary>    
-    public async Task<List<FromSelector<string, string>>> AllResourceListAsync()
+    public virtual async Task<List<FromSelector<string, string>>> AllResourceListAsync()
     {
         var result = new List<FromSelector<string, string>>();
         foreach (var item in await _localizationHelper.GetAllResourceName())
@@ -39,7 +39,7 @@ public class LanguageTextAppService : ApplicationService, ILanguageTextAppServic
     /// <summary>
     /// 分页查询语言文本
     /// </summary>    
-    public async Task<PagedResultDto<PageLanguageTextOutput>> PageAsync(PageLanguageTextInput input)
+    public virtual async Task<PagedResultDto<PageLanguageTextOutput>> PageAsync(PageLanguageTextInput input)
     {
         if (!CultureHelper.IsValidCultureCode(input.CultureName))
         {
@@ -95,7 +95,7 @@ public class LanguageTextAppService : ApplicationService, ILanguageTextAppServic
     /// 创建语言文本
     /// </summary>
     [Authorize(LanguageManagementPermissions.LanguageTexts.Create)]
-    public async Task CreateAsync(CreateLanguageTextInput input)
+    public virtual async Task CreateAsync(CreateLanguageTextInput input)
     {
         var localizedString = await GetLocalizedStringAsync(input.ResourceName, input.CultureName, input.Name);
         if (localizedString != null && localizedString.Value == input.Value)
@@ -116,7 +116,7 @@ public class LanguageTextAppService : ApplicationService, ILanguageTextAppServic
     /// 编辑语言文本
     /// </summary>
     [Authorize(LanguageManagementPermissions.LanguageTexts.Update)]
-    public async Task UpdateAsync(UpdateLanguageTextInput input)
+    public virtual async Task UpdateAsync(UpdateLanguageTextInput input)
     {
         var localizedString = await GetLocalizedStringAsync(input.ResourceName, input.CultureName, input.Name);
         if (localizedString == null) throw new LanguageManagementApplicationException(LanguageManagementErrorCodes.ResourceNotFound);

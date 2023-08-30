@@ -19,7 +19,7 @@ public class LanguageTextManager : LanguageManagementDomainService, ILanguageTex
     /// <param name="filter">筛选条件：name or value</param>
     /// <param name="maxResultCount">返回最大条数</param>
     /// <param name="skipCount">跳过条数</param>
-    public async Task<List<LanguageTextDto>> ListAsync(string cultureName, string resourceName, string filter = null, int maxResultCount = 10, int skipCount = 0)
+    public virtual async Task<List<LanguageTextDto>> ListAsync(string cultureName, string resourceName, string filter = null, int maxResultCount = 10, int skipCount = 0)
     {
         var list = await _languageTextRepository.ListAsync(cultureName, resourceName, filter, maxResultCount, skipCount);
         return ObjectMapper.Map<List<LanguageText>, List<LanguageTextDto>>(list);
@@ -31,7 +31,7 @@ public class LanguageTextManager : LanguageManagementDomainService, ILanguageTex
     /// <param name="cultureName">语言</param>
     /// <param name="resourceName">资源名称</param>
     /// <param name="filter">筛选条件：name or value</param>
-    public async Task<long> CountAsync(string cultureName, string resourceName, string filter = null)
+    public virtual async Task<long> CountAsync(string cultureName, string resourceName, string filter = null)
     {
         return await _languageTextRepository.CountAsync(cultureName, resourceName, filter);
     }
@@ -39,7 +39,7 @@ public class LanguageTextManager : LanguageManagementDomainService, ILanguageTex
     /// <summary>
     /// 创建语言文本
     /// </summary>
-    public async Task<LanguageTextDto> CreateAsync(Guid id, string cultureName, string resourceName, string name, string value)
+    public virtual async Task<LanguageTextDto> CreateAsync(Guid id, string cultureName, string resourceName, string name, string value)
     {
         var entity = await _languageTextRepository.FindAsync(cultureName, resourceName, name);
         if (entity != null)
@@ -60,7 +60,7 @@ public class LanguageTextManager : LanguageManagementDomainService, ILanguageTex
     /// <param name="resourceName">资源名称</param>
     /// <param name="name">键</param> 
     /// <param name="value">值</param> 
-    public async Task<LanguageTextDto> UpdateAsync(string cultureName, string resourceName, string name, string value)
+    public virtual async Task<LanguageTextDto> UpdateAsync(string cultureName, string resourceName, string name, string value)
     {
         var entity = await _languageTextRepository.FindAsync(cultureName, resourceName, name);
         if (entity == null)
@@ -80,7 +80,7 @@ public class LanguageTextManager : LanguageManagementDomainService, ILanguageTex
     /// <summary>
     /// 删除语言文本
     /// </summary>
-    public async Task DeleteAsync(Guid id)
+    public virtual async Task DeleteAsync(Guid id)
     {
         var entity = await _languageTextRepository.FindAsync(id);
         if (entity == null) throw new LanguageManagementDomainException(LanguageManagementErrorCodes.LanguageNotFound);

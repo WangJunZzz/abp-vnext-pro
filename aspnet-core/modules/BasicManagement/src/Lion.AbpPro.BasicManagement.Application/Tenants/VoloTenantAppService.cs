@@ -15,13 +15,13 @@ namespace Lion.AbpPro.BasicManagement.Tenants
         }
         
         [AllowAnonymous]
-        public async Task<FindTenantResultDto> FindTenantByNameAsync(FindTenantByNameInput input)
+        public virtual async Task<FindTenantResultDto> FindTenantByNameAsync(FindTenantByNameInput input)
         {
             return await _abpTenantAppService.FindTenantByNameAsync(input.Name);
         }
 
         
-        public Task<PagedResultDto<TenantDto>> ListAsync(PagingTenantInput input)
+        public virtual Task<PagedResultDto<TenantDto>> ListAsync(PagingTenantInput input)
         {
             var request = new GetTenantsInput
             {
@@ -31,13 +31,13 @@ namespace Lion.AbpPro.BasicManagement.Tenants
         }
 
         [Authorize(policy:TenantManagementPermissions.Tenants.Create)]
-        public Task<TenantDto> CreateAsync(TenantCreateDto input)
+        public virtual Task<TenantDto> CreateAsync(TenantCreateDto input)
         {
             return _tenantAppService.CreateAsync(input);
         }
 
         [Authorize(policy:TenantManagementPermissions.Tenants.Update)]
-        public Task<TenantDto> UpdateAsync(UpdateTenantInput input)
+        public virtual Task<TenantDto> UpdateAsync(UpdateTenantInput input)
         {
             var request = new TenantUpdateDto()
             {
@@ -47,26 +47,26 @@ namespace Lion.AbpPro.BasicManagement.Tenants
         }
 
         [Authorize(policy:TenantManagementPermissions.Tenants.Delete)]
-        public Task DeleteAsync(IdInput input)
+        public virtual Task DeleteAsync(IdInput input)
         {
             return _tenantAppService.DeleteAsync(input.Id);
         }
 
         [Authorize(TenantManagementPermissions.Tenants.ManageConnectionStrings)]
-        public Task<string> GetDefaultConnectionStringAsync(IdInput input)
+        public virtual Task<string> GetDefaultConnectionStringAsync(IdInput input)
         {
             return _tenantAppService.GetDefaultConnectionStringAsync(input.Id);
         }
 
         [Authorize(TenantManagementPermissions.Tenants.ManageConnectionStrings)]
-        public Task UpdateDefaultConnectionStringAsync(UpdateConnectionStringInput input)
+        public virtual Task UpdateDefaultConnectionStringAsync(UpdateConnectionStringInput input)
         {
             return _tenantAppService.UpdateDefaultConnectionStringAsync(input.Id,
                 input.ConnectionString);
         }
 
         [Authorize(TenantManagementPermissions.Tenants.ManageConnectionStrings)]
-        public Task DeleteDefaultConnectionStringAsync(IdInput input)
+        public virtual Task DeleteDefaultConnectionStringAsync(IdInput input)
         {
             return _tenantAppService.DeleteDefaultConnectionStringAsync(input.Id);
         }

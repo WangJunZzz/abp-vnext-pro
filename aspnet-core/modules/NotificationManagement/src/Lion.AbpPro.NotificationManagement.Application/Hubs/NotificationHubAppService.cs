@@ -20,7 +20,7 @@ public class NotificationHubAppService : NotificationManagementAppService, INoti
     /// <summary>
     /// 发送消息
     /// </summary>
-    public async Task SendMessageAsync(Guid id, string title, string content, MessageType messageType, MessageLevel messageLevel, List<string> users)
+    public virtual async Task SendMessageAsync(Guid id, string title, string content, MessageType messageType, MessageLevel messageLevel, List<string> users)
     {
         switch (messageType)
         {

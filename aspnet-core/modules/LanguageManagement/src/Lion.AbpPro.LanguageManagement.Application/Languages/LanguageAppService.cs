@@ -18,7 +18,7 @@ public class LanguageAppService : ApplicationService, ILanguageAppService
     /// <summary>
     /// 获取所有语言
     /// </summary>     
-    public async Task<List<PageLanguageOutput>> AllListAsync()
+    public virtual async Task<List<PageLanguageOutput>> AllListAsync()
     {
         var languages = await _languageManager.ListAsync();
         var list = ObjectMapper.Map<List<Language>, List<PageLanguageOutput>>(languages);
@@ -29,7 +29,7 @@ public class LanguageAppService : ApplicationService, ILanguageAppService
     /// <summary>
     /// 分页查询语言
     /// </summary>     
-    public async Task<PagedResultDto<PageLanguageOutput>> PageAsync(PageLanguageInput input)
+    public virtual async Task<PagedResultDto<PageLanguageOutput>> PageAsync(PageLanguageInput input)
     {
         var result = new PagedResultDto<PageLanguageOutput>();
         var totalCount = await _languageManager.CountAsync(input.Filter);
@@ -44,7 +44,7 @@ public class LanguageAppService : ApplicationService, ILanguageAppService
     /// 创建语言
     /// </summary>
     [Authorize(LanguageManagementPermissions.Languages.Create)]
-    public Task CreateAsync(CreateLanguageInput input)
+    public virtual Task CreateAsync(CreateLanguageInput input)
     {
         return _languageManager.CreateAsync(
             GuidGenerator.Create(),
@@ -60,7 +60,7 @@ public class LanguageAppService : ApplicationService, ILanguageAppService
     /// 编辑语言
     /// </summary>
     [Authorize(LanguageManagementPermissions.Languages.Update)]
-    public Task UpdateAsync(UpdateLanguageInput input)
+    public virtual Task UpdateAsync(UpdateLanguageInput input)
     {
         return _languageManager.UpdateAsync(
             input.Id,
@@ -76,7 +76,7 @@ public class LanguageAppService : ApplicationService, ILanguageAppService
     /// 删除语言
     /// </summary>
     [Authorize(LanguageManagementPermissions.Languages.Delete)]
-    public Task DeleteAsync(DeleteLanguageInput input)
+    public virtual Task DeleteAsync(DeleteLanguageInput input)
     {
         return _languageManager.DeleteAsync(input.Id);
     }
@@ -85,7 +85,7 @@ public class LanguageAppService : ApplicationService, ILanguageAppService
     /// 设置默认语言
     /// </summary>
     [Authorize(LanguageManagementPermissions.Languages.ChangeDefault)]
-    public async Task SetDefaultAsync(IdInput input)
+    public virtual async Task SetDefaultAsync(IdInput input)
     {
         var language = await _languageManager.GetAsync(input.Id);
         await _settingManager.SetForCurrentTenantAsync(LanguageManagementConsts.SettingDefaultLanguage, language.CultureName + ";" + language.UiCultureName, false);

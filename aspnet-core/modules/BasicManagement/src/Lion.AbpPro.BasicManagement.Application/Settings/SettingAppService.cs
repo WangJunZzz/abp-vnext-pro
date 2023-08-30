@@ -20,7 +20,7 @@ namespace Lion.AbpPro.BasicManagement.Settings
             _factory = factory;
         }
 
-        public async Task<List<SettingOutput>> GetAsync()
+        public virtual async Task<List<SettingOutput>> GetAsync()
         {
             var allSettings = _settingDefinitionManager.GetAll().ToList();
             var settings = allSettings
@@ -56,7 +56,7 @@ namespace Lion.AbpPro.BasicManagement.Settings
             return await Task.FromResult(settingOutput);
         }
 
-        public async Task UpdateAsync(UpdateSettingInput input)
+        public virtual async Task UpdateAsync(UpdateSettingInput input)
         {
             foreach (var kv in input.Values)
             {

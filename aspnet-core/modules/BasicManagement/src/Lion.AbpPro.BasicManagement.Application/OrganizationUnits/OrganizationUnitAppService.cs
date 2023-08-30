@@ -17,7 +17,7 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
         _organizationUnitRepository = organizationUnitRepository;
     }
 
-    public async Task<List<TreeOutput>> GetTreeAsync()
+    public virtual async Task<List<TreeOutput>> GetTreeAsync()
     {
         var organizationUnits = await _organizationUnitRepository.GetListAsync();
         var organizationUnitDtos = ObjectMapper.Map<List<OrganizationUnit>, List<OrganizationUnitDto>>(organizationUnits);
@@ -25,7 +25,7 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
     }
 
     [Authorize(BasicManagementPermissions.SystemManagement.OrganizationUnitManagement.Create)]
-    public async Task CreateAsync(CreateOrganizationUnitInput input)
+    public virtual async Task CreateAsync(CreateOrganizationUnitInput input)
     {
         var entity = new OrganizationUnit
         (
@@ -38,13 +38,13 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
     }
 
     [Authorize(BasicManagementPermissions.SystemManagement.OrganizationUnitManagement.Delete)]
-    public Task DeleteAsync(IdInput input)
+    public virtual Task DeleteAsync(IdInput input)
     {
         return _organizationUnitManager.DeleteAsync(input.Id);
     }
 
     [Authorize(BasicManagementPermissions.SystemManagement.OrganizationUnitManagement.Update)]
-    public async Task UpdateAsync(UpdateOrganizationUnitInput input)
+    public virtual async Task UpdateAsync(UpdateOrganizationUnitInput input)
     {
         var entity = await _organizationUnitRepository.FindAsync(input.Id);
         if (entity != null)
@@ -55,7 +55,7 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
     }
 
     [Authorize(BasicManagementPermissions.SystemManagement.OrganizationUnitManagement.Create)]
-    public async Task AddRoleToOrganizationUnitAsync(AddRoleToOrganizationUnitInput input)
+    public virtual async Task AddRoleToOrganizationUnitAsync(AddRoleToOrganizationUnitInput input)
     {
         foreach (var roleId in input.RoleId)
         {
@@ -64,13 +64,13 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
     }
 
     [Authorize(BasicManagementPermissions.SystemManagement.OrganizationUnitManagement.Delete)]
-    public async Task RemoveRoleFromOrganizationUnitAsync(RemoveRoleToOrganizationUnitInput input)
+    public virtual async Task RemoveRoleFromOrganizationUnitAsync(RemoveRoleToOrganizationUnitInput input)
     {
         await _organizationUnitManager.RemoveRoleFromOrganizationUnitAsync(input.RoleId, input.OrganizationUnitId);
     }
 
     [Authorize(BasicManagementPermissions.SystemManagement.OrganizationUnitManagement.Create)]
-    public async Task AddUserToOrganizationUnitAsync(AddUserToOrganizationUnitInput input)
+    public virtual async Task AddUserToOrganizationUnitAsync(AddUserToOrganizationUnitInput input)
     {
         foreach (var userId in input.UserId)
         {
@@ -79,12 +79,12 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
     }
 
     [Authorize(BasicManagementPermissions.SystemManagement.OrganizationUnitManagement.Delete)]
-    public async Task RemoveUserFromOrganizationUnitAsync(RemoveUserToOrganizationUnitInput input)
+    public virtual async Task RemoveUserFromOrganizationUnitAsync(RemoveUserToOrganizationUnitInput input)
     {
         await _identityUserManager.RemoveFromOrganizationUnitAsync(input.UserId, input.OrganizationUnitId);
     }
 
-    public async Task<PagedResultDto<GetOrganizationUnitUserOutput>> GetUsersAsync(GetOrganizationUnitUserInput input)
+    public virtual async Task<PagedResultDto<GetOrganizationUnitUserOutput>> GetUsersAsync(GetOrganizationUnitUserInput input)
     {
         var listResult = new List<GetOrganizationUnitUserOutput>();
         var organizationUnit = await _organizationUnitRepository.FindAsync(input.OrganizationUnitId);
@@ -106,7 +106,7 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
         return new PagedResultDto<GetOrganizationUnitUserOutput>(count, listResult);
     }
 
-    public async Task<PagedResultDto<GetUnAddUserOutput>> GetUnAddUsersAsync(GetUnAddUserInput input)
+    public virtual async Task<PagedResultDto<GetUnAddUserOutput>> GetUnAddUsersAsync(GetUnAddUserInput input)
     {
         var listResult = new List<GetUnAddUserOutput>();
         var organizationUnit = await _organizationUnitRepository.FindAsync(input.OrganizationUnitId);
@@ -127,7 +127,7 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
         return new PagedResultDto<GetUnAddUserOutput>(count, listResult);
     }
 
-    public async Task<PagedResultDto<GetOrganizationUnitRoleOutput>> GetRolesAsync(GetOrganizationUnitRoleInput input)
+    public virtual async Task<PagedResultDto<GetOrganizationUnitRoleOutput>> GetRolesAsync(GetOrganizationUnitRoleInput input)
     {
         var listResult = new List<GetOrganizationUnitRoleOutput>();
         var organizationUnit = await _organizationUnitRepository.FindAsync(input.OrganizationUnitId);
@@ -143,7 +143,7 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
         return new PagedResultDto<GetOrganizationUnitRoleOutput>(count, listResult);
     }
 
-    public async Task<PagedResultDto<GetUnAddRoleOutput>> GetUnAddRolessAsync(GetUnAddRoleInput input)
+    public virtual async Task<PagedResultDto<GetUnAddRoleOutput>> GetUnAddRolessAsync(GetUnAddRoleInput input)
     {
         var listResult = new List<GetUnAddRoleOutput>();
         var organizationUnit = await _organizationUnitRepository.FindAsync(input.OrganizationUnitId);

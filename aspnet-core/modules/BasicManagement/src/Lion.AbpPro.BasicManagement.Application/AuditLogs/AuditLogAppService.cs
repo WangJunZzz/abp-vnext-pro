@@ -15,7 +15,7 @@ namespace Lion.AbpPro.BasicManagement.AuditLogs
         /// 分页查询审计日志
         /// </summary>
         [Authorize(Policy = BasicManagementPermissions.SystemManagement.AuditLog)]
-        public async Task<PagedResultDto<PagingAuditLogOutput>> GetListAsync(PagingAuditLogInput input)
+        public virtual async Task<PagedResultDto<PagingAuditLogOutput>> GetListAsync(PagingAuditLogInput input)
         {
             var totalCount = await _auditLogRepository.GetCountAsync(
                 input.StartTime,

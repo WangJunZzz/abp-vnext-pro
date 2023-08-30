@@ -35,7 +35,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// <summary>
         /// 分页查询用户
         /// </summary>
-        public async Task<PagedResultDto<IdentityUserDto>> ListAsync(PagingUserListInput input)
+        public virtual async Task<PagedResultDto<IdentityUserDto>> ListAsync(PagingUserListInput input)
         {
             var request = new GetIdentityUsersInput
             {
@@ -57,7 +57,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// 用户导出列表
         /// </summary>
         [Authorize(BasicManagementPermissions.SystemManagement.UserExport)]
-        public async Task<ActionResult> ExportAsync(PagingUserListInput input)
+        public virtual async Task<ActionResult> ExportAsync(PagingUserListInput input)
         {
             var request = new GetIdentityUsersInput
             {
@@ -77,7 +77,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// 新增用户
         /// </summary>
         [Authorize(IdentityPermissions.Users.Create)]
-        public async Task<IdentityUserDto> CreateAsync(IdentityUserCreateDto input)
+        public virtual async Task<IdentityUserDto> CreateAsync(IdentityUserCreateDto input)
         {
             // abp 5.0 之后新增字段,是否运行用户登录，默认设置为true
             input.IsActive = true;
@@ -106,7 +106,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// <summary>
         /// 获取用户角色信息
         /// </summary>
-        public async Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(IdInput input)
+        public virtual async Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(IdInput input)
         {
             var roles = await _identityUserRepository.GetRolesAsync(input.Id);
             return new ListResultDto<IdentityRoleDto>(
@@ -117,7 +117,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// <summary>
         /// 修改密码
         /// </summary>
-        public async Task<bool> ChangePasswordAsync(ChangePasswordInput input)
+        public virtual async Task<bool> ChangePasswordAsync(ChangePasswordInput input)
         {
             await _options.SetAsync();
             var identityUser = await _userManager.GetByIdAsync(base.CurrentUser.GetId());
@@ -142,7 +142,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// <param name="input"></param>
         /// <returns></returns>
         [Authorize(BasicManagementPermissions.SystemManagement.UserEnable)]
-        public async Task LockAsync(LockUserInput input)
+        public virtual async Task LockAsync(LockUserInput input)
         {
             var identityUser = await _userManager.GetByIdAsync(input.UserId);
             identityUser.SetIsActive(input.Locked);

@@ -12,7 +12,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
     /// <summary>
     /// 查询语言
     /// </summary>
-    public async Task<List<Language>> ListAsync(bool? isEnabled = null)
+    public virtual async Task<List<Language>> ListAsync(bool? isEnabled = null)
     {
         var list = await _languageRepository.ListAsync(isEnabled);
         return list;
@@ -21,7 +21,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
     /// <summary>
     /// 查询语言
     /// </summary>
-    public async Task<List<LanguageDto>> GetListAsync(int maxResultCount = 10, int skipCount = 0, string filter = null)
+    public virtual async Task<List<LanguageDto>> GetListAsync(int maxResultCount = 10, int skipCount = 0, string filter = null)
     {
         var list = await _languageRepository.ListAsync(maxResultCount, skipCount, filter);
         return ObjectMapper.Map<List<Language>, List<LanguageDto>>(list);
@@ -31,7 +31,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
     /// 获取总条数
     /// </summary>
     /// <param name="filter">查询条件 cultureName or uiCultureName or displayName</param>
-    public async Task<long> CountAsync(string filter = null)
+    public virtual async Task<long> CountAsync(string filter = null)
     {
         return await _languageRepository.CountAsync(filter);
     }
@@ -39,7 +39,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
     /// <summary>
     /// 创建语言
     /// </summary>
-    public async Task<LanguageDto> CreateAsync(
+    public virtual async Task<LanguageDto> CreateAsync(
         Guid id,
         string cultureName,
         string uiCultureName,
@@ -62,7 +62,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
     /// <summary>
     /// 更新语言
     /// </summary>
-    public async Task<LanguageDto> UpdateAsync(
+    public virtual async Task<LanguageDto> UpdateAsync(
         Guid id,
         string cultureName,
         string uiCultureName,
@@ -81,7 +81,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
     /// <summary>
     /// 删除语言
     /// </summary>
-    public async Task DeleteAsync(Guid id)
+    public virtual async Task DeleteAsync(Guid id)
     {
         var entity = await _languageRepository.FindAsync(id);
         if (entity == null) throw new LanguageManagementDomainException(LanguageManagementErrorCodes.LanguageNotFound);
@@ -91,7 +91,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
     /// <summary>
     /// 通过Id获取语言
     /// </summary>
-    public async Task<LanguageDto> GetAsync(Guid id)
+    public virtual async Task<LanguageDto> GetAsync(Guid id)
     {
         var entity = await _languageRepository.FindAsync(id);
         if (entity == null) throw new LanguageManagementDomainException(LanguageManagementErrorCodes.LanguageNotFound);
@@ -101,7 +101,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
     /// <summary>
     /// 获取指定语言
     /// </summary>
-    public async Task<LanguageDto> GetAsync(string cultureName)
+    public virtual async Task<LanguageDto> GetAsync(string cultureName)
     {
         var entity = await _languageRepository.FindAsync(cultureName);
         if (entity == null) throw new LanguageManagementDomainException(LanguageManagementErrorCodes.LanguageNotFound);
@@ -111,7 +111,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
     /// <summary>
     /// 设置默认语言
     /// </summary>
-    public async Task SetDefaultAsync(Guid id)
+    public virtual async Task SetDefaultAsync(Guid id)
     {
         var entity = await _languageRepository.FindAsync(id);
         if (entity == null) throw new LanguageManagementDomainException(LanguageManagementErrorCodes.LanguageNotFound);

@@ -14,7 +14,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         }
 
 
-        public async Task<DataDictionaryDto> FindByIdAsync(
+        public virtual async Task<DataDictionaryDto> FindByIdAsync(
             Guid id,
             CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             );
         }
 
-        public async Task<DataDictionaryDto> FindByCodeAsync(
+        public virtual async Task<DataDictionaryDto> FindByCodeAsync(
             string code,
             CancellationToken cancellationToken = default)
         {
@@ -67,7 +67,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <param name="code"></param>
         /// <param name="displayText"></param>
         /// <param name="description"></param>
-        public async Task<DataDictionary> CreateAsync(string code, string displayText, string description)
+        public virtual async Task<DataDictionary> CreateAsync(string code, string displayText, string description)
         {
             Check.NotNullOrWhiteSpace(code, nameof(code));
             var entity = await _dataDictionaryRepository.FindByCodeAsync(code);
@@ -94,7 +94,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <param name="description"></param>
         /// <param name="order"></param>
         /// <exception cref="DataDictionaryDomainException"></exception>
-        public async Task<DataDictionary> CreateDetailAsync(
+        public virtual async Task<DataDictionary> CreateDetailAsync(
             Guid dataDictionaryId,
             string code,
             string displayText,
@@ -123,7 +123,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <summary>
         /// 设置字典明细状态
         /// </summary>
-        public async Task<DataDictionary> SetStatus(
+        public virtual async Task<DataDictionary> SetStatus(
             Guid dataDictionaryId,
             Guid dataDictionaryDetailId,
             bool isEnabled)
@@ -144,7 +144,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <summary>
         /// 更新数据字典明细
         /// </summary>
-        public async Task<DataDictionary> UpdateDetailAsync(
+        public virtual async Task<DataDictionary> UpdateDetailAsync(
             Guid dataDictionaryId,
             Guid dataDictionaryDetailId,
             string displayText,
@@ -170,7 +170,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             return await _dataDictionaryRepository.UpdateAsync(entity);
         }
 
-        public async Task DeleteAsync(Guid dataDictionaryId, Guid dataDictionaryDetailId)
+        public virtual async Task DeleteAsync(Guid dataDictionaryId, Guid dataDictionaryDetailId)
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(dataDictionaryId);
             if (entity == null)
@@ -184,7 +184,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             await _dataDictionaryRepository.UpdateAsync(entity);
         }
 
-        public async Task<DataDictionary> UpdateAsync(
+        public virtual async Task<DataDictionary> UpdateAsync(
             Guid dataDictionaryId,
             string displayText,
             string description)
@@ -201,7 +201,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task DeleteDataDictionaryTypeAsync(Guid id)
+        public virtual async Task DeleteDataDictionaryTypeAsync(Guid id)
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(id);
             if (entity == null)

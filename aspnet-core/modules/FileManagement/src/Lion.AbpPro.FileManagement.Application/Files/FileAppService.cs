@@ -12,7 +12,7 @@ public class FileAppService : FileManagementAppService, IFileAppService
         _configuration = configuration;
     }
     
-    public async Task<FileTokenOutput> GetFileTokenAsync()
+    public virtual async Task<FileTokenOutput> GetFileTokenAsync()
     {
         // 如何设置 sts https://help.aliyun.com/document_detail/100624.html
         var regionId = _configuration.GetValue<string>("AliYun:OSS:RegionId");
@@ -40,12 +40,12 @@ public class FileAppService : FileManagementAppService, IFileAppService
     }
 
     [Authorize(FileManagementPermissions.FileManagement.Upload)]
-    public async Task CreateAsync(CreateFileInput input)
+    public virtual async Task CreateAsync(CreateFileInput input)
     {
         await _fileManager.CreateAsync(input.FileName, input.FilePath);
     }
 
-    public async Task<PagedResultDto<PagingFileOutput>> PagingAsync(PagingFileInput input)
+    public virtual async Task<PagedResultDto<PagingFileOutput>> PagingAsync(PagingFileInput input)
     {
         var result = new PagedResultDto<PagingFileOutput>();
         var totalCount = await _fileManager.CountAsync(input.Filter);

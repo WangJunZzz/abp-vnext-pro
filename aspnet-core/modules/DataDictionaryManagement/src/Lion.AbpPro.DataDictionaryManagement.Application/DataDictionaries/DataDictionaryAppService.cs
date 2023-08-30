@@ -23,7 +23,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <summary>
         /// 分页查询字典项
         /// </summary>
-        public async Task<PagedResultDto<PagingDataDictionaryOutput>> GetPagingListAsync(PagingDataDictionaryInput input)
+        public virtual async Task<PagedResultDto<PagingDataDictionaryOutput>> GetPagingListAsync(PagingDataDictionaryInput input)
         {
             var result = new PagedResultDto<PagingDataDictionaryOutput>();
             var totalCount = await _dataDictionaryRepository.GetPagingCountAsync(input.Filter);
@@ -41,7 +41,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <summary>
         /// 分页查询字典项明细
         /// </summary>
-        public async Task<PagedResultDto<PagingDataDictionaryDetailOutput>> GetPagingDetailListAsync(
+        public virtual async Task<PagedResultDto<PagingDataDictionaryDetailOutput>> GetPagingDetailListAsync(
             PagingDataDictionaryDetailInput input)
         {
             var entity = await _dataDictionaryRepository.FindByIdAsync(input.DataDictionaryId);
@@ -49,10 +49,11 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             {
                 return new PagedResultDto<PagingDataDictionaryDetailOutput>();
             }
+
             var details = entity.Details
                 .WhereIf(input.Filter.IsNotNullOrWhiteSpace(), e => (e.Code.Contains(input.Filter) || e.DisplayText.Contains(input.Filter)))
                 .OrderBy(e => e.Order)
-                .ThenBy(e=> e.CreationTime)
+                .ThenBy(e => e.CreationTime)
                 .Skip(input.SkipCount)
                 .Take(input.PageSize)
                 .ToList();
@@ -60,6 +61,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
             {
                 return new PagedResultDto<PagingDataDictionaryDetailOutput>();
             }
+
             return new PagedResultDto<PagingDataDictionaryDetailOutput>(
                 entity.Details.Count,
                 ObjectMapper.Map<List<DataDictionaryDetail>, List<PagingDataDictionaryDetailOutput>>(details));
@@ -70,7 +72,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// 创建字典类型
         /// </summary>
         [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Create)]
-        public Task CreateAsync(CreateDataDictinaryInput input)
+        public virtual Task CreateAsync(CreateDataDictinaryInput input)
         {
             return _dataDictionaryManager.CreateAsync(input.Code, input.DisplayText, input.Description);
         }
@@ -79,7 +81,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// 新增字典明细
         /// </summary>
         [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Create)]
-        public Task CreateDetailAsync(CreateDataDictinaryDetailInput input)
+        public virtual Task CreateDetailAsync(CreateDataDictinaryDetailInput input)
         {
             return _dataDictionaryManager.CreateDetailAsync(input.Id, input.Code, input.DisplayText, input.Description,
                 input.Order);
@@ -89,37 +91,37 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// 设置字典明细状态
         /// </summary>
         [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Update)]
-        public Task SetStatus(SetDataDictinaryDetailInput input)
+        public virtual Task SetStatus(SetDataDictinaryDetailInput input)
         {
             return _dataDictionaryManager.SetStatus(input.DataDictionaryId, input.DataDictionayDetailId,
                 input.IsEnabled);
         }
 
         [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Update)]
-        public Task UpdateDetailAsync(UpdateDetailInput input)
+        public virtual Task UpdateDetailAsync(UpdateDetailInput input)
         {
             return _dataDictionaryManager.UpdateDetailAsync(input.DataDictionaryId, input.Id, input.DisplayText, input.Description,
                 input.Order);
         }
 
-        
+
         [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Delete)]
-        public Task DeleteAsync(DeleteDataDictionaryDetailInput input)
+        public virtual Task DeleteAsync(DeleteDataDictionaryDetailInput input)
         {
             return _dataDictionaryManager.DeleteAsync(input.DataDictionaryId, input.DataDictionayDetailId);
         }
 
 
         [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Delete)]
-        public Task DeleteDataDictionaryTypeAsync(IdInput input)
+        public virtual Task DeleteDataDictionaryTypeAsync(IdInput input)
         {
             return _dataDictionaryManager.DeleteDataDictionaryTypeAsync(input.Id);
         }
-        
+
         [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Update)]
-        public  Task UpdateAsync(UpdateDataDictinaryInput input)
+        public virtual Task UpdateAsync(UpdateDataDictinaryInput input)
         {
-            return _dataDictionaryManager.UpdateAsync( input.Id, input.DisplayText, input.Description);
+            return _dataDictionaryManager.UpdateAsync(input.Id, input.DisplayText, input.Description);
         }
     }
 }

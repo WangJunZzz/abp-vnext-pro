@@ -9,7 +9,7 @@ public class FileManager : DomainService, IFileManager
         _fileRepository = fileRepository;
     }
 
-    public async Task CreateAsync(string fileName, string filePath)
+    public virtual async Task CreateAsync(string fileName, string filePath)
     {
         Check.NotNullOrWhiteSpace(fileName, nameof(fileName));
         Check.NotNullOrWhiteSpace(filePath, nameof(filePath));
@@ -17,7 +17,7 @@ public class FileManager : DomainService, IFileManager
         await _fileRepository.InsertAsync(entity);
     }
 
-    public async Task<List<File>> PagingAsync(
+    public virtual async Task<List<File>> PagingAsync(
         string filter = null,
         int maxResultCount = 10,
         int skipCount = 0)
@@ -26,7 +26,7 @@ public class FileManager : DomainService, IFileManager
     }
 
 
-    public async Task<long> CountAsync(string filter = null)
+    public virtual async Task<long> CountAsync(string filter = null)
     {
         return await _fileRepository.GetPagingCountAsync(filter);
     }

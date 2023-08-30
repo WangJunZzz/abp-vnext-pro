@@ -11,7 +11,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Caches
             _cache = cache;
         }
 
-        public async Task HandleEventAsync(EntityChangedEventData<DataDictionary> eventData)
+        public virtual async Task HandleEventAsync(EntityChangedEventData<DataDictionary> eventData)
         {
             await _cache.RemoveAsync(
                 DataDictionaryDto.CalculateCacheKey(eventData.Entity.Id, eventData.Entity.Code));

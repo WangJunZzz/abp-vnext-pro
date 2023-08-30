@@ -26,7 +26,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         }
 
 
-        public async Task<LoginOutput> LoginAsync(LoginInput input)
+        public virtual async Task<LoginOutput> LoginAsync(LoginInput input)
         {
             var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
 
