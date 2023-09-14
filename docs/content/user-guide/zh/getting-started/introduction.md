@@ -8,19 +8,26 @@ Lion.AbpPro 是 Abp Vnext 的 Vue3 版本实现，同时也是免费开源。它
 ├── Directory.Build.props nuget 版本控制
 ├── frameworks # 公共模块
 │       ├── src #
-│           ├── Lion.AbpPro.CAP # dotnetcore.cap
 │           ├── Lion.AbpPro.Core  # 核心扩展
+│           ├── Lion.AbpPro.CAP # dotnetcore.cap
+│           ├── Lion.AbpPro.CAP.EntityFrameworkCore # dotnetcore.cap ef 扩展
+│           ├── Lion.AbpPro.Cli # cli
+│           ├── Lion.AbpPro.Cli.Core # cli 核心
+│           ├── Lion.AbpPro.ElasticSearch # es 扩展
+│           ├── Lion.AbpPro.EntityFrameworkCore # ef 扩展 主要是批量新增
+│           ├── Lion.AbpPro.EntityFrameworkCore.Mysql # mysql ef 扩展 主要是批量新增
+│           ├── Lion.AbpPro.Starter # 首次启动
 │           └── Lion.AbpPro.Localization # 本地化
 ├── gateways # 网关
 │       └── Lion.AbpPro.WebGateway # 基于ocelot网关
 ├── modules # 模块
+│       ├── BasicManagement # abp 基础模块封装
 │       ├── DataDictionaryManagement # 数据字典
-│       ├── FileManagement # 基于阿里云的文件服务
+│       ├── LanguageManagement # 多语言
 │       └── NotificationManagement # 通知服务
 ├── services # 公共静态资源目录
 │       ├── host # 启动模块
 │           ├── CompanyName.ProjectName.HttpApi.Host # admin ui host
-│           └── CompanyName.ProjectName.IdentityServer # IdentityServer host
 │       ├── src  # 源码
 │           └── CompanyName.ProjectName.DbMigrator # 迁移控制台程序
 │       └── test # 单元测试
@@ -86,7 +93,3 @@ Lion.AbpPro 是 Abp Vnext 的 Vue3 版本实现，同时也是免费开源。它
 ├── vite.config.ts # vite配置文件
 └── windi.config.ts # windcss配置文件
 ```
-
-## 相关视频
-
-[B 站](https://www.bilibili.com/video/BV1pt4y1E7aZ/?spm_id_from=333.337.search-card.all.click&vd_source=963e10b4fc37556dd738bd98e1d46a0f)

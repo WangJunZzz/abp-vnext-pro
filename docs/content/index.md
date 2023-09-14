@@ -1,41 +1,27 @@
-Title: Abp Vnext Pro
+Title: Abp vNext Pro
 
 # Abp Vnext Pro
 
-<img width="140" align="right" src="/img/logo.svg">
+<img width="140" align="right" src="img/logo.svg">
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/v8gfh6pe2u2laqoa/branch/master?svg=true)](https://ci.appveyor.com/project/yuleyule66/cap/branch/master)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/WangJunZzz/abp-vnext-pro/blob/main/LICENSE)
 
-## 介绍
+Abp vNext Pro 是一个基于 Vben Admin, Abp vNext 打造的一个开箱即用的中后台管理系统解决方案。觉得该项目对您有帮助,请再 Github 上给我一颗:octicons-heart-fill-24:{ .heart }
 
-- 完全免费开源
-- ABP vNext 的前身是 asp.net boilerplate（老版 abp），它不是一个简单的版本更新，而是完全基于.NET Core 的重写。
-- ABP vNext 社区版的 UI 不使用于实际项目开发。为此，结合 Vben Admin 打造开箱即用的 ABP vNext Pro。
+[快速开始 :fontawesome-solid-paper-plane:](user-guide/zh/getting-started/quick-start.md){ .md-button }
 
-## 演示
+## Abp Vnext Pro
 
-- [演示地址](http://116.205.177.85/login)
+[演示 :fontawesome-solid-paper-plane:](http://116.205.177.85/login){ .md-button }
+[GitHub :fontawesome-solid-paper-plane:](https://github.com/WangJunZzz/abp-vnext-pro){ .md-button }
 
-## 系统功能
+## Abp Vnext Pro Suite
 
-- [x] 用户管理
-- [x] 角色管理
-- [x] 审计日志
-- [x] 后台任务
-- [x] 集成事件
-- [x] SinglaR 消息通知(站内信)
-- [x] 多语言
-- [x] 数据字典
-- [x] 容器化部署
-- [x] 单元测试
-- [x] ES 日志
-- [x] Setting 管理
-- [x] 多租户
-- [x] 文件管理
-- [x] 多语言管理
+> 基于 Abp Vnext Pro 开发的代码生成器,可自动生成前后端 CURD 代码,提供生产力。
 
-![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/4.4/4.4login.png)
-![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/01.png)
-![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/02.png)
-![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/03.png)
-![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/04.png)
-![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/05.png)
+[演示 :fontawesome-solid-paper-plane:](http://116.205.177.85:81/login){ .md-button }
+[GitHub :fontawesome-solid-paper-plane:](https://github.com/WangJunZzz/abp-vnext-pro-suite){ .md-button }
+
+## 视频教程
+
+[B 站 :fontawesome-solid-paper-plane:](https://www.bilibili.com/video/BV1pt4y1E7aZ/?spm_id_from=333.337.search-card.all.click&vd_source=963e10b4fc37556dd738bd98e1d46a0f){ .md-button }

@@ -10,25 +10,55 @@ edit_uri: "edit/master/docs/content"
 docs_dir: "content"
 
 # Copyright
-copyright: Copyright &copy; 2022 <a href="https://github.com/WangJunZzz/abp-vnext-pro"></a>.
+copyright: Copyright &copy; 2023 <a href="https://github.com/WangJunZzz/abp-vnext-pro"></a>.
 
 #theme: material
 theme:
-  name: "material"
+  name: material
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    # - content.code.select
+    # - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    # - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    # - navigation.instant
+    # - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    # - toc.integrate
   palette:
-    primary: "deep purple"
-    accent: "indigo"
-    scheme: slate
-  language: en
-  include_sidebar: true
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font: false
   logo: "img/logo.svg"
   favicon: "img/favicon.ico"
-  features:
-    - navigation.tabs
-    - navigation.instant
-  i18n:
-    prev: "Previous"
-    next: "Next"
+  icon:
+    logo: logo
+    annotation: material/arrow-right-circle
 
 #Customization
 extra:
@@ -36,37 +66,46 @@ extra:
     - icon: "fontawesome/brands/github"
       link: "https://github.com/WangJunZzz/abp-vnext-pro"
 
+extra_css:
+  - extra/stylesheets/extra.css
+extra_javascript:
+  - extra/javascripts/extra.js
+
 # Extensions
 markdown_extensions:
   - markdown.extensions.admonition
   - markdown.extensions.codehilite:
       guess_lang: true
-      linenums: false
+      linenums: true
   - markdown.extensions.def_list
   - markdown.extensions.footnotes
   - markdown.extensions.meta
   - markdown.extensions.toc:
       permalink: true
   - pymdownx.arithmatex
+  - pymdownx.highlight:
+      auto_title: true
+      anchor_linenums: true
+      linenums: true
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.details
-  - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.keys
-  - pymdownx.magiclink:
-      repo_url_shorthand: true
-      user: dotnetcore
-      repo: cap
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - md_in_html
+  - pymdownx.superfences
 
 nav:
   - Home: index.md
@@ -75,21 +114,33 @@ nav:
       - 介绍: user-guide/zh/getting-started/introduction.md
       - 贡献: user-guide/zh/getting-started/contributing.md
   - 基础设施:
-      - 配置: user-guide/zh/infrastructure/config.md
+      - 登录: user-guide/zh/infrastructure/login.md
+      - 异常: user-guide/zh/infrastructure/exception-handler.md
+      - 日志: user-guide/zh/infrastructure/log.md
+      - 授权: user-guide/zh/infrastructure/authorization.md
+      - 跨域: user-guide/zh/infrastructure/CorsOrigins.md
+      - 缓存: user-guide/zh/infrastructure/cache.md
+      - AutoMapper: user-guide/zh/infrastructure/AutoMapper.md
+      - 当前用户: user-guide/zh/infrastructure/CurrentUser.md
+      - 数据过滤: user-guide/zh/infrastructure/DataFiltering.md
+      - 多租户: user-guide/zh/infrastructure/MultiTenancy.md
+      - 种子数据: user-guide/zh/infrastructure/DataSeeding.md
       - 前端: user-guide/zh/infrastructure/frontend.md
       - FreeSql: user-guide/zh/infrastructure/freesql.md
       - 分布式事件: user-guide/zh/infrastructure/cap.md
       - 批量操作: user-guide/zh/infrastructure/batch.md
       - ElasticSearch: user-guide/zh/infrastructure/elastic.md
+      - 统一返回值格式: user-guide/zh/extension/统一返回值格式.md
+      - Magicodes.IE: user-guide/zh/extension/MagicodesIE.md
   - 应用模块:
       - 基础模块: user-guide/zh/modules/basic.md
       - 设置(Setting): user-guide/zh/modules/setting.md
       - 数据字典: user-guide/zh/modules/dic.md
       - 文件管理: user-guide/zh/modules/file.md
       - 实时通信: user-guide/zh/modules/signalr.md
-  - 扩展:
-      - 统一返回值格式: user-guide/zh/extension/统一返回值格式.md
-      - Magicodes.IE: user-guide/zh/extension/MagicodesIE.md
+  # - 扩展:
+  #     - 统一返回值格式: user-guide/zh/extension/统一返回值格式.md
+  #     - Magicodes.IE: user-guide/zh/extension/MagicodesIE.md
   - 常见问题:
       - 编译: user-guide/zh/problem/problem.md
       - EFCore: user-guide/zh/problem/ef.md
@@ -99,9 +150,9 @@ nav:
   - 常见问题:
       - 编译: user-guide/zh/problem/problem.md
       - EFCore: user-guide/zh/problem/ef.md
-  - Release:
-      - 升级指南: about/6.0-7.0.md
-      - 发行说明: about/release-notes.md
+  # - Release:
+  #     - 升级指南: about/6.0-7.0.md
+  #     - 发行说明: about/release-notes.md
   - 关于:
       - Contact Us: about/contact-us.md
       - License: about/license.md
