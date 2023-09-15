@@ -14,17 +14,6 @@ jobs:
         with:
           dotnet-version: 7.0.x
           include-prerelease: True
-      - name: Build
-        run: dotnet build aspnet-core/Lion.AbpPro.sln
-
-      - name: Run Xunit
-        run: dotnet test aspnet-core/services/test/Lion.AbpPro.Domain.Tests/Lion.AbpPro.Domain.Tests.csproj
-
-      - name: Publish Lion.AbpPro.HttpApi.Host
-        run: dotnet publish aspnet-core/services/host/Lion.AbpPro.HttpApi.Host/Lion.AbpPro.HttpApi.Host.csproj -o aspnet-core/services/host/Lion.AbpPro.HttpApi.Host/publish
-
-      - name: Publish Lion.AbpPro.DbMigrator
-        run: dotnet publish aspnet-core/services/src/Lion.AbpPro.DbMigrator/Lion.AbpPro.DbMigrator.csproj -o aspnet-core/services/src/Lion.AbpPro.DbMigrator/publish
 
       - name: Setting Version
         id: vars
@@ -45,7 +34,7 @@ jobs:
       - name: Push Lion.AbpPro.HttpApi.Host Image
         uses: docker/build-push-action@v2
         with:
-          context: aspnet-core/services/host/Lion.AbpPro.HttpApi.Host
+          context: aspnet-core
           push: true
           tags: zzzwangjun/lion.abp.pro:${{ steps.vars.outputs.RELEASE_VERSION }}
 
