@@ -38,13 +38,6 @@ jobs:
           push: true
           tags: zzzwangjun/lion.abp.pro:${{ steps.vars.outputs.RELEASE_VERSION }}
 
-      - name: Push Lion.AbpPro.DbMigrator Image
-        uses: docker/build-push-action@v2
-        with:
-          context: aspnet-core/services/src/Lion.AbpPro.DbMigrator
-          push: true
-          tags: zzzwangjun/lion.abp.pro.migrator:${{ steps.vars.outputs.RELEASE_VERSION }}
-
   vben28:
     runs-on: ubuntu-latest
     needs: api
