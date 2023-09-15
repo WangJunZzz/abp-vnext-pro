@@ -42,6 +42,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Solution Items", "0.Solut
 		Directory.Build.targets = Directory.Build.targets
 		Directory.Build.Volo.targets = Directory.Build.Volo.targets
 		..\Readme.md = ..\Readme.md
+		Dockerfile = Dockerfile
+		.dockerignore = .dockerignore
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules", "modules", "{F8A8EB2A-2D4B-464F-9A13-F8F7B6A8FAA3}"

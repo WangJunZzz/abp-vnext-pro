@@ -1,3 +1,6 @@
+<template>
+  <div></div>
+</template>
 <!-- <template>
   <div>
     <BasicTable @register="registerTable" size="small">
