@@ -3,6 +3,9 @@ WORKDIR /app
 COPY . ./
 ENV NODE_OPTIONS=--max-old-space-size=16384
 RUN npm install pnpm -g 
+# 切换淘宝镜像源
+# RUN npm config set registry https://registry.npmmirror.com/
+# RUN pnpm config set registry https://registry.npmmirror.com/
 RUN pnpm i 
 RUN npm run build
 

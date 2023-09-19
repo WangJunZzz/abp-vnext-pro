@@ -67,7 +67,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   // The following plugins only work in the production environment
   if (isBuild) {
     // vite-plugin-imagemin
-    VITE_USE_IMAGEMIN && vitePlugins.push(configImageminPlugin());
+    // VITE_USE_IMAGEMIN && vitePlugins.push(configImageminPlugin());
 
     // rollup-plugin-gzip
     vitePlugins.push(
