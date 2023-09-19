@@ -47,6 +47,17 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 6.0.2
+
+      - name: Build
+        run: |
+          cd vben28
+          pnpm install
+          npm run build
+
       - name: Setting Version
         id: vars
         run: echo ::set-output name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
