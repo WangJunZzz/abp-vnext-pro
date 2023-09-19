@@ -132,3 +132,16 @@ namespace Lion.AbpPro.EntityFrameworkCore
     }
 }
 ```
+
+## 如何设置 Abp 表前缀
+
+- 在 host 层的 Module 下修改
+
+```csharp
+public override void OnPreApplicationInitializatio(ApplicationInitializationContext context)
+ {
+     // 比如修改为带下划线
+     AbpCommonDbProperties.DbTablePrefix = "Abp_";
+     base.OnPreApplicationInitialization(context);
+ }
+```

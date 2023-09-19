@@ -1,5 +1,4 @@
-# Github自动化部署
-
+# Github 自动化部署
 
 ## 添加部署 yaml
 
@@ -97,7 +96,7 @@ password=1q2w3E*.               ; # 管理web端登录密码
 ```
 
 - 查看是否能访问 http://ip:9001
-  ![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/supervisor.png)
+  ![](https://blog-resouce.oss-cn-shenzhen.aliyuncs.com/images/abp/supervisor.png){: .zoom}
 
 - 添加 Lion.AbpPro.HttpApi.Host.ini
 
@@ -153,7 +152,7 @@ systemctl enable nginx # 启用开机启动 Nginx
 ```
 
 - 访问 http://ip:80
-  ![](https://ask.qcloudimg.com/http-save/yehe-4727679/f0shutgsl8.png?imageView2/2/w/1620)
+  ![](https://ask.qcloudimg.com/http-save/yehe-4727679/f0shutgsl8.png?imageView2/2/w/1620){: .zoom}
 
 -- 配置 Yml
 

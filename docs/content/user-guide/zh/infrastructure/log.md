@@ -126,3 +126,29 @@ public class SampleAppService : AbpProAppService,ISampleAppService
     }
 }
 ```
+
+## 日志追加字段
+
+```csharp
+/// <summary>
+/// 自定义追加日志内容
+/// </summary>
+/// <param name="logger"></param>
+/// <param name="message">日志内容</param>
+/// <param name="level">日志级别</param>
+/// <param name="dictionary">追加内容</param>
+public static void Custom(this ILogger logger, string message, LogLevel level = LogLevel.Information, Dictionary<string, object> dictionary = null)
+{
+    if (dictionary == null || dictionary.Count == 0)
+    {
+        logger.Log(level, message);
+    }
+    else
+    {
+        using (logger.BeginScope(dictionary))
+        {
+            logger.Log(level, message);
+        }
+    }
+}
+```
