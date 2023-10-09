@@ -88,4 +88,12 @@ export default {
   organizationUnit: '组织机构',
   member: '成员',
   role: '角色',
+  identitySecurityLog: '登录日志',
+  identitySecurityLog_ApplicationName: '应用程序名称',
+  identitySecurityLog_Identity: '登录方式',
+  identitySecurityLog_Action: '登录地址',
+  identitySecurityLog_UserName: '用户名',
+  identitySecurityLog_CorrelationId: 'CorrelationId',
+  identitySecurityLog_ClientIpAddress: '客户端IP',
+  identitySecurityLog_CreationTime: '登录时间',
 };

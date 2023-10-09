@@ -13,6 +13,7 @@
     "Permission:AuditLogManagement": "AuditLog",
     "Permission:HangfireManagement": "BackgroundTask",
     "Permission:SettingManagement": "SettingManagement",
+    "Permission:IdentitySecurityLog": "IdentitySecurityLog",
     "Permission:OrganizationUnitManagement": "OrganizationUnitManagement",
     "Setting.Group.System": "System",
     "Lion.AbpPro.BasicManagement:100001": "OrganizationUnit Not Exist",

@@ -1,6 +1,7 @@
 ﻿// Global using directives
 
 global using Lion.AbpPro.BasicManagement.AuditLogs;
+global using Lion.AbpPro.BasicManagement.IdentitySecurityLogs;
 global using Lion.AbpPro.BasicManagement.OrganizationUnits;
 global using Lion.AbpPro.BasicManagement.OrganizationUnits.Dto;
 global using Lion.AbpPro.BasicManagement.Roles;

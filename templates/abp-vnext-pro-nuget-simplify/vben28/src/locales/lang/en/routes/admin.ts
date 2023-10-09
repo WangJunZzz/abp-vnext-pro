@@ -88,4 +88,12 @@ export default {
   organizationUnit: 'OrganizationUnit',
   member: 'Member',
   role: 'Role',
+  identitySecurityLog: 'IdentitySecurityLog',
+  identitySecurityLog_ApplicationName: 'ApplicationName',
+  identitySecurityLog_Identity: 'Identity',
+  identitySecurityLog_Action: 'Action',
+  identitySecurityLog_UserName: 'UserName',
+  identitySecurityLog_CorrelationId: 'CorrelationId',
+  identitySecurityLog_ClientIpAddress: 'ClientIpAddress',
+  identitySecurityLog_CreationTime: 'LoginTime',
 };

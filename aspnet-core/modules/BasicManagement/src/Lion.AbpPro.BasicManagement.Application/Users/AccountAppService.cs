@@ -4,7 +4,9 @@ using System.Text;
 using IdentityModel;
 using Lion.AbpPro.BasicManagement.ConfigurationOptions;
 using Lion.AbpPro.BasicManagement.Users.Dtos;
+using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
+using Volo.Abp.Identity.AspNetCore;
 using Volo.Abp.Security.Claims;
 
 namespace Lion.AbpPro.BasicManagement.Users
@@ -13,15 +15,20 @@ namespace Lion.AbpPro.BasicManagement.Users
     {
         private readonly IdentityUserManager _userManager;
         private readonly JwtOptions _jwtOptions;
-        private readonly Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> _signInManager;
-
+        //private readonly Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> _signInManager;
+        private readonly IdentitySecurityLogManager _identitySecurityLogManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly AbpSignInManager _signInManager;
         public AccountAppService(
             IdentityUserManager userManager,
             IOptionsSnapshot<JwtOptions> jwtOptions,
-            Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> signInManager)
+            IdentitySecurityLogManager identitySecurityLogManager, 
+            IHttpContextAccessor httpContextAccessor, AbpSignInManager signInManager)
         {
             _userManager = userManager;
             _jwtOptions = jwtOptions.Value;
+            _identitySecurityLogManager = identitySecurityLogManager;
+            _httpContextAccessor = httpContextAccessor;
             _signInManager = signInManager;
         }
 
@@ -41,6 +48,13 @@ namespace Lion.AbpPro.BasicManagement.Users
             }
 
             var user = await _userManager.FindByNameAsync(input.Name);
+            
+            await _identitySecurityLogManager.SaveAsync(new IdentitySecurityLogContext()
+            {
+                Action = _httpContextAccessor.HttpContext?.Request.Path,
+                UserName = input.Name,
+                Identity = "Bearer"
+            });
             return await BuildResult(user);
         }
 

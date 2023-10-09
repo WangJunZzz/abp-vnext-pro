@@ -65,6 +65,16 @@ const admin: AppRouteModule = {
       },
     },
     {
+      path: 'identitySecurityLogs',
+      name: 'IdentitySecurityLogs',
+      component: () => import('/@/views/admin/identitySecurityLog/Index.vue'),
+      meta: {
+        title: t('routes.admin.identitySecurityLog'),
+        policy: 'AbpIdentity.IdentitySecurityLogs',
+        icon: 'ant-design:file-protect-outlined',
+      },
+    },
+    {
       path: 'dataDictionary',
       name: 'dataDictionary',
       component: () => import('/@/views/admin/dictionary/AbpDictionary.vue'),

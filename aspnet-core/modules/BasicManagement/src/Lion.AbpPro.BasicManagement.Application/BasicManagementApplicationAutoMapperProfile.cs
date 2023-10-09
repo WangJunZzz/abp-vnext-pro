@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Lion.AbpPro.BasicManagement.AuditLogs;
+using Lion.AbpPro.BasicManagement.IdentitySecurityLogs;
 using Lion.AbpPro.BasicManagement.Users.Dtos;
 
 namespace Lion.AbpPro.BasicManagement;
@@ -32,5 +33,6 @@ public class BasicManagementApplicationAutoMapperProfile : Profile
         CreateMap<IdentityUser, GetUnAddUserOutput>();
         CreateMap<IdentityRole, GetOrganizationUnitRoleOutput>();
         CreateMap<IdentityRole, GetUnAddRoleOutput>();
+        CreateMap<IdentitySecurityLog, PagingIdentitySecurityLogOutput>();
     }
 }

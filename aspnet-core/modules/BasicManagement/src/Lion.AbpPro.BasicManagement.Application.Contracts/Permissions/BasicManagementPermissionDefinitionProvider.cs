@@ -16,7 +16,8 @@ public class BasicManagementPermissionDefinitionProvider : PermissionDefinitionP
 
         var auditManagement =
             abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.AuditLog, L("Permission:AuditLogManagement"), multiTenancySide: MultiTenancySides.Both);
-        var settingManagement = abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.Setting, L("Permission:SettingManagement"), multiTenancySide: MultiTenancySides.Both);
+        abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.Setting, L("Permission:SettingManagement"), multiTenancySide: MultiTenancySides.Both);
+        abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.IdentitySecurityLog, L("Permission:IdentitySecurityLog"), multiTenancySide: MultiTenancySides.Both);
         var organizationUnitManagement = abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.OrganizationUnit, L("Permission:OrganizationUnitManagement"), multiTenancySide: MultiTenancySides.Both);
         organizationUnitManagement.AddChild
         (

@@ -14,6 +14,7 @@ public class BasicManagementPermissions
         public const string UserExport = Default + ".Users.Export";
         public const string AuditLog = Default + ".AuditLog";
         public const string Setting = Default + ".Setting";
+        public const string IdentitySecurityLog = Default + ".IdentitySecurityLogs";
         public const string OrganizationUnit = Default + ".OrganizationUnitManagement";
         public static class OrganizationUnitManagement
         {
