@@ -24,6 +24,7 @@
         formConfig: {
           labelWidth: 70,
           schemas: searchFormSchema,
+          fieldMapToTime: [['time', ['startTime', 'endTime'], 'YYYY-MM-DD']],
         },
         api: pageAsync,
         showTableSetting: true,
