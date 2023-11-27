@@ -37,17 +37,17 @@ public class BasicManagementApplicationModule : AbpModule
             options.AddMaps<BasicManagementApplicationModule>(validate: true);
         });
         
+        
         Configure<PermissionOptions>(options =>
         {
-            options.Excludes.Add("AbpIdentity.Users.ManagePermissions");
-            options.Excludes.Add("AbpIdentity.UserLookup");
-            options.Excludes.Add("FeatureManagement");
-            options.Excludes.Add("FeatureManagement.ManageHostFeatures");
-            options.Excludes.Add("SettingManagement");
-            options.Excludes.Add("SettingManagement.Emailing");
-            // options.Excludes.Add("AbpTenantManagement");
-            options.Excludes.Add("AbpTenantManagement.Tenants.ManageFeatures");
-            options.Excludes.Add("AbpTenantManagement.Tenants.ManageConnectionStrings");
+            options.Excludes.Add( IdentityPermissions.Users.ManagePermissions);
+            options.Excludes.Add(IdentityPermissions.UserLookup.Default);
+            options.Excludes.Add(FeatureManagementPermissions.GroupName);
+            options.Excludes.Add(FeatureManagementPermissions.ManageHostFeatures);
+            options.Excludes.Add(SettingManagementPermissions.GroupName);
+            options.Excludes.Add(SettingManagementPermissions.Emailing);
+            options.Excludes.Add(TenantManagementPermissions.Tenants.ManageFeatures);
+            options.Excludes.Add(TenantManagementPermissions.Tenants.ManageConnectionStrings);
         });
         
         context.Services.Configure<JwtOptions>(context.Services.GetConfiguration().GetSection("Jwt"));
