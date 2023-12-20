@@ -2,7 +2,7 @@
 
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <RootNamespace>Lion.AbpPro.FileManagement</RootNamespace>
         <PreserveCompilationReferences>true</PreserveCompilationReferences>
         <UserSecretsId>Lion.AbpPro.FileManagement-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>

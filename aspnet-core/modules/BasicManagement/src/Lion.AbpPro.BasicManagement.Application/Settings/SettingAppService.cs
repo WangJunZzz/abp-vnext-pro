@@ -22,7 +22,7 @@ namespace Lion.AbpPro.BasicManagement.Settings
 
         public virtual async Task<List<SettingOutput>> GetAsync()
         {
-            var allSettings = _settingDefinitionManager.GetAll().ToList();
+            var allSettings = (await _settingDefinitionManager.GetAllAsync()).ToList();
             var settings = allSettings
                 .Where(e => e.Properties.ContainsKey(BasicManagementSettings.Group.Default)).ToList();
 
@@ -68,7 +68,7 @@ namespace Lion.AbpPro.BasicManagement.Settings
                 }
 
                 string name = kv.Key.RemovePreFix(AbpProSettingConsts.Prefix);
-                var setting = _settingDefinitionManager.GetOrNull(name);
+                var setting = await _settingDefinitionManager.GetOrNullAsync(name);
                 if (setting == null)
                 {
                     continue;

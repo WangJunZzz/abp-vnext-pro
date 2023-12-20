@@ -4,6 +4,7 @@ using Magicodes.ExporterAndImporter.Excel.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Account;
+using Volo.Abp.Auditing;
 using Volo.Abp.Uow;
 using IdentityRole = Volo.Abp.Identity.IdentityRole;
 
@@ -42,7 +43,7 @@ namespace Lion.AbpPro.BasicManagement.Users
                 Filter = input.Filter?.Trim(),
                 MaxResultCount = input.PageSize,
                 SkipCount = input.SkipCount,
-                Sorting = " LastModificationTime desc"
+                Sorting = nameof(IHasModificationTime.LastModificationTime)
             };
 
             var count = await _identityUserRepository.GetCountAsync(request.Filter);

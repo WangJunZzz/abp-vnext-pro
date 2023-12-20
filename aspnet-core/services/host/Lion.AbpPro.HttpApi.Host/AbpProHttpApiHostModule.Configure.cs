@@ -220,10 +220,8 @@ public partial class AbpProHttpApiHostModule
                 });
 
                 var hostingEnvironment = context.Services.GetHostingEnvironment();
-                bool auth = !hostingEnvironment.IsDevelopment();
                 capOptions.UseDashboard(options =>
                 {
-                    options.UseAuth = auth;
                     options.AuthorizationPolicy = AbpProCapPermissions.CapManagement.Cap;
                 });
             });
@@ -236,7 +234,7 @@ public partial class AbpProHttpApiHostModule
                 capOptions.UseInMemoryMessageQueue();
                 var hostingEnvironment = context.Services.GetHostingEnvironment();
                 var auth = !hostingEnvironment.IsDevelopment();
-                capOptions.UseDashboard(options => { options.UseAuth = auth; });
+                capOptions.UseDashboard();
             });
         }
     }

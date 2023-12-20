@@ -18,7 +18,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("_Abp_DatabaseProvider", EfCoreDatabaseProvider.MySql)
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates.DataDictionary", b =>
@@ -33,6 +33,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
@@ -64,6 +65,7 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasColumnType("varchar(64)");
 
                     b.Property<string>("ExtraProperties")
+                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 
@@ -143,6 +145,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
@@ -170,6 +173,7 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasColumnName("DeletionTime");
 
                     b.Property<string>("ExtraProperties")
+                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 
@@ -223,6 +227,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
@@ -256,6 +261,7 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasComment("显示名称");
 
                     b.Property<string>("ExtraProperties")
+                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 
@@ -305,6 +311,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
@@ -331,6 +338,7 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasColumnName("DeletionTime");
 
                     b.Property<string>("ExtraProperties")
+                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 
@@ -458,6 +466,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
@@ -478,6 +487,7 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("ExtraProperties")
+                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 
@@ -607,7 +617,6 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasColumnName("ChangeType");
 
                     b.Property<string>("EntityId")
-                        .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("varchar(128)")
                         .HasColumnName("EntityId");
@@ -686,6 +695,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
@@ -695,6 +705,7 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasColumnName("CreationTime");
 
                     b.Property<string>("ExtraProperties")
+                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 
@@ -861,6 +872,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
@@ -870,6 +882,7 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasColumnType("varchar(256)");
 
                     b.Property<string>("ExtraProperties")
+                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 
@@ -932,6 +945,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
@@ -940,6 +954,7 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ExtraProperties")
+                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 
@@ -1031,6 +1046,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
@@ -1043,6 +1059,7 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("ExtraProperties")
+                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 
@@ -1091,6 +1108,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
@@ -1127,6 +1145,7 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ExtraProperties")
+                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 
@@ -1409,6 +1428,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
@@ -1439,6 +1459,7 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ExtraProperties")
+                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 
@@ -1641,6 +1662,54 @@ namespace MyCompanyName.MyProjectName.Migrations
                     b.ToTable("AbpSettings", (string)null);
                 });
 
+            modelBuilder.Entity("Volo.Abp.SettingManagement.SettingDefinitionRecord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("DefaultValue")
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("longtext")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsEncrypted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsInherited")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsVisibleToClients")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
+
+                    b.Property<string>("Providers")
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("AbpSettingDefinitions", (string)null);
+                });
+
             modelBuilder.Entity("Volo.Abp.TenantManagement.Tenant", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1648,6 +1717,7 @@ namespace MyCompanyName.MyProjectName.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("varchar(40)")
                         .HasColumnName("ConcurrencyStamp");
@@ -1672,6 +1742,7 @@ namespace MyCompanyName.MyProjectName.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ExtraProperties")
+                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ExtraProperties");
 

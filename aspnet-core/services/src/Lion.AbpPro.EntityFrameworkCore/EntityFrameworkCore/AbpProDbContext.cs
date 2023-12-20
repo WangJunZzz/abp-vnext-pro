@@ -36,6 +36,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
         public DbSet<PermissionDefinitionRecord> Permissions { get; set; }
         public DbSet<PermissionGrant> PermissionGrants { get; set; }
         public DbSet<Setting> Settings { get; set; }
+        public DbSet<SettingDefinitionRecord> SettingDefinitionRecords { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
         public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
         public DbSet<BackgroundJobRecord> BackgroundJobs { get; set; }

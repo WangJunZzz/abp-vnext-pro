@@ -12,8 +12,8 @@ namespace Lion.AbpPro
         typeof(AbpProCapModule),
         typeof(AbpProCapEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-        typeof(AbpCachingStackExchangeRedisModule),
-        typeof(AbpBackgroundJobsHangfireModule)
+        typeof(AbpCachingStackExchangeRedisModule)
+        //typeof(AbpBackgroundJobsHangfireModule)
     )]
     public partial class AbpProHttpApiHostModule : AbpModule
     {
@@ -30,7 +30,7 @@ namespace Lion.AbpPro
             ConfigureCache(context);
             ConfigureSwaggerServices(context);
             ConfigureJwtAuthentication(context, configuration);
-            ConfigureHangfire(context);
+            //ConfigureHangfire(context);
             ConfigureMiniProfiler(context);
             ConfigureIdentity(context);
             ConfigureCap(context);
@@ -73,11 +73,11 @@ namespace Lion.AbpPro
             app.UseAbpSerilogEnrichers();
             app.UseUnitOfWork();
             app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
-            app.UseHangfireDashboard("/hangfire", new DashboardOptions()
-            {
-                Authorization = new[] { new CustomHangfireAuthorizeFilter() },
-                IgnoreAntiforgeryToken = true
-            });
+            // app.UseHangfireDashboard("/hangfire", new DashboardOptions()
+            // {
+            //     Authorization = new[] { new CustomHangfireAuthorizeFilter() },
+            //     IgnoreAntiforgeryToken = true
+            // });
 
             if (configuration.GetValue("Consul:Enabled", false))
             {
