@@ -16,9 +16,6 @@
     <PackageReference Include="Volo.Abp.TenantManagement.Application" />
     <PackageReference Include="Volo.Abp.FeatureManagement.Application" />
     <PackageReference Include="Volo.Abp.SettingManagement.Application" />
-<!--    <PackageReference Include="Microsoft.IdentityModel.Tokens" />-->
-<!--    <PackageReference Include="System.IdentityModel.Tokens.Jwt" />-->
-<!--    <PackageReference Include="IdentityModel" />-->
     <PackageReference Include="Magicodes.IE.Excel.AspNetCore" />
     <ProjectReference Include="..\Lion.AbpPro.BasicManagement.Application.Contracts\Lion.AbpPro.BasicManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\Lion.AbpPro.BasicManagement.Domain\Lion.AbpPro.BasicManagement.Domain.csproj" />
