@@ -5,39 +5,53 @@ using IdentityModel;
 using Lion.AbpPro.BasicManagement.ConfigurationOptions;
 using Lion.AbpPro.BasicManagement.Users.Dtos;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Volo.Abp.Identity.AspNetCore;
 using Volo.Abp.Security.Claims;
+using IdentityUser = Volo.Abp.Identity.IdentityUser;
 
 namespace Lion.AbpPro.BasicManagement.Users
 {
     public class AccountAppService : BasicManagementAppService, IAccountAppService
     {
         private readonly IdentityUserManager _userManager;
+
         private readonly JwtOptions _jwtOptions;
+
         //private readonly Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> _signInManager;
         private readonly IdentitySecurityLogManager _identitySecurityLogManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly AbpSignInManager _signInManager;
+        protected IOptions<IdentityOptions> IdentityOptions { get; }
+        
         public AccountAppService(
             IdentityUserManager userManager,
             IOptionsSnapshot<JwtOptions> jwtOptions,
-            IdentitySecurityLogManager identitySecurityLogManager, 
-            IHttpContextAccessor httpContextAccessor, AbpSignInManager signInManager)
+            IdentitySecurityLogManager identitySecurityLogManager,
+            IHttpContextAccessor httpContextAccessor, AbpSignInManager signInManager, ISettingProvider settingProvider, IOptions<IdentityOptions> identityOptions)
         {
             _userManager = userManager;
             _jwtOptions = jwtOptions.Value;
             _identitySecurityLogManager = identitySecurityLogManager;
             _httpContextAccessor = httpContextAccessor;
             _signInManager = signInManager;
+            IdentityOptions = identityOptions;
         }
 
 
         public virtual async Task<LoginOutput> LoginAsync(LoginInput input)
         {
+            await IdentityOptions.SetAsync();
+            
             var result = await _signInManager.PasswordSignInAsync(input.Name, input.Password, false, true);
 
             if (result.IsNotAllowed)
+            {
+                throw new BusinessException(BasicManagementErrorCodes.UserDisabled);
+            }
+
+            if (result.IsLockedOut)
             {
                 throw new BusinessException(BasicManagementErrorCodes.UserLockedOut);
             }
@@ -47,8 +61,9 @@ namespace Lion.AbpPro.BasicManagement.Users
                 throw new BusinessException(BasicManagementErrorCodes.UserOrPasswordMismatch);
             }
 
+
             var user = await _userManager.FindByNameAsync(input.Name);
-            
+
             await _identitySecurityLogManager.SaveAsync(new IdentitySecurityLogContext()
             {
                 Action = _httpContextAccessor.HttpContext?.Request.Path,
@@ -104,7 +119,7 @@ namespace Lion.AbpPro.BasicManagement.Users
             {
                 Subject = new ClaimsIdentity(claims),
                 Expires = expirationTime, // token 过期时间
-                NotBefore = dateNow,    // token 签发时间
+                NotBefore = dateNow, // token 签发时间
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
             };

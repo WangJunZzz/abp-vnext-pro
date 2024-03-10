@@ -19,6 +19,7 @@
     "Setting.Group.System": "系统",
     "Lion.AbpPro.BasicManagement:100001": "组织机构不存在",
     "Lion.AbpPro.BasicManagement:100002": "用户被锁定",
-    "Lion.AbpPro.BasicManagement:100003": "用户名或者密码错误"
+    "Lion.AbpPro.BasicManagement:100003": "用户名或者密码错误",
+    "Lion.AbpPro.BasicManagement:100004": "用户已禁用"
   }
 }

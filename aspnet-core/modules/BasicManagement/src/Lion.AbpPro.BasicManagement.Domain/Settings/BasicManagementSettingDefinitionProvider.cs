@@ -1,4 +1,6 @@
-﻿namespace Lion.AbpPro.BasicManagement.Settings;
+﻿using Volo.Abp.Identity.Settings;
+
+namespace Lion.AbpPro.BasicManagement.Settings;
 
 public class BasicManagementSettingDefinitionProvider : SettingDefinitionProvider
 {
@@ -24,47 +26,53 @@ public class BasicManagementSettingDefinitionProvider : SettingDefinitionProvide
                 .WithProperty(AbpProSettingConsts.ControlType.Default,
                     AbpProSettingConsts.ControlType.TypeText));
 
-        context.GetOrNull("Abp.Identity.Password.RequiredLength")
+        context.GetOrNull(IdentitySettingNames.Password.RequiredLength)
             .WithProperty(BasicManagementSettings.Group.Default,
                 BasicManagementSettings.Group.SystemManagement)
             .WithProperty(AbpProSettingConsts.ControlType.Default,
                 AbpProSettingConsts.ControlType.Number);
 
-        context.GetOrNull("Abp.Identity.Password.RequiredLength")
+        context.GetOrNull(IdentitySettingNames.Password.RequiredUniqueChars)
             .WithProperty(BasicManagementSettings.Group.Default,
                 BasicManagementSettings.Group.SystemManagement)
             .WithProperty(AbpProSettingConsts.ControlType.Default,
                 AbpProSettingConsts.ControlType.Number);
 
-        context.GetOrNull("Abp.Identity.Password.RequiredUniqueChars")
+        context.GetOrNull(IdentitySettingNames.Password.RequireNonAlphanumeric)
+            .WithProperty(BasicManagementSettings.Group.Default,
+                BasicManagementSettings.Group.SystemManagement)
+            .WithProperty(AbpProSettingConsts.ControlType.Default,
+                AbpProSettingConsts.ControlType.TypeCheckBox);
+
+        context.GetOrNull(IdentitySettingNames.Password.RequireLowercase)
+            .WithProperty(BasicManagementSettings.Group.Default,
+                BasicManagementSettings.Group.SystemManagement)
+            .WithProperty(AbpProSettingConsts.ControlType.Default,
+                AbpProSettingConsts.ControlType.TypeCheckBox);
+
+        context.GetOrNull(IdentitySettingNames.Password.RequireUppercase)
+            .WithProperty(BasicManagementSettings.Group.Default,
+                BasicManagementSettings.Group.SystemManagement)
+            .WithProperty(AbpProSettingConsts.ControlType.Default,
+                AbpProSettingConsts.ControlType.TypeCheckBox);
+
+        context.GetOrNull(IdentitySettingNames.Password.RequireDigit)
+            .WithProperty(BasicManagementSettings.Group.Default,
+                BasicManagementSettings.Group.SystemManagement)
+            .WithProperty(AbpProSettingConsts.ControlType.Default,
+                AbpProSettingConsts.ControlType.TypeCheckBox);
+        
+        context.GetOrNull(IdentitySettingNames.Lockout.LockoutDuration)
             .WithProperty(BasicManagementSettings.Group.Default,
                 BasicManagementSettings.Group.SystemManagement)
             .WithProperty(AbpProSettingConsts.ControlType.Default,
                 AbpProSettingConsts.ControlType.Number);
-
-        context.GetOrNull("Abp.Identity.Password.RequireNonAlphanumeric")
+        
+        context.GetOrNull(IdentitySettingNames.Lockout.MaxFailedAccessAttempts)
             .WithProperty(BasicManagementSettings.Group.Default,
                 BasicManagementSettings.Group.SystemManagement)
             .WithProperty(AbpProSettingConsts.ControlType.Default,
-                AbpProSettingConsts.ControlType.TypeCheckBox);
-
-        context.GetOrNull("Abp.Identity.Password.RequireLowercase")
-            .WithProperty(BasicManagementSettings.Group.Default,
-                BasicManagementSettings.Group.SystemManagement)
-            .WithProperty(AbpProSettingConsts.ControlType.Default,
-                AbpProSettingConsts.ControlType.TypeCheckBox);
-
-        context.GetOrNull("Abp.Identity.Password.RequireUppercase")
-            .WithProperty(BasicManagementSettings.Group.Default,
-                BasicManagementSettings.Group.SystemManagement)
-            .WithProperty(AbpProSettingConsts.ControlType.Default,
-                AbpProSettingConsts.ControlType.TypeCheckBox);
-
-        context.GetOrNull("Abp.Identity.Password.RequireDigit")
-            .WithProperty(BasicManagementSettings.Group.Default,
-                BasicManagementSettings.Group.SystemManagement)
-            .WithProperty(AbpProSettingConsts.ControlType.Default,
-                AbpProSettingConsts.ControlType.TypeCheckBox);
+                AbpProSettingConsts.ControlType.Number);
     }
 
 

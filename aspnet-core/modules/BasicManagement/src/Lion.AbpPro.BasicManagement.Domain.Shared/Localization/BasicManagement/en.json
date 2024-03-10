@@ -18,6 +18,7 @@
     "Setting.Group.System": "System",
     "Lion.AbpPro.BasicManagement:100001": "OrganizationUnit Not Exist",
     "Lion.AbpPro.BasicManagement:100002": "UserLockedOut",
-    "Lion.AbpPro.BasicManagement:100003": "UserOrPasswordMismatch"
+    "Lion.AbpPro.BasicManagement:100003": "UserOrPasswordMismatch",
+    "Lion.AbpPro.BasicManagement:100004": "UserDisabled"
   }
 }

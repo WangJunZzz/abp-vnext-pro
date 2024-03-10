@@ -82,6 +82,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         {
             // abp 5.0 之后新增字段,是否运行用户登录，默认设置为true
             input.IsActive = true;
+            input.LockoutEnabled = true;
             return await _identityUserAppService.CreateAsync(input);
         }
 
