@@ -11,7 +11,7 @@
                     <a-input v-model:value="setting.value" style="width: 80%" />
                   </div>
                   <div v-if="setting.type === 'Number'">
-                    <a-input-number v-model:value="setting.value" :min="1" :max="10" />
+                    <a-input-number v-model:value="setting.value" :min="1" :max="99999" />
                   </div>
                   <div v-if="setting.type === 'CheckBox'">
                     <a-checkbox
