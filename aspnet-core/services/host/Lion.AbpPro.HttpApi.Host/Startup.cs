@@ -18,20 +18,6 @@ namespace Lion.AbpPro
         public void Configure(IApplicationBuilder app,IHostApplicationLifetime lifetime)
         {
             app.InitializeApplication();
-            lifetime.ApplicationStopped.Register(ConfigurePreheat);
-        }
-        
-        
-        /// <summary>
-        /// 程序首次访问接口速度慢，事先预热
-        /// </summary>
-        [Obsolete("请使用Lion.AbpPro.Starter模块,实现IAbpProStarterContributor")]
-        private void ConfigurePreheat()
-        {
-            var url = _configuration.GetValue<string>("App:SelfUrl");
-            if (url.IsNullOrWhiteSpace()) return;
-            var requestUrl = $"{url}/api/abp/application-configuration";
-            new HttpClient().GetAsync(requestUrl).Wait();
         }
     }
 }
