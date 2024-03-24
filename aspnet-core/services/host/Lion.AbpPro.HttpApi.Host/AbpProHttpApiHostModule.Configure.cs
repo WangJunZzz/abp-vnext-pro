@@ -217,6 +217,7 @@ public partial class AbpProHttpApiHostModule
                     option.HostName = configuration.GetValue<string>("Cap:RabbitMq:HostName");
                     option.UserName = configuration.GetValue<string>("Cap:RabbitMq:UserName");
                     option.Password = configuration.GetValue<string>("Cap:RabbitMq:Password");
+                    option.Port = configuration.GetValue<int>("Cap:RabbitMq:Port");
                 });
 
                 var hostingEnvironment = context.Services.GetHostingEnvironment();
