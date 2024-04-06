@@ -12,10 +12,19 @@ namespace Lion.AbpPro.BasicManagement.Tenants
 
         Task DeleteAsync(IdInput input);
 
-        Task<string> GetDefaultConnectionStringAsync(IdInput input);
+        /// <summary>
+        /// 分页获取租户连接字符串
+        /// </summary>
+        Task<PagedResultDto<PageTenantConnectionStringOutput>> PageConnectionStringsAsync(PageTenantConnectionStringInput input);
 
-        Task UpdateDefaultConnectionStringAsync(UpdateConnectionStringInput input);
-
-        Task DeleteDefaultConnectionStringAsync(IdInput input);
+        /// <summary>
+        /// 新增或者更新连接字符串
+        /// </summary>
+        Task AddOrUpdateConnectionStringAsync(AddOrUpdateConnectionStringInput input);
+        
+        /// <summary>
+        /// 删除连接字符串
+        /// </summary>
+        Task DeleteConnectionStringAsync(DeleteConnectionStringInput input);
     }
 }

@@ -34,5 +34,6 @@ public class BasicManagementApplicationAutoMapperProfile : Profile
         CreateMap<IdentityRole, GetOrganizationUnitRoleOutput>();
         CreateMap<IdentityRole, GetUnAddRoleOutput>();
         CreateMap<IdentitySecurityLog, PagingIdentitySecurityLogOutput>();
+        CreateMap<TenantConnectionString, PageTenantConnectionStringOutput>();
     }
 }

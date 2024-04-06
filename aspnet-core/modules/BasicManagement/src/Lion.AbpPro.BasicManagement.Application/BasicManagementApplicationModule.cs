@@ -47,7 +47,7 @@ public class BasicManagementApplicationModule : AbpModule
             options.Excludes.Add(SettingManagementPermissions.GroupName);
             options.Excludes.Add(SettingManagementPermissions.Emailing);
             options.Excludes.Add(TenantManagementPermissions.Tenants.ManageFeatures);
-            options.Excludes.Add(TenantManagementPermissions.Tenants.ManageConnectionStrings);
+            //options.Excludes.Add(TenantManagementPermissions.Tenants.ManageConnectionStrings);
         });
         
         context.Services.Configure<JwtOptions>(context.Services.GetConfiguration().GetSection("Jwt"));

@@ -48,26 +48,27 @@ namespace Lion.AbpPro.BasicManagement.Tenants
         {
             return _voloTenantAppService.DeleteAsync(input);
         }
+        
 
-        [HttpPost("getConnectionString")]
-        [SwaggerOperation(summary: "获取租户连接字符串", Tags = new[] { "Tenants" })]
-        public Task<string> GetDefaultConnectionStringAsync(IdInput input)
+        [HttpPost("pageConnectionString")]
+        [SwaggerOperation(summary: "分页租户连接字符串", Tags = new[] { "Tenants" })]
+        public Task<PagedResultDto<PageTenantConnectionStringOutput>> PageConnectionStringsAsync(PageTenantConnectionStringInput input)
         {
-            return _voloTenantAppService.GetDefaultConnectionStringAsync(input);
+            return _voloTenantAppService.PageConnectionStringsAsync(input);
         }
 
-        [HttpPost("updateConnectionString")]
-        [SwaggerOperation(summary: "更新租户连接字符串", Tags = new[] { "Tenants" })]
-        public Task UpdateDefaultConnectionStringAsync(UpdateConnectionStringInput input)
+        [HttpPost("addOrUpdateConnectionString")]
+        [SwaggerOperation(summary: "新增或者更新租户所有连接字符串", Tags = new[] { "Tenants" })]
+        public Task AddOrUpdateConnectionStringAsync(AddOrUpdateConnectionStringInput input)
         {
-            return _voloTenantAppService.UpdateDefaultConnectionStringAsync(input);
+            return _voloTenantAppService.AddOrUpdateConnectionStringAsync(input);
         }
 
         [HttpPost("deleteConnectionString")]
         [SwaggerOperation(summary: "删除租户连接字符串", Tags = new[] { "Tenants" })]
-        public Task DeleteDefaultConnectionStringAsync(IdInput input)
+        public Task DeleteConnectionStringAsync(DeleteConnectionStringInput input)
         {
-            return _voloTenantAppService.DeleteDefaultConnectionStringAsync(input);
+            return _voloTenantAppService.DeleteConnectionStringAsync(input);
         }
     }
 }

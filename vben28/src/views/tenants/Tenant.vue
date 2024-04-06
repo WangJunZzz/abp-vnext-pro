@@ -21,14 +21,14 @@
               label: t('common.editText'),
               onClick: handleEdit.bind(null, record),
             },
-          ]"
-          :dropDownActions="[
-            // {
-            //   auth: 'AbpTenantManagement.Tenants.ManageConnectionStrings',
-            //   label: t('routes.tenant.connectionString'),
-            //   onClick: handleConnectionString.bind(null, record),
-            // },
             {
+              icon: 'ant-design:edit-outlined',
+              auth: 'AbpTenantManagement.Tenants.ManageConnectionStrings',
+              label: t('routes.tenant.connectionString'),
+              onClick: handleConnectionString.bind(null, record),
+            },
+            {
+              icon: 'ant-design:minus-outlined',
               auth: 'AbpTenantManagement.Tenants.Delete',
               label: t('common.delText'),
               onClick: handleDelete.bind(null, record),
@@ -106,7 +106,7 @@
           slots: {
             customRender: 'action',
           },
-          width: 120,
+          width: 250,
           fixed: 'right',
         },
       });

@@ -1,10 +1,17 @@
+using Volo.Abp.MultiTenancy;
+
 namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
 {
     /// <summary>
     /// 消息通知 
     /// </summary>
-    public class Notification : FullAuditedAggregateRoot<Guid>
+    public class Notification : FullAuditedAggregateRoot<Guid>, IMultiTenant
     {
+        /// <summary>
+        /// 租户id
+        /// </summary>
+        public Guid? TenantId { get; private set; }
+        
         /// <summary>
         /// 消息标题
         /// </summary>
@@ -50,7 +57,8 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
             string content,
             MessageType messageType,
             MessageLevel messageLevel,
-            Guid senderId
+            Guid senderId,
+            Guid? tenantId = null
         ) : base(id)
         {
             NotificationSubscriptions = new List<NotificationSubscription>();
@@ -62,6 +70,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
                 messageLevel,
                 senderId
             );
+            SetTenantId(tenantId);
         }
 
         private void SetProperties(
@@ -79,6 +88,11 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
             SetSenderId(senderId);
         }
 
+        private void SetTenantId(Guid? tenantId)
+        {
+            TenantId = tenantId;
+        }
+        
         private void SetSenderId(Guid senderId)
         {
             Guard.NotEmpty(senderId, nameof(senderId));

@@ -61,7 +61,7 @@ public class DataDictionary : FullAuditedAggregateRoot<Guid>, IMultiTenant
         SetTenantId(tenantId);
     }
 
-    public void SetTenantId(Guid? tenantId)
+    private void SetTenantId(Guid? tenantId)
     {
         TenantId = tenantId;
     }

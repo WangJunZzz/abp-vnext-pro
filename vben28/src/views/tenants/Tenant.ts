@@ -2,7 +2,7 @@ import { FormSchema } from '/@/components/Table';
 import { BasicColumn } from '/@/components/Table';
 import { useI18n } from '/@/hooks/web/useI18n';
 const { t } = useI18n();
-import { TenantsServiceProxy, PagingTenantInput, IdInput } from '/@/services/ServiceProxies';
+import { TenantsServiceProxy, PagingTenantInput, IdInput, PageTenantConnectionStringInput} from '/@/services/ServiceProxies';
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'filter',
@@ -20,6 +20,8 @@ export const tableColumns: BasicColumn[] = [
     dataIndex: 'name',
   },
 ];
+
+
 
 export const createFormSchema: FormSchema[] = [
   {
@@ -66,6 +68,35 @@ export const editFormSchema: FormSchema[] = [
     colProps: { span: 20 },
   },
 ];
+
+export const createConnectionStringFormSchema: FormSchema[] = [
+  {
+    field: 'id',
+    label: 'Id',
+    component: 'Input',
+    required: true,
+    labelWidth: 150,
+    show: false,
+    colProps: { span: 20 },
+  },
+  {
+    field: 'name',
+    label: t('routes.tenant.name'),
+    helpMessage: ['请谨慎修改', '请谨慎修改', '请谨慎修改'],
+    component: 'Input',
+    labelWidth: 150,
+    colProps: { span: 20 },
+  },
+  {
+    field: 'value',
+    label: t('routes.tenant.connectionString'),
+    helpMessage: ['请检查连接字符串正确性', '请检查连接字符串正确性', '请检查连接字符串正确性'],
+    component: 'Input',
+    labelWidth: 150,
+    colProps: { span: 20 },
+  },
+];
+
 export const updateConnectionStringFormSchema: FormSchema[] = [
   {
     field: 'id',
@@ -77,11 +108,32 @@ export const updateConnectionStringFormSchema: FormSchema[] = [
     colProps: { span: 20 },
   },
   {
-    field: 'connectionString',
+    field: 'name',
+    label: t('routes.tenant.name'),
+    component: 'Input',
+    labelWidth: 150,
+    colProps: { span: 6 },
+  },
+  {
+    field: 'value',
     label: t('routes.tenant.connectionString'),
     component: 'Input',
     labelWidth: 150,
-    colProps: { span: 20 },
+    colProps: { span: 12 },
+  },
+];
+
+
+export const editConnectionStringtableColumns: BasicColumn[] = [
+  {
+    title: t('routes.tenant.name'),
+    dataIndex: 'name',
+    width: 240,
+  },
+  {
+    title: t('routes.tenant.connectionString'),
+    dataIndex: 'value',
+   
   },
 ];
 export async function getTenantListAsync(request: PagingTenantInput) {
@@ -112,13 +164,12 @@ export async function deleteTenantAsync({ id }) {
   request.id = id;
   await _tenantsServiceProxy.delete(request);
 }
-export async function getConnectionStringAsync({ id }) {
+export async function pageConnectionStringAsync( request :PageTenantConnectionStringInput) {
   const _tenantsServiceProxy = new TenantsServiceProxy();
-  let request = new IdInput();
-  request.id = id;
-  return await _tenantsServiceProxy.getConnectionString(request);
+  return await _tenantsServiceProxy.pageConnectionString(request);
 }
-export async function updateConnectionStringAsync({ request }) {
+
+export async function addOrUpdateConnectionString({ request }) {
   const _tenantsServiceProxy = new TenantsServiceProxy();
-  return await _tenantsServiceProxy.updateConnectionString(request);
+  return await _tenantsServiceProxy.addOrUpdateConnectionString(request);
 }

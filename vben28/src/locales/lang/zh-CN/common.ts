@@ -27,6 +27,7 @@ export default {
   locked: '已锁定',
   unLocked: '未锁定',
   createText: '新增',
+  createOrUpdateText: '新增或编辑',
   tip: '提示',
   askDelete: '确认删除吗',
   disEnabledSelf: '不能禁用自己',

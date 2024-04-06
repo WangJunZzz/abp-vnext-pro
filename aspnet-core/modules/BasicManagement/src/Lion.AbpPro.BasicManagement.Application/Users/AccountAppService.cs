@@ -92,8 +92,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// 生成jwt token
         /// </summary>
         /// <returns></returns>
-        private string GenerateJwt(Guid userId, string userName, string name, string email,
-            string tenantId, List<string> roles)
+        private string GenerateJwt(Guid userId, string userName, string name, string email, string tenantId, List<string> roles)
         {
             var dateNow = Clock.Now;
             var expirationTime = dateNow.AddHours(_jwtOptions.ExpirationTime);

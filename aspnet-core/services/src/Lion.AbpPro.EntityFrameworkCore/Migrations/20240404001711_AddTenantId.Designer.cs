@@ -3,6 +3,7 @@ using System;
 using Lion.AbpPro.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -11,9 +12,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Lion.AbpPro.Migrations
 {
     [DbContext(typeof(AbpProDbContext))]
-    partial class AbpProDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240404001711_AddTenantId")]
+    partial class AddTenantId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,7 +305,8 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CultureName");
+                    b.HasIndex("CultureName")
+                        .IsUnique();
 
                     b.ToTable("AbpLanguages", (string)null);
                 });

@@ -7,6 +7,11 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Etos
 {
     public class NotificationEto
     {
+        /// <summary>
+        /// 租户id
+        /// </summary>
+        public Guid? TenantId { get;  set; }
+        
         public Guid Id { get; set; }
         
         /// <summary>

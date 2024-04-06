@@ -53,7 +53,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Warning, senderId);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Warning, senderId, CurrentTenant.Id);
             foreach (var item in receiveIds)
             {
                 entity.AddNotificationSubscription(GuidGenerator.Create(), item);
@@ -84,7 +84,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Information, senderId);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Information, senderId, CurrentTenant.Id);
             foreach (var item in receiveIds)
             {
                 entity.AddNotificationSubscription(GuidGenerator.Create(), item);
@@ -112,7 +112,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Error, senderId);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Error, senderId, CurrentTenant.Id);
             foreach (var item in receiveIds)
             {
                 entity.AddNotificationSubscription(GuidGenerator.Create(), item);
@@ -137,7 +137,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Warning, senderId);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Warning, senderId, CurrentTenant.Id);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
             // 发送集成事件
             entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
@@ -157,7 +157,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Information, senderId);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Information, senderId, CurrentTenant.Id);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
             // 发送集成事件
             entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
@@ -177,7 +177,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Error, senderId);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Error, senderId, CurrentTenant.Id);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
             entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
             await _notificationRepository.InsertAsync(entity);

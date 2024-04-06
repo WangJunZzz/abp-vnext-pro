@@ -1,3 +1,7 @@
+using Volo.Abp.BackgroundJobs;
+using Volo.Abp.FeatureManagement;
+using Volo.Abp.SettingManagement;
+
 namespace Lion.AbpPro.BasicManagement.Tenants
 {
     [Authorize(TenantManagementPermissions.Tenants.Default)]
@@ -5,22 +9,25 @@ namespace Lion.AbpPro.BasicManagement.Tenants
     {
         private readonly IAbpTenantAppService _abpTenantAppService;
         private readonly ITenantAppService _tenantAppService;
+        private readonly ITenantRepository _tenantRepository;
 
         public VoloTenantAppService(
-            IAbpTenantAppService abpTenantAppService, 
-            ITenantAppService tenantAppService)
+            IAbpTenantAppService abpTenantAppService,
+            ITenantAppService tenantAppService,
+            ITenantRepository tenantRepository)
         {
             _abpTenantAppService = abpTenantAppService;
             _tenantAppService = tenantAppService;
+            _tenantRepository = tenantRepository;
         }
-        
+
         [AllowAnonymous]
         public virtual async Task<FindTenantResultDto> FindTenantByNameAsync(FindTenantByNameInput input)
         {
             return await _abpTenantAppService.FindTenantByNameAsync(input.Name);
         }
 
-        
+
         public virtual Task<PagedResultDto<TenantDto>> ListAsync(PagingTenantInput input)
         {
             var request = new GetTenantsInput
@@ -30,13 +37,13 @@ namespace Lion.AbpPro.BasicManagement.Tenants
             return _tenantAppService.GetListAsync(request);
         }
 
-        [Authorize(policy:TenantManagementPermissions.Tenants.Create)]
+        [Authorize(policy: TenantManagementPermissions.Tenants.Create)]
         public virtual Task<TenantDto> CreateAsync(TenantCreateDto input)
         {
             return _tenantAppService.CreateAsync(input);
         }
 
-        [Authorize(policy:TenantManagementPermissions.Tenants.Update)]
+        [Authorize(policy: TenantManagementPermissions.Tenants.Update)]
         public virtual Task<TenantDto> UpdateAsync(UpdateTenantInput input)
         {
             var request = new TenantUpdateDto()
@@ -46,29 +53,91 @@ namespace Lion.AbpPro.BasicManagement.Tenants
             return _tenantAppService.UpdateAsync(input.Id, request);
         }
 
-        [Authorize(policy:TenantManagementPermissions.Tenants.Delete)]
+        [Authorize(policy: TenantManagementPermissions.Tenants.Delete)]
         public virtual Task DeleteAsync(IdInput input)
         {
             return _tenantAppService.DeleteAsync(input.Id);
         }
+        
 
         [Authorize(TenantManagementPermissions.Tenants.ManageConnectionStrings)]
-        public virtual Task<string> GetDefaultConnectionStringAsync(IdInput input)
-        {
-            return _tenantAppService.GetDefaultConnectionStringAsync(input.Id);
+        public async Task<PagedResultDto<PageTenantConnectionStringOutput>> PageConnectionStringsAsync(PageTenantConnectionStringInput input)
+        { 
+            var result = new PagedResultDto<PageTenantConnectionStringOutput>();
+            var tenant = await _tenantRepository.FindAsync(input.Id, true);
+
+            if (tenant == null)
+            {
+                throw new BusinessException(BasicManagementErrorCodes.TenantNotExist);
+            }
+
+            result.TotalCount = tenant.ConnectionStrings.Count;
+
+            var items = ObjectMapper.Map<List<TenantConnectionString>, List<PageTenantConnectionStringOutput>>(tenant.ConnectionStrings);
+            if (input.Name.IsNotNullOrWhiteSpace())
+            {
+                items = items.Where(e => e.Name.ToLower().Contains(input.Name.ToLower())).ToList();
+            }
+            if (input.Value.IsNotNullOrWhiteSpace())
+            {
+                items = items.Where(e => e.Value.ToLower().Contains(input.Value.ToLower())).ToList();
+            }
+            result.Items = items;
+          
+            return result;
         }
 
         [Authorize(TenantManagementPermissions.Tenants.ManageConnectionStrings)]
-        public virtual Task UpdateDefaultConnectionStringAsync(UpdateConnectionStringInput input)
+        public async Task AddOrUpdateConnectionStringAsync(AddOrUpdateConnectionStringInput input)
         {
-            return _tenantAppService.UpdateDefaultConnectionStringAsync(input.Id,
-                input.ConnectionString);
+         
+            // abp 租户，feature，background,setting 模块不支持单独配置数据库
+            if (AbpTenantManagementDbProperties.ConnectionStringName.ToLower() == input.Name.ToLower() || 
+                AbpBackgroundJobsDbProperties.ConnectionStringName.ToLower()== input.Name.ToLower() ||
+                AbpFeatureManagementDbProperties.ConnectionStringName.ToLower() == input.Name.ToLower() ||
+                AbpSettingManagementDbProperties.ConnectionStringName.ToLower() == input.Name.ToLower())
+            {
+                throw new BusinessException(BasicManagementErrorCodes.NotSupportSetConnectionString);
+            }
+            var tenant = await _tenantRepository.FindAsync(input.Id, true);
+
+            if (tenant == null)
+            {
+                throw new BusinessException(BasicManagementErrorCodes.TenantNotExist);
+            }
+
+            var connectionString = tenant.ConnectionStrings.FirstOrDefault(e => e.Value == input.Name);
+            if (connectionString == null)
+            {
+                tenant.SetConnectionString(input.Name, input.Value);
+            }
+            else
+            {
+                if (connectionString.Value != input.Value)
+                {
+                    tenant.SetConnectionString(input.Name, input.Value);
+                }
+            }
         }
 
-        [Authorize(TenantManagementPermissions.Tenants.ManageConnectionStrings)]
-        public virtual Task DeleteDefaultConnectionStringAsync(IdInput input)
+        public async Task DeleteConnectionStringAsync(DeleteConnectionStringInput input)
         {
-            return _tenantAppService.DeleteDefaultConnectionStringAsync(input.Id);
+            if (!CurrentTenant.Id.HasValue)
+            {
+                throw new BusinessException(BasicManagementErrorCodes.TenantNotExist);
+            }
+
+            var tenant = await _tenantRepository.FindAsync(CurrentTenant.Id.Value, true);
+
+            if (tenant == null)
+            {
+                throw new BusinessException(BasicManagementErrorCodes.TenantNotExist);
+            }
+            var connectionString = tenant.ConnectionStrings.FirstOrDefault(e => e.Value == input.Name);
+            if (connectionString != null)
+            {
+                tenant.RemoveConnectionString(input.Name);
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Lion.AbpPro.LanguageManagement.EntityFrameworkCore
                 b.Property(e => e.DisplayName).IsRequired().HasMaxLength(128).HasComment("显示名称");
                 b.Property(e => e.FlagIcon).HasMaxLength(128).HasComment("图标");
                 b.Property<bool>(x => x.IsEnabled).IsRequired();
-                b.HasIndex(e => e.CultureName).IsUnique();
+                b.HasIndex(e => e.CultureName);
                 b.ConfigureByConvention();
             });
             

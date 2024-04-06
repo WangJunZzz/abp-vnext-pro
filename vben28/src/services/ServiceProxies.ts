@@ -6132,12 +6132,12 @@ export class TenantsServiceProxy extends ServiceProxyBase {
     }
 
     /**
-     * 获取租户连接字符串
+     * 分页租户连接字符串
      * @param body (optional) 
      * @return Success
      */
-    getConnectionString(body: IdInput | undefined , cancelToken?: CancelToken | undefined): Promise<string> {
-        let url_ = this.baseUrl + "/Tenants/getConnectionString";
+    pageConnectionString(body: PageTenantConnectionStringInput | undefined , cancelToken?: CancelToken | undefined): Promise<PageTenantConnectionStringOutputPagedResultDto> {
+        let url_ = this.baseUrl + "/Tenants/pageConnectionString";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -6162,11 +6162,11 @@ export class TenantsServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processGetConnectionString(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processPageConnectionString(_response));
         });
     }
 
-    protected processGetConnectionString(response: AxiosResponse): Promise<string> {
+    protected processPageConnectionString(response: AxiosResponse): Promise<PageTenantConnectionStringOutputPagedResultDto> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -6180,9 +6180,8 @@ export class TenantsServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-                result200 = resultData200 !== undefined ? resultData200 : <any>null;
-    
-            return Promise.resolve<string>(result200);
+            result200 = PageTenantConnectionStringOutputPagedResultDto.fromJS(resultData200);
+            return Promise.resolve<PageTenantConnectionStringOutputPagedResultDto>(result200);
 
         } else if (status === 403) {
             const _responseText = response.data;
@@ -6230,16 +6229,16 @@ export class TenantsServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<string>(null as any);
+        return Promise.resolve<PageTenantConnectionStringOutputPagedResultDto>(null as any);
     }
 
     /**
-     * 更新租户连接字符串
+     * 新增或者更新租户所有连接字符串
      * @param body (optional) 
      * @return Success
      */
-    updateConnectionString(body: UpdateConnectionStringInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
-        let url_ = this.baseUrl + "/Tenants/updateConnectionString";
+    addOrUpdateConnectionString(body: AddOrUpdateConnectionStringInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Tenants/addOrUpdateConnectionString";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -6263,11 +6262,11 @@ export class TenantsServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processUpdateConnectionString(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processAddOrUpdateConnectionString(_response));
         });
     }
 
-    protected processUpdateConnectionString(response: AxiosResponse): Promise<void> {
+    protected processAddOrUpdateConnectionString(response: AxiosResponse): Promise<void> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -6335,7 +6334,7 @@ export class TenantsServiceProxy extends ServiceProxyBase {
      * @param body (optional) 
      * @return Success
      */
-    deleteConnectionString(body: IdInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+    deleteConnectionString(body: DeleteConnectionStringInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
         let url_ = this.baseUrl + "/Tenants/deleteConnectionString";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -7382,6 +7381,56 @@ export interface IActionApiDescriptionModel {
     implementFrom: string | undefined;
 }
 
+export class AddOrUpdateConnectionStringInput implements IAddOrUpdateConnectionStringInput {
+    /** id */
+    id!: string;
+    /** 连接字符串名称 */
+    name!: string | undefined;
+    /** 连接字符串地址 */
+    value!: string | undefined;
+
+    constructor(data?: IAddOrUpdateConnectionStringInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.value = _data["value"];
+        }
+    }
+
+    static fromJS(data: any): AddOrUpdateConnectionStringInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new AddOrUpdateConnectionStringInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["value"] = this.value;
+        return data;
+    }
+}
+
+export interface IAddOrUpdateConnectionStringInput {
+    /** id */
+    id: string;
+    /** 连接字符串名称 */
+    name: string | undefined;
+    /** 连接字符串地址 */
+    value: string | undefined;
+}
+
 export class AddRoleToOrganizationUnitInput implements IAddRoleToOrganizationUnitInput {
     roleId!: string[] | undefined;
     organizationUnitId!: string;
@@ -7842,7 +7891,7 @@ export class ApplicationLocalizationConfigurationDto implements IApplicationLoca
                 this.values = {} as any;
                 for (let key in _data["values"]) {
                     if (_data["values"].hasOwnProperty(key))
-                        (<any>this.values)![key] = _data["values"][key];
+                        (<any>this.values)![key] = _data["values"][key] !== undefined ? _data["values"][key] : {};
                 }
             }
             if (_data["resources"]) {
@@ -7863,14 +7912,14 @@ export class ApplicationLocalizationConfigurationDto implements IApplicationLoca
                 this.languagesMap = {} as any;
                 for (let key in _data["languagesMap"]) {
                     if (_data["languagesMap"].hasOwnProperty(key))
-                        (<any>this.languagesMap)![key] = _data["languagesMap"][key] ? _data["languagesMap"][key].map((i: any) => NameValue.fromJS(i)) : <any>undefined;
+                        (<any>this.languagesMap)![key] = _data["languagesMap"][key] ? _data["languagesMap"][key].map((i: any) => NameValue.fromJS(i)) : [];
                 }
             }
             if (_data["languageFilesMap"]) {
                 this.languageFilesMap = {} as any;
                 for (let key in _data["languageFilesMap"]) {
                     if (_data["languageFilesMap"].hasOwnProperty(key))
-                        (<any>this.languageFilesMap)![key] = _data["languageFilesMap"][key] ? _data["languageFilesMap"][key].map((i: any) => NameValue.fromJS(i)) : <any>undefined;
+                        (<any>this.languageFilesMap)![key] = _data["languageFilesMap"][key] ? _data["languageFilesMap"][key].map((i: any) => NameValue.fromJS(i)) : [];
                 }
             }
         }
@@ -8830,6 +8879,44 @@ export interface IDateTimeFormatDto {
     dateSeparator: string | undefined;
     shortTimePattern: string | undefined;
     longTimePattern: string | undefined;
+}
+
+export class DeleteConnectionStringInput implements IDeleteConnectionStringInput {
+    /** 连接字符串名称 */
+    name!: string | undefined;
+
+    constructor(data?: IDeleteConnectionStringInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+        }
+    }
+
+    static fromJS(data: any): DeleteConnectionStringInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new DeleteConnectionStringInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        return data;
+    }
+}
+
+export interface IDeleteConnectionStringInput {
+    /** 连接字符串名称 */
+    name: string | undefined;
 }
 
 export class DeleteDataDictionaryDetailInput implements IDeleteDataDictionaryDetailInput {
@@ -11327,19 +11414,19 @@ export enum HttpStatusCode {
     ExpectationFailed = 426,
     MisdirectedRequest = 428,
     UnprocessableEntity = 429,
-    Locked = 431,
-    FailedDependency = 451,
-    UpgradeRequired = 500,
-    PreconditionRequired = 501,
-    TooManyRequests = 502,
-    RequestHeaderFieldsTooLarge = 503,
-    UnavailableForLegalReasons = 504,
-    InternalServerError = 505,
-    NotImplemented = 506,
-    BadGateway = 507,
-    ServiceUnavailable = 508,
-    GatewayTimeout = 510,
-    HttpVersionNotSupported = 511,
+    UnprocessableContent = 431,
+    Locked = 451,
+    FailedDependency = 500,
+    UpgradeRequired = 501,
+    PreconditionRequired = 502,
+    TooManyRequests = 503,
+    RequestHeaderFieldsTooLarge = 504,
+    UnavailableForLegalReasons = 505,
+    InternalServerError = 506,
+    NotImplemented = 507,
+    BadGateway = 508,
+    ServiceUnavailable = 510,
+    GatewayTimeout = 511,
 }
 
 export class IanaTimeZone implements IIanaTimeZone {
@@ -11814,9 +11901,11 @@ export class IdentityUserDto implements IIdentityUserDto {
     phoneNumberConfirmed!: boolean;
     isActive!: boolean;
     lockoutEnabled!: boolean;
+    accessFailedCount!: number;
     lockoutEnd!: dayjs.Dayjs | undefined;
     concurrencyStamp!: string | undefined;
     entityVersion!: number;
+    lastPasswordChangeTime!: dayjs.Dayjs | undefined;
 
     constructor(data?: IIdentityUserDto) {
         if (data) {
@@ -11854,9 +11943,11 @@ export class IdentityUserDto implements IIdentityUserDto {
             this.phoneNumberConfirmed = _data["phoneNumberConfirmed"];
             this.isActive = _data["isActive"];
             this.lockoutEnabled = _data["lockoutEnabled"];
+            this.accessFailedCount = _data["accessFailedCount"];
             this.lockoutEnd = _data["lockoutEnd"] ? dayjs(_data["lockoutEnd"].toString()) : <any>undefined;
             this.concurrencyStamp = _data["concurrencyStamp"];
             this.entityVersion = _data["entityVersion"];
+            this.lastPasswordChangeTime = _data["lastPasswordChangeTime"] ? dayjs(_data["lastPasswordChangeTime"].toString()) : <any>undefined;
         }
     }
 
@@ -11894,9 +11985,11 @@ export class IdentityUserDto implements IIdentityUserDto {
         data["phoneNumberConfirmed"] = this.phoneNumberConfirmed;
         data["isActive"] = this.isActive;
         data["lockoutEnabled"] = this.lockoutEnabled;
+        data["accessFailedCount"] = this.accessFailedCount;
         data["lockoutEnd"] = this.lockoutEnd ? this.lockoutEnd.toLocaleString() : <any>undefined;
         data["concurrencyStamp"] = this.concurrencyStamp;
         data["entityVersion"] = this.entityVersion;
+        data["lastPasswordChangeTime"] = this.lastPasswordChangeTime ? this.lastPasswordChangeTime.toLocaleString() : <any>undefined;
         return data;
     }
 }
@@ -11921,9 +12014,11 @@ export interface IIdentityUserDto {
     phoneNumberConfirmed: boolean;
     isActive: boolean;
     lockoutEnabled: boolean;
+    accessFailedCount: number;
     lockoutEnd: dayjs.Dayjs | undefined;
     concurrencyStamp: string | undefined;
     entityVersion: number;
+    lastPasswordChangeTime: dayjs.Dayjs | undefined;
 }
 
 export class IdentityUserDtoPagedResultDto implements IIdentityUserDtoPagedResultDto {
@@ -13050,6 +13145,154 @@ export class PageLanguageTextOutputPagedResultDto implements IPageLanguageTextOu
 
 export interface IPageLanguageTextOutputPagedResultDto {
     items: PageLanguageTextOutput[] | undefined;
+    totalCount: number;
+}
+
+export class PageTenantConnectionStringInput implements IPageTenantConnectionStringInput {
+    /** 租户id */
+    id!: string;
+    /** 连接字符串名称 */
+    name!: string | undefined;
+    /** 连接字符串地址 */
+    value!: string | undefined;
+
+    constructor(data?: IPageTenantConnectionStringInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.value = _data["value"];
+        }
+    }
+
+    static fromJS(data: any): PageTenantConnectionStringInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PageTenantConnectionStringInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["value"] = this.value;
+        return data;
+    }
+}
+
+export interface IPageTenantConnectionStringInput {
+    /** 租户id */
+    id: string;
+    /** 连接字符串名称 */
+    name: string | undefined;
+    /** 连接字符串地址 */
+    value: string | undefined;
+}
+
+export class PageTenantConnectionStringOutput implements IPageTenantConnectionStringOutput {
+    /** 租户id */
+    tenantId!: string;
+    /** 连接字符串名称 */
+    name!: string | undefined;
+    /** 连接字符串地址 */
+    value!: string | undefined;
+
+    constructor(data?: IPageTenantConnectionStringOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.tenantId = _data["tenantId"];
+            this.name = _data["name"];
+            this.value = _data["value"];
+        }
+    }
+
+    static fromJS(data: any): PageTenantConnectionStringOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PageTenantConnectionStringOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["tenantId"] = this.tenantId;
+        data["name"] = this.name;
+        data["value"] = this.value;
+        return data;
+    }
+}
+
+export interface IPageTenantConnectionStringOutput {
+    /** 租户id */
+    tenantId: string;
+    /** 连接字符串名称 */
+    name: string | undefined;
+    /** 连接字符串地址 */
+    value: string | undefined;
+}
+
+export class PageTenantConnectionStringOutputPagedResultDto implements IPageTenantConnectionStringOutputPagedResultDto {
+    items!: PageTenantConnectionStringOutput[] | undefined;
+    totalCount!: number;
+
+    constructor(data?: IPageTenantConnectionStringOutputPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(PageTenantConnectionStringOutput.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): PageTenantConnectionStringOutputPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PageTenantConnectionStringOutputPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+}
+
+export interface IPageTenantConnectionStringOutputPagedResultDto {
+    items: PageTenantConnectionStringOutput[] | undefined;
     totalCount: number;
 }
 
@@ -15789,46 +16032,6 @@ export interface ITypeApiDescriptionModel {
     enumValues: any[] | undefined;
     genericArguments: string[] | undefined;
     properties: PropertyApiDescriptionModel[] | undefined;
-}
-
-export class UpdateConnectionStringInput implements IUpdateConnectionStringInput {
-    id!: string;
-    connectionString!: string | undefined;
-
-    constructor(data?: IUpdateConnectionStringInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.id = _data["id"];
-            this.connectionString = _data["connectionString"];
-        }
-    }
-
-    static fromJS(data: any): UpdateConnectionStringInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new UpdateConnectionStringInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        data["connectionString"] = this.connectionString;
-        return data;
-    }
-}
-
-export interface IUpdateConnectionStringInput {
-    id: string;
-    connectionString: string | undefined;
 }
 
 export class UpdateDataDictinaryInput implements IUpdateDataDictinaryInput {

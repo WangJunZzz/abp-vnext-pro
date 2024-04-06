@@ -1,6 +1,6 @@
 ﻿namespace Lion.AbpPro.LanguageManagement.Languages.Aggregates;
 
-public class Language : FullAuditedAggregateRoot<Guid>, ILanguageInfo
+public class Language : FullAuditedAggregateRoot<Guid>, ILanguageInfo, IMultiTenant
 {
     private Language()
     {
@@ -14,7 +14,8 @@ public class Language : FullAuditedAggregateRoot<Guid>, ILanguageInfo
         string displayName,
         string flagIcon,
         bool isEnabled,
-        bool isDefault
+        bool isDefault,
+        Guid? tenantId = null
     ) : base(id)
     {
         SetCultureName(cultureName);
@@ -23,8 +24,14 @@ public class Language : FullAuditedAggregateRoot<Guid>, ILanguageInfo
         SetFlagIcon(flagIcon);
         SetEnabled(isEnabled);
         SetDefault(isDefault);
+        SetTenantId(tenantId);
     }
 
+    /// <summary>
+    /// 租户id
+    /// </summary>
+    public Guid? TenantId { get; private set; }
+    
     /// <summary>
     /// 语言名称
     /// </summary>
@@ -95,6 +102,11 @@ public class Language : FullAuditedAggregateRoot<Guid>, ILanguageInfo
         IsEnabled = isEnabled;
     }
 
+    public void SetTenantId(Guid? tenantId)
+    {
+        TenantId = tenantId;
+    }
+    
     /// <summary>
     /// 更新语言
     /// </summary> 

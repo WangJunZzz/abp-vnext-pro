@@ -54,7 +54,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
             throw new LanguageManagementDomainException(LanguageManagementErrorCodes.LanguageExist);
         }
 
-        entity = new Language(id, cultureName, uiCultureName, displayName, flagIcon, isEnabled, false);
+        entity = new Language(id, cultureName, uiCultureName, displayName, flagIcon, isEnabled, false, CurrentTenant.Id);
         entity = await _languageRepository.InsertAsync(entity);
         return ObjectMapper.Map<Language, LanguageDto>(entity);
     }
