@@ -14,11 +14,14 @@ public class BasicManagementPermissionDefinitionProvider : PermissionDefinitionP
         userManagement.AddChild(BasicManagementPermissions.SystemManagement.UserEnable, L("Permission:Enable"), multiTenancySide: MultiTenancySides.Both);
         userManagement.AddChild(BasicManagementPermissions.SystemManagement.UserExport, L("Permission:Export"), multiTenancySide: MultiTenancySides.Both);
 
-        var auditManagement =
-            abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.AuditLog, L("Permission:AuditLogManagement"), multiTenancySide: MultiTenancySides.Both);
+        abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.AuditLog, L("Permission:AuditLogManagement"), multiTenancySide: MultiTenancySides.Both);
         abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.Setting, L("Permission:SettingManagement"), multiTenancySide: MultiTenancySides.Both);
         abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.IdentitySecurityLog, L("Permission:IdentitySecurityLog"), multiTenancySide: MultiTenancySides.Both);
-        var organizationUnitManagement = abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.OrganizationUnit, L("Permission:OrganizationUnitManagement"), multiTenancySide: MultiTenancySides.Both);
+        abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.FeatureManagement, L("Permission:FeatureManagement"), multiTenancySide: MultiTenancySides.Both);
+        
+        var organizationUnitManagement = abpIdentityGroup
+            .AddPermission(BasicManagementPermissions.SystemManagement.OrganizationUnit, L("Permission:OrganizationUnitManagement"), multiTenancySide: MultiTenancySides.Both);
+
         organizationUnitManagement.AddChild
         (
             BasicManagementPermissions.SystemManagement.OrganizationUnitManagement.Create,

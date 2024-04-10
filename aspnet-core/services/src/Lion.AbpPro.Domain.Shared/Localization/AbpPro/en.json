@@ -24,6 +24,9 @@
     "Description:Setting.Group.Other.Github": "Github",
     "Enum:TestType:Created:1":"Created",
     "Enum:TestType:Cancel:1":"Cancel",
-    "Enum:TestType:Delete:1":"Delete"
+    "Enum:TestType:Delete:1":"Delete",
+    "Feature:TestEnable": "TestEnable",
+    "Feature:TestString": "TestString",
+    "Feature:TestGroup": "TestGroup"
   }
 }

@@ -64,6 +64,7 @@ export default {
   logContent: '内容',
   detail: '详情',
   settingManagement: '设置管理',
+  featureManagement: '功能管理',
   dictionaryManagement: '数据字典',
   dictionaryTypeName: '字典类型',
   dictionaryCode: '编码',

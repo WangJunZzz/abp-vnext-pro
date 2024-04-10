@@ -25,6 +25,9 @@
     "Description:Setting.Group.Other.Github": "Github",
     "Enum:TestType:Created:1":"创建",
     "Enum:TestType:Cancel:1":"取消",
-    "Enum:TestType:Delete:1":"删除"
+    "Enum:TestType:Delete:1":"删除",
+    "Feature:TestGroup": "测试功能分组",
+    "Feature:TestEnable": "测试Checkbox-bool类型",
+    "Feature:TestString": "测试Input-string类型"
   }
 }

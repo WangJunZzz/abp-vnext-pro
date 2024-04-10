@@ -65,6 +65,7 @@ export default {
   logLevel: 'Level',
   logContent: 'Content',
   settingManagement: 'SettingManagement',
+  featureManagement: 'FeatureManagement',
   dictionaryManagement: 'DataDictionary',
   dictionaryTypeName: 'Type',
   dictionaryCode: 'Code',

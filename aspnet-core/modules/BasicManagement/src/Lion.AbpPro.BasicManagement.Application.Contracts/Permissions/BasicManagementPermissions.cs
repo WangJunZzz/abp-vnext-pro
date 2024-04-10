@@ -16,6 +16,7 @@ public class BasicManagementPermissions
         public const string Setting = Default + ".Setting";
         public const string IdentitySecurityLog = Default + ".IdentitySecurityLogs";
         public const string OrganizationUnit = Default + ".OrganizationUnitManagement";
+        public const string FeatureManagement = Default + ".FeatureManagement";
         public static class OrganizationUnitManagement
         {
             public const string Default = SystemManagement.Default + ".OrganizationUnitManagement";

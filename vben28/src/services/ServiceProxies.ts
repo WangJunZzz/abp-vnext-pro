@@ -1471,6 +1471,313 @@ export class DataDictionaryServiceProxy extends ServiceProxyBase {
     }
 }
 
+export class FeaturesServiceProxy extends ServiceProxyBase {
+    private instance: AxiosInstance;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, instance?: AxiosInstance) {
+        super();
+        this.instance = instance ? instance : axios.create();
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * 获取Features
+     * @param body (optional) 
+     * @return Success
+     */
+    list(body: GetFeatureListResultInput | undefined , cancelToken?: CancelToken | undefined): Promise<GetFeatureListResultDto> {
+        let url_ = this.baseUrl + "/Features/list";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processList(_response));
+        });
+    }
+
+    protected processList(response: AxiosResponse): Promise<GetFeatureListResultDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = GetFeatureListResultDto.fromJS(resultData200);
+            return Promise.resolve<GetFeatureListResultDto>(result200);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<GetFeatureListResultDto>(null as any);
+    }
+
+    /**
+     * 更新Features
+     * @param body (optional) 
+     * @return Success
+     */
+    update(body: UpdateFeatureInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Features/update";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processUpdate(_response));
+        });
+    }
+
+    protected processUpdate(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(null as any);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(null as any);
+    }
+
+    /**
+     * 删除Features
+     * @param body (optional) 
+     * @return Success
+     */
+    delete(body: DeleteFeatureInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Features/delete";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processDelete(_response));
+        });
+    }
+
+    protected processDelete(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(null as any);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(null as any);
+    }
+}
+
 export class IdentitySecurityLogsServiceProxy extends ServiceProxyBase {
     private instance: AxiosInstance;
     private baseUrl: string;
@@ -8959,6 +9266,46 @@ export interface IDeleteDataDictionaryDetailInput {
     dataDictionayDetailId: string;
 }
 
+export class DeleteFeatureInput implements IDeleteFeatureInput {
+    providerName!: string | undefined;
+    providerKey!: string | undefined;
+
+    constructor(data?: IDeleteFeatureInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.providerName = _data["providerName"];
+            this.providerKey = _data["providerKey"];
+        }
+    }
+
+    static fromJS(data: any): DeleteFeatureInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new DeleteFeatureInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["providerName"] = this.providerName;
+        data["providerKey"] = this.providerKey;
+        return data;
+    }
+}
+
+export interface IDeleteFeatureInput {
+    providerName: string | undefined;
+    providerKey: string | undefined;
+}
+
 /** 删除语言 */
 export class DeleteLanguageInput implements IDeleteLanguageInput {
     /** 语言Id */
@@ -9615,6 +9962,162 @@ export class ExtensionPropertyUiTableDto implements IExtensionPropertyUiTableDto
 
 export interface IExtensionPropertyUiTableDto {
     isVisible: boolean;
+}
+
+export class FeatureDto implements IFeatureDto {
+    name!: string | undefined;
+    displayName!: string | undefined;
+    value!: string | undefined;
+    provider!: FeatureProviderDto;
+    description!: string | undefined;
+    valueType!: IStringValueType;
+    depth!: number;
+    parentName!: string | undefined;
+
+    constructor(data?: IFeatureDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.displayName = _data["displayName"];
+            this.value = _data["value"];
+            this.provider = _data["provider"] ? FeatureProviderDto.fromJS(_data["provider"]) : <any>undefined;
+            this.description = _data["description"];
+            this.valueType = _data["valueType"] ? IStringValueType.fromJS(_data["valueType"]) : <any>undefined;
+            this.depth = _data["depth"];
+            this.parentName = _data["parentName"];
+        }
+    }
+
+    static fromJS(data: any): FeatureDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new FeatureDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["displayName"] = this.displayName;
+        data["value"] = this.value;
+        data["provider"] = this.provider ? this.provider.toJSON() : <any>undefined;
+        data["description"] = this.description;
+        data["valueType"] = this.valueType ? this.valueType.toJSON() : <any>undefined;
+        data["depth"] = this.depth;
+        data["parentName"] = this.parentName;
+        return data;
+    }
+}
+
+export interface IFeatureDto {
+    name: string | undefined;
+    displayName: string | undefined;
+    value: string | undefined;
+    provider: FeatureProviderDto;
+    description: string | undefined;
+    valueType: IStringValueType;
+    depth: number;
+    parentName: string | undefined;
+}
+
+export class FeatureGroupDto implements IFeatureGroupDto {
+    name!: string | undefined;
+    displayName!: string | undefined;
+    features!: FeatureDto[] | undefined;
+
+    constructor(data?: IFeatureGroupDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.displayName = _data["displayName"];
+            if (Array.isArray(_data["features"])) {
+                this.features = [] as any;
+                for (let item of _data["features"])
+                    this.features!.push(FeatureDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): FeatureGroupDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new FeatureGroupDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["displayName"] = this.displayName;
+        if (Array.isArray(this.features)) {
+            data["features"] = [];
+            for (let item of this.features)
+                data["features"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IFeatureGroupDto {
+    name: string | undefined;
+    displayName: string | undefined;
+    features: FeatureDto[] | undefined;
+}
+
+export class FeatureProviderDto implements IFeatureProviderDto {
+    name!: string | undefined;
+    key!: string | undefined;
+
+    constructor(data?: IFeatureProviderDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.key = _data["key"];
+        }
+    }
+
+    static fromJS(data: any): FeatureProviderDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new FeatureProviderDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["key"] = this.key;
+        return data;
+    }
+}
+
+export interface IFeatureProviderDto {
+    name: string | undefined;
+    key: string | undefined;
 }
 
 export class FileAggregateRoute implements IFileAggregateRoute {
@@ -10737,6 +11240,90 @@ export interface IFindTenantResultDto {
     isActive: boolean;
 }
 
+export class GetFeatureListResultDto implements IGetFeatureListResultDto {
+    groups!: FeatureGroupDto[] | undefined;
+
+    constructor(data?: IGetFeatureListResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["groups"])) {
+                this.groups = [] as any;
+                for (let item of _data["groups"])
+                    this.groups!.push(FeatureGroupDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): GetFeatureListResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new GetFeatureListResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.groups)) {
+            data["groups"] = [];
+            for (let item of this.groups)
+                data["groups"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IGetFeatureListResultDto {
+    groups: FeatureGroupDto[] | undefined;
+}
+
+export class GetFeatureListResultInput implements IGetFeatureListResultInput {
+    providerName!: string | undefined;
+    providerKey!: string | undefined;
+
+    constructor(data?: IGetFeatureListResultInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.providerName = _data["providerName"];
+            this.providerKey = _data["providerKey"];
+        }
+    }
+
+    static fromJS(data: any): GetFeatureListResultInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new GetFeatureListResultInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["providerName"] = this.providerName;
+        data["providerKey"] = this.providerKey;
+        return data;
+    }
+}
+
+export interface IGetFeatureListResultInput {
+    providerName: string | undefined;
+    providerKey: string | undefined;
+}
+
 export class GetOrganizationUnitRoleInput implements IGetOrganizationUnitRoleInput {
     /** 当前页面.默认从1开始 */
     pageIndex!: number;
@@ -11427,6 +12014,114 @@ export enum HttpStatusCode {
     BadGateway = 508,
     ServiceUnavailable = 510,
     GatewayTimeout = 511,
+}
+
+export class IStringValueType implements IIStringValueType {
+    readonly name!: string | undefined;
+    readonly properties!: { [key: string]: any; } | undefined;
+    validator!: IValueValidator;
+
+    constructor(data?: IIStringValueType) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).name = _data["name"];
+            if (_data["properties"]) {
+                (<any>this).properties = {} as any;
+                for (let key in _data["properties"]) {
+                    if (_data["properties"].hasOwnProperty(key))
+                        (<any>(<any>this).properties)![key] = _data["properties"][key];
+                }
+            }
+            this.validator = _data["validator"] ? IValueValidator.fromJS(_data["validator"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): IStringValueType {
+        data = typeof data === 'object' ? data : {};
+        let result = new IStringValueType();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        if (this.properties) {
+            data["properties"] = {};
+            for (let key in this.properties) {
+                if (this.properties.hasOwnProperty(key))
+                    (<any>data["properties"])[key] = (<any>this.properties)[key];
+            }
+        }
+        data["validator"] = this.validator ? this.validator.toJSON() : <any>undefined;
+        return data;
+    }
+}
+
+export interface IIStringValueType {
+    name: string | undefined;
+    properties: { [key: string]: any; } | undefined;
+    validator: IValueValidator;
+}
+
+export class IValueValidator implements IIValueValidator {
+    readonly name!: string | undefined;
+    readonly properties!: { [key: string]: any; } | undefined;
+
+    constructor(data?: IIValueValidator) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).name = _data["name"];
+            if (_data["properties"]) {
+                (<any>this).properties = {} as any;
+                for (let key in _data["properties"]) {
+                    if (_data["properties"].hasOwnProperty(key))
+                        (<any>(<any>this).properties)![key] = _data["properties"][key];
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): IValueValidator {
+        data = typeof data === 'object' ? data : {};
+        let result = new IValueValidator();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        if (this.properties) {
+            data["properties"] = {};
+            for (let key in this.properties) {
+                if (this.properties.hasOwnProperty(key))
+                    (<any>data["properties"])[key] = (<any>this.properties)[key];
+            }
+        }
+        return data;
+    }
+}
+
+export interface IIValueValidator {
+    name: string | undefined;
+    properties: { [key: string]: any; } | undefined;
 }
 
 export class IanaTimeZone implements IIanaTimeZone {
@@ -16132,6 +16827,134 @@ export interface IUpdateDetailInput {
     displayText: string | undefined;
     description: string | undefined;
     order: number;
+}
+
+export class UpdateFeatureDto implements IUpdateFeatureDto {
+    name!: string | undefined;
+    value!: string | undefined;
+
+    constructor(data?: IUpdateFeatureDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.value = _data["value"];
+        }
+    }
+
+    static fromJS(data: any): UpdateFeatureDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateFeatureDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["value"] = this.value;
+        return data;
+    }
+}
+
+export interface IUpdateFeatureDto {
+    name: string | undefined;
+    value: string | undefined;
+}
+
+export class UpdateFeatureInput implements IUpdateFeatureInput {
+    providerName!: string | undefined;
+    providerKey!: string | undefined;
+    updateFeaturesDto!: UpdateFeaturesDto;
+
+    constructor(data?: IUpdateFeatureInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.providerName = _data["providerName"];
+            this.providerKey = _data["providerKey"];
+            this.updateFeaturesDto = _data["updateFeaturesDto"] ? UpdateFeaturesDto.fromJS(_data["updateFeaturesDto"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): UpdateFeatureInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateFeatureInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["providerName"] = this.providerName;
+        data["providerKey"] = this.providerKey;
+        data["updateFeaturesDto"] = this.updateFeaturesDto ? this.updateFeaturesDto.toJSON() : <any>undefined;
+        return data;
+    }
+}
+
+export interface IUpdateFeatureInput {
+    providerName: string | undefined;
+    providerKey: string | undefined;
+    updateFeaturesDto: UpdateFeaturesDto;
+}
+
+export class UpdateFeaturesDto implements IUpdateFeaturesDto {
+    features!: UpdateFeatureDto[] | undefined;
+
+    constructor(data?: IUpdateFeaturesDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["features"])) {
+                this.features = [] as any;
+                for (let item of _data["features"])
+                    this.features!.push(UpdateFeatureDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): UpdateFeaturesDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateFeaturesDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.features)) {
+            data["features"] = [];
+            for (let item of this.features)
+                data["features"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IUpdateFeaturesDto {
+    features: UpdateFeatureDto[] | undefined;
 }
 
 /** 删除语言 */

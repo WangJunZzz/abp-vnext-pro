@@ -323,6 +323,15 @@ public class AbpProApplicationConfigurationAppService : ApplicationService, IAbp
                 continue;
             }
 
+            if (featureDefinition.Name == "SettingManagement.Enable")
+            {
+                continue;
+            }
+            
+            if (featureDefinition.Name == "SettingManagement.AllowChangingEmailSettings")
+            {
+                continue;
+            }
             result.Values[featureDefinition.Name] = await FeatureChecker.GetOrNullAsync(featureDefinition.Name);
         }
 

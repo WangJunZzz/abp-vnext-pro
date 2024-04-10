@@ -2,7 +2,7 @@ import { FormSchema } from '/@/components/Table';
 import { BasicColumn } from '/@/components/Table';
 import { useI18n } from '/@/hooks/web/useI18n';
 const { t } = useI18n();
-import { TenantsServiceProxy, PagingTenantInput, IdInput, PageTenantConnectionStringInput} from '/@/services/ServiceProxies';
+import { TenantsServiceProxy, PagingTenantInput, IdInput, PageTenantConnectionStringInput, FeaturesServiceProxy, GetFeatureListResultInput,UpdateFeatureInput,UpdateFeaturesDto, UpdateFeatureDto} from '/@/services/ServiceProxies';
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'filter',
@@ -172,4 +172,22 @@ export async function pageConnectionStringAsync( request :PageTenantConnectionSt
 export async function addOrUpdateConnectionString({ request }) {
   const _tenantsServiceProxy = new TenantsServiceProxy();
   return await _tenantsServiceProxy.addOrUpdateConnectionString(request);
+}
+
+export async function getTenantFeatureListAsync(tenantId) {
+  const _featuresServiceProxy = new FeaturesServiceProxy();
+  const request = new GetFeatureListResultInput();
+  request.providerKey = tenantId;
+  request.providerName = 'T';
+  return await _featuresServiceProxy.list(request);
+}
+
+export async function updateTenantFeatureListAsync(tenantId, params) {
+  const _featuresServiceProxy = new FeaturesServiceProxy();
+  const request = new UpdateFeatureInput();
+  request.providerKey = tenantId;
+  request.providerName = 'T';
+  request.updateFeaturesDto= new UpdateFeaturesDto();
+  request.updateFeaturesDto.features=params;
+  return await _featuresServiceProxy.update(request);
 }

@@ -15,6 +15,7 @@
     "Permission:SettingManagement": "SettingManagement",
     "Permission:IdentitySecurityLog": "IdentitySecurityLog",
     "Permission:OrganizationUnitManagement": "OrganizationUnitManagement",
+    "Permission:FeatureManagement": "FeatureManagement",
     "Setting.Group.System": "System",
     "Lion.AbpPro.BasicManagement:100001": "OrganizationUnit Not Exist",
     "Lion.AbpPro.BasicManagement:100002": "UserLockedOut",

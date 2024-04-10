@@ -55,6 +55,16 @@ const admin: AppRouteModule = {
       },
     },
     {
+      path: 'manageFeatrue',
+      name: 'manageFeatrue',
+      component: () => import('/@/views/admin/manageFeatrue/index.vue'),
+      meta: {
+        title: t('routes.admin.featureManagement'),
+        policy: 'AbpIdentity.FeatureManagement',
+        icon: 'ant-design:tool-outlined',
+      },
+    },
+    {
       path: 'abpAuditLogs',
       name: 'AuditLogs',
       component: () => import('/@/views/admin/auditLog/AuditLog.vue'),
