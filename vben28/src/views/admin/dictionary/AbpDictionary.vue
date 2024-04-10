@@ -143,7 +143,7 @@
         bordered: true,
         canResize: true,
         rowSelection: { type: 'radio' },
-        pagination: false,
+        maxHeight: 600,
         actionColumn: {
           width: 50,
           title: t('common.action'),
