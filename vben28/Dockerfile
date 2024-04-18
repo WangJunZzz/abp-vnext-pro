@@ -1,4 +1,4 @@
-FROM node:16-alpine as build-stage
+FROM node:18-alpine as build-stage
 WORKDIR /app
 COPY . ./
 ENV NODE_OPTIONS=--max-old-space-size=16384
