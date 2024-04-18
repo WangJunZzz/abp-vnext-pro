@@ -9,6 +9,8 @@
     "Lion.AbpPro.NotificationManagement:100004": "User UnSubscription",
     "Lion.AbpPro.NotificationManagement:100005": "Message Title NotNull",
     "Lion.AbpPro.NotificationManagement:100006": "Message Content NotNull",
-    "Lion.AbpPro.NotificationManagement:100007": "Message Receiver NotNull"
+    "Lion.AbpPro.NotificationManagement:100007": "Message Receiver NotNull",
+    "Permission:NotificationManagement": "NotificationManagement",
+    "Permission:NotificationSubscriptionManagement": "NotificationSubscriptionManagement"
   }
 }

@@ -20,12 +20,12 @@ public class NotificationHubAppService : NotificationManagementAppService, INoti
     /// <summary>
     /// 发送消息
     /// </summary>
-    public virtual async Task SendMessageAsync(Guid id, string title, string content, MessageType messageType, MessageLevel messageLevel, List<string> users)
+    public virtual async Task SendMessageAsync(Guid id, string title, string content, MessageType messageType, MessageLevel messageLevel, string receiverUserId)
     {
         switch (messageType)
         {
             case MessageType.Common:
-                await SendMessageToClientByUserIdAsync(new SendNotificationDto(id, title, content, messageType, messageLevel), users);
+                await SendMessageToClientByUserIdAsync(new SendNotificationDto(id, title, content, messageType, messageLevel), receiverUserId);
                 break;
             case MessageType.BroadCast:
                 await SendMessageToAllClientAsync(new SendNotificationDto(id, title, content, messageType, messageLevel));
@@ -38,14 +38,14 @@ public class NotificationHubAppService : NotificationManagementAppService, INoti
     /// <summary>
     /// 发送消息指定客户端用户
     /// </summary>
-    private async Task SendMessageToClientByUserIdAsync(SendNotificationDto sendNotificationDto, List<string> users)
+    private async Task SendMessageToClientByUserIdAsync(SendNotificationDto sendNotificationDto, string receiverUserId)
     {
-        if (users is { Count: > 0 })
+        if (receiverUserId.IsNotNullOrWhiteSpace())
         {
             await _hubContext.Clients
-                .Users(users.AsReadOnly().ToList())
+                .Users(new string[] { receiverUserId })
                 .ReceiveTextMessageAsync(sendNotificationDto);
-            _logger.LogInformation($"通知模块收到消息：{_jsonSerializer.Serialize(sendNotificationDto)},发送给：{_jsonSerializer.Serialize(users)}");
+            _logger.LogInformation($"通知模块收到消息：{_jsonSerializer.Serialize(sendNotificationDto)},发送给：{receiverUserId}");
         }
         else
         {

@@ -4,7 +4,9 @@ namespace Lion.AbpPro.NotificationManagement.Permissions
     {
         public override void Define(IPermissionDefinitionContext context)
         {
-            var myGroup = context.AddGroup(NotificationManagementPermissions.GroupName, L("Permission:NotificationManagement"));
+            var abpIdentityGroup = context.GetGroup("AbpIdentity");
+            var notificationManagement = abpIdentityGroup.AddPermission(NotificationManagementPermissions.NotificationManagement.Default, L("Permission:NotificationManagement"));
+            var notificationSubscriptionManagement = abpIdentityGroup.AddPermission(NotificationManagementPermissions.NotificationSubscriptionManagement.Default, L("Permission:NotificationSubscriptionManagement"));
         }
 
         private static LocalizableString L(string name)

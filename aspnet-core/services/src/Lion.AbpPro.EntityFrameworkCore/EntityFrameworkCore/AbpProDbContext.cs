@@ -42,6 +42,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
         public DbSet<BackgroundJobRecord> BackgroundJobs { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<NotificationSubscription> NotificationSubscriptions { get; set; }
         public DbSet<DataDictionary> DataDictionaries { get;  set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<LanguageText> LanguageTexts { get; set; }

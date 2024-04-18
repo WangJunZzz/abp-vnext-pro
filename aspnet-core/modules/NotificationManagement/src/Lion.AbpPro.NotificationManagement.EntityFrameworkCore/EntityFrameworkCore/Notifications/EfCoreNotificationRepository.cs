@@ -3,7 +3,7 @@ namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore.Notifications
     /// <summary>
     /// 消息通知 仓储Ef core 实现
     /// </summary>
-    public partial class EfCoreNotificationRepository :
+    public class EfCoreNotificationRepository :
         EfCoreRepository<INotificationManagementDbContext, Notification, Guid>,
         INotificationRepository
     {
@@ -12,47 +12,67 @@ namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore.Notifications
         {
         }
 
-        /// <summary>
-        /// 查找用户消息
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public async Task<Notification> FindByIdAsync(Guid id)
-        {
-            return await (await GetDbSetAsync())
-                .IncludeDetails()
-                .Where(e => e.Id == id)
-                .FirstOrDefaultAsync();
-        }
-
         public async Task<List<Notification>> GetPagingListAsync(
-            Guid? userId,
-            MessageType messageType,
+            string title,
+            string content,
+            Guid? senderUserId,
+            string senderUserName,
+            Guid? receiverUserId,
+            string receiverUserName,
+            bool? read,
+            DateTime? startReadTime,
+            DateTime? endReadTime,
+            MessageType? messageType,
             int maxResultCount = 10,
             int skipCount = 0,
             CancellationToken cancellationToken = default)
         {
             return await (await GetDbSetAsync())
-                .IncludeDetails()
-                .Where(e => e.MessageType == messageType)
-                .WhereIf(userId.HasValue, e => e.NotificationSubscriptions.Any(s => s.ReceiveId == userId))
+                .WhereIf(title.IsNotNullOrWhiteSpace(), e => e.Title.Contains(title))
+                .WhereIf(content.IsNotNullOrWhiteSpace(), e => e.Content.Contains(content))
+                .WhereIf(senderUserId.HasValue, e => e.SenderUserId == senderUserId.Value)
+                .WhereIf(senderUserName.IsNotNullOrWhiteSpace(), e => e.SenderUserName == senderUserName)
+                .WhereIf(receiverUserId.HasValue, e => e.ReceiveUserId == receiverUserId.Value)
+                .WhereIf(receiverUserName.IsNotNullOrWhiteSpace(), e => e.ReceiveUserName == receiverUserName)
+                .WhereIf(read.HasValue, e => e.Read == read.Value)
+                .WhereIf(startReadTime.HasValue, e => e.ReadTime >= startReadTime.Value)
+                .WhereIf(endReadTime.HasValue, e => e.ReadTime <= endReadTime.Value)
+                .WhereIf(messageType.HasValue, e => e.MessageType == messageType.Value)
                 .OrderByDescending(e => e.CreationTime)
                 .PageBy(skipCount, maxResultCount)
                 .ToListAsync(GetCancellationToken(cancellationToken));
         }
 
-        public async Task<long> GetPagingCountAsync(Guid? userId, MessageType messageType, CancellationToken cancellationToken = default)
+        public async Task<long> GetPagingCountAsync(
+            string title,
+            string content,
+            Guid? senderUserId,
+            string senderUserName,
+            Guid? receiverUserId,
+            string receiverUserName,
+            bool? read,
+            DateTime? startReadTime,
+            DateTime? endReadTime,
+            MessageType? messageType,
+            CancellationToken cancellationToken = default)
         {
             return await (await GetDbSetAsync())
-                .Where(e => e.MessageType == messageType)
-                .WhereIf(userId.HasValue, e => e.NotificationSubscriptions.Any(s => s.ReceiveId == userId))
-                .CountAsync(cancellationToken: cancellationToken);
+                .WhereIf(title.IsNotNullOrWhiteSpace(), e => e.Title.Contains(title))
+                .WhereIf(content.IsNotNullOrWhiteSpace(), e => e.Content.Contains(content))
+                .WhereIf(senderUserId.HasValue, e => e.SenderUserId == senderUserId.Value)
+                .WhereIf(senderUserName.IsNotNullOrWhiteSpace(), e => e.SenderUserName == senderUserName)
+                .WhereIf(receiverUserId.HasValue, e => e.ReceiveUserId == receiverUserId.Value)
+                .WhereIf(receiverUserName.IsNotNullOrWhiteSpace(), e => e.ReceiveUserName == receiverUserName)
+                .WhereIf(read.HasValue, e => e.Read == read.Value)
+                .WhereIf(startReadTime.HasValue, e => e.ReadTime >= startReadTime.Value)
+                .WhereIf(endReadTime.HasValue, e => e.ReadTime <= endReadTime.Value)
+                .WhereIf(messageType.HasValue, e => e.MessageType == messageType.Value)
+                .CountAsync(cancellationToken);
         }
 
-
-        public override async Task<IQueryable<Notification>> WithDetailsAsync()
+        public async Task<List<Notification>> GetListAsync(List<Guid> ids)
         {
-            return (await GetQueryableAsync()).IncludeDetails();
+            return await (await GetDbSetAsync()).Where(e => ids.Contains(e.Id)).ToListAsync();
         }
     }
 }

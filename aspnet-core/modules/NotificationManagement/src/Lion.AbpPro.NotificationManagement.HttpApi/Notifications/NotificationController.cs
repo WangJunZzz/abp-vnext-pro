@@ -13,28 +13,25 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
 
 
         /// <summary>
-        /// 分页获取用户普通文本消息
+        /// 分页获取文本消息
         /// </summary>x
-        [HttpPost("Common")]
-        [SwaggerOperation(summary: "分页查询普通消息", Tags = new[] { "Notification" })]
-        public Task<PagedResultDto<PagingNotificationListOutput>>
-            GetPageCommonNotificationByUserIdAsync(
-                PagingNotificationListInput listInput)
+        [HttpPost("NotificationPage")]
+        [SwaggerOperation(summary: "分页查询消息", Tags = new[] { "Notification" })]
+        public Task<PagedResultDto<PagingNotificationOutput>> PageNotificationAsync(PagingNotificationInput input)
         {
-            return _notificationAppService.GetPageCommonNotificationByUserIdAsync(listInput);
+            return _notificationAppService.PageNotificationAsync(input);
         }
 
         /// <summary>
-        /// 分页获取广播消息
-        /// </summary>
-        [HttpPost("BroadCast")]
-        [SwaggerOperation(summary: "分页查询广播消息", Tags = new[] { "Notification" })]
-        public Task<PagedResultDto<PagingNotificationListOutput>>
-            GetPageBroadCastNotificationByUserIdAsync(
-                PagingNotificationListInput listInput)
+        /// 分页获取广播消息已读人数
+        /// </summary>x
+        [HttpPost("NotificationSubscriptionPage")]
+        [SwaggerOperation(summary: "分页获取广播消息已读人数", Tags = new[] { "Notification" })]
+        public Task<PagedResultDto<PagingNotificationSubscriptionOutput>> PageNotificationSubscriptionAsync(PagingNotificationSubscriptionInput input)
         {
-            return _notificationAppService.GetPageBroadCastNotificationByUserIdAsync(listInput);
+            return _notificationAppService.PageNotificationSubscriptionAsync(input);
         }
+
 
         [HttpPost("SendCommonWarningMessage")]
         [SwaggerOperation(summary: "发送警告文本消息", Tags = new[] { "Notification" })]

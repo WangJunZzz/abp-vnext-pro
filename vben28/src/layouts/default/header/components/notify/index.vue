@@ -25,7 +25,7 @@
   import { defineComponent, computed } from 'vue';
   import { Popover, Tabs, Badge } from 'ant-design-vue';
   import { BellOutlined } from '@ant-design/icons-vue';
-  import { PagingNotificationListOutput } from '/@/services/ServiceProxies';
+  import { PagingNotificationOutput } from '/@/services/ServiceProxies';
   import { tabListData } from './data';
   import NoticeList from './NoticeList.vue';
   import { useDesign } from '/@/hooks/web/useDesign';
@@ -34,8 +34,8 @@
   export default defineComponent({
     components: { Popover, BellOutlined, Tabs, TabPane: Tabs.TabPane, Badge, NoticeList },
     props: {
-      textMessage: Array as PropType<PagingNotificationListOutput[]>,
-      broadCastMessage: Array as PropType<PagingNotificationListOutput[]>,
+      textMessage: Array as PropType<PagingNotificationOutput[]>,
+      broadCastMessage: Array as PropType<PagingNotificationOutput[]>,
       ff: string,
     },
     setup(props) {

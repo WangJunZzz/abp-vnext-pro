@@ -9,6 +9,8 @@
     "Lion.AbpPro.NotificationManagement:100003": "未知的消息类型",
     "Lion.AbpPro.NotificationManagement:100004": "当前用户未订阅消息",
     "Lion.AbpPro.NotificationManagement:100005": "消息标题不能为空",
-    "Lion.AbpPro.NotificationManagement:100006": "消息内容不能为空"
+    "Lion.AbpPro.NotificationManagement:100006": "消息内容不能为空",
+    "Permission:NotificationManagement": "消息管理",
+    "Permission:NotificationSubscriptionManagement": "通告管理"
   }
 }

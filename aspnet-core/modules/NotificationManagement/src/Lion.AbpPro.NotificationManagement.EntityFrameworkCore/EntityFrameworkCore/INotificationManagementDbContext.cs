@@ -8,5 +8,7 @@ namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore
          */
         
         DbSet<Notification> Notifications { get; set; }
+        
+        DbSet<NotificationSubscription> NotificationSubscriptions { get; set; }
     }
 }

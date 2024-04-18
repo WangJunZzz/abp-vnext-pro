@@ -13,7 +13,8 @@ namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore
 
         }
         public DbSet<Notification> Notifications { get; set; }
-        
+        public DbSet<NotificationSubscription> NotificationSubscriptions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

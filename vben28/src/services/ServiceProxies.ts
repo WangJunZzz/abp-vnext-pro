@@ -2917,12 +2917,12 @@ export class NotificationServiceProxy extends ServiceProxyBase {
     }
 
     /**
-     * 分页获取用户普通文本消息
+     * 分页获取文本消息
      * @param body (optional) 
      * @return Success
      */
-    common(body: PagingNotificationListInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingNotificationListOutputPagedResultDto> {
-        let url_ = this.baseUrl + "/Notification/Common";
+    notificationPage(body: PagingNotificationInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingNotificationOutputPagedResultDto> {
+        let url_ = this.baseUrl + "/Notification/NotificationPage";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -2947,11 +2947,11 @@ export class NotificationServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processCommon(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processNotificationPage(_response));
         });
     }
 
-    protected processCommon(response: AxiosResponse): Promise<PagingNotificationListOutputPagedResultDto> {
+    protected processNotificationPage(response: AxiosResponse): Promise<PagingNotificationOutputPagedResultDto> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -2965,8 +2965,8 @@ export class NotificationServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = PagingNotificationListOutputPagedResultDto.fromJS(resultData200);
-            return Promise.resolve<PagingNotificationListOutputPagedResultDto>(result200);
+            result200 = PagingNotificationOutputPagedResultDto.fromJS(resultData200);
+            return Promise.resolve<PagingNotificationOutputPagedResultDto>(result200);
 
         } else if (status === 403) {
             const _responseText = response.data;
@@ -3014,16 +3014,16 @@ export class NotificationServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<PagingNotificationListOutputPagedResultDto>(null as any);
+        return Promise.resolve<PagingNotificationOutputPagedResultDto>(null as any);
     }
 
     /**
-     * 分页获取广播消息
+     * 分页获取广播消息已读人数
      * @param body (optional) 
      * @return Success
      */
-    broadCast(body: PagingNotificationListInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingNotificationListOutputPagedResultDto> {
-        let url_ = this.baseUrl + "/Notification/BroadCast";
+    notificationSubscriptionPage(body: PagingNotificationSubscriptionInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingNotificationSubscriptionOutputPagedResultDto> {
+        let url_ = this.baseUrl + "/Notification/NotificationSubscriptionPage";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -3048,11 +3048,11 @@ export class NotificationServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processBroadCast(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processNotificationSubscriptionPage(_response));
         });
     }
 
-    protected processBroadCast(response: AxiosResponse): Promise<PagingNotificationListOutputPagedResultDto> {
+    protected processNotificationSubscriptionPage(response: AxiosResponse): Promise<PagingNotificationSubscriptionOutputPagedResultDto> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -3066,8 +3066,8 @@ export class NotificationServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = PagingNotificationListOutputPagedResultDto.fromJS(resultData200);
-            return Promise.resolve<PagingNotificationListOutputPagedResultDto>(result200);
+            result200 = PagingNotificationSubscriptionOutputPagedResultDto.fromJS(resultData200);
+            return Promise.resolve<PagingNotificationSubscriptionOutputPagedResultDto>(result200);
 
         } else if (status === 403) {
             const _responseText = response.data;
@@ -3115,7 +3115,7 @@ export class NotificationServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<PagingNotificationListOutputPagedResultDto>(null as any);
+        return Promise.resolve<PagingNotificationSubscriptionOutputPagedResultDto>(null as any);
     }
 
     /**
@@ -6844,6 +6844,114 @@ export class UsersServiceProxy extends ServiceProxyBase {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
         return Promise.resolve<IdentityUserDtoPagedResultDto>(null as any);
+    }
+
+    /**
+     * 分页获取用户信息
+     * @param body (optional) 
+     * @return Success
+     */
+    list(body: PagingUserListInput | undefined , cancelToken?: CancelToken | undefined): Promise<IdentityUserDto[]> {
+        let url_ = this.baseUrl + "/Users/list";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processList(_response));
+        });
+    }
+
+    protected processList(response: AxiosResponse): Promise<IdentityUserDto[]> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(IdentityUserDto.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
+            return Promise.resolve<IdentityUserDto[]>(result200);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<IdentityUserDto[]>(null as any);
     }
 
     /**
@@ -15113,15 +15221,34 @@ export interface IPagingIdentitySecurityLogOutputPagedResultDto {
     totalCount: number;
 }
 
-export class PagingNotificationListInput implements IPagingNotificationListInput {
+export class PagingNotificationInput implements IPagingNotificationInput {
     /** 当前页面.默认从1开始 */
     pageIndex!: number;
     /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
     /** 跳过多少条 */
     readonly skipCount!: number;
+    /** 标题 */
+    title!: string | undefined;
+    /** 内容 */
+    content!: string | undefined;
+    /** 发送者Id */
+    senderUserId!: string | undefined;
+    /** 发送者名称 */
+    senderUserName!: string | undefined;
+    /** 接受者Id */
+    receiverUserId!: string | undefined;
+    /** 接受者名称 */
+    receiverUserName!: string | undefined;
+    /** 是否已读 */
+    read!: boolean | undefined;
+    /** 已读开始时间 */
+    startReadTime!: dayjs.Dayjs | undefined;
+    /** 已读结束时间 */
+    endReadTime!: dayjs.Dayjs | undefined;
+    messageType!: MessageType;
 
-    constructor(data?: IPagingNotificationListInput) {
+    constructor(data?: IPagingNotificationInput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -15135,12 +15262,22 @@ export class PagingNotificationListInput implements IPagingNotificationListInput
             this.pageIndex = _data["pageIndex"];
             this.pageSize = _data["pageSize"];
             (<any>this).skipCount = _data["skipCount"];
+            this.title = _data["title"];
+            this.content = _data["content"];
+            this.senderUserId = _data["senderUserId"];
+            this.senderUserName = _data["senderUserName"];
+            this.receiverUserId = _data["receiverUserId"];
+            this.receiverUserName = _data["receiverUserName"];
+            this.read = _data["read"];
+            this.startReadTime = _data["startReadTime"] ? dayjs(_data["startReadTime"].toString()) : <any>undefined;
+            this.endReadTime = _data["endReadTime"] ? dayjs(_data["endReadTime"].toString()) : <any>undefined;
+            this.messageType = _data["messageType"];
         }
     }
 
-    static fromJS(data: any): PagingNotificationListInput {
+    static fromJS(data: any): PagingNotificationInput {
         data = typeof data === 'object' ? data : {};
-        let result = new PagingNotificationListInput();
+        let result = new PagingNotificationInput();
         result.init(data);
         return result;
     }
@@ -15150,37 +15287,77 @@ export class PagingNotificationListInput implements IPagingNotificationListInput
         data["pageIndex"] = this.pageIndex;
         data["pageSize"] = this.pageSize;
         data["skipCount"] = this.skipCount;
+        data["title"] = this.title;
+        data["content"] = this.content;
+        data["senderUserId"] = this.senderUserId;
+        data["senderUserName"] = this.senderUserName;
+        data["receiverUserId"] = this.receiverUserId;
+        data["receiverUserName"] = this.receiverUserName;
+        data["read"] = this.read;
+        data["startReadTime"] = this.startReadTime ? this.startReadTime.toLocaleString() : <any>undefined;
+        data["endReadTime"] = this.endReadTime ? this.endReadTime.toLocaleString() : <any>undefined;
+        data["messageType"] = this.messageType;
         return data;
     }
 }
 
-export interface IPagingNotificationListInput {
+export interface IPagingNotificationInput {
     /** 当前页面.默认从1开始 */
     pageIndex: number;
     /** 每页多少条.每页显示多少记录 */
     pageSize: number;
     /** 跳过多少条 */
     skipCount: number;
+    /** 标题 */
+    title: string | undefined;
+    /** 内容 */
+    content: string | undefined;
+    /** 发送者Id */
+    senderUserId: string | undefined;
+    /** 发送者名称 */
+    senderUserName: string | undefined;
+    /** 接受者Id */
+    receiverUserId: string | undefined;
+    /** 接受者名称 */
+    receiverUserName: string | undefined;
+    /** 是否已读 */
+    read: boolean | undefined;
+    /** 已读开始时间 */
+    startReadTime: dayjs.Dayjs | undefined;
+    /** 已读结束时间 */
+    endReadTime: dayjs.Dayjs | undefined;
+    messageType: MessageType;
 }
 
-export class PagingNotificationListOutput implements IPagingNotificationListOutput {
+export class PagingNotificationOutput implements IPagingNotificationOutput {
     id!: string;
+    /** 租户id */
+    tenantId!: string | undefined;
     /** 消息标题 */
     title!: string | undefined;
     /** 消息内容 */
     content!: string | undefined;
     messageType!: MessageType;
-    readonly messageTypeDescription!: string | undefined;
+    readonly messageTypeName!: string | undefined;
     messageLevel!: MessageLevel;
-    readonly messageLevelDescription!: string | undefined;
+    readonly messageLevelName!: string | undefined;
     /** 发送人 */
-    senderId!: string;
-    /** 创建时间 */
-    creationTime!: dayjs.Dayjs;
+    senderUserId!: string;
+    /** 发送人用户名 */
+    senderUserName!: string | undefined;
+    /** 订阅人
+消息类型是广播消息时，订阅人为空 */
+    receiveUserId!: string | undefined;
+    /** 接收人用户名
+消息类型是广播消息时，订接收人用户名为空 */
+    receiveUserName!: string | undefined;
     /** 是否已读 */
     read!: boolean;
+    /** 已读时间 */
+    readTime!: dayjs.Dayjs | undefined;
+    creationTime!: dayjs.Dayjs;
 
-    constructor(data?: IPagingNotificationListOutput) {
+    constructor(data?: IPagingNotificationOutput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -15192,21 +15369,26 @@ export class PagingNotificationListOutput implements IPagingNotificationListOutp
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
+            this.tenantId = _data["tenantId"];
             this.title = _data["title"];
             this.content = _data["content"];
             this.messageType = _data["messageType"];
-            (<any>this).messageTypeDescription = _data["messageTypeDescription"];
+            (<any>this).messageTypeName = _data["messageTypeName"];
             this.messageLevel = _data["messageLevel"];
-            (<any>this).messageLevelDescription = _data["messageLevelDescription"];
-            this.senderId = _data["senderId"];
-            this.creationTime = _data["creationTime"] ? dayjs(_data["creationTime"].toString()) : <any>undefined;
+            (<any>this).messageLevelName = _data["messageLevelName"];
+            this.senderUserId = _data["senderUserId"];
+            this.senderUserName = _data["senderUserName"];
+            this.receiveUserId = _data["receiveUserId"];
+            this.receiveUserName = _data["receiveUserName"];
             this.read = _data["read"];
+            this.readTime = _data["readTime"] ? dayjs(_data["readTime"].toString()) : <any>undefined;
+            this.creationTime = _data["creationTime"] ? dayjs(_data["creationTime"].toString()) : <any>undefined;
         }
     }
 
-    static fromJS(data: any): PagingNotificationListOutput {
+    static fromJS(data: any): PagingNotificationOutput {
         data = typeof data === 'object' ? data : {};
-        let result = new PagingNotificationListOutput();
+        let result = new PagingNotificationOutput();
         result.init(data);
         return result;
     }
@@ -15214,42 +15396,58 @@ export class PagingNotificationListOutput implements IPagingNotificationListOutp
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
+        data["tenantId"] = this.tenantId;
         data["title"] = this.title;
         data["content"] = this.content;
         data["messageType"] = this.messageType;
-        data["messageTypeDescription"] = this.messageTypeDescription;
+        data["messageTypeName"] = this.messageTypeName;
         data["messageLevel"] = this.messageLevel;
-        data["messageLevelDescription"] = this.messageLevelDescription;
-        data["senderId"] = this.senderId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toLocaleString() : <any>undefined;
+        data["messageLevelName"] = this.messageLevelName;
+        data["senderUserId"] = this.senderUserId;
+        data["senderUserName"] = this.senderUserName;
+        data["receiveUserId"] = this.receiveUserId;
+        data["receiveUserName"] = this.receiveUserName;
         data["read"] = this.read;
+        data["readTime"] = this.readTime ? this.readTime.toLocaleString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime.toLocaleString() : <any>undefined;
         return data;
     }
 }
 
-export interface IPagingNotificationListOutput {
+export interface IPagingNotificationOutput {
     id: string;
+    /** 租户id */
+    tenantId: string | undefined;
     /** 消息标题 */
     title: string | undefined;
     /** 消息内容 */
     content: string | undefined;
     messageType: MessageType;
-    messageTypeDescription: string | undefined;
+    messageTypeName: string | undefined;
     messageLevel: MessageLevel;
-    messageLevelDescription: string | undefined;
+    messageLevelName: string | undefined;
     /** 发送人 */
-    senderId: string;
-    /** 创建时间 */
-    creationTime: dayjs.Dayjs;
+    senderUserId: string;
+    /** 发送人用户名 */
+    senderUserName: string | undefined;
+    /** 订阅人
+消息类型是广播消息时，订阅人为空 */
+    receiveUserId: string | undefined;
+    /** 接收人用户名
+消息类型是广播消息时，订接收人用户名为空 */
+    receiveUserName: string | undefined;
     /** 是否已读 */
     read: boolean;
+    /** 已读时间 */
+    readTime: dayjs.Dayjs | undefined;
+    creationTime: dayjs.Dayjs;
 }
 
-export class PagingNotificationListOutputPagedResultDto implements IPagingNotificationListOutputPagedResultDto {
-    items!: PagingNotificationListOutput[] | undefined;
+export class PagingNotificationOutputPagedResultDto implements IPagingNotificationOutputPagedResultDto {
+    items!: PagingNotificationOutput[] | undefined;
     totalCount!: number;
 
-    constructor(data?: IPagingNotificationListOutputPagedResultDto) {
+    constructor(data?: IPagingNotificationOutputPagedResultDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -15263,15 +15461,15 @@ export class PagingNotificationListOutputPagedResultDto implements IPagingNotifi
             if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
                 for (let item of _data["items"])
-                    this.items!.push(PagingNotificationListOutput.fromJS(item));
+                    this.items!.push(PagingNotificationOutput.fromJS(item));
             }
             this.totalCount = _data["totalCount"];
         }
     }
 
-    static fromJS(data: any): PagingNotificationListOutputPagedResultDto {
+    static fromJS(data: any): PagingNotificationOutputPagedResultDto {
         data = typeof data === 'object' ? data : {};
-        let result = new PagingNotificationListOutputPagedResultDto();
+        let result = new PagingNotificationOutputPagedResultDto();
         result.init(data);
         return result;
     }
@@ -15288,8 +15486,252 @@ export class PagingNotificationListOutputPagedResultDto implements IPagingNotifi
     }
 }
 
-export interface IPagingNotificationListOutputPagedResultDto {
-    items: PagingNotificationListOutput[] | undefined;
+export interface IPagingNotificationOutputPagedResultDto {
+    items: PagingNotificationOutput[] | undefined;
+    totalCount: number;
+}
+
+export class PagingNotificationSubscriptionInput implements IPagingNotificationSubscriptionInput {
+    /** 当前页面.默认从1开始 */
+    pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
+    pageSize!: number;
+    /** 跳过多少条 */
+    readonly skipCount!: number;
+    notificationId!: string;
+    /** 接受者Id */
+    receiverUserId!: string | undefined;
+    /** 接受者名称 */
+    receiverUserName!: string | undefined;
+    /** 是否已读 */
+    read!: boolean | undefined;
+    /** 已读开始时间 */
+    startReadTime!: dayjs.Dayjs | undefined;
+    /** 已读结束时间 */
+    endReadTime!: dayjs.Dayjs | undefined;
+
+    constructor(data?: IPagingNotificationSubscriptionInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.pageIndex = _data["pageIndex"];
+            this.pageSize = _data["pageSize"];
+            (<any>this).skipCount = _data["skipCount"];
+            this.notificationId = _data["notificationId"];
+            this.receiverUserId = _data["receiverUserId"];
+            this.receiverUserName = _data["receiverUserName"];
+            this.read = _data["read"];
+            this.startReadTime = _data["startReadTime"] ? dayjs(_data["startReadTime"].toString()) : <any>undefined;
+            this.endReadTime = _data["endReadTime"] ? dayjs(_data["endReadTime"].toString()) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): PagingNotificationSubscriptionInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingNotificationSubscriptionInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["pageIndex"] = this.pageIndex;
+        data["pageSize"] = this.pageSize;
+        data["skipCount"] = this.skipCount;
+        data["notificationId"] = this.notificationId;
+        data["receiverUserId"] = this.receiverUserId;
+        data["receiverUserName"] = this.receiverUserName;
+        data["read"] = this.read;
+        data["startReadTime"] = this.startReadTime ? this.startReadTime.toLocaleString() : <any>undefined;
+        data["endReadTime"] = this.endReadTime ? this.endReadTime.toLocaleString() : <any>undefined;
+        return data;
+    }
+}
+
+export interface IPagingNotificationSubscriptionInput {
+    /** 当前页面.默认从1开始 */
+    pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
+    pageSize: number;
+    /** 跳过多少条 */
+    skipCount: number;
+    notificationId: string;
+    /** 接受者Id */
+    receiverUserId: string | undefined;
+    /** 接受者名称 */
+    receiverUserName: string | undefined;
+    /** 是否已读 */
+    read: boolean | undefined;
+    /** 已读开始时间 */
+    startReadTime: dayjs.Dayjs | undefined;
+    /** 已读结束时间 */
+    endReadTime: dayjs.Dayjs | undefined;
+}
+
+export class PagingNotificationSubscriptionOutput implements IPagingNotificationSubscriptionOutput {
+    id!: string;
+    /** 租户id */
+    tenantId!: string | undefined;
+    /** 消息Id */
+    notificationId!: string;
+    /** 接收人id */
+    receiveUserId!: string;
+    /** 接收人用户名 */
+    receiveUserName!: string | undefined;
+    /** 是否已读 */
+    read!: boolean;
+    /** 已读时间 */
+    readTime!: dayjs.Dayjs;
+    /** 消息标题 */
+    title!: string | undefined;
+    /** 消息内容 */
+    content!: string | undefined;
+    messageType!: MessageType;
+    readonly messageTypeName!: string | undefined;
+    messageLevel!: MessageLevel;
+    readonly messageLevelName!: string | undefined;
+    /** 发送人 */
+    senderUserId!: string;
+    /** 发送人用户名 */
+    senderUserName!: string | undefined;
+
+    constructor(data?: IPagingNotificationSubscriptionOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.tenantId = _data["tenantId"];
+            this.notificationId = _data["notificationId"];
+            this.receiveUserId = _data["receiveUserId"];
+            this.receiveUserName = _data["receiveUserName"];
+            this.read = _data["read"];
+            this.readTime = _data["readTime"] ? dayjs(_data["readTime"].toString()) : <any>undefined;
+            this.title = _data["title"];
+            this.content = _data["content"];
+            this.messageType = _data["messageType"];
+            (<any>this).messageTypeName = _data["messageTypeName"];
+            this.messageLevel = _data["messageLevel"];
+            (<any>this).messageLevelName = _data["messageLevelName"];
+            this.senderUserId = _data["senderUserId"];
+            this.senderUserName = _data["senderUserName"];
+        }
+    }
+
+    static fromJS(data: any): PagingNotificationSubscriptionOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingNotificationSubscriptionOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["tenantId"] = this.tenantId;
+        data["notificationId"] = this.notificationId;
+        data["receiveUserId"] = this.receiveUserId;
+        data["receiveUserName"] = this.receiveUserName;
+        data["read"] = this.read;
+        data["readTime"] = this.readTime ? this.readTime.toLocaleString() : <any>undefined;
+        data["title"] = this.title;
+        data["content"] = this.content;
+        data["messageType"] = this.messageType;
+        data["messageTypeName"] = this.messageTypeName;
+        data["messageLevel"] = this.messageLevel;
+        data["messageLevelName"] = this.messageLevelName;
+        data["senderUserId"] = this.senderUserId;
+        data["senderUserName"] = this.senderUserName;
+        return data;
+    }
+}
+
+export interface IPagingNotificationSubscriptionOutput {
+    id: string;
+    /** 租户id */
+    tenantId: string | undefined;
+    /** 消息Id */
+    notificationId: string;
+    /** 接收人id */
+    receiveUserId: string;
+    /** 接收人用户名 */
+    receiveUserName: string | undefined;
+    /** 是否已读 */
+    read: boolean;
+    /** 已读时间 */
+    readTime: dayjs.Dayjs;
+    /** 消息标题 */
+    title: string | undefined;
+    /** 消息内容 */
+    content: string | undefined;
+    messageType: MessageType;
+    messageTypeName: string | undefined;
+    messageLevel: MessageLevel;
+    messageLevelName: string | undefined;
+    /** 发送人 */
+    senderUserId: string;
+    /** 发送人用户名 */
+    senderUserName: string | undefined;
+}
+
+export class PagingNotificationSubscriptionOutputPagedResultDto implements IPagingNotificationSubscriptionOutputPagedResultDto {
+    items!: PagingNotificationSubscriptionOutput[] | undefined;
+    totalCount!: number;
+
+    constructor(data?: IPagingNotificationSubscriptionOutputPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(PagingNotificationSubscriptionOutput.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): PagingNotificationSubscriptionOutputPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingNotificationSubscriptionOutputPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+}
+
+export interface IPagingNotificationSubscriptionOutputPagedResultDto {
+    items: PagingNotificationSubscriptionOutput[] | undefined;
     totalCount: number;
 }
 
@@ -16055,7 +16497,9 @@ export class SendCommonMessageInput implements ISendCommonMessageInput {
     /** 消息内容 */
     content!: string | undefined;
     /** 发送人 */
-    receiveIds!: string[] | undefined;
+    receiveUserId!: string;
+    /** 发送人名称 */
+    receiveUserName!: string | undefined;
 
     constructor(data?: ISendCommonMessageInput) {
         if (data) {
@@ -16070,11 +16514,8 @@ export class SendCommonMessageInput implements ISendCommonMessageInput {
         if (_data) {
             this.title = _data["title"];
             this.content = _data["content"];
-            if (Array.isArray(_data["receiveIds"])) {
-                this.receiveIds = [] as any;
-                for (let item of _data["receiveIds"])
-                    this.receiveIds!.push(item);
-            }
+            this.receiveUserId = _data["receiveUserId"];
+            this.receiveUserName = _data["receiveUserName"];
         }
     }
 
@@ -16089,11 +16530,8 @@ export class SendCommonMessageInput implements ISendCommonMessageInput {
         data = typeof data === 'object' ? data : {};
         data["title"] = this.title;
         data["content"] = this.content;
-        if (Array.isArray(this.receiveIds)) {
-            data["receiveIds"] = [];
-            for (let item of this.receiveIds)
-                data["receiveIds"].push(item);
-        }
+        data["receiveUserId"] = this.receiveUserId;
+        data["receiveUserName"] = this.receiveUserName;
         return data;
     }
 }
@@ -16104,7 +16542,9 @@ export interface ISendCommonMessageInput {
     /** 消息内容 */
     content: string | undefined;
     /** 发送人 */
-    receiveIds: string[] | undefined;
+    receiveUserId: string;
+    /** 发送人名称 */
+    receiveUserName: string | undefined;
 }
 
 export class SetDataDictinaryDetailInput implements ISetDataDictinaryDetailInput {

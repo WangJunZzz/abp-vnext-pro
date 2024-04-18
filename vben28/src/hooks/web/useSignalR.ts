@@ -72,18 +72,13 @@ export function useSignalR() {
         message: message.title,
         description: message.content,
       });
-    } else if (message.messageLevel == 20) {
+    } if (message.messageLevel == 20) {
       notification.info({
         message: message.title,
         description: message.content,
       });
-    } else if (message.messageLevel == 30) {
+    } if (message.messageLevel == 30) {
       notification.error({
-        message: message.title,
-        description: message.content,
-      });
-    } else {
-      notification.info({
         message: message.title,
         description: message.content,
       });
@@ -101,18 +96,13 @@ export function useSignalR() {
         message: message.title,
         description: message.content,
       });
-    } else if (message.messageLevel == 20) {
+    } if (message.messageLevel == 20) {
       notification.info({
         message: message.title,
         description: message.content,
       });
-    } else if (message.messageLevel == 30) {
+    } if (message.messageLevel == 30) {
       notification.error({
-        message: message.title,
-        description: message.content,
-      });
-    } else {
-      notification.info({
         message: message.title,
         description: message.content,
       });

@@ -54,6 +54,23 @@ namespace Lion.AbpPro.BasicManagement.Users
                 base.ObjectMapper.Map<List<Volo.Abp.Identity.IdentityUser>, List<IdentityUserDto>>(source));
         }
 
+        public async Task<List<IdentityUserDto>> ListAllAsync(PagingUserListInput input)
+        {
+            var request = new GetIdentityUsersInput
+            {
+                Filter = input.Filter?.Trim(),
+                MaxResultCount = input.PageSize,
+                SkipCount = input.SkipCount,
+                Sorting = nameof(IHasModificationTime.LastModificationTime)
+            };
+            
+            var source = await _identityUserRepository
+                .GetListAsync(request.Sorting, request.MaxResultCount, request.SkipCount, request.Filter);
+
+            return ObjectMapper.Map<List<Volo.Abp.Identity.IdentityUser>, List<IdentityUserDto>>(source);
+
+        }
+
         /// <summary>
         /// 用户导出列表
         /// </summary>

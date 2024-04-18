@@ -365,8 +365,26 @@ namespace Lion.AbpPro.Migrations
                     b.Property<int>("MessageType")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("SenderId")
+                    b.Property<bool>("Read")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("ReadTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("ReceiveUserId")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("ReceiveUserName")
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
+
+                    b.Property<Guid>("SenderUserId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("SenderUserName")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("char(36)")
@@ -374,8 +392,8 @@ namespace Lion.AbpPro.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.HasKey("Id");
 
@@ -386,6 +404,13 @@ namespace Lion.AbpPro.Migrations
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)")
@@ -402,6 +427,11 @@ namespace Lion.AbpPro.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("DeletionTime");
+
+                    b.Property<string>("ExtraProperties")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("ExtraProperties");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -423,11 +453,15 @@ namespace Lion.AbpPro.Migrations
                     b.Property<bool>("Read")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime?>("ReadTime")
+                    b.Property<DateTime>("ReadTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("ReceiveId")
+                    b.Property<Guid>("ReceiveUserId")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("ReceiveUserName")
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("char(36)")
@@ -436,6 +470,8 @@ namespace Lion.AbpPro.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("NotificationId");
+
+                    b.HasIndex("ReceiveUserId");
 
                     b.ToTable("AbpNotificationSubscriptions", (string)null);
                 });
@@ -1811,15 +1847,6 @@ namespace Lion.AbpPro.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Lion.AbpPro.NotificationManagement.Notifications.Aggregates.NotificationSubscription", b =>
-                {
-                    b.HasOne("Lion.AbpPro.NotificationManagement.Notifications.Aggregates.Notification", null)
-                        .WithMany("NotificationSubscriptions")
-                        .HasForeignKey("NotificationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
                 {
                     b.HasOne("Volo.Abp.AuditLogging.AuditLog", null)
@@ -1947,11 +1974,6 @@ namespace Lion.AbpPro.Migrations
             modelBuilder.Entity("Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates.DataDictionary", b =>
                 {
                     b.Navigation("Details");
-                });
-
-            modelBuilder.Entity("Lion.AbpPro.NotificationManagement.Notifications.Aggregates.Notification", b =>
-                {
-                    b.Navigation("NotificationSubscriptions");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>

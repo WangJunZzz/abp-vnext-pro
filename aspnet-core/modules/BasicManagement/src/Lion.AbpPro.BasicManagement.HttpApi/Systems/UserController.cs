@@ -19,6 +19,14 @@ namespace Lion.AbpPro.BasicManagement.Systems
         {
             return _userAppService.ListAsync(input);
         }
+
+        [HttpPost("list")]
+        [SwaggerOperation(summary: "分页获取用户信息", Tags = new[] { "Users" })]
+        public Task<List<IdentityUserDto>> ListAllAsync(PagingUserListInput input)
+        {
+            return _userAppService.ListAllAsync(input);
+        }
+
         [HttpPost("export")]
         [SwaggerOperation(summary: "导出用户列表", Tags = new[] { "Users" })]
         [ProducesResponseType(typeof(FileContentResult), (int)HttpStatusCode.OK)]

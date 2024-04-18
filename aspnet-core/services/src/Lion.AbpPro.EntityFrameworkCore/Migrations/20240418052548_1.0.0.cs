@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Lion.AbpPro.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class _100 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -223,6 +223,7 @@ namespace Lion.AbpPro.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    TenantId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
                     CultureName = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false, comment: "语言名称")
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UiCultureName = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false, comment: "Ui语言名称")
@@ -304,13 +305,21 @@ namespace Lion.AbpPro.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Title = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: false)
+                    TenantId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    Title = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Content = table.Column<string>(type: "varchar(1024)", maxLength: 1024, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     MessageType = table.Column<int>(type: "int", nullable: false),
                     MessageLevel = table.Column<int>(type: "int", nullable: false),
-                    SenderId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    SenderUserId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    SenderUserName = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ReceiveUserId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    ReceiveUserName = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Read = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    ReadTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     ExtraProperties = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ConcurrencyStamp = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: false)
@@ -326,6 +335,36 @@ namespace Lion.AbpPro.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AbpNotifications", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "AbpNotificationSubscriptions",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    TenantId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    NotificationId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    ReceiveUserId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    ReceiveUserName = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Read = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    ReadTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ConcurrencyStamp = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: false),
+                    DeleterId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbpNotificationSubscriptions", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -502,10 +541,10 @@ namespace Lion.AbpPro.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Description = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    DefaultValue = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
+                    DefaultValue = table.Column<string>(type: "varchar(2048)", maxLength: 2048, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsVisibleToClients = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Providers = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: true)
+                    Providers = table.Column<string>(type: "varchar(1024)", maxLength: 1024, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsInherited = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     IsEncrypted = table.Column<bool>(type: "tinyint(1)", nullable: false),
@@ -719,35 +758,6 @@ namespace Lion.AbpPro.Migrations
                         name: "FK_AbpDataDictionaryDetails_AbpDataDictionaries_DataDictionaryId",
                         column: x => x.DataDictionaryId,
                         principalTable: "AbpDataDictionaries",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "AbpNotificationSubscriptions",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    NotificationId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    ReceiveId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Read = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    ReadTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    CreatorId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
-                    LastModificationTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    LastModifierId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: false),
-                    DeleterId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
-                    DeletionTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AbpNotificationSubscriptions", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AbpNotificationSubscriptions_AbpNotifications_NotificationId",
-                        column: x => x.NotificationId,
-                        principalTable: "AbpNotifications",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -1054,8 +1064,7 @@ namespace Lion.AbpPro.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AbpLanguages_CultureName",
                 table: "AbpLanguages",
-                column: "CultureName",
-                unique: true);
+                column: "CultureName");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpLanguageTexts_TenantId_ResourceName_CultureName",
@@ -1072,6 +1081,11 @@ namespace Lion.AbpPro.Migrations
                 name: "IX_AbpNotificationSubscriptions_NotificationId",
                 table: "AbpNotificationSubscriptions",
                 column: "NotificationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AbpNotificationSubscriptions_ReceiveUserId",
+                table: "AbpNotificationSubscriptions",
+                column: "ReceiveUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpOrganizationUnitRoles_RoleId_OrganizationUnitId",
@@ -1236,6 +1250,9 @@ namespace Lion.AbpPro.Migrations
                 name: "AbpLinkUsers");
 
             migrationBuilder.DropTable(
+                name: "AbpNotifications");
+
+            migrationBuilder.DropTable(
                 name: "AbpNotificationSubscriptions");
 
             migrationBuilder.DropTable(
@@ -1288,9 +1305,6 @@ namespace Lion.AbpPro.Migrations
 
             migrationBuilder.DropTable(
                 name: "AbpEntityChanges");
-
-            migrationBuilder.DropTable(
-                name: "AbpNotifications");
 
             migrationBuilder.DropTable(
                 name: "AbpTenants");

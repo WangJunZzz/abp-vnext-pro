@@ -7,17 +7,14 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Enums
     /// </summary>
     public enum MessageType
     {
-
         /// <summary>
         /// 广播消息
         /// </summary>
-        [Description("广播消息")]
-        BroadCast = 10,
+        [Description("广播消息")] BroadCast = 10,
+
         /// <summary>
         /// 普通文本消息
         /// </summary>
-        [Description("普通文本消息")]
-        Common = 20,
-
+        [Description("普通文本消息")] Common = 20,
     }
 }

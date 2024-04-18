@@ -15,12 +15,13 @@ public class SendCommonMessageInput : IValidatableObject
     /// <summary>
     /// 发送人
     /// </summary>
-    public List<Guid> ReceiveIds { get; set; }
+    public Guid ReceiveUserId { get; set; }
 
-    public SendCommonMessageInput()
-    {
-        ReceiveIds = new List<Guid>();
-    }
+    /// <summary>
+    /// 发送人名称
+    /// </summary>
+    public string ReceiveUserName { get; set; }
+    
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
@@ -34,11 +35,6 @@ public class SendCommonMessageInput : IValidatableObject
         if (Content.IsNullOrWhiteSpace())
         {
             yield return new ValidationResult(localization[NotificationManagementErrorCodes.MessageContent], new[] { nameof(Content) });
-        }
-
-        if (ReceiveIds == null || ReceiveIds.Count == 0)
-        {
-            yield return new ValidationResult(localization[NotificationManagementErrorCodes.ReceiverNotNull], new[] { nameof(ReceiveIds) });
         }
     }
 }

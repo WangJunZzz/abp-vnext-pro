@@ -1,3 +1,5 @@
+using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
+
 namespace Lion.AbpPro.NotificationManagement
 {
     public class NotificationDomainAutoMapperProfile:Profile
@@ -5,7 +7,8 @@ namespace Lion.AbpPro.NotificationManagement
         public NotificationDomainAutoMapperProfile()
         {
             CreateMap<Notification, NotificationEto>();
-            CreateMap<NotificationSubscription, NotificationSubscriptionEto>();
+            CreateMap<Notification, NotificationDto>();
+            CreateMap<NotificationSubscription, NotificationSubscriptionDto>();
         }
     }
 }

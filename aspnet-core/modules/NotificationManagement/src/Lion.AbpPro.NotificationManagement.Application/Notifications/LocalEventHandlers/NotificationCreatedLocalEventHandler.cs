@@ -22,7 +22,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.LocalEventHandlers
                 eventData.NotificationEto.Content,
                 eventData.NotificationEto.MessageType,
                 eventData.NotificationEto.MessageLevel,
-                eventData.NotificationEto.NotificationSubscriptions.Select(e => e.ReceiveId.ToString()).ToList());
+                eventData.NotificationEto.ReceiveUserId.ToString());
         }
         
     }

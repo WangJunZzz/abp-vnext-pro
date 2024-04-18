@@ -3,22 +3,17 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
     /// <summary>
     /// 消息通知 仓储接口
     /// </summary>
-    public  interface INotificationRepository : IBasicRepository<Notification, Guid>
+    public  interface INotificationSubscriptionRepository : IBasicRepository<NotificationSubscription, Guid>
     {
         /// <summary>
         /// 分页获取消息
         /// </summary>
-        Task<List<Notification>> GetPagingListAsync(
-            string title,
-            string content,
-            Guid? senderUserId,
-            string senderUserName,
+        Task<List<NotificationSubscription>> GetPagingListAsync(
+            Guid notificationId,
             Guid? receiverUserId,
             string receiverUserName,
-            bool? read,
             DateTime? startReadTime,
             DateTime? endReadTime,
-            MessageType? messageType,
             int maxResultCount = 10,
             int skipCount = 0,
             CancellationToken cancellationToken = default);
@@ -26,19 +21,14 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// <summary>
         /// 获取消息总条数
         /// </summary>
-        Task<long> GetPagingCountAsync(
-            string title,
-            string content,
-            Guid? senderUserId,
-            string senderUserName,
+        Task<long> GetPagingCountAsync(  
+            Guid notificationId,
             Guid? receiverUserId,
             string receiverUserName,
-            bool? read,
             DateTime? startReadTime,
             DateTime? endReadTime,
-            MessageType? messageType,
             CancellationToken cancellationToken = default);
-        
-        Task<List<Notification>> GetListAsync(List<Guid> ids);
+
+        Task<NotificationSubscription> FindAsync(Guid receiverUserId, Guid notificationId, CancellationToken cancellationToken = default);
     }
 }

@@ -1,8 +1,7 @@
 namespace Lion.AbpPro.NotificationManagement.Notifications
 {
-    public interface INotificationAppService:IApplicationService
+    public interface INotificationAppService : IApplicationService
     {
-
         /// <summary>
         /// 发送警告文本消息
         /// </summary>
@@ -32,28 +31,17 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// 发送错误广播消息
         /// </summary>
         Task SendBroadCastErrorMessageAsync(SendBroadCastMessageInput input);
-        
+
         /// <summary>
         /// 消息设置为已读
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         Task SetReadAsync(SetReadInput input);
-        
-        /// <summary>
-        /// 分页获取用户普通文本消息
-        /// </summary>
-        /// <param name="listInput"></param>
-        /// <returns></returns>
-        Task<PagedResultDto<PagingNotificationListOutput>> GetPageCommonNotificationByUserIdAsync(
-            PagingNotificationListInput listInput);
 
         /// <summary>
-        /// 分页获取广播消息
+        /// 分页获取消息
         /// </summary>
-        /// <param name="listInput"></param>
-        /// <returns></returns>
-        Task<PagedResultDto<PagingNotificationListOutput>> GetPageBroadCastNotificationByUserIdAsync(
-            PagingNotificationListInput listInput);
+        Task<PagedResultDto<PagingNotificationOutput>> PageNotificationAsync(PagingNotificationInput input);
+
+        Task<PagedResultDto<PagingNotificationSubscriptionOutput>> PageNotificationSubscriptionAsync(PagingNotificationSubscriptionInput input);
     }
 }

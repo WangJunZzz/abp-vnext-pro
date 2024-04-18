@@ -11,19 +11,15 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
         /// 租户id
         /// </summary>
         public Guid? TenantId { get; private set; }
-        
+
         /// <summary>
         /// 消息标题
         /// </summary>
-        [StringLength(NotificationMaxLengths.Title)]
-        [Required]
         public string Title { get; private set; }
 
         /// <summary>
         /// 消息内容
         /// </summary>
-        [StringLength(NotificationMaxLengths.Content)]
-        [Required]
         public string Content { get; private set; }
 
         /// <summary>
@@ -39,16 +35,40 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
         /// <summary>
         /// 发送人
         /// </summary>
-        public Guid SenderId { get; private set; }
+        public Guid SenderUserId { get; private set; }
 
         /// <summary>
-        /// 关联属性1:N 消息订阅者集合
+        /// 发送人用户名
         /// </summary>
-        public List<NotificationSubscription> NotificationSubscriptions { get; private set; }
+        public string SenderUserName { get; private set; }
 
+        /// <summary>
+        /// 订阅人
+        /// 消息类型是广播消息时，订阅人为空
+        /// </summary>
+        public Guid? ReceiveUserId { get; private set; }
+
+
+        /// <summary>
+        /// 接收人用户名
+        /// 消息类型是广播消息时，订接收人用户名为空
+        /// </summary>
+        public string ReceiveUserName { get; private set; }
+        
+        /// <summary>
+        /// 是否已读
+        /// </summary>
+        public bool Read { get; private set; }
+        
+        /// <summary>
+        /// 已读时间
+        /// </summary>
+        public DateTime? ReadTime { get; private set; }
+
+        
         private Notification()
         {
-            NotificationSubscriptions = new List<NotificationSubscription>();
+            
         }
 
         public Notification(
@@ -57,57 +77,65 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
             string content,
             MessageType messageType,
             MessageLevel messageLevel,
-            Guid senderId,
+            Guid senderUserId,
+            string senderUserName,
+            Guid? receiveUserId = null,
+            string receiveUserName ="",
+            DateTime? readTime = null,
+            bool read = false,
             Guid? tenantId = null
         ) : base(id)
-        {
-            NotificationSubscriptions = new List<NotificationSubscription>();
-
-            SetProperties(
-                title,
-                content,
-                messageType,
-                messageLevel,
-                senderId
-            );
-            SetTenantId(tenantId);
-        }
-
-        private void SetProperties(
-            string title,
-            string content,
-            MessageType messageType,
-            MessageLevel messageLevel,
-            Guid senderId
-        )
         {
             SetTitle(title);
             SetContent(content);
             SetMessageType(messageType);
             SetMessageLevel(messageLevel);
-            SetSenderId(senderId);
+            SetSenderUserId(senderUserId);
+            SetSenderUserName(senderUserName);
+            SetReceiveUserId(receiveUserId);
+            SetReceiveUserName(receiveUserName);
+            SetTenantId(tenantId);
+            SetRead(read,readTime);
         }
+        
 
         private void SetTenantId(Guid? tenantId)
         {
             TenantId = tenantId;
         }
-        
-        private void SetSenderId(Guid senderId)
+
+        private void SetSenderUserId(Guid senderUserId)
         {
-            Guard.NotEmpty(senderId, nameof(senderId));
-            SenderId = senderId;
+            Guard.NotEmpty(senderUserId, nameof(senderUserId));
+            SenderUserId = senderUserId;
+        }
+        
+        private void SetSenderUserName(string senderUserName)
+        {
+            Guard.NotNullOrWhiteSpace(senderUserName, nameof(senderUserName), NotificationMaxLengths.Length128);
+            SenderUserName = senderUserName;
+        }
+        
+        private void SetReceiveUserId(Guid? receiveUserId)
+        {
+            ReceiveUserId = receiveUserId;
+        }
+        
+        private void SetReceiveUserName(string receiveUserName)
+        {
+            ReceiveUserName = receiveUserName;
         }
 
+        
         private void SetTitle(string title)
         {
-            Guard.NotNullOrWhiteSpace(title, nameof(title), NotificationMaxLengths.Title);
+            Guard.NotNullOrWhiteSpace(title, nameof(title), NotificationMaxLengths.Length128);
             Title = title;
         }
 
         private void SetContent(string content)
         {
-            Guard.NotNullOrWhiteSpace(content, nameof(content), NotificationMaxLengths.Content);
+            Guard.NotNullOrWhiteSpace(content, nameof(content), NotificationMaxLengths.Length1024);
             Content = content;
         }
 
@@ -120,37 +148,18 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
         {
             MessageLevel = messageLevel;
         }
+        
 
-        /// <summary>
-        /// 新增非广播消息订阅人
-        /// </summary>
-        public void AddNotificationSubscription(Guid notificationSubscriptionId, Guid receiveId)
+        public void SetRead(bool read, DateTime? readTime = null)
         {
-            if (NotificationSubscriptions.Any(e => e.ReceiveId == receiveId)) return;
-            NotificationSubscriptions.Add(
-                new NotificationSubscription(notificationSubscriptionId, Id, receiveId));
-        }
-
-        /// <summary>
-        /// 新增消息类型为广播订阅人
-        /// </summary>
-        public void AddBroadCastNotificationSubscription(Guid notificationSubscriptionId, Guid receiveId, DateTime readTime)
-        {
-            if (NotificationSubscriptions.Any(e => e.ReceiveId == receiveId))
-            {
-                return;
-            }
-
-            var temp = new NotificationSubscription(notificationSubscriptionId, Id, receiveId);
-            temp.SetRead(readTime);
-            NotificationSubscriptions.Add(temp);
+            Read = read;
+            ReadTime = readTime;
         }
 
         /// <summary>
         /// 添加创建消息事件
         /// </summary>
-        public void AddCreatedNotificationLocalEvent(
-            CreatedNotificationLocalEvent createdNotificationLocalEvent)
+        public void AddCreatedNotificationLocalEvent(CreatedNotificationLocalEvent createdNotificationLocalEvent)
         {
             AddLocalEvent(createdNotificationLocalEvent);
         }

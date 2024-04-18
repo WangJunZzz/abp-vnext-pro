@@ -114,6 +114,26 @@ const admin: AppRouteModule = {
         policy: 'AbpIdentity.LanguageTexts',
       },
     },
+    {
+      path: 'notification',
+      name: 'notification',
+      component: () => import('/@/views/admin/notification/Index.vue'),
+      meta: {
+        title: t('routes.admin.notificationManagement'),
+        icon: 'ant-design:comment-outlined',
+        policy: 'AbpIdentity.NotificationManagement',
+      },
+    },
+    {
+      path: 'subscription',
+      name: 'subscription',
+      component: () => import('/@/views/admin/notification/Subscription.vue'),
+      meta: {
+        title: t('routes.admin.notificationSubscriptionManagement'),
+        icon: 'ant-design:customer-service-twotone',
+        policy: 'AbpIdentity.NotificationSubscriptionManagement',
+      },
+    },
   ],
 };
 

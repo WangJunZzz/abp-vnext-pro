@@ -7,8 +7,14 @@ namespace Lion.AbpPro.NotificationManagement
             /* You can configure your AutoMapper mapping configuration here.
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
-            CreateMap<Notification, PagingNotificationListOutput>()
-                .ForMember(dest => dest.Read, opt => opt.MapFrom(e => e.NotificationSubscriptions.FirstOrDefault().Read));
+            CreateMap<NotificationDto, PagingNotificationOutput>();
+            CreateMap<NotificationSubscriptionDto, PagingNotificationSubscriptionOutput>()
+                .ForMember(dest => dest.Title, opt => opt.Ignore())
+                .ForMember(dest => dest.Content, opt => opt.Ignore())
+                .ForMember(dest => dest.MessageType, opt => opt.Ignore())
+                .ForMember(dest => dest.MessageLevel, opt => opt.Ignore())
+                .ForMember(dest => dest.SenderUserId, opt => opt.Ignore())
+                .ForMember(dest => dest.SenderUserName, opt => opt.Ignore());
         }
     }
 }

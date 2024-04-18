@@ -13,6 +13,11 @@ namespace Lion.AbpPro.BasicManagement.Users
         Task<PagedResultDto<IdentityUserDto>> ListAsync(PagingUserListInput input);
 
         /// <summary>
+        /// 分页查询用户
+        /// </summary>
+        Task<List<IdentityUserDto>> ListAllAsync(PagingUserListInput input);
+        
+        /// <summary>
         /// 用户导出列表
         /// </summary>
         Task<ActionResult> ExportAsync(PagingUserListInput input);
