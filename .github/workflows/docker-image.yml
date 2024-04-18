@@ -42,10 +42,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: api
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          persist-credentials: false
+          node-version: 18.12
           
       - name: Setting Version
         id: vars
@@ -64,8 +64,9 @@ jobs:
 
       # build 并且 push docker 镜像
       - name: Push Vue3 Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v2
         with:
+          node-version: "18.12"
           context: vben28
           push: true
           tags: zzzwangjun/lion.abp.pro.vben28:${{ steps.vars.outputs.RELEASE_VERSION }}
