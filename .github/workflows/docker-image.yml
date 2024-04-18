@@ -43,7 +43,7 @@ jobs:
     needs: api
     steps:
       - name: Checkout
-        uses: actions/checkout@4
+        uses: actions/checkout@2
         with:
           persist-credentials: false
           
