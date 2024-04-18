@@ -43,14 +43,9 @@ jobs:
     needs: api
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.1
+        uses: actions/checkout@4
         with:
           persist-credentials: false
-
-      - name: Set Node Version
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
           
       - name: Setting Version
         id: vars
@@ -69,7 +64,7 @@ jobs:
 
       # build 并且 push docker 镜像
       - name: Push Vue3 Image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           context: vben28
           push: true
