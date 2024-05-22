@@ -6,7 +6,7 @@ namespace Lion.AbpPro
         typeof(BasicManagementApplicationContractsModule),
         typeof(DataDictionaryManagementApplicationContractsModule),
         typeof(LanguageManagementApplicationContractsModule),
-        typeif(NotificationManagementApplicationContractsModule),
+        typeof(NotificationManagementApplicationContractsModule)
     )]
     public class AbpProApplicationContractsModule : AbpModule
     {
