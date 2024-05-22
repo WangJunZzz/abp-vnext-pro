@@ -122,18 +122,15 @@ namespace Lion.AbpPro.BasicManagement.Tenants
 
         public async Task DeleteConnectionStringAsync(DeleteConnectionStringInput input)
         {
-            if (!CurrentTenant.Id.HasValue)
-            {
-                throw new BusinessException(BasicManagementErrorCodes.TenantNotExist);
-            }
-
-            var tenant = await _tenantRepository.FindAsync(CurrentTenant.Id.Value, true);
+            
+            var tenant = await _tenantRepository.FindAsync(input.TenantId, true);
 
             if (tenant == null)
             {
                 throw new BusinessException(BasicManagementErrorCodes.TenantNotExist);
             }
-            var connectionString = tenant.ConnectionStrings.FirstOrDefault(e => e.Value == input.Name);
+
+            var connectionString = tenant.ConnectionStrings.FirstOrDefault(e => e.Name == input.Name);
             if (connectionString != null)
             {
                 tenant.RemoveConnectionString(input.Name);

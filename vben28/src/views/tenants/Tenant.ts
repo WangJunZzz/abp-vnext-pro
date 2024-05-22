@@ -2,7 +2,7 @@ import { FormSchema } from '/@/components/Table';
 import { BasicColumn } from '/@/components/Table';
 import { useI18n } from '/@/hooks/web/useI18n';
 const { t } = useI18n();
-import { TenantsServiceProxy, PagingTenantInput, IdInput, PageTenantConnectionStringInput, FeaturesServiceProxy, GetFeatureListResultInput,UpdateFeatureInput,UpdateFeaturesDto, UpdateFeatureDto} from '/@/services/ServiceProxies';
+import { TenantsServiceProxy, PagingTenantInput, IdInput, PageTenantConnectionStringInput, FeaturesServiceProxy, GetFeatureListResultInput,UpdateFeatureInput,UpdateFeaturesDto, DeleteConnectionStringInput} from '/@/services/ServiceProxies';
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'filter',
@@ -191,3 +191,12 @@ export async function updateTenantFeatureListAsync(tenantId, params) {
   request.updateFeaturesDto.features=params;
   return await _featuresServiceProxy.update(request);
 }
+
+export async function deleteConnectionString(id, name) {
+  const _tenantsServiceProxy = new TenantsServiceProxy();
+  const request = new DeleteConnectionStringInput();
+  request.name=name;
+  request.tenantId=id;
+  return await _tenantsServiceProxy.deleteConnectionString(request);
+}
+

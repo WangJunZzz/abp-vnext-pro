@@ -9299,6 +9299,8 @@ export interface IDateTimeFormatDto {
 export class DeleteConnectionStringInput implements IDeleteConnectionStringInput {
     /** 连接字符串名称 */
     name!: string | undefined;
+    /** 租户id */
+    tenantId!: string;
 
     constructor(data?: IDeleteConnectionStringInput) {
         if (data) {
@@ -9312,6 +9314,7 @@ export class DeleteConnectionStringInput implements IDeleteConnectionStringInput
     init(_data?: any) {
         if (_data) {
             this.name = _data["name"];
+            this.tenantId = _data["tenantId"];
         }
     }
 
@@ -9325,6 +9328,7 @@ export class DeleteConnectionStringInput implements IDeleteConnectionStringInput
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
+        data["tenantId"] = this.tenantId;
         return data;
     }
 }
@@ -9332,6 +9336,8 @@ export class DeleteConnectionStringInput implements IDeleteConnectionStringInput
 export interface IDeleteConnectionStringInput {
     /** 连接字符串名称 */
     name: string | undefined;
+    /** 租户id */
+    tenantId: string;
 }
 
 export class DeleteDataDictionaryDetailInput implements IDeleteDataDictionaryDetailInput {
@@ -11304,6 +11310,7 @@ export class FindTenantResultDto implements IFindTenantResultDto {
     success!: boolean;
     tenantId!: string | undefined;
     name!: string | undefined;
+    normalizedName!: string | undefined;
     isActive!: boolean;
 
     constructor(data?: IFindTenantResultDto) {
@@ -11320,6 +11327,7 @@ export class FindTenantResultDto implements IFindTenantResultDto {
             this.success = _data["success"];
             this.tenantId = _data["tenantId"];
             this.name = _data["name"];
+            this.normalizedName = _data["normalizedName"];
             this.isActive = _data["isActive"];
         }
     }
@@ -11336,6 +11344,7 @@ export class FindTenantResultDto implements IFindTenantResultDto {
         data["success"] = this.success;
         data["tenantId"] = this.tenantId;
         data["name"] = this.name;
+        data["normalizedName"] = this.normalizedName;
         data["isActive"] = this.isActive;
         return data;
     }
@@ -11345,6 +11354,7 @@ export interface IFindTenantResultDto {
     success: boolean;
     tenantId: string | undefined;
     name: string | undefined;
+    normalizedName: string | undefined;
     isActive: boolean;
 }
 
