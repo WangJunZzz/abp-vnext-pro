@@ -9,9 +9,5 @@ namespace Lion.AbpPro.NotificationManagement
         )
         {
         }
-
-        public NotificationManagementDomainException(SerializationInfo serializationInfo, StreamingContext context) : base(serializationInfo, context)
-        {
-        }
     }
 }

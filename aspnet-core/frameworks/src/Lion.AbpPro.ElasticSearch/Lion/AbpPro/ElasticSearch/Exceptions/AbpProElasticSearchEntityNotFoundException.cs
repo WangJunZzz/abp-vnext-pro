@@ -17,8 +17,4 @@ public class AbpProElasticSearchEntityNotFoundException : BusinessException
         )
     {
     }
-
-    public AbpProElasticSearchEntityNotFoundException(SerializationInfo serializationInfo, StreamingContext context) : base(serializationInfo, context)
-    {
-    }
 }

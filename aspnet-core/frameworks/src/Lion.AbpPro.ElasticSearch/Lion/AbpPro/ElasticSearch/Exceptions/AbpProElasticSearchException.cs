@@ -17,8 +17,4 @@ public class AbpProElasticSearchException : BusinessException
         )
     {
     }
-
-    public AbpProElasticSearchException(SerializationInfo serializationInfo, StreamingContext context) : base(serializationInfo, context)
-    {
-    }
 }

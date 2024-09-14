@@ -47,7 +47,8 @@ public class LanguageManagementDataSeedContributor : ITransientDependency, IData
                                 language.CultureName,
                                 language.UiCultureName,
                                 language.DisplayName,
-                                language.FlagIcon,
+                                //language.FlagIcon,
+                                string.Empty,
                                 true,
                                 isDefault,
                                 _currentTenant.Id));

@@ -9,9 +9,5 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         )
         {
         }
-
-        public DataDictionaryDomainException(SerializationInfo serializationInfo, StreamingContext context) : base(serializationInfo, context)
-        {
-        }
     }
 }

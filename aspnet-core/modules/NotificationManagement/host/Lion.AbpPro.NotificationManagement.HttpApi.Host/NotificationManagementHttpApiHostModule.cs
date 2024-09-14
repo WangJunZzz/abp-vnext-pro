@@ -124,9 +124,6 @@ public class NotificationManagementHttpApiHostModule : AbpModule
             options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English (UK)"));
             options.Languages.Add(new LanguageInfo("fi", "fi", "Finnish"));
             options.Languages.Add(new LanguageInfo("fr", "fr", "Français"));
-            options.Languages.Add(new LanguageInfo("hi", "hi", "Hindi", "in"));
-            options.Languages.Add(new LanguageInfo("is", "is", "Icelandic", "is"));
-            options.Languages.Add(new LanguageInfo("it", "it", "Italiano", "it"));
             options.Languages.Add(new LanguageInfo("hu", "hu", "Magyar"));
             options.Languages.Add(new LanguageInfo("pt-BR", "pt-BR", "Português"));
             options.Languages.Add(new LanguageInfo("ro-RO", "ro-RO", "Română"));
