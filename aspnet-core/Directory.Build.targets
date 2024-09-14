@@ -89,5 +89,7 @@
         
         <!-- NEST ElasticSearch-->        
         <PackageReference Update="NEST" Version="7.17.5"/>
+
+        <PackageReference Update="WebApiClientCore" Version="2.1.4" />
     </ItemGroup>
 </Project>
