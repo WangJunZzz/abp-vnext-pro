@@ -30,6 +30,7 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
         public DbSet<IdentitySecurityLog> SecurityLogs { get; set; }
         public DbSet<IdentityLinkUser> LinkUsers { get; set; }
         public DbSet<IdentityUserDelegation> UserDelegations { get; set; }
+        public DbSet<IdentitySession> Sessions { get; set; }
         public DbSet<FeatureGroupDefinitionRecord> FeatureGroups { get; set; }
         public DbSet<FeatureDefinitionRecord> Features { get; set; }
         public DbSet<FeatureValue> FeatureValues { get; set; }
@@ -43,10 +44,11 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
         public DbSet<BackgroundJobRecord> BackgroundJobs { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<NotificationSubscription> NotificationSubscriptions { get; set; }
         public DbSet<DataDictionary> DataDictionaries { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<LanguageText> LanguageTexts { get; set; }
-        
+
         public MyProjectNameDbContext(DbContextOptions<MyProjectNameDbContext> options)
             : base(options)
         {
