@@ -36,11 +36,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{2C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Solution Items", "0.Solution Items", "{2C4A6DB8-8D9E-42E6-B7C3-1EDB7B3DE22E}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-		NuGet.Config = NuGet.Config
 		Directory.Build.Microsoft.targets = Directory.Build.Microsoft.targets
 		Directory.Build.targets = Directory.Build.targets
 		Directory.Build.Volo.targets = Directory.Build.Volo.targets
+		global.json = global.json
+		NuGet.Config = NuGet.Config
 		..\Readme.md = ..\Readme.md
 	EndProjectSection
 EndProject
@@ -156,11 +156,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.FileManagement.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.FreeSqlRepository", "services\src\Lion.AbpPro.FreeSqlRepository\Lion.AbpPro.FreeSqlRepository.csproj", "{27C7A0E6-4C2E-4AFF-9DE7-1F526DDC0D18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.FreeSqlRepository.Tests", "services\test\Lion.AbpPro.FreeSqlRepository.Tests\Lion.AbpPro.FreeSqlRepository.Tests.csproj", "{7971DF5A-B001-4751-8F40-D7752C612BF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.FreeSqlRepository.Tests", "services\test\Lion.AbpPro.FreeSqlRepository.Tests\Lion.AbpPro.FreeSqlRepository.Tests.csproj", "{7971DF5A-B001-4751-8F40-D7752C612BF1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{7FF93622-971D-4B30-A5FC-72D729D26E29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.NotificationManagement.HttpApi.Host", "modules\NotificationManagement\host\Lion.AbpPro.NotificationManagement.HttpApi.Host\Lion.AbpPro.NotificationManagement.HttpApi.Host.csproj", "{FA5E029F-1826-4C1E-8AED-6FA5C3362A3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.NotificationManagement.HttpApi.Host", "modules\NotificationManagement\host\Lion.AbpPro.NotificationManagement.HttpApi.Host\Lion.AbpPro.NotificationManagement.HttpApi.Host.csproj", "{FA5E029F-1826-4C1E-8AED-6FA5C3362A3A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BasicManagement", "BasicManagement", "{C2FE6BA0-3DE5-403F-A91F-BCB9ADA5B068}"
 EndProject
@@ -170,43 +170,43 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF419621-2F1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6464122A-1DC2-45E8-B599-4B5C32FBC85B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.HttpApi.Client", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.HttpApi.Client\Lion.AbpPro.BasicManagement.HttpApi.Client.csproj", "{97EE641B-69AB-40A6-B20B-4A7FD3B2681E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.BasicManagement.HttpApi.Client", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.HttpApi.Client\Lion.AbpPro.BasicManagement.HttpApi.Client.csproj", "{97EE641B-69AB-40A6-B20B-4A7FD3B2681E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.HttpApi", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.HttpApi\Lion.AbpPro.BasicManagement.HttpApi.csproj", "{0EE57014-A75A-4E54-97B6-785C2F874EA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.BasicManagement.HttpApi", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.HttpApi\Lion.AbpPro.BasicManagement.HttpApi.csproj", "{0EE57014-A75A-4E54-97B6-785C2F874EA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.EntityFrameworkCore", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.EntityFrameworkCore\Lion.AbpPro.BasicManagement.EntityFrameworkCore.csproj", "{4F5841EB-A0C9-4E89-AA02-376F2190F68D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.BasicManagement.EntityFrameworkCore", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.EntityFrameworkCore\Lion.AbpPro.BasicManagement.EntityFrameworkCore.csproj", "{4F5841EB-A0C9-4E89-AA02-376F2190F68D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Domain.Shared", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Domain.Shared\Lion.AbpPro.BasicManagement.Domain.Shared.csproj", "{C4E1B96F-7905-48ED-AD72-98F5983E65A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.BasicManagement.Domain.Shared", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Domain.Shared\Lion.AbpPro.BasicManagement.Domain.Shared.csproj", "{C4E1B96F-7905-48ED-AD72-98F5983E65A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Domain", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Domain\Lion.AbpPro.BasicManagement.Domain.csproj", "{95385FBA-53E4-4144-B6FE-B5561081B9F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.BasicManagement.Domain", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Domain\Lion.AbpPro.BasicManagement.Domain.csproj", "{95385FBA-53E4-4144-B6FE-B5561081B9F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Application.Contracts", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Application.Contracts\Lion.AbpPro.BasicManagement.Application.Contracts.csproj", "{4D808FF7-C204-40F1-881D-21B27D8D290E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.BasicManagement.Application.Contracts", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Application.Contracts\Lion.AbpPro.BasicManagement.Application.Contracts.csproj", "{4D808FF7-C204-40F1-881D-21B27D8D290E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Application", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Application\Lion.AbpPro.BasicManagement.Application.csproj", "{354E0590-F6B2-43F5-A563-F543C498F3EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.BasicManagement.Application", "modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Application\Lion.AbpPro.BasicManagement.Application.csproj", "{354E0590-F6B2-43F5-A563-F543C498F3EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.TestBase", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.TestBase\Lion.AbpPro.BasicManagement.TestBase.csproj", "{47F2E236-E6BE-4F52-8389-5CF03BDC9B78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.BasicManagement.TestBase", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.TestBase\Lion.AbpPro.BasicManagement.TestBase.csproj", "{47F2E236-E6BE-4F52-8389-5CF03BDC9B78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests\Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests.csproj", "{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests\Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests.csproj", "{9ECCC0EC-CC5A-4E49-96BE-3F2B15CCD94D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Domain.Tests", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.Domain.Tests\Lion.AbpPro.BasicManagement.Domain.Tests.csproj", "{2BACB63E-2830-4371-AEBB-E8089E3EB316}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.BasicManagement.Domain.Tests", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.Domain.Tests\Lion.AbpPro.BasicManagement.Domain.Tests.csproj", "{2BACB63E-2830-4371-AEBB-E8089E3EB316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.Application.Tests", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.Application.Tests\Lion.AbpPro.BasicManagement.Application.Tests.csproj", "{19A28EF9-A5AE-4EC5-851C-D2547E5FE29C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.BasicManagement.Application.Tests", "modules\BasicManagement\test\Lion.AbpPro.BasicManagement.Application.Tests\Lion.AbpPro.BasicManagement.Application.Tests.csproj", "{19A28EF9-A5AE-4EC5-851C-D2547E5FE29C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.BasicManagement.HttpApi.Host", "modules\BasicManagement\host\Lion.AbpPro.BasicManagement.HttpApi.Host\Lion.AbpPro.BasicManagement.HttpApi.Host.csproj", "{26765303-B9D8-457B-915C-ED869CEEB210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.BasicManagement.HttpApi.Host", "modules\BasicManagement\host\Lion.AbpPro.BasicManagement.HttpApi.Host\Lion.AbpPro.BasicManagement.HttpApi.Host.csproj", "{26765303-B9D8-457B-915C-ED869CEEB210}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Core", "frameworks\src\Lion.AbpPro.Core\Lion.AbpPro.Core.csproj", "{F22611C1-0DAE-408D-B034-7005906536F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Core", "frameworks\src\Lion.AbpPro.Core\Lion.AbpPro.Core.csproj", "{F22611C1-0DAE-408D-B034-7005906536F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Localization", "frameworks\src\Lion.AbpPro.Localization\Lion.AbpPro.Localization.csproj", "{EF7D01D6-9F90-4E24-B134-BA13E9965D78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Localization", "frameworks\src\Lion.AbpPro.Localization\Lion.AbpPro.Localization.csproj", "{EF7D01D6-9F90-4E24-B134-BA13E9965D78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.CAP", "frameworks\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj", "{D1A86DB0-DABB-47B6-BC71-C49318AF5534}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.CAP", "frameworks\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj", "{D1A86DB0-DABB-47B6-BC71-C49318AF5534}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{EFC415F8-872F-4C7E-8645-31A51481BCFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Localization.Tests", "frameworks\test\Lion.AbpPro.Localization.Tests\Lion.AbpPro.Localization.Tests.csproj", "{800A02FA-EA70-4492-9A93-13C820692F1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Localization.Tests", "frameworks\test\Lion.AbpPro.Localization.Tests\Lion.AbpPro.Localization.Tests.csproj", "{800A02FA-EA70-4492-9A93-13C820692F1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Core.Tests", "frameworks\test\Lion.AbpPro.Core.Tests\Lion.AbpPro.Core.Tests.csproj", "{A7206D58-8107-4BB9-8962-30C845ACB6DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Core.Tests", "frameworks\test\Lion.AbpPro.Core.Tests\Lion.AbpPro.Core.Tests.csproj", "{A7206D58-8107-4BB9-8962-30C845ACB6DC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LanguageManagement", "LanguageManagement", "{073D8348-DDEE-42EE-B34B-888A68FA296D}"
 EndProject
@@ -216,35 +216,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2F21DF25-C48
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{3FE23400-A323-46ED-A7F4-30BFF8916D64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.Domain.Shared", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Domain.Shared\Lion.AbpPro.LanguageManagement.Domain.Shared.csproj", "{42812354-1C2C-45C0-91FE-056851CFA835}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.LanguageManagement.Domain.Shared", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Domain.Shared\Lion.AbpPro.LanguageManagement.Domain.Shared.csproj", "{42812354-1C2C-45C0-91FE-056851CFA835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.Domain", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Domain\Lion.AbpPro.LanguageManagement.Domain.csproj", "{7491214D-0335-47F2-9AE8-92A68CA0EA75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.LanguageManagement.Domain", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Domain\Lion.AbpPro.LanguageManagement.Domain.csproj", "{7491214D-0335-47F2-9AE8-92A68CA0EA75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.EntityFrameworkCore", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.EntityFrameworkCore\Lion.AbpPro.LanguageManagement.EntityFrameworkCore.csproj", "{451999B4-0BE6-4ADD-9B8F-5905AEF63D94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.LanguageManagement.EntityFrameworkCore", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.EntityFrameworkCore\Lion.AbpPro.LanguageManagement.EntityFrameworkCore.csproj", "{451999B4-0BE6-4ADD-9B8F-5905AEF63D94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.Application.Contracts", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Application.Contracts\Lion.AbpPro.LanguageManagement.Application.Contracts.csproj", "{84592572-EC8B-49A3-8F42-83438F0CEE97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.LanguageManagement.Application.Contracts", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Application.Contracts\Lion.AbpPro.LanguageManagement.Application.Contracts.csproj", "{84592572-EC8B-49A3-8F42-83438F0CEE97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.Application", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Application\Lion.AbpPro.LanguageManagement.Application.csproj", "{4AA19933-C5EE-47BC-8AC7-688D02117F69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.LanguageManagement.Application", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Application\Lion.AbpPro.LanguageManagement.Application.csproj", "{4AA19933-C5EE-47BC-8AC7-688D02117F69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.HttpApi", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.HttpApi\Lion.AbpPro.LanguageManagement.HttpApi.csproj", "{E63AA900-9DF1-4E11-9D36-6F325F3BCB11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.LanguageManagement.HttpApi", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.HttpApi\Lion.AbpPro.LanguageManagement.HttpApi.csproj", "{E63AA900-9DF1-4E11-9D36-6F325F3BCB11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.HttpApi.Client", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.HttpApi.Client\Lion.AbpPro.LanguageManagement.HttpApi.Client.csproj", "{626C3566-C5D5-4A1C-B9BB-A766C1608B86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.LanguageManagement.HttpApi.Client", "modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.HttpApi.Client\Lion.AbpPro.LanguageManagement.HttpApi.Client.csproj", "{626C3566-C5D5-4A1C-B9BB-A766C1608B86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.HttpApi.Host", "modules\LanguageManagement\host\Lion.AbpPro.LanguageManagement.HttpApi.Host\Lion.AbpPro.LanguageManagement.HttpApi.Host.csproj", "{25A9FE86-420E-4B21-A1D4-6BFE76E79790}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.LanguageManagement.HttpApi.Host", "modules\LanguageManagement\host\Lion.AbpPro.LanguageManagement.HttpApi.Host\Lion.AbpPro.LanguageManagement.HttpApi.Host.csproj", "{25A9FE86-420E-4B21-A1D4-6BFE76E79790}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.TestBase", "modules\LanguageManagement\test\Lion.AbpPro.LanguageManagement.TestBase\Lion.AbpPro.LanguageManagement.TestBase.csproj", "{C662D24D-4EB6-425E-B63B-CAD944ABF689}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.LanguageManagement.TestBase", "modules\LanguageManagement\test\Lion.AbpPro.LanguageManagement.TestBase\Lion.AbpPro.LanguageManagement.TestBase.csproj", "{C662D24D-4EB6-425E-B63B-CAD944ABF689}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.Domain.Tests", "modules\LanguageManagement\test\Lion.AbpPro.LanguageManagement.Domain.Tests\Lion.AbpPro.LanguageManagement.Domain.Tests.csproj", "{8872921C-5BF9-4B4C-B882-6AF8CC78D2CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.LanguageManagement.Domain.Tests", "modules\LanguageManagement\test\Lion.AbpPro.LanguageManagement.Domain.Tests\Lion.AbpPro.LanguageManagement.Domain.Tests.csproj", "{8872921C-5BF9-4B4C-B882-6AF8CC78D2CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.EntityFrameworkCore.Tests", "modules\LanguageManagement\test\Lion.AbpPro.LanguageManagement.EntityFrameworkCore.Tests\Lion.AbpPro.LanguageManagement.EntityFrameworkCore.Tests.csproj", "{E5994C85-C1C2-44F3-BF10-3277CA6CF2C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.LanguageManagement.EntityFrameworkCore.Tests", "modules\LanguageManagement\test\Lion.AbpPro.LanguageManagement.EntityFrameworkCore.Tests\Lion.AbpPro.LanguageManagement.EntityFrameworkCore.Tests.csproj", "{E5994C85-C1C2-44F3-BF10-3277CA6CF2C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.LanguageManagement.Application.Tests", "modules\LanguageManagement\test\Lion.AbpPro.LanguageManagement.Application.Tests\Lion.AbpPro.LanguageManagement.Application.Tests.csproj", "{15852D6F-4110-4B98-B89D-5747777E8908}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.LanguageManagement.Application.Tests", "modules\LanguageManagement\test\Lion.AbpPro.LanguageManagement.Application.Tests\Lion.AbpPro.LanguageManagement.Application.Tests.csproj", "{15852D6F-4110-4B98-B89D-5747777E8908}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.CAP.EntityFrameworkCore", "frameworks\src\Lion.AbpPro.CAP.EntityFrameworkCore\Lion.AbpPro.CAP.EntityFrameworkCore.csproj", "{68C902A2-A604-4F3A-879D-37941C00C7A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.CAP.EntityFrameworkCore", "frameworks\src\Lion.AbpPro.CAP.EntityFrameworkCore\Lion.AbpPro.CAP.EntityFrameworkCore.csproj", "{68C902A2-A604-4F3A-879D-37941C00C7A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Cli.Core", "frameworks\src\Lion.AbpPro.Cli.Core\Lion.AbpPro.Cli.Core.csproj", "{8D5BD955-FFDC-4895-927F-624C42B64A92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Cli.Core", "frameworks\src\Lion.AbpPro.Cli.Core\Lion.AbpPro.Cli.Core.csproj", "{8D5BD955-FFDC-4895-927F-624C42B64A92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Cli", "frameworks\src\Lion.AbpPro.Cli\Lion.AbpPro.Cli.csproj", "{B7A68103-D527-421F-8247-5D169A7F8931}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Cli", "frameworks\src\Lion.AbpPro.Cli\Lion.AbpPro.Cli.csproj", "{B7A68103-D527-421F-8247-5D169A7F8931}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{E57C6A28-1879-4E83-9B0D-E665824A1F4B}"
 EndProject
@@ -264,29 +264,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{7AF66531-6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{634E34FF-58F4-4FE9-BE51-3B8F6BD9CA70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.MyModuleName.Domain.Shared", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.Domain.Shared\MyCompanyName.MyProjectName.MyModuleName.Domain.Shared.csproj", "{8C9756D3-DAA3-4D94-A365-8A890411887F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.Domain.Shared", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.Domain.Shared\MyCompanyName.MyProjectName.MyModuleName.Domain.Shared.csproj", "{8C9756D3-DAA3-4D94-A365-8A890411887F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.MyModuleName.Domain", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.Domain\MyCompanyName.MyProjectName.MyModuleName.Domain.csproj", "{4FBAB41E-7F2E-4488-81AF-74D2D8C8DDBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.Domain", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.Domain\MyCompanyName.MyProjectName.MyModuleName.Domain.csproj", "{4FBAB41E-7F2E-4488-81AF-74D2D8C8DDBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.csproj", "{96AF0729-9782-4AEE-8641-85C91CA4DF09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.csproj", "{96AF0729-9782-4AEE-8641-85C91CA4DF09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.MyModuleName.Application.Contracts", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.Application.Contracts\MyCompanyName.MyProjectName.MyModuleName.Application.Contracts.csproj", "{6C51D48F-E06F-4B8B-A322-F8A8035C1591}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.Application.Contracts", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.Application.Contracts\MyCompanyName.MyProjectName.MyModuleName.Application.Contracts.csproj", "{6C51D48F-E06F-4B8B-A322-F8A8035C1591}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.MyModuleName.Application", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.Application\MyCompanyName.MyProjectName.MyModuleName.Application.csproj", "{890F07CE-345B-4380-BBE4-AD3AF6658100}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.Application", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.Application\MyCompanyName.MyProjectName.MyModuleName.Application.csproj", "{890F07CE-345B-4380-BBE4-AD3AF6658100}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.MyModuleName.HttpApi", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.HttpApi\MyCompanyName.MyProjectName.MyModuleName.HttpApi.csproj", "{C039423D-85FF-42A8-86D5-DC0EA1376DBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.HttpApi", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.HttpApi\MyCompanyName.MyProjectName.MyModuleName.HttpApi.csproj", "{C039423D-85FF-42A8-86D5-DC0EA1376DBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.MyModuleName.HttpApi.Client", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.HttpApi.Client\MyCompanyName.MyProjectName.MyModuleName.HttpApi.Client.csproj", "{A4E1DBD3-1961-48DD-B9F9-46EB12BDC51E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.HttpApi.Client", "..\templates\abp-vnext-pro-nuget-module\src\MyCompanyName.MyProjectName.MyModuleName.HttpApi.Client\MyCompanyName.MyProjectName.MyModuleName.HttpApi.Client.csproj", "{A4E1DBD3-1961-48DD-B9F9-46EB12BDC51E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.MyModuleName.TestBase", "..\templates\abp-vnext-pro-nuget-module\test\MyCompanyName.MyProjectName.MyModuleName.TestBase\MyCompanyName.MyProjectName.MyModuleName.TestBase.csproj", "{11E67260-BD8D-4D68-88C4-CD1B9AB217E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.TestBase", "..\templates\abp-vnext-pro-nuget-module\test\MyCompanyName.MyProjectName.MyModuleName.TestBase\MyCompanyName.MyProjectName.MyModuleName.TestBase.csproj", "{11E67260-BD8D-4D68-88C4-CD1B9AB217E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.Tests", "..\templates\abp-vnext-pro-nuget-module\test\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.Tests\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.Tests.csproj", "{36B5EFBF-DB54-45D4-84F2-1FF794CD8B60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.Tests", "..\templates\abp-vnext-pro-nuget-module\test\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.Tests\MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.Tests.csproj", "{36B5EFBF-DB54-45D4-84F2-1FF794CD8B60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.MyModuleName.Domain.Tests", "..\templates\abp-vnext-pro-nuget-module\test\MyCompanyName.MyProjectName.MyModuleName.Domain.Tests\MyCompanyName.MyProjectName.MyModuleName.Domain.Tests.csproj", "{71B2D69D-C193-4EF9-AF84-70105B653DF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.Domain.Tests", "..\templates\abp-vnext-pro-nuget-module\test\MyCompanyName.MyProjectName.MyModuleName.Domain.Tests\MyCompanyName.MyProjectName.MyModuleName.Domain.Tests.csproj", "{71B2D69D-C193-4EF9-AF84-70105B653DF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.MyModuleName.Application.Tests", "..\templates\abp-vnext-pro-nuget-module\test\MyCompanyName.MyProjectName.MyModuleName.Application.Tests\MyCompanyName.MyProjectName.MyModuleName.Application.Tests.csproj", "{F779A92C-38ED-4301-8899-6C3FE63DFD72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.Application.Tests", "..\templates\abp-vnext-pro-nuget-module\test\MyCompanyName.MyProjectName.MyModuleName.Application.Tests\MyCompanyName.MyProjectName.MyModuleName.Application.Tests.csproj", "{F779A92C-38ED-4301-8899-6C3FE63DFD72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.MyModuleName.HttpApi.Host", "..\templates\abp-vnext-pro-nuget-module\host\MyCompanyName.MyProjectName.MyModuleName.HttpApi.Host\MyCompanyName.MyProjectName.MyModuleName.HttpApi.Host.csproj", "{4A970FA4-1C4F-426C-A0DC-0E36B1BA0FDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.HttpApi.Host", "..\templates\abp-vnext-pro-nuget-module\host\MyCompanyName.MyProjectName.MyModuleName.HttpApi.Host\MyCompanyName.MyProjectName.MyModuleName.HttpApi.Host.csproj", "{4A970FA4-1C4F-426C-A0DC-0E36B1BA0FDE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simplify", "simplify", "{43CB54D7-3511-40F4-BC70-9A34E09D7A62}"
 EndProject
@@ -324,81 +324,81 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{EA151482-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{15456C15-58A1-45F6-BBA7-53504210B30D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.Domain.Shared", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.Domain.Shared\MyCompanyName.MyProjectName.Domain.Shared.csproj", "{DBA4F8DB-A309-40D2-B8DD-7B1621458789}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Domain.Shared", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.Domain.Shared\MyCompanyName.MyProjectName.Domain.Shared.csproj", "{DBA4F8DB-A309-40D2-B8DD-7B1621458789}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.Domain", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.Domain\MyCompanyName.MyProjectName.Domain.csproj", "{E414691C-2B2A-4D5A-BBDA-0B5A3D85B5D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Domain", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.Domain\MyCompanyName.MyProjectName.Domain.csproj", "{E414691C-2B2A-4D5A-BBDA-0B5A3D85B5D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.EntityFrameworkCore", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.EntityFrameworkCore\MyCompanyName.MyProjectName.EntityFrameworkCore.csproj", "{F7C5D48A-ABE7-4E90-B6EB-272DB46F475B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.EntityFrameworkCore", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.EntityFrameworkCore\MyCompanyName.MyProjectName.EntityFrameworkCore.csproj", "{F7C5D48A-ABE7-4E90-B6EB-272DB46F475B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.DbMigrator", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.DbMigrator\MyCompanyName.MyProjectName.DbMigrator.csproj", "{7FA842E4-4A08-40BE-9713-5C768C7A669C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.DbMigrator", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.DbMigrator\MyCompanyName.MyProjectName.DbMigrator.csproj", "{7FA842E4-4A08-40BE-9713-5C768C7A669C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.Application", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.Application\MyCompanyName.MyProjectName.Application.csproj", "{231A8A2B-469C-4470-BE6C-E93AEE49DC70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Application", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.Application\MyCompanyName.MyProjectName.Application.csproj", "{231A8A2B-469C-4470-BE6C-E93AEE49DC70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.Application.Contracts", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.Application.Contracts\MyCompanyName.MyProjectName.Application.Contracts.csproj", "{3F42B596-9CB9-43CB-A2F2-E28FC8C8BC20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Application.Contracts", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.Application.Contracts\MyCompanyName.MyProjectName.Application.Contracts.csproj", "{3F42B596-9CB9-43CB-A2F2-E28FC8C8BC20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.FreeSqlRepository", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.FreeSqlRepository\MyCompanyName.MyProjectName.FreeSqlRepository.csproj", "{E746B1CA-0357-4BC5-868F-98581EFD1085}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.FreeSqlRepository", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.FreeSqlRepository\MyCompanyName.MyProjectName.FreeSqlRepository.csproj", "{E746B1CA-0357-4BC5-868F-98581EFD1085}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.HttpApi", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.HttpApi\MyCompanyName.MyProjectName.HttpApi.csproj", "{87F1CA5F-4C4B-40A2-8188-DA040D2146D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.HttpApi\MyCompanyName.MyProjectName.HttpApi.csproj", "{87F1CA5F-4C4B-40A2-8188-DA040D2146D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.HttpApi.Client", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.HttpApi.Client\MyCompanyName.MyProjectName.HttpApi.Client.csproj", "{45662575-99E5-42F5-98BC-5CDC4B66AD62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi.Client", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\src\MyCompanyName.MyProjectName.HttpApi.Client\MyCompanyName.MyProjectName.HttpApi.Client.csproj", "{45662575-99E5-42F5-98BC-5CDC4B66AD62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.TestBase", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\test\MyCompanyName.MyProjectName.TestBase\MyCompanyName.MyProjectName.TestBase.csproj", "{75907746-5BE0-4B42-9846-625758FD8146}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.TestBase", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\test\MyCompanyName.MyProjectName.TestBase\MyCompanyName.MyProjectName.TestBase.csproj", "{75907746-5BE0-4B42-9846-625758FD8146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\test\MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp\MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp.csproj", "{41A0191C-D1E1-4DDF-A4F5-A47C7C20A3AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\test\MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp\MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp.csproj", "{41A0191C-D1E1-4DDF-A4F5-A47C7C20A3AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.EntityFrameworkCore.Tests", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\test\MyCompanyName.MyProjectName.EntityFrameworkCore.Tests\MyCompanyName.MyProjectName.EntityFrameworkCore.Tests.csproj", "{F6EEBE46-4F72-401F-B3FF-3B18CE617478}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.EntityFrameworkCore.Tests", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\test\MyCompanyName.MyProjectName.EntityFrameworkCore.Tests\MyCompanyName.MyProjectName.EntityFrameworkCore.Tests.csproj", "{F6EEBE46-4F72-401F-B3FF-3B18CE617478}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.Domain.Tests", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\test\MyCompanyName.MyProjectName.Domain.Tests\MyCompanyName.MyProjectName.Domain.Tests.csproj", "{EA034B8C-9CF1-498D-AC74-FF2F039FE37A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Domain.Tests", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\test\MyCompanyName.MyProjectName.Domain.Tests\MyCompanyName.MyProjectName.Domain.Tests.csproj", "{EA034B8C-9CF1-498D-AC74-FF2F039FE37A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.Application.Tests", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\test\MyCompanyName.MyProjectName.Application.Tests\MyCompanyName.MyProjectName.Application.Tests.csproj", "{87F0ECFB-144F-499E-995E-F2B61DC20015}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Application.Tests", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\test\MyCompanyName.MyProjectName.Application.Tests\MyCompanyName.MyProjectName.Application.Tests.csproj", "{87F0ECFB-144F-499E-995E-F2B61DC20015}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.HttpApi.Host", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\host\MyCompanyName.MyProjectName.HttpApi.Host\MyCompanyName.MyProjectName.HttpApi.Host.csproj", "{67B45B2E-9682-417D-964B-30DBCE4321CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi.Host", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\host\MyCompanyName.MyProjectName.HttpApi.Host\MyCompanyName.MyProjectName.HttpApi.Host.csproj", "{67B45B2E-9682-417D-964B-30DBCE4321CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.Domain.Shared", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.Domain.Shared\MyCompanyName.MyProjectName.Domain.Shared.csproj", "{F4F5C1F7-28F3-4297-ACD7-DBB6E6F89E68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Domain.Shared", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.Domain.Shared\MyCompanyName.MyProjectName.Domain.Shared.csproj", "{F4F5C1F7-28F3-4297-ACD7-DBB6E6F89E68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.Domain", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.Domain\MyCompanyName.MyProjectName.Domain.csproj", "{504A06C9-2A3D-4456-8F61-DCB35C6F93F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Domain", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.Domain\MyCompanyName.MyProjectName.Domain.csproj", "{504A06C9-2A3D-4456-8F61-DCB35C6F93F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.EntityFrameworkCore", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.EntityFrameworkCore\MyCompanyName.MyProjectName.EntityFrameworkCore.csproj", "{07982F9D-F65B-4FDA-8CF6-1D0A9EAA32B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.EntityFrameworkCore", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.EntityFrameworkCore\MyCompanyName.MyProjectName.EntityFrameworkCore.csproj", "{07982F9D-F65B-4FDA-8CF6-1D0A9EAA32B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.DbMigrator", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.DbMigrator\MyCompanyName.MyProjectName.DbMigrator.csproj", "{9749B052-5F3D-4442-9B2E-9EC798457DB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.DbMigrator", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.DbMigrator\MyCompanyName.MyProjectName.DbMigrator.csproj", "{9749B052-5F3D-4442-9B2E-9EC798457DB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.Application", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.Application\MyCompanyName.MyProjectName.Application.csproj", "{2161EFEA-7654-4810-85A0-18293825FFBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Application", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.Application\MyCompanyName.MyProjectName.Application.csproj", "{2161EFEA-7654-4810-85A0-18293825FFBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.Application.Contracts", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.Application.Contracts\MyCompanyName.MyProjectName.Application.Contracts.csproj", "{4E4856BA-A71F-4753-A497-6F3D197BB455}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Application.Contracts", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.Application.Contracts\MyCompanyName.MyProjectName.Application.Contracts.csproj", "{4E4856BA-A71F-4753-A497-6F3D197BB455}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.FreeSqlRepository", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.FreeSqlRepository\MyCompanyName.MyProjectName.FreeSqlRepository.csproj", "{ABA5A546-28DB-4E54-987D-D828B2F79B9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.FreeSqlRepository", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.FreeSqlRepository\MyCompanyName.MyProjectName.FreeSqlRepository.csproj", "{ABA5A546-28DB-4E54-987D-D828B2F79B9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.HttpApi", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.HttpApi\MyCompanyName.MyProjectName.HttpApi.csproj", "{50E73D29-F11D-4CBD-8A85-CC34F4DE8C31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.HttpApi\MyCompanyName.MyProjectName.HttpApi.csproj", "{50E73D29-F11D-4CBD-8A85-CC34F4DE8C31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.HttpApi.Client", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.HttpApi.Client\MyCompanyName.MyProjectName.HttpApi.Client.csproj", "{B66BDD25-49B8-4823-A678-93BC081D65ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi.Client", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.HttpApi.Client\MyCompanyName.MyProjectName.HttpApi.Client.csproj", "{B66BDD25-49B8-4823-A678-93BC081D65ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.HttpApi.Host", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\host\MyCompanyName.MyProjectName.HttpApi.Host\MyCompanyName.MyProjectName.HttpApi.Host.csproj", "{04635BE3-67F0-4AB6-BB68-607E73040F07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi.Host", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\host\MyCompanyName.MyProjectName.HttpApi.Host\MyCompanyName.MyProjectName.HttpApi.Host.csproj", "{04635BE3-67F0-4AB6-BB68-607E73040F07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.TestBase", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.TestBase\MyCompanyName.MyProjectName.TestBase.csproj", "{75DE5DA1-8EDA-42EE-8570-169713ECB9CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.TestBase", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.TestBase\MyCompanyName.MyProjectName.TestBase.csproj", "{75DE5DA1-8EDA-42EE-8570-169713ECB9CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp\MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp.csproj", "{AF943646-1D48-492D-8C7A-48606F7B36B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp\MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp.csproj", "{AF943646-1D48-492D-8C7A-48606F7B36B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.EntityFrameworkCore.Tests", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.EntityFrameworkCore.Tests\MyCompanyName.MyProjectName.EntityFrameworkCore.Tests.csproj", "{80125670-3650-4E72-A172-CA852FE5C98D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.EntityFrameworkCore.Tests", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.EntityFrameworkCore.Tests\MyCompanyName.MyProjectName.EntityFrameworkCore.Tests.csproj", "{80125670-3650-4E72-A172-CA852FE5C98D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.Domain.Tests", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.Domain.Tests\MyCompanyName.MyProjectName.Domain.Tests.csproj", "{4C8B284F-A216-4812-912F-7CC6F428CDF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Domain.Tests", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.Domain.Tests\MyCompanyName.MyProjectName.Domain.Tests.csproj", "{4C8B284F-A216-4812-912F-7CC6F428CDF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.Application.Tests", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.Application.Tests\MyCompanyName.MyProjectName.Application.Tests.csproj", "{2DDC4639-710D-4B9C-98E0-03288184B37C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Application.Tests", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.Application.Tests\MyCompanyName.MyProjectName.Application.Tests.csproj", "{2DDC4639-710D-4B9C-98E0-03288184B37C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Core.Cli.Tests", "frameworks\test\Lion.AbpPro.Core.Cli.Tests\Lion.AbpPro.Core.Cli.Tests.csproj", "{9B65C2C8-E94E-46FD-9841-70DFAE5C85E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Core.Cli.Tests", "frameworks\test\Lion.AbpPro.Core.Cli.Tests\Lion.AbpPro.Core.Cli.Tests.csproj", "{9B65C2C8-E94E-46FD-9841-70DFAE5C85E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompanyName.MyProjectName.WebGateway", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\host\MyCompanyName.MyProjectName.WebGateway\MyCompanyName.MyProjectName.WebGateway.csproj", "{4C57F50E-50BE-4C1A-BBA3-9D0DA5BF4D6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.WebGateway", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\host\MyCompanyName.MyProjectName.WebGateway\MyCompanyName.MyProjectName.WebGateway.csproj", "{4C57F50E-50BE-4C1A-BBA3-9D0DA5BF4D6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.ElasticSearch", "frameworks\src\Lion.AbpPro.ElasticSearch\Lion.AbpPro.ElasticSearch.csproj", "{021B499E-ABED-4D1D-B6EB-DC453B5A57A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.ElasticSearch", "frameworks\src\Lion.AbpPro.ElasticSearch\Lion.AbpPro.ElasticSearch.csproj", "{021B499E-ABED-4D1D-B6EB-DC453B5A57A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.EntityFrameworkCore", "frameworks\src\Lion.AbpPro.EntityFrameworkCore\Lion.AbpPro.EntityFrameworkCore.csproj", "{0329D6FA-5048-478C-A399-E9A8FD2B7DF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.EntityFrameworkCore", "frameworks\src\Lion.AbpPro.EntityFrameworkCore\Lion.AbpPro.EntityFrameworkCore.csproj", "{0329D6FA-5048-478C-A399-E9A8FD2B7DF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.EntityFrameworkCore.Mysql", "frameworks\src\Lion.AbpPro.EntityFrameworkCore.Mysql\Lion.AbpPro.EntityFrameworkCore.Mysql.csproj", "{4E9F48F8-4EBB-4D47-BC10-35760EE4F645}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.EntityFrameworkCore.Mysql", "frameworks\src\Lion.AbpPro.EntityFrameworkCore.Mysql\Lion.AbpPro.EntityFrameworkCore.Mysql.csproj", "{4E9F48F8-4EBB-4D47-BC10-35760EE4F645}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.ElasticSearch.Tests", "frameworks\test\Lion.AbpPro.ElasticSearch.Tests\Lion.AbpPro.ElasticSearch.Tests.csproj", "{A9824877-9F0C-4E33-BEFC-1DD62A365C75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.ElasticSearch.Tests", "frameworks\test\Lion.AbpPro.ElasticSearch.Tests\Lion.AbpPro.ElasticSearch.Tests.csproj", "{A9824877-9F0C-4E33-BEFC-1DD62A365C75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.EntityFrameworkCore.Tests", "frameworks\test\Lion.AbpPro.EntityFrameworkCore.Mysql.Tests\Lion.AbpPro.EntityFrameworkCore.Tests.csproj", "{FFD342DF-87A5-4642-B694-58714C506883}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.EntityFrameworkCore.Tests", "frameworks\test\Lion.AbpPro.EntityFrameworkCore.Mysql.Tests\Lion.AbpPro.EntityFrameworkCore.Tests.csproj", "{FFD342DF-87A5-4642-B694-58714C506883}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Starter", "frameworks\src\Lion.AbpPro.Starter\Lion.AbpPro.Starter.csproj", "{187AEDA5-8323-45B4-90F6-A2F5574DEB25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Starter", "frameworks\src\Lion.AbpPro.Starter\Lion.AbpPro.Starter.csproj", "{187AEDA5-8323-45B4-90F6-A2F5574DEB25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1045,10 +1045,10 @@ Global
 		{2BACB63E-2830-4371-AEBB-E8089E3EB316} = {6464122A-1DC2-45E8-B599-4B5C32FBC85B}
 		{19A28EF9-A5AE-4EC5-851C-D2547E5FE29C} = {6464122A-1DC2-45E8-B599-4B5C32FBC85B}
 		{26765303-B9D8-457B-915C-ED869CEEB210} = {4E6D558B-CA6D-4133-8701-FDC6F245DA37}
-		{7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3} = {CC2EBB07-A070-4158-AB37-A0C0BBAEA9F5}
-		{D1A86DB0-DABB-47B6-BC71-C49318AF5534} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
 		{F22611C1-0DAE-408D-B034-7005906536F6} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
 		{EF7D01D6-9F90-4E24-B134-BA13E9965D78} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
+		{D1A86DB0-DABB-47B6-BC71-C49318AF5534} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
+		{7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3} = {CC2EBB07-A070-4158-AB37-A0C0BBAEA9F5}
 		{EFC415F8-872F-4C7E-8645-31A51481BCFC} = {CC2EBB07-A070-4158-AB37-A0C0BBAEA9F5}
 		{800A02FA-EA70-4492-9A93-13C820692F1D} = {EFC415F8-872F-4C7E-8645-31A51481BCFC}
 		{A7206D58-8107-4BB9-8962-30C845ACB6DC} = {EFC415F8-872F-4C7E-8645-31A51481BCFC}

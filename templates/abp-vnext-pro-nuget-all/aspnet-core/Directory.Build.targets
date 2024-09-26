@@ -3,7 +3,6 @@
     <Import Project="Directory.Build.Microsoft.targets"/>
     <Import Project="Directory.Build.Volo.targets"/>
 	<Import Project="Directory.Build.Lion.targets"/>
-
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <Version>1.0.0</Version>
@@ -87,8 +86,10 @@
 
         <!-- Humanizer 中文格式包-->
         <PackageReference Update="Humanizer.Core.zh-Hans" Version="2.14.1"/>
-
-        <!-- NEST ElasticSearch-->
+        
+        <!-- NEST ElasticSearch-->        
         <PackageReference Update="NEST" Version="7.17.5"/>
+
+        <PackageReference Update="WebApiClientCore" Version="2.1.4" />
     </ItemGroup>
 </Project>
