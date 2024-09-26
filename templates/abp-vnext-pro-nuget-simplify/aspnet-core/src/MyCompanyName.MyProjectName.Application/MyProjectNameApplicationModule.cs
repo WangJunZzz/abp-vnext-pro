@@ -7,6 +7,7 @@ namespace MyCompanyName.MyProjectName
         typeof(NotificationManagementApplicationModule),
         typeof(DataDictionaryManagementApplicationModule),
         typeof(LanguageManagementApplicationModule),
+        typeof(NotificationManagementApplicationModule),
         typeof(MyProjectNameFreeSqlModule)
         )]
     public class MyProjectNameApplicationModule : AbpModule
