@@ -12,7 +12,7 @@ Abp vNext Pro 是一个基于 Vben Admin, Abp vNext 打造的一个开箱即用�
 
 ## Abp Vnext Pro
 
-[演示 :fontawesome-solid-paper-plane:](http://116.205.177.85/login){ .md-button }
+[演示 :fontawesome-solid-paper-plane:](http://182.43.18.151:44318/login){ .md-button }
 [GitHub :fontawesome-solid-paper-plane:](https://github.com/WangJunZzz/abp-vnext-pro){ .md-button }
 
 ## Abp Vnext Pro Suite
