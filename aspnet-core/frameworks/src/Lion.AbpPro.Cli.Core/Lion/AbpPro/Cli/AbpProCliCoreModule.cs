@@ -31,13 +31,13 @@ public class AbpProCliCoreModule : AbpModule
                     OldCompanyName = "MyCompanyName",
                     OldProjectName = "MyProjectName"
                 },
-                new AbpProTemplateOptions("abp-vnext-pro-nuget-simplify", "pro.simplify", "Nuget简单版本")
-                {
-                    //ExcludeFiles = "aspnet-core,vben28,abp-vnext-pro-nuget-module,abp-vnext-pro-nuget-all,docs,.github,LICENSE,Readme.md",
-                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
-                    OldCompanyName = "MyCompanyName",
-                    OldProjectName = "MyProjectName"
-                },
+                // new AbpProTemplateOptions("abp-vnext-pro-nuget-simplify", "pro.simplify", "Nuget简单版本")
+                // {
+                //     //ExcludeFiles = "aspnet-core,vben28,abp-vnext-pro-nuget-module,abp-vnext-pro-nuget-all,docs,.github,LICENSE,Readme.md",
+                //     ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
+                //     OldCompanyName = "MyCompanyName",
+                //     OldProjectName = "MyProjectName"
+                // },
 
                 new AbpProTemplateOptions("abp-vnext-pro-nuget-module", "pro.module", "模块")
                 {

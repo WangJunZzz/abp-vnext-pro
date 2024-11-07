@@ -11,6 +11,7 @@
 ## 🔗 链接
 
 - [AbpPro预览](http://182.43.18.151:44318/)
+- [代码生成器预览](http://182.43.18.151:44311/)
 - [代码生成器仓库地址](https://github.com/WangJunZzz/abp-vnext-pro-suite)
 - [文档地址](http://doc.cncore.club/)
 - [视频教程](https://www.bilibili.com/video/BV1pt4y1E7aZ)

@@ -146,8 +146,8 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         message += $"           > lion.abp new -t pro -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录";
         message += Environment.NewLine;
         message += $"           > lion.abp new -t pro.all -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录";
-        message += Environment.NewLine;
-        message += $"           > lion.abp new -t pro.simplify -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录";
+        // message += Environment.NewLine;
+        // message += $"           > lion.abp new -t pro.simplify -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录";
         message += Environment.NewLine;
         message += $"           > lion.abp new -t pro.module-c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录";
         return message;

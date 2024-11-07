@@ -12,14 +12,14 @@ Abp vNext Pro 是一个基于 Vben Admin, Abp vNext 打造的一个开箱即用�
 
 ## Abp Vnext Pro
 
-[演示 :fontawesome-solid-paper-plane:](http://182.43.18.151:44318/login){ .md-button }
+[演示 :fontawesome-solid-paper-plane:](http://182.43.18.151:44318){ .md-button }
 [GitHub :fontawesome-solid-paper-plane:](https://github.com/WangJunZzz/abp-vnext-pro){ .md-button }
 
 ## Abp Vnext Pro Suite
 
 > 基于 Abp Vnext Pro 开发的代码生成器,可自动生成前后端 CURD 代码,提供生产力。
 
-[演示 :fontawesome-solid-paper-plane:](http://116.205.177.85:81/login){ .md-button }
+[演示 :fontawesome-solid-paper-plane:](http://182.43.18.151:44311){ .md-button }
 [GitHub :fontawesome-solid-paper-plane:](https://github.com/WangJunZzz/abp-vnext-pro-suite){ .md-button }
 
 ## 视频教程
