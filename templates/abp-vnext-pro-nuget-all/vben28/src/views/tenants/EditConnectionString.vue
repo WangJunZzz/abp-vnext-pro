@@ -1,76 +1,124 @@
 <template>
-  <BasicModal
-    :title="t('common.editText')"
-    :canFullscreen="false"
-    @ok="submit"
-    @cancel="cancel"
-    @register="registerModal"
-    :minHeight="100"
-  >
-    <BasicForm @register="registerApiScopeForm" />
+  <BasicModal :title="t('common.editText')" :canFullscreen="false" :showCancelBtn="false" @register="registerModal"
+    @ok="submit" :defaultFullscreen="true">
+
+    <BasicTable @register="registerTable" size="small">
+      <template #toolbar>
+        <a-button type="primary" preIcon="ant-design:plus-circle-outlined"
+          @click="handlerOpenCreateConnectionStringModal">
+          {{ t('common.createOrUpdateText') }}
+        </a-button>
+      </template>
+
+      <template #action="{ record }">
+        <TableAction :actions="[
+
+    {
+      icon: 'ant-design:minus-outlined',
+      auth: 'AbpTenantManagement.Tenants.Delete',
+      label: t('common.delText'),
+      onClick: handleDelete.bind(null, record),
+    },
+  ]" />
+      </template>
+    </BasicTable>
+
+    <CreateConnectionString @register="registerCreateConnectionStringModal" @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }" />
   </BasicModal>
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { BasicModal, useModalInner } from '/@/components/Modal';
-  import { BasicForm, useForm } from '/@/components/Form/index';
-  import {
-    updateConnectionStringFormSchema,
-    updateConnectionStringAsync,
-    getConnectionStringAsync,
-  } from '/@/views/tenants/Tenant';
-  import { useI18n } from '/@/hooks/web/useI18n';
-
-  export default defineComponent({
-    name: 'EditConnectionString',
-    components: {
-      BasicModal,
-      BasicForm,
-    },
-    emits: ['reload', 'register'],
-    setup(_, { emit }) {
-      const { t } = useI18n();
-      const [registerApiScopeForm, { getFieldsValue, resetFields, setFieldsValue }] = useForm({
-        labelWidth: 120,
+import { defineComponent } from 'vue';
+import { BasicModal, useModalInner } from '/@/components/Modal';
+import { updateConnectionStringFormSchema, editConnectionStringtableColumns, pageConnectionStringAsync, deleteConnectionString } from '/@/views/tenants/Tenant';
+import { useI18n } from '/@/hooks/web/useI18n';
+import { BasicTable, useTable, TableAction } from '/@/components/Table';
+import CreateConnectionString from './CreateConnectionString.vue';
+import { useModal } from '/@/components/Modal';
+import { useMessage } from '/@/hooks/web/useMessage';
+export default defineComponent({
+  name: 'EditTenant',
+  components: {
+    BasicModal,
+    BasicTable,
+    TableAction,
+    CreateConnectionString
+  },
+  setup() {
+    const { t } = useI18n();
+    const [registerTable, { reload, getForm }] = useTable({
+      columns: editConnectionStringtableColumns,
+      formConfig: {
+        labelWidth: 100,
         schemas: updateConnectionStringFormSchema,
-        showActionButtonGroup: false,
+        showResetButton: false
+      },
+      api: pageConnectionStringAsync,
+      useSearchForm: true,
+      showTableSetting: true,
+      bordered: true,
+      canResize: true,
+      showIndexColumn: true,
+      actionColumn: {
+          title: t('common.action'),
+          dataIndex: 'action',
+          slots: {
+            customRender: 'action',
+          },
+          width: 350,
+          fixed: 'right',
+        },
+    });
+
+
+    const [registerCreateConnectionStringModal, { openModal: openCreateConnectionStringModal }] =
+      useModal();
+
+
+    const [registerModal, { closeModal }] = useModalInner((data) => {
+
+      getForm().setFieldsValue({
+        id: data.record.id,
+      })
+    });
+
+    // 编辑
+    const handlerOpenCreateConnectionStringModal = () => {
+      openCreateConnectionStringModal(true, { id: getForm().getFieldsValue().id });
+    };
+    const submit = async () => {
+      closeModal();
+    };
+
+    const { createConfirm } = useMessage();
+    // 删除
+    const handleDelete = async (record: Recordable) => {
+      console.log(record);
+      console.log(getForm().getFieldsValue().id);
+      let msg = t('common.askDelete');
+      createConfirm({
+        iconType: 'warning',
+        title: t('common.tip'),
+        content: msg,
+        onOk: async () => {
+          await deleteConnectionString(getForm().getFieldsValue().id, record.name);
+          await reload();
+        },
       });
-
-      const [registerModal, { changeOkLoading, closeModal }] = useModalInner(async (data) => {
-        const connectionString = await getConnectionStringAsync({ id: data.record.id });
-        await setFieldsValue({
-          id: data.record.id,
-          connectionString: connectionString,
-        });
-      });
-
-      const submit = async () => {
-        try {
-          const request = getFieldsValue();
-          changeOkLoading(true);
-          await updateConnectionStringAsync({ request });
-          await resetFields();
-          emit('reload');
-        } finally {
-          changeOkLoading(false);
-          closeModal();
-        }
-      };
-
-      const cancel = () => {
-        resetFields();
-        closeModal();
-      };
-      return {
-        t,
-        registerModal,
-        registerApiScopeForm,
-        submit,
-        cancel,
-      };
-    },
-  });
+    };
+    return {
+      t,
+      registerTable,
+      registerModal,
+      submit,
+      registerCreateConnectionStringModal,
+      reload,
+      handlerOpenCreateConnectionStringModal,
+      handleDelete
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped></style>

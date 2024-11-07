@@ -1471,6 +1471,313 @@ export class DataDictionaryServiceProxy extends ServiceProxyBase {
     }
 }
 
+export class FeaturesServiceProxy extends ServiceProxyBase {
+    private instance: AxiosInstance;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, instance?: AxiosInstance) {
+        super();
+        this.instance = instance ? instance : axios.create();
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * 获取Features
+     * @param body (optional) 
+     * @return Success
+     */
+    list(body: GetFeatureListResultInput | undefined , cancelToken?: CancelToken | undefined): Promise<GetFeatureListResultDto> {
+        let url_ = this.baseUrl + "/Features/list";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processList(_response));
+        });
+    }
+
+    protected processList(response: AxiosResponse): Promise<GetFeatureListResultDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = GetFeatureListResultDto.fromJS(resultData200);
+            return Promise.resolve<GetFeatureListResultDto>(result200);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<GetFeatureListResultDto>(null as any);
+    }
+
+    /**
+     * 更新Features
+     * @param body (optional) 
+     * @return Success
+     */
+    update(body: UpdateFeatureInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Features/update";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processUpdate(_response));
+        });
+    }
+
+    protected processUpdate(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(null as any);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(null as any);
+    }
+
+    /**
+     * 删除Features
+     * @param body (optional) 
+     * @return Success
+     */
+    delete(body: DeleteFeatureInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Features/delete";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processDelete(_response));
+        });
+    }
+
+    protected processDelete(response: AxiosResponse): Promise<void> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            return Promise.resolve<void>(null as any);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<void>(null as any);
+    }
+}
+
 export class IdentitySecurityLogsServiceProxy extends ServiceProxyBase {
     private instance: AxiosInstance;
     private baseUrl: string;
@@ -2610,12 +2917,12 @@ export class NotificationServiceProxy extends ServiceProxyBase {
     }
 
     /**
-     * 分页获取用户普通文本消息
+     * 分页获取文本消息
      * @param body (optional) 
      * @return Success
      */
-    common(body: PagingNotificationListInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingNotificationListOutputPagedResultDto> {
-        let url_ = this.baseUrl + "/Notification/Common";
+    notificationPage(body: PagingNotificationInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingNotificationOutputPagedResultDto> {
+        let url_ = this.baseUrl + "/Notification/NotificationPage";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -2640,11 +2947,11 @@ export class NotificationServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processCommon(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processNotificationPage(_response));
         });
     }
 
-    protected processCommon(response: AxiosResponse): Promise<PagingNotificationListOutputPagedResultDto> {
+    protected processNotificationPage(response: AxiosResponse): Promise<PagingNotificationOutputPagedResultDto> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -2658,8 +2965,8 @@ export class NotificationServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = PagingNotificationListOutputPagedResultDto.fromJS(resultData200);
-            return Promise.resolve<PagingNotificationListOutputPagedResultDto>(result200);
+            result200 = PagingNotificationOutputPagedResultDto.fromJS(resultData200);
+            return Promise.resolve<PagingNotificationOutputPagedResultDto>(result200);
 
         } else if (status === 403) {
             const _responseText = response.data;
@@ -2707,16 +3014,16 @@ export class NotificationServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<PagingNotificationListOutputPagedResultDto>(null as any);
+        return Promise.resolve<PagingNotificationOutputPagedResultDto>(null as any);
     }
 
     /**
-     * 分页获取广播消息
+     * 分页获取广播消息已读人数
      * @param body (optional) 
      * @return Success
      */
-    broadCast(body: PagingNotificationListInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingNotificationListOutputPagedResultDto> {
-        let url_ = this.baseUrl + "/Notification/BroadCast";
+    notificationSubscriptionPage(body: PagingNotificationSubscriptionInput | undefined , cancelToken?: CancelToken | undefined): Promise<PagingNotificationSubscriptionOutputPagedResultDto> {
+        let url_ = this.baseUrl + "/Notification/NotificationSubscriptionPage";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -2741,11 +3048,11 @@ export class NotificationServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processBroadCast(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processNotificationSubscriptionPage(_response));
         });
     }
 
-    protected processBroadCast(response: AxiosResponse): Promise<PagingNotificationListOutputPagedResultDto> {
+    protected processNotificationSubscriptionPage(response: AxiosResponse): Promise<PagingNotificationSubscriptionOutputPagedResultDto> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -2759,8 +3066,8 @@ export class NotificationServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-            result200 = PagingNotificationListOutputPagedResultDto.fromJS(resultData200);
-            return Promise.resolve<PagingNotificationListOutputPagedResultDto>(result200);
+            result200 = PagingNotificationSubscriptionOutputPagedResultDto.fromJS(resultData200);
+            return Promise.resolve<PagingNotificationSubscriptionOutputPagedResultDto>(result200);
 
         } else if (status === 403) {
             const _responseText = response.data;
@@ -2808,7 +3115,7 @@ export class NotificationServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<PagingNotificationListOutputPagedResultDto>(null as any);
+        return Promise.resolve<PagingNotificationSubscriptionOutputPagedResultDto>(null as any);
     }
 
     /**
@@ -6132,12 +6439,12 @@ export class TenantsServiceProxy extends ServiceProxyBase {
     }
 
     /**
-     * 获取租户连接字符串
+     * 分页租户连接字符串
      * @param body (optional) 
      * @return Success
      */
-    getConnectionString(body: IdInput | undefined , cancelToken?: CancelToken | undefined): Promise<string> {
-        let url_ = this.baseUrl + "/Tenants/getConnectionString";
+    pageConnectionString(body: PageTenantConnectionStringInput | undefined , cancelToken?: CancelToken | undefined): Promise<PageTenantConnectionStringOutputPagedResultDto> {
+        let url_ = this.baseUrl + "/Tenants/pageConnectionString";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -6162,11 +6469,11 @@ export class TenantsServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processGetConnectionString(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processPageConnectionString(_response));
         });
     }
 
-    protected processGetConnectionString(response: AxiosResponse): Promise<string> {
+    protected processPageConnectionString(response: AxiosResponse): Promise<PageTenantConnectionStringOutputPagedResultDto> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -6180,9 +6487,8 @@ export class TenantsServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             let result200: any = null;
             let resultData200  = _responseText;
-                result200 = resultData200 !== undefined ? resultData200 : <any>null;
-    
-            return Promise.resolve<string>(result200);
+            result200 = PageTenantConnectionStringOutputPagedResultDto.fromJS(resultData200);
+            return Promise.resolve<PageTenantConnectionStringOutputPagedResultDto>(result200);
 
         } else if (status === 403) {
             const _responseText = response.data;
@@ -6230,16 +6536,16 @@ export class TenantsServiceProxy extends ServiceProxyBase {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<string>(null as any);
+        return Promise.resolve<PageTenantConnectionStringOutputPagedResultDto>(null as any);
     }
 
     /**
-     * 更新租户连接字符串
+     * 新增或者更新租户所有连接字符串
      * @param body (optional) 
      * @return Success
      */
-    updateConnectionString(body: UpdateConnectionStringInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
-        let url_ = this.baseUrl + "/Tenants/updateConnectionString";
+    addOrUpdateConnectionString(body: AddOrUpdateConnectionStringInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+        let url_ = this.baseUrl + "/Tenants/addOrUpdateConnectionString";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(body);
@@ -6263,11 +6569,11 @@ export class TenantsServiceProxy extends ServiceProxyBase {
                 throw _error;
             }
         }).then((_response: AxiosResponse) => {
-            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processUpdateConnectionString(_response));
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processAddOrUpdateConnectionString(_response));
         });
     }
 
-    protected processUpdateConnectionString(response: AxiosResponse): Promise<void> {
+    protected processAddOrUpdateConnectionString(response: AxiosResponse): Promise<void> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -6335,7 +6641,7 @@ export class TenantsServiceProxy extends ServiceProxyBase {
      * @param body (optional) 
      * @return Success
      */
-    deleteConnectionString(body: IdInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
+    deleteConnectionString(body: DeleteConnectionStringInput | undefined , cancelToken?: CancelToken | undefined): Promise<void> {
         let url_ = this.baseUrl + "/Tenants/deleteConnectionString";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -6538,6 +6844,114 @@ export class UsersServiceProxy extends ServiceProxyBase {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
         return Promise.resolve<IdentityUserDtoPagedResultDto>(null as any);
+    }
+
+    /**
+     * 分页获取用户信息
+     * @param body (optional) 
+     * @return Success
+     */
+    list(body: PagingUserListInput | undefined , cancelToken?: CancelToken | undefined): Promise<IdentityUserDto[]> {
+        let url_ = this.baseUrl + "/Users/list";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ = <AxiosRequestConfig>{
+            data: content_,
+            method: "POST",
+            url: url_,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            },
+            cancelToken
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.instance.request(transformedOptions_);
+        }).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.transformResult(url_, _response, (_response: AxiosResponse) => this.processList(_response));
+        });
+    }
+
+    protected processList(response: AxiosResponse): Promise<IdentityUserDto[]> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (let k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(IdentityUserDto.fromJS(item));
+            }
+            else {
+                result200 = <any>null;
+            }
+            return Promise.resolve<IdentityUserDto[]>(result200);
+
+        } else if (status === 403) {
+            const _responseText = response.data;
+            let result403: any = null;
+            let resultData403  = _responseText;
+            result403 = RemoteServiceErrorResponse.fromJS(resultData403);
+            return throwException("Forbidden", status, _responseText, _headers, result403);
+
+        } else if (status === 401) {
+            const _responseText = response.data;
+            let result401: any = null;
+            let resultData401  = _responseText;
+            result401 = RemoteServiceErrorResponse.fromJS(resultData401);
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+
+        } else if (status === 400) {
+            const _responseText = response.data;
+            let result400: any = null;
+            let resultData400  = _responseText;
+            result400 = RemoteServiceErrorResponse.fromJS(resultData400);
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+
+        } else if (status === 404) {
+            const _responseText = response.data;
+            let result404: any = null;
+            let resultData404  = _responseText;
+            result404 = RemoteServiceErrorResponse.fromJS(resultData404);
+            return throwException("Not Found", status, _responseText, _headers, result404);
+
+        } else if (status === 501) {
+            const _responseText = response.data;
+            let result501: any = null;
+            let resultData501  = _responseText;
+            result501 = RemoteServiceErrorResponse.fromJS(resultData501);
+            return throwException("Server Error", status, _responseText, _headers, result501);
+
+        } else if (status === 500) {
+            const _responseText = response.data;
+            let result500: any = null;
+            let resultData500  = _responseText;
+            result500 = RemoteServiceErrorResponse.fromJS(resultData500);
+            return throwException("Server Error", status, _responseText, _headers, result500);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<IdentityUserDto[]>(null as any);
     }
 
     /**
@@ -7382,6 +7796,56 @@ export interface IActionApiDescriptionModel {
     implementFrom: string | undefined;
 }
 
+export class AddOrUpdateConnectionStringInput implements IAddOrUpdateConnectionStringInput {
+    /** id */
+    id!: string;
+    /** 连接字符串名称 */
+    name!: string | undefined;
+    /** 连接字符串地址 */
+    value!: string | undefined;
+
+    constructor(data?: IAddOrUpdateConnectionStringInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.value = _data["value"];
+        }
+    }
+
+    static fromJS(data: any): AddOrUpdateConnectionStringInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new AddOrUpdateConnectionStringInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["value"] = this.value;
+        return data;
+    }
+}
+
+export interface IAddOrUpdateConnectionStringInput {
+    /** id */
+    id: string;
+    /** 连接字符串名称 */
+    name: string | undefined;
+    /** 连接字符串地址 */
+    value: string | undefined;
+}
+
 export class AddRoleToOrganizationUnitInput implements IAddRoleToOrganizationUnitInput {
     roleId!: string[] | undefined;
     organizationUnitId!: string;
@@ -7842,7 +8306,7 @@ export class ApplicationLocalizationConfigurationDto implements IApplicationLoca
                 this.values = {} as any;
                 for (let key in _data["values"]) {
                     if (_data["values"].hasOwnProperty(key))
-                        (<any>this.values)![key] = _data["values"][key];
+                        (<any>this.values)![key] = _data["values"][key] !== undefined ? _data["values"][key] : {};
                 }
             }
             if (_data["resources"]) {
@@ -7863,14 +8327,14 @@ export class ApplicationLocalizationConfigurationDto implements IApplicationLoca
                 this.languagesMap = {} as any;
                 for (let key in _data["languagesMap"]) {
                     if (_data["languagesMap"].hasOwnProperty(key))
-                        (<any>this.languagesMap)![key] = _data["languagesMap"][key] ? _data["languagesMap"][key].map((i: any) => NameValue.fromJS(i)) : <any>undefined;
+                        (<any>this.languagesMap)![key] = _data["languagesMap"][key] ? _data["languagesMap"][key].map((i: any) => NameValue.fromJS(i)) : [];
                 }
             }
             if (_data["languageFilesMap"]) {
                 this.languageFilesMap = {} as any;
                 for (let key in _data["languageFilesMap"]) {
                     if (_data["languageFilesMap"].hasOwnProperty(key))
-                        (<any>this.languageFilesMap)![key] = _data["languageFilesMap"][key] ? _data["languageFilesMap"][key].map((i: any) => NameValue.fromJS(i)) : <any>undefined;
+                        (<any>this.languageFilesMap)![key] = _data["languageFilesMap"][key] ? _data["languageFilesMap"][key].map((i: any) => NameValue.fromJS(i)) : [];
                 }
             }
         }
@@ -8832,6 +9296,50 @@ export interface IDateTimeFormatDto {
     longTimePattern: string | undefined;
 }
 
+export class DeleteConnectionStringInput implements IDeleteConnectionStringInput {
+    /** 连接字符串名称 */
+    name!: string | undefined;
+    /** 租户id */
+    tenantId!: string;
+
+    constructor(data?: IDeleteConnectionStringInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.tenantId = _data["tenantId"];
+        }
+    }
+
+    static fromJS(data: any): DeleteConnectionStringInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new DeleteConnectionStringInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["tenantId"] = this.tenantId;
+        return data;
+    }
+}
+
+export interface IDeleteConnectionStringInput {
+    /** 连接字符串名称 */
+    name: string | undefined;
+    /** 租户id */
+    tenantId: string;
+}
+
 export class DeleteDataDictionaryDetailInput implements IDeleteDataDictionaryDetailInput {
     dataDictionaryId!: string;
     dataDictionayDetailId!: string;
@@ -8870,6 +9378,46 @@ export class DeleteDataDictionaryDetailInput implements IDeleteDataDictionaryDet
 export interface IDeleteDataDictionaryDetailInput {
     dataDictionaryId: string;
     dataDictionayDetailId: string;
+}
+
+export class DeleteFeatureInput implements IDeleteFeatureInput {
+    providerName!: string | undefined;
+    providerKey!: string | undefined;
+
+    constructor(data?: IDeleteFeatureInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.providerName = _data["providerName"];
+            this.providerKey = _data["providerKey"];
+        }
+    }
+
+    static fromJS(data: any): DeleteFeatureInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new DeleteFeatureInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["providerName"] = this.providerName;
+        data["providerKey"] = this.providerKey;
+        return data;
+    }
+}
+
+export interface IDeleteFeatureInput {
+    providerName: string | undefined;
+    providerKey: string | undefined;
 }
 
 /** 删除语言 */
@@ -9528,6 +10076,162 @@ export class ExtensionPropertyUiTableDto implements IExtensionPropertyUiTableDto
 
 export interface IExtensionPropertyUiTableDto {
     isVisible: boolean;
+}
+
+export class FeatureDto implements IFeatureDto {
+    name!: string | undefined;
+    displayName!: string | undefined;
+    value!: string | undefined;
+    provider!: FeatureProviderDto;
+    description!: string | undefined;
+    valueType!: IStringValueType;
+    depth!: number;
+    parentName!: string | undefined;
+
+    constructor(data?: IFeatureDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.displayName = _data["displayName"];
+            this.value = _data["value"];
+            this.provider = _data["provider"] ? FeatureProviderDto.fromJS(_data["provider"]) : <any>undefined;
+            this.description = _data["description"];
+            this.valueType = _data["valueType"] ? IStringValueType.fromJS(_data["valueType"]) : <any>undefined;
+            this.depth = _data["depth"];
+            this.parentName = _data["parentName"];
+        }
+    }
+
+    static fromJS(data: any): FeatureDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new FeatureDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["displayName"] = this.displayName;
+        data["value"] = this.value;
+        data["provider"] = this.provider ? this.provider.toJSON() : <any>undefined;
+        data["description"] = this.description;
+        data["valueType"] = this.valueType ? this.valueType.toJSON() : <any>undefined;
+        data["depth"] = this.depth;
+        data["parentName"] = this.parentName;
+        return data;
+    }
+}
+
+export interface IFeatureDto {
+    name: string | undefined;
+    displayName: string | undefined;
+    value: string | undefined;
+    provider: FeatureProviderDto;
+    description: string | undefined;
+    valueType: IStringValueType;
+    depth: number;
+    parentName: string | undefined;
+}
+
+export class FeatureGroupDto implements IFeatureGroupDto {
+    name!: string | undefined;
+    displayName!: string | undefined;
+    features!: FeatureDto[] | undefined;
+
+    constructor(data?: IFeatureGroupDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.displayName = _data["displayName"];
+            if (Array.isArray(_data["features"])) {
+                this.features = [] as any;
+                for (let item of _data["features"])
+                    this.features!.push(FeatureDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): FeatureGroupDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new FeatureGroupDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["displayName"] = this.displayName;
+        if (Array.isArray(this.features)) {
+            data["features"] = [];
+            for (let item of this.features)
+                data["features"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IFeatureGroupDto {
+    name: string | undefined;
+    displayName: string | undefined;
+    features: FeatureDto[] | undefined;
+}
+
+export class FeatureProviderDto implements IFeatureProviderDto {
+    name!: string | undefined;
+    key!: string | undefined;
+
+    constructor(data?: IFeatureProviderDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.key = _data["key"];
+        }
+    }
+
+    static fromJS(data: any): FeatureProviderDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new FeatureProviderDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["key"] = this.key;
+        return data;
+    }
+}
+
+export interface IFeatureProviderDto {
+    name: string | undefined;
+    key: string | undefined;
 }
 
 export class FileAggregateRoute implements IFileAggregateRoute {
@@ -10606,6 +11310,7 @@ export class FindTenantResultDto implements IFindTenantResultDto {
     success!: boolean;
     tenantId!: string | undefined;
     name!: string | undefined;
+    normalizedName!: string | undefined;
     isActive!: boolean;
 
     constructor(data?: IFindTenantResultDto) {
@@ -10622,6 +11327,7 @@ export class FindTenantResultDto implements IFindTenantResultDto {
             this.success = _data["success"];
             this.tenantId = _data["tenantId"];
             this.name = _data["name"];
+            this.normalizedName = _data["normalizedName"];
             this.isActive = _data["isActive"];
         }
     }
@@ -10638,6 +11344,7 @@ export class FindTenantResultDto implements IFindTenantResultDto {
         data["success"] = this.success;
         data["tenantId"] = this.tenantId;
         data["name"] = this.name;
+        data["normalizedName"] = this.normalizedName;
         data["isActive"] = this.isActive;
         return data;
     }
@@ -10647,7 +11354,92 @@ export interface IFindTenantResultDto {
     success: boolean;
     tenantId: string | undefined;
     name: string | undefined;
+    normalizedName: string | undefined;
     isActive: boolean;
+}
+
+export class GetFeatureListResultDto implements IGetFeatureListResultDto {
+    groups!: FeatureGroupDto[] | undefined;
+
+    constructor(data?: IGetFeatureListResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["groups"])) {
+                this.groups = [] as any;
+                for (let item of _data["groups"])
+                    this.groups!.push(FeatureGroupDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): GetFeatureListResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new GetFeatureListResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.groups)) {
+            data["groups"] = [];
+            for (let item of this.groups)
+                data["groups"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IGetFeatureListResultDto {
+    groups: FeatureGroupDto[] | undefined;
+}
+
+export class GetFeatureListResultInput implements IGetFeatureListResultInput {
+    providerName!: string | undefined;
+    providerKey!: string | undefined;
+
+    constructor(data?: IGetFeatureListResultInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.providerName = _data["providerName"];
+            this.providerKey = _data["providerKey"];
+        }
+    }
+
+    static fromJS(data: any): GetFeatureListResultInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new GetFeatureListResultInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["providerName"] = this.providerName;
+        data["providerKey"] = this.providerKey;
+        return data;
+    }
+}
+
+export interface IGetFeatureListResultInput {
+    providerName: string | undefined;
+    providerKey: string | undefined;
 }
 
 export class GetOrganizationUnitRoleInput implements IGetOrganizationUnitRoleInput {
@@ -11327,19 +12119,127 @@ export enum HttpStatusCode {
     ExpectationFailed = 426,
     MisdirectedRequest = 428,
     UnprocessableEntity = 429,
-    Locked = 431,
-    FailedDependency = 451,
-    UpgradeRequired = 500,
-    PreconditionRequired = 501,
-    TooManyRequests = 502,
-    RequestHeaderFieldsTooLarge = 503,
-    UnavailableForLegalReasons = 504,
-    InternalServerError = 505,
-    NotImplemented = 506,
-    BadGateway = 507,
-    ServiceUnavailable = 508,
-    GatewayTimeout = 510,
-    HttpVersionNotSupported = 511,
+    UnprocessableContent = 431,
+    Locked = 451,
+    FailedDependency = 500,
+    UpgradeRequired = 501,
+    PreconditionRequired = 502,
+    TooManyRequests = 503,
+    RequestHeaderFieldsTooLarge = 504,
+    UnavailableForLegalReasons = 505,
+    InternalServerError = 506,
+    NotImplemented = 507,
+    BadGateway = 508,
+    ServiceUnavailable = 510,
+    GatewayTimeout = 511,
+}
+
+export class IStringValueType implements IIStringValueType {
+    readonly name!: string | undefined;
+    readonly properties!: { [key: string]: any; } | undefined;
+    validator!: IValueValidator;
+
+    constructor(data?: IIStringValueType) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).name = _data["name"];
+            if (_data["properties"]) {
+                (<any>this).properties = {} as any;
+                for (let key in _data["properties"]) {
+                    if (_data["properties"].hasOwnProperty(key))
+                        (<any>(<any>this).properties)![key] = _data["properties"][key];
+                }
+            }
+            this.validator = _data["validator"] ? IValueValidator.fromJS(_data["validator"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): IStringValueType {
+        data = typeof data === 'object' ? data : {};
+        let result = new IStringValueType();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        if (this.properties) {
+            data["properties"] = {};
+            for (let key in this.properties) {
+                if (this.properties.hasOwnProperty(key))
+                    (<any>data["properties"])[key] = (<any>this.properties)[key];
+            }
+        }
+        data["validator"] = this.validator ? this.validator.toJSON() : <any>undefined;
+        return data;
+    }
+}
+
+export interface IIStringValueType {
+    name: string | undefined;
+    properties: { [key: string]: any; } | undefined;
+    validator: IValueValidator;
+}
+
+export class IValueValidator implements IIValueValidator {
+    readonly name!: string | undefined;
+    readonly properties!: { [key: string]: any; } | undefined;
+
+    constructor(data?: IIValueValidator) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).name = _data["name"];
+            if (_data["properties"]) {
+                (<any>this).properties = {} as any;
+                for (let key in _data["properties"]) {
+                    if (_data["properties"].hasOwnProperty(key))
+                        (<any>(<any>this).properties)![key] = _data["properties"][key];
+                }
+            }
+        }
+    }
+
+    static fromJS(data: any): IValueValidator {
+        data = typeof data === 'object' ? data : {};
+        let result = new IValueValidator();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        if (this.properties) {
+            data["properties"] = {};
+            for (let key in this.properties) {
+                if (this.properties.hasOwnProperty(key))
+                    (<any>data["properties"])[key] = (<any>this.properties)[key];
+            }
+        }
+        return data;
+    }
+}
+
+export interface IIValueValidator {
+    name: string | undefined;
+    properties: { [key: string]: any; } | undefined;
 }
 
 export class IanaTimeZone implements IIanaTimeZone {
@@ -11814,9 +12714,11 @@ export class IdentityUserDto implements IIdentityUserDto {
     phoneNumberConfirmed!: boolean;
     isActive!: boolean;
     lockoutEnabled!: boolean;
+    accessFailedCount!: number;
     lockoutEnd!: dayjs.Dayjs | undefined;
     concurrencyStamp!: string | undefined;
     entityVersion!: number;
+    lastPasswordChangeTime!: dayjs.Dayjs | undefined;
 
     constructor(data?: IIdentityUserDto) {
         if (data) {
@@ -11854,9 +12756,11 @@ export class IdentityUserDto implements IIdentityUserDto {
             this.phoneNumberConfirmed = _data["phoneNumberConfirmed"];
             this.isActive = _data["isActive"];
             this.lockoutEnabled = _data["lockoutEnabled"];
+            this.accessFailedCount = _data["accessFailedCount"];
             this.lockoutEnd = _data["lockoutEnd"] ? dayjs(_data["lockoutEnd"].toString()) : <any>undefined;
             this.concurrencyStamp = _data["concurrencyStamp"];
             this.entityVersion = _data["entityVersion"];
+            this.lastPasswordChangeTime = _data["lastPasswordChangeTime"] ? dayjs(_data["lastPasswordChangeTime"].toString()) : <any>undefined;
         }
     }
 
@@ -11894,9 +12798,11 @@ export class IdentityUserDto implements IIdentityUserDto {
         data["phoneNumberConfirmed"] = this.phoneNumberConfirmed;
         data["isActive"] = this.isActive;
         data["lockoutEnabled"] = this.lockoutEnabled;
+        data["accessFailedCount"] = this.accessFailedCount;
         data["lockoutEnd"] = this.lockoutEnd ? this.lockoutEnd.toLocaleString() : <any>undefined;
         data["concurrencyStamp"] = this.concurrencyStamp;
         data["entityVersion"] = this.entityVersion;
+        data["lastPasswordChangeTime"] = this.lastPasswordChangeTime ? this.lastPasswordChangeTime.toLocaleString() : <any>undefined;
         return data;
     }
 }
@@ -11921,9 +12827,11 @@ export interface IIdentityUserDto {
     phoneNumberConfirmed: boolean;
     isActive: boolean;
     lockoutEnabled: boolean;
+    accessFailedCount: number;
     lockoutEnd: dayjs.Dayjs | undefined;
     concurrencyStamp: string | undefined;
     entityVersion: number;
+    lastPasswordChangeTime: dayjs.Dayjs | undefined;
 }
 
 export class IdentityUserDtoPagedResultDto implements IIdentityUserDtoPagedResultDto {
@@ -13053,6 +13961,154 @@ export interface IPageLanguageTextOutputPagedResultDto {
     totalCount: number;
 }
 
+export class PageTenantConnectionStringInput implements IPageTenantConnectionStringInput {
+    /** 租户id */
+    id!: string;
+    /** 连接字符串名称 */
+    name!: string | undefined;
+    /** 连接字符串地址 */
+    value!: string | undefined;
+
+    constructor(data?: IPageTenantConnectionStringInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.value = _data["value"];
+        }
+    }
+
+    static fromJS(data: any): PageTenantConnectionStringInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PageTenantConnectionStringInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["value"] = this.value;
+        return data;
+    }
+}
+
+export interface IPageTenantConnectionStringInput {
+    /** 租户id */
+    id: string;
+    /** 连接字符串名称 */
+    name: string | undefined;
+    /** 连接字符串地址 */
+    value: string | undefined;
+}
+
+export class PageTenantConnectionStringOutput implements IPageTenantConnectionStringOutput {
+    /** 租户id */
+    tenantId!: string;
+    /** 连接字符串名称 */
+    name!: string | undefined;
+    /** 连接字符串地址 */
+    value!: string | undefined;
+
+    constructor(data?: IPageTenantConnectionStringOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.tenantId = _data["tenantId"];
+            this.name = _data["name"];
+            this.value = _data["value"];
+        }
+    }
+
+    static fromJS(data: any): PageTenantConnectionStringOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PageTenantConnectionStringOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["tenantId"] = this.tenantId;
+        data["name"] = this.name;
+        data["value"] = this.value;
+        return data;
+    }
+}
+
+export interface IPageTenantConnectionStringOutput {
+    /** 租户id */
+    tenantId: string;
+    /** 连接字符串名称 */
+    name: string | undefined;
+    /** 连接字符串地址 */
+    value: string | undefined;
+}
+
+export class PageTenantConnectionStringOutputPagedResultDto implements IPageTenantConnectionStringOutputPagedResultDto {
+    items!: PageTenantConnectionStringOutput[] | undefined;
+    totalCount!: number;
+
+    constructor(data?: IPageTenantConnectionStringOutputPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(PageTenantConnectionStringOutput.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): PageTenantConnectionStringOutputPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PageTenantConnectionStringOutputPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+}
+
+export interface IPageTenantConnectionStringOutputPagedResultDto {
+    items: PageTenantConnectionStringOutput[] | undefined;
+    totalCount: number;
+}
+
 export class PagingAuditLogActionOutput implements IPagingAuditLogActionOutput {
     id!: string;
     tenantId!: string | undefined;
@@ -14175,15 +15231,34 @@ export interface IPagingIdentitySecurityLogOutputPagedResultDto {
     totalCount: number;
 }
 
-export class PagingNotificationListInput implements IPagingNotificationListInput {
+export class PagingNotificationInput implements IPagingNotificationInput {
     /** 当前页面.默认从1开始 */
     pageIndex!: number;
     /** 每页多少条.每页显示多少记录 */
     pageSize!: number;
     /** 跳过多少条 */
     readonly skipCount!: number;
+    /** 标题 */
+    title!: string | undefined;
+    /** 内容 */
+    content!: string | undefined;
+    /** 发送者Id */
+    senderUserId!: string | undefined;
+    /** 发送者名称 */
+    senderUserName!: string | undefined;
+    /** 接受者Id */
+    receiverUserId!: string | undefined;
+    /** 接受者名称 */
+    receiverUserName!: string | undefined;
+    /** 是否已读 */
+    read!: boolean | undefined;
+    /** 已读开始时间 */
+    startReadTime!: dayjs.Dayjs | undefined;
+    /** 已读结束时间 */
+    endReadTime!: dayjs.Dayjs | undefined;
+    messageType!: MessageType;
 
-    constructor(data?: IPagingNotificationListInput) {
+    constructor(data?: IPagingNotificationInput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -14197,12 +15272,22 @@ export class PagingNotificationListInput implements IPagingNotificationListInput
             this.pageIndex = _data["pageIndex"];
             this.pageSize = _data["pageSize"];
             (<any>this).skipCount = _data["skipCount"];
+            this.title = _data["title"];
+            this.content = _data["content"];
+            this.senderUserId = _data["senderUserId"];
+            this.senderUserName = _data["senderUserName"];
+            this.receiverUserId = _data["receiverUserId"];
+            this.receiverUserName = _data["receiverUserName"];
+            this.read = _data["read"];
+            this.startReadTime = _data["startReadTime"] ? dayjs(_data["startReadTime"].toString()) : <any>undefined;
+            this.endReadTime = _data["endReadTime"] ? dayjs(_data["endReadTime"].toString()) : <any>undefined;
+            this.messageType = _data["messageType"];
         }
     }
 
-    static fromJS(data: any): PagingNotificationListInput {
+    static fromJS(data: any): PagingNotificationInput {
         data = typeof data === 'object' ? data : {};
-        let result = new PagingNotificationListInput();
+        let result = new PagingNotificationInput();
         result.init(data);
         return result;
     }
@@ -14212,37 +15297,77 @@ export class PagingNotificationListInput implements IPagingNotificationListInput
         data["pageIndex"] = this.pageIndex;
         data["pageSize"] = this.pageSize;
         data["skipCount"] = this.skipCount;
+        data["title"] = this.title;
+        data["content"] = this.content;
+        data["senderUserId"] = this.senderUserId;
+        data["senderUserName"] = this.senderUserName;
+        data["receiverUserId"] = this.receiverUserId;
+        data["receiverUserName"] = this.receiverUserName;
+        data["read"] = this.read;
+        data["startReadTime"] = this.startReadTime ? this.startReadTime.toLocaleString() : <any>undefined;
+        data["endReadTime"] = this.endReadTime ? this.endReadTime.toLocaleString() : <any>undefined;
+        data["messageType"] = this.messageType;
         return data;
     }
 }
 
-export interface IPagingNotificationListInput {
+export interface IPagingNotificationInput {
     /** 当前页面.默认从1开始 */
     pageIndex: number;
     /** 每页多少条.每页显示多少记录 */
     pageSize: number;
     /** 跳过多少条 */
     skipCount: number;
+    /** 标题 */
+    title: string | undefined;
+    /** 内容 */
+    content: string | undefined;
+    /** 发送者Id */
+    senderUserId: string | undefined;
+    /** 发送者名称 */
+    senderUserName: string | undefined;
+    /** 接受者Id */
+    receiverUserId: string | undefined;
+    /** 接受者名称 */
+    receiverUserName: string | undefined;
+    /** 是否已读 */
+    read: boolean | undefined;
+    /** 已读开始时间 */
+    startReadTime: dayjs.Dayjs | undefined;
+    /** 已读结束时间 */
+    endReadTime: dayjs.Dayjs | undefined;
+    messageType: MessageType;
 }
 
-export class PagingNotificationListOutput implements IPagingNotificationListOutput {
+export class PagingNotificationOutput implements IPagingNotificationOutput {
     id!: string;
+    /** 租户id */
+    tenantId!: string | undefined;
     /** 消息标题 */
     title!: string | undefined;
     /** 消息内容 */
     content!: string | undefined;
     messageType!: MessageType;
-    readonly messageTypeDescription!: string | undefined;
+    readonly messageTypeName!: string | undefined;
     messageLevel!: MessageLevel;
-    readonly messageLevelDescription!: string | undefined;
+    readonly messageLevelName!: string | undefined;
     /** 发送人 */
-    senderId!: string;
-    /** 创建时间 */
-    creationTime!: dayjs.Dayjs;
+    senderUserId!: string;
+    /** 发送人用户名 */
+    senderUserName!: string | undefined;
+    /** 订阅人
+消息类型是广播消息时，订阅人为空 */
+    receiveUserId!: string | undefined;
+    /** 接收人用户名
+消息类型是广播消息时，订接收人用户名为空 */
+    receiveUserName!: string | undefined;
     /** 是否已读 */
     read!: boolean;
+    /** 已读时间 */
+    readTime!: dayjs.Dayjs | undefined;
+    creationTime!: dayjs.Dayjs;
 
-    constructor(data?: IPagingNotificationListOutput) {
+    constructor(data?: IPagingNotificationOutput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -14254,21 +15379,26 @@ export class PagingNotificationListOutput implements IPagingNotificationListOutp
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
+            this.tenantId = _data["tenantId"];
             this.title = _data["title"];
             this.content = _data["content"];
             this.messageType = _data["messageType"];
-            (<any>this).messageTypeDescription = _data["messageTypeDescription"];
+            (<any>this).messageTypeName = _data["messageTypeName"];
             this.messageLevel = _data["messageLevel"];
-            (<any>this).messageLevelDescription = _data["messageLevelDescription"];
-            this.senderId = _data["senderId"];
-            this.creationTime = _data["creationTime"] ? dayjs(_data["creationTime"].toString()) : <any>undefined;
+            (<any>this).messageLevelName = _data["messageLevelName"];
+            this.senderUserId = _data["senderUserId"];
+            this.senderUserName = _data["senderUserName"];
+            this.receiveUserId = _data["receiveUserId"];
+            this.receiveUserName = _data["receiveUserName"];
             this.read = _data["read"];
+            this.readTime = _data["readTime"] ? dayjs(_data["readTime"].toString()) : <any>undefined;
+            this.creationTime = _data["creationTime"] ? dayjs(_data["creationTime"].toString()) : <any>undefined;
         }
     }
 
-    static fromJS(data: any): PagingNotificationListOutput {
+    static fromJS(data: any): PagingNotificationOutput {
         data = typeof data === 'object' ? data : {};
-        let result = new PagingNotificationListOutput();
+        let result = new PagingNotificationOutput();
         result.init(data);
         return result;
     }
@@ -14276,42 +15406,58 @@ export class PagingNotificationListOutput implements IPagingNotificationListOutp
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
+        data["tenantId"] = this.tenantId;
         data["title"] = this.title;
         data["content"] = this.content;
         data["messageType"] = this.messageType;
-        data["messageTypeDescription"] = this.messageTypeDescription;
+        data["messageTypeName"] = this.messageTypeName;
         data["messageLevel"] = this.messageLevel;
-        data["messageLevelDescription"] = this.messageLevelDescription;
-        data["senderId"] = this.senderId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toLocaleString() : <any>undefined;
+        data["messageLevelName"] = this.messageLevelName;
+        data["senderUserId"] = this.senderUserId;
+        data["senderUserName"] = this.senderUserName;
+        data["receiveUserId"] = this.receiveUserId;
+        data["receiveUserName"] = this.receiveUserName;
         data["read"] = this.read;
+        data["readTime"] = this.readTime ? this.readTime.toLocaleString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime.toLocaleString() : <any>undefined;
         return data;
     }
 }
 
-export interface IPagingNotificationListOutput {
+export interface IPagingNotificationOutput {
     id: string;
+    /** 租户id */
+    tenantId: string | undefined;
     /** 消息标题 */
     title: string | undefined;
     /** 消息内容 */
     content: string | undefined;
     messageType: MessageType;
-    messageTypeDescription: string | undefined;
+    messageTypeName: string | undefined;
     messageLevel: MessageLevel;
-    messageLevelDescription: string | undefined;
+    messageLevelName: string | undefined;
     /** 发送人 */
-    senderId: string;
-    /** 创建时间 */
-    creationTime: dayjs.Dayjs;
+    senderUserId: string;
+    /** 发送人用户名 */
+    senderUserName: string | undefined;
+    /** 订阅人
+消息类型是广播消息时，订阅人为空 */
+    receiveUserId: string | undefined;
+    /** 接收人用户名
+消息类型是广播消息时，订接收人用户名为空 */
+    receiveUserName: string | undefined;
     /** 是否已读 */
     read: boolean;
+    /** 已读时间 */
+    readTime: dayjs.Dayjs | undefined;
+    creationTime: dayjs.Dayjs;
 }
 
-export class PagingNotificationListOutputPagedResultDto implements IPagingNotificationListOutputPagedResultDto {
-    items!: PagingNotificationListOutput[] | undefined;
+export class PagingNotificationOutputPagedResultDto implements IPagingNotificationOutputPagedResultDto {
+    items!: PagingNotificationOutput[] | undefined;
     totalCount!: number;
 
-    constructor(data?: IPagingNotificationListOutputPagedResultDto) {
+    constructor(data?: IPagingNotificationOutputPagedResultDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -14325,15 +15471,15 @@ export class PagingNotificationListOutputPagedResultDto implements IPagingNotifi
             if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
                 for (let item of _data["items"])
-                    this.items!.push(PagingNotificationListOutput.fromJS(item));
+                    this.items!.push(PagingNotificationOutput.fromJS(item));
             }
             this.totalCount = _data["totalCount"];
         }
     }
 
-    static fromJS(data: any): PagingNotificationListOutputPagedResultDto {
+    static fromJS(data: any): PagingNotificationOutputPagedResultDto {
         data = typeof data === 'object' ? data : {};
-        let result = new PagingNotificationListOutputPagedResultDto();
+        let result = new PagingNotificationOutputPagedResultDto();
         result.init(data);
         return result;
     }
@@ -14350,8 +15496,252 @@ export class PagingNotificationListOutputPagedResultDto implements IPagingNotifi
     }
 }
 
-export interface IPagingNotificationListOutputPagedResultDto {
-    items: PagingNotificationListOutput[] | undefined;
+export interface IPagingNotificationOutputPagedResultDto {
+    items: PagingNotificationOutput[] | undefined;
+    totalCount: number;
+}
+
+export class PagingNotificationSubscriptionInput implements IPagingNotificationSubscriptionInput {
+    /** 当前页面.默认从1开始 */
+    pageIndex!: number;
+    /** 每页多少条.每页显示多少记录 */
+    pageSize!: number;
+    /** 跳过多少条 */
+    readonly skipCount!: number;
+    notificationId!: string;
+    /** 接受者Id */
+    receiverUserId!: string | undefined;
+    /** 接受者名称 */
+    receiverUserName!: string | undefined;
+    /** 是否已读 */
+    read!: boolean | undefined;
+    /** 已读开始时间 */
+    startReadTime!: dayjs.Dayjs | undefined;
+    /** 已读结束时间 */
+    endReadTime!: dayjs.Dayjs | undefined;
+
+    constructor(data?: IPagingNotificationSubscriptionInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.pageIndex = _data["pageIndex"];
+            this.pageSize = _data["pageSize"];
+            (<any>this).skipCount = _data["skipCount"];
+            this.notificationId = _data["notificationId"];
+            this.receiverUserId = _data["receiverUserId"];
+            this.receiverUserName = _data["receiverUserName"];
+            this.read = _data["read"];
+            this.startReadTime = _data["startReadTime"] ? dayjs(_data["startReadTime"].toString()) : <any>undefined;
+            this.endReadTime = _data["endReadTime"] ? dayjs(_data["endReadTime"].toString()) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): PagingNotificationSubscriptionInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingNotificationSubscriptionInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["pageIndex"] = this.pageIndex;
+        data["pageSize"] = this.pageSize;
+        data["skipCount"] = this.skipCount;
+        data["notificationId"] = this.notificationId;
+        data["receiverUserId"] = this.receiverUserId;
+        data["receiverUserName"] = this.receiverUserName;
+        data["read"] = this.read;
+        data["startReadTime"] = this.startReadTime ? this.startReadTime.toLocaleString() : <any>undefined;
+        data["endReadTime"] = this.endReadTime ? this.endReadTime.toLocaleString() : <any>undefined;
+        return data;
+    }
+}
+
+export interface IPagingNotificationSubscriptionInput {
+    /** 当前页面.默认从1开始 */
+    pageIndex: number;
+    /** 每页多少条.每页显示多少记录 */
+    pageSize: number;
+    /** 跳过多少条 */
+    skipCount: number;
+    notificationId: string;
+    /** 接受者Id */
+    receiverUserId: string | undefined;
+    /** 接受者名称 */
+    receiverUserName: string | undefined;
+    /** 是否已读 */
+    read: boolean | undefined;
+    /** 已读开始时间 */
+    startReadTime: dayjs.Dayjs | undefined;
+    /** 已读结束时间 */
+    endReadTime: dayjs.Dayjs | undefined;
+}
+
+export class PagingNotificationSubscriptionOutput implements IPagingNotificationSubscriptionOutput {
+    id!: string;
+    /** 租户id */
+    tenantId!: string | undefined;
+    /** 消息Id */
+    notificationId!: string;
+    /** 接收人id */
+    receiveUserId!: string;
+    /** 接收人用户名 */
+    receiveUserName!: string | undefined;
+    /** 是否已读 */
+    read!: boolean;
+    /** 已读时间 */
+    readTime!: dayjs.Dayjs;
+    /** 消息标题 */
+    title!: string | undefined;
+    /** 消息内容 */
+    content!: string | undefined;
+    messageType!: MessageType;
+    readonly messageTypeName!: string | undefined;
+    messageLevel!: MessageLevel;
+    readonly messageLevelName!: string | undefined;
+    /** 发送人 */
+    senderUserId!: string;
+    /** 发送人用户名 */
+    senderUserName!: string | undefined;
+
+    constructor(data?: IPagingNotificationSubscriptionOutput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.tenantId = _data["tenantId"];
+            this.notificationId = _data["notificationId"];
+            this.receiveUserId = _data["receiveUserId"];
+            this.receiveUserName = _data["receiveUserName"];
+            this.read = _data["read"];
+            this.readTime = _data["readTime"] ? dayjs(_data["readTime"].toString()) : <any>undefined;
+            this.title = _data["title"];
+            this.content = _data["content"];
+            this.messageType = _data["messageType"];
+            (<any>this).messageTypeName = _data["messageTypeName"];
+            this.messageLevel = _data["messageLevel"];
+            (<any>this).messageLevelName = _data["messageLevelName"];
+            this.senderUserId = _data["senderUserId"];
+            this.senderUserName = _data["senderUserName"];
+        }
+    }
+
+    static fromJS(data: any): PagingNotificationSubscriptionOutput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingNotificationSubscriptionOutput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["tenantId"] = this.tenantId;
+        data["notificationId"] = this.notificationId;
+        data["receiveUserId"] = this.receiveUserId;
+        data["receiveUserName"] = this.receiveUserName;
+        data["read"] = this.read;
+        data["readTime"] = this.readTime ? this.readTime.toLocaleString() : <any>undefined;
+        data["title"] = this.title;
+        data["content"] = this.content;
+        data["messageType"] = this.messageType;
+        data["messageTypeName"] = this.messageTypeName;
+        data["messageLevel"] = this.messageLevel;
+        data["messageLevelName"] = this.messageLevelName;
+        data["senderUserId"] = this.senderUserId;
+        data["senderUserName"] = this.senderUserName;
+        return data;
+    }
+}
+
+export interface IPagingNotificationSubscriptionOutput {
+    id: string;
+    /** 租户id */
+    tenantId: string | undefined;
+    /** 消息Id */
+    notificationId: string;
+    /** 接收人id */
+    receiveUserId: string;
+    /** 接收人用户名 */
+    receiveUserName: string | undefined;
+    /** 是否已读 */
+    read: boolean;
+    /** 已读时间 */
+    readTime: dayjs.Dayjs;
+    /** 消息标题 */
+    title: string | undefined;
+    /** 消息内容 */
+    content: string | undefined;
+    messageType: MessageType;
+    messageTypeName: string | undefined;
+    messageLevel: MessageLevel;
+    messageLevelName: string | undefined;
+    /** 发送人 */
+    senderUserId: string;
+    /** 发送人用户名 */
+    senderUserName: string | undefined;
+}
+
+export class PagingNotificationSubscriptionOutputPagedResultDto implements IPagingNotificationSubscriptionOutputPagedResultDto {
+    items!: PagingNotificationSubscriptionOutput[] | undefined;
+    totalCount!: number;
+
+    constructor(data?: IPagingNotificationSubscriptionOutputPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(PagingNotificationSubscriptionOutput.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): PagingNotificationSubscriptionOutputPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagingNotificationSubscriptionOutputPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data;
+    }
+}
+
+export interface IPagingNotificationSubscriptionOutputPagedResultDto {
+    items: PagingNotificationSubscriptionOutput[] | undefined;
     totalCount: number;
 }
 
@@ -15117,7 +16507,9 @@ export class SendCommonMessageInput implements ISendCommonMessageInput {
     /** 消息内容 */
     content!: string | undefined;
     /** 发送人 */
-    receiveIds!: string[] | undefined;
+    receiveUserId!: string;
+    /** 发送人名称 */
+    receiveUserName!: string | undefined;
 
     constructor(data?: ISendCommonMessageInput) {
         if (data) {
@@ -15132,11 +16524,8 @@ export class SendCommonMessageInput implements ISendCommonMessageInput {
         if (_data) {
             this.title = _data["title"];
             this.content = _data["content"];
-            if (Array.isArray(_data["receiveIds"])) {
-                this.receiveIds = [] as any;
-                for (let item of _data["receiveIds"])
-                    this.receiveIds!.push(item);
-            }
+            this.receiveUserId = _data["receiveUserId"];
+            this.receiveUserName = _data["receiveUserName"];
         }
     }
 
@@ -15151,11 +16540,8 @@ export class SendCommonMessageInput implements ISendCommonMessageInput {
         data = typeof data === 'object' ? data : {};
         data["title"] = this.title;
         data["content"] = this.content;
-        if (Array.isArray(this.receiveIds)) {
-            data["receiveIds"] = [];
-            for (let item of this.receiveIds)
-                data["receiveIds"].push(item);
-        }
+        data["receiveUserId"] = this.receiveUserId;
+        data["receiveUserName"] = this.receiveUserName;
         return data;
     }
 }
@@ -15166,7 +16552,9 @@ export interface ISendCommonMessageInput {
     /** 消息内容 */
     content: string | undefined;
     /** 发送人 */
-    receiveIds: string[] | undefined;
+    receiveUserId: string;
+    /** 发送人名称 */
+    receiveUserName: string | undefined;
 }
 
 export class SetDataDictinaryDetailInput implements ISetDataDictinaryDetailInput {
@@ -15791,46 +17179,6 @@ export interface ITypeApiDescriptionModel {
     properties: PropertyApiDescriptionModel[] | undefined;
 }
 
-export class UpdateConnectionStringInput implements IUpdateConnectionStringInput {
-    id!: string;
-    connectionString!: string | undefined;
-
-    constructor(data?: IUpdateConnectionStringInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.id = _data["id"];
-            this.connectionString = _data["connectionString"];
-        }
-    }
-
-    static fromJS(data: any): UpdateConnectionStringInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new UpdateConnectionStringInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        data["connectionString"] = this.connectionString;
-        return data;
-    }
-}
-
-export interface IUpdateConnectionStringInput {
-    id: string;
-    connectionString: string | undefined;
-}
-
 export class UpdateDataDictinaryInput implements IUpdateDataDictinaryInput {
     id!: string;
     code!: string | undefined;
@@ -15929,6 +17277,134 @@ export interface IUpdateDetailInput {
     displayText: string | undefined;
     description: string | undefined;
     order: number;
+}
+
+export class UpdateFeatureDto implements IUpdateFeatureDto {
+    name!: string | undefined;
+    value!: string | undefined;
+
+    constructor(data?: IUpdateFeatureDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.value = _data["value"];
+        }
+    }
+
+    static fromJS(data: any): UpdateFeatureDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateFeatureDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["value"] = this.value;
+        return data;
+    }
+}
+
+export interface IUpdateFeatureDto {
+    name: string | undefined;
+    value: string | undefined;
+}
+
+export class UpdateFeatureInput implements IUpdateFeatureInput {
+    providerName!: string | undefined;
+    providerKey!: string | undefined;
+    updateFeaturesDto!: UpdateFeaturesDto;
+
+    constructor(data?: IUpdateFeatureInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.providerName = _data["providerName"];
+            this.providerKey = _data["providerKey"];
+            this.updateFeaturesDto = _data["updateFeaturesDto"] ? UpdateFeaturesDto.fromJS(_data["updateFeaturesDto"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): UpdateFeatureInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateFeatureInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["providerName"] = this.providerName;
+        data["providerKey"] = this.providerKey;
+        data["updateFeaturesDto"] = this.updateFeaturesDto ? this.updateFeaturesDto.toJSON() : <any>undefined;
+        return data;
+    }
+}
+
+export interface IUpdateFeatureInput {
+    providerName: string | undefined;
+    providerKey: string | undefined;
+    updateFeaturesDto: UpdateFeaturesDto;
+}
+
+export class UpdateFeaturesDto implements IUpdateFeaturesDto {
+    features!: UpdateFeatureDto[] | undefined;
+
+    constructor(data?: IUpdateFeaturesDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["features"])) {
+                this.features = [] as any;
+                for (let item of _data["features"])
+                    this.features!.push(UpdateFeatureDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): UpdateFeaturesDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new UpdateFeaturesDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.features)) {
+            data["features"] = [];
+            for (let item of this.features)
+                data["features"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IUpdateFeaturesDto {
+    features: UpdateFeatureDto[] | undefined;
 }
 
 /** 删除语言 */

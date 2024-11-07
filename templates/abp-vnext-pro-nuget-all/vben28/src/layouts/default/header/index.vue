@@ -84,7 +84,7 @@
   import { createAsyncComponent } from '/@/utils/factory/createAsyncComponent';
   import { useLocale } from '/@/locales/useLocale';
   import { useSignalR } from '/@/hooks/web/useSignalR';
-  import { PagingNotificationListOutput } from '/@/services/ServiceProxies';
+  import { PagingNotificationOutput } from '/@/services/ServiceProxies';
   import {
     getTextAsync,
     getBroadCastAsync,
@@ -181,8 +181,8 @@
       onMounted(() => {
         startConnect();
       });
-      let textMessage: PagingNotificationListOutput[] = [];
-      let broadCastMessage: PagingNotificationListOutput[] = [];
+      let textMessage: PagingNotificationOutput[] = [];
+      let broadCastMessage: PagingNotificationOutput[] = [];
       const notifiData = reactive({
         textMessage,
         broadCastMessage,
@@ -190,10 +190,10 @@
       const clickNotify = async () => {
         notifiData.textMessage = (await (
           await getTextAsync()
-        ).items) as PagingNotificationListOutput[];
+        ).items) as PagingNotificationOutput[];
         notifiData.broadCastMessage = (await (
           await getBroadCastAsync()
-        ).items) as PagingNotificationListOutput[];
+        ).items) as PagingNotificationOutput[];
         console.log(notifiData);
       };
       return {

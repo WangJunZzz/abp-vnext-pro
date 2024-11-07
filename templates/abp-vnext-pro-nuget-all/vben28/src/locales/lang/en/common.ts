@@ -20,6 +20,7 @@ export default {
   locked: 'Locked',
   unLocked: 'UnLocked',
   createText: 'Create',
+  createOrUpdateText: 'Create Or Update',
   tip: 'Tip',
   askDelete: 'Are you sure you want to delete',
   operationSuccess: 'Operation Success',

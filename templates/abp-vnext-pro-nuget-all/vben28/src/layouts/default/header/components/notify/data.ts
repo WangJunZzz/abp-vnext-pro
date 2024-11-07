@@ -1,9 +1,12 @@
 import {
   NotificationServiceProxy,
-  PagingNotificationListOutput,
-  PagingNotificationListInput,
-  PagingNotificationListOutputPagedResultDto,
+  PagingNotificationOutput,
+  PagingNotificationInput,
+  PagingNotificationSubscriptionInput,
+  PagingNotificationOutputPagedResultDto,
 } from '/@/services/ServiceProxies';
+import { useUserStoreWithOut } from '/@/store/modules/user';
+const userStore = useUserStoreWithOut();
 export interface ListItem {
   id: string;
   avatar: string;
@@ -23,7 +26,7 @@ export interface ListItem {
 export interface TabItem {
   key: string;
   name: string;
-  list?: PagingNotificationListOutput[];
+  list?: PagingNotificationOutput[];
   unreadlist?: ListItem[];
 }
 
@@ -40,21 +43,27 @@ export const tabListData: TabItem[] = [
   },
 ];
 
-export async function getTextAsync(): Promise<PagingNotificationListOutputPagedResultDto> {
-  let request = new PagingNotificationListInput();
+export async function getTextAsync(): Promise<PagingNotificationOutputPagedResultDto> {
+  let request = new PagingNotificationInput();
   request.pageSize = 5;
+  request.pageIndex = 1;
+  request.receiverUserId  = userStore.getUserInfo.userId as string;
+  request.messageType = 20;
   const _notificationServiceProxy = new NotificationServiceProxy();
-  return await _notificationServiceProxy.common(request);
+  return await _notificationServiceProxy.notificationPage(request);
 }
 
-export async function getBroadCastAsync(): Promise<PagingNotificationListOutputPagedResultDto> {
-  let request = new PagingNotificationListInput();
+export async function getBroadCastAsync(): Promise<PagingNotificationOutputPagedResultDto> {
+  let request = new PagingNotificationInput();
   request.pageSize = 5;
+  request.pageIndex = 1;
+  request.messageType = 10;
   const _notificationServiceProxy = new NotificationServiceProxy();
-  return await _notificationServiceProxy.broadCast(request);
+  return await _notificationServiceProxy.notificationPage(request);
 }
 
 export async function setReadAsync(request) {
   const _notificationServiceProxy = new NotificationServiceProxy();
   await _notificationServiceProxy.read(request);
 }
+

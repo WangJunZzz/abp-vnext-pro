@@ -21,7 +21,7 @@ const admin: AppRouteModule = {
       meta: {
         title: t('routes.admin.userManagement'),
         policy: 'AbpIdentity.Users',
-        icon: 'ant-design:skin-outlined',
+        icon: 'ant-design:user-outlined',
       },
     },
     {
@@ -52,6 +52,16 @@ const admin: AppRouteModule = {
         title: t('routes.admin.settingManagement'),
         policy: 'AbpIdentity.Setting',
         icon: 'ant-design:unordered-list-outlined',
+      },
+    },
+    {
+      path: 'manageFeatrue',
+      name: 'manageFeatrue',
+      component: () => import('/@/views/admin/manageFeatrue/index.vue'),
+      meta: {
+        title: t('routes.admin.featureManagement'),
+        policy: 'AbpIdentity.FeatureManagement',
+        icon: 'ant-design:tool-outlined',
       },
     },
     {
@@ -102,6 +112,26 @@ const admin: AppRouteModule = {
         title: t('routes.admin.languageTextManagement'),
         icon: 'ant-design:font-size-outlined',
         policy: 'AbpIdentity.LanguageTexts',
+      },
+    },
+    {
+      path: 'notification',
+      name: 'notification',
+      component: () => import('/@/views/admin/notification/Index.vue'),
+      meta: {
+        title: t('routes.admin.notificationManagement'),
+        icon: 'ant-design:comment-outlined',
+        policy: 'AbpIdentity.NotificationManagement',
+      },
+    },
+    {
+      path: 'subscription',
+      name: 'subscription',
+      component: () => import('/@/views/admin/notification/Subscription.vue'),
+      meta: {
+        title: t('routes.admin.notificationSubscriptionManagement'),
+        icon: 'ant-design:customer-service-twotone',
+        policy: 'AbpIdentity.NotificationSubscriptionManagement',
       },
     },
   ],

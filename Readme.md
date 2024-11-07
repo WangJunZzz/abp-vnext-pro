@@ -23,26 +23,25 @@
 ```bash
 dotnet tool install Lion.AbpPro.Cli -g
 ```
+
+- 更新Cli
+```bash
+dotnet tool update Lion.AbpPro.Cli -g
+```
+
 ### 三个项目模板
-- 生成源码版本
+- 源码版本
 
 ```bash
 lion.abp new -t pro -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录
 ```
 
-- nuget包形式的网关基础版本
-   -  abp自带的所有模块，pro的通知模块，数据字典模块 以及ocelot网关。
+- nuget版本
 
 ```bash
 lion.abp new -t pro.all -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录
 ```
 
-- nuget包形式的基础版本
-   - abp自带的所有模块，pro的通知模块，数据字典模块 无ocelot网关
-
-```bash
-lion.abp new -t pro.simplify -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录
-```
 
 - 模块
 

@@ -4,10 +4,10 @@
 
 // export function configImageminPlugin() {
 //   const plugin = viteImagemin({
-//     gifsicle: {
-//       optimizationLevel: 7,
-//       interlaced: false,
-//     },
+//     // gifsicle: {
+//     //   optimizationLevel: 7,
+//     //   interlaced: false,
+//     // },
 //     optipng: {
 //       optimizationLevel: 7,
 //     },

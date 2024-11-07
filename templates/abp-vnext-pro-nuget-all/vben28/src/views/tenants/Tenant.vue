@@ -21,14 +21,20 @@
               label: t('common.editText'),
               onClick: handleEdit.bind(null, record),
             },
-          ]"
-          :dropDownActions="[
-            // {
-            //   auth: 'AbpTenantManagement.Tenants.ManageConnectionStrings',
-            //   label: t('routes.tenant.connectionString'),
-            //   onClick: handleConnectionString.bind(null, record),
-            // },
             {
+              icon: 'ant-design:edit-outlined',
+              auth: 'AbpTenantManagement.Tenants.ManageConnectionStrings',
+              label: t('routes.tenant.connectionString'),
+              onClick: handleConnectionString.bind(null, record),
+            },
+            {
+              icon: 'ant-design:edit-outlined',
+              auth: 'AbpTenantManagement.Tenants.ManageFeatures',
+              label: t('routes.tenant.manageFeatures'),
+              onClick: handleManageFeatures.bind(null, record),
+            },
+            {
+              icon: 'ant-design:minus-outlined',
               auth: 'AbpTenantManagement.Tenants.Delete',
               label: t('common.delText'),
               onClick: handleDelete.bind(null, record),
@@ -52,6 +58,11 @@
       @reload="reload"
       :bodyStyle="{ 'padding-top': '0' }"
     />
+    <ManageFeatrue
+      @register="registerTenantFeatureModal"
+      @reload="reload"
+      :bodyStyle="{ 'padding-top': '0' }"
+    />
   </div>
 </template>
 
@@ -68,7 +79,7 @@
     deleteTenantAsync,
   } from '/@/views/tenants/Tenant';
   import CreateTenant from './CreateTenant.vue';
-
+  import ManageFeatrue from './ManageFeatrue.vue';
   import EditConnectionString from './EditConnectionString.vue';
   import EditTenant from './EditTenant.vue';
   import { useMessage } from '/@/hooks/web/useMessage';
@@ -80,11 +91,13 @@
       CreateTenant,
       EditTenant,
       EditConnectionString,
+      ManageFeatrue
     },
     setup() {
       const { t } = useI18n();
 
       const [registerCreateTenantModal, { openModal: openCreateTenantModal }] = useModal();
+      const [registerTenantFeatureModal, { openModal: openFeatureTenantModal }] = useModal();
       const [registerEditTenantModal, { openModal: openEditTenantModal }] = useModal();
       const [registerEditConnectionStringModal, { openModal: openEditConnectionStringModal }] =
         useModal();
@@ -106,7 +119,7 @@
           slots: {
             customRender: 'action',
           },
-          width: 120,
+          width: 350,
           fixed: 'right',
         },
       });
@@ -115,7 +128,7 @@
       const handleEdit = (record: Recordable) => {
         openEditTenantModal(true, { record: record });
       };
-
+    
       // 删除
       const handleDelete = async (record: Recordable) => {
         let msg = t('common.askDelete');
@@ -133,6 +146,9 @@
       const handleConnectionString = async (record: Recordable) => {
         openEditConnectionStringModal(true, { record: record });
       };
+      const handleManageFeatures = async (record: Recordable) => {
+        openFeatureTenantModal(true, { id: record.id });
+      };
       return {
         t,
         registerTable,
@@ -145,6 +161,8 @@
         handleEdit,
         registerEditTenantModal,
         registerEditConnectionStringModal,
+        handleManageFeatures,
+        registerTenantFeatureModal
       };
     },
   });

@@ -58,7 +58,7 @@ export function login(input: LoginInput): Promise<LoginOutput> {
  */
 export function getAbpApplicationConfiguration() {
   const _abpApplicationConfigurationServiceProxy = new AbpApplicationConfigurationServiceProxy();
-  return _abpApplicationConfigurationServiceProxy.applicationConfiguration();
+  return _abpApplicationConfigurationServiceProxy.applicationConfiguration(false);
 }
 
 

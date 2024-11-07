@@ -42,11 +42,8 @@ export const tableColumns: BasicColumn[] = [
           enableDictionaryAsync(request)
             .then(() => {
               record.isEnabled = checked;
-              message.success(t('common.operationSuccess'));
             })
-            .catch(() => {
-              message.error(t('common.operationFail'));
-            });
+            .catch(() => {});
         },
       });
     },
