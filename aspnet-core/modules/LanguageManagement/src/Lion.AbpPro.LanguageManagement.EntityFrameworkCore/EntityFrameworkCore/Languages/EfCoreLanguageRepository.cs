@@ -14,10 +14,11 @@ public class EfCoreLanguageRepository :
     public virtual async Task<List<Language>> ListAsync(bool? isEnabled = null)
     {
         return await (await GetDbSetAsync())
+            .Where(e => e.CultureName == "zh-Hans" || e.CultureName == "en")
             .WhereIf(isEnabled != null, e => e.IsEnabled == isEnabled)
             .ToListAsync();
     }
-    
+
     /// <summary>
     /// 查询语言
     /// </summary>
@@ -27,6 +28,7 @@ public class EfCoreLanguageRepository :
     public async Task<List<Language>> ListAsync(int maxResultCount = 10, int skipCount = 0, string filter = null)
     {
         return await (await GetDbSetAsync())
+            .Where(e => e.CultureName == "zh-Hans" || e.CultureName == "en")
             .WhereIf(filter.IsNotNullOrWhiteSpace(), e => e.CultureName.Contains(filter) || e.UiCultureName.Contains(filter) || e.DisplayName.Contains(filter))
             .OrderByDescending(e => e.CreationTime)
             .PageBy(skipCount, maxResultCount)
@@ -37,9 +39,10 @@ public class EfCoreLanguageRepository :
     /// 获取总条数
     /// </summary>
     /// <param name="filter">查询条件 cultureName or uiCultureName or displayName</param>
-    public async Task<long> CountAsync( string filter = null)
+    public async Task<long> CountAsync(string filter = null)
     {
         return await (await GetDbSetAsync())
+            .Where(e => e.CultureName == "zh-Hans" || e.CultureName == "en")
             .WhereIf(filter.IsNotNullOrWhiteSpace(), e => e.CultureName.Contains(filter) || e.UiCultureName.Contains(filter) || e.DisplayName.Contains(filter))
             .CountAsync();
     }
