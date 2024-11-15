@@ -22,7 +22,8 @@ public class LanguageAppService : ApplicationService, ILanguageAppService
     {
         var languages = await _languageManager.ListAsync();
         var list = ObjectMapper.Map<List<Language>, List<PageLanguageOutput>>(languages);
-        return list;
+        // 前端只支持这2种语言，其他语言不显示
+        return list.Where(e => e.CultureName == "zh-Hans" || e.CultureName == "en").ToList();
     }
 
 
