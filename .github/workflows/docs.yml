@@ -1,18 +1,18 @@
-name: Docs
-on:
-  push:
-    branches:
-      - main
-jobs:
-  build-docs-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-      - name: Deploy docs 🚀
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          CONFIG_FILE: docs/mkdocs.yml
+# name: Docs
+# on:
+#   push:
+#     branches:
+#       - main
+# jobs:
+#   build-docs-and-deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout 🛎️
+#         uses: actions/checkout@v2
+#         with:
+#           persist-credentials: false
+#       - name: Deploy docs 🚀
+#         uses: mhausenblas/mkdocs-deploy-gh-pages@master
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.TOKEN }}
+#           CONFIG_FILE: docs/mkdocs.yml
