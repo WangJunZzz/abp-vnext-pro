@@ -77,5 +77,12 @@ namespace Lion.AbpPro.BasicManagement.Systems
         {
             return _userAppService.LockAsync(input);
         }
+
+        [HttpPost("findByUserName")]
+        [SwaggerOperation(summary: "通过用户名查找用户", Tags = new[] { "Users" })]
+        public Task<IdentityUserDto> FindByUserNameAsync(FindByUserNameInput input)
+        {
+            return _userAppService.FindByUserNameAsync(input);
+        }
     }
 }

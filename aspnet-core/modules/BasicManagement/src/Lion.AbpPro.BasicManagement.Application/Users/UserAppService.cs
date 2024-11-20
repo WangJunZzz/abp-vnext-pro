@@ -167,5 +167,18 @@ namespace Lion.AbpPro.BasicManagement.Users
             identityUser.SetIsActive(input.Locked);
             await _userManager.UpdateAsync(identityUser);
         }
+        
+        /// <summary>
+        /// 通过username获取用户信息
+        /// </summary>
+        public virtual async Task<IdentityUserDto> FindByUserNameAsync(FindByUserNameInput input)
+        {
+            var user = await _userManager.FindByNameAsync(input.UserName);
+            if (user == null)
+            {
+                throw new BusinessException(BasicManagementErrorCodes.UserNotExist);
+            }
+            return ObjectMapper.Map<Volo.Abp.Identity.IdentityUser, IdentityUserDto>(user);
+        }
     }
 }

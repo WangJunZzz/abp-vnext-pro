@@ -8,4 +8,5 @@ public static class BasicManagementErrorCodes
     public const string UserDisabled = BasicManagementConsts.NameSpace + ":100004";
     public const string TenantNotExist = BasicManagementConsts.NameSpace + ":100005";
     public const string NotSupportSetConnectionString = BasicManagementConsts.NameSpace + ":100006";
+    public const string UserNotExist = BasicManagementConsts.NameSpace + ":100007";
 }

@@ -22,6 +22,7 @@
     "Lion.AbpPro.BasicManagement:100003": "UserOrPasswordMismatch",
     "Lion.AbpPro.BasicManagement:100004": "UserDisabled",
     "Lion.AbpPro.BasicManagement:100005": "Tenant Not Exist",
-    "Lion.AbpPro.BasicManagement:100006": "Not Support Set ConnectionString"
+    "Lion.AbpPro.BasicManagement:100006": "Not Support Set ConnectionString",
+    "Lion.AbpPro.BasicManagement:100007": "User Not Exist"
   }
 }
