@@ -52,5 +52,10 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Dtos
         /// 消息类型
         /// </summary>
         public MessageType? MessageType { get; set; }
+        
+        /// <summary>
+        /// 消息等级
+        /// </summary>
+        public MessageLevel? MessageLevel { get; set; }
     }
 }

@@ -94,8 +94,8 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task<PagedResultDto<PagingNotificationOutput>> PageNotificationAsync(PagingNotificationInput input)
         {
-            var totalCount = await _notificationManager.GetPagingCountAsync(input.Title, input.Content, input.SenderUserId, input.SenderUserName, input.ReceiverUserId, input.ReceiverUserName, input.Read, input.StartReadTime, input.EndReadTime, input.MessageType);
-            var list = await _notificationManager.GetPagingListAsync(input.Title, input.Content, input.SenderUserId, input.SenderUserName, input.ReceiverUserId, input.ReceiverUserName, input.Read, input.StartReadTime, input.EndReadTime, input.MessageType, input.PageSize, input.SkipCount);
+            var totalCount = await _notificationManager.GetPagingCountAsync(input.Title, input.Content, input.SenderUserId, input.SenderUserName, input.ReceiverUserId, input.ReceiverUserName, input.Read, input.StartReadTime, input.EndReadTime, input.MessageType,input.MessageLevel);
+            var list = await _notificationManager.GetPagingListAsync(input.Title, input.Content, input.SenderUserId, input.SenderUserName, input.ReceiverUserId, input.ReceiverUserName, input.Read, input.StartReadTime, input.EndReadTime, input.MessageType,input.MessageLevel, input.PageSize, input.SkipCount);
             return new PagedResultDto<PagingNotificationOutput>(totalCount, ObjectMapper.Map<List<NotificationDto>, List<PagingNotificationOutput>>(list));
         }
 

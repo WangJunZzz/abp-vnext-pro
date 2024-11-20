@@ -19,6 +19,7 @@ public interface INotificationManager
         DateTime? startReadTime,
         DateTime? endReadTime,
         MessageType? messageType,
+        MessageLevel? messageLevel,
         int maxResultCount = 10,
         int skipCount = 0);
 
@@ -35,7 +36,8 @@ public interface INotificationManager
         bool? read,
         DateTime? startReadTime,
         DateTime? endReadTime,
-        MessageType? messageType);
+        MessageType? messageType,
+        MessageLevel? messageLevel);
 
     /// <summary>
     /// 发送警告文本消息

@@ -19,6 +19,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             DateTime? startReadTime,
             DateTime? endReadTime,
             MessageType? messageType,
+            MessageLevel? messageLevel,
             int maxResultCount = 10,
             int skipCount = 0,
             CancellationToken cancellationToken = default);
@@ -37,6 +38,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             DateTime? startReadTime,
             DateTime? endReadTime,
             MessageType? messageType,
+            MessageLevel? messageLevel,
             CancellationToken cancellationToken = default);
         
         Task<List<Notification>> GetListAsync(List<Guid> ids);

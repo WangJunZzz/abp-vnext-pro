@@ -29,10 +29,11 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             DateTime? startReadTime,
             DateTime? endReadTime,
             MessageType? messageType,
+            MessageLevel? messageLevel,
             int maxResultCount = 10,
             int skipCount = 0)
         {
-            var list = await _notificationRepository.GetPagingListAsync(title, content, senderUserId, senderUserName, receiverUserId, receiverUserName, read, startReadTime, endReadTime, messageType, maxResultCount, skipCount);
+            var list = await _notificationRepository.GetPagingListAsync(title, content, senderUserId, senderUserName, receiverUserId, receiverUserName, read, startReadTime, endReadTime, messageType,messageLevel, maxResultCount, skipCount);
             return ObjectMapper.Map<List<Notification>, List<NotificationDto>>(list);
         }
 
@@ -49,9 +50,10 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             bool? read,
             DateTime? startReadTime,
             DateTime? endReadTime,
-            MessageType? messageType)
+            MessageType? messageType,
+            MessageLevel? messageLevel)
         {
-            return await _notificationRepository.GetPagingCountAsync(title, content, senderUserId, senderUserName, receiverUserId, receiverUserName, read, startReadTime, endReadTime, messageType);
+            return await _notificationRepository.GetPagingCountAsync(title, content, senderUserId, senderUserName, receiverUserId, receiverUserName, read, startReadTime, endReadTime, messageType, messageLevel);
         }
 
         public async Task SendCommonWarningMessageAsync(string title, string content, MessageLevel level, Guid receiveUserId, string receiveUserName)

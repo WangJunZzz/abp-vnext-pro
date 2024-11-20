@@ -23,6 +23,7 @@ namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore.Notifications
             DateTime? startReadTime,
             DateTime? endReadTime,
             MessageType? messageType,
+            MessageLevel? messageLevel,
             int maxResultCount = 10,
             int skipCount = 0,
             CancellationToken cancellationToken = default)
@@ -38,6 +39,7 @@ namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore.Notifications
                 .WhereIf(startReadTime.HasValue, e => e.ReadTime >= startReadTime.Value)
                 .WhereIf(endReadTime.HasValue, e => e.ReadTime <= endReadTime.Value)
                 .WhereIf(messageType.HasValue, e => e.MessageType == messageType.Value)
+                .WhereIf(messageLevel.HasValue, e => e.MessageLevel == messageLevel.Value)
                 .OrderByDescending(e => e.CreationTime)
                 .PageBy(skipCount, maxResultCount)
                 .ToListAsync(GetCancellationToken(cancellationToken));
@@ -54,6 +56,7 @@ namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore.Notifications
             DateTime? startReadTime,
             DateTime? endReadTime,
             MessageType? messageType,
+            MessageLevel? messageLevel,
             CancellationToken cancellationToken = default)
         {
             return await (await GetDbSetAsync())
@@ -67,6 +70,7 @@ namespace Lion.AbpPro.NotificationManagement.EntityFrameworkCore.Notifications
                 .WhereIf(startReadTime.HasValue, e => e.ReadTime >= startReadTime.Value)
                 .WhereIf(endReadTime.HasValue, e => e.ReadTime <= endReadTime.Value)
                 .WhereIf(messageType.HasValue, e => e.MessageType == messageType.Value)
+                .WhereIf(messageLevel.HasValue, e => e.MessageLevel == messageLevel.Value)
                 .CountAsync(cancellationToken);
         }
 
