@@ -7,7 +7,7 @@ on:
   # push 到指定分支
   push:
     branches:
-      - *
+      - test-docs
     # 只在下列路径变更时触发
     # paths:
     #   - 'docs/**'
