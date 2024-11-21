@@ -25,10 +25,10 @@ env:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest  #指定服务器的运行环境：最新版本ubuntu
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./docs  #指定运行的工作目录
+    # defaults:
+    #   run:
+    #     shell: bash
+    #     working-directory: ./docs  #指定运行的工作目录
     steps:
       # 使用actions/checkout@v4 库拉取代码到 ubuntu 上
       - name: Checkout
@@ -42,6 +42,7 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
+          context: docs
  
       # 设置node的版本
       - name: Use Node.js
@@ -50,6 +51,7 @@ jobs:
         with:
           node-version: '18.x'
           cache: 'pnpm'
+          context: docs
  
       # 打包成静态文件
       - name: Build
@@ -67,3 +69,4 @@ jobs:
           branch: gh-pages
           # 填写打包好的目录名称路径，本项目配置在根目录
           folder: dist
+          context: docs          
