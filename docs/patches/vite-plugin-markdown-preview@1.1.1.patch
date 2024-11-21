@@ -1,0 +1,32 @@
+diff --git a/dist/index.js b/dist/index.js
+index 5c354f7fc1239f8c5ff92d91ef87afd0eca78bdb..e374d9a8144cafb2a7564480aadc468bbb0111e3 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -13,6 +13,7 @@ import { createHash } from "node:crypto";
+ import { fromMarkdown } from "mdast-util-from-markdown";
+ import { frontmatterFromMarkdown, frontmatterToMarkdown } from "mdast-util-frontmatter";
+ import { toMarkdown } from "mdast-util-to-markdown";
++import { frontmatter } from 'micromark-extension-frontmatter';
+ import { visit } from "unist-util-visit";
+ function getHash(text) {
+   return createHash("sha256").update(text).digest("hex").substring(0, 8);
+@@ -28,6 +29,7 @@ function praseMeta(meta) {
+ }
+ function remarkDemoBlock(id, code, config) {
+   const tree = fromMarkdown(code, {
++    extensions: [frontmatter(['yaml', 'toml'])],
+     mdastExtensions: [frontmatterFromMarkdown(["yaml", "toml"])]
+   });
+   const blocks = {};
+diff --git a/package.json b/package.json
+index 31fcc5521e2e41ad0faf49359e173eec3ecb62ee..d123b492b36675a1c83bb277805c471878bcea43 100644
+--- a/package.json
++++ b/package.json
+@@ -45,6 +45,7 @@
+     "mdast-util-from-markdown": "^1.2.0",
+     "mdast-util-frontmatter": "^1.0.0",
+     "mdast-util-to-markdown": "^1.5.0",
++    "micromark-extension-frontmatter": "^1.1.1",
+     "unist-util-visit": "^4.1.1"
+   },
+   "devDependencies": {

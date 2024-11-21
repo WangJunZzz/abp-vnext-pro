@@ -1,0 +1,94 @@
+/***** vitepress 样式优化 ******/
+
+/* 大屏大一点 */
+@media (min-width: 1440px) {
+  .VPDoc.has-aside .content-container.content-container {
+    max-width: 100%;
+  }
+}
+
+/* nav 换行问题（6 个还是有点小多，后面看看怎么优化） */
+@media (max-width: 960px) {
+  .VPNav {
+    .VPNavBarMenuLink,
+    .VPNavBarMenuGroup .button {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+/* 首页样式修改 */
+.VPHero {
+  .image-bg {
+    opacity: 0.8;
+    transition: opacity 1s ease;
+  }
+  .image-container:hover .image-bg {
+    opacity: 0.4;
+  }
+}
+
+/* 自定义块样式 */
+.custom-block .custom-block-title {
+  font-size: 16px;
+}
+.custom-block.tip .custom-block-title {
+  color: var(--vp-c-brand-1);
+}
+
+/* code-group 样式 */
+.vp-code-group .tabs label {
+  background-color: transparent;
+}
+
+/* table 样式 */
+table {
+  width: 100% !important;
+  display: table !important;
+}
+
+/**
+ * VitePress: Custom fix
+ * -------------------------------------------------------------------------- */
+
+/*
+  Use lighter colors for links in dark mode for a11y.
+  Also specify some classes twice to have higher specificity
+  over scoped class data attribute.
+*/
+
+.link.active,
+.link.active span,
+.VPNavBarMenuLink:hover span,
+.VPSidebarItem.is-active .link,
+.VPSidebar .link:hover {
+  color: var(--vp-c-brand-1);
+}
+
+.vp-doc a:hover,
+.vp-doc a > code:hover {
+  color: var(--vp-c-brand-2);
+}
+
+/* Transition by color instead of opacity */
+.dark .vp-doc .custom-block a {
+  transition: color 0.25s;
+}
+
+/* dark/light radial transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root),
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root),
+.dark::view-transition-old(root) {
+  z-index: 9999;
+}

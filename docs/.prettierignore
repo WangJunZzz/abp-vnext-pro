@@ -1,0 +1,20 @@
+# See https://github.com/prettier/prettier/blob/main/docs/ignore.md
+
+# dependencies
+node_modules
+
+# compiled output
+dist
+dist-dev
+build
+cache
+.cache
+.temp
+.tmp
+
+# lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# user-specific files
