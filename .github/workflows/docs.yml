@@ -34,8 +34,7 @@ jobs:
           persist-credentials: false
 
       - name: Set up the working directory
-        run:
-            working-directory: ./docs 
+        run: working-directory: ./docs 
             
       # 安装 pnpm
       - name: Install pnpm
