@@ -38,6 +38,11 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         Task SetReadAsync(SetReadInput input);
 
         /// <summary>
+        /// 批量设置已读
+        /// </summary>
+        Task SetBatchReadAsync(SetBatchReadInput input);
+
+        /// <summary>
         /// 分页获取消息
         /// </summary>
         Task<PagedResultDto<PagingNotificationOutput>> PageNotificationAsync(PagingNotificationInput input);

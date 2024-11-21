@@ -29,6 +29,12 @@ public class NotificationSubscriptionManager : NotificationManagementDomainServi
         return ObjectMapper.Map<List<NotificationSubscription>, List<NotificationSubscriptionDto>>(list);
     }
 
+    public async Task<List<NotificationSubscriptionDto>> GetListAsync(List<Guid> notificationId, Guid receiverUserId, CancellationToken cancellationToken = default)
+    {
+        var list = await _notificationSubscriptionRepository.GetListAsync(notificationId, receiverUserId, cancellationToken);
+        return ObjectMapper.Map<List<NotificationSubscription>, List<NotificationSubscriptionDto>>(list);
+    }
+
     public async Task<long> GetPagingCountAsync(Guid notificationId, Guid? receiverUserId, string receiverUserName, DateTime? startReadTime, DateTime? endReadTime, CancellationToken cancellationToken = default)
     {
         return await _notificationSubscriptionRepository.GetPagingCountAsync(notificationId, receiverUserId, receiverUserName, startReadTime, endReadTime, cancellationToken);

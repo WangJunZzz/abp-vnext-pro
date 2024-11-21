@@ -12,6 +12,8 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         }
 
 
+      
+
         /// <summary>
         /// 分页获取文本消息
         /// </summary>x
@@ -80,6 +82,14 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         public Task SetReadAsync(SetReadInput input)
         {
             return _notificationAppService.SetReadAsync(input);
+        }
+        
+        
+        [HttpPost("BatchRead")]
+        [SwaggerOperation(summary: "消息批量设置为已读", Tags = new[] { "Notification" })]
+        public Task SetBatchReadAsync(SetBatchReadInput input)
+        {
+            return _notificationAppService.SetBatchReadAsync(input);
         }
     }
 }

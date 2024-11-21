@@ -30,5 +30,13 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             CancellationToken cancellationToken = default);
 
         Task<NotificationSubscription> FindAsync(Guid receiverUserId, Guid notificationId, CancellationToken cancellationToken = default);
+        
+        /// <summary>
+        /// 分页获取消息
+        /// </summary>
+        Task<List<NotificationSubscription>> GetListAsync(
+            List<Guid> notificationId,
+            Guid receiverUserId,
+            CancellationToken cancellationToken = default);
     }
 }

@@ -32,4 +32,6 @@ public interface INotificationSubscriptionManager
         DateTime? startReadTime,
         DateTime? endReadTime,
         CancellationToken cancellationToken = default);
+
+    Task<List<NotificationSubscriptionDto>> GetListAsync(List<Guid> notificationId, Guid receiverUserId, CancellationToken cancellationToken = default);
 }
