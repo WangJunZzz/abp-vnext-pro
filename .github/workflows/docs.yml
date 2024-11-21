@@ -1,18 +1,69 @@
-# name: Docs
-# on:
-#   push:
-#     branches:
-#       - main
-# jobs:
-#   build-docs-and-deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout 🛎️
-#         uses: actions/checkout@v2
-#         with:
-#           persist-credentials: false
-#       - name: Deploy docs 🚀
-#         uses: mhausenblas/mkdocs-deploy-gh-pages@master
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-#           CONFIG_FILE: docs/mkdocs.yml
+name: GitHub Actions Build and Deploy
+
+# 触发条件
+on:
+  # 手动触发
+  workflow_dispatch:
+  # push 到指定分支
+  push:
+    branches:
+      - *
+    # 只在下列路径变更时触发
+    # paths:
+    #   - 'docs/**'
+    #   - 'package.json'
+
+# 设置权限
+permissions:
+  contents: write
+
+# 设置上海时区
+env:
+  TZ: Asia/Shanghai
+
+# 任务
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest  #指定服务器的运行环境：最新版本ubuntu
+    steps:
+      # 使用actions/checkout@v4 库拉取代码到 ubuntu 上
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # 根据网上资料查询此处可以设置为 false。https://github.com/actions/checkout
+          persist-credentials: false
+
+      - name: Set up the working directory
+        run: |
+            working-directory: ./docs 
+            
+      # 安装 pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+ 
+      # 设置node的版本
+      - name: Use Node.js
+        # 使用 actions/setup-node@v3 库安装 nodejs，with 提供了一个参数 node-version 表示要安装的 nodejs 版本
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'pnpm'
+ 
+      # 打包成静态文件
+      - name: Build
+        run: pnpm install && pnpm build
+ 
+      # 部署到GitHub Pages - 也就是将打包内容发布到GitHub Pages
+      - name: Deploy
+        # 使用别人写好的 actions去部署（将打包文件部署到指定分支上）
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        # 自定义环境变量
+        with:
+          # 指定仓库：你要发布的仓库路径名
+          repository-name: WangJunZzz/abp-vnext-pro
+          # 部署到 deploy-pages 分支，也就是部署后提交到那个分支
+          branch: gh-pages
+          # 填写打包好的目录名称路径，本项目配置在根目录
+          folder: dist
