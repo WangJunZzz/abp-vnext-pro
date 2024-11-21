@@ -25,6 +25,9 @@ env:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest  #指定服务器的运行环境：最新版本ubuntu
+    defaults:
+      run:
+        working-directory: docs  #指定运行的工作目录
     steps:
       # 使用actions/checkout@v4 库拉取代码到 ubuntu 上
       - name: Checkout
@@ -32,9 +35,6 @@ jobs:
         with:
           # 根据网上资料查询此处可以设置为 false。https://github.com/actions/checkout
           persist-credentials: false
-
-      - name: Set up the working directory
-        run:  cd docs 
             
       # 安装 pnpm
       - name: Install pnpm
