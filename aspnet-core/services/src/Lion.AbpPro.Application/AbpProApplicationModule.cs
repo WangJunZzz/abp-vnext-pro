@@ -1,3 +1,5 @@
+using Lion.AbpPro.CodeManagement;
+
 namespace Lion.AbpPro
 {
     [DependsOn(
@@ -8,6 +10,7 @@ namespace Lion.AbpPro
         typeof(NotificationManagementApplicationModule),
         typeof(LanguageManagementApplicationModule),
         typeof(NotificationManagementApplicationModule),
+        typeof(CodeManagementApplicationModule),
         typeof(AbpProFreeSqlModule)
     )]
     public class AbpProApplicationModule : AbpModule

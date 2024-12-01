@@ -13,6 +13,7 @@
         <ProjectReference Include="..\..\..\modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.EntityFrameworkCore\Lion.AbpPro.LanguageManagement.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\Lion.AbpPro.Domain\Lion.AbpPro.Domain.csproj" />
         <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" />
+        <PackageReference Include="Lion.AbpPro.CodeManagement.EntityFrameworkCore" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">

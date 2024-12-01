@@ -15,6 +15,9 @@
     <ProjectReference Include="..\Lion.AbpPro.Application.Contracts\Lion.AbpPro.Application.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Lion.AbpPro.CodeManagement.HttpApi.Client" />
+  </ItemGroup>
  
 
 </Project>

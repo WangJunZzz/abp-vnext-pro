@@ -2,6 +2,7 @@
 
     <Import Project="Directory.Build.Microsoft.targets"/>
     <Import Project="Directory.Build.Volo.targets"/>
+    <Import Project="Directory.Build.Lion.targets"/>
 
     <PropertyGroup>
         <LangVersion>latest</LangVersion>

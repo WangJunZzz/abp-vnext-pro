@@ -15,5 +15,8 @@
         <ProjectReference Include="..\Lion.AbpPro.Application.Contracts\Lion.AbpPro.Application.Contracts.csproj" />
         <ProjectReference Include="..\Lion.AbpPro.FreeSqlRepository\Lion.AbpPro.FreeSqlRepository.csproj" />
     </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Lion.AbpPro.CodeManagement.Application" />
+    </ItemGroup>
 
 </Project>

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
+    <PackageReference Include="Lion.AbpPro.CodeManagement.HttpApi"/>
   </ItemGroup>
 
 </Project>

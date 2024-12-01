@@ -1,3 +1,9 @@
+using Lion.AbpPro.CodeManagement.DataTypes.Aggregates;
+using Lion.AbpPro.CodeManagement.EntityFrameworkCore;
+using Lion.AbpPro.CodeManagement.EntityModels.Aggregates;
+using Lion.AbpPro.CodeManagement.EnumTypes.Aggregates;
+using Lion.AbpPro.CodeManagement.Projects.Aggregates;
+using Lion.AbpPro.CodeManagement.Templates.Aggregates;
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
 using Lion.AbpPro.LanguageManagement.EntityFrameworkCore;
 using Lion.AbpPro.LanguageManagement.Languages.Aggregates;
@@ -20,7 +26,8 @@ namespace Lion.AbpPro.EntityFrameworkCore
         IBasicManagementDbContext,
         INotificationManagementDbContext,
         IDataDictionaryManagementDbContext,
-        ILanguageManagementDbContext
+        ILanguageManagementDbContext,
+        ICodeManagementDbContext
     {
         public DbSet<IdentityUser> Users { get; set; }
         public DbSet<IdentityRole> Roles { get; set; }
@@ -47,6 +54,13 @@ namespace Lion.AbpPro.EntityFrameworkCore
         public DbSet<DataDictionary> DataDictionaries { get;  set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<LanguageText> LanguageTexts { get; set; }
+        
+        // code management
+        public DbSet<Template> Templates { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<EntityModel> EntityModels { get; set; }
+        public DbSet<DataType> DataTypes { get; set; }
+        public DbSet<EnumType> EnumTypes { get; set; }
         
         public AbpProDbContext(DbContextOptions<AbpProDbContext> options)
             : base(options)
@@ -80,7 +94,11 @@ namespace Lion.AbpPro.EntityFrameworkCore
             
             // 多语言
             builder.ConfigureLanguageManagement();
+            
+            // code management
+            builder.ConfigureCodeManagement();
         }
 
+       
     }
 }

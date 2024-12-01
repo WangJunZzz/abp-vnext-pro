@@ -10,10 +10,12 @@
     <ItemGroup>
         <EmbeddedResource Include="Localization\AbpPro\*.json" />
         <Content Remove="Localization\AbpPro\*.json" />
-
-
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="Lion.AbpPro.CodeManagement.Domain.Shared"/>
+    </ItemGroup>
+    
     <ItemGroup>
         <ProjectReference Include="..\..\..\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Domain.Shared\Lion.AbpPro.BasicManagement.Domain.Shared.csproj" />
         <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Domain.Shared\Lion.AbpPro.DataDictionaryManagement.Domain.Shared.csproj" />
