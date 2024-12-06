@@ -13,8 +13,8 @@ const tenant: AppRouteModule = {
   },
   children: [
     {
-      path: 'Tenant',
-      name: 'Tenant',
+      path: 'Page',
+      name: 'TenantPage',
       component: () => import('/@/views/tenants/Tenant.vue'),
       meta: {
         title: t('routes.tenant.tenantList'),
