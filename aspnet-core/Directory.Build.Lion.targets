@@ -1,11 +1,11 @@
 ﻿<Project>
     <ItemGroup>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.Domain" Version="f"/>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.Domain.Shared" Version="0.1.1"/>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.Application.Contracts" Version="0.1.1"/>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.Application" Version="0.1.1"/>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.HttpApi" Version="0.1.1"/>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.HttpApi.Client" Version="0.1.1"/>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.EntityFrameworkCore" Version="0.1.1"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.Domain" Version="1.0.0"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.Domain.Shared" Version="1.0.0"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.Application.Contracts" Version="1.0.0"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.Application" Version="1.0.0"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.HttpApi" Version="1.0.0"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.HttpApi.Client" Version="1.0.0"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.EntityFrameworkCore" Version="1.0.0"/>
     </ItemGroup>
 </Project>
