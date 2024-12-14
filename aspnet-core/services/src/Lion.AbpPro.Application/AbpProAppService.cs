@@ -1,3 +1,5 @@
+using Lion.AbpPro.Localization;
+
 namespace Lion.AbpPro
 {
     /* Inherit your application services from this class.

@@ -1,3 +1,5 @@
+using Lion.AbpPro.Localization;
+
 namespace Lion.AbpPro.Controllers
 {
     /* Inherit your controllers from this class.

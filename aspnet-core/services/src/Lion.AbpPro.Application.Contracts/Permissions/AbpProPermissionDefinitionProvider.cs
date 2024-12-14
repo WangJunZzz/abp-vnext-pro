@@ -1,3 +1,5 @@
+using Lion.AbpPro.Localization;
+
 namespace Lion.AbpPro.Permissions
 {
     public class AbpProPermissionDefinitionProvider : PermissionDefinitionProvider

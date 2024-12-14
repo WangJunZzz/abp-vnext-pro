@@ -1,6 +1,7 @@
 using Lion.AbpPro.BasicManagement;
 using Lion.AbpPro.CodeManagement;
 using Lion.AbpPro.LanguageManagement;
+using Lion.AbpPro.Localization;
 
 namespace Lion.AbpPro
 {

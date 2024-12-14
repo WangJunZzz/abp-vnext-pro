@@ -1,3 +1,4 @@
+using Lion.AbpPro.Localization;
 using Volo.Abp.Features;
 using Volo.Abp.Validation.StringValues;
 

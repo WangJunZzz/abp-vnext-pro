@@ -1,4 +1,4 @@
-namespace Lion.AbpPro
+namespace Lion.AbpPro.Localization
 {
     [LocalizationResourceName("AbpPro")]
     public class AbpProResource

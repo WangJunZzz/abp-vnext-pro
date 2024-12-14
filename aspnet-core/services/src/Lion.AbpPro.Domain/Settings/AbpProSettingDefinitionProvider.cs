@@ -1,3 +1,5 @@
+using Lion.AbpPro.Localization;
+
 namespace Lion.AbpPro.Settings
 {
     public class AbpProSettingDefinitionProvider : SettingDefinitionProvider

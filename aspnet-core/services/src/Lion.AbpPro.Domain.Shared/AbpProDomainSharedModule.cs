@@ -3,6 +3,7 @@ using Lion.AbpPro.BasicManagement.Localization;
 using Lion.AbpPro.CodeManagement;
 using Lion.AbpPro.Core;
 using Lion.AbpPro.LanguageManagement;
+using Lion.AbpPro.Localization;
 
 namespace Lion.AbpPro
 {

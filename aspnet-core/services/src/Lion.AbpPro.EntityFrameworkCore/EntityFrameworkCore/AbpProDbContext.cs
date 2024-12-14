@@ -1,3 +1,4 @@
+using Lion.AbpPro.Books;
 using Lion.AbpPro.CodeManagement.DataTypes.Aggregates;
 using Lion.AbpPro.CodeManagement.EntityFrameworkCore;
 using Lion.AbpPro.CodeManagement.EntityModels.Aggregates;
@@ -62,6 +63,8 @@ namespace Lion.AbpPro.EntityFrameworkCore
         public DbSet<DataType> DataTypes { get; set; }
         public DbSet<EnumType> EnumTypes { get; set; }
         
+        public DbSet<Book> Books { get; set; }
+        
         public AbpProDbContext(DbContextOptions<AbpProDbContext> options)
             : base(options)
         {
@@ -99,6 +102,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
             builder.ConfigureCodeManagement();
         }
 
-       
+
+
     }
 }
