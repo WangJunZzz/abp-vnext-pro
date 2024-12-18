@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.DataProtection;
 using StackExchange.Redis;
+using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.Caching;
+using Volo.Abp.MultiTenancy;
 using Volo.Abp.Settings;
 
 namespace Lion.AbpPro;
@@ -23,6 +25,7 @@ public class AbpProSharedHostingMicroserviceModule : AbpModule
         ConfigureConsul(context, configuration);
         ConfigAntiForgery();
         ConfigureAbpExceptions(context);
+        ConfigureTenantResolvers();
     }
     
     /// <summary>
@@ -75,11 +78,11 @@ public class AbpProSharedHostingMicroserviceModule : AbpModule
                             .Select(o => o.RemovePostFix("/"))
                             .ToArray()
                     )
-                    .WithAbpExposedHeaders()
+                    //.WithAbpExposedHeaders()
                     .SetIsOriginAllowedToAllowWildcardSubdomains()
                     .AllowAnyHeader()
                     .AllowAnyMethod()
-                    .AllowCredentials()
+                    //.AllowCredentials()
                     // https://www.cnblogs.com/JulianHuang/p/14225515.html
                     // https://learn.microsoft.com/zh-cn/aspnet/core/security/cors?view=aspnetcore-7.0
                     .SetPreflightMaxAge((TimeSpan.FromHours(24)));
@@ -117,5 +120,21 @@ public class AbpProSharedHostingMicroserviceModule : AbpModule
         // TODO 检查数据库和redis是否正常 AspNetCore.HealthChecks.Redis AspNetCore.HealthChecks.MySql
         // context.Services.AddHealthChecks().AddRedis(redisConnectionString).AddMySql(connectString);
         context.Services.AddHealthChecks();
+    }
+
+    /// <summary>
+    /// 配置租户解析
+    /// </summary>
+    private void ConfigureTenantResolvers()
+    {
+        Configure<AbpTenantResolveOptions>(options =>
+        {
+            options.TenantResolvers.Clear();
+            // 只保留通过请求头解析租户
+            // options.TenantResolvers.Add(new QueryStringTenantResolveContributor());
+            // options.TenantResolvers.Add(new RouteTenantResolveContributor());
+            options.TenantResolvers.Add(new HeaderTenantResolveContributor());
+            // options.TenantResolvers.Add(new CookieTenantResolveContributor());
+        });
     }
 }

@@ -224,7 +224,6 @@ export const useUserStore = defineStore({
      */
     async logout(goLogin = false) {
       try {
-        debugger;
         if (this.userInfo?.isSts) {
           await useOidcLogout();
         } else {
