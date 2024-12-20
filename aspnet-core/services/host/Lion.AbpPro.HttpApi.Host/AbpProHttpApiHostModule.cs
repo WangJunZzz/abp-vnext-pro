@@ -1,3 +1,5 @@
+using Volo.Abp.DistributedLocking;
+
 namespace Lion.AbpPro
 {
     [DependsOn(
@@ -12,7 +14,8 @@ namespace Lion.AbpPro
         typeof(AbpProCapModule),
         typeof(AbpProCapEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-        typeof(AbpCachingStackExchangeRedisModule)
+        typeof(AbpCachingStackExchangeRedisModule),
+        typeof(AbpDistributedLockingModule)
         //typeof(AbpBackgroundJobsHangfireModule)
     )]
     public partial class AbpProHttpApiHostModule : AbpModule
@@ -28,6 +31,7 @@ namespace Lion.AbpPro
         {
             var configuration = context.Services.GetConfiguration();
             ConfigureCache(context);
+            ConfigurationDistributedLocking(context);
             ConfigureSwaggerServices(context);
             ConfigureJwtAuthentication(context, configuration);
             //ConfigureHangfire(context);

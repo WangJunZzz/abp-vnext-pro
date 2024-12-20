@@ -40,6 +40,8 @@
         <PackageReference Include="MiniProfiler.EntityFrameworkCore" />
         <PackageReference Include="MiniProfiler.Shared" />
         <PackageReference Include="Volo.Abp.BackgroundJobs.HangFire" />
+        <PackageReference Include="Volo.Abp.DistributedLocking"/>
+        <PackageReference Include="DistributedLock.Redis"/>
     </ItemGroup>
 
     <ItemGroup>

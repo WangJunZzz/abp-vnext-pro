@@ -1,4 +1,7 @@
-﻿namespace Lion.AbpPro;
+﻿using Medallion.Threading;
+using Medallion.Threading.Redis;
+
+namespace Lion.AbpPro;
 
 public partial class AbpProHttpApiHostModule
 {
@@ -269,5 +272,19 @@ public partial class AbpProHttpApiHostModule
     private void ConfigurationMultiTenancy()
     {
         Configure<AbpMultiTenancyOptions>(options => { options.IsEnabled = MultiTenancyConsts.IsEnabled; });
+    }
+
+    /// <summary>
+    /// 配置redis分布式锁
+    /// </summary>
+    private void ConfigurationDistributedLocking(ServiceConfigurationContext context)
+    {
+        var configuration = context.Services.GetConfiguration();
+        var connectionString = configuration.GetValue<string>("Redis:Configuration");
+        context.Services.AddSingleton<IDistributedLockProvider>(sp =>
+        {
+            var connection = ConnectionMultiplexer.Connect(connectionString);
+            return new RedisDistributedSynchronizationProvider(connection.GetDatabase());
+        });
     }
 }

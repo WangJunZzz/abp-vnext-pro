@@ -91,5 +91,10 @@
         <PackageReference Update="NEST" Version="7.17.5"/>
 
         <PackageReference Update="WebApiClientCore" Version="2.1.4" />
+        
+        <!-- redis分布式锁-->
+        <PackageReference Update="DistributedLock.Redis" Version="1.0.3" />
+        
+        
     </ItemGroup>
 </Project>

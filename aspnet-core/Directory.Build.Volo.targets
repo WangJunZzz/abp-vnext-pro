@@ -89,5 +89,6 @@
         <PackageReference Update="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="8.3.3"/>
         <PackageReference Update="Volo.Abp.EventBus" Version="8.3.3"/>
         <PackageReference Update="Volo.Abp.Localization" Version="8.3.3" />
+        <PackageReference Update="Volo.Abp.DistributedLocking" Version="8.3.3" />
     </ItemGroup>
 </Project>
