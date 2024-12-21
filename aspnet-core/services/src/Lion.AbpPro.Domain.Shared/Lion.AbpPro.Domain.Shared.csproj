@@ -14,6 +14,7 @@
 
     <ItemGroup>
         <PackageReference Include="Lion.AbpPro.CodeManagement.Domain.Shared"/>
+        <PackageReference Include="Lion.AbpPro.TemplateManagement.Domain.Shared"/>
     </ItemGroup>
     
     <ItemGroup>

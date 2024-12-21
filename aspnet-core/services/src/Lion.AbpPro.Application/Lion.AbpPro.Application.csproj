@@ -17,6 +17,7 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Lion.AbpPro.CodeManagement.Application" />
+        <PackageReference Include="Lion.AbpPro.TemplateManagement.Application" />
     </ItemGroup>
 
 </Project>

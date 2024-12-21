@@ -1,4 +1,5 @@
 using Lion.AbpPro.CodeManagement;
+using Lion.AbpPro.TemplateManagement;
 
 namespace Lion.AbpPro
 {
@@ -11,6 +12,7 @@ namespace Lion.AbpPro
         typeof(LanguageManagementApplicationModule),
         typeof(NotificationManagementApplicationModule),
         typeof(CodeManagementApplicationModule),
+        typeof(TemplateManagementApplicationModule),
         typeof(AbpProFreeSqlModule)
     )]
     public class AbpProApplicationModule : AbpModule

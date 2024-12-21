@@ -10,6 +10,8 @@ using Lion.AbpPro.LanguageManagement.EntityFrameworkCore;
 using Lion.AbpPro.LanguageManagement.Languages.Aggregates;
 using Lion.AbpPro.LanguageManagement.LanguageTexts.Aggregates;
 using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
+using Lion.AbpPro.TemplateManagement.EntityFrameworkCore;
+using Lion.AbpPro.TemplateManagement.TextTemplates;
 
 namespace Lion.AbpPro.EntityFrameworkCore
 {
@@ -28,7 +30,8 @@ namespace Lion.AbpPro.EntityFrameworkCore
         INotificationManagementDbContext,
         IDataDictionaryManagementDbContext,
         ILanguageManagementDbContext,
-        ICodeManagementDbContext
+        ICodeManagementDbContext,
+        ITemplateManagementDbContext
     {
         public DbSet<IdentityUser> Users { get; set; }
         public DbSet<IdentityRole> Roles { get; set; }
@@ -62,6 +65,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
         public DbSet<EntityModel> EntityModels { get; set; }
         public DbSet<DataType> DataTypes { get; set; }
         public DbSet<EnumType> EnumTypes { get; set; }
+        public DbSet<TextTemplate> TextTemplates { get; set; }
         
         public DbSet<Book> Books { get; set; }
         
@@ -100,9 +104,11 @@ namespace Lion.AbpPro.EntityFrameworkCore
             
             // code management
             builder.ConfigureCodeManagement();
+            
+            builder.ConfigureTemplateManagement();
         }
 
 
-
+        
     }
 }

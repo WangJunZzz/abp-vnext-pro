@@ -2,6 +2,7 @@ using Lion.AbpPro.BasicManagement;
 using Lion.AbpPro.CodeManagement;
 using Lion.AbpPro.LanguageManagement;
 using Lion.AbpPro.Localization;
+using Lion.AbpPro.TemplateManagement;
 
 namespace Lion.AbpPro
 {
@@ -11,7 +12,8 @@ namespace Lion.AbpPro
         typeof(DataDictionaryManagementHttpApiModule),
         typeof(NotificationManagementHttpApiModule),
         typeof(LanguageManagementHttpApiModule),
-        typeof(CodeManagementHttpApiModule)
+        typeof(CodeManagementHttpApiModule),
+        typeof(TemplateManagementHttpApiModule)
         )]
     public class AbpProHttpApiModule : AbpModule
     {

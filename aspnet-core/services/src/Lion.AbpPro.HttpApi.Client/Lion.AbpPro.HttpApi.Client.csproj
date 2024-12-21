@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="Lion.AbpPro.CodeManagement.HttpApi.Client" />
+    <PackageReference Include="Lion.AbpPro.TemplateManagement.HttpApi.Client" />
   </ItemGroup>
  
 

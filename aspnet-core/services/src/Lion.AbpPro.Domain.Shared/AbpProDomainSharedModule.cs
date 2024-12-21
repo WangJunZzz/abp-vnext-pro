@@ -4,6 +4,7 @@ using Lion.AbpPro.CodeManagement;
 using Lion.AbpPro.Core;
 using Lion.AbpPro.LanguageManagement;
 using Lion.AbpPro.Localization;
+using Lion.AbpPro.TemplateManagement;
 
 namespace Lion.AbpPro
 {
@@ -13,7 +14,8 @@ namespace Lion.AbpPro
         typeof(DataDictionaryManagementDomainSharedModule),
         typeof(NotificationManagementDomainSharedModule),
         typeof(LanguageManagementDomainSharedModule),
-        typeof(CodeManagementDomainSharedModule)
+        typeof(CodeManagementDomainSharedModule),
+        typeof(TemplateManagementDomainSharedModule)
     )]
     public class AbpProDomainSharedModule : AbpModule
     {

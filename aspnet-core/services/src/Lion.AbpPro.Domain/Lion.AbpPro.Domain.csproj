@@ -18,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Emailing" />
     <PackageReference Include="Lion.AbpPro.CodeManagement.Domain"/>
+    <PackageReference Include="Lion.AbpPro.TemplateManagement.Domain"/>
   </ItemGroup>
 
 

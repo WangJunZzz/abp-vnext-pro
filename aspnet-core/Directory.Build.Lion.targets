@@ -1,11 +1,19 @@
 ﻿<Project>
     <ItemGroup>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.Domain" Version="1.1.9"/>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.Domain.Shared" Version="1.1.9"/>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.Application.Contracts" Version="1.1.9"/>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.Application" Version="1.1.9"/>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.HttpApi" Version="1.1.9"/>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.HttpApi.Client" Version="1.1.9"/>
-        <PackageReference Update="Lion.AbpPro.CodeManagement.EntityFrameworkCore" Version="1.1.9"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.Domain" Version="1.2.2"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.Domain.Shared" Version="1.2.2"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.Application.Contracts" Version="1.2.2"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.Application" Version="1.2.2"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.HttpApi" Version="1.2.2"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.HttpApi.Client" Version="1.2.2"/>
+        <PackageReference Update="Lion.AbpPro.CodeManagement.EntityFrameworkCore" Version="1.2.2"/>
+
+        <PackageReference Update="Lion.AbpPro.TemplateManagement.Domain" Version="1.2.2"/>
+        <PackageReference Update="Lion.AbpPro.TemplateManagement.Domain.Shared" Version="1.2.2"/>
+        <PackageReference Update="Lion.AbpPro.TemplateManagement.Application.Contracts" Version="1.2.2"/>
+        <PackageReference Update="Lion.AbpPro.TemplateManagement.Application" Version="1.2.2"/>
+        <PackageReference Update="Lion.AbpPro.TemplateManagement.HttpApi" Version="1.2.2"/>
+        <PackageReference Update="Lion.AbpPro.TemplateManagement.HttpApi.Client" Version="1.2.2"/>
+        <PackageReference Update="Lion.AbpPro.TemplateManagement.EntityFrameworkCore" Version="1.2.2"/>
     </ItemGroup>
 </Project>

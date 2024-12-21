@@ -15,6 +15,7 @@
     <ItemGroup>
         <PackageReference Include="Volo.Abp.ObjectExtending" />
         <PackageReference Include="Lion.AbpPro.CodeManagement.Application.Contracts" />
+        <PackageReference Include="Lion.AbpPro.TemplateManagement.Application.Contracts" />
     </ItemGroup>
 
 
