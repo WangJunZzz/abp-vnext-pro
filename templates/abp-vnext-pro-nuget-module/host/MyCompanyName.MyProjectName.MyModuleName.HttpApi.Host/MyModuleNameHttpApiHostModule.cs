@@ -30,6 +30,7 @@ namespace MyCompanyName.MyProjectName.MyModuleName
             ConfigureLocalization();
             ConfigureVirtualFileSystem(context);
             ConfigurationMultiTenancy();
+            context.Services.AddAlwaysAllowAuthorization();
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
