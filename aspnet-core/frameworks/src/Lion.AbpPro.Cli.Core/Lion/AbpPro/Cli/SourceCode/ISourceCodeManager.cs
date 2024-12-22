@@ -17,4 +17,6 @@ public interface ISourceCodeManager
     /// 替换
     /// </summary>
     void ReplaceTemplates(SourceCodeContext context);
+
+    void ReplaceLocalTemplates(SourceCodeContext context);
 }

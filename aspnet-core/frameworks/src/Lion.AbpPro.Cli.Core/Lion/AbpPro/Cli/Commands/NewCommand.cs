@@ -94,19 +94,46 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         outputFolder = outputFolder != null ? Path.GetFullPath(outputFolder) : Directory.GetCurrentDirectory();
 
         context.OutputFolder = outputFolder;
-        //版本
-        var version = commandLineArgs.Options.GetOrNull(CommandOptions.Version.Short, CommandOptions.Version.Long);
 
-        #endregion
+        if (_cliOptions.Templates.FirstOrDefault(e => e.Name == template) != null)
+        {
+            var source = commandLineArgs.Options.GetOrNull(CommandOptions.Source.Short, CommandOptions.Source.Long);
+            context.TemplateFolder = source;
+            if (context.TemplateFolder.IsNullOrWhiteSpace())
+            {
+                Console.WriteLine("请输入源码地址");
+                Console.WriteLine("示例: lion.abp new -t local -c 公司名称 -p 项目名称 -s C:\\Users\\Code -o C:\\Users\\output");
+                return;
+            }
+            
+            if (context.OutputFolder.IsNullOrWhiteSpace())
+            {
+                Console.WriteLine("请输入输出地址");
+                Console.WriteLine("示例: lion.abp new -t local -c 公司名称 -p 项目名称 -s C:\\Users\\Code -o C:\\Users\\output");
+                return;
+            }
+            
+            _sourceCodeManager.ReplaceLocalTemplates(context);
+            
+            
+        }
+        else
+        {
+            //版本
+            var version = commandLineArgs.Options.GetOrNull(CommandOptions.Version.Short, CommandOptions.Version.Long);
 
-        // 获取源码
-        context.TemplateFile = await _sourceCodeManager.GetAsync(version);
+            #endregion
 
-        // 解压
-        _sourceCodeManager.ExtractProjectZip(context);
+            // 获取源码
+            context.TemplateFile = await _sourceCodeManager.GetAsync(version);
 
-        // 替换模板
-        _sourceCodeManager.ReplaceTemplates(context);
+            // 解压
+            _sourceCodeManager.ExtractProjectZip(context);
+
+            // 替换模板
+            _sourceCodeManager.ReplaceTemplates(context);
+        }
+
 
         // 打开文件夹
         Process.Start("explorer.exe", context.OutputFolder);

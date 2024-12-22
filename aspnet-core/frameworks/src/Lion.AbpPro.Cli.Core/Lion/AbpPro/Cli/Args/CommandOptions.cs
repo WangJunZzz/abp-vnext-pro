@@ -51,6 +51,15 @@ public static class CommandOptions
     /// <summary>
     /// 版本
     /// </summary>
+    public static class Source
+    {
+        public const string Short = "s";
+        public const string Long = "source";
+    }
+    
+    /// <summary>
+    /// 版本
+    /// </summary>
     public static class Version
     {
         public const string Short = "v";

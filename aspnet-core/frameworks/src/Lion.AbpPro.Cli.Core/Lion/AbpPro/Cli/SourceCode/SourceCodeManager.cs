@@ -152,4 +152,47 @@ public class SourceCodeManager : ITransientDependency, ISourceCodeManager
             DirectoryHelper.DeleteIfExists(context.ExtractProjectPath, true);
         }
     }
+    
+    public void ReplaceLocalTemplates(SourceCodeContext context)
+    {
+        try
+        {
+            
+            DirectoryHelper.DeleteIfExists(context.OutputFolder, true);
+            
+            DirectoryAndFileHelper.CopyFolder(context.TemplateFolder, context.OutputFolder, context.ExcludeFiles);
+            
+            
+            ReplaceHelper.ReplaceTemplates(
+                context.OutputFolder,
+                context.OldCompanyName,
+                context.OldProjectName,
+                context.OldModuleName,
+                context.CompanyName,
+                context.ProjectName,
+                context.ModuleName,
+                context.ReplaceSuffix,
+                context.TemplateFile?.Version);
+
+            // if (context.IsSource)
+            // {
+            //     context.TemplateFolder = context.ExtractProjectPath;
+            // }
+            // else
+            // {
+            //     // 获取本地源码地址
+            //     context.TemplateFolder = Path.Combine(context.ExtractProjectPath, "templates", context.TemplateKey);
+            // }
+            //
+            // context.OutputFolder = Path.Combine(context.OutputFolder, context.CompanyName + "." + context.ProjectName);
+          
+            // DirectoryAndFileHelper.CopyFolder(context.TemplateFolder, context.OutputFolder, context.ExcludeFiles);
+
+            _logger.LogInformation($"OutputFolder:{context.OutputFolder}");
+        }
+        finally
+        {
+            DirectoryHelper.DeleteIfExists(context.ExtractProjectPath, true);
+        }
+    }
 }

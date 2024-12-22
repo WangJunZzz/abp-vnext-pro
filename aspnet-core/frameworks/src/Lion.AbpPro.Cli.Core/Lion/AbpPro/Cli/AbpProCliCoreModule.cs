@@ -47,6 +47,13 @@ public class AbpProCliCoreModule : AbpModule
                     OldProjectName = "MyProjectName",
                     OldModuleName = "MyModuleName",
                 },
+                new AbpProTemplateOptions("abp-vnext-pro-business", "local", "local")
+                {
+                    //ExcludeFiles = "aspnet-core,vben28,abp-vnext-pro-nuget-module,abp-vnext-pro-nuget-simplify,docs,.github,LICENSE,Readme.md",
+                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
+                    OldCompanyName = "Lion",
+                    OldProjectName = "AbpPro"
+                },
             };
         });
 
