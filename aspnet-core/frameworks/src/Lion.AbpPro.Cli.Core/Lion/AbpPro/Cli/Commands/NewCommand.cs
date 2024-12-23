@@ -95,7 +95,7 @@ public class NewCommand : IConsoleCommand, ITransientDependency
 
         context.OutputFolder = outputFolder;
 
-        if (_cliOptions.Templates.FirstOrDefault(e => e.Name == template) != null)
+        if (_cliOptions.Templates.FirstOrDefault(e => e.Name == template) != null && template =="local")
         {
             var source = commandLineArgs.Options.GetOrNull(CommandOptions.Source.Short, CommandOptions.Source.Long);
             context.TemplateFolder = source;
