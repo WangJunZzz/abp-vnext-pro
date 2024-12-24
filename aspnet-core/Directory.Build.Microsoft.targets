@@ -1,25 +1,26 @@
 ﻿<Project>
     <ItemGroup>
-        <PackageReference Update="Microsoft.Extensions.DependencyModel" Version="8.0.0"/>
-        <PackageReference Update="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.0"/>
-        <PackageReference Update="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10"/>
-        <PackageReference Update="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0"/>
-        <PackageReference Update="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="8.0.0"/>
-        <PackageReference Update="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.0"/>
-        <PackageReference Update="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="8.0.0"/>
-        <PackageReference Update="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.0"/>
-        <PackageReference Update="Microsoft.Extensions.Http.Polly" Version="8.0.0"/>
-        <PackageReference Update="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.0"/>
-        <PackageReference Update="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.4"/>
+        <PackageReference Update="Microsoft.Extensions.DependencyModel" Version="9.0.0"/>
+        <PackageReference Update="Microsoft.Extensions.Diagnostics.HealthChecks" Version="9.0.0"/>
+        <PackageReference Update="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.0"/>
+        <PackageReference Update="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0"/>
+        <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0" />
+        <PackageReference Update="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="9.0.0"/>
+        <PackageReference Update="Microsoft.EntityFrameworkCore.Proxies" Version="9.0.0"/>
+        <PackageReference Update="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="9.0.0"/>
+        <PackageReference Update="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.0"/>
+        <PackageReference Update="Microsoft.Extensions.Http.Polly" Version="9.0.0"/>
+        <PackageReference Update="Microsoft.EntityFrameworkCore.Abstractions" Version="9.0.0"/>
+        <PackageReference Update="Microsoft.Extensions.FileProviders.Embedded" Version="9.0.0"/>
         
-        <PackageReference Update="Microsoft.Extensions.Hosting" Version="8.0.0" />
-        <PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
-        <PackageReference Update="Microsoft.Extensions.Http" Version="8.0.0"/>
+        <PackageReference Update="Microsoft.Extensions.Hosting" Version="9.0.0" />
+        <PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+        <PackageReference Update="Microsoft.Extensions.Http" Version="9.0.0"/>
         
         <PackageReference Update="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0"/>
         <PackageReference Update="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
-        <PackageReference Update="Microsoft.CSharp" Version="4.7.0"/>
-        <PackageReference Update="Microsoft.CodeAnalysis.CSharp" Version="3.7.0"/>
+        <PackageReference Update="Microsoft.CSharp" Version="4.12.0"/>
+        <PackageReference Update="Microsoft.CodeAnalysis.CSharp" Version="4.12.0"/>
         <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
     </ItemGroup>
 </Project>
