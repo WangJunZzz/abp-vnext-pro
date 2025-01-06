@@ -83,7 +83,8 @@ export default defineComponent({
         name: data.record.name,
         userName: data.record.userName,
         email: data.record.email,
-        phoneNumber: data.record.phoneNumber
+        phoneNumber: data.record.phoneNumber,
+        isActive: data.record.isActive,
       });
     });
 
@@ -127,7 +128,7 @@ export default defineComponent({
         userInfo.concurrencyStamp = currentUserInfo.concurrencyStamp;
         userInfo.roleNames = defaultRolesRef.value;
         userInfo.password = request.password;
-
+        userInfo.isActive = request.isActive;
         updateUserInput.userId = currentUserInfo.id;
         updateUserInput.userInfo = userInfo;
         await updateUserAsync({

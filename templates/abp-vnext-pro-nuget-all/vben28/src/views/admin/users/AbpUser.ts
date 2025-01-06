@@ -137,6 +137,13 @@ export const createFormSchema: FormSchema[] = [
 
 export const editFormSchema: FormSchema[] = [
   {
+    field: 'isActive',
+    component: 'Input',
+    label: t('routes.admin.userManagement_name'),
+    labelWidth: 130,
+    show: false,
+  },
+  {
     field: 'userName',
     component: 'Input',
     label: t('routes.admin.userManagement_userName'),
