@@ -164,7 +164,7 @@ public class AbpProApplicationConfigurationAppService : ApplicationService, IAbp
             }
         }
 
-        var policies = BuildGrantedPolicies(authConfig.GrantedPolicies.Select(e => e.Key).ToList());
+        var policies = BuildGrantedPolicies(authConfig.GrantedPolicies.Select(e => e.Key).ToList(), result);
         foreach (var item in policies)
         {
             if (authConfig.GrantedPolicies.Any(e => e.Key == item)) continue;
@@ -174,18 +174,22 @@ public class AbpProApplicationConfigurationAppService : ApplicationService, IAbp
         return authConfig;
     }
 
-    private List<string> BuildGrantedPolicies(List<string> grantedPolicies)
+    private List<string> BuildGrantedPolicies(List<string> grantedPolicies, MultiplePermissionGrantResult permissions)
     {
         var result = new List<string>();
         foreach (var policy in grantedPolicies)
         {
-            result.AddRange(GetPolicy(policy));
+            result.AddRange(GetPolicy(policy, permissions));
         }
 
         return result.Distinct().ToList();
     }
 
-    private List<string> GetPolicy(string policy)
+    /// <summary>
+    /// 获取权限
+    /// </summary>
+    /// <remarks>比如设置了角色有权限AbpIdentity.Roles.Update,但是没有AbpIdentity.Roles权限，那么这个时候AbpIdentity.Roles应该是false</remarks>
+    private List<string> GetPolicy(string policy, MultiplePermissionGrantResult permissions)
     {
         var result = new List<string>();
         var split = policy.Split('.', StringSplitOptions.RemoveEmptyEntries);
@@ -205,8 +209,13 @@ public class AbpProApplicationConfigurationAppService : ApplicationService, IAbp
 
         if (!currentPolicy.IsNullOrWhiteSpace())
         {
-            result.Add(currentPolicy);
-            result.AddRange(GetPolicy(currentPolicy));
+            var currentPolicyValue = permissions.Result.FirstOrDefault(e => e.Key == currentPolicy);
+            if (currentPolicyValue.Value == PermissionGrantResult.Granted)
+            {
+                result.Add(currentPolicy);
+            }
+
+            result.AddRange(GetPolicy(currentPolicy, permissions));
         }
 
         return result;
@@ -327,11 +336,12 @@ public class AbpProApplicationConfigurationAppService : ApplicationService, IAbp
             {
                 continue;
             }
-            
+
             if (featureDefinition.Name == "SettingManagement.AllowChangingEmailSettings")
             {
                 continue;
             }
+
             result.Values[featureDefinition.Name] = await FeatureChecker.GetOrNullAsync(featureDefinition.Name);
         }
 
