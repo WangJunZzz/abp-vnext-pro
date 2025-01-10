@@ -213,6 +213,12 @@ public class AbpProApplicationConfigurationAppService : ApplicationService, IAbp
             if (currentPolicyValue.Value == PermissionGrantResult.Granted)
             {
                 result.Add(currentPolicy);
+                // 获取上级code
+                var parent = currentPolicy.Split('.', StringSplitOptions.RemoveEmptyEntries);
+                if (parent.Length > 1)
+                {
+                    result.Add(parent[0]);
+                }
             }
 
             result.AddRange(GetPolicy(currentPolicy, permissions));
