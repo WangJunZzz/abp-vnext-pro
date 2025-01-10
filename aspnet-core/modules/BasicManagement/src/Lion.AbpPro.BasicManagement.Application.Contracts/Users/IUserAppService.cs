@@ -57,5 +57,10 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// 通过username获取用户信息
         /// </summary>
         Task<IdentityUserDto> FindByUserNameAsync(FindByUserNameInput input);
+
+        /// <summary>
+        /// 获取个人信息
+        /// </summary>
+        Task<MyProfileOutput> MyProfileAsync();
     }
 }

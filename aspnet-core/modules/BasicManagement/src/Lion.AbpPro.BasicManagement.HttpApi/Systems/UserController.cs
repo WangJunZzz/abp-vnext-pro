@@ -84,5 +84,12 @@ namespace Lion.AbpPro.BasicManagement.Systems
         {
             return _userAppService.FindByUserNameAsync(input);
         }
+
+        [HttpPost("myProfile")]
+        [SwaggerOperation(summary: "获取个人信息", Tags = new[] { "Users" })]
+        public Task<MyProfileOutput> MyProfileAsync()
+        {
+            return _userAppService.MyProfileAsync();
+        }
     }
 }

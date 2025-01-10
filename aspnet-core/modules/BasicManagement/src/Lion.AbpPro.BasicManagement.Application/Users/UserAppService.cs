@@ -179,5 +179,15 @@ namespace Lion.AbpPro.BasicManagement.Users
             }
             return ObjectMapper.Map<Volo.Abp.Identity.IdentityUser, IdentityUserDto>(user);
         }
+
+        public virtual async Task<MyProfileOutput> MyProfileAsync()
+        {
+            var user = await _userManager.FindByIdAsync(CurrentUser.GetId().ToString());
+            if (user == null)
+            {
+                throw new BusinessException(BasicManagementErrorCodes.UserNotExist);
+            }
+            return ObjectMapper.Map<Volo.Abp.Identity.IdentityUser, MyProfileOutput>(user);
+        }
     }
 }
