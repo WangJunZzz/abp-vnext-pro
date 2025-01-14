@@ -10,7 +10,7 @@ using IdentityRole = Volo.Abp.Identity.IdentityRole;
 
 namespace Lion.AbpPro.BasicManagement.Users
 {
-    [Authorize(IdentityPermissions.Users.Default)]
+    [Authorize]
     public class UserAppService : BasicManagementAppService, IUserAppService
     {
         private readonly IIdentityUserAppService _identityUserAppService;
@@ -36,7 +36,8 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// <summary>
         /// 分页查询用户
         /// </summary>
-        public virtual async Task<PagedResultDto<IdentityUserDto>> ListAsync(PagingUserListInput input)
+        [Authorize(IdentityPermissions.Users.Default)]
+        public virtual async Task<PagedResultDto<PageIdentityUserOutput>> ListAsync(PagingUserListInput input)
         {
             var request = new GetIdentityUsersInput
             {
@@ -50,8 +51,8 @@ namespace Lion.AbpPro.BasicManagement.Users
             var source = await _identityUserRepository
                 .GetListAsync(request.Sorting, request.MaxResultCount, request.SkipCount, request.Filter);
 
-            return new PagedResultDto<IdentityUserDto>(count,
-                base.ObjectMapper.Map<List<Volo.Abp.Identity.IdentityUser>, List<IdentityUserDto>>(source));
+            return new PagedResultDto<PageIdentityUserOutput>(count,
+                base.ObjectMapper.Map<List<Volo.Abp.Identity.IdentityUser>, List<PageIdentityUserOutput>>(source));
         }
 
         public async Task<List<IdentityUserDto>> ListAllAsync(PagingUserListInput input)
