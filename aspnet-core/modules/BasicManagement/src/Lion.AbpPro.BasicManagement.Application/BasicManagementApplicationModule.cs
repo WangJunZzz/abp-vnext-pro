@@ -40,7 +40,8 @@ public class BasicManagementApplicationModule : AbpModule
         
         Configure<PermissionOptions>(options =>
         {
-            options.Excludes.Add( IdentityPermissions.Users.ManagePermissions);
+            options.Excludes.Add(IdentityPermissions.Users.ManagePermissions);
+            options.Excludes.Add(IdentityPermissions.Users.ManageRoles);
             options.Excludes.Add(IdentityPermissions.UserLookup.Default);
             options.Excludes.Add(FeatureManagementPermissions.GroupName);
             options.Excludes.Add(FeatureManagementPermissions.ManageHostFeatures);
