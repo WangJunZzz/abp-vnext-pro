@@ -1,8 +1,8 @@
-namespace MyCompanyName.MyProjectName.WebGateway
+namespace Lion.AbpPro.WebGateway
 {
     [DependsOn(
         typeof(AbpProSharedHostingGatewayModule))]
-    public class WebGatewayModule : AbpModule
+    public class AbpProWebGatewayModule : AbpModule
     {
         private const string DefaultCorsPolicyName = "Default";
         

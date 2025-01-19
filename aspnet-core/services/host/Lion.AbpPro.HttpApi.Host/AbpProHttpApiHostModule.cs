@@ -49,7 +49,7 @@ namespace Lion.AbpPro
             var configuration = context.GetConfiguration();
             app.UseAbpProRequestLocalization();
             app.UseCorrelationId();
-            app.UseStaticFiles();
+            app.MapAbpStaticAssets();
             if (configuration.GetValue("MiniProfiler:Enabled", false))
             {
                 app.UseMiniProfiler();

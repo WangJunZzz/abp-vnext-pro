@@ -43,6 +43,7 @@ global using Microsoft.IdentityModel.Tokens;
 global using Microsoft.OpenApi.Models;
 global using Savorboard.CAP.InMemoryMessageQueue;
 global using Serilog;
+global using Serilog.Events;
 global using StackExchange.Redis;
 global using Swagger;
 global using Swashbuckle.AspNetCore.SwaggerUI;
