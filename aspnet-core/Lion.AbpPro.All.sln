@@ -39,7 +39,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Solution Items", "0.Solut
 		Directory.Build.Microsoft.targets = Directory.Build.Microsoft.targets
 		Directory.Build.targets = Directory.Build.targets
 		Directory.Build.Volo.targets = Directory.Build.Volo.targets
-		global.json = global.json
 		NuGet.Config = NuGet.Config
 		..\Readme.md = ..\Readme.md
 	EndProjectSection
@@ -254,7 +253,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "module", "module", "{9FC033
 		..\templates\abp-vnext-pro-nuget-module\Directory.Build.Microsoft.targets = ..\templates\abp-vnext-pro-nuget-module\Directory.Build.Microsoft.targets
 		..\templates\abp-vnext-pro-nuget-module\Directory.Build.targets = ..\templates\abp-vnext-pro-nuget-module\Directory.Build.targets
 		..\templates\abp-vnext-pro-nuget-module\Directory.Build.Volo.targets = ..\templates\abp-vnext-pro-nuget-module\Directory.Build.Volo.targets
-		..\templates\abp-vnext-pro-nuget-module\global.json = ..\templates\abp-vnext-pro-nuget-module\global.json
 		..\templates\abp-vnext-pro-nuget-module\NuGet.Config = ..\templates\abp-vnext-pro-nuget-module\NuGet.Config
 	EndProjectSection
 EndProject
