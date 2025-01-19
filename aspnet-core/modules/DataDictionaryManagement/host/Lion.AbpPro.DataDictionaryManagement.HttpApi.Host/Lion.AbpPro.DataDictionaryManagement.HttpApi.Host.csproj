@@ -2,7 +2,7 @@
 
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <RootNamespace>Lion.AbpPro.DataDictionaryManagement</RootNamespace>
         <PreserveCompilationReferences>true</PreserveCompilationReferences>
         <UserSecretsId>Lion.AbpPro.DataDictionaryManagement-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>
@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\..\shared\Lion.AbpPro.Shared.Hosting.Microservices\Lion.AbpPro.Shared.Hosting.Microservices.csproj" />
         <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.HttpApi\Lion.AbpPro.DataDictionaryManagement.HttpApi.csproj" />
         <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.Application\Lion.AbpPro.DataDictionaryManagement.Application.csproj" />
         <ProjectReference Include="..\..\src\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore\Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.csproj" />

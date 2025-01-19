@@ -2,21 +2,21 @@
 
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <RootNamespace>Lion.AbpPro.NotificationManagement</RootNamespace>
         <PreserveCompilationReferences>true</PreserveCompilationReferences>
         <UserSecretsId>Lion.AbpPro.NotificationManagement-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Serilog"/>
-        <PackageReference Include="Serilog.AspNetCore"/>
-        <PackageReference Include="Serilog.Exceptions"/>
-        <PackageReference Include="Serilog.Extensions.Logging"/>
-        <PackageReference Include="Serilog.Settings.Configuration"/>
-        <PackageReference Include="Serilog.Sinks.Console"/>
-        <PackageReference Include="Serilog.Sinks.Elasticsearch"/>
-        <PackageReference Include="Serilog.Sinks.File"/>
+        <PackageReference Include="Serilog.AspNetCore" />
+        <PackageReference Include="Serilog.Sinks.Async" />
+        <PackageReference Include="Serilog.Exceptions" />
+        <PackageReference Include="Serilog.Extensions.Logging" />
+        <PackageReference Include="Serilog.Settings.Configuration" />
+        <PackageReference Include="Serilog.Sinks.Console" />
+        <PackageReference Include="Serilog.Sinks.Elasticsearch" />
+        <PackageReference Include="Serilog.Sinks.File" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer"/>
         <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools"/>
@@ -32,6 +32,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\..\..\frameworks\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj"/>
+        <ProjectReference Include="..\..\..\..\shared\Lion.AbpPro.Shared.Hosting.Microservices\Lion.AbpPro.Shared.Hosting.Microservices.csproj" />
         <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.HttpApi\Lion.AbpPro.NotificationManagement.HttpApi.csproj"/>
         <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.Application\Lion.AbpPro.NotificationManagement.Application.csproj"/>
         <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.EntityFrameworkCore\Lion.AbpPro.NotificationManagement.EntityFrameworkCore.csproj"/>

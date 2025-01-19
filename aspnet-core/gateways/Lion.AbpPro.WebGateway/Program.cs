@@ -2,14 +2,15 @@ namespace Lion.AbpPro.WebGateway
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
-        }
-
-        private static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
+            var builder = WebApplication.CreateBuilder(args);
+            builder.Host
                 .UseAutofac();
+            await builder.AddApplicationAsync<AbpProWebGatewayModule>();
+            var app = builder.Build();
+            await app.InitializeApplicationAsync();
+            await app.RunAsync();
+        }
     }
 }

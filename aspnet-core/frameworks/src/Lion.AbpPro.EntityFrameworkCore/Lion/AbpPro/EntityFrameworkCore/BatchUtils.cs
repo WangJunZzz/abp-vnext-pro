@@ -111,28 +111,28 @@
 			}
 		}
 
-		//this method is from source code ef core
-		public static bool IsNonComposedSetOperation(SelectExpression selectExpression)
-		{
-			if (selectExpression.Offset == null && selectExpression.Limit == null && !selectExpression.IsDistinct && selectExpression.Predicate == null && selectExpression.Having == null && selectExpression.Orderings.Count == 0 && selectExpression.GroupBy.Count == 0 && selectExpression.Tables.Count == 1)
-			{
-				TableExpressionBase tableExpressionBase = selectExpression.Tables[0];
-				SetOperationBase setOperation = tableExpressionBase as SetOperationBase;
-				if (setOperation != null && selectExpression.Projection.Count == setOperation.Source1.Projection.Count)
-				{
-					return selectExpression.Projection.Select(delegate (ProjectionExpression pe, int index)
-					{
-						ColumnExpression columnExpression = pe.Expression as ColumnExpression;
-						if (columnExpression != null && string.Equals(columnExpression.Table.Alias, setOperation.Alias, StringComparison.OrdinalIgnoreCase))
-						{
-							return string.Equals(columnExpression.Name, setOperation.Source1.Projection[index].Alias, StringComparison.OrdinalIgnoreCase);
-						}
-						return false;
-					}).All((bool e) => e);
-				}
-			}
-			return false;
-		}
+		// //this method is from source code ef core
+		// public static bool IsNonComposedSetOperation(SelectExpression selectExpression)
+		// {
+		// 	if (selectExpression.Offset == null && selectExpression.Limit == null && !selectExpression.IsDistinct && selectExpression.Predicate == null && selectExpression.Having == null && selectExpression.Orderings.Count == 0 && selectExpression.GroupBy.Count == 0 && selectExpression.Tables.Count == 1)
+		// 	{
+		// 		TableExpressionBase tableExpressionBase = selectExpression.Tables[0];
+		// 		SetOperationBase setOperation = tableExpressionBase as SetOperationBase;
+		// 		if (setOperation != null && selectExpression.Projection.Count == setOperation.Source1.Projection.Count)
+		// 		{
+		// 			return selectExpression.Projection.Select(delegate (ProjectionExpression pe, int index)
+		// 			{
+		// 				ColumnExpression columnExpression = pe.Expression as ColumnExpression;
+		// 				if (columnExpression != null && string.Equals(columnExpression.Table.Alias, setOperation.Alias, StringComparison.OrdinalIgnoreCase))
+		// 				{
+		// 					return string.Equals(columnExpression.Name, setOperation.Source1.Projection[index].Alias, StringComparison.OrdinalIgnoreCase);
+		// 				}
+		// 				return false;
+		// 			}).All((bool e) => e);
+		// 		}
+		// 	}
+		// 	return false;
+		// }
 
 		public static void OpenIfNeeded(this IDbConnection conn )
         {

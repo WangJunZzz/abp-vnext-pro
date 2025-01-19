@@ -1,20 +1,58 @@
-﻿namespace Lion.AbpPro.NotificationManagement;
+﻿using Serilog.Events;
+
+namespace Lion.AbpPro.NotificationManagement;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task<int> Main(string[] args)
     {
-        CreateHostBuilder(args).Build().Run();
-    }
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Async(c => c.File("Logs/logs.txt"))
+            .WriteTo.Async(c => c.Console())
+            .CreateBootstrapLogger();
 
-    public static IHostBuilder CreateHostBuilder(string[] args)
-    {
-        return Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
+        try
+        {
+            var builder = WebApplication.CreateBuilder(args);
+            builder.Host
+                .AddAppSettingsSecretsJson()
+                .UseAutofac()
+                .UseSerilog((context, loggerConfiguration) =>
+                {
+                    loggerConfiguration
+#if DEBUG
+                        .MinimumLevel.Debug()
+#else
+                        .MinimumLevel.Information()
+#endif
+                        .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                        .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
+                        .Enrich.FromLogContext()
+                        .WriteTo.Async(c => c.File("Logs/logs.txt"))
+                        .WriteTo.Async(c => c.Console());
+                    SerilogToEsExtensions.SetSerilogConfiguration(
+                        loggerConfiguration,
+                        context.Configuration);
+                });
+            await builder.AddApplicationAsync<NotificationManagementHttpApiHostModule>();
+            var app = builder.Build();
+            await app.InitializeApplicationAsync();
+            await app.RunAsync();
+            return 0;
+        }
+        catch (Exception ex)
+        {
+            if (ex is HostAbortedException)
             {
-                webBuilder.ConfigureKestrel((context, options) => { options.Limits.MaxRequestBodySize = 1024 * 50; });
-                webBuilder.UseStartup<Startup>();
-            })
-            .UseSerilog().UseAutofac();
+                throw;
+            }
+
+            Log.Fatal(ex, "Host terminated unexpectedly!");
+            return 1;
+        }
+        finally
+        {
+            await Log.CloseAndFlushAsync();
+        }
     }
 }

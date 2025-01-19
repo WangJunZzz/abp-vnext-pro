@@ -39,7 +39,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Solution Items", "0.Solut
 		Directory.Build.Microsoft.targets = Directory.Build.Microsoft.targets
 		Directory.Build.targets = Directory.Build.targets
 		Directory.Build.Volo.targets = Directory.Build.Volo.targets
-		global.json = global.json
 		NuGet.Config = NuGet.Config
 		..\Readme.md = ..\Readme.md
 	EndProjectSection
@@ -254,7 +253,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "module", "module", "{9FC033
 		..\templates\abp-vnext-pro-nuget-module\Directory.Build.Microsoft.targets = ..\templates\abp-vnext-pro-nuget-module\Directory.Build.Microsoft.targets
 		..\templates\abp-vnext-pro-nuget-module\Directory.Build.targets = ..\templates\abp-vnext-pro-nuget-module\Directory.Build.targets
 		..\templates\abp-vnext-pro-nuget-module\Directory.Build.Volo.targets = ..\templates\abp-vnext-pro-nuget-module\Directory.Build.Volo.targets
-		..\templates\abp-vnext-pro-nuget-module\global.json = ..\templates\abp-vnext-pro-nuget-module\global.json
 		..\templates\abp-vnext-pro-nuget-module\NuGet.Config = ..\templates\abp-vnext-pro-nuget-module\NuGet.Config
 	EndProjectSection
 EndProject
@@ -288,25 +286,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.MyModuleName.HttpApi.Host", "..\templates\abp-vnext-pro-nuget-module\host\MyCompanyName.MyProjectName.MyModuleName.HttpApi.Host\MyCompanyName.MyProjectName.MyModuleName.HttpApi.Host.csproj", "{4A970FA4-1C4F-426C-A0DC-0E36B1BA0FDE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simplify", "simplify", "{43CB54D7-3511-40F4-BC70-9A34E09D7A62}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "all", "all", "{6A40770E-9DE1-4F15-80E8-8FCA090A749C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aspnet-core", "aspnet-core", "{7B757E2D-B5A1-4BFE-9BB2-93CD04E4B28B}"
-	ProjectSection(SolutionItems) = preProject
-		..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\Directory.Build.Lion.targets = ..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\Directory.Build.Lion.targets
-		..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\Directory.Build.Microsoft.targets = ..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\Directory.Build.Microsoft.targets
-		..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\Directory.Build.targets = ..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\Directory.Build.targets
-		..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\Directory.Build.Volo.targets = ..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\Directory.Build.Volo.targets
-		..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\global.json = ..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\global.json
-		..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\NuGet.Config = ..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\NuGet.Config
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C7AEB4C8-BAE7-4A19-B96E-011FA56ED6A5}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{18E9B97A-3897-4DA8-810E-4435A777ABA7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "host", "host", "{09CFDF18-4924-44D4-A987-EB9713787FF8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aspnet-core", "aspnet-core", "{11801334-CC4A-45F3-BD38-793D4F9D4D4F}"
 	ProjectSection(SolutionItems) = preProject
@@ -314,7 +294,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aspnet-core", "aspnet-core"
 		..\templates\abp-vnext-pro-nuget-all\aspnet-core\Directory.Build.Microsoft.targets = ..\templates\abp-vnext-pro-nuget-all\aspnet-core\Directory.Build.Microsoft.targets
 		..\templates\abp-vnext-pro-nuget-all\aspnet-core\Directory.Build.targets = ..\templates\abp-vnext-pro-nuget-all\aspnet-core\Directory.Build.targets
 		..\templates\abp-vnext-pro-nuget-all\aspnet-core\Directory.Build.Volo.targets = ..\templates\abp-vnext-pro-nuget-all\aspnet-core\Directory.Build.Volo.targets
-		..\templates\abp-vnext-pro-nuget-all\aspnet-core\global.json = ..\templates\abp-vnext-pro-nuget-all\aspnet-core\global.json
 		..\templates\abp-vnext-pro-nuget-all\aspnet-core\NuGet.Config = ..\templates\abp-vnext-pro-nuget-all\aspnet-core\NuGet.Config
 	EndProjectSection
 EndProject
@@ -353,36 +332,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Application.Tests", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\test\MyCompanyName.MyProjectName.Application.Tests\MyCompanyName.MyProjectName.Application.Tests.csproj", "{87F0ECFB-144F-499E-995E-F2B61DC20015}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi.Host", "..\templates\abp-vnext-pro-nuget-all\aspnet-core\host\MyCompanyName.MyProjectName.HttpApi.Host\MyCompanyName.MyProjectName.HttpApi.Host.csproj", "{67B45B2E-9682-417D-964B-30DBCE4321CE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Domain.Shared", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.Domain.Shared\MyCompanyName.MyProjectName.Domain.Shared.csproj", "{F4F5C1F7-28F3-4297-ACD7-DBB6E6F89E68}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Domain", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.Domain\MyCompanyName.MyProjectName.Domain.csproj", "{504A06C9-2A3D-4456-8F61-DCB35C6F93F3}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.EntityFrameworkCore", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.EntityFrameworkCore\MyCompanyName.MyProjectName.EntityFrameworkCore.csproj", "{07982F9D-F65B-4FDA-8CF6-1D0A9EAA32B8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.DbMigrator", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.DbMigrator\MyCompanyName.MyProjectName.DbMigrator.csproj", "{9749B052-5F3D-4442-9B2E-9EC798457DB5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Application", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.Application\MyCompanyName.MyProjectName.Application.csproj", "{2161EFEA-7654-4810-85A0-18293825FFBC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Application.Contracts", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.Application.Contracts\MyCompanyName.MyProjectName.Application.Contracts.csproj", "{4E4856BA-A71F-4753-A497-6F3D197BB455}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.FreeSqlRepository", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.FreeSqlRepository\MyCompanyName.MyProjectName.FreeSqlRepository.csproj", "{ABA5A546-28DB-4E54-987D-D828B2F79B9D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.HttpApi\MyCompanyName.MyProjectName.HttpApi.csproj", "{50E73D29-F11D-4CBD-8A85-CC34F4DE8C31}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi.Client", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\src\MyCompanyName.MyProjectName.HttpApi.Client\MyCompanyName.MyProjectName.HttpApi.Client.csproj", "{B66BDD25-49B8-4823-A678-93BC081D65ED}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi.Host", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\host\MyCompanyName.MyProjectName.HttpApi.Host\MyCompanyName.MyProjectName.HttpApi.Host.csproj", "{04635BE3-67F0-4AB6-BB68-607E73040F07}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.TestBase", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.TestBase\MyCompanyName.MyProjectName.TestBase.csproj", "{75DE5DA1-8EDA-42EE-8570-169713ECB9CD}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp\MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp.csproj", "{AF943646-1D48-492D-8C7A-48606F7B36B0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.EntityFrameworkCore.Tests", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.EntityFrameworkCore.Tests\MyCompanyName.MyProjectName.EntityFrameworkCore.Tests.csproj", "{80125670-3650-4E72-A172-CA852FE5C98D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Domain.Tests", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.Domain.Tests\MyCompanyName.MyProjectName.Domain.Tests.csproj", "{4C8B284F-A216-4812-912F-7CC6F428CDF6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompanyName.MyProjectName.Application.Tests", "..\templates\abp-vnext-pro-nuget-simplify\aspnet-core\test\MyCompanyName.MyProjectName.Application.Tests\MyCompanyName.MyProjectName.Application.Tests.csproj", "{2DDC4639-710D-4B9C-98E0-03288184B37C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.AbpPro.Core.Cli.Tests", "frameworks\test\Lion.AbpPro.Core.Cli.Tests\Lion.AbpPro.Core.Cli.Tests.csproj", "{9B65C2C8-E94E-46FD-9841-70DFAE5C85E9}"
 EndProject
@@ -862,66 +811,6 @@ Global
 		{67B45B2E-9682-417D-964B-30DBCE4321CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67B45B2E-9682-417D-964B-30DBCE4321CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67B45B2E-9682-417D-964B-30DBCE4321CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4F5C1F7-28F3-4297-ACD7-DBB6E6F89E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4F5C1F7-28F3-4297-ACD7-DBB6E6F89E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4F5C1F7-28F3-4297-ACD7-DBB6E6F89E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4F5C1F7-28F3-4297-ACD7-DBB6E6F89E68}.Release|Any CPU.Build.0 = Release|Any CPU
-		{504A06C9-2A3D-4456-8F61-DCB35C6F93F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{504A06C9-2A3D-4456-8F61-DCB35C6F93F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{504A06C9-2A3D-4456-8F61-DCB35C6F93F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{504A06C9-2A3D-4456-8F61-DCB35C6F93F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07982F9D-F65B-4FDA-8CF6-1D0A9EAA32B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07982F9D-F65B-4FDA-8CF6-1D0A9EAA32B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07982F9D-F65B-4FDA-8CF6-1D0A9EAA32B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07982F9D-F65B-4FDA-8CF6-1D0A9EAA32B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9749B052-5F3D-4442-9B2E-9EC798457DB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9749B052-5F3D-4442-9B2E-9EC798457DB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9749B052-5F3D-4442-9B2E-9EC798457DB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9749B052-5F3D-4442-9B2E-9EC798457DB5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2161EFEA-7654-4810-85A0-18293825FFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2161EFEA-7654-4810-85A0-18293825FFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2161EFEA-7654-4810-85A0-18293825FFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2161EFEA-7654-4810-85A0-18293825FFBC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4E4856BA-A71F-4753-A497-6F3D197BB455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E4856BA-A71F-4753-A497-6F3D197BB455}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E4856BA-A71F-4753-A497-6F3D197BB455}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E4856BA-A71F-4753-A497-6F3D197BB455}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABA5A546-28DB-4E54-987D-D828B2F79B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABA5A546-28DB-4E54-987D-D828B2F79B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABA5A546-28DB-4E54-987D-D828B2F79B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABA5A546-28DB-4E54-987D-D828B2F79B9D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50E73D29-F11D-4CBD-8A85-CC34F4DE8C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50E73D29-F11D-4CBD-8A85-CC34F4DE8C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50E73D29-F11D-4CBD-8A85-CC34F4DE8C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50E73D29-F11D-4CBD-8A85-CC34F4DE8C31}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B66BDD25-49B8-4823-A678-93BC081D65ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B66BDD25-49B8-4823-A678-93BC081D65ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B66BDD25-49B8-4823-A678-93BC081D65ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B66BDD25-49B8-4823-A678-93BC081D65ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{04635BE3-67F0-4AB6-BB68-607E73040F07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04635BE3-67F0-4AB6-BB68-607E73040F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04635BE3-67F0-4AB6-BB68-607E73040F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04635BE3-67F0-4AB6-BB68-607E73040F07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{75DE5DA1-8EDA-42EE-8570-169713ECB9CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75DE5DA1-8EDA-42EE-8570-169713ECB9CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{75DE5DA1-8EDA-42EE-8570-169713ECB9CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{75DE5DA1-8EDA-42EE-8570-169713ECB9CD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF943646-1D48-492D-8C7A-48606F7B36B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF943646-1D48-492D-8C7A-48606F7B36B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF943646-1D48-492D-8C7A-48606F7B36B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF943646-1D48-492D-8C7A-48606F7B36B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80125670-3650-4E72-A172-CA852FE5C98D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80125670-3650-4E72-A172-CA852FE5C98D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80125670-3650-4E72-A172-CA852FE5C98D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80125670-3650-4E72-A172-CA852FE5C98D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C8B284F-A216-4812-912F-7CC6F428CDF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C8B284F-A216-4812-912F-7CC6F428CDF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C8B284F-A216-4812-912F-7CC6F428CDF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C8B284F-A216-4812-912F-7CC6F428CDF6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2DDC4639-710D-4B9C-98E0-03288184B37C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DDC4639-710D-4B9C-98E0-03288184B37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DDC4639-710D-4B9C-98E0-03288184B37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DDC4639-710D-4B9C-98E0-03288184B37C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9B65C2C8-E94E-46FD-9841-70DFAE5C85E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9B65C2C8-E94E-46FD-9841-70DFAE5C85E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B65C2C8-E94E-46FD-9841-70DFAE5C85E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -1087,12 +976,7 @@ Global
 		{71B2D69D-C193-4EF9-AF84-70105B653DF0} = {634E34FF-58F4-4FE9-BE51-3B8F6BD9CA70}
 		{F779A92C-38ED-4301-8899-6C3FE63DFD72} = {634E34FF-58F4-4FE9-BE51-3B8F6BD9CA70}
 		{4A970FA4-1C4F-426C-A0DC-0E36B1BA0FDE} = {7AF66531-6B7B-4F27-BDEF-308FD9C2E286}
-		{43CB54D7-3511-40F4-BC70-9A34E09D7A62} = {E57C6A28-1879-4E83-9B0D-E665824A1F4B}
 		{6A40770E-9DE1-4F15-80E8-8FCA090A749C} = {E57C6A28-1879-4E83-9B0D-E665824A1F4B}
-		{7B757E2D-B5A1-4BFE-9BB2-93CD04E4B28B} = {43CB54D7-3511-40F4-BC70-9A34E09D7A62}
-		{C7AEB4C8-BAE7-4A19-B96E-011FA56ED6A5} = {7B757E2D-B5A1-4BFE-9BB2-93CD04E4B28B}
-		{18E9B97A-3897-4DA8-810E-4435A777ABA7} = {7B757E2D-B5A1-4BFE-9BB2-93CD04E4B28B}
-		{09CFDF18-4924-44D4-A987-EB9713787FF8} = {7B757E2D-B5A1-4BFE-9BB2-93CD04E4B28B}
 		{11801334-CC4A-45F3-BD38-793D4F9D4D4F} = {6A40770E-9DE1-4F15-80E8-8FCA090A749C}
 		{AF8A0F3B-B346-466C-87F7-F2405E6158FE} = {11801334-CC4A-45F3-BD38-793D4F9D4D4F}
 		{EA151482-0987-49E0-96A8-2CD876BC8B6E} = {11801334-CC4A-45F3-BD38-793D4F9D4D4F}
@@ -1112,21 +996,6 @@ Global
 		{EA034B8C-9CF1-498D-AC74-FF2F039FE37A} = {15456C15-58A1-45F6-BBA7-53504210B30D}
 		{87F0ECFB-144F-499E-995E-F2B61DC20015} = {15456C15-58A1-45F6-BBA7-53504210B30D}
 		{67B45B2E-9682-417D-964B-30DBCE4321CE} = {EA151482-0987-49E0-96A8-2CD876BC8B6E}
-		{F4F5C1F7-28F3-4297-ACD7-DBB6E6F89E68} = {C7AEB4C8-BAE7-4A19-B96E-011FA56ED6A5}
-		{504A06C9-2A3D-4456-8F61-DCB35C6F93F3} = {C7AEB4C8-BAE7-4A19-B96E-011FA56ED6A5}
-		{07982F9D-F65B-4FDA-8CF6-1D0A9EAA32B8} = {C7AEB4C8-BAE7-4A19-B96E-011FA56ED6A5}
-		{9749B052-5F3D-4442-9B2E-9EC798457DB5} = {C7AEB4C8-BAE7-4A19-B96E-011FA56ED6A5}
-		{2161EFEA-7654-4810-85A0-18293825FFBC} = {C7AEB4C8-BAE7-4A19-B96E-011FA56ED6A5}
-		{4E4856BA-A71F-4753-A497-6F3D197BB455} = {C7AEB4C8-BAE7-4A19-B96E-011FA56ED6A5}
-		{ABA5A546-28DB-4E54-987D-D828B2F79B9D} = {C7AEB4C8-BAE7-4A19-B96E-011FA56ED6A5}
-		{50E73D29-F11D-4CBD-8A85-CC34F4DE8C31} = {C7AEB4C8-BAE7-4A19-B96E-011FA56ED6A5}
-		{B66BDD25-49B8-4823-A678-93BC081D65ED} = {C7AEB4C8-BAE7-4A19-B96E-011FA56ED6A5}
-		{04635BE3-67F0-4AB6-BB68-607E73040F07} = {09CFDF18-4924-44D4-A987-EB9713787FF8}
-		{75DE5DA1-8EDA-42EE-8570-169713ECB9CD} = {18E9B97A-3897-4DA8-810E-4435A777ABA7}
-		{AF943646-1D48-492D-8C7A-48606F7B36B0} = {18E9B97A-3897-4DA8-810E-4435A777ABA7}
-		{80125670-3650-4E72-A172-CA852FE5C98D} = {18E9B97A-3897-4DA8-810E-4435A777ABA7}
-		{4C8B284F-A216-4812-912F-7CC6F428CDF6} = {18E9B97A-3897-4DA8-810E-4435A777ABA7}
-		{2DDC4639-710D-4B9C-98E0-03288184B37C} = {18E9B97A-3897-4DA8-810E-4435A777ABA7}
 		{9B65C2C8-E94E-46FD-9841-70DFAE5C85E9} = {EFC415F8-872F-4C7E-8645-31A51481BCFC}
 		{4C57F50E-50BE-4C1A-BBA3-9D0DA5BF4D6F} = {EA151482-0987-49E0-96A8-2CD876BC8B6E}
 		{021B499E-ABED-4D1D-B6EB-DC453B5A57A6} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}

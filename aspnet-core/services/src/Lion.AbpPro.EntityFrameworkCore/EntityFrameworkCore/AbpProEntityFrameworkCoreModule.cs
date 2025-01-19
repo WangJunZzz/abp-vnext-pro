@@ -30,8 +30,13 @@ namespace Lion.AbpPro.EntityFrameworkCore
             Configure<AbpDbContextOptions>(options =>
             {
                 /* The main point to change your DBMS.
-                 * See also AbpProMigrationsDbContextFactory for EF Core tooling. */
-                options.UseMySQL();
+                 * See also HayoonKoreaDbContextFactory for EF Core tooling.
+                 *  https://github.com/abpframework/abp/issues/21879
+                 * */
+                options.UseMySQL(builder =>
+                {
+                    builder.TranslateParameterizedCollectionsToConstants();
+                });
             });
         }
     }
