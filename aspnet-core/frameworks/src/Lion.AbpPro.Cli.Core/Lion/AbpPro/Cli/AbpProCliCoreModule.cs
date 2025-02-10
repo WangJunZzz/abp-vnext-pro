@@ -60,7 +60,7 @@ public class AbpProCliCoreModule : AbpModule
             {
                 new AbpProTemplateOptions("pro", "pro", "商业版本源码版本")
                 {
-                    ExcludeFiles = ".github,LICENSE,Readme.md,templates,Lion.AbpPro.Cli.sln",
+                    ExcludeFiles = ".github,LICENSE,Readme.md,.templates,Lion.AbpPro.Cli.sln",
                     ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
                     OldCompanyName = "Lion",
                     OldProjectName = "AbpPro",
