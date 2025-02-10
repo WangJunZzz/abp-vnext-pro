@@ -1,6 +1,6 @@
 ﻿namespace Lion.AbpPro.Cli.Utils;
 
-public static class DirectoryAndFileHelper 
+public static class DirectoryAndFileHelper
 {
     /// <summary>
     /// 复制文件夹及文件
@@ -61,9 +61,9 @@ public static class DirectoryAndFileHelper
                 CopyFolder(folder, dest); //构建目标路径,递归复制文件
             }
         }
-        catch
+        catch (Exception ex)
         {
-            throw new UserFriendlyException("复制文件失败！");
+            throw new UserFriendlyException("复制文件失败！" + ex.Message + ex.StackTrace);
         }
     }
 

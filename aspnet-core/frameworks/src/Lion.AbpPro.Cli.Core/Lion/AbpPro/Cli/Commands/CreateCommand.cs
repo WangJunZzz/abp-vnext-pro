@@ -104,7 +104,7 @@ public class CreateCommand : IConsoleCommand, ITransientDependency
         // 解压源码
         var extractPath = _sourceCodeManager.ExtractProjectZip(localFilePath, _cliOptions.RepositoryId, version);
 
-        var contentPath = templateOptions.Name == "source" ? Path.Combine(extractPath, _cliOptions.RepositoryId) : Path.Combine(extractPath, _cliOptions.RepositoryId, "templates", templateOptions.Name);
+        var contentPath = templateOptions.Name == _cliOptions.RepositoryId ? Path.Combine(extractPath, _cliOptions.RepositoryId) : Path.Combine(extractPath, _cliOptions.RepositoryId, "templates", templateOptions.Name);
         // 复制源码到输出目录
         var destOutput = Path.Combine(CliPaths.Output, $"{companyName}-{projectName}-{version}");
 
