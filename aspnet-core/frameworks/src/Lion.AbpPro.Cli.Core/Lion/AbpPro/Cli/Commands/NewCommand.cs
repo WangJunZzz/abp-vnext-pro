@@ -111,7 +111,7 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         // 解压源码
         var extractPath = _sourceCodeManager.ExtractProjectZip(localFilePath, _cliOptions.RepositoryId, version);
 
-        var contentPath = templateOptions.Name == "pro" ? Path.Combine(extractPath,_cliOptions.RepositoryId) : Path.Combine(extractPath,_cliOptions.RepositoryId, "templates", templateOptions.Name);
+        var contentPath = templateOptions.Name == "pro" ? extractPath : Path.Combine(extractPath, "templates", templateOptions.Name);
         // 复制源码到输出目录
         var destOutput = Path.Combine(CliPaths.Output, $"{companyName}-{projectName}-{version}");
 
@@ -143,7 +143,6 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         var sb = new StringBuilder();
         sb.AppendLine("");
         sb.AppendLine("Usage:");
-        sb.AppendLine("  lion.abp new");
         sb.AppendLine("lion.abp new -t 模板名称 -c 公司名称 -p 项目名称 -m 模块名称(创建模块才需要此参数)");
         _logger.LogInformation(sb.ToString());
     }

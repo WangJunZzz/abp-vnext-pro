@@ -101,7 +101,7 @@ public class SourceCodeManager : ITransientDependency, ISourceCodeManager
         var targetPath = Path.Combine(Path.GetDirectoryName(zipPath), repositoryId + "-" + version);
         try
         {
-            if (Directory.Exists(targetPath)) return targetPath;
+            if (Directory.Exists(targetPath)) return Path.Combine(targetPath, repositoryId);
 
             System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, targetPath, Encoding.UTF8, true);
 
