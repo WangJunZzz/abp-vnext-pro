@@ -58,16 +58,16 @@ public class AbpProCliCoreModule : AbpModule
             options.RepositoryId = "abp";
             options.Templates = new List<AbpProTemplateOptions>()
             {
-                new AbpProTemplateOptions("abp", "abp", "商业版本源码版本")
+                new AbpProTemplateOptions("pro", "pro", "商业版本源码版本")
                 {
-                    ExcludeFiles = ".github,LICENSE,Readme.md",
+                    ExcludeFiles = ".github,LICENSE,Readme.md,templates",
                     ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
                     OldCompanyName = "Lion",
                     OldProjectName = "AbpPro",
                     OldModuleName = "",
                 },
                 
-                new AbpProTemplateOptions("abp-nuget", "abp-nuget", "商业版本nuget版本")
+                new AbpProTemplateOptions("pro-nuget", "pro-nuget", "商业版本nuget版本")
                 {
                     ExcludeFiles = ".github,LICENSE,Readme.md,aspnet-core,.idea,gateways,MyCompanyName.MyProjectName.Gateways.sln,MyCompanyName.MyProjectName.Gateways.sln.DotSettings.user",
                     ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets,.sln.DotSettings.user",
@@ -76,7 +76,7 @@ public class AbpProCliCoreModule : AbpModule
                     OldModuleName = "",
                 },
                 
-                new AbpProTemplateOptions("abp-nuget-gateways", "abp-nuget", "商业版本nuget版本")
+                new AbpProTemplateOptions("pro-nuget-gateways", "pro-nuget", "商业版本nuget版本")
                 {
                     ExcludeFiles = ".github,LICENSE,Readme.md,aspnet-core,.idea,MyCompanyName.MyProjectName.sln,MyCompanyName.MyProjectName.sln.DotSettings.user",
                     ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets,.sln.DotSettings.user",
