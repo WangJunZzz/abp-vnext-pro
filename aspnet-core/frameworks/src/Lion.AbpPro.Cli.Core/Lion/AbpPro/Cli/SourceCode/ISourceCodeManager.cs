@@ -13,6 +13,7 @@ public interface ISourceCodeManager
     /// </summary>
     void ExtractProjectZip(SourceCodeContext context);
 
+    string ExtractProjectZip(string zipPath, string repositoryId, string version);
     /// <summary>
     /// 替换
     /// </summary>

@@ -65,7 +65,4 @@
         <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*.json" />
     </ItemGroup>
 
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="wwwroot\files\a.txt" />
-    </ItemGroup>
 </Project>

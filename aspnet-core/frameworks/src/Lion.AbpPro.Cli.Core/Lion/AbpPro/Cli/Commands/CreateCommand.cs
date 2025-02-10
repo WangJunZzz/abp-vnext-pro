@@ -1,29 +1,23 @@
-﻿namespace Lion.AbpPro.Cli.Commands;
+using Lion.AbpPro.Cli.Auth;
 
-public class NewCommand : IConsoleCommand, ITransientDependency
+namespace Lion.AbpPro.Cli.Commands;
+
+public class CreateCommand : IConsoleCommand, ITransientDependency
 {
-    public const string Name = "new";
-    private readonly ILogger<NewCommand> _logger;
-    private readonly AbpCliOptions _abpCliOptions;
-    private readonly IServiceScopeFactory _serviceScopeFactory;
-    private readonly Options.AbpProCliOptions _cliOptions;
-    private readonly ISourceCodeManager _sourceCodeManager;
+    public const string Name = "create";
+    private readonly ILogger<CreateCommand> _logger;
+    private readonly ITokenAuthService _tokenAuthService;
+    private readonly Options.AbpProCliBusinessOptions _cliOptions;
     private readonly IGithubClient _githubClient;
+    private readonly ISourceCodeManager _sourceCodeManager;
 
-    public NewCommand(
-        IOptions<AbpCliOptions> abpCliOptions,
-        ILogger<NewCommand> logger,
-        IServiceScopeFactory serviceScopeFactory,
-        IOptions<Options.AbpProCliOptions> options,
-        ISourceCodeManager sourceCodeManager,
-        IGithubClient githubClient)
+    public CreateCommand(ILogger<CreateCommand> logger, ITokenAuthService tokenAuthService, IOptions<AbpProCliBusinessOptions> cliOptions, IGithubClient githubClient, ISourceCodeManager sourceCodeManager)
     {
         _logger = logger;
-        _serviceScopeFactory = serviceScopeFactory;
-        _sourceCodeManager = sourceCodeManager;
+        _tokenAuthService = tokenAuthService;
         _githubClient = githubClient;
-        _cliOptions = options.Value;
-        _abpCliOptions = abpCliOptions.Value;
+        _sourceCodeManager = sourceCodeManager;
+        _cliOptions = cliOptions.Value;
     }
 
     public async Task ExecuteAsync(CommandLineArgs commandLineArgs)
@@ -31,6 +25,14 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         _logger.LogInformation($"开始创建模板......");
 
         #region 参数判断
+
+        // 判断是否输入token
+        var token = await _tokenAuthService.GetAsync();
+        if (token.IsNullOrWhiteSpace())
+        {
+            _logger.LogError("请登录cli, lion.abp login -token 你的token");
+            return;
+        }
 
         // 检查模板是否正确
         var template = commandLineArgs.Options.GetOrNull(CommandOptions.Template.Short, CommandOptions.Template.Long);
@@ -68,15 +70,6 @@ public class NewCommand : IConsoleCommand, ITransientDependency
             return;
         }
 
-        //校验是否输入模块名称
-        var moduleName = commandLineArgs.Options.GetOrNull(CommandOptions.Module.Short, CommandOptions.Module.Long);
-        if (templateOptions.Key == "pro-module" && moduleName.IsNullOrWhiteSpace())
-        {
-            _logger.LogError("请输入公司名称lion.abp create -m 模块名称");
-            GetUsageInfo();
-            return;
-        }
-
         var version = commandLineArgs.Options.GetOrNull(CommandOptions.Version.Short, CommandOptions.Version.Long);
 
         #endregion
@@ -85,12 +78,12 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         Release release = null;
         if (version.IsNullOrWhiteSpace())
         {
-            release = await _githubClient.GetLatestVersionAsync(_cliOptions.Owner, _cliOptions.RepositoryId, _cliOptions.DecryptToken);
+            release = await _githubClient.GetLatestVersionAsync(_cliOptions.Owner, _cliOptions.RepositoryId, token);
             version = release.TagName;
         }
         else
         {
-            release = await _githubClient.CheckVersionAsync(_cliOptions.Owner, _cliOptions.RepositoryId, _cliOptions.DecryptToken, version);
+            release = await _githubClient.CheckVersionAsync(_cliOptions.Owner, _cliOptions.RepositoryId, token, version);
         }
 
         // 下载源码
@@ -104,21 +97,17 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         if (!File.Exists(localFilePath))
         {
             _logger.LogInformation("正在从github下载源码......");
-            await _githubClient.DownloadAsync(_cliOptions.Owner, _cliOptions.RepositoryId, version, localFilePath);
+            await _githubClient.DownloadAsync(release.ZipballUrl, localFilePath, token);
             _logger.LogInformation("github源码下载完成.");
         }
 
         // 解压源码
         var extractPath = _sourceCodeManager.ExtractProjectZip(localFilePath, _cliOptions.RepositoryId, version);
 
-        var contentPath = templateOptions.Name == "pro" ? Path.Combine(extractPath, _cliOptions.RepositoryId) : Path.Combine(extractPath, _cliOptions.RepositoryId, "templates", templateOptions.Name);
+        var contentPath = templateOptions.Name == "source" ? Path.Combine(extractPath, _cliOptions.RepositoryId) : Path.Combine(extractPath, _cliOptions.RepositoryId, "templates", templateOptions.Name);
         // 复制源码到输出目录
         var destOutput = Path.Combine(CliPaths.Output, $"{companyName}-{projectName}-{version}");
 
-        if (templateOptions.Key == "pro-module")
-        {
-            destOutput = Path.Combine(CliPaths.Output, $"{companyName}-{projectName}-{moduleName}-{version}");
-        }
         DirectoryAndFileHelper.CopyFolder(contentPath, destOutput, templateOptions.ExcludeFiles);
 
         ReplaceHelper.ReplaceTemplates(
@@ -128,7 +117,7 @@ public class NewCommand : IConsoleCommand, ITransientDependency
             templateOptions.OldModuleName,
             companyName,
             projectName,
-            moduleName,
+            string.Empty,
             templateOptions.ReplaceSuffix,
             version);
 
@@ -137,18 +126,19 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         ProcessHelper.OpenExplorer(destOutput);
     }
 
+
     public void GetUsageInfo()
     {
         var sb = new StringBuilder();
         sb.AppendLine("");
         sb.AppendLine("Usage:");
-        sb.AppendLine("  lion.abp new");
-        sb.AppendLine("lion.abp new -t 模板名称 -c 公司名称 -p 项目名称 -m 模块名称(创建模块才需要此参数)");
+        sb.AppendLine("  lion.abp create");
+        sb.AppendLine("lion.abp create -t 模板名称(source | nuget) -c 公司名称 -p 项目名称");
         _logger.LogInformation(sb.ToString());
     }
 
     public string GetShortDescription()
     {
-        return "创建开源版本项目:lion.abp new -t 模板名称 -c 公司名称 -p 项目名称 -m 模块名称(创建模块才需要此参数)";
+        return "创建商业版本项目:lion.abp create -t 模板名称(source | nuget) -c 公司名称 -p 项目名称";
     }
 }

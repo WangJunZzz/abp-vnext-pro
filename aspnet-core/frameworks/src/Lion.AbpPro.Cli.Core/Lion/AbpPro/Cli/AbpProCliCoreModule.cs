@@ -9,6 +9,8 @@ public class AbpProCliCoreModule : AbpModule
     {
         Configure<AbpCliOptions>(options => { options.Commands[HelpCommand.Name] = typeof(HelpCommand); });
         Configure<AbpCliOptions>(options => { options.Commands[NewCommand.Name] = typeof(NewCommand); });
+        Configure<AbpCliOptions>(options => { options.Commands[LoginCommand.Name] = typeof(LoginCommand); });
+        Configure<AbpCliOptions>(options => { options.Commands[CreateCommand.Name] = typeof(CreateCommand); });
 
         Configure<Options.AbpProCliOptions>(options =>
         {
@@ -17,16 +19,16 @@ public class AbpProCliCoreModule : AbpModule
             options.Token = "abp-vnext-proghp_47vqiabp-vnext-provNkHKJguOJkdHvnxUabp-vnext-protij7Qbdn1Qy3fUabp-vnext-pro";
             options.Templates = new List<AbpProTemplateOptions>()
             {
-                new AbpProTemplateOptions("abp-vnext-pro", "pro", "源码版本", true)
+                new AbpProTemplateOptions("pro", "pro", "源码版本", true)
                 {
-                    ExcludeFiles = "templates,docs,.github,LICENSE,Readme.md",
+                    ExcludeFiles = "templates,docs,.github,LICENSE,.idea,Lion.AbpPro.Cli.sln,Lion.AbpPro.Cli.sln.DotSettings.user",
                     ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
                     OldCompanyName = "Lion",
                     OldProjectName = "AbpPro"
                 },
-                new AbpProTemplateOptions("abp-vnext-pro-nuget-all", "pro.all", "Nuget完整版本")
+                new AbpProTemplateOptions("pro-nuget", "pro-nuget", "Nuget完整版本")
                 {
-                    //ExcludeFiles = "aspnet-core,vben28,abp-vnext-pro-nuget-module,abp-vnext-pro-nuget-simplify,docs,.github,LICENSE,Readme.md",
+                    ExcludeFiles = "aspnet-core,pro-module,docs,.github,LICENSE,.idea,Lion.AbpPro.Cli.sln,Lion.AbpPro.Cli.sln.DotSettings.user",
                     ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
                     OldCompanyName = "MyCompanyName",
                     OldProjectName = "MyProjectName"
@@ -39,24 +41,51 @@ public class AbpProCliCoreModule : AbpModule
                 //     OldProjectName = "MyProjectName"
                 // },
 
-                new AbpProTemplateOptions("abp-vnext-pro-nuget-module", "pro.module", "模块")
+                new AbpProTemplateOptions("pro-module", "pro-module", "模块")
                 {
-                    //ExcludeFiles = "aspnet-core,vben28,abp-vnext-pro-nuget-all,abp-vnext-pro-nuget-simplify,docs,.github,LICENSE,Readme.md",
+                    ExcludeFiles = "aspnet-core,vben28,abp-nuget,docs,.github,LICENSE,.idea,Lion.AbpPro.Cli.sln,Lion.AbpPro.Cli.sln.DotSettings.user",
                     ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
                     OldCompanyName = "MyCompanyName",
                     OldProjectName = "MyProjectName",
                     OldModuleName = "MyModuleName",
-                },
-                new AbpProTemplateOptions("abp-vnext-pro-business", "local", "local")
-                {
-                    //ExcludeFiles = "aspnet-core,vben28,abp-vnext-pro-nuget-module,abp-vnext-pro-nuget-simplify,docs,.github,LICENSE,Readme.md",
-                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
-                    OldCompanyName = "Lion",
-                    OldProjectName = "AbpPro"
-                },
+                }
             };
         });
 
+        Configure<Options.AbpProCliBusinessOptions>(options =>
+        {
+            options.Owner = "abp-vnext-pro";
+            options.RepositoryId = "abp";
+            options.Templates = new List<AbpProTemplateOptions>()
+            {
+                new AbpProTemplateOptions("source", "source", "商业版本源码版本")
+                {
+                    ExcludeFiles = ".github,LICENSE,Readme.md",
+                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
+                    OldCompanyName = "Lion",
+                    OldProjectName = "AbpPro",
+                    OldModuleName = "",
+                },
+                
+                new AbpProTemplateOptions("nuget", "nuget", "商业版本nuget版本")
+                {
+                    ExcludeFiles = ".github,LICENSE,Readme.md,aspnet-core,.idea,gateways,MyCompanyName.MyProjectName.Gateways.sln,MyCompanyName.MyProjectName.Gateways.sln.DotSettings.user",
+                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets,.sln.DotSettings.user",
+                    OldCompanyName = "MyCompanyName",
+                    OldProjectName = "MyProjectName",
+                    OldModuleName = "",
+                },
+                
+                new AbpProTemplateOptions("nuget-gateways", "nuget", "商业版本nuget版本")
+                {
+                    ExcludeFiles = ".github,LICENSE,Readme.md,aspnet-core,.idea,MyCompanyName.MyProjectName.sln,MyCompanyName.MyProjectName.sln.DotSettings.user",
+                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets,.sln.DotSettings.user",
+                    OldCompanyName = "MyCompanyName",
+                    OldProjectName = "MyProjectName",
+                    OldModuleName = "",
+                },
+            };
+        });
         context.Services.AddHttpClient();
     }
 }

@@ -1,3 +1,5 @@
+using System.IO.Compression;
+
 namespace Lion.AbpPro.Cli.SourceCode;
 
 public class SourceCodeManager : ITransientDependency, ISourceCodeManager
@@ -94,6 +96,28 @@ public class SourceCodeManager : ITransientDependency, ISourceCodeManager
         context.ExtractProjectPath = Path.Combine(CliPaths.TemplateCache, _cliOptions.RepositoryId + "-" + context.TemplateFile.Version);
     }
 
+    public string ExtractProjectZip(string zipPath, string repositoryId, string version)
+    {
+        var targetPath = Path.Combine(Path.GetDirectoryName(zipPath), repositoryId + "-" + version);
+        try
+        {
+            if (Directory.Exists(targetPath)) return targetPath;
+
+            System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, targetPath, Encoding.UTF8, true);
+
+            var directoryName = Path.Combine(targetPath, Directory.GetDirectories(targetPath).First());
+            Directory.Move(directoryName, Path.Combine(targetPath, repositoryId));
+
+            return Path.Combine(targetPath, repositoryId);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError($"解压文件失败: {e.Message}");
+        }
+
+        return targetPath;
+    }
+
     public void MoveTemplate(SourceCodeContext context)
     {
         // var codePath= Path.Combine(context.OutputFolder, context.CompanyName + "." + context.ProjectName);
@@ -152,17 +176,39 @@ public class SourceCodeManager : ITransientDependency, ISourceCodeManager
             DirectoryHelper.DeleteIfExists(context.ExtractProjectPath, true);
         }
     }
-    
+
+    public void ReplaceTemplates(
+        string sourcePath,
+        string oldCompanyName,
+        string oldProjectName,
+        string oldModuleName,
+        string companyName,
+        string projectName,
+        string moduleName,
+        string replaceSuffix,
+        string version)
+    {
+        ReplaceHelper.ReplaceTemplates(
+            sourcePath,
+            oldCompanyName,
+            oldProjectName,
+            oldModuleName,
+            companyName,
+            projectName,
+            moduleName,
+            replaceSuffix,
+            version);
+    }
+
     public void ReplaceLocalTemplates(SourceCodeContext context)
     {
         try
         {
-            
             DirectoryHelper.DeleteIfExists(context.OutputFolder, true);
-            
+
             DirectoryAndFileHelper.CopyFolder(context.TemplateFolder, context.OutputFolder, context.ExcludeFiles);
-            
-            
+
+
             ReplaceHelper.ReplaceTemplates(
                 context.OutputFolder,
                 context.OldCompanyName,
@@ -185,7 +231,7 @@ public class SourceCodeManager : ITransientDependency, ISourceCodeManager
             // }
             //
             // context.OutputFolder = Path.Combine(context.OutputFolder, context.CompanyName + "." + context.ProjectName);
-          
+
             // DirectoryAndFileHelper.CopyFolder(context.TemplateFolder, context.OutputFolder, context.ExcludeFiles);
 
             _logger.LogInformation($"OutputFolder:{context.OutputFolder}");

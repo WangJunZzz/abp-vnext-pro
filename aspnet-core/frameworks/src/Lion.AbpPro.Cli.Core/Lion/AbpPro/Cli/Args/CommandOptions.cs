@@ -65,4 +65,13 @@ public static class CommandOptions
         public const string Short = "v";
         public const string Long = "version";
     }
+    
+    /// <summary>
+    /// 版本
+    /// </summary>
+    public static class Token
+    {
+        public const string Short = "token";
+        public const string Long = "token";
+    }
 }

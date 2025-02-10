@@ -20,7 +20,7 @@ public class CliService : DomainService
 
     public async Task RunAsync(string[] args)
     {
-        Logger.LogInformation("ABP Pro CLI (https://https://doc.cncore.club/)");
+        Logger.LogInformation("ABP Pro CLI (http://doc.cncore.club/)");
         Logger.LogInformation("请输入 lion.abp help 查看所有命令");
         try
         {
@@ -30,7 +30,7 @@ public class CliService : DomainService
 
         catch (Exception ex)
         {
-            Logger.LogException(ex);
+            Logger.LogError(ex.Message);
         }
     }
 
