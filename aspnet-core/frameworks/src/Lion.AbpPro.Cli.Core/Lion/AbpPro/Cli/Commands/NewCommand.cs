@@ -111,7 +111,7 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         // 解压源码
         var extractPath = _sourceCodeManager.ExtractProjectZip(localFilePath, _cliOptions.RepositoryId, version);
 
-        var contentPath = templateOptions.Name == "pro" ? Path.Combine(extractPath, _cliOptions.RepositoryId) : Path.Combine(extractPath, _cliOptions.RepositoryId, "templates", templateOptions.Name);
+        var contentPath = templateOptions.Name == "pro" ? extractPath : Path.Combine(extractPath, "templates", templateOptions.Name);
         // 复制源码到输出目录
         var destOutput = Path.Combine(CliPaths.Output, $"{companyName}-{projectName}-{version}");
 
@@ -119,6 +119,7 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         {
             destOutput = Path.Combine(CliPaths.Output, $"{companyName}-{projectName}-{moduleName}-{version}");
         }
+
         DirectoryAndFileHelper.CopyFolder(contentPath, destOutput, templateOptions.ExcludeFiles);
 
         ReplaceHelper.ReplaceTemplates(

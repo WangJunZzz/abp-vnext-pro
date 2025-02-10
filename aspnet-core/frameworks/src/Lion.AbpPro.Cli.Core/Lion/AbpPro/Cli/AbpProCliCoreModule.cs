@@ -60,7 +60,7 @@ public class AbpProCliCoreModule : AbpModule
             {
                 new AbpProTemplateOptions("pro", "pro", "商业版本源码版本")
                 {
-                    ExcludeFiles = ".github,LICENSE,Readme.md,templates",
+                    ExcludeFiles = ".github,LICENSE,Readme.md,templates,Lion.AbpPro.Cli.sln",
                     ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
                     OldCompanyName = "Lion",
                     OldProjectName = "AbpPro",
@@ -76,9 +76,9 @@ public class AbpProCliCoreModule : AbpModule
                     OldModuleName = "",
                 },
                 
-                new AbpProTemplateOptions("pro-nuget-gateways", "pro-nuget", "商业版本nuget版本")
+                new AbpProTemplateOptions("pro-nuget-gateways", "pro-nuget", "商业版本nuget网关版本")
                 {
-                    ExcludeFiles = ".github,LICENSE,Readme.md,aspnet-core,.idea,MyCompanyName.MyProjectName.sln,MyCompanyName.MyProjectName.sln.DotSettings.user",
+                    ExcludeFiles = ".github,LICENSE,Readme.md,aspnet-core,.idea,MyCompanyName.MyProjectName.sln,MyCompanyName.MyProjectName.sln.DotSettings.user,Lion.AbpPro.Cli.sln",
                     ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets,.sln.DotSettings.user",
                     OldCompanyName = "MyCompanyName",
                     OldProjectName = "MyProjectName",
