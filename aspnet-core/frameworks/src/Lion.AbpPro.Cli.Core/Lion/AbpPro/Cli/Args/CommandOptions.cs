@@ -42,7 +42,7 @@ public static class CommandOptions
     /// <summary>
     /// 输出目录
     /// </summary>
-    public static class OutputFolder
+    public static class Output
     {
         public const string Short = "o";
         public const string Long = "output";

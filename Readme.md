@@ -35,20 +35,20 @@ dotnet tool update Lion.AbpPro.Cli -g
 - 源码版本
 
 ```bash
-lion.abp new -t pro -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录
+lion.abp new -t pro -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) 
 ```
 
 - nuget版本
 
 ```bash
-lion.abp new -t pro-nuget -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录
+lion.abp new -t pro-nuget -c 公司名称 -p 项目名称 -v 版本(默认LastRelease)
 ```
 
 
 - 模块
 
 ```bash
-lion.abp new -t pro-module -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录
+lion.abp new -t pro-module -c 公司名称 -p 项目名称 -v 版本(默认LastRelease)
 ```
 
 

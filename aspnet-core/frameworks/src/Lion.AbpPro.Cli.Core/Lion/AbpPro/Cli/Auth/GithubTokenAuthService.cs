@@ -19,6 +19,10 @@ public class GithubTokenAuthService : ITokenAuthService, ITransientDependency
 
     public async Task<string> GetAsync()
     {
+        if (!File.Exists(CliPaths.AccessToken))
+        {
+            return string.Empty;
+        }
         return await File.ReadAllTextAsync(CliPaths.AccessToken);
     }
 }

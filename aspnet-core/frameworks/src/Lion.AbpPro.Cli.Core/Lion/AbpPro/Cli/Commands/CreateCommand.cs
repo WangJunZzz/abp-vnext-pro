@@ -71,6 +71,7 @@ public class CreateCommand : IConsoleCommand, ITransientDependency
         }
 
         var version = commandLineArgs.Options.GetOrNull(CommandOptions.Version.Short, CommandOptions.Version.Long);
+        var output = commandLineArgs.Options.GetOrNull(CommandOptions.Output.Short, CommandOptions.Output.Long);
 
         #endregion
 
@@ -105,13 +106,22 @@ public class CreateCommand : IConsoleCommand, ITransientDependency
         var extractPath = _sourceCodeManager.ExtractProjectZip(localFilePath, _cliOptions.RepositoryId, version);
 
         var contentPath = templateOptions.Name == "pro" ? extractPath : Path.Combine(extractPath, ".templates", templateOptions.Name);
-        // 复制源码到输出目录
-        var destOutput = Path.Combine(CliPaths.Output, $"{companyName}-{projectName}-{version}");
+        if (output.IsNullOrWhiteSpace())
+        {
+            // 复制源码到输出目录
+            output = Path.Combine(CliPaths.Output, $"{companyName}{projectName}{version}"); 
+        }
+        else
+        {
+            output = Path.Combine(output, $"{companyName}{projectName}{version}");
+        }
+        
+     
 
-        DirectoryAndFileHelper.CopyFolder(contentPath, destOutput, templateOptions.ExcludeFiles);
+        DirectoryAndFileHelper.CopyFolder(contentPath, output, templateOptions.ExcludeFiles);
 
         ReplaceHelper.ReplaceTemplates(
-            destOutput,
+            output,
             templateOptions.OldCompanyName,
             templateOptions.OldProjectName,
             templateOptions.OldModuleName,
@@ -121,9 +131,9 @@ public class CreateCommand : IConsoleCommand, ITransientDependency
             templateOptions.ReplaceSuffix,
             version);
 
-        _logger.LogInformation($"创建模板成功,请查阅----->: {destOutput}");
+        _logger.LogInformation($"创建模板成功,请查阅----->: {output}");
 
-        ProcessHelper.OpenExplorer(destOutput);
+        ProcessHelper.OpenExplorer(output);
     }
 
 
