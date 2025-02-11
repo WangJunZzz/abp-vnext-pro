@@ -19,7 +19,7 @@ public static class ReplaceHelper
         }
         catch (Exception ex)
         {
-            throw new UserFriendlyException($"生成模板失败{ex.Message}");
+            throw new UserFriendlyException($"生成模板失败{ex.Message};{ex.StackTrace}");
         }
     }
 
