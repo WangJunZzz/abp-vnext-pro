@@ -170,7 +170,7 @@ namespace MyCompanyName.MyProjectName.MyModuleName
         
         private void ConfigureDB()
         {
-            Configure<AbpDbContextOptions>(options => { options.UseMySQL(); });
+            Configure<AbpDbContextOptions>(options => { options.UseMySQL(builder => { builder.TranslateParameterizedCollectionsToConstants(); }); });
         }
         
         /// <summary>

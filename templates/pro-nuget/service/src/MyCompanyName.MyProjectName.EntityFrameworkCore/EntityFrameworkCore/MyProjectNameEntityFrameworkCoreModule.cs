@@ -31,9 +31,10 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
             });
             Configure<AbpDbContextOptions>(options =>
             {
-                /* The main point to change your DBMS.
-                 * See also MyProjectNameMigrationsDbContextFactory for EF Core tooling. */
-                options.UseMySQL();
+                options.UseMySQL(builder =>
+                {
+                    builder.TranslateParameterizedCollectionsToConstants();
+                });
             });
         }
     }
