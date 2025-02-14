@@ -76,13 +76,20 @@ namespace Lion.AbpPro
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
             app.UseUnitOfWork();
-            app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
-            // app.UseHangfireDashboard("/hangfire", new DashboardOptions()
-            // {
-            //     Authorization = new[] { new CustomHangfireAuthorizeFilter() },
-            //     IgnoreAntiforgeryToken = true
-            // });
+            
+            app.UseConfiguredEndpoints(endpoints =>
+            {
+                endpoints.MapHealthChecks("/health"); 
+                
+                // endpoints.MapHangfireDashboard("/hangfire", new DashboardOptions()
+                // {
+                //     Authorization = new[] { new CustomHangfireAuthorizeFilter() },
+                //     IgnoreAntiforgeryToken = true
+                // });
 
+            });
+            app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
+       
             if (configuration.GetValue("Consul:Enabled", false))
             {
                 app.UseConsul();

@@ -58,7 +58,17 @@ namespace MyCompanyName.MyProjectName
             app.UseAbpSerilogEnrichers();
 
             app.UseUnitOfWork();
-            app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
+			app.UseConfiguredEndpoints(endpoints =>
+            {
+                endpoints.MapHealthChecks("/health"); 
+                
+                // endpoints.MapHangfireDashboard("/hangfire", new DashboardOptions()
+                // {
+                //     Authorization = new[] { new CustomHangfireAuthorizeFilter() },
+                //     IgnoreAntiforgeryToken = true
+                // });
+
+            });
 
 
             if (configuration.GetValue("Consul:Enabled", false))
