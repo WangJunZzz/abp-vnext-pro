@@ -9,14 +9,12 @@ public class CreateCommand : IConsoleCommand, ITransientDependency
     private readonly ITokenAuthService _tokenAuthService;
     private readonly Options.AbpProCliBusinessOptions _cliOptions;
     private readonly IGithubClient _githubClient;
-    private readonly ISourceCodeManager _sourceCodeManager;
 
-    public CreateCommand(ILogger<CreateCommand> logger, ITokenAuthService tokenAuthService, IOptions<AbpProCliBusinessOptions> cliOptions, IGithubClient githubClient, ISourceCodeManager sourceCodeManager)
+    public CreateCommand(ILogger<CreateCommand> logger, ITokenAuthService tokenAuthService, IOptions<AbpProCliBusinessOptions> cliOptions, IGithubClient githubClient)
     {
         _logger = logger;
         _tokenAuthService = tokenAuthService;
         _githubClient = githubClient;
-        _sourceCodeManager = sourceCodeManager;
         _cliOptions = cliOptions.Value;
     }
 
@@ -103,7 +101,7 @@ public class CreateCommand : IConsoleCommand, ITransientDependency
         }
 
         // 解压源码
-        var extractPath = _sourceCodeManager.ExtractProjectZip(localFilePath, _cliOptions.RepositoryId, version);
+        var extractPath = ZipHelper.Extract(localFilePath, _cliOptions.RepositoryId, version);
 
         var contentPath = templateOptions.Name == "pro" ? extractPath : Path.Combine(extractPath, ".templates", templateOptions.Name);
         if (output.IsNullOrWhiteSpace())

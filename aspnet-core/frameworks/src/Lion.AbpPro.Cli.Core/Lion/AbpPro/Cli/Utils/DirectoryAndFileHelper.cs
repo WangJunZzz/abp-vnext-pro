@@ -71,7 +71,7 @@ public static class DirectoryAndFileHelper
     /// 删除文件夹及文件
     /// </summary>
     /// <param name="srcPath">路径</param>
-    private static void DeletedDir(string srcPath)
+    public static void DeletedDir(string srcPath)
     {
         try
         {

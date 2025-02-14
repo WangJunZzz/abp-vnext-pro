@@ -7,7 +7,6 @@ public class NewCommand : IConsoleCommand, ITransientDependency
     private readonly AbpCliOptions _abpCliOptions;
     private readonly IServiceScopeFactory _serviceScopeFactory;
     private readonly Options.AbpProCliOptions _cliOptions;
-    private readonly ISourceCodeManager _sourceCodeManager;
     private readonly IGithubClient _githubClient;
 
     public NewCommand(
@@ -15,12 +14,10 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         ILogger<NewCommand> logger,
         IServiceScopeFactory serviceScopeFactory,
         IOptions<Options.AbpProCliOptions> options,
-        ISourceCodeManager sourceCodeManager,
         IGithubClient githubClient)
     {
         _logger = logger;
         _serviceScopeFactory = serviceScopeFactory;
-        _sourceCodeManager = sourceCodeManager;
         _githubClient = githubClient;
         _cliOptions = options.Value;
         _abpCliOptions = abpCliOptions.Value;
@@ -110,7 +107,7 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         }
 
         // 解压源码
-        var extractPath = _sourceCodeManager.ExtractProjectZip(localFilePath, _cliOptions.RepositoryId, version);
+        var extractPath = ZipHelper.Extract(localFilePath, _cliOptions.RepositoryId, version);
 
         var contentPath = templateOptions.Name == "pro" ? extractPath : Path.Combine(extractPath, "templates", templateOptions.Name);
         if (output.IsNullOrWhiteSpace())

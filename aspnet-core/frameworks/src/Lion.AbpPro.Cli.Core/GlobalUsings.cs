@@ -11,7 +11,6 @@ global using Lion.AbpPro.Cli.Args;
 global using Lion.AbpPro.Cli.Commands;
 global using Lion.AbpPro.Cli.Github;
 global using Lion.AbpPro.Cli.Options;
-global using Lion.AbpPro.Cli.SourceCode;
 global using Lion.AbpPro.Cli.Utils;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
