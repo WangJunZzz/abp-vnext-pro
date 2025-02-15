@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Domain\Lion.AbpPro.BasicManagement.Domain.csproj" />
     <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Domain\Lion.AbpPro.DataDictionaryManagement.Domain.csproj" />
+    <ProjectReference Include="..\..\..\modules\FileManagement\src\Lion.AbpPro.FileManagement.Domain\Lion.AbpPro.FileManagement.Domain.csproj" />
     <ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.Domain\Lion.AbpPro.NotificationManagement.Domain.csproj" />
     <ProjectReference Include="..\..\..\modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Domain\Lion.AbpPro.LanguageManagement.Domain.csproj" />
     <ProjectReference Include="..\Lion.AbpPro.Domain.Shared\Lion.AbpPro.Domain.Shared.csproj" />

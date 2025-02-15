@@ -1,9 +1,12 @@
+using Lion.AbpPro.FileManagement.Files;
+
 namespace Lion.AbpPro.FileManagement;
 
 public class FileManagementApplicationAutoMapperProfile : Profile
 {
     public FileManagementApplicationAutoMapperProfile()
     {
-        CreateMap<Lion.AbpPro.FileManagement.Files.File, PagingFileOutput>();
+        CreateMap<Files.FileObjectDto, PageFileObjectOutput>();
+        CreateMap<Files.FileObjectDto, GetFileObjectOutput>();
     }
 }

@@ -1,7 +1,6 @@
 ﻿// Global using directives
 
 global using System.Threading.Tasks;
-global using Lion.AbpPro.FileManagement.Files.Dto;
 global using Lion.AbpPro.FileManagement.Localization;
 global using Localization.Resources.AbpUi;
 global using Microsoft.AspNetCore.Mvc;

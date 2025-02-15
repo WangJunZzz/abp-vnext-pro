@@ -19,5 +19,5 @@ public class FileManagementDbContext : AbpDbContext<FileManagementDbContext>, IF
         builder.ConfigureFileManagement();
     }
 
-    public DbSet<Lion.AbpPro.FileManagement.Files.File> Files { get;  }
+    public DbSet<FileObject> FileObjects { get; set; }
 }

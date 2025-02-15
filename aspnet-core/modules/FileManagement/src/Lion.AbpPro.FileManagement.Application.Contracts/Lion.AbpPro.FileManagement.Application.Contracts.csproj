@@ -9,6 +9,7 @@
     <ItemGroup>
         <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" />
         <PackageReference Include="Volo.Abp.Authorization" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" />
         <ProjectReference Include="..\Lion.AbpPro.FileManagement.Domain.Shared\Lion.AbpPro.FileManagement.Domain.Shared.csproj" />
     </ItemGroup>
 
