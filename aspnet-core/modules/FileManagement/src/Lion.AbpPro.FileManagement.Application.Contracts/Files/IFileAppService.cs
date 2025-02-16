@@ -1,15 +1,34 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Lion.AbpPro.FileManagement.Files.Dto;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
 namespace Lion.AbpPro.FileManagement.Files;
 
+/// <summary>
+/// 文件
+/// </summary>
 public interface IFileAppService : IApplicationService
 {
-    Task<FileTokenOutput> GetFileTokenAsync();
-    Task CreateAsync(CreateFileInput input);
+    /// <summary>
+    /// 分页查询文件
+    /// </summary>
+    Task<PagedResultDto<PageFileObjectOutput>> PageAsync(PageFileObjectInput input);
 
-    Task<PagedResultDto<PagingFileOutput>> PagingAsync(PagingFileInput input);
+    /// <summary>
+    /// 上传文件
+    /// </summary>
+    Task<List<UploadOutput>> UploadAsync(List<IFormFile> files);
+    
+    /// <summary>
+    /// 删除文件
+    /// </summary>
+    Task DeleteAsync(DeleteFileObjectInput input);
+    
+    Task<GetFileObjectOutput> GetAsync(GetFileObjectInput input);
+    
+    /// <summary>
+    /// 下载文件
+    /// </summary>
+    Task<FileContentResult> DownloadAsync(DownloadFileObjectInput input);
 }

@@ -1,3 +1,5 @@
+using Lion.AbpPro.FileManagement;
+
 namespace Lion.AbpPro
 {
     [DependsOn(
@@ -6,7 +8,8 @@ namespace Lion.AbpPro
         typeof(BasicManagementDomainModule),
         typeof(DataDictionaryManagementDomainModule),
         typeof(NotificationManagementDomainModule),
-        typeof(LanguageManagementDomainModule)
+        typeof(LanguageManagementDomainModule),
+        typeof(FileManagementDomainModule)
     )]
     public class AbpProDomainModule : AbpModule
     {

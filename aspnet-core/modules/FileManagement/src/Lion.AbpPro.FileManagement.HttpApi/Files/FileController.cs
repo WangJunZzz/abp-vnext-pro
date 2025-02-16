@@ -1,7 +1,9 @@
-﻿namespace Lion.AbpPro.FileManagement.Files;
+using Microsoft.AspNetCore.Http;
+
+namespace Lion.AbpPro.FileManagement.Files;
 
 [Route("Files")]
-public class FileController: FileManagementController, IFileAppService
+public class FileController : AbpController, IFileAppService
 {
     private readonly IFileAppService _fileAppService;
 
@@ -10,24 +12,39 @@ public class FileController: FileManagementController, IFileAppService
         _fileAppService = fileAppService;
     }
 
-    [HttpGet("getFileToken")]
-    [SwaggerOperation(summary: "获取上传文件临时Token", Tags = new[] { "Files" })]
-    public Task<FileTokenOutput> GetFileTokenAsync()
+    [HttpPost("Page")]
+    [SwaggerOperation(summary: "分页查询文件", Tags = new[] { "Files" })]
+    public async Task<PagedResultDto<PageFileObjectOutput>> PageAsync(PageFileObjectInput input)
     {
-        return _fileAppService.GetFileTokenAsync();
+        return await _fileAppService.PageAsync(input);
     }
 
-    [HttpPost("create")]
-    [SwaggerOperation(summary: "创建文件", Tags = new[] { "Files" })]
-    public Task CreateAsync(CreateFileInput input)
+    [HttpPost("Upload")]
+    [SwaggerOperation(summary: "上传文件", Tags = new[] { "Files" })]
+    public async Task<List<UploadOutput>> UploadAsync(List<IFormFile> files)
     {
-        return _fileAppService.CreateAsync(input);
+        return await _fileAppService.UploadAsync(files);
     }
 
-    [HttpPost("page")]
-    [SwaggerOperation(summary: "分页查询", Tags = new[] { "Files" })]
-    public Task<PagedResultDto<PagingFileOutput>> PagingAsync(PagingFileInput input)
+
+    [HttpPost("Delete")]
+    [SwaggerOperation(summary: "删除文件", Tags = new[] { "Files" })]
+    public async Task DeleteAsync(DeleteFileObjectInput input)
     {
-        return _fileAppService.PagingAsync(input);
+        await _fileAppService.DeleteAsync(input);
+    }
+
+    [HttpPost("Get")]
+    [SwaggerOperation(summary: "获取文件", Tags = new[] { "Files" })]
+    public Task<GetFileObjectOutput> GetAsync(GetFileObjectInput input)
+    {
+        return _fileAppService.GetAsync(input);
+    }
+
+    [HttpPost("Download")]
+    [SwaggerOperation(summary: "下载文件", Tags = new[] { "Files" })]
+    public Task<FileContentResult> DownloadAsync(DownloadFileObjectInput input)
+    {
+        return _fileAppService.DownloadAsync(input);
     }
 }

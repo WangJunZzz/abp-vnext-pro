@@ -1,9 +1,10 @@
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
+using Lion.AbpPro.FileManagement.EntityFrameworkCore;
+using Lion.AbpPro.FileManagement.Files;
 using Lion.AbpPro.LanguageManagement.EntityFrameworkCore;
 using Lion.AbpPro.LanguageManagement.Languages.Aggregates;
 using Lion.AbpPro.LanguageManagement.LanguageTexts.Aggregates;
 using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
-
 namespace Lion.AbpPro.EntityFrameworkCore
 {
     /* This is your actual DbContext used on runtime.
@@ -20,7 +21,8 @@ namespace Lion.AbpPro.EntityFrameworkCore
         IBasicManagementDbContext,
         INotificationManagementDbContext,
         IDataDictionaryManagementDbContext,
-        ILanguageManagementDbContext
+        ILanguageManagementDbContext,
+        IFileManagementDbContext
     {
         public DbSet<IdentityUser> Users { get; set; }
         public DbSet<IdentityRole> Roles { get; set; }
@@ -47,6 +49,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
         public DbSet<DataDictionary> DataDictionaries { get;  set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<LanguageText> LanguageTexts { get; set; }
+        public DbSet<FileObject> FileObjects { get; set; }
         
         public AbpProDbContext(DbContextOptions<AbpProDbContext> options)
             : base(options)
@@ -80,7 +83,12 @@ namespace Lion.AbpPro.EntityFrameworkCore
             
             // 多语言
             builder.ConfigureLanguageManagement();
+
+            // 文件模块
+            builder.ConfigureFileManagement();
         }
+
+
 
     }
 }

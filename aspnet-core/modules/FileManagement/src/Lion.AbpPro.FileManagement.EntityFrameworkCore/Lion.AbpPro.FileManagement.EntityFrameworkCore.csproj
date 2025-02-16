@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      
         <PackageReference Include="Volo.Abp.EntityFrameworkCore" />
         <ProjectReference Include="..\Lion.AbpPro.FileManagement.Domain\Lion.AbpPro.FileManagement.Domain.csproj" />
     </ItemGroup>
