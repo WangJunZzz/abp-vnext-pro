@@ -40,4 +40,11 @@ public class FileController : AbpController, IFileAppService
     {
         return _fileAppService.GetAsync(input);
     }
+
+    [HttpPost("Download")]
+    [SwaggerOperation(summary: "下载文件", Tags = new[] { "Files" })]
+    public Task<FileContentResult> DownloadAsync(DownloadFileObjectInput input)
+    {
+        return _fileAppService.DownloadAsync(input);
+    }
 }

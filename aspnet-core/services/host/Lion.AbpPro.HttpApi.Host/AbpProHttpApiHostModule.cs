@@ -88,7 +88,6 @@ namespace Lion.AbpPro
                 // });
 
             });
-            app.UseConfiguredEndpoints(endpoints => { endpoints.MapHealthChecks("/health"); });
        
             if (configuration.GetValue("Consul:Enabled", false))
             {

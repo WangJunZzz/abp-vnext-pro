@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
@@ -25,4 +26,9 @@ public interface IFileAppService : IApplicationService
     Task DeleteAsync(DeleteFileObjectInput input);
     
     Task<GetFileObjectOutput> GetAsync(GetFileObjectInput input);
+    
+    /// <summary>
+    /// 下载文件
+    /// </summary>
+    Task<FileContentResult> DownloadAsync(DownloadFileObjectInput input);
 }

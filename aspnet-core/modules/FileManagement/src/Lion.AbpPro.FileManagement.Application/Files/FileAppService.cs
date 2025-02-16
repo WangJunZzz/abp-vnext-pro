@@ -1,5 +1,6 @@
 using Lion.AbpPro.FileManagement.Provider;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace Lion.AbpPro.FileManagement.Files;
@@ -93,5 +94,11 @@ public class FileAppService : ApplicationService, IFileAppService
     {
         var file = await _fileObjectManager.GetAsync(input.Id);
         return ObjectMapper.Map<FileObjectDto, GetFileObjectOutput>(file);
+    }
+
+    public async Task<FileContentResult> DownloadAsync(DownloadFileObjectInput input)
+    {
+        var file = await _fileObjectManager.GetAsync(input.Id);
+        return new Microsoft.AspNetCore.Mvc.FileContentResult(file.Bytes, file.ContentType);
     }
 }
