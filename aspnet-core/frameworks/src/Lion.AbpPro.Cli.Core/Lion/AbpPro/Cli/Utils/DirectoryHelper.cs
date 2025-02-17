@@ -1,6 +1,6 @@
 ﻿namespace Lion.AbpPro.Cli.Utils;
 
-public static class DirectoryAndFileHelper
+public static class DirectoryHelper
 {
     /// <summary>
     /// 复制文件夹及文件
@@ -94,5 +94,80 @@ public static class DirectoryAndFileHelper
         {
             throw new UserFriendlyException("删除文件失败！");
         }
+    }
+
+    /// <summary>
+    /// 获取指定路径下所有扩展名为 .sln 的文件
+    /// </summary>
+    public static List<string> GetSolutionFiles(string path)
+    {
+        var solutionFiles = new List<string>();
+        var files = Directory.GetFiles(path, "*.sln", SearchOption.AllDirectories);
+        solutionFiles.AddRange(files);
+        return solutionFiles;
+    }
+
+    public static void IsAbpProjectStructure(string path, string companyName, string projectName)
+    {
+        var dir = Directory.GetDirectories(path);
+
+        if (
+            // 判断是否有Application
+            dir.Any(e => Path.GetFileName(e) == $"{companyName}.{projectName}.Application") &&
+            // 判断是否有Application.Contracts
+            dir.Any(e => Path.GetFileName(e) == $"{companyName}.{projectName}.Application.Contracts") &&
+            // 判断是否有Domain
+            dir.Any(e => Path.GetFileName(e) == $"{companyName}.{projectName}.Domain") &&
+            // 判断是否有Domain.Shared
+            dir.Any(e => Path.GetFileName(e) == $"{companyName}.{projectName}.Domain.Shared") &&
+            // 判断是否有EntityFrameworkCore
+            dir.Any(e => Path.GetFileName(e) == $"{companyName}.{projectName}.EntityFrameworkCore") &&
+            // 判断是否有HttpApi
+            dir.Any(e => Path.GetFileName(e) == $"{companyName}.{projectName}.HttpApi") &&
+            // 判断是否有HttpApi.Client
+            dir.Any(e => Path.GetFileName(e) == $"{companyName}.{projectName}.HttpApi.Client")
+        )
+        {
+            return;
+        }
+        else
+        {
+            throw new UserFriendlyException($"请确认项目路径下的项目是否是abp标准结构:{path}");
+        }
+    }
+
+    public static void IsVben5ProjectStructure(string path)
+    {
+        var dir = Directory.GetDirectories(path);
+
+        if (
+            // 判断是否有Application
+            dir.Any(e => Path.GetFileName(e) == $"router") &&
+            // 判断是否有Application.Contracts
+            dir.Any(e => Path.GetFileName(e) == $"views")
+        )
+        {
+            return;
+        }
+        else
+        {
+            throw new UserFriendlyException($"请确认项目路径下的项目是否是vben5标准结构:{path}");
+        }
+    }
+
+    private static bool CheckFolder(string path, string name)
+    {
+        var dir = Directory.GetDirectories(path);
+
+        // 检查路径是否指向一个文件夹
+        if (Directory.Exists(path))
+        {
+            // 获取文件夹名
+            var folderName = Path.GetFileName(path);
+            // 判断文件夹名是否以 'Application' 结尾
+            return folderName.EndsWith(name, StringComparison.OrdinalIgnoreCase);
+        }
+
+        return false;
     }
 }

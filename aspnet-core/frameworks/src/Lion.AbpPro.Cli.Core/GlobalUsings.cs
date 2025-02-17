@@ -18,6 +18,7 @@ global using Microsoft.Extensions.Options;
 global using Octokit;
 global using Polly;
 global using Polly.Retry;
+global using Spectre.Console;
 global using Volo.Abp;
 global using Volo.Abp.DependencyInjection;
 global using Volo.Abp.Domain;

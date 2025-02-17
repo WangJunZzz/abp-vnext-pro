@@ -40,7 +40,7 @@ public static class ZipHelper
 
         if (Directory.Exists(targetPath))
         {
-            DirectoryAndFileHelper.DeletedDir(targetPath);
+            DirectoryHelper.DeletedDir(targetPath);
         }
 
         System.IO.Compression.ZipFile.ExtractToDirectory(zipPath, targetPath, Encoding.UTF8, true);

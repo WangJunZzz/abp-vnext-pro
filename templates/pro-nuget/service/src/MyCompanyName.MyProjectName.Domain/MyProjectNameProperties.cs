@@ -1,8 +1,8 @@
 namespace MyCompanyName.MyProjectName
 {
-    public static class MyProjectNameConsts
+    public static class MyProjectNameProperties
     {
-        public const string DbTablePrefix = "App";
+        public const string DbTablePrefix = "Abp";
 
         public const string DbSchema = null;
     }

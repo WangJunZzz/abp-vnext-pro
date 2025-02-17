@@ -1,3 +1,4 @@
+using DirectoryHelper = Volo.Abp.IO.DirectoryHelper;
 using Uri = System.Uri;
 
 namespace Lion.AbpPro.Cli.Github;

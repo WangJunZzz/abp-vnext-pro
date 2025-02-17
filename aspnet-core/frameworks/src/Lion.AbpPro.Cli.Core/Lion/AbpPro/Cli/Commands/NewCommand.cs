@@ -1,4 +1,6 @@
-﻿namespace Lion.AbpPro.Cli.Commands;
+﻿using DirectoryHelper = Lion.AbpPro.Cli.Utils.DirectoryHelper;
+
+namespace Lion.AbpPro.Cli.Commands;
 
 public class NewCommand : IConsoleCommand, ITransientDependency
 {
@@ -126,7 +128,7 @@ public class NewCommand : IConsoleCommand, ITransientDependency
         }
         
 
-        DirectoryAndFileHelper.CopyFolder(contentPath, output, templateOptions.ExcludeFiles);
+        DirectoryHelper.CopyFolder(contentPath, output, templateOptions.ExcludeFiles);
 
         ReplaceHelper.ReplaceTemplates(
             output,

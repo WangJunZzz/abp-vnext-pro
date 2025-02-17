@@ -1,6 +1,6 @@
 namespace Lion.AbpPro
 {
-    public static class AbpProConsts
+    public static class AbpProDbProperties
     {
         public const string DbTablePrefix = "App";
 

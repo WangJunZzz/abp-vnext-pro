@@ -12,6 +12,7 @@ public class AbpProCliCoreModule : AbpModule
         Configure<AbpCliOptions>(options => { options.Commands[LoginCommand.Name] = typeof(LoginCommand); });
         Configure<AbpCliOptions>(options => { options.Commands[CreateCommand.Name] = typeof(CreateCommand); });
         Configure<AbpCliOptions>(options => { options.Commands[CodeCommand.Name] = typeof(CodeCommand); });
+        Configure<AbpCliOptions>(options => { options.Commands[ConfigCommand.Name] = typeof(ConfigCommand); });
 
         Configure<Options.AbpProCliOptions>(options =>
         {

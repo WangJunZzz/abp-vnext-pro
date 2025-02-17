@@ -6,6 +6,7 @@ public class CliPaths
     public static string Root => Path.Combine(AbpRootPath, "cli");
 
     public static string AccessToken => Path.Combine(AbpRootPath, "cli", "access-token.bin");
+    public static string Config => Path.Combine(AbpRootPath, "cli", "config.bin");
     public static string Output => Path.Combine(AbpRootPath, "cli", "code", "output");
     public static string Source => Path.Combine(AbpRootPath, "cli", "code", "source");
 

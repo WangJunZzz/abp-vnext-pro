@@ -1,4 +1,5 @@
 using Lion.AbpPro.Cli.Auth;
+using DirectoryHelper = Lion.AbpPro.Cli.Utils.DirectoryHelper;
 
 namespace Lion.AbpPro.Cli.Commands;
 
@@ -116,7 +117,7 @@ public class CreateCommand : IConsoleCommand, ITransientDependency
         
      
 
-        DirectoryAndFileHelper.CopyFolder(contentPath, output, templateOptions.ExcludeFiles);
+        DirectoryHelper.CopyFolder(contentPath, output, templateOptions.ExcludeFiles);
 
         ReplaceHelper.ReplaceTemplates(
             output,
