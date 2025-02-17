@@ -1,6 +1,6 @@
 namespace MyCompanyName.MyProjectName
 {
-    public static class MyProjectNameProperties
+    public static class MyProjectNameDbProperties
     {
         public const string DbTablePrefix = "Abp";
 
