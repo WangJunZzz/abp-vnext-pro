@@ -107,6 +107,7 @@ public class CodeCommand : IConsoleCommand, ITransientDependency
             GenerateCode(extractPath, sourcePath, "Application.Contracts", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
             GenerateCode(extractPath, sourcePath, "Application", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
             GenerateCode(extractPath, sourcePath, "HttpApi", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
+            GenerateCode(extractPath, sourcePath, "EntityFrameworkCore", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
             AppendIDbContextCode(extractPath, sourcePath, "EntityFrameworkCore", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
             AppendDbContextCode(extractPath, sourcePath, "EntityFrameworkCore", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
             AppendDbContextModelCreatingExtensionsCode(extractPath, sourcePath, "EntityFrameworkCore", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
