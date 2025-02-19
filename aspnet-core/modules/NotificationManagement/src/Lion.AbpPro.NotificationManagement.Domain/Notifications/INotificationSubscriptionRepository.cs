@@ -38,5 +38,6 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             List<Guid> notificationId,
             Guid receiverUserId,
             CancellationToken cancellationToken = default);
+        
     }
 }

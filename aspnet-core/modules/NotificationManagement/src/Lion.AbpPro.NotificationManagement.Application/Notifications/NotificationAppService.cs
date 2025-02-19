@@ -66,7 +66,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
 
         public virtual async Task SetReadAsync(SetReadInput input)
         {
-            var notification = await _notificationManager.FindAsync(input.Id);
+            var notification = await _notificationManager.GetAsync(input.Id);
 
             if (notification == null)
             {
@@ -92,16 +92,19 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         {
             foreach (var item in input.Ids)
             {
-                await SetReadAsync(new SetReadInput(){Id = item});
+                await SetReadAsync(new SetReadInput() { Id = item });
             }
         }
+
         /// <summary>
         /// 分页获取消息
         /// </summary>
         public virtual async Task<PagedResultDto<PagingNotificationOutput>> PageNotificationAsync(PagingNotificationInput input)
         {
-            var totalCount = await _notificationManager.GetPagingCountAsync(input.Title, input.Content, input.SenderUserId, input.SenderUserName, input.ReceiverUserId, input.ReceiverUserName, input.Read, input.StartReadTime, input.EndReadTime, input.MessageType,input.MessageLevel);
-            var list = await _notificationManager.GetPagingListAsync(input.Title, input.Content, input.SenderUserId, input.SenderUserName, input.ReceiverUserId, input.ReceiverUserName, input.Read, input.StartReadTime, input.EndReadTime, input.MessageType,input.MessageLevel, input.PageSize, input.SkipCount);
+            var totalCount = await _notificationManager.GetPagingCountAsync(input.Title, input.Content, input.SenderUserId, input.SenderUserName, input.ReceiverUserId, input.ReceiverUserName, input.Read, input.StartReadTime, input.EndReadTime,
+                input.MessageType, input.MessageLevel);
+            var list = await _notificationManager.GetPagingListAsync(input.Title, input.Content, input.SenderUserId, input.SenderUserName, input.ReceiverUserId, input.ReceiverUserName, input.Read, input.StartReadTime, input.EndReadTime,
+                input.MessageType, input.MessageLevel, input.PageSize, input.SkipCount);
             // var boardCastNotificationIds = list.Where(e => e.MessageType == MessageType.BroadCast).Select(e => e.Id).ToList();
             // // 获取通告消息当前用户是否已读
             // var boardCastNotificationSubscriptions = await _notificationSubscriptionManager.GetListAsync(boardCastNotificationIds, CurrentUser.GetId());
@@ -143,6 +146,26 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             }
 
             return result;
+        }
+
+        public async Task DeleteAsync(DeleteMessageInput input)
+        {
+            var notification = await _notificationManager.GetAsync(input.Id);
+            // 判断消息类型
+            if (notification.MessageType == MessageType.Common)
+            {
+                await _notificationManager.DeleteAsync(notification.Id);
+                return;
+            }
+            // todo 暂时只删除普通文本消息
+            // if (notification.MessageType == MessageType.BroadCast && input.ReceiverUserId.HasValue)
+            // {
+            //     var subscription = await _notificationSubscriptionManager.FindAsync(input.ReceiverUserId.Value, input.Id);
+            //     if (subscription != null)
+            //     {
+            //         await _notificationSubscriptionManager.DeleteAsync(subscription.Id);
+            //     }
+            // }
         }
     }
 }

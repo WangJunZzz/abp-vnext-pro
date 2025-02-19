@@ -48,5 +48,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         Task<PagedResultDto<PagingNotificationOutput>> PageNotificationAsync(PagingNotificationInput input);
 
         Task<PagedResultDto<PagingNotificationSubscriptionOutput>> PageNotificationSubscriptionAsync(PagingNotificationSubscriptionInput input);
+
+        Task DeleteAsync(DeleteMessageInput input);
     }
 }

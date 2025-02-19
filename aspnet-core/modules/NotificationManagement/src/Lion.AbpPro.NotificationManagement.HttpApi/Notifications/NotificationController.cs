@@ -34,6 +34,16 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             return _notificationAppService.PageNotificationSubscriptionAsync(input);
         }
 
+        /// <summary>
+        /// 删除消息
+        /// </summary>x
+        [HttpPost("Delete")]
+        [SwaggerOperation(summary: "删除消息", Tags = new[] { "Notification" })]
+        public Task DeleteAsync(DeleteMessageInput input)
+        {
+            return _notificationAppService.DeleteAsync(input);
+        }
+
 
         [HttpPost("SendCommonWarningMessage")]
         [SwaggerOperation(summary: "发送警告文本消息", Tags = new[] { "Notification" })]

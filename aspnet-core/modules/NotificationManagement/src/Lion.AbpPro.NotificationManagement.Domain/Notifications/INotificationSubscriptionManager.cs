@@ -34,4 +34,12 @@ public interface INotificationSubscriptionManager
         CancellationToken cancellationToken = default);
 
     Task<List<NotificationSubscriptionDto>> GetListAsync(List<Guid> notificationId, Guid receiverUserId, CancellationToken cancellationToken = default);
+
+ 
+    Task<NotificationSubscriptionDto> FindAsync(Guid receiveUserId, Guid notificationId, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// 删除消息
+    /// </summary>
+    Task DeleteAsync(Guid id, CancellationToken cancellationToken = default);
 }

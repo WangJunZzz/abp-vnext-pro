@@ -85,7 +85,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         }
 
 
-        public async Task<NotificationDto> FindAsync(Guid id)
+        public async Task<NotificationDto> GetAsync(Guid id)
         {
             var notification = await _notificationRepository.FindAsync(id);
             if (notification == null) throw new NotificationManagementDomainException(NotificationManagementErrorCodes.MessageNotExist);
@@ -96,6 +96,13 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         {
             var notifications = await _notificationRepository.GetListAsync(ids);
             return ObjectMapper.Map<List<Notification>, List<NotificationDto>>(notifications);
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var notification = await _notificationRepository.FindAsync(id);
+            if (notification == null) throw new NotificationManagementDomainException(NotificationManagementErrorCodes.MessageNotExist);
+            await _notificationRepository.DeleteAsync(notification.Id);
         }
 
         /// <summary>

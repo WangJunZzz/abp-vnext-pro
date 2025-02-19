@@ -63,7 +63,9 @@ public interface INotificationManager
     /// <param name="id">消息Id</param>
     Task SetReadAsync(Guid id);
 
-    Task<NotificationDto> FindAsync(Guid id);
+    Task<NotificationDto> GetAsync(Guid id);
     
     Task<List<NotificationDto>> GetListAsync(List<Guid> ids);
+    
+    Task DeleteAsync(Guid id);
 }

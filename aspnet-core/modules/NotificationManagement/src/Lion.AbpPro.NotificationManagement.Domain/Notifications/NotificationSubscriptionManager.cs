@@ -23,7 +23,8 @@ public class NotificationSubscriptionManager : NotificationManagementDomainServi
         await _notificationSubscriptionRepository.InsertAsync(subscription);
     }
 
-    public async Task<List<NotificationSubscriptionDto>> GetPagingListAsync(Guid notificationId, Guid? receiverUserId, string receiverUserName, DateTime? startReadTime, DateTime? endReadTime, int maxResultCount = 10, int skipCount = 0, CancellationToken cancellationToken = default)
+    public async Task<List<NotificationSubscriptionDto>> GetPagingListAsync(Guid notificationId, Guid? receiverUserId, string receiverUserName, DateTime? startReadTime, DateTime? endReadTime, int maxResultCount = 10, int skipCount = 0,
+        CancellationToken cancellationToken = default)
     {
         var list = await _notificationSubscriptionRepository.GetPagingListAsync(notificationId, receiverUserId, receiverUserName, startReadTime, endReadTime, maxResultCount, skipCount, cancellationToken);
         return ObjectMapper.Map<List<NotificationSubscription>, List<NotificationSubscriptionDto>>(list);
@@ -33,6 +34,19 @@ public class NotificationSubscriptionManager : NotificationManagementDomainServi
     {
         var list = await _notificationSubscriptionRepository.GetListAsync(notificationId, receiverUserId, cancellationToken);
         return ObjectMapper.Map<List<NotificationSubscription>, List<NotificationSubscriptionDto>>(list);
+    }
+
+    public async Task<NotificationSubscriptionDto> FindAsync(Guid receiveUserId, Guid notificationId, CancellationToken cancellationToken = default)
+    {
+        var subscription = await _notificationSubscriptionRepository.FindAsync(receiveUserId, notificationId, cancellationToken);
+        return ObjectMapper.Map<NotificationSubscription, NotificationSubscriptionDto>(subscription);
+    }
+
+    public async Task DeleteAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        var subscription = await _notificationSubscriptionRepository.FindAsync(id, false, cancellationToken);
+        if (subscription == null) throw new NotificationManagementDomainException(NotificationManagementErrorCodes.MessageNotExist);
+        await _notificationSubscriptionRepository.DeleteAsync(subscription.Id, false, cancellationToken);
     }
 
     public async Task<long> GetPagingCountAsync(Guid notificationId, Guid? receiverUserId, string receiverUserName, DateTime? startReadTime, DateTime? endReadTime, CancellationToken cancellationToken = default)

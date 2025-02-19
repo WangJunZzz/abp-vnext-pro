@@ -42,5 +42,6 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             CancellationToken cancellationToken = default);
         
         Task<List<Notification>> GetListAsync(List<Guid> ids);
+        
     }
 }
