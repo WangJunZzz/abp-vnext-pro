@@ -10,6 +10,8 @@
         <PackageReference Update="Volo.Abp.Identity.AspNetCore" Version="9.0.4"/>
         <PackageReference Update="Volo.Abp.Caching" Version="9.0.4"/>
         <PackageReference Update="Volo.Abp.BlobStoring.Aliyun" Version="9.0.4"/>
+        <PackageReference Update="Volo.Abp.BlobStoring" Version="9.0.4"/>
+        <PackageReference Update="Volo.Abp.BlobStoring.FileSystem" Version="9.0.4"/>
         <PackageReference Update="Volo.Abp.BackgroundJobs" Version="9.0.4"/>
         <PackageReference Update="Volo.Abp.Authorization.Abstractions" Version="9.0.4"/>
         <PackageReference Update="Volo.Abp.BackgroundJobs.HangFire" Version="9.0.4"/>

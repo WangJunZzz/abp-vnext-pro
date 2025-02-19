@@ -1,23 +1,20 @@
-using Lion.AbpPro.FileManagement.Provider;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-
 namespace Lion.AbpPro.FileManagement.Files;
 
 /// <summary>
 /// 文件
 /// </summary>
-[Authorize]
+[Authorize(FileManagementPermissions.FileManagement.Default)]
 public class FileAppService : ApplicationService, IFileAppService
 {
     private readonly FileObjectManager _fileObjectManager;
-    private readonly IFileProvider _fileProvider;
+    private readonly FileManager _fileManager;
+    private readonly IBlobContainer<AbpProFileManagementContainer> _blobContainer;
 
-    public FileAppService(FileObjectManager fileObjectManager, IFileProvider fileProvider)
+    public FileAppService(FileObjectManager fileObjectManager, IBlobContainer<AbpProFileManagementContainer> blobContainer, FileManager fileManager)
     {
         _fileObjectManager = fileObjectManager;
-        _fileProvider = fileProvider;
+        _blobContainer = blobContainer;
+        _fileManager = fileManager;
     }
 
     /// <summary>
@@ -34,71 +31,34 @@ public class FileAppService : ApplicationService, IFileAppService
         return result;
     }
 
-    public async Task<List<UploadOutput>> UploadAsync(List<IFormFile> files)
+    [Authorize(FileManagementPermissions.FileManagement.Upload)]
+    public async Task UploadAsync(List<IFormFile> files)
     {
-        var result = new List<UploadOutput>();
         foreach (var formFile in files)
         {
-            try
-            {
-                var item = new UploadOutput();
-                // 获取文件的二进制数据
-                using var memoryStream = new MemoryStream();
-                await formFile.CopyToAsync(memoryStream);
-                var fileBytes = memoryStream.ToArray();
-
-                // 这里可以对 fileBytes 进行后续处理，例如保存到数据库或文件系统等
-                // 示例：将文件保存到数据库
-                var updateResult = await _fileProvider.UploadAsync(new UpdateDto()
-                {
-                    FileName = formFile.FileName,
-                    Bytes = fileBytes,
-                    ContentType = formFile.ContentType,
-                    FileSize = formFile.Length
-                });
-
-                result.Add(new UploadOutput()
-                {
-                    Id = updateResult.Id,
-                    Name = updateResult.FileName,
-                    Path = updateResult.FilePath,
-                    Success = true
-                });
-            }
-            catch (Exception e)
-            {
-                Logger.LogError(e, "上传文件失败");
-                result.Add(new UploadOutput()
-                {
-                    Id = Guid.Empty,
-                    Name = formFile.FileName,
-                    Path = string.Empty,
-                    Success = false
-                });
-            }
+            // 获取文件的二进制数据
+            using var memoryStream = new MemoryStream();
+            await formFile.CopyToAsync(memoryStream);
+            var fileBytes = memoryStream.ToArray();
+            await _fileManager.CreateAsync(GuidGenerator.Create(), formFile.FileName, formFile.Length, formFile.ContentType, fileBytes, true);
         }
-
-        return result;
     }
 
 
     /// <summary>
     /// 删除文件
     /// </summary>
+    [Authorize(FileManagementPermissions.FileManagement.Delete)]
     public Task DeleteAsync(DeleteFileObjectInput input)
     {
-        return _fileObjectManager.DeleteAsync(input.Id);
+        return _fileManager.DeleteAsync(input.Id);
     }
 
-    public async Task<GetFileObjectOutput> GetAsync(GetFileObjectInput input)
+    [Authorize(FileManagementPermissions.FileManagement.Download)]
+    public async Task<RemoteStreamContent> DownloadAsync(DownloadFileObjectInput input)
     {
-        var file = await _fileObjectManager.GetAsync(input.Id);
-        return ObjectMapper.Map<FileObjectDto, GetFileObjectOutput>(file);
-    }
-
-    public async Task<FileContentResult> DownloadAsync(DownloadFileObjectInput input)
-    {
-        var file = await _fileObjectManager.GetAsync(input.Id);
-        return new Microsoft.AspNetCore.Mvc.FileContentResult(file.Bytes, file.ContentType);
+        var fileObject = await _fileObjectManager.GetAsync(input.Id);
+        var file = await _blobContainer.GetAsync(input.Id.ToString());
+        return new RemoteStreamContent(file, fileObject.FileName, fileObject.ContentType);
     }
 }

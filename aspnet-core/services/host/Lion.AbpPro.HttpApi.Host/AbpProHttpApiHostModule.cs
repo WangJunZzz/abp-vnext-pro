@@ -1,3 +1,4 @@
+using Volo.Abp.BlobStoring.FileSystem;
 using Volo.Abp.DistributedLocking;
 
 namespace Lion.AbpPro
@@ -15,7 +16,8 @@ namespace Lion.AbpPro
         typeof(AbpProCapEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpCachingStackExchangeRedisModule),
-        typeof(AbpDistributedLockingModule)
+        typeof(AbpDistributedLockingModule),
+        typeof(AbpBlobStoringFileSystemModule)
         //typeof(AbpBackgroundJobsHangfireModule)
     )]
     public partial class AbpProHttpApiHostModule : AbpModule
@@ -41,6 +43,7 @@ namespace Lion.AbpPro
             ConfigureAuditLog(context);
             ConfigurationSignalR(context);
             ConfigurationMultiTenancy();
+            ConfigureBlobStorage();
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)

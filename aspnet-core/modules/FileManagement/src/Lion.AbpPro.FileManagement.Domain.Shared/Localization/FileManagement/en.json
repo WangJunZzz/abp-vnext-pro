@@ -4,7 +4,11 @@
     "MyAccount": "My account",
     "SamplePageMessage": "A sample page for the FileManagement module",
     "Permission:FileManagement": "FileManagement",
-    "Permission:Upload": "Upload",
-    "Permission:Down": "Down"
+    "Permission:FileManagement:File": "FileManagement",
+    "Permission:FileManagement:File:Upload": "Upload",
+    "Permission:FileManagement:File:Download": "Download",
+    "Permission:FileManagement:File:Delete": "Delete",
+    "FileManagement:100001": "FileAlreadyExist",
+    "FileManagement:100002": "FileNotFound"
   }
 }

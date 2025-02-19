@@ -7,9 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.Ddd.Domain" />
-        <PackageReference Include="Volo.Abp.AutoMapper" />
-        <ProjectReference Include="..\Lion.AbpPro.FileManagement.Domain.Shared\Lion.AbpPro.FileManagement.Domain.Shared.csproj" />
+        <PackageReference Include="Volo.Abp.Ddd.Domain"/>
+        <PackageReference Include="Volo.Abp.AutoMapper"/>
+        <PackageReference Include="Volo.Abp.BlobStoring"/>
+        <ProjectReference Include="..\Lion.AbpPro.FileManagement.Domain.Shared\Lion.AbpPro.FileManagement.Domain.Shared.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http;
+using Volo.Abp.Content;
 
 namespace Lion.AbpPro.FileManagement.Files;
 
@@ -21,9 +22,9 @@ public class FileController : AbpController, IFileAppService
 
     [HttpPost("Upload")]
     [SwaggerOperation(summary: "上传文件", Tags = new[] { "Files" })]
-    public async Task<List<UploadOutput>> UploadAsync(List<IFormFile> files)
+    public async Task UploadAsync(List<IFormFile> files)
     {
-        return await _fileAppService.UploadAsync(files);
+        await _fileAppService.UploadAsync(files);
     }
 
 
@@ -34,16 +35,10 @@ public class FileController : AbpController, IFileAppService
         await _fileAppService.DeleteAsync(input);
     }
 
-    [HttpPost("Get")]
-    [SwaggerOperation(summary: "获取文件", Tags = new[] { "Files" })]
-    public Task<GetFileObjectOutput> GetAsync(GetFileObjectInput input)
-    {
-        return _fileAppService.GetAsync(input);
-    }
 
     [HttpPost("Download")]
     [SwaggerOperation(summary: "下载文件", Tags = new[] { "Files" })]
-    public Task<FileContentResult> DownloadAsync(DownloadFileObjectInput input)
+    public Task<RemoteStreamContent> DownloadAsync(DownloadFileObjectInput input)
     {
         return _fileAppService.DownloadAsync(input);
     }

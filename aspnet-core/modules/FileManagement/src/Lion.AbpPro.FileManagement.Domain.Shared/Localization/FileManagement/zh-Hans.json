@@ -4,7 +4,11 @@
     "MyAccount": "我的账户",
     "SamplePageMessage": "FileManagement模块的示例页面",
     "Permission:FileManagement": "文件管理",
-    "Permission:Upload": "上传",
-    "Permission:Down": "下载"
+    "Permission:FileManagement:File": "文件管理",
+    "Permission:FileManagement:File:Upload": "上传",
+    "Permission:FileManagement:File:Download": "下载",
+    "Permission:FileManagement:File:Delete": "删除",
+    "FileManagement:100001": "文件已经存在",
+    "FileManagement:100002": "文件未找到"
   }
 }

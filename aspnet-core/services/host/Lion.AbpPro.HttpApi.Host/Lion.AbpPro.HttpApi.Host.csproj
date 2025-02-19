@@ -42,6 +42,7 @@
         <PackageReference Include="Volo.Abp.BackgroundJobs.HangFire" />
         <PackageReference Include="Volo.Abp.DistributedLocking"/>
         <PackageReference Include="DistributedLock.Redis"/>
+        <PackageReference Include="Volo.Abp.BlobStoring.FileSystem" />
     </ItemGroup>
 
     <ItemGroup>

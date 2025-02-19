@@ -15,11 +15,11 @@ public class FileManagementDomainSharedModule : AbpModule
         Configure<AbpLocalizationOptions>(options =>
         {
             options.Resources
-                .Add<FileManagementResource>("en")
+                .Add<FileManagementResource>(FileManagementConsts.DefaultCultureName)
                 .AddBaseTypes(typeof(AbpValidationResource))
                 .AddVirtualJson("/Localization/FileManagement");
         });
 
-        Configure<AbpExceptionLocalizationOptions>(options => { options.MapCodeNamespace("FileManagement", typeof(FileManagementResource)); });
+        Configure<AbpExceptionLocalizationOptions>(options => { options.MapCodeNamespace(FileManagementConsts.NameSpace, typeof(FileManagementResource)); });
     }
 }

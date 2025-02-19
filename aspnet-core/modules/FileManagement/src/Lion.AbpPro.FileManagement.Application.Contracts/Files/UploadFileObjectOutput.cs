@@ -1,6 +1,6 @@
 namespace Lion.AbpPro.FileManagement.Files;
 
-public class UploadOutput
+public class UploadFileObjectOutput
 {
     public Guid Id { get; set; }
 

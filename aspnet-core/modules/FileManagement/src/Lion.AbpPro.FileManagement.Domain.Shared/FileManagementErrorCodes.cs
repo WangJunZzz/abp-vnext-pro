@@ -2,5 +2,7 @@ namespace Lion.AbpPro.FileManagement;
 
 public static class FileManagementErrorCodes
 {
-    //Add your business exception error codes here...
+    public const string FileAlreadyExist = FileManagementConsts.NameSpace + ":100001";
+    
+    public const string FileNotFound = FileManagementConsts.NameSpace + ":100002";
 }

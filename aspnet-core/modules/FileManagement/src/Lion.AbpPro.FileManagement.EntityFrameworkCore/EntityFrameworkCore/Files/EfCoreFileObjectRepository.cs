@@ -8,7 +8,7 @@ namespace Lion.AbpPro.FileManagement.EntityFrameworkCore.Files;
 /// <summary>
 /// 文件 仓储Ef core 实现
 /// </summary>
-public  class EfCoreFileObjectRepository :
+public class EfCoreFileObjectRepository :
     EfCoreRepository<FileManagementDbContext, FileObject, Guid>,
     IFileObjectRepository
 {
@@ -16,34 +16,28 @@ public  class EfCoreFileObjectRepository :
     {
     }
 
-    public async Task<List<FileObjectDto>> GetListAsync(string fileName, DateTime? startDateTime = null, DateTime? endDateTime = null,int maxResultCount = 10, int skipCount = 0)
+    public async Task<List<FileObject>> GetListAsync(string fileName, DateTime? startDateTime = null, DateTime? endDateTime = null, int maxResultCount = 10, int skipCount = 0)
     {
         return await (await GetDbSetAsync())
-            .WhereIf(fileName.IsNotNullOrWhiteSpace(),e=>e.FileName.Contains(fileName))
+            .WhereIf(fileName.IsNotNullOrWhiteSpace(), e => e.FileName.Contains(fileName))
             .WhereIf(startDateTime.HasValue, e => e.CreationTime >= startDateTime.Value)
             .WhereIf(endDateTime.HasValue, e => e.CreationTime <= endDateTime.Value)
             .OrderByDescending(e => e.CreationTime)
             .PageBy(skipCount, maxResultCount)
-            .Select(e => new FileObjectDto
-            {
-                
-                Id = e.Id,
-                CreationTime = e.CreationTime,
-                FileName =  e.FileName,
-                FileSize = e.FileSize,
-                FileExtension = e.FileExtension,
-                ContentType = e.ContentType,
-                ProviderKey = e.ProviderKey
-            }) // 选择指定字段
             .ToListAsync();
     }
 
     public async Task<long> GetCountAsync(string fileName, DateTime? startDateTime = null, DateTime? endDateTime = null)
     {
         return await (await GetDbSetAsync())
-            .WhereIf(fileName.IsNotNullOrWhiteSpace(),e=>e.FileName.Contains(fileName))
+            .WhereIf(fileName.IsNotNullOrWhiteSpace(), e => e.FileName.Contains(fileName))
             .WhereIf(startDateTime.HasValue, e => e.CreationTime >= startDateTime.Value)
             .WhereIf(endDateTime.HasValue, e => e.CreationTime <= endDateTime.Value)
             .CountAsync();
+    }
+
+    public async Task<FileObject> FindAsync(string fileName)
+    {
+        return await (await GetDbSetAsync()).FirstOrDefaultAsync(e => e.FileName == fileName);
     }
 }

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Content;
 
 namespace Lion.AbpPro.FileManagement.Files;
 
@@ -18,17 +19,16 @@ public interface IFileAppService : IApplicationService
     /// <summary>
     /// 上传文件
     /// </summary>
-    Task<List<UploadOutput>> UploadAsync(List<IFormFile> files);
+    Task UploadAsync(List<IFormFile> files);
     
     /// <summary>
     /// 删除文件
     /// </summary>
     Task DeleteAsync(DeleteFileObjectInput input);
     
-    Task<GetFileObjectOutput> GetAsync(GetFileObjectInput input);
     
     /// <summary>
     /// 下载文件
     /// </summary>
-    Task<FileContentResult> DownloadAsync(DownloadFileObjectInput input);
+    Task<RemoteStreamContent> DownloadAsync(DownloadFileObjectInput input);
 }

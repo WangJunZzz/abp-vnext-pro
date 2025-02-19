@@ -7,6 +7,5 @@ public class FileManagementApplicationAutoMapperProfile : Profile
     public FileManagementApplicationAutoMapperProfile()
     {
         CreateMap<Files.FileObjectDto, PageFileObjectOutput>();
-        CreateMap<Files.FileObjectDto, GetFileObjectOutput>();
     }
 }
