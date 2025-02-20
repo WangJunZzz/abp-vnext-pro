@@ -25,7 +25,7 @@ public class CodeCommand : IConsoleCommand, ITransientDependency
         var project = commandLineArgs.Options.GetOrNull(CommandOptions.Project.Short, CommandOptions.Project.Long);
         var source = commandLineArgs.Options.GetOrNull(CommandOptions.Source.Short, CommandOptions.Source.Long);
         source = source.IsNullOrWhiteSpace() ? Directory.GetCurrentDirectory() : source;
-        
+
         if (Guid.TryParse(template, out Guid templateId) && Guid.TryParse(project, out Guid projectId))
         {
             // 生成后端代码还是前端代码
@@ -107,7 +107,8 @@ public class CodeCommand : IConsoleCommand, ITransientDependency
             GenerateCode(extractPath, sourcePath, "Application.Contracts", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
             GenerateCode(extractPath, sourcePath, "Application", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
             GenerateCode(extractPath, sourcePath, "HttpApi", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
-            GenerateCode(extractPath, sourcePath, "EntityFrameworkCore", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
+            var excludeFiles = $"I{project.Project.ProjectName}DbContext.cs,{project.Project.ProjectName}DbContext.cs,{project.Project.ProjectName}DbContextModelCreatingExtensions.cs";
+            GenerateCode(extractPath, sourcePath, "EntityFrameworkCore", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName,excludeFiles);
             AppendIDbContextCode(extractPath, sourcePath, "EntityFrameworkCore", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
             AppendDbContextCode(extractPath, sourcePath, "EntityFrameworkCore", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
             AppendDbContextModelCreatingExtensionsCode(extractPath, sourcePath, "EntityFrameworkCore", item.CodePluralized, project.Project.CompanyName, project.Project.ProjectName);
@@ -161,23 +162,23 @@ public class CodeCommand : IConsoleCommand, ITransientDependency
         }
     }
 
-    private void GenerateCode(string templateSourceCodePath, string sourcePath, string type, string entityCodePluralized, string companyName, string projectName)
+    private void GenerateCode(string templateSourceCodePath, string sourcePath, string type, string entityCodePluralized, string companyName, string projectName, string excludeFiles = "")
     {
         var sourceCodePath = Path.Combine(templateSourceCodePath, "AspNetCore", "src", type, entityCodePluralized);
         var targetCodePath = Path.Combine(sourcePath, $"{companyName}.{projectName}.{type}", entityCodePluralized);
-        Utils.DirectoryHelper.CopyFolder(sourceCodePath, targetCodePath);
+        Utils.DirectoryHelper.CopyFolder(sourceCodePath, targetCodePath, excludeFiles);
     }
 
     private void AppendIDbContextCode(string templateSourceCodePath, string sourcePath, string type, string entityCodePluralized, string companyName, string projectName)
     {
-        var basePath = Path.Combine(templateSourceCodePath, "AspNetCore", "src", type);
+        var basePath = Path.Combine(templateSourceCodePath, "AspNetCore", "src", type, entityCodePluralized);
         // 给IDbContext追加dbset
         var sourceCodePath = Path.Combine(basePath, $"I{projectName}DbContext.cs");
         var code = File.ReadAllText(sourceCodePath);
 
         var targetCodePath = Path.Combine(sourcePath, $"{companyName}.{projectName}.{type}", type, $"I{projectName}DbContext.cs");
         // 判断代码是否已经生成
-        if (CodeHelper.IsExistCode(targetCodePath, code))
+        if (CodeHelper.IsExistCode(targetCodePath, entityCodePluralized))
         {
             return;
         }
@@ -188,14 +189,14 @@ public class CodeCommand : IConsoleCommand, ITransientDependency
 
     private void AppendDbContextCode(string templateSourceCodePath, string sourcePath, string type, string entityCodePluralized, string companyName, string projectName)
     {
-        var basePath = Path.Combine(templateSourceCodePath, "AspNetCore", "src", type);
+        var basePath = Path.Combine(templateSourceCodePath, "AspNetCore", "src", type, entityCodePluralized);
         // 给DbContext追加dbset
         var dbContextCodePath = Path.Combine(basePath, $"{projectName}DbContext.cs");
         var dbContextCode = File.ReadAllText(dbContextCodePath);
 
         var targetDbContextCodePath = Path.Combine(sourcePath, $"{companyName}.{projectName}.{type}", type, $"{projectName}DbContext.cs");
         // 判断代码是否已经生成
-        if (CodeHelper.IsExistCode(targetDbContextCodePath, dbContextCode))
+        if (CodeHelper.IsExistCode(targetDbContextCodePath, entityCodePluralized))
         {
             return;
         }
@@ -206,13 +207,13 @@ public class CodeCommand : IConsoleCommand, ITransientDependency
 
     private void AppendDbContextModelCreatingExtensionsCode(string templateSourceCodePath, string sourcePath, string type, string entityCodePluralized, string companyName, string projectName)
     {
-        var basePath = Path.Combine(templateSourceCodePath, "AspNetCore", "src", type);
+        var basePath = Path.Combine(templateSourceCodePath, "AspNetCore", "src", type, entityCodePluralized);
         // 给ContextModelCreatingExtensions追加ef 配置
         var dbContextModelCreatingExtensionsPath = Path.Combine(basePath, $"{projectName}DbContextModelCreatingExtensions.cs");
         var dbContextModelCreatingExtensionsCode = File.ReadAllText(dbContextModelCreatingExtensionsPath);
         var targetDbContextModelCreatingExtensionsCodePath = Path.Combine(sourcePath, $"{companyName}.{projectName}.{type}", type, $"{projectName}DbContextModelCreatingExtensions.cs");
         // 判断代码是否已经生成
-        if (CodeHelper.IsExistCode(targetDbContextModelCreatingExtensionsCodePath, dbContextModelCreatingExtensionsCode))
+        if (CodeHelper.IsExistCode(targetDbContextModelCreatingExtensionsCodePath, entityCodePluralized))
         {
             return;
         }
