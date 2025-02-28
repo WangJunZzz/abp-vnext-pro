@@ -7,13 +7,13 @@ namespace Lion.AbpPro.LanguageManagement;
 /// </summary>
 public class DynamicResourceLocalizer : IDynamicResourceLocalizer, ISingletonDependency
 {
-    private readonly ILanguageTextManager _languageTextManager;
     private readonly IDistributedCache<LanguageTextCacheItem> _distributedCache;
+    private readonly IServiceScopeFactory _serviceScopeFactory;
 
-    public DynamicResourceLocalizer(ILanguageTextManager languageTextManager, IDistributedCache<LanguageTextCacheItem> distributedCache)
+    public DynamicResourceLocalizer(IDistributedCache<LanguageTextCacheItem> distributedCache, IServiceScopeFactory serviceScopeFactory)
     {
-        _languageTextManager = languageTextManager;
         _distributedCache = distributedCache;
+        _serviceScopeFactory = serviceScopeFactory;
     }
 
     public LocalizedString GetOrNull(LocalizationResourceBase resource, string cultureName, string name)
@@ -42,13 +42,17 @@ public class DynamicResourceLocalizer : IDynamicResourceLocalizer, ISingletonDep
 
     protected virtual async Task<LanguageTextCacheItem> CreateCacheLanguageText(LocalizationResourceBase resource, string cultureName)
     {
-        var languageTexts = await _languageTextManager.FindAsync(cultureName, resource.ResourceName);
         var result = new LanguageTextCacheItem();
-        foreach (var languageText in languageTexts)
+        using (var scope = _serviceScopeFactory.CreateScope())
         {
-            result.Dictionary[languageText.Name] = languageText.Value;
+            var languageTexts = await scope.ServiceProvider
+                .GetRequiredService<ILanguageTextManager>()
+                .FindAsync(cultureName, resource.ResourceName);
+            foreach (var languageText in languageTexts)
+            {
+                result.Dictionary[languageText.Name] = languageText.Value;
+            }
         }
-
         return result;
     }
 }
