@@ -2,6 +2,7 @@
 using Medallion.Threading.Redis;
 using Volo.Abp.BlobStoring;
 using Volo.Abp.BlobStoring.FileSystem;
+#pragma warning disable CS0618 // Type or member is obsolete
 
 namespace Lion.AbpPro;
 

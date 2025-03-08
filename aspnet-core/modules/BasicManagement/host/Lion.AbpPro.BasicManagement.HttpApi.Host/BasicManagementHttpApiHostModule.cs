@@ -229,7 +229,7 @@ public class BasicManagementHttpApiHostModule : AbpModule
 
                         currentContext.Token = accessToken;
                         currentContext.Request.Headers.Remove("Authorization");
-                        currentContext.Request.Headers.Add("Authorization", $"Bearer {accessToken}");
+                        currentContext.Request.Headers.Append("Authorization", $"Bearer {accessToken}");
 
                         return Task.CompletedTask;
                     }

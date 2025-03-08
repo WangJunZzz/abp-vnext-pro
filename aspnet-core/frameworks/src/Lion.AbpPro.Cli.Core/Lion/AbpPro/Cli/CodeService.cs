@@ -169,7 +169,7 @@ public class CodeService : ICodeService, ITransientDependency
         {
             uri = new Uri(url);
         }
-        catch (Exception e)
+        catch
         {
             throw new UserFriendlyException($"url格式错误:{url}");
         }

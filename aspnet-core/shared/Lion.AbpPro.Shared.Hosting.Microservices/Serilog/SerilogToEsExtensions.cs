@@ -1,5 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Serilog
 {
+     [SuppressMessage("Reliability", "CA2022:避免使用 \"Stream.Read\" 进行不准确读取")]
      public static class SerilogToEsExtensions
     {
         public static void SetSerilogConfiguration(LoggerConfiguration loggerConfiguration, IConfiguration configuration)

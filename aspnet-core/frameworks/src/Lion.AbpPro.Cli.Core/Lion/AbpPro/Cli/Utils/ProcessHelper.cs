@@ -29,7 +29,7 @@ public static class ProcessHelper
                 }
             }
         }
-        catch (Exception e)
+        catch
         {
             // ignore
         }
