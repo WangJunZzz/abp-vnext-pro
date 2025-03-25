@@ -6,6 +6,7 @@ public static class AbpProCapServiceCollectionExtensions
     {
         context.Services.Replace(ServiceDescriptor.Transient<IUnitOfWork, AbpProCapUnitOfWork>());
         context.Services.Replace(ServiceDescriptor.Transient<UnitOfWork, AbpProCapUnitOfWork>());
+        context.Services.AddSingleton<ISubscribeInvoker, AbpProCAPSubscribeInvoker>();
         context.Services.AddTransient<AbpProCapUnitOfWork>();
         context.Services.AddCap(capAction);
         return context;

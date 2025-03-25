@@ -5,12 +5,13 @@ using Microsoft.Extensions.Internal;
 
 namespace Lion.AbpPro.CAP;
 
-public class AbpProCAPSubscribeInvoker
+public class AbpProCAPSubscribeInvoker : ISubscribeInvoker
 {
     private readonly ConcurrentDictionary<string, ObjectMethodExecutor> _executors;
     private readonly ISerializer _serializer;
     private readonly IServiceProvider _serviceProvider;
     private readonly ICurrentTenant _currentTenant;
+
     public AbpProCAPSubscribeInvoker(IServiceProvider serviceProvider, ISerializer serializer, ICurrentTenant currentTenant)
     {
         _serviceProvider = serviceProvider;
@@ -95,7 +96,7 @@ public class AbpProCAPSubscribeInvoker
             {
                 resultObj = await ExecuteWithParameterAsync(executor, obj, executeParameters).ConfigureAwait(false);
             }
-            
+
             if (filter != null)
             {
                 var edContext = new ExecutedContext(context, resultObj);
