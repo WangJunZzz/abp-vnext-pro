@@ -46,12 +46,12 @@
         <PackageReference Update="Hangfire.Redis.StackExchange" Version="1.9.3"/>
 
         <!-- CAP 分布式事务-->
-        <PackageReference Update="DotNetCore.CAP" Version="8.0.0"/>
-        <PackageReference Update="DotNetCore.CAP.Dashboard" Version="8.0.0"/>
-        <PackageReference Update="DotNetCore.CAP.Mysql" Version="8.0.0"/>
-        <PackageReference Update="DotNetCore.CAP.RabbitMQ" Version="8.0.0"/>
-        <PackageReference Update="DotNetCore.CAP.InMemoryStorage" Version="8.0.0"/>
-        <PackageReference Update="Savorboard.CAP.InMemoryMessageQueue" Version="7.0.0"/>
+        <PackageReference Update="DotNetCore.CAP" Version="8.3.3"/>
+        <PackageReference Update="DotNetCore.CAP.Dashboard" Version="8.3.3"/>
+        <PackageReference Update="DotNetCore.CAP.Mysql" Version="8.3.3"/>
+        <PackageReference Update="DotNetCore.CAP.RabbitMQ" Version="8.3.3"/>
+        <PackageReference Update="DotNetCore.CAP.InMemoryStorage" Version="8.3.3"/>
+        <PackageReference Update="Savorboard.CAP.InMemoryMessageQueue" Version="8.2.1"/>
 
         <!-- Swagger-->
         <PackageReference Update="Swashbuckle.AspNetCore.SwaggerUI" Version="6.8.1"/>

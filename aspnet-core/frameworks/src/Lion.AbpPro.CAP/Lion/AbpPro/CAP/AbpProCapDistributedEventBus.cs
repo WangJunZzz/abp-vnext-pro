@@ -129,7 +129,11 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
     protected override async Task PublishToEventBusAsync(Type eventType, object eventData)
     {
         var eventName = EventNameAttribute.GetNameOrDefault(eventType);
-        await CapPublisher.PublishAsync(eventName, eventData);
+        var header = new Dictionary<string, string>
+        {
+            { AbpProCapConsts.Tenant, CurrentTenant.Id?.ToString() ?? string.Empty },
+        };
+        await CapPublisher.PublishAsync(eventName, eventData, header);
     }
 
     protected override void AddToUnitOfWork(IUnitOfWork unitOfWork, UnitOfWorkEventRecord eventRecord)
