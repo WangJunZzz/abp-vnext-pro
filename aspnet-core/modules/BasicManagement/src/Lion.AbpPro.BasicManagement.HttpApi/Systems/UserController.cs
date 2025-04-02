@@ -98,5 +98,12 @@ namespace Lion.AbpPro.BasicManagement.Systems
         {
             return _userAppService.MyProfileAsync();
         }
+
+        [HttpPost("needChangePassword")]
+        [SwaggerOperation(summary: "是否需要修改密码", Tags = new[] { "Users" })]
+        public Task<NeedChangePasswordOutput> NeedChangePasswordAsync()
+        {
+            return _userAppService.NeedChangePasswordAsync();
+        }
     }
 }

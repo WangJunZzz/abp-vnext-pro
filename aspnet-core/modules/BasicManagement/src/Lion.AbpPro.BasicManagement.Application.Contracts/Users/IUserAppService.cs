@@ -67,5 +67,10 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// 获取个人信息
         /// </summary>
         Task<MyProfileOutput> MyProfileAsync();
+
+        /// <summary>
+        /// 是否需要修改密码
+        /// </summary>
+        Task<NeedChangePasswordOutput> NeedChangePasswordAsync();
     }
 }

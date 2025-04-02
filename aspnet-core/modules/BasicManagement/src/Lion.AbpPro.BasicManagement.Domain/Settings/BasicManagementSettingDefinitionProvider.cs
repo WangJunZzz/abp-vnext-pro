@@ -73,6 +73,45 @@ public class BasicManagementSettingDefinitionProvider : SettingDefinitionProvide
                 BasicManagementSettings.Group.SystemManagement)
             .WithProperty(AbpProSettingConsts.ControlType.Default,
                 AbpProSettingConsts.ControlType.Number);
+        
+        context.Add(
+            new SettingDefinition(BasicManagementSettings.EnableNewAccountRequiredChangePassword,
+                    "false",
+                    L(BasicManagementConsts.EnableNewAccountRequiredChangePassword),
+                    L($"Description:{BasicManagementConsts.EnableNewAccountRequiredChangePassword}"))
+                .WithProperty(BasicManagementSettings.Group.Default,
+                    BasicManagementSettings.Group.SystemManagement)
+                .WithProperty(AbpProSettingConsts.ControlType.Default,
+                    AbpProSettingConsts.ControlType.TypeCheckBox));
+        context.Add(
+            new SettingDefinition(BasicManagementSettings.EnableExpireRequiredChangePassword,
+                    "false",
+                    L(BasicManagementConsts.EnableExpireRequiredChangePassword),
+                    L($"Description:{BasicManagementConsts.EnableExpireRequiredChangePassword}"))
+                .WithProperty(BasicManagementSettings.Group.Default,
+                    BasicManagementSettings.Group.SystemManagement)
+                .WithProperty(AbpProSettingConsts.ControlType.Default,
+                    AbpProSettingConsts.ControlType.TypeCheckBox));
+        
+        context.Add(
+            new SettingDefinition(BasicManagementSettings.PasswordExpireDay,
+                    "90",
+                    L(BasicManagementConsts.PasswordExpireDay),
+                    L($"Description:{BasicManagementConsts.PasswordExpireDay}"))
+                .WithProperty(BasicManagementSettings.Group.Default,
+                    BasicManagementSettings.Group.SystemManagement)
+                .WithProperty(AbpProSettingConsts.ControlType.Default,
+                    AbpProSettingConsts.ControlType.Number));
+        
+        context.Add(
+            new SettingDefinition(BasicManagementSettings.PasswordRemindDay,
+                    "7",
+                    L(BasicManagementConsts.PasswordRemindDay),
+                    L($"Description:{BasicManagementConsts.PasswordRemindDay}"))
+                .WithProperty(BasicManagementSettings.Group.Default,
+                    BasicManagementSettings.Group.SystemManagement)
+                .WithProperty(AbpProSettingConsts.ControlType.Default,
+                    AbpProSettingConsts.ControlType.Number));
     }
 
 

@@ -1,7 +1,7 @@
 {
   "culture": "en",
   "texts": {
-    "MyAccount":  "My account",
+    "MyAccount": "My account",
     "SamplePageMessage": "A sample page for the BasicManagement module",
     "Permission:Query": "Query",
     "Permission:Create": "Create",
@@ -18,12 +18,23 @@
     "Permission:OrganizationUnitManagement": "OrganizationUnitManagement",
     "Permission:FeatureManagement": "FeatureManagement",
     "Setting.Group.System": "System",
+    "EnableNewAccountRequiredChangePassword": "EnableNewAccountRequiredChangePassword",
+    "Description:EnableNewAccountRequiredChangePassword": "EnableNewAccountRequiredChangePassword",
+    "EnableExpireRequiredChangePassword": "EnableExpireRequiredChangePassword",
+    "Description:EnableExpireRequiredChangePassword": "EnableExpireRequiredChangePassword",
+    "PasswordExpireDay": "PasswordExpireDay",
+    "Description:PasswordExpireDay": "PasswordExpireDay",
+    "PasswordRemindDay": "PasswordRemindDay",
+    "Description:PasswordRemindDay": "PasswordRemindDay",
     "Lion.AbpPro.BasicManagement:100001": "OrganizationUnit Not Exist",
     "Lion.AbpPro.BasicManagement:100002": "UserLockedOut",
     "Lion.AbpPro.BasicManagement:100003": "UserOrPasswordMismatch",
     "Lion.AbpPro.BasicManagement:100004": "UserDisabled",
     "Lion.AbpPro.BasicManagement:100005": "Tenant Not Exist",
     "Lion.AbpPro.BasicManagement:100006": "Not Support Set ConnectionString",
-    "Lion.AbpPro.BasicManagement:100007": "User Not Exist"
+    "Lion.AbpPro.BasicManagement:100007": "User Not Exist",
+    "Lion.AbpPro.BasicManagement:100008": "Password Has Expire",
+    "Lion.AbpPro.BasicManagement:100009": "A new user must change the password upon the first login.",
+    "Lion.AbpPro.BasicManagement:100010": "Your password is about to expire. Please change your password."
   }
 }
