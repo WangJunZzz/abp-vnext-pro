@@ -34,7 +34,7 @@
     "Lion.AbpPro.BasicManagement:100006": "Not Support Set ConnectionString",
     "Lion.AbpPro.BasicManagement:100007": "User Not Exist",
     "Lion.AbpPro.BasicManagement:100008": "Password Has Expire",
-    "Lion.AbpPro.BasicManagement:100009": "A new user must change the password upon the first login.",
-    "Lion.AbpPro.BasicManagement:100010": "Your password is about to expire. Please change your password."
+    "Lion.AbpPro.BasicManagement:200001": "A new user must change the password upon the first login.",
+    "Lion.AbpPro.BasicManagement:200002": "Your password is about to expire. Please change your password."
   }
 }

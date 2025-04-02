@@ -34,7 +34,7 @@
     "Lion.AbpPro.BasicManagement:100006": "当前模块不支持设置数据库连接字符串",
     "Lion.AbpPro.BasicManagement:100007": "用户不存在",
     "Lion.AbpPro.BasicManagement:100008": "密码已过期,请联系管理员重置密码。",
-    "Lion.AbpPro.BasicManagement:100009": "新用户首次登录需要修改密码.",
-    "Lion.AbpPro.BasicManagement:100010": "您的密码即将过期,请修改密码."
+    "Lion.AbpPro.BasicManagement:200001": "新用户首次登录需要修改密码.",
+    "Lion.AbpPro.BasicManagement:200002": "您的密码即将过期,请修改密码."
   }
 }
