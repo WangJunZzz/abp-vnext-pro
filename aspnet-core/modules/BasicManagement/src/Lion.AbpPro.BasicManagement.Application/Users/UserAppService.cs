@@ -4,6 +4,7 @@ using Magicodes.ExporterAndImporter.Excel;
 using Magicodes.ExporterAndImporter.Excel.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
 using Volo.Abp.Account;
 using Volo.Abp.Auditing;
 using Volo.Abp.Uow;
@@ -240,7 +241,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         public virtual async Task<NeedChangePasswordOutput> NeedChangePasswordAsync()
         {
             var result = new NeedChangePasswordOutput();
-            // 获取设置
+            // 获取首次修改密码设置
             var value = await _settingProvider.GetOrNullAsync(BasicManagementConsts.EnableNewAccountRequiredChangePassword);
             bool.TryParse(value, out var convertValue);
             if (!convertValue) return result;
@@ -256,6 +257,12 @@ namespace Lion.AbpPro.BasicManagement.Users
                 return result;
             }
 
+            // 获取定期修改密码设置
+            var expireValue = await _settingProvider.GetOrNullAsync(BasicManagementConsts.EnableExpireRequiredChangePassword);
+            bool.TryParse(expireValue, out var expire);
+
+            if (!expire) return result;
+            
             var lastChangePasswordTime = user.GetLastChangePasswordTime();
             if (!lastChangePasswordTime.HasValue) return result;
             
@@ -263,6 +270,7 @@ namespace Lion.AbpPro.BasicManagement.Users
             var expireDays = await _settingProvider.GetOrNullAsync(BasicManagementConsts.PasswordExpireDay);
             int.TryParse(expireDays, out var expireDay);
 
+            // 获取过期提醒天数
             var remindDays = await _settingProvider.GetOrNullAsync(BasicManagementConsts.PasswordRemindDay);
             int.TryParse(remindDays, out var remindDay);
             
