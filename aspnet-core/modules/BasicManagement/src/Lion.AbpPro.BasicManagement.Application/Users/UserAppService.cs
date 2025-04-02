@@ -64,12 +64,11 @@ namespace Lion.AbpPro.BasicManagement.Users
                 SkipCount = input.SkipCount,
                 Sorting = nameof(IHasModificationTime.LastModificationTime)
             };
-            
+
             var source = await _identityUserRepository
                 .GetListAsync(request.Sorting, request.MaxResultCount, request.SkipCount, request.Filter);
 
             return ObjectMapper.Map<List<Volo.Abp.Identity.IdentityUser>, List<IdentityUserDto>>(source);
-
         }
 
         /// <summary>
@@ -156,6 +155,20 @@ namespace Lion.AbpPro.BasicManagement.Users
         }
 
         /// <summary>
+        /// 重置
+        /// </summary>
+        [Authorize(BasicManagementPermissions.SystemManagement.ResetPassword)]
+        public virtual async Task<bool> RestPasswordAsync(ResetPasswordInput input)
+        {
+            await _options.SetAsync();
+            var identityUser = await _userManager.GetByIdAsync(input.UserId);
+            await _userManager.RemovePasswordAsync(identityUser);
+            var result = await _userManager.AddPasswordAsync(identityUser, input.Password);
+            result.CheckErrors();
+            return result.Succeeded;
+        }
+
+        /// <summary>
         /// 锁定用户
         /// </summary>
         /// <param name="input"></param>
@@ -167,7 +180,7 @@ namespace Lion.AbpPro.BasicManagement.Users
             identityUser.SetIsActive(input.Locked);
             await _userManager.UpdateAsync(identityUser);
         }
-        
+
         /// <summary>
         /// 通过username获取用户信息
         /// </summary>
@@ -178,6 +191,7 @@ namespace Lion.AbpPro.BasicManagement.Users
             {
                 throw new BusinessException(BasicManagementErrorCodes.UserNotExist);
             }
+
             return ObjectMapper.Map<Volo.Abp.Identity.IdentityUser, IdentityUserDto>(user);
         }
 
@@ -188,6 +202,7 @@ namespace Lion.AbpPro.BasicManagement.Users
             {
                 throw new BusinessException(BasicManagementErrorCodes.UserNotExist);
             }
+
             return ObjectMapper.Map<Volo.Abp.Identity.IdentityUser, MyProfileOutput>(user);
         }
     }

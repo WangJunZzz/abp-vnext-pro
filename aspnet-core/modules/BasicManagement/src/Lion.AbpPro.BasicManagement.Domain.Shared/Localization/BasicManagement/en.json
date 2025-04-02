@@ -9,6 +9,7 @@
     "Permission:Delete": "Delete",
     "Permission:Export": "Export",
     "Permission:Enable": "Enable|Disable",
+    "Permission:ResetPassword": "ResetPassword",
     "Permission:SystemManagement": "SystemManagement",
     "Permission:AuditLogManagement": "AuditLog",
     "Permission:HangfireManagement": "BackgroundTask",

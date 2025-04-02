@@ -13,6 +13,7 @@ public class BasicManagementPermissionDefinitionProvider : PermissionDefinitionP
         var userManagement = abpIdentityGroup.GetPermissionOrNull(IdentityPermissions.Users.Default);
         userManagement.AddChild(BasicManagementPermissions.SystemManagement.UserEnable, L("Permission:Enable"), multiTenancySide: MultiTenancySides.Both);
         userManagement.AddChild(BasicManagementPermissions.SystemManagement.UserExport, L("Permission:Export"), multiTenancySide: MultiTenancySides.Both);
+        userManagement.AddChild(BasicManagementPermissions.SystemManagement.ResetPassword, L("Permission:ResetPassword"), multiTenancySide: MultiTenancySides.Both);
 
         abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.AuditLog, L("Permission:AuditLogManagement"), multiTenancySide: MultiTenancySides.Both);
         abpIdentityGroup.AddPermission(BasicManagementPermissions.SystemManagement.Setting, L("Permission:SettingManagement"), multiTenancySide: MultiTenancySides.Both);

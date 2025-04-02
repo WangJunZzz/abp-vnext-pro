@@ -9,6 +9,7 @@
     "Permission:Delete": "删除",
     "Permission:Export": "导出",
     "Permission:Enable": "启用|禁用",
+    "Permission:ResetPassword": "重置密码",
     "Permission:AuditLogManagement": "审计日志",
     "Permission:SystemManagement": "系统管理",
     "Permission:HangfireManagement": "后台任务",
