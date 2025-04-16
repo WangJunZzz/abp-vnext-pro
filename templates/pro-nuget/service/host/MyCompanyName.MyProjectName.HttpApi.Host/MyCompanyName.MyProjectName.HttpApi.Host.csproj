@@ -34,8 +34,6 @@
         <PackageReference Include="DotNetCore.CAP.MySql"/>
         <PackageReference Include="DotNetCore.CAP.RabbitMQ"/>
         <PackageReference Include="DotNetCore.CAP.Dashboard"/>
-        <PackageReference Include="DotNetCore.CAP.InMemoryStorage"/>
-        <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue"/>
         <PackageReference Include="MiniProfiler.AspNetCore.Mvc"/>
         <PackageReference Include="MiniProfiler.EntityFrameworkCore"/>
         <PackageReference Include="MiniProfiler.Shared"/>
