@@ -12,8 +12,8 @@ namespace Lion.AbpPro
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpAccountWebModule),
         typeof(AbpProApplicationModule),
-        typeof(AbpProCapModule),
-        typeof(AbpProCapEntityFrameworkCoreModule),
+        // typeof(AbpProCapModule),
+        // typeof(AbpProCapEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpCachingStackExchangeRedisModule),
         typeof(AbpDistributedLockingModule),
@@ -39,7 +39,7 @@ namespace Lion.AbpPro
             //ConfigureHangfire(context);
             ConfigureMiniProfiler(context);
             ConfigureIdentity(context);
-            ConfigureCap(context);
+            //ConfigureCap(context);
             ConfigureAuditLog(context);
             ConfigurationSignalR(context);
             ConfigurationMultiTenancy();

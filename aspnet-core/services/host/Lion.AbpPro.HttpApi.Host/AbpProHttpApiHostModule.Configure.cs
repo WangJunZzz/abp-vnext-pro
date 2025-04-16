@@ -211,39 +211,22 @@ public partial class AbpProHttpApiHostModule
     private void ConfigureCap(ServiceConfigurationContext context)
     {
         var configuration = context.Services.GetConfiguration();
-        var enabled = configuration.GetValue("Cap:Enabled", false);
-        if (enabled)
+        context.AddAbpCap(capOptions =>
         {
-            context.AddAbpCap(capOptions =>
+            capOptions.SetCapDbConnectionString(configuration["ConnectionStrings:Default"]);
+            capOptions.UseEntityFramework<AbpProDbContext>();
+            capOptions.UseRabbitMQ(option =>
             {
-                capOptions.SetCapDbConnectionString(configuration["ConnectionStrings:Default"]);
-                capOptions.UseEntityFramework<AbpProDbContext>();
-                capOptions.UseRabbitMQ(option =>
-                {
-                    option.HostName = configuration.GetValue<string>("Cap:RabbitMq:HostName");
-                    option.UserName = configuration.GetValue<string>("Cap:RabbitMq:UserName");
-                    option.Password = configuration.GetValue<string>("Cap:RabbitMq:Password");
-                    option.Port = configuration.GetValue<int>("Cap:RabbitMq:Port");
-                });
-
-                var hostingEnvironment = context.Services.GetHostingEnvironment();
-                capOptions.UseDashboard(options =>
-                {
-                    options.AuthorizationPolicy = AbpProCapPermissions.CapManagement.Cap;
-                });
+                option.HostName = configuration.GetValue<string>("Cap:RabbitMq:HostName");
+                option.UserName = configuration.GetValue<string>("Cap:RabbitMq:UserName");
+                option.Password = configuration.GetValue<string>("Cap:RabbitMq:Password");
+                option.Port = configuration.GetValue<int>("Cap:RabbitMq:Port");
             });
-        }
-        else
-        {
-            context.AddAbpCap(capOptions =>
+            capOptions.UseDashboard(options =>
             {
-                capOptions.UseInMemoryStorage();
-                capOptions.UseInMemoryMessageQueue();
-                var hostingEnvironment = context.Services.GetHostingEnvironment();
-                var auth = !hostingEnvironment.IsDevelopment();
-                capOptions.UseDashboard();
+                options.AuthorizationPolicy = AbpProCapPermissions.CapManagement.Cap;
             });
-        }
+        });
     }
 
     /// <summary>

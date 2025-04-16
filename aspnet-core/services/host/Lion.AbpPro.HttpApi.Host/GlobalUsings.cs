@@ -41,7 +41,6 @@ global using Microsoft.Extensions.Logging.Abstractions;
 global using Microsoft.Extensions.Options;
 global using Microsoft.IdentityModel.Tokens;
 global using Microsoft.OpenApi.Models;
-global using Savorboard.CAP.InMemoryMessageQueue;
 global using Serilog;
 global using Serilog.Events;
 global using StackExchange.Redis;
