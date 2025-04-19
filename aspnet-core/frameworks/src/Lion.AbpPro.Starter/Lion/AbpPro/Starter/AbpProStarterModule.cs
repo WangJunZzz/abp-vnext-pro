@@ -9,6 +9,8 @@ public class AbpProStarterModule : AbpModule
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
+        context.Services.AddHttpClient();
+        context.Services.Configure<PreheatOptions>(context.Services.GetConfiguration().GetSection("Preheat"));
     }
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)

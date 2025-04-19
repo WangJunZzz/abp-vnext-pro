@@ -10,5 +10,6 @@
     <ItemGroup>
         <PackageReference Include="Volo.Abp.Autofac" />
         <PackageReference Include="Volo.Abp.Threading" />
+        <PackageReference Include="Microsoft.Extensions.Http" />
     </ItemGroup>
 </Project>
