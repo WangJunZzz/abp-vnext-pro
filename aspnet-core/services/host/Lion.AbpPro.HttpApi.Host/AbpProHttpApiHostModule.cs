@@ -1,3 +1,4 @@
+using Lion.AbpPro.Starter;
 using Volo.Abp.BlobStoring.FileSystem;
 using Volo.Abp.DistributedLocking;
 
@@ -17,7 +18,8 @@ namespace Lion.AbpPro
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpCachingStackExchangeRedisModule),
         typeof(AbpDistributedLockingModule),
-        typeof(AbpBlobStoringFileSystemModule)
+        typeof(AbpBlobStoringFileSystemModule),
+        typeof(AbpProStarterModule)
         //typeof(AbpBackgroundJobsHangfireModule)
     )]
     public partial class AbpProHttpApiHostModule : AbpModule

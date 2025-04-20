@@ -6,12 +6,13 @@ namespace Lion.AbpPro.Starter;
 public class PreheatAbpProStarterContributor : IAbpProStarterContributor, ITransientDependency
 {
     private readonly IHttpClientFactory _httpClientFactory;
-    private PreheatOptions _options;
-    private ILogger<PreheatAbpProStarterContributor> _logger;
+    private readonly PreheatOptions _options;
+    private readonly ILogger<PreheatAbpProStarterContributor> _logger;
 
-    public PreheatAbpProStarterContributor(IHttpClientFactory httpClientFactory, IOptions<PreheatOptions> options)
+    public PreheatAbpProStarterContributor(IHttpClientFactory httpClientFactory, IOptions<PreheatOptions> options, ILogger<PreheatAbpProStarterContributor> logger)
     {
         _httpClientFactory = httpClientFactory;
+        _logger = logger;
         _options = options.Value;
     }
 
