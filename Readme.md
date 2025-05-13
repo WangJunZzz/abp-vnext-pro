@@ -11,10 +11,9 @@
 ## 🔗 链接
 
 - [AbpPro Vben2预览](http://182.43.18.151:44318/)
-- [AbpPro Vben5预览](http://182.43.18.151:44320/)
+- [AbpPro Vben5预览](http://antd.chengzhi.online/)
 - [代码生成器预览](http://182.43.18.151:44311/)
-- [文档地址](http://doc.cncore.club/)
-- [国内文档地址](http://doc.china.cncore.club:81/)
+- [文档地址](http://docs.chengzhi.online)
 - [视频教程](https://www.bilibili.com/video/BV1pt4y1E7aZ)
 - [代码生成器仓库地址](https://github.com/WangJunZzz/abp-vnext-pro-suite)
 
@@ -67,7 +66,8 @@ lion.abp new -t pro-module -c 公司名称 -p 项目名称 -v 版本(默认LastR
 - [x] ES 日志
 - [x] Setting 管理
 - [x] 多租户
-- [x] 文件管理
+- [x] 菜单管理
+- [x] 代码自动生成
 
 
 ## 🤝 如何贡献
