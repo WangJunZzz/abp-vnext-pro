@@ -30,7 +30,7 @@
         <!-- FreeSql-->
         <PackageReference Update="FreeSql" Version="3.5.209"/>
         <PackageReference Update="FreeSql.Provider.MysqlConnector" Version="3.5.209"/>
-        <PackageReference Update="FreeSql.Provider.Sqlite" Version="3.2.209"/>
+        <PackageReference Update="FreeSql.Provider.Sqlite" Version="3.5.209"/>
 
         <!-- 单元测试包-->
         <PackageReference Update="xunit" Version="2.9.3"/>
