@@ -5,9 +5,9 @@ namespace Lion.AbpPro.CAP.Internal;
 
 public class AbpProCapHeader : ReadOnlyDictionary<string, string>
 {
-    internal IDictionary<string, string?>? ResponseHeader { get; set; }
+    internal IDictionary<string, string> ResponseHeader { get; set; }
 
-    public AbpProCapHeader(IDictionary<string, string?> dictionary) : base(dictionary)
+    public AbpProCapHeader(IDictionary<string, string> dictionary) : base(dictionary)
     {
     }
 
@@ -16,9 +16,9 @@ public class AbpProCapHeader : ReadOnlyDictionary<string, string>
     /// </summary>
     /// <param name="key">The response header key.</param>
     /// <param name="value">The response header value.</param>
-    public void AddResponseHeader(string key, string? value)
+    public void AddResponseHeader(string key, string value)
     {
-        ResponseHeader ??= new Dictionary<string, string?>();
+        ResponseHeader ??= new Dictionary<string, string>();
         ResponseHeader[key] = value;
     }
 

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Internal;
 
 namespace Lion.AbpPro.CAP;
 
+// ReSharper disable once InconsistentNaming
 public class AbpProCAPSubscribeInvoker : ISubscribeInvoker
 {
     private readonly ConcurrentDictionary<string, ObjectMethodExecutor> _executors;
@@ -43,7 +44,7 @@ public class AbpProCAPSubscribeInvoker : ISubscribeInvoker
         // 租户数据可能在消息标头中
         var tenantId = message.GetTenantIdOrNull();
         var parameterDescriptors = context.ConsumerDescriptor.Parameters;
-        var executeParameters = new object?[parameterDescriptors.Count];
+        var executeParameters = new object[parameterDescriptors.Count];
         for (var i = 0; i < parameterDescriptors.Count; i++)
         {
             var parameterDescriptor = parameterDescriptors[i];
@@ -82,7 +83,7 @@ public class AbpProCAPSubscribeInvoker : ISubscribeInvoker
         }
 
         var filter = provider.GetService<ISubscribeFilter>();
-        object? resultObj = null;
+        object resultObj = null;
         try
         {
             if (filter != null)
@@ -148,7 +149,7 @@ public class AbpProCAPSubscribeInvoker : ISubscribeInvoker
         var srvType = context.ConsumerDescriptor.ServiceTypeInfo?.AsType();
         var implType = context.ConsumerDescriptor.ImplTypeInfo.AsType();
 
-        object? obj = null;
+        object obj = null;
         if (srvType != null) obj = provider.GetServices(srvType).FirstOrDefault(o => o?.GetType() == implType);
 
         if (obj == null) obj = ActivatorUtilities.GetServiceOrCreateInstance(provider, implType);
@@ -156,8 +157,7 @@ public class AbpProCAPSubscribeInvoker : ISubscribeInvoker
         return obj;
     }
 
-    private async Task<object?> ExecuteWithParameterAsync(ObjectMethodExecutor executor, object @class,
-        object?[] parameter)
+    private async Task<object> ExecuteWithParameterAsync(ObjectMethodExecutor executor, object @class, object[] parameter)
     {
         if (executor.IsMethodAsync) return await executor.ExecuteAsync(@class, parameter);
 
