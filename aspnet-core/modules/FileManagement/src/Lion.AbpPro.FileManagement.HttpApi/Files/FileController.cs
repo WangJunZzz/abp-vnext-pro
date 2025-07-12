@@ -20,7 +20,7 @@ public class FileController : AbpController, IFileAppService
         return await _fileAppService.PageAsync(input);
     }
 
-    [HttpPost("Upload")]
+    [HttpPut("Upload")]
     [SwaggerOperation(summary: "上传文件", Tags = new[] { "Files" })]
     public async Task UploadAsync(List<IFormFile> files)
     {
@@ -36,7 +36,7 @@ public class FileController : AbpController, IFileAppService
     }
 
 
-    [HttpPost("Download")]
+    [HttpPut("Download")]
     [SwaggerOperation(summary: "下载文件", Tags = new[] { "Files" })]
     public Task<RemoteStreamContent> DownloadAsync(DownloadFileObjectInput input)
     {
