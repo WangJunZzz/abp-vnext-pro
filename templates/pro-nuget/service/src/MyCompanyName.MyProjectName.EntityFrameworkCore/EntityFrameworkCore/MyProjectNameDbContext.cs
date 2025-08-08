@@ -27,6 +27,7 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
         public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
         public DbSet<BackgroundJobRecord> BackgroundJobs { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
+        public DbSet<AuditLogExcelFile> AuditLogExcelFiles { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<NotificationSubscription> NotificationSubscriptions { get; set; }
         public DbSet<DataDictionary> DataDictionaries { get; set; }

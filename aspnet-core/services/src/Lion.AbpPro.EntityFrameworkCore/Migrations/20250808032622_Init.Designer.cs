@@ -3,29 +3,24 @@ using System;
 using Lion.AbpPro.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Volo.Abp.EntityFrameworkCore;
 
 #nullable disable
 
 namespace Lion.AbpPro.Migrations
 {
     [DbContext(typeof(AbpProDbContext))]
-    [Migration("20250308143944_1.0.4")]
-    partial class _104
+    [Migration("20250808032622_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("_Abp_DatabaseProvider", EfCoreDatabaseProvider.MySql)
-                .HasAnnotation("ProductVersion", "9.0.0")
+                .HasAnnotation("ProductVersion", "9.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
             modelBuilder.Entity("Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates.DataDictionary", b =>
                 {
@@ -95,7 +90,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpDataDictionaries", (string)null);
+                    b.ToTable("AbpProDataDictionaries", (string)null);
                 });
 
             modelBuilder.Entity("Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates.DataDictionaryDetail", b =>
@@ -141,7 +136,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasIndex("DataDictionaryId");
 
-                    b.ToTable("AbpDataDictionaryDetails", (string)null);
+                    b.ToTable("AbpProDataDictionaryDetails", (string)null);
                 });
 
             modelBuilder.Entity("Lion.AbpPro.FileManagement.Files.FileObject", b =>
@@ -215,7 +210,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasIndex("FileName");
 
-                    b.ToTable("AbpFileObjects", (string)null);
+                    b.ToTable("AbpProFileObjects", (string)null);
                 });
 
             modelBuilder.Entity("Lion.AbpPro.LanguageManagement.LanguageTexts.Aggregates.LanguageText", b =>
@@ -297,7 +292,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasIndex("TenantId", "ResourceName", "CultureName");
 
-                    b.ToTable("AbpLanguageTexts", (string)null);
+                    b.ToTable("AbpProLanguageTexts", (string)null);
                 });
 
             modelBuilder.Entity("Lion.AbpPro.LanguageManagement.Languages.Aggregates.Language", b =>
@@ -384,7 +379,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasIndex("CultureName");
 
-                    b.ToTable("AbpLanguages", (string)null);
+                    b.ToTable("AbpProLanguages", (string)null);
                 });
 
             modelBuilder.Entity("Lion.AbpPro.NotificationManagement.Notifications.Aggregates.Notification", b =>
@@ -477,7 +472,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpNotifications", (string)null);
+                    b.ToTable("AbpProNotifications", (string)null);
                 });
 
             modelBuilder.Entity("Lion.AbpPro.NotificationManagement.Notifications.Aggregates.NotificationSubscription", b =>
@@ -553,7 +548,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasIndex("ReceiveUserId");
 
-                    b.ToTable("AbpNotificationSubscriptions", (string)null);
+                    b.ToTable("AbpProNotificationSubscriptions", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
@@ -726,6 +721,33 @@ namespace Lion.AbpPro.Migrations
                     b.ToTable("AbpAuditLogActions", (string)null);
                 });
 
+            modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogExcelFile", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<string>("FileName")
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)")
+                        .HasColumnName("FileName");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AbpAuditLogExcelFiles", (string)null);
+                });
+
             modelBuilder.Entity("Volo.Abp.AuditLogging.EntityChange", b =>
                 {
                     b.Property<Guid>("Id")
@@ -819,6 +841,10 @@ namespace Lion.AbpPro.Migrations
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("ApplicationName")
+                        .HasMaxLength(96)
+                        .HasColumnType("varchar(96)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -1364,7 +1390,7 @@ namespace Lion.AbpPro.Migrations
                         .HasColumnName("LastModifierId");
 
                     b.Property<DateTimeOffset?>("LastPasswordChangeTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime");
 
                     b.Property<bool>("LockoutEnabled")
                         .ValueGeneratedOnAdd()
@@ -1373,7 +1399,7 @@ namespace Lion.AbpPro.Migrations
                         .HasColumnName("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .HasMaxLength(64)

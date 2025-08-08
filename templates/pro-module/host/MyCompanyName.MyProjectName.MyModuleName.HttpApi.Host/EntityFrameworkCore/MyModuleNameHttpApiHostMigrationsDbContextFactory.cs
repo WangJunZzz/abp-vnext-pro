@@ -7,7 +7,7 @@ namespace MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<MyModuleNameHttpApiHostMigrationsDbContext>()
-                .UseMySql(configuration.GetConnectionString("MyModuleName"), MySqlServerVersion.LatestSupportedServerVersion);
+                .UseMySQL(configuration.GetConnectionString("MyModuleName") ?? string.Empty);
             return new MyModuleNameHttpApiHostMigrationsDbContext(builder.Options);
         }
 

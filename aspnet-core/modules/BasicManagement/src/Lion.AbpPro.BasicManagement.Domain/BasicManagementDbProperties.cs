@@ -2,7 +2,7 @@
 
 public static class BasicManagementDbProperties
 {
-    public static string DbTablePrefix { get; set; } = "BasicManagement";
+    public static string DbTablePrefix { get; set; } = "AbpPro";
 
     public static string DbSchema { get; set; } = null;
 

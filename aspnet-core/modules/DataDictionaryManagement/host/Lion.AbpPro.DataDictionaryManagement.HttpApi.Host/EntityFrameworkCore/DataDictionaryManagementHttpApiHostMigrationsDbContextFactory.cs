@@ -7,7 +7,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<DataDictionaryManagementHttpApiHostMigrationsDbContext>()
-                .UseMySql(configuration.GetConnectionString("DataDictionaryManagement"), MySqlServerVersion.LatestSupportedServerVersion);
+                .UseMySQL(configuration.GetConnectionString("Default") ?? string.Empty);
             return new DataDictionaryManagementHttpApiHostMigrationsDbContext(builder.Options);
         }
 

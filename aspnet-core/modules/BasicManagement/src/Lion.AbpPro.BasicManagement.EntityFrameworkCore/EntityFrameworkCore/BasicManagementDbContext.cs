@@ -23,6 +23,8 @@ public class BasicManagementDbContext : AbpDbContext<BasicManagementDbContext>, 
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
     public DbSet<BackgroundJobRecord> BackgroundJobs { get; set; }
     public DbSet<AuditLog> AuditLogs { get; set; }
+    public DbSet<AuditLogExcelFile> AuditLogExcelFiles { get; set; }
+
     public BasicManagementDbContext(DbContextOptions<BasicManagementDbContext> options)
         : base(options)
     {

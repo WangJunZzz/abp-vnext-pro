@@ -7,7 +7,7 @@ public class NotificationManagementHttpApiHostMigrationsDbContextFactory : IDesi
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<NotificationManagementHttpApiHostMigrationsDbContext>()
-            .UseMySql(configuration.GetConnectionString(NotificationManagementDbProperties.ConnectionStringName), MySqlServerVersion.LatestSupportedServerVersion);
+            .UseMySQL(configuration.GetConnectionString("Default") ?? string.Empty);
         return new NotificationManagementHttpApiHostMigrationsDbContext(builder.Options);
     }
 
