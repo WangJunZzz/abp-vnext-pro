@@ -4,9 +4,8 @@
         <TargetFramework>net9.0</TargetFramework>
     </PropertyGroup>
 
-
     <ItemGroup>
-      <ProjectReference Include="..\..\shared\Lion.AbpPro.Shared.Hosting.Gateways\Lion.AbpPro.Shared.Hosting.Gateways.csproj" />
+      <ProjectReference Include="..\..\frameworks\src\Lion.AbpPro.AspNetCore\Lion.AbpPro.AspNetCore.csproj" />
     </ItemGroup>
 
 </Project>

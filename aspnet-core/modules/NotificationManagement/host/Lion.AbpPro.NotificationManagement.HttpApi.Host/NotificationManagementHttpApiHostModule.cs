@@ -1,3 +1,5 @@
+using Lion.AbpPro.AspNetCore;
+
 namespace Lion.AbpPro.NotificationManagement;
 
 [DependsOn(
@@ -9,7 +11,8 @@ namespace Lion.AbpPro.NotificationManagement;
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule),
     typeof(AbpProCapModule),
-    typeof(AbpEntityFrameworkCoreMySQLModule)
+    typeof(AbpEntityFrameworkCoreMySQLModule),
+    typeof(AbpProAspNetCoreModule)
 )]
 public class NotificationManagementHttpApiHostModule : AbpModule
 {

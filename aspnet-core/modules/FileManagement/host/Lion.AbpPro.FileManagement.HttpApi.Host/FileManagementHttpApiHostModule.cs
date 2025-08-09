@@ -1,3 +1,5 @@
+using Lion.AbpPro.AspNetCore;
+
 namespace Lion.AbpPro.FileManagement;
 
 [DependsOn(
@@ -8,7 +10,8 @@ namespace Lion.AbpPro.FileManagement;
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule),
-    typeof(AbpEntityFrameworkCoreMySQLModule)
+    typeof(AbpEntityFrameworkCoreMySQLModule),
+    typeof(AbpProAspNetCoreModule)
 )]
 public class FileManagementHttpApiHostModule : AbpModule
 {

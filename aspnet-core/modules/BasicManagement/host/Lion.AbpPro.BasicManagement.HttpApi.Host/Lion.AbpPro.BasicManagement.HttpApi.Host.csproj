@@ -26,7 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\..\shared\Lion.AbpPro.Shared.Hosting.Microservices\Lion.AbpPro.Shared.Hosting.Microservices.csproj" />
+        <ProjectReference Include="..\..\..\..\frameworks\src\Lion.AbpPro.AspNetCore\Lion.AbpPro.AspNetCore.csproj" />
         <ProjectReference Include="..\..\src\Lion.AbpPro.BasicManagement.HttpApi\Lion.AbpPro.BasicManagement.HttpApi.csproj" />
         <ProjectReference Include="..\..\src\Lion.AbpPro.BasicManagement.Application\Lion.AbpPro.BasicManagement.Application.csproj" />
         <ProjectReference Include="..\..\src\Lion.AbpPro.BasicManagement.EntityFrameworkCore\Lion.AbpPro.BasicManagement.EntityFrameworkCore.csproj" />

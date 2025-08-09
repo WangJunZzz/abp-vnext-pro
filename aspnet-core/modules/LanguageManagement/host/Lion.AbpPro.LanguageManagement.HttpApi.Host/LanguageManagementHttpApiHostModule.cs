@@ -1,3 +1,5 @@
+using Lion.AbpPro.AspNetCore;
+
 namespace Lion.AbpPro.LanguageManagement
 {
     [DependsOn(
@@ -12,7 +14,8 @@ namespace Lion.AbpPro.LanguageManagement
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreSerilogModule),
-        typeof(AbpSwashbuckleModule)
+        typeof(AbpSwashbuckleModule),
+        typeof(AbpProAspNetCoreModule)
         )]
     public class LanguageManagementHttpApiHostModule : AbpModule
     {

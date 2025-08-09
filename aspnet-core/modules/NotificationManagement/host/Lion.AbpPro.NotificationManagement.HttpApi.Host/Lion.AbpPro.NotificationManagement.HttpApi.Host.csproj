@@ -31,8 +31,8 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\..\frameworks\src\Lion.AbpPro.AspNetCore\Lion.AbpPro.AspNetCore.csproj" />
         <ProjectReference Include="..\..\..\..\frameworks\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj"/>
-        <ProjectReference Include="..\..\..\..\shared\Lion.AbpPro.Shared.Hosting.Microservices\Lion.AbpPro.Shared.Hosting.Microservices.csproj" />
         <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.HttpApi\Lion.AbpPro.NotificationManagement.HttpApi.csproj"/>
         <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.Application\Lion.AbpPro.NotificationManagement.Application.csproj"/>
         <ProjectReference Include="..\..\src\Lion.AbpPro.NotificationManagement.EntityFrameworkCore\Lion.AbpPro.NotificationManagement.EntityFrameworkCore.csproj"/>

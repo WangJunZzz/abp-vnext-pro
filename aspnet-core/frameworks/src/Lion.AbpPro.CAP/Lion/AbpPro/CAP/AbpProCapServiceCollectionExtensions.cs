@@ -11,4 +11,14 @@ public static class AbpProCapServiceCollectionExtensions
         context.Services.AddCap(capAction);
         return context;
     }
+    
+    public static IServiceCollection AddAbpCap(this IServiceCollection service, Action<CapOptions> capAction)
+    {
+        service.Replace(ServiceDescriptor.Transient<IUnitOfWork, AbpProCapUnitOfWork>());
+        service.Replace(ServiceDescriptor.Transient<UnitOfWork, AbpProCapUnitOfWork>());
+        service.AddSingleton<ISubscribeInvoker, AbpProCAPSubscribeInvoker>();
+        service.AddTransient<AbpProCapUnitOfWork>();
+        service.AddCap(capAction);
+        return service;
+    }
 }

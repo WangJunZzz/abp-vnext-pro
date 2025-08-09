@@ -1,3 +1,5 @@
+using Lion.AbpPro.AspNetCore;
+
 namespace Lion.AbpPro.DataDictionaryManagement
 {
     [DependsOn(
@@ -12,7 +14,8 @@ namespace Lion.AbpPro.DataDictionaryManagement
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreSerilogModule),
-        typeof(AbpSwashbuckleModule)
+        typeof(AbpSwashbuckleModule),
+        typeof(AbpProAspNetCoreModule)
         )]
     public class DataDictionaryManagementHttpApiHostModule : AbpModule
     {

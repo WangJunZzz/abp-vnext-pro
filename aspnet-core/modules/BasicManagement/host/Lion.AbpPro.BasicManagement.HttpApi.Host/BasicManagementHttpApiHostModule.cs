@@ -1,4 +1,5 @@
 using System.Text;
+using Lion.AbpPro.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.DataProtection;
 using Lion.AbpPro.BasicManagement.EntityFrameworkCore;
@@ -34,7 +35,7 @@ namespace Lion.AbpPro.BasicManagement;
     typeof(AbpEntityFrameworkCoreMySQLModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule),
-    typeof(AbpProSharedHostingMicroserviceModule)
+    typeof(AbpProAspNetCoreModule)
 )]
 public class BasicManagementHttpApiHostModule : AbpModule
 {
