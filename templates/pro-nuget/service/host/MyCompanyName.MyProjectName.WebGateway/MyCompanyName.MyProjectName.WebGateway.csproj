@@ -5,6 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\..\..\aspnet-core\shared\Lion.AbpPro.Shared.Hosting.Gateways\Lion.AbpPro.Shared.Hosting.Gateways.csproj"/>
+        <ProjectReference Include="..\..\..\..\..\aspnet-core\frameworks\src\Lion.AbpPro.AspNetCore\Lion.AbpPro.AspNetCore.csproj"/>
     </ItemGroup>
 </Project>

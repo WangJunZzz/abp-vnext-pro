@@ -24,7 +24,6 @@ public partial class AbpProHttpApiHostModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         context.Services
-                
             .AddAbpProAuditLog()
             .AddAbpProAuthentication()
             .AddAbpProMultiTenancy()

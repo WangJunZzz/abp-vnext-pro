@@ -14,8 +14,6 @@ global using Hangfire.States;
 global using Hangfire.Storage;
 global using Lion.AbpPro;
 global using MyCompanyName.MyProjectName.EntityFrameworkCore;
-global using MyCompanyName.MyProjectName.Extensions;
-global using MyCompanyName.MyProjectName.Extensions.Hangfire;
 global using MyCompanyName.MyProjectName.MultiTenancy;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.AspNetCore.Builder;
