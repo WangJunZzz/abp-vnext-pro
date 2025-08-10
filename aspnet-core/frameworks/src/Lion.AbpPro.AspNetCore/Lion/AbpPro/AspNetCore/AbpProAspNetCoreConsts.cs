@@ -41,4 +41,9 @@ public class AbpProAspNetCoreConsts
     /// 审计配置节名称
     /// </summary>
     public const string Audit = "Audit";
+    
+    /// <summary>
+    /// token 
+    /// </summary>
+    public const string Jwt = "Jwt";
 }

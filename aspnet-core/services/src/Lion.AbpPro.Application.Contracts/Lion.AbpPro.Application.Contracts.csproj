@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.Hangfire\Lion.AbpPro.Hangfire.csproj" />
         <ProjectReference Include="..\..\..\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Application.Contracts\Lion.AbpPro.BasicManagement.Application.Contracts.csproj" />
         <ProjectReference Include="..\..\..\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Application.Contracts\Lion.AbpPro.DataDictionaryManagement.Application.Contracts.csproj" />
         <ProjectReference Include="..\..\..\modules\FileManagement\src\Lion.AbpPro.FileManagement.Application.Contracts\Lion.AbpPro.FileManagement.Application.Contracts.csproj" />

@@ -8,30 +8,32 @@ public static class SerilogToEsExtensions
         loggerConfiguration
             .ReadFrom.Configuration(configuration)
             .Enrich.FromLogContext();
+        var writeToSections = configuration.GetSection("Serilog:WriteTo").GetChildren();
+        var elasticSection = writeToSections.FirstOrDefault(s => s.GetValue<string>("Name") == "Elastic");
 
-        var writeToElasticSearch = configuration.GetValue("ElasticSearch:Enabled", false);
+        var writeToElasticSearch = elasticSection?.GetSection("Args").GetValue<bool>("Enabled") ?? false;
 
 
         // LogToElasticSearch:Enabled = true 才输出至ES
         if (!writeToElasticSearch)
             return;
 
-        var applicationName = "Lion.AbpPro.HttpApi.Host";
+        var applicationName = elasticSection?.GetSection("Args").GetValue<string>("ApplicationName") ?? string.Empty;
 
-        var esUrl = configuration["ElasticSearch:Url"];
+        var esUrl = elasticSection?.GetSection("Args").GetValue<string>("Url");
         // 需要设置ES URL
         if (string.IsNullOrEmpty(esUrl))
             return;
 
 
-        var indexFormat = configuration["ElasticSearch:IndexFormat"];
+        var indexFormat = elasticSection?.GetSection("Args").GetValue<string>("IndexFormat");
 
         // 需要设置ES URL
         if (string.IsNullOrEmpty(indexFormat))
             return;
 
-        var esUserName = configuration["ElasticSearch:UserName"];
-        var esPassword = configuration["ElasticSearch:Password"];
+        var esUserName = elasticSection?.GetSection("Args").GetValue<string>("UserName");
+        var esPassword = elasticSection?.GetSection("Args").GetValue<string>("Password");
 
         loggerConfiguration.Enrich.FromLogContext().Enrich.WithExceptionDetails().WriteTo
             .Elasticsearch(BuildElasticSearchSinkOptions(esUrl, indexFormat, esUserName, esPassword));

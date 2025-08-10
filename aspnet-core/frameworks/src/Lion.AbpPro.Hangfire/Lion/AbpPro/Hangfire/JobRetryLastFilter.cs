@@ -1,4 +1,4 @@
-﻿namespace Lion.AbpPro.Extensions.Hangfire;
+﻿namespace Lion.AbpPro.Hangfire;
 
 /// <summary>
 /// 重试最后一次
@@ -18,7 +18,7 @@ public class JobRetryLastFilter : JobFilterAttribute, IElectStateFilter
         var retryAttempt = context.GetJobParameter<int>("RetryCount");
         if (RetryCount == retryAttempt)
         {
-            Log.Error("最后一次重试");
+            // 最后一次重试
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿#pragma warning disable CS0618 // Type or member is obsolete
+﻿using Lion.AbpPro.Hangfire;
+
+#pragma warning disable CS0618 // Type or member is obsolete
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -99,14 +101,13 @@ public static class ServiceCollectionExtensions
 
         service.AddHangfire(config =>
         {
-            config.UseRedisStorage(
-                    service.GetConfiguration().GetValue<string>("Hangfire:Redis:Host"), redisStorageOptions)
+            config.UseRedisStorage(service.GetConfiguration().GetValue<string>("Hangfire:Redis:Host"), redisStorageOptions)
                 .WithJobExpirationTimeout(TimeSpan.FromDays(7));
             var delaysInSeconds = new[] { 10, 60, 60 * 3 }; // 重试时间间隔
             const int attempts = 3; // 重试次数
             config.UseFilter(new AutomaticRetryAttribute() { Attempts = 3, DelaysInSeconds = delaysInSeconds });
             //config.UseFilter(new AutoDeleteAfterSuccessAttribute(TimeSpan.FromDays(7)));
-            config.UseFilter(new JobRetryLastFilter(attempts));
+            //config.UseFilter(new JobRetryLastFilter(attempts));
         });
         return service;
     }

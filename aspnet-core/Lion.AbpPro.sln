@@ -251,6 +251,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.HttpClient", "f
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.AspNetCore", "frameworks\src\Lion.AbpPro.AspNetCore\Lion.AbpPro.AspNetCore.csproj", "{89CCAEA6-8176-4E4B-8D84-A2ACE2715F88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Hangfire", "frameworks\src\Lion.AbpPro.Hangfire\Lion.AbpPro.Hangfire.csproj", "{6C2FDD3D-F711-46B0-A2F2-B94BC33F136B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -617,6 +619,10 @@ Global
 		{89CCAEA6-8176-4E4B-8D84-A2ACE2715F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89CCAEA6-8176-4E4B-8D84-A2ACE2715F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89CCAEA6-8176-4E4B-8D84-A2ACE2715F88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C2FDD3D-F711-46B0-A2F2-B94BC33F136B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C2FDD3D-F711-46B0-A2F2-B94BC33F136B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C2FDD3D-F711-46B0-A2F2-B94BC33F136B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C2FDD3D-F711-46B0-A2F2-B94BC33F136B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -737,6 +743,7 @@ Global
 		{A70659A2-91F4-4FE7-80D0-DA12430543FD} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
 		{9C88C5AE-21A1-4A62-9FA3-173806CD9EE3} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
 		{89CCAEA6-8176-4E4B-8D84-A2ACE2715F88} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
+		{6C2FDD3D-F711-46B0-A2F2-B94BC33F136B} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

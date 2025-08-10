@@ -30,7 +30,7 @@ public static class ServiceCollectionExtensions
 
     public static IServiceCollection AddAbpProConsul(this IServiceCollection service)
     {
-        var consulOptions = service.GetRequiredService<IOptions<AbpProGatewayOptions>>().Value;
+        var consulOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProGatewayOptions>>().Value;
         if (!consulOptions.Enabled)
             return service;
 
@@ -46,6 +46,7 @@ public static class ServiceCollectionExtensions
     {
         // TODO 检查数据库和redis是否正常 AspNetCore.HealthChecks.Redis AspNetCore.HealthChecks.MySql
         // context.Services.AddHealthChecks().AddRedis(redisConnectionString).AddMySql(connectString);
+        service.AddHealthChecks();
         return service;
     }
 
@@ -94,7 +95,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddAbpProCors(this IServiceCollection service)
     {
-        var corsOptions = service.GetRequiredService<IOptions<AbpProCorsOptions>>().Value;
+        var corsOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProCorsOptions>>().Value;
         if (!corsOptions.Enabled) return service;
         
         service.AddCors(options =>
@@ -150,7 +151,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddAbpProSwagger(this IServiceCollection service, string name, string version = "v1")
     {
-        var swaggerOptions = service.GetRequiredService<IOptions<AbpProSwaggerOptions>>().Value;
+        var swaggerOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProSwaggerOptions>>().Value;
         if (!swaggerOptions.Enabled) return service;
 
         service.AddSwaggerGen(options =>
@@ -221,9 +222,9 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddAbpProMiniProfiler(this IServiceCollection service)
     {
-        var options = service.GetRequiredService<IOptions<AbpProMiniProfilerOptions>>().Value;
+        var options = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProMiniProfilerOptions>>().Value;
         if (!options.Enabled) return service;
-        service.AddMiniProfiler(opt => opt.RouteBasePath = "/profiler").AddEntityFramework();
+        service.AddMiniProfiler(opt => opt.RouteBasePath = options.RouteBasePath).AddEntityFramework();
         return service;
     }
 
@@ -232,7 +233,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddAbpProMultiTenancy(this IServiceCollection service)
     {
-        var multiTenancyOptions = service.GetRequiredService<IOptions<AbpProMultiTenancyOptions>>().Value;
+        var multiTenancyOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProMultiTenancyOptions>>().Value;
         service.Configure<AbpMultiTenancyOptions>(options => { options.IsEnabled = multiTenancyOptions.Enabled; });
         return service;
     }
@@ -242,7 +243,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddAbpProAuthentication(this IServiceCollection service)
     {
-        var jwtOptions = service.GetRequiredService<IOptions<AbpProJwtOptions>>().Value;
+        var jwtOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProJwtOptions>>().Value;
         
         service.AddAuthentication(options =>
             {
@@ -315,7 +316,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddAbpProAuditLog(this IServiceCollection service)
     {
-        var auditOptions = service.GetRequiredService<IOptions<AbpProAuditOptions>>().Value;
+        var auditOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProAuditOptions>>().Value;
         service.Configure<AbpAuditingOptions>
         (options =>
             {

@@ -1,4 +1,4 @@
-﻿namespace Lion.AbpPro.Extensions.Hangfire;
+﻿namespace Lion.AbpPro.Hangfire;
 
 public class AutoDeleteAfterSuccessAttribute : JobFilterAttribute, IApplyStateFilter
 {

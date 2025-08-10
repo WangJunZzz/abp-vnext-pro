@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace />
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.BackgroundJobs.HangFire" />
+    </ItemGroup>
+
+</Project>

@@ -33,7 +33,7 @@
         <PackageReference Include="Serilog.Sinks.Console" />
         <PackageReference Include="Serilog.Sinks.Elasticsearch" />
         <PackageReference Include="Serilog.Sinks.File" />
-        <PackageReference Include="Volo.Abp.AspNetCore.Serilog" />
+        <PackageReference Include="Serilog.Sinks.Async" />
     </ItemGroup>
 
     <ItemGroup>

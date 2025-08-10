@@ -1,6 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
-
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <RootNamespace>Lion.AbpPro</RootNamespace>
@@ -8,59 +6,47 @@
         <UserSecretsId>Lion.AbpPro-4681b4fd-151f-4221-84a4-929d86723e4c</UserSecretsId>
     </PropertyGroup>
 
+
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
-        <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" />
-        <PackageReference Include="Volo.Abp.Account.Web" />
-        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" />
-        <PackageReference Include="Volo.Abp.Autofac" />
-        <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" />
-        <PackageReference Include="Volo.Abp.AspNetCore.Serilog" />
-        <PackageReference Include="Volo.Abp.Swashbuckle" />
-        <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" />
-        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" />
-        <PackageReference Include="Serilog" />
-        <PackageReference Include="Serilog.AspNetCore" />
-        <PackageReference Include="Serilog.Exceptions" />
-        <PackageReference Include="Serilog.Extensions.Logging" />
-        <PackageReference Include="Serilog.Settings.Configuration" />
-        <PackageReference Include="Serilog.Sinks.Console" />
-        <PackageReference Include="Serilog.Sinks.Elasticsearch" />
-        <PackageReference Include="Serilog.Sinks.File" />
-        <PackageReference Include="Serilog.Sinks.Async" />
-        <PackageReference Include="Hangfire.Redis.StackExchange" />
-        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
-        <PackageReference Include="MiniProfiler.AspNetCore.Mvc" />
-        <PackageReference Include="DotNetCore.CAP.MySql" />
-        <PackageReference Include="DotNetCore.CAP.RabbitMQ" />
-        <PackageReference Include="DotNetCore.CAP.Dashboard" />
-        <PackageReference Include="MiniProfiler.AspNetCore.Mvc" />
-        <PackageReference Include="MiniProfiler.EntityFrameworkCore" />
-        <PackageReference Include="MiniProfiler.Shared" />
-        <PackageReference Include="Volo.Abp.BackgroundJobs.HangFire" />
+        <PackageReference Include="Volo.Abp.Account.Web"/>
+        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy"/>
+        <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis"/>
+        <PackageReference Include="Volo.Abp.AspNetCore.Serilog"/>
+        <PackageReference Include="Volo.Abp.Swashbuckle"/>
+        <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer"/>
+        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic"/>
         <PackageReference Include="Volo.Abp.DistributedLocking"/>
+        <PackageReference Include="Volo.Abp.BlobStoring.FileSystem"/>
+    </ItemGroup>
+
+    <ItemGroup>
+
+        <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis"/>
+        <PackageReference Include="DotNetCore.CAP.MySql"/>
+        <PackageReference Include="DotNetCore.CAP.RabbitMQ"/>
+        <PackageReference Include="DotNetCore.CAP.Dashboard"/>
         <PackageReference Include="DistributedLock.Redis"/>
-        <PackageReference Include="Volo.Abp.BlobStoring.FileSystem" />
+        <PackageReference Include="Hangfire.Redis.StackExchange"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.AspNetCore\Lion.AbpPro.AspNetCore.csproj" />
-        <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.CAP.EntityFrameworkCore\Lion.AbpPro.CAP.EntityFrameworkCore.csproj" />
-        <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj" />
-        <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.Starter\Lion.AbpPro.Starter.csproj" />
-        <ProjectReference Include="..\..\src\Lion.AbpPro.Application\Lion.AbpPro.Application.csproj" />
-        <ProjectReference Include="..\..\src\Lion.AbpPro.EntityFrameworkCore\Lion.AbpPro.EntityFrameworkCore.csproj" />
-        <ProjectReference Include="..\..\src\Lion.AbpPro.HttpApi\Lion.AbpPro.HttpApi.csproj" />
+        <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.AspNetCore\Lion.AbpPro.AspNetCore.csproj"/>
+        <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.CAP.EntityFrameworkCore\Lion.AbpPro.CAP.EntityFrameworkCore.csproj"/>
+        <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj"/>
+        <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.Starter\Lion.AbpPro.Starter.csproj"/>
+        <ProjectReference Include="..\..\src\Lion.AbpPro.Application\Lion.AbpPro.Application.csproj"/>
+        <ProjectReference Include="..\..\src\Lion.AbpPro.EntityFrameworkCore\Lion.AbpPro.EntityFrameworkCore.csproj"/>
+        <ProjectReference Include="..\..\src\Lion.AbpPro.HttpApi\Lion.AbpPro.HttpApi.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Remove="Logs\**" />
-        <Content Remove="Logs\**" />
-        <EmbeddedResource Remove="Logs\**" />
-        <None Remove="Logs\**" />
+        <Compile Remove="Logs\**"/>
+        <Content Remove="Logs\**"/>
+        <EmbeddedResource Remove="Logs\**"/>
+        <None Remove="Logs\**"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*.json" />
+        <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*.json"/>
     </ItemGroup>
 </Project>
