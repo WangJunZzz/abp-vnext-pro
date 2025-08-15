@@ -12,6 +12,7 @@
 
 
     <ItemGroup>
+
         <ProjectReference Include="..\..\..\..\..\aspnet-core\frameworks\src\Lion.AbpPro.Core\Lion.AbpPro.Core.csproj"/>
         <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\BasicManagement\src\Lion.AbpPro.BasicManagement.Domain.Shared\Lion.AbpPro.BasicManagement.Domain.Shared.csproj"/>
         <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.Domain.Shared\Lion.AbpPro.NotificationManagement.Domain.Shared.csproj"/>

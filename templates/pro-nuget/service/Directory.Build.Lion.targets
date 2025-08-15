@@ -2,8 +2,7 @@
     <!--    Lion.AbpPro包-->
     <ItemGroup>
         <PackageReference Update="Lion.AbpPro.Core" Version="MyVersion"/>
-        <PackageReference Update="Lion.AbpPro.Shared.Hosting.Microservices" Version="MyVersion"/>
-        <PackageReference Update="Lion.AbpPro.Shared.Hosting.Gateways" Version="MyVersion"/>
+        <PackageReference Update="Lion.AbpPro.AspNetCore" Version="MyVersion"/>
         
         <PackageReference Update="Lion.AbpPro.BasicManagement.Application" Version="MyVersion"/>
         <PackageReference Update="Lion.AbpPro.BasicManagement.Application.Contracts" Version="MyVersion"/>

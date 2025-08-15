@@ -39,7 +39,6 @@ namespace MyCompanyName.MyProjectName
                 .AddAbpProCors()
                 .AddAbpProAntiForgery()
                 .AddAbpProIdentity()
-                .AddAbpProBlobStorage()
                 .AddAbpProSignalR()
                 .AddAbpProHealthChecks()
                 .AddAbpProTenantResolvers()
