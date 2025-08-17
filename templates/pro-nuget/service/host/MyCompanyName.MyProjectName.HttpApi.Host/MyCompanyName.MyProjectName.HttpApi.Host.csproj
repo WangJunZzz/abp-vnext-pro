@@ -27,6 +27,7 @@
         <PackageReference Include="DotNetCore.CAP.Dashboard"/>
         <PackageReference Include="DistributedLock.Redis"/>
         <PackageReference Include="Hangfire.Redis.StackExchange"/>
+        <PackageReference Include="Lion.AbpPro.AspNetCore"/>
     </ItemGroup>
     
     
@@ -38,9 +39,6 @@
         <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.HttpApi\MyCompanyName.MyProjectName.HttpApi.csproj"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\..\..\aspnet-core\frameworks\src\Lion.AbpPro.AspNetCore\Lion.AbpPro.AspNetCore.csproj"/>
-    </ItemGroup>
 
     <ItemGroup>
         <Compile Remove="Logs\**"/>

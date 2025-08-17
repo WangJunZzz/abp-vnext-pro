@@ -5,6 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\..\..\aspnet-core\frameworks\src\Lion.AbpPro.AspNetCore\Lion.AbpPro.AspNetCore.csproj"/>
+        <PackageReference Include="Lion.AbpPro.AspNetCore"/>
     </ItemGroup>
 </Project>
