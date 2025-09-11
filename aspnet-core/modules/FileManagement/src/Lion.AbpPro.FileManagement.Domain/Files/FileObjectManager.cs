@@ -53,7 +53,7 @@ public class FileObjectManager : DomainService
         }
         else
         {
-            entity = new FileObject(id, fileName, fileSize, contentType);
+            entity = new FileObject(id, fileName, fileSize, contentType, CurrentTenant?.Id);
             await _fileObjectRepository.InsertAsync(entity);
         }
 
