@@ -1,25 +1,43 @@
 namespace MyCompanyName.MyProjectName
 {
     public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-          
-        }
+    {				
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Async(c => c.File("Logs/logs.txt"))
+            .WriteTo.Async(c => c.Console())
+            .CreateBootstrapLogger();
 
-        private static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.ConfigureKestrel((context, options) => { options.Limits.MaxRequestBodySize = 1024 * 50; });
-                    webBuilder.UseStartup<Startup>();
-                })
+        try
+        {
+            var builder = WebApplication.CreateBuilder(args);
+            builder.Host
+                .AddAppSettingsSecretsJson()
+                .UseAutofac()
                 .UseSerilog((context, loggerConfiguration) =>
                 {
                     SerilogToEsExtensions.SetSerilogConfiguration(
                         loggerConfiguration,
                         context.Configuration);
-                }).UseAutofac();
+                });
+            await builder.AddApplicationAsync<MyProjectNameHttpApiHostModule>();
+            var app = builder.Build();
+            await app.InitializeApplicationAsync();
+            await app.RunAsync();
+            return 0;
+        }
+        catch (Exception ex)
+        {
+            if (ex is HostAbortedException)
+            {
+                throw;
+            }
+
+            Log.Fatal(ex, "Host terminated unexpectedly!");
+            return 1;
+        }
+        finally
+        {
+            await Log.CloseAndFlushAsync();
+        }				
     }
 }
