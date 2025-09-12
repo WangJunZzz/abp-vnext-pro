@@ -10,6 +10,13 @@ namespace Lion.AbpPro.DataDictionaryManagement
     )]
     public class DataDictionaryManagementDomainModule : AbpModule
     {
-
+        public override void ConfigureServices(ServiceConfigurationContext context)
+        {
+            context.Services.AddAutoMapperObjectMapper<DataDictionaryManagementDomainModule>();
+            Configure<AbpAutoMapperOptions>(options =>
+            {
+                options.AddMaps<DataDictionaryManagementDomainModule>(validate: true);
+            });
+        }
     }
 }
