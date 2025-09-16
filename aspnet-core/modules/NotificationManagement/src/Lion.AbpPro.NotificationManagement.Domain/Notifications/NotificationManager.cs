@@ -1,5 +1,5 @@
 using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
-using Lion.AbpPro.NotificationManagement.Notifications.LocalEvents;
+using Lion.AbpPro.SignalR.Enums;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications
 {
@@ -33,7 +33,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             int maxResultCount = 10,
             int skipCount = 0)
         {
-            var list = await _notificationRepository.GetPagingListAsync(title, content, senderUserId, senderUserName, receiverUserId, receiverUserName, read, startReadTime, endReadTime, messageType,messageLevel, maxResultCount, skipCount);
+            var list = await _notificationRepository.GetPagingListAsync(title, content, senderUserId, senderUserName, receiverUserId, receiverUserName, read, startReadTime, endReadTime, messageType, messageLevel, maxResultCount, skipCount);
             return ObjectMapper.Map<List<Notification>, List<NotificationDto>>(list);
         }
 
@@ -56,31 +56,15 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             return await _notificationRepository.GetPagingCountAsync(title, content, senderUserId, senderUserName, receiverUserId, receiverUserName, read, startReadTime, endReadTime, messageType, messageLevel);
         }
 
-        public async Task SendCommonWarningMessageAsync(string title, string content, MessageLevel level, Guid receiveUserId, string receiveUserName)
+        public async Task CreateAsync(Guid id, string title, string content, MessageType messageType, MessageLevel level, Guid? receiveUserId, string receiveUserName)
         {
             if (!_currentUser.Id.HasValue)
             {
                 throw new AbpAuthorizationException();
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, level, _currentUser.Id.Value, _currentUser.UserName, receiveUserId, receiveUserName, tenantId: CurrentTenant?.Id);
-            // 发送集成事件
-            var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
-            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
-            await _notificationRepository.InsertAsync(entity);
-        }
+            var entity = new Notification(id, title, content, messageType, level, _currentUser.Id.Value, _currentUser.UserName, receiveUserId, receiveUserName, tenantId: CurrentTenant?.Id);
 
-        public async Task SendBroadCastWarningMessageAsync(string title, string content, MessageLevel level)
-        {
-            if (!_currentUser.Id.HasValue)
-            {
-                throw new AbpAuthorizationException();
-            }
-
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, level, _currentUser.Id.Value, _currentUser.UserName, tenantId: CurrentTenant?.Id);
-            // 发送集成事件
-            var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
-            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
             await _notificationRepository.InsertAsync(entity);
         }
 

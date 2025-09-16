@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Lion.AbpPro.NotificationManagement.Notifications.Enums
+namespace Lion.AbpPro.SignalR.Enums
 {
     /// <summary>
     /// 消息类型 

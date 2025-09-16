@@ -1,4 +1,6 @@
 using System.Security.Authentication;
+using Lion.AbpPro.SignalR;
+using Lion.AbpPro.SignalR.Enums;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications
 {
@@ -7,12 +9,14 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
     {
         private readonly INotificationManager _notificationManager;
         private readonly INotificationSubscriptionManager _notificationSubscriptionManager;
+        private readonly IMessageManager _messageManager;
 
 
-        public NotificationAppService(INotificationManager notificationManager, INotificationSubscriptionManager notificationSubscriptionManager)
+        public NotificationAppService(INotificationManager notificationManager, INotificationSubscriptionManager notificationSubscriptionManager, IMessageManager messageManager)
         {
             _notificationManager = notificationManager;
             _notificationSubscriptionManager = notificationSubscriptionManager;
+            _messageManager = messageManager;
         }
 
 
@@ -21,7 +25,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task SendCommonWarningMessageAsync(SendCommonMessageInput input)
         {
-            await _notificationManager.SendCommonWarningMessageAsync(input.Title, input.Content, MessageLevel.Warning, input.ReceiveUserId, input.ReceiveUserName);
+            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.Common, MessageLevel.Warning, input.ReceiveUserId, input.ReceiveUserName);
         }
 
         /// <summary>
@@ -29,7 +33,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task SendCommonInformationMessageAsync(SendCommonMessageInput input)
         {
-            await _notificationManager.SendCommonWarningMessageAsync(input.Title, input.Content, MessageLevel.Information, input.ReceiveUserId, input.ReceiveUserName);
+            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.Common, MessageLevel.Information, input.ReceiveUserId, input.ReceiveUserName);
         }
 
         /// <summary>
@@ -37,7 +41,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task SendCommonErrorMessageAsync(SendCommonMessageInput input)
         {
-            await _notificationManager.SendCommonWarningMessageAsync(input.Title, input.Content, MessageLevel.Error, input.ReceiveUserId, input.ReceiveUserName);
+            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.Common, MessageLevel.Error, input.ReceiveUserId, input.ReceiveUserName);
         }
 
         /// <summary>
@@ -45,7 +49,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task SendBroadCastWarningMessageAsync(SendBroadCastMessageInput input)
         {
-            await _notificationManager.SendBroadCastWarningMessageAsync(input.Title, input.Content, MessageLevel.Warning);
+            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.BroadCast, MessageLevel.Warning);
         }
 
         /// <summary>
@@ -53,7 +57,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task SendBroadCastInformationMessageAsync(SendBroadCastMessageInput input)
         {
-            await _notificationManager.SendBroadCastWarningMessageAsync(input.Title, input.Content, MessageLevel.Information);
+            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.BroadCast, MessageLevel.Information);
         }
 
         /// <summary>
@@ -61,7 +65,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task SendBroadCastErrorMessageAsync(SendBroadCastMessageInput input)
         {
-            await _notificationManager.SendBroadCastWarningMessageAsync(input.Title, input.Content, MessageLevel.Error);
+            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.BroadCast, MessageLevel.Error);
         }
 
         public virtual async Task SetReadAsync(SetReadInput input)

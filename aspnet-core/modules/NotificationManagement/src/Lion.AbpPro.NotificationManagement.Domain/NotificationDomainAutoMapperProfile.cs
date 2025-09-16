@@ -6,8 +6,6 @@ namespace Lion.AbpPro.NotificationManagement
     {
         public NotificationDomainAutoMapperProfile()
         {
-            CreateMap<Notification, NotificationEto>();
-            CreateMap<Notification, NotificationDto>();
             CreateMap<NotificationSubscription, NotificationSubscriptionDto>();
         }
     }

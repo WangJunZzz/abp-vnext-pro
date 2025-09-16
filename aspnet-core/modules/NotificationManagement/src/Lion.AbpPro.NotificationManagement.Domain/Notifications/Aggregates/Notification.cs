@@ -1,4 +1,5 @@
-using Volo.Abp.MultiTenancy;
+using Lion.AbpPro.SignalR.Enums;
+using Lion.AbpPro.SignalR.LocalEvent.Notification;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
 {

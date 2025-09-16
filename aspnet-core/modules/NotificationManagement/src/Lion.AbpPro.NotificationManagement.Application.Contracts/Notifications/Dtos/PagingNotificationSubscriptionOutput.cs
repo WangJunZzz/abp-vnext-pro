@@ -1,3 +1,5 @@
+using Lion.AbpPro.SignalR.Enums;
+
 namespace Lion.AbpPro.NotificationManagement.Notifications.Dtos
 {
     public class PagingNotificationSubscriptionOutput

@@ -24,6 +24,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\..\frameworks\src\Lion.AbpPro.Core\Lion.AbpPro.Core.csproj" />
+      <ProjectReference Include="..\..\..\..\Lion.AbpPro.SignalR\Lion.AbpPro.SignalR.csproj" />
     </ItemGroup>
 
 

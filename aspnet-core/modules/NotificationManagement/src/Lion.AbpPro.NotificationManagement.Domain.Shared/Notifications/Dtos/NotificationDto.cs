@@ -1,4 +1,4 @@
-using Lion.AbpPro.NotificationManagement.Notifications.Enums;
+using Lion.AbpPro.SignalR.Enums;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications.Dtos
 {

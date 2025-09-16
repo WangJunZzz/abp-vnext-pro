@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <RootNamespace />
+        <PackageId>Lion.AbpPro.SignalR</PackageId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.Autofac" />
+        <PackageReference Include="Volo.Abp.Ddd.Domain" />
+        <PackageReference Include="Volo.Abp.AspNetCore.SignalR" />
+    </ItemGroup>
+
+</Project>

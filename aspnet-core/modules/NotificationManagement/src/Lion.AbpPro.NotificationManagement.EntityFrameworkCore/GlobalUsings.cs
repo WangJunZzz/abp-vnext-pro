@@ -8,7 +8,6 @@ global using System.Threading.Tasks;
 global using JetBrains.Annotations;
 global using Lion.AbpPro.NotificationManagement.Notifications;
 global using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
-global using Lion.AbpPro.NotificationManagement.Notifications.Enums;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
 global using Volo.Abp;

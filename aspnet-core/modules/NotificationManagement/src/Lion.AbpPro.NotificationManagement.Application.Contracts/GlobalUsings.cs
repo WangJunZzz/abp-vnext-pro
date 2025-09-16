@@ -8,7 +8,6 @@ global using System.Threading.Tasks;
 global using Lion.AbpPro.Core;
 global using Lion.AbpPro.NotificationManagement.Localization;
 global using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
-global using Lion.AbpPro.NotificationManagement.Notifications.Enums;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Localization;
 global using Volo.Abp.Application;

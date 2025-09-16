@@ -1,5 +1,3 @@
-using Volo.Abp.MultiTenancy;
-
 namespace Lion.AbpPro.NotificationManagement.Notifications.Aggregates
 {
     /// <summary>

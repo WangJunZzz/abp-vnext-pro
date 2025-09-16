@@ -1,11 +1,9 @@
-using Lion.AbpPro.SignalR.Enums;
-
-namespace Lion.AbpPro.NotificationManagement.Notifications.Dtos
+namespace Lion.AbpPro.SignalR
 {
     public class SendNotificationDto
     {
         public Guid Id { get; set; }
-        
+
         /// <summary>
         /// 消息标题
         /// </summary>
@@ -24,14 +22,13 @@ namespace Lion.AbpPro.NotificationManagement.Notifications.Dtos
         /// <summary>
         /// 消息等级
         /// </summary>
-        public MessageLevel MessageLevel { get;  set; }
-        
+        public MessageLevel MessageLevel { get; set; }
+
         private SendNotificationDto()
         {
-            
         }
 
-        public SendNotificationDto(Guid id, string title, string content, MessageType messageType,MessageLevel messageLevel)
+        public SendNotificationDto(Guid id, string title, string content, MessageType messageType, MessageLevel messageLevel)
         {
             Id = id;
             Title = title;

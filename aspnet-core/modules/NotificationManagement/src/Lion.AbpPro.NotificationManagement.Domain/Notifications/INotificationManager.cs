@@ -1,5 +1,5 @@
 ﻿using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
-using Volo.Abp.DependencyInjection;
+using Lion.AbpPro.SignalR.Enums;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications;
 
@@ -40,22 +40,16 @@ public interface INotificationManager
         MessageLevel? messageLevel);
 
     /// <summary>
-    /// 发送警告文本消息
+    /// 发送文本消息
     /// </summary>
+    /// <param name="id">id</param>
     /// <param name="title">标题</param>
     /// <param name="content">消息内容</param>
+    /// <param name="messageType">消息类型</param>
     /// <param name="level">消息等级</param>
     /// <param name="receiveUserId">接受人，发送给谁。</param>
     /// <param name="receiveUserName">接受人用户名</param>
-    Task SendCommonWarningMessageAsync(string title, string content, MessageLevel level, Guid receiveUserId,string receiveUserName);
-    
-    /// <summary>
-    /// 发送警告广播消息
-    /// </summary>
-    /// <param name="title">标题</param>
-    /// <param name="content">消息内容</param>
-    /// <param name="level">消息等级</param>
-    Task SendBroadCastWarningMessageAsync(string title, string content, MessageLevel level);
+    Task CreateAsync(Guid id, string title, string content,MessageType messageType, MessageLevel level, Guid? receiveUserId,string receiveUserName);
     
     /// <summary>
     /// 消息设置为已读

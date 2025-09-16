@@ -1,29 +1,31 @@
+using Lion.AbpPro.SignalR.LocalEvent.Notification;
+
 namespace Lion.AbpPro.NotificationManagement.Notifications.LocalEventHandlers
 {
     /// <summary>
     /// 创建消息事件处理
     /// </summary>
-    public class NotificationCreatedLocalEventHandler : 
-            ILocalEventHandler<CreatedNotificationLocalEvent>,
-            ITransientDependency
+    public class NotificationCreatedLocalEventHandler :
+        ILocalEventHandler<CreatedNotificationLocalEvent>,
+        ITransientDependency
     {
-        private readonly INotificationHubAppService _hubAppService;
+        private readonly INotificationManager _notificationManager;
 
-        public NotificationCreatedLocalEventHandler(INotificationHubAppService hubAppService)
+        public NotificationCreatedLocalEventHandler( INotificationManager notificationManager)
         {
-            _hubAppService = hubAppService;
+            _notificationManager = notificationManager;
         }
 
-        public virtual Task HandleEventAsync(CreatedNotificationLocalEvent eventData)
+        public virtual async Task HandleEventAsync(CreatedNotificationLocalEvent eventData)
         {
-            return _hubAppService.SendMessageAsync(
-                eventData.NotificationEto.Id,
-                eventData.NotificationEto.Title,
-                eventData.NotificationEto.Content,
-                eventData.NotificationEto.MessageType,
-                eventData.NotificationEto.MessageLevel,
-                eventData.NotificationEto.ReceiveUserId.ToString());
+            await _notificationManager.CreateAsync(
+                eventData.Id,
+                eventData.Title,
+                eventData.Content,
+                eventData.MessageType,
+                eventData.MessageLevel,
+                eventData.ReceiveUserId,
+                eventData.ReceiveUserName);
         }
-        
     }
 }
