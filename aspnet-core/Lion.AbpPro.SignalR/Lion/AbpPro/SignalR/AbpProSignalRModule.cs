@@ -7,6 +7,6 @@ namespace Lion.AbpPro.SignalR;
 [DependsOn(
     typeof(AbpAutofacModule),
     typeof(AbpAspNetCoreSignalRModule))]
-public class AbpProNotificationModule : AbpModule
+public class AbpProSignalRModule : AbpModule
 {
 }
