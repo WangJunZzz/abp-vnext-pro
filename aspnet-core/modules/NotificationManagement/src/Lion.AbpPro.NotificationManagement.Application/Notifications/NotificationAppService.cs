@@ -25,7 +25,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task SendCommonWarningMessageAsync(SendCommonMessageInput input)
         {
-            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.Common, MessageLevel.Warning, input.ReceiveUserId, input.ReceiveUserName);
+            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.Common, MessageLevel.Warning, CurrentUser.GetId(), CurrentUser.UserName, input.ReceiveUserId, input.ReceiveUserName, CurrentTenant.Id);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task SendCommonInformationMessageAsync(SendCommonMessageInput input)
         {
-            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.Common, MessageLevel.Information, input.ReceiveUserId, input.ReceiveUserName);
+            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.Common, MessageLevel.Information, CurrentUser.GetId(), CurrentUser.UserName, input.ReceiveUserId, input.ReceiveUserName, CurrentTenant.Id);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task SendCommonErrorMessageAsync(SendCommonMessageInput input)
         {
-            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.Common, MessageLevel.Error, input.ReceiveUserId, input.ReceiveUserName);
+            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.Common, MessageLevel.Error, CurrentUser.GetId(), CurrentUser.UserName, input.ReceiveUserId, input.ReceiveUserName, CurrentTenant.Id);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task SendBroadCastWarningMessageAsync(SendBroadCastMessageInput input)
         {
-            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.BroadCast, MessageLevel.Warning);
+            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.BroadCast, MessageLevel.Warning, CurrentUser.GetId(), CurrentUser.UserName, tenantId: CurrentTenant.Id);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task SendBroadCastInformationMessageAsync(SendBroadCastMessageInput input)
         {
-            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.BroadCast, MessageLevel.Information);
+            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.BroadCast, MessageLevel.Information, CurrentUser.GetId(), CurrentUser.UserName, tenantId: CurrentTenant.Id);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         /// </summary>
         public virtual async Task SendBroadCastErrorMessageAsync(SendBroadCastMessageInput input)
         {
-            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.BroadCast, MessageLevel.Error);
+            await _messageManager.SendMessageAsync(input.Title, input.Content, MessageType.BroadCast, MessageLevel.Error, CurrentUser.GetId(), CurrentUser.UserName, tenantId: CurrentTenant.Id);
         }
 
         public virtual async Task SetReadAsync(SetReadInput input)
@@ -88,7 +88,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
                     throw new AuthenticationException();
                 }
 
-                await _notificationSubscriptionManager.SetReadAsync(CurrentUser.Id.Value, CurrentUser.UserName, input.Id);
+                await _notificationSubscriptionManager.SetReadAsync(CurrentUser.GetId(), CurrentUser.UserName, input.Id);
             }
         }
 
