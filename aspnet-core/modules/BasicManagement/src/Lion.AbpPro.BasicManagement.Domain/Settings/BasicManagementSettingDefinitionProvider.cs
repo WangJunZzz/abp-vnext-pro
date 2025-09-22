@@ -16,15 +16,15 @@ public class BasicManagementSettingDefinitionProvider : SettingDefinitionProvide
     /// </summary>
     private static void OverrideDefaultSettings(ISettingDefinitionContext context)
     {
-        context.Add(
-            new SettingDefinition(TimingSettingNames.TimeZone,
-                    "China Standard Time",
-                    L("DisplayName:Abp.Timing.Timezone"),
-                    L("Description:Abp.Timing.Timezone"))
-                .WithProperty(BasicManagementSettings.Group.Default,
-                    BasicManagementSettings.Group.SystemManagement)
-                .WithProperty(AbpProSettingConsts.ControlType.Default,
-                    AbpProSettingConsts.ControlType.TypeText));
+        // context.Add(
+        //     new SettingDefinition(TimingSettingNames.TimeZone,
+        //             "China Standard Time",
+        //             L("DisplayName:Abp.Timing.Timezone"),
+        //             L("Description:Abp.Timing.Timezone"))
+        //         .WithProperty(BasicManagementSettings.Group.Default,
+        //             BasicManagementSettings.Group.SystemManagement)
+        //         .WithProperty(AbpProSettingConsts.ControlType.Default,
+        //             AbpProSettingConsts.ControlType.TypeText));
 
         context.GetOrNull(IdentitySettingNames.Password.RequiredLength)
             .WithProperty(BasicManagementSettings.Group.Default,

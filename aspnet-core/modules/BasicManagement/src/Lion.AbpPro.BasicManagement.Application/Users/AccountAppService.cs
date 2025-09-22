@@ -94,7 +94,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         /// <returns></returns>
         private string GenerateJwt(Guid userId, string userName, string name, string email, string tenantId, List<string> roles)
         {
-            var dateNow = Clock.Now;
+            var dateNow = Clock.Now.ToUniversalTime();
             var expirationTime = dateNow.AddHours(_jwtOptions.ExpirationTime);
             var key = Encoding.ASCII.GetBytes(_jwtOptions.SecurityKey);
 
@@ -117,10 +117,10 @@ namespace Lion.AbpPro.BasicManagement.Users
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = expirationTime, // token 过期时间
-                NotBefore = dateNow, // token 签发时间
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
-                    SecurityAlgorithms.HmacSha256Signature)
+                Expires = expirationTime,
+                NotBefore = dateNow, 
+                IssuedAt = dateNow,
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),SecurityAlgorithms.HmacSha256Signature)
             };
             var handler = new JwtSecurityTokenHandler();
             var token = handler.CreateToken(tokenDescriptor);
