@@ -7,42 +7,38 @@ using System.Threading.Tasks;
 using Lion.AbpPro.AspNetCore.Options;
 using Microsoft.AspNetCore.Localization;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using Volo.Abp.Guids;
 
 namespace Microsoft.AspNetCore.Builder;
 
 public static class ApplicationBuilderExtensions
 {
-    
-
     /// <summary>
     /// consul服务
     /// </summary>
     public static IApplicationBuilder UseAbpProConsul(this IApplicationBuilder app)
     {
         // 获取 AbpProGatewayOptions 配置
-        var consulOptions = app.ApplicationServices.GetRequiredService<IOptions<AbpProGatewayOptions>>().Value;
+        var consulOptions = app.ApplicationServices.GetRequiredService<IOptions<AbpProConsulOptions>>().Value;
         if (!consulOptions.Enabled)
             return app;
 
         var appLifetime = app.ApplicationServices.GetService<IHostApplicationLifetime>();
         using var scope = app.ApplicationServices.CreateScope();
-        var clock = scope.ServiceProvider.GetService<IClock>();
-        var appUrl = new Uri(consulOptions.ConsulServiceUrl, UriKind.Absolute);
-
-        var client = scope.ServiceProvider.GetService<IConsulClient>();
-
+        var client = scope.ServiceProvider.GetRequiredService<IConsulClient>();
+        var guidGenerator = scope.ServiceProvider.GetRequiredService<IGuidGenerator>();
         var consulServiceRegistration = new AgentServiceRegistration
         {
-            Name = consulOptions.ServiceName,
-            ID = $"{consulOptions.ServiceName}:{clock.Now:yyyyMMddHHmmssfff}",
-            Address = appUrl.Host,
-            Port = appUrl.Port,
+            Name = consulOptions.ClientName,
+            ID = guidGenerator.Create().ToString(),
+            Address = consulOptions.ClientAddress,
+            Port = consulOptions.ClientPort,
             Check = new AgentServiceCheck
             {
-                DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5), //服务停止多久后注销
-                Interval = TimeSpan.FromSeconds(3), //健康检查时间间隔，或者称为心跳 间隔
+                DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(consulOptions.DeregisterCriticalServiceAfter), //服务停止多久后注销
+                Interval = TimeSpan.FromSeconds(consulOptions.Interval), //健康检查时间间隔，或者称为心跳 间隔
                 HTTP = consulOptions.HealthUrl, //健康检查地址 
-                Timeout = TimeSpan.FromSeconds(15) //超时时间
+                Timeout = TimeSpan.FromSeconds(consulOptions.Timeout) //超时时间
             }
         };
 
@@ -57,7 +53,7 @@ public static class ApplicationBuilderExtensions
     public static IApplicationBuilder UseAbpProOcelot(this IApplicationBuilder app)
     {
         // 获取 AbpProGatewayOptions 配置
-        var consulOptions = app.ApplicationServices.GetRequiredService<IOptions<AbpProGatewayOptions>>().Value;
+        var consulOptions = app.ApplicationServices.GetRequiredService<IOptions<AbpProConsulOptions>>().Value;
         if (!consulOptions.Enabled)
             return app;
         app.UseOcelot().Wait();

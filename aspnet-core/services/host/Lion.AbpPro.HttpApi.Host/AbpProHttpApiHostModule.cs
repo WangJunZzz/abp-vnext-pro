@@ -39,6 +39,7 @@ public partial class AbpProHttpApiHostModule : AbpModule
             .AddAbpProTenantResolvers()
             .AddAbpProLocalization()
             .AddAbpProExceptions()
+            .AddAbpProConsul()
             .AddAbpProSwagger("AbpPro");
     }
 

@@ -13,9 +13,9 @@ public class AbpProAspNetCoreConsts
     public const string DefaultCookieName = "Lion.AbpPro.Http.Api";
 
     /// <summary>
-    /// 网关配置节名称
+    /// Consul网关配置节名称
     /// </summary>
-    public const string Gateway = "Gateway";
+    public const string Consul = "Consul";
     
     /// <summary>
     /// 跨域配置节名称

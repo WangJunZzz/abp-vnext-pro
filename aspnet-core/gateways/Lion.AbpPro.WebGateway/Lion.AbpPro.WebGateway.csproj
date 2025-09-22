@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
     </PropertyGroup>
-
     <ItemGroup>
       <ProjectReference Include="..\..\frameworks\src\Lion.AbpPro.AspNetCore\Lion.AbpPro.AspNetCore.csproj" />
     </ItemGroup>

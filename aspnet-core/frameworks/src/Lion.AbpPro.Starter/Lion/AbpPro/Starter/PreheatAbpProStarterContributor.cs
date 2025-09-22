@@ -26,6 +26,7 @@ public class PreheatAbpProStarterContributor : IAbpProStarterContributor, ITrans
         try
         {
             _logger.LogInformation($"开始预热:{_options.RequestUrl}");
+            await Task.Delay(TimeSpan.FromSeconds(30));
             await _httpClientFactory.CreateClient().GetAsync(_options.RequestUrl);
             _logger.LogInformation($"预热成功");
         }

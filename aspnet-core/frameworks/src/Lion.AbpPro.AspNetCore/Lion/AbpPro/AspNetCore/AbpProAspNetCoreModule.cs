@@ -6,7 +6,7 @@ public class AbpProAspNetCoreModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {
-        context.Services.Configure<AbpProGatewayOptions>(context.Configuration.GetSection(AbpProAspNetCoreConsts.Gateway));
+        context.Services.Configure<AbpProConsulOptions>(context.Configuration.GetSection(AbpProAspNetCoreConsts.Consul));
         context.Services.Configure<AbpProCorsOptions>(context.Configuration.GetSection(AbpProAspNetCoreConsts.Cors));
         context.Services.Configure<AbpProMiniProfilerOptions>(context.Configuration.GetSection(AbpProAspNetCoreConsts.MiniProfiler));
         context.Services.Configure<AbpProMultiTenancyOptions>(context.Configuration.GetSection(AbpProAspNetCoreConsts.MultiTenancy));

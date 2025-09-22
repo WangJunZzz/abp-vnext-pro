@@ -30,11 +30,11 @@ public static class ServiceCollectionExtensions
 
     public static IServiceCollection AddAbpProConsul(this IServiceCollection service)
     {
-        var consulOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProGatewayOptions>>().Value;
+        var consulOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProConsulOptions>>().Value;
         if (!consulOptions.Enabled)
             return service;
 
-        service.AddSingleton<IConsulClient>(p => new ConsulClient(config => { config.Address = new Uri(consulOptions.ConsulServiceUrl); }));
+        service.AddSingleton<IConsulClient>(p => new ConsulClient(config => { config.Address = new Uri(consulOptions.ServiceUrl); }));
 
         return service;
     }
