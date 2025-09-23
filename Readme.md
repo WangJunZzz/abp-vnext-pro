@@ -57,7 +57,7 @@ lion.abp new -t pro-module -c 公司名称 -p 项目名称 -v 版本(默认LastR
 - [x] 审计日志
 - [x] 后台任务
 - [x] 集成事件
-- [x] SinglaR 消息通知(站内信)
+- [x] SignalR 消息通知(站内信)
 - [x] 多语言
 - [x] 数据字典
 - [x] 容器化部署
