@@ -3,7 +3,6 @@
 global using Lion.AbpPro.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Storage;
-global using MySqlConnector;
 global using Volo.Abp.DependencyInjection;
 global using Volo.Abp.Domain.Entities;
 global using Volo.Abp.Domain.Repositories.EntityFrameworkCore;

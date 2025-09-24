@@ -255,6 +255,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.Hangfire", "fra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.SignalR", "Lion.AbpPro.SignalR\Lion.AbpPro.SignalR.csproj", "{66B3D9E0-CB3F-464A-9813-F2DC1426A37A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lion.AbpPro.EntityFrameworkCore.Mysql", "frameworks\src\Lion.AbpPro.EntityFrameworkCore.Mysql\Lion.AbpPro.EntityFrameworkCore.Mysql.csproj", "{AF650F62-0447-4739-B73D-44E0120E0275}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -629,6 +631,10 @@ Global
 		{66B3D9E0-CB3F-464A-9813-F2DC1426A37A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66B3D9E0-CB3F-464A-9813-F2DC1426A37A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66B3D9E0-CB3F-464A-9813-F2DC1426A37A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF650F62-0447-4739-B73D-44E0120E0275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF650F62-0447-4739-B73D-44E0120E0275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF650F62-0447-4739-B73D-44E0120E0275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF650F62-0447-4739-B73D-44E0120E0275}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -751,6 +757,7 @@ Global
 		{89CCAEA6-8176-4E4B-8D84-A2ACE2715F88} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
 		{6C2FDD3D-F711-46B0-A2F2-B94BC33F136B} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
 		{66B3D9E0-CB3F-464A-9813-F2DC1426A37A} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
+		{AF650F62-0447-4739-B73D-44E0120E0275} = {7BE85EBC-99AD-4CDE-957E-4BDD087FC4E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

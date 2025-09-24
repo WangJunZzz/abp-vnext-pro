@@ -1,3 +1,5 @@
+using Lion.AbpPro.EntityFrameworkCore.Mysql;
+
 namespace Lion.AbpPro;
 
 [DependsOn(
@@ -16,7 +18,8 @@ namespace Lion.AbpPro;
     typeof(AbpDistributedLockingModule),
     typeof(AbpBlobStoringFileSystemModule),
     typeof(AbpProStarterModule),
-    typeof(AbpSwashbuckleModule)
+    typeof(AbpSwashbuckleModule),
+    typeof(AbpProEntityFrameworkCoreMysqlModule)
     //typeof(AbpBackgroundJobsHangfireModule)
 )]
 public partial class AbpProHttpApiHostModule : AbpModule

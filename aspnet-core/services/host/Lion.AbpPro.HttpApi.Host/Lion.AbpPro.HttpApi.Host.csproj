@@ -32,6 +32,7 @@
         <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.AspNetCore\Lion.AbpPro.AspNetCore.csproj"/>
         <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.CAP.EntityFrameworkCore\Lion.AbpPro.CAP.EntityFrameworkCore.csproj"/>
         <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.CAP\Lion.AbpPro.CAP.csproj"/>
+        <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.EntityFrameworkCore.Mysql\Lion.AbpPro.EntityFrameworkCore.Mysql.csproj" />
         <ProjectReference Include="..\..\..\frameworks\src\Lion.AbpPro.Starter\Lion.AbpPro.Starter.csproj"/>
         <ProjectReference Include="..\..\src\Lion.AbpPro.Application\Lion.AbpPro.Application.csproj"/>
         <ProjectReference Include="..\..\src\Lion.AbpPro.EntityFrameworkCore\Lion.AbpPro.EntityFrameworkCore.csproj"/>

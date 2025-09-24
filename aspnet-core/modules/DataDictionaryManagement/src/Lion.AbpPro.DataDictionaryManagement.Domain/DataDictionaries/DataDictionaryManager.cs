@@ -203,17 +203,19 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
         /// <returns></returns>
         public virtual async Task DeleteDataDictionaryTypeAsync(Guid id)
         {
-            var entity = await _dataDictionaryRepository.FindByIdAsync(id);
-            if (entity == null)
-                throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryNotExist);
-            var detail = entity.Details.FirstOrDefault(e => e.DataDictionaryId == id);
-            if (detail != null)
-            {
-                entity.Details.Remove(detail);
-                await _dataDictionaryRepository.UpdateAsync(entity);
-            }
-
-            await _dataDictionaryRepository.DeleteAsync(id);
+            var entity = new DataDictionary(GuidGenerator.Create(),GuidGenerator.Create().ToString(),GuidGenerator.Create().ToString(),GuidGenerator.Create().ToString(),CurrentTenant.Id);
+            await _dataDictionaryRepository.InsertManyAsync(new List<DataDictionary>(){entity});
+            // var entity = await _dataDictionaryRepository.FindByIdAsync(id);
+            // if (entity == null)
+            //     throw new DataDictionaryDomainException(DataDictionaryManagementErrorCodes.DataDictionaryNotExist);
+            // var detail = entity.Details.FirstOrDefault(e => e.DataDictionaryId == id);
+            // if (detail != null)
+            // {
+            //     entity.Details.Remove(detail);
+            //     await _dataDictionaryRepository.UpdateAsync(entity);
+            // }
+            //
+            // await _dataDictionaryRepository.DeleteAsync(id);
         }
     }
 }

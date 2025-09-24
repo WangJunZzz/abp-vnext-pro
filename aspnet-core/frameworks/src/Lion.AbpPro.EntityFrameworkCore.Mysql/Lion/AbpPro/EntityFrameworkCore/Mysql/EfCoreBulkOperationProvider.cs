@@ -1,9 +1,18 @@
-﻿using Volo.Abp.Auditing;
+﻿using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
+using Volo.Abp.Auditing;
+using Volo.Abp.Domain.Repositories.Dapper;
 
 namespace Lion.AbpPro.EntityFrameworkCore.Mysql;
 
 public class EfCoreBulkOperationProvider : IEfCoreBulkOperationProvider, ITransientDependency
 {
+    private readonly ILogger<EfCoreBulkOperationProvider> _logger;
+    public EfCoreBulkOperationProvider(ILogger<EfCoreBulkOperationProvider> logger)
+    {
+        _logger = logger;
+    }
+
     /// <summary>
     /// 批量新增
     /// </summary>
@@ -24,7 +33,9 @@ public class EfCoreBulkOperationProvider : IEfCoreBulkOperationProvider, ITransi
     {
         var dbContext = await repository.GetDbContextAsync();
         var dbTransaction = dbContext.Database.CurrentTransaction?.GetDbTransaction();
-        await dbContext.BulkInsertAsync(entities, dbTransaction as MySqlTransaction, cancellationToken);
+        var dbConnection =  dbContext.Database.GetDbConnection();
+        var count = await dbConnection.BulkInsertAsync(dbContext, entities, dbTransaction as MySqlTransaction);
+        _logger.LogInformation($"批量新增{count}条数据成功");
         if (autoSave)
         {
             await dbContext.SaveChangesAsync(cancellationToken);
