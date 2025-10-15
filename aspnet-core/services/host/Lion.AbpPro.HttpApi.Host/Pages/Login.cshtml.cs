@@ -57,7 +57,7 @@ namespace Lion.AbpPro.Pages
 
                 var result = await _accountAppService.LoginAsync(new LoginInput()
                 { Name = userName, Password = password });
-                Response.Cookies.Append(AbpProHttpApiHostConst.DefaultCookieName,
+                Response.Cookies.Append(AbpProAspNetCoreConsts.DefaultCookieName,
                     result.Token, options);
             }
             catch (Exception e)

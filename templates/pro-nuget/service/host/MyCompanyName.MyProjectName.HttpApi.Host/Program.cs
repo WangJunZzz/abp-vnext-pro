@@ -1,7 +1,9 @@
-namespace MyCompanyName.MyProjectName
+namespace MyCompanyName.MyProjectName;
+
+public class Program
 {
-    public class Program
-    {				
+    public static async Task<int> Main(string[] args)
+    {
         Log.Logger = new LoggerConfiguration()
             .WriteTo.Async(c => c.File("Logs/logs.txt"))
             .WriteTo.Async(c => c.Console())
@@ -9,6 +11,7 @@ namespace MyCompanyName.MyProjectName
 
         try
         {
+            Log.Information("MyCompanyName.MyProjectName.HttpApi.Host.");
             var builder = WebApplication.CreateBuilder(args);
             builder.Host
                 .AddAppSettingsSecretsJson()
@@ -19,6 +22,8 @@ namespace MyCompanyName.MyProjectName
                         loggerConfiguration,
                         context.Configuration);
                 });
+            // 设置MaxRequestBodySize
+            //builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 52428800);
             await builder.AddApplicationAsync<MyProjectNameHttpApiHostModule>();
             var app = builder.Build();
             await app.InitializeApplicationAsync();
@@ -38,6 +43,6 @@ namespace MyCompanyName.MyProjectName
         finally
         {
             await Log.CloseAndFlushAsync();
-        }				
+        }
     }
 }
