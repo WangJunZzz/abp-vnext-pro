@@ -10,6 +10,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates
         /// <summary>
         /// 字典明细编码
         /// </summary>
+        [MaxLength(DataDictionaryMaxLengths.Code)]
         public string Code { get; private set; }
 
         /// <summary>
@@ -20,12 +21,14 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates
         /// <summary>
         /// 英文显示名
         /// </summary>
+        [MaxLength(DataDictionaryMaxLengths.DisplayText)]
         public string DisplayText { get; private set; }
 
 
         /// <summary>
         /// 描述
         /// </summary>
+        [MaxLength(DataDictionaryMaxLengths.Description)]
         public string Description { get; private set; }
 
         /// <summary>
