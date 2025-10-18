@@ -24,9 +24,9 @@
 
     <ItemGroup>
         <!-- Ocelot 网关-->
-        <PackageReference Update="Ocelot" Version="18.0.0"/>
-        <PackageReference Update="Ocelot.Provider.Consul" Version="18.0.0"/>
-        <PackageReference Update="Ocelot.Provider.Polly" Version="18.0.0"/>
+        <PackageReference Update="Ocelot" Version="24.0.1"/>
+        <PackageReference Update="Ocelot.Provider.Consul" Version="24.0.0"/>
+        <PackageReference Update="Ocelot.Provider.Polly" Version="24.0.0"/>
 
         <!-- FreeSql-->
         <PackageReference Update="FreeSql" Version="3.5.209"/>
