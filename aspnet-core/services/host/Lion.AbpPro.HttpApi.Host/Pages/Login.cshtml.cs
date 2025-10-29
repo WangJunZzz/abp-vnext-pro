@@ -44,10 +44,12 @@ namespace Lion.AbpPro.Pages
         {
             ViewData["ErrorMessage"] = null;
             TempData["EnableTenant"] = _abpProMultiTenancyOptions.Enabled;
+            Response.Cookies.Delete(_abpAspNetCoreMultiTenancyOptions.TenantKey);
         }
 
         public async Task OnPost()
         {
+            Response.Cookies.Delete(_abpAspNetCoreMultiTenancyOptions.TenantKey);
             TempData["EnableTenant"] = _abpProMultiTenancyOptions.Enabled;
             string tenantName = Request.Form["tenantName"];
             string userName = Request.Form["userName"];
@@ -85,7 +87,6 @@ namespace Lion.AbpPro.Pages
                 
                 // 清除现有的认证 cookies
                 Response.Cookies.Delete(AbpProAspNetCoreConsts.DefaultCookieName);
-                Response.Cookies.Delete(_abpAspNetCoreMultiTenancyOptions.TenantKey);
                 Response.Cookies.Append(AbpProAspNetCoreConsts.DefaultCookieName, result.Token, options);
                 if (tenantId.HasValue)
                 {
