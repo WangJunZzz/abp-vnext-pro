@@ -1,204 +1,228 @@
+
 @page
 @using Lion.AbpPro
 @model Lion.AbpPro.Pages.Monitor
-
 
 @{
     Layout = null;
 }
 
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <title>后端服务</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>后端服务监控</title>
 </head>
 
 <body>
-<div class="container projects ">
-    <div class="projects-header page-header">
-        <h2>后端服务列表</h2>
-        @* <p>这些项目或者是对Bootstrap进行了有益的补充，或者是基于Bootstrap开发的</p> *@
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="thumbnail" style="height: 180px">
-                <a href="@AbpProHttpApiHostConst.SwaggerUiEndPoint" target="_blank">
-                    <img class="lazy" src="/images/swagger.png" width="300" height="150"/>
-                </a>
-                <div class="caption">
-                    <h3>
-                        <a href="@AbpProHttpApiHostConst.SwaggerUiEndPoint" target="_blank">SwaggerUI</a>
-                    </h3>
-                </div>
-            </div>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="page-header">
+            <h1>后端服务监控面板</h1>
+            <p class="subtitle">请选择您要访问的服务面板</p>
         </div>
+        
+        <div class="services-grid">
+            <div class="service-item">
+                <a href="@AbpProHttpApiHostConst.SwaggerUiEndPoint" target="_blank" class="service-link">
+                    <div class="service-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>SwaggerUI</h3>
+                        <p class="description">API文档与测试</p>
+                    </div>
+                </a>
+            </div>
 
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="thumbnail" style="height: 180px">
-                <a href="@AbpProHttpApiHostConst.CapDashboardEndPoint" target="_blank">
-                    <img class="lazy" src="/images/cap.png" width="300" height="150"/>
+            <div class="service-item">
+                <a href="@AbpProHttpApiHostConst.CapDashboardEndPoint" target="_blank" class="service-link">
+                    <div class="service-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>CAP面板</h3>
+                        <p class="description">事件总线监控</p>
+                    </div>
                 </a>
-                <div class="caption">
-                    <h3>
-                        <a href="@AbpProHttpApiHostConst.CapDashboardEndPoint" target="_blank">CAP面板</a>
-                    </h3>
-                </div>
             </div>
-        </div>
 
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="thumbnail" style="height: 180px">
-                <a href="@AbpProHttpApiHostConst.HangfireDashboardEndPoint" target="_blank">
-                    <img class="lazy" src="/images/hangfire.png" width="300" height="150"/>
+            <div class="service-item">
+                <a href="@AbpProHttpApiHostConst.HangfireDashboardEndPoint" target="_blank" class="service-link">
+                    <div class="service-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>Hangfire面板</h3>
+                        <p class="description">后台任务管理</p>
+                    </div>
                 </a>
-                <div class="caption">
-                    <h3>
-                        <a href="@AbpProHttpApiHostConst.HangfireDashboardEndPoint" target="_blank">Hangfire面板</a>
-                    </h3>
-                </div>
             </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="thumbnail" style="height: 180px">
-                <a href="@AbpProHttpApiHostConst.MiniprofilerEndPoint" target="_blank">
-                    <img class="lazy" src="/images/miniprofiler.png" width="300" height="150"/>
+
+            <div class="service-item">
+                <a href="@AbpProHttpApiHostConst.MiniprofilerEndPoint" target="_blank" class="service-link">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>Miniprofiler</h3>
+                        <p class="description">性能分析工具</p>
+                    </div>
                 </a>
-                <div class="caption">
-                    <h3>
-                        <a href="@AbpProHttpApiHostConst.MiniprofilerEndPoint" target="_blank">Miniprofiler</a>
-                    </h3>
-                </div>
             </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="thumbnail" style="height: 180px">
-                <a href="@AbpProHttpApiHostConst.MoreEndPoint" target="_blank">
-                    <img class="lazy" src="/images/more.png" width="300" height="150"/>
+
+            <div class="service-item">
+                <a href="@AbpProHttpApiHostConst.MoreEndPoint" target="_blank" class="service-link">
+                    <div class="service-icon">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>了解更多...</h3>
+                        <p class="description">更多服务选项</p>
+                    </div>
                 </a>
-                <div class="caption">
-                    <h3>
-                        <a href="@AbpProHttpApiHostConst.MoreEndPoint" target="_blank">了解更多...</a>
-                    </h3>
-                </div>
             </div>
         </div>
     </div>
 </div>
-
 </body>
 
-</html>
 <style>
-    *:before,
-    *:after {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
+    * {
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
     }
 
-    .container {
-        width: 1170px;
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+        min-height: 100vh;
+        padding: 20px;
     }
 
-    .projects-header {
-        width: 60%;
-        text-align: center;
-        font-weight: 200;
-        display: block;
-        margin: 60px auto 40px !important;
+    .page-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 40px);
+    }
+
+    .container {
+        max-width: 1000px;
+        width: 100%;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        padding: 40px;
     }
 
     .page-header {
-        padding-bottom: 9px;
-        margin: 40px auto;
-        border-bottom: 1px solid #eee;
-    }
-
-    .projects-header h2 {
-        font-size: 42px;
-        letter-spacing: -1px;
-    }
-
-    h2 {
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-weight: 500;
-        line-height: 1.1;
-        color: inherit;
-        /* text-align: center; */
-    }
-
-    p {
-        margin: 0 0 10px;
-    }
-
-    .row {
-        margin-right: -15px;
-        margin-left: -15px;
-    }
-
-    .col-lg-3 {
-        width: 25%;
-    }
-
-    .projects .thumbnail {
-        display: block;
-        margin-right: auto;
-        margin-left: auto;
         text-align: center;
-        margin-bottom: 30px;
-        border-radius: 0;
+        margin-bottom: 40px;
     }
 
-    .thumbnail {
-        display: block;
-        padding: 4px;
-        line-height: 1.42857143;
-        background-color: #fff;
-        border: 1px solid #ddd;
-
-        .
-
-    transition(border 0.2 s ease-in-out);
+    .page-header h1 {
+        font-size: 28px;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 10px;
     }
 
-    a {
-        color: #337ab7;
+    .subtitle {
+        font-size: 16px;
+        color: #718096;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+
+    .service-item {
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+    }
+
+    .service-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border-color: #cbd5e0;
+    }
+
+    .service-link {
         text-decoration: none;
-        background-color: transparent;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        padding: 25px;
     }
 
-    .projects .thumbnail img {
-        max-width: 100%;
-        height: auto;
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #edf2f7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        flex-shrink: 0;
     }
 
-    .thumbnail a > img,
-    .thumbnail > img {
-        margin-right: auto;
-        margin-left: auto;
+    .service-icon i {
+        font-size: 24px;
+        color: #4299e1;
     }
 
-    img {
-        vertical-align: middle;
+    .service-info h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 5px;
     }
 
-    /* .projects .thumbnail .caption {
-      overflow-y: hidden;
-      color: #555;
-    } */
-    .caption {
-        padding: 9px;
-        overflow-y: hidden;
-        color: #555;
+    .description {
+        font-size: 14px;
+        color: #718096;
+        margin: 0;
+    }
+
+    /* 使用响应式单位和弹性布局替代媒体查询 */
+    .container {
+        padding: clamp(20px, 5vw, 40px);
+    }
+    
+    .page-header h1 {
+        font-size: clamp(24px, 4vw, 28px);
+    }
+    
+    .service-link {
+        padding: clamp(15px, 3vw, 25px);
+    }
+    
+    .services-grid {
+        gap: clamp(15px, 3vw, 25px);
+    }
+    
+    .service-icon {
+        width: clamp(50px, 8vw, 60px);
+        height: clamp(50px, 8vw, 60px);
+    }
+    
+    .service-icon i {
+        font-size: clamp(20px, 4vw, 24px);
     }
 </style>
+
+</html>

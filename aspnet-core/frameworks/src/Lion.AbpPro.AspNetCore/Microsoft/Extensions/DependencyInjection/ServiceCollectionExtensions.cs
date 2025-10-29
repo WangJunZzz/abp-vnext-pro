@@ -62,7 +62,7 @@ public static class ServiceCollectionExtensions
             // options.TenantResolvers.Add(new QueryStringTenantResolveContributor());
             // options.TenantResolvers.Add(new RouteTenantResolveContributor());
             options.TenantResolvers.Add(new HeaderTenantResolveContributor());
-            // options.TenantResolvers.Add(new CookieTenantResolveContributor());
+            options.TenantResolvers.Add(new CookieTenantResolveContributor());
         });
 
         return service;

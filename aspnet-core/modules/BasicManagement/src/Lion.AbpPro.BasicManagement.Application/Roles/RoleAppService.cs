@@ -4,16 +4,18 @@ namespace Lion.AbpPro.BasicManagement.Roles;
 public class RoleAppService : BasicManagementAppService, IRoleAppService
 {
     private readonly IIdentityRoleAppService _identityRoleAppService;
-
     private readonly IIdentityRoleRepository _roleRepository;
+    private readonly ICurrentTenant _currentTenant;
 
     public RoleAppService(
         IIdentityRoleAppService identityRoleAppService,
-        IIdentityRoleRepository roleRepository)
+        IIdentityRoleRepository roleRepository,
+        ICurrentTenant currentTenant)
     {
         _identityRoleAppService = identityRoleAppService;
 
         _roleRepository = roleRepository;
+        _currentTenant = currentTenant;
     }
 
     /// <summary>
@@ -60,6 +62,7 @@ public class RoleAppService : BasicManagementAppService, IRoleAppService
     [Authorize(IdentityPermissions.Roles.Create)]
     public virtual async Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input)
     {
+        var s = _currentTenant;
         return await _identityRoleAppService.CreateAsync(input);
     }
 

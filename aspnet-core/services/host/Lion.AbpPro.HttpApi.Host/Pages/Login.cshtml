@@ -1,3 +1,4 @@
+
 @page
 @model Lion.AbpPro.Pages.Login
 
@@ -11,19 +12,43 @@
 <head>
   <title>后台服务登录</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-<div class="container">
-  <div class="row">
-    <div class="col-md-offset-3 col-md-6">
-      <form class="form-horizontal" method="post">
+<div class="container-fluid d-flex align-items-center justify-content-center min-vh-100">
+  <div class="row w-100 justify-content-center">
+    <div class="col-md-6">
+      <form class="form-horizontal" method="post" novalidate>
         @Html.AntiForgeryToken()
+          <!-- 错误提示区域 -->
+          @if (TempData["ErrorMessage"] != null)
+          {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fas fa-exclamation-circle me-2"></i>@TempData["ErrorMessage"]
+            </div>
+          }
         <span class="heading">后台服务登录</span>
+      
+        @if (TempData["EnableTenant"] != null && (bool)TempData["EnableTenant"])
+        {
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-building"></i></span>
+              <input type="text" class="form-control" name="tenantName" placeholder="租户名称（可选）">
+            </div>
+          </div>
+        }
         <div class="form-group">
-          <input type="text" class="form-control" name="userName" placeholder="用户名">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <input type="text" class="form-control" name="userName" placeholder="用户名" required>
+          </div>
         </div>
         <div class="form-group help">
-          <input type="password" class="form-control" name="password" placeholder="密码">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input type="password" class="form-control" name="password" placeholder="密码" required>
+          </div>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-default">登录</button>
@@ -34,141 +59,126 @@
 </div>
 </body>
 </html>
-<style>
-  .row {
-    width: 800px;
-    height: auto;
-    margin: auto;
-    box-sizing: border-box;
-    transform: translate(0, 50%);
+<style>  body {
+    background: linear-gradient(120deg, #3498db, #8e44ad);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .form-horizontal {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
     padding-bottom: 40px;
     border-radius: 15px;
     text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   .form-horizontal .heading {
     display: block;
-    font-size: 35px;
+    font-size: 32px;
     font-weight: 700;
     padding: 35px 0;
     border-bottom: 1px solid #f0f0f0;
     margin-bottom: 30px;
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
   }
 
-  .form-horizontal .form-group {
-    padding: 0 40px;
+  .form-group {
+    padding: 0 30px;
     margin: 0 0 25px 0;
     position: relative;
   }
 
-  .form-horizontal .form-control {
-    background: #f0f0f0;
-    border: none;
-    border-radius: 20px;
-    box-shadow: none;
-    padding: 0 20px 0 45px;
-    height: 40px;
-    transition: all 0.3s ease 0s;
+  .input-group {
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
   }
 
-  .form-horizontal .form-control:focus {
-    background: #e0e0e0;
+  .input-group:focus-within {
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .input-group-text {
+    background: #3498db;
+    border: none;
+    color: white;
+    border-radius: 0;
+    width: 45px;
+    font-size: 16px;
+  }
+
+  .form-control {
+    border: none;
+    padding: 12px 15px;
+    height: 45px;
+    font-size: 15px;
+    box-shadow: none;
+  }
+
+  .form-control:focus {
     box-shadow: none;
     outline: 0 none;
+    background-color: #f8f9fa;
   }
 
-  .form-horizontal .form-group i {
-    position: absolute;
-    top: 12px;
-    left: 60px;
-    font-size: 17px;
-    color: #c8c8c8;
-    transition: all 0.5s ease 0s;
+  .form-control:required:valid {
+    border-left: 3px solid #28a745;
   }
 
-  .form-horizontal .form-control:focus + i {
-    color: #00b4ef;
-  }
-
-  .form-horizontal .fa-question-circle {
-    display: inline-block;
-    position: absolute;
-    top: 12px;
-    right: 60px;
-    font-size: 20px;
-    color: #808080;
-    transition: all 0.5s ease 0s;
-  }
-
-  .form-horizontal .fa-question-circle:hover {
-    color: #000;
-  }
-
-  .form-horizontal .main-checkbox {
-    float: left;
-    width: 20px;
-    height: 20px;
-    background: #11a3fc;
-    border-radius: 50%;
-    position: relative;
-    margin: 5px 0 0 5px;
-    border: 1px solid #11a3fc;
-  }
-
-  .form-horizontal .main-checkbox label {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-  }
-
-  .form-horizontal .main-checkbox label:after {
-    content: "";
-    width: 10px;
-    height: 5px;
-    position: absolute;
-    top: 5px;
-    left: 4px;
-    border: 3px solid #fff;
-    border-top: none;
-    border-right: none;
-    background: transparent;
-    opacity: 0;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
-
-  .form-horizontal .main-checkbox input[type="checkbox"] {
-    visibility: hidden;
-  }
-
-  .form-horizontal .main-checkbox input[type="checkbox"]:checked + label:after {
-    opacity: 1;
-  }
-
-  .form-horizontal .text {
-    float: left;
-    margin-left: 7px;
-    line-height: 20px;
-    padding-top: 5px;
-    text-transform: capitalize;
+  .form-control:required:invalid:not(:placeholder-shown) {
+    border-left: 3px solid #dc3545;
   }
 
   .form-horizontal .btn {
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 600;
     color: #fff;
-    background: #00b4ef;
+    background: linear-gradient(to right, #3498db, #8e44ad);
     border-radius: 30px;
     padding: 10px 25px;
     border: none;
-    text-transform: capitalize;
-    transition: all 0.5s ease 0s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s ease 0s;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .form-horizontal .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6);
+  }
+
+  .form-horizontal .btn:active {
+    transform: translateY(0);
+  }
+
+  .container-fluid {
+    padding: 10px;
+  }
+  
+  .form-group {
+    padding: 0 15px;
+    margin: 0 0 20px 0;
+  }
+  
+  .form-horizontal .heading {
+    font-size: 26px;
+    padding: 25px 0;
+    margin-bottom: 25px;
   }
 </style>
