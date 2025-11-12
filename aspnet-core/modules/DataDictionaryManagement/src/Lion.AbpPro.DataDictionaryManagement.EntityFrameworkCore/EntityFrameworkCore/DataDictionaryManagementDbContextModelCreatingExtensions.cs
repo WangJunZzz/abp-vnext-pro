@@ -10,7 +10,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore
             builder.Entity<DataDictionary>(b =>
             {
                 b.ToTable(DataDictionaryManagementDbProperties.DbTablePrefix + "DataDictionaries", DataDictionaryManagementDbProperties.DbSchema);
-                b.HasMany(e => e.Details).WithOne().HasForeignKey(uc => uc.DataDictionaryId).IsRequired();
+                b.HasMany(e => e.Details).WithOne().HasForeignKey(uc => uc.DataDictionaryId).HasConstraintName("FK_DictDetail_DictId").IsRequired();
                 b.ConfigureByConvention();
             });
 
