@@ -674,10 +674,10 @@ namespace Lion.AbpPro.Migrations
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false),
                     DataDictionaryId = table.Column<Guid>(type: "char(36)", nullable: false),
-                    Code = table.Column<string>(type: "longtext", nullable: true),
+                    Code = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: true),
                     Order = table.Column<int>(type: "int", nullable: false),
-                    DisplayText = table.Column<string>(type: "longtext", nullable: true),
-                    Description = table.Column<string>(type: "longtext", nullable: true),
+                    DisplayText = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: true),
+                    Description = table.Column<string>(type: "varchar(1024)", maxLength: 1024, nullable: true),
                     IsEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CreatorId = table.Column<Guid>(type: "char(36)", nullable: true),
@@ -688,7 +688,7 @@ namespace Lion.AbpPro.Migrations
                 {
                     table.PrimaryKey("PK_AbpProDataDictionaryDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AbpProDataDictionaryDetails_AbpProDataDictionaries_DataDicti~",
+                        name: "FK_DictDetail_DictId",
                         column: x => x.DataDictionaryId,
                         principalTable: "AbpProDataDictionaries",
                         principalColumn: "Id",

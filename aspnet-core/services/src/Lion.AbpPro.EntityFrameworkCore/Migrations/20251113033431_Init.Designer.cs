@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lion.AbpPro.Migrations
 {
     [DbContext(typeof(AbpProDbContext))]
-    [Migration("20250808032622_Init")]
+    [Migration("20251113033431_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -99,7 +99,8 @@ namespace Lion.AbpPro.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Code")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)")
@@ -113,10 +114,12 @@ namespace Lion.AbpPro.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(1024)
+                        .HasColumnType("varchar(1024)");
 
                     b.Property<string>("DisplayText")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.Property<bool>("IsEnabled")
                         .HasColumnType("tinyint(1)");
@@ -2020,7 +2023,8 @@ namespace Lion.AbpPro.Migrations
                         .WithMany("Details")
                         .HasForeignKey("DataDictionaryId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_DictDetail_DictId");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
