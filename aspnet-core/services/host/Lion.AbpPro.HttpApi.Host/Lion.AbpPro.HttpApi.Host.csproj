@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <RootNamespace>Lion.AbpPro</RootNamespace>
+        <NoWarnNuGet>NU1902;</NoWarnNuGet>
         <PreserveCompilationReferences>true</PreserveCompilationReferences>
         <UserSecretsId>Lion.AbpPro-4681b4fd-151f-4221-84a4-929d86723e4c</UserSecretsId>
     </PropertyGroup>

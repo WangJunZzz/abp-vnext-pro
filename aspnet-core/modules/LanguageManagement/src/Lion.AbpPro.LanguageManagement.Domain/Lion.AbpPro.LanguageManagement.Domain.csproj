@@ -1,14 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>Lion.AbpPro.LanguageManagement</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Ddd.Domain" />
     <PackageReference Include="Volo.Abp.Caching" />
-    <PackageReference Include="Volo.Abp.AutoMapper" />
     <PackageReference Include="Volo.Abp.SettingManagement.Domain" />
     <ProjectReference Include="..\Lion.AbpPro.LanguageManagement.Domain.Shared\Lion.AbpPro.LanguageManagement.Domain.Shared.csproj" />
   </ItemGroup>

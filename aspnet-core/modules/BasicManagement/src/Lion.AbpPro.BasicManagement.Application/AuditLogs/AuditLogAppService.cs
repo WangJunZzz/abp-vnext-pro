@@ -1,3 +1,5 @@
+using Mapster;
+
 namespace Lion.AbpPro.BasicManagement.AuditLogs
 {
     [Authorize(Policy = BasicManagementPermissions.SystemManagement.AuditLog)]
@@ -57,7 +59,7 @@ namespace Lion.AbpPro.BasicManagement.AuditLogs
                 input.HttpStatusCode,
                 true);
 
-            return new PagedResultDto<PagingAuditLogOutput>(totalCount, ObjectMapper.Map<List<AuditLog>, List<PagingAuditLogOutput>>(list));
+            return new PagedResultDto<PagingAuditLogOutput>(totalCount, list.Adapt<List<PagingAuditLogOutput>>());
         }
     }
 }

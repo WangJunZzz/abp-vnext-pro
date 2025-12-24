@@ -3,9 +3,10 @@
   
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>Lion.AbpPro</RootNamespace>
     <IsPackable>false</IsPackable>
+    <NoWarnNuGet>NU1902;NU1903</NoWarnNuGet>
   </PropertyGroup>
 
   <ItemGroup>

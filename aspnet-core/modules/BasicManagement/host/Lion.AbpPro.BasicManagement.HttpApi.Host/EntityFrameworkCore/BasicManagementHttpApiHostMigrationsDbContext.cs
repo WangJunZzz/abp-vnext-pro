@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore;
 
 namespace Lion.AbpPro.BasicManagement.EntityFrameworkCore;
 

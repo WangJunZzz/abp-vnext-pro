@@ -1,4 +1,6 @@
-﻿namespace Lion.AbpPro.BasicManagement.IdentitySecurityLogs;
+﻿using Mapster;
+
+namespace Lion.AbpPro.BasicManagement.IdentitySecurityLogs;
 
 public class IdentitySecurityLogAppService : BasicManagementAppService, IIdentitySecurityLogAppService
 {
@@ -41,6 +43,6 @@ public class IdentitySecurityLogAppService : BasicManagementAppService, IIdentit
             input.ClientId,
             input.CorrelationId);
 
-        return new PagedResultDto<PagingIdentitySecurityLogOutput>(totalCount, ObjectMapper.Map<List<IdentitySecurityLog>, List<PagingIdentitySecurityLogOutput>>(list));
+        return new PagedResultDto<PagingIdentitySecurityLogOutput>(totalCount,list.Adapt<List<PagingIdentitySecurityLogOutput>>());
     }
 }

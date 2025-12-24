@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Volo.Abp.AspNetCore.Mvc;
+﻿using Volo.Abp.AspNetCore.Mvc;
 
 namespace Lion.AbpPro.BasicManagement.Controllers;
 

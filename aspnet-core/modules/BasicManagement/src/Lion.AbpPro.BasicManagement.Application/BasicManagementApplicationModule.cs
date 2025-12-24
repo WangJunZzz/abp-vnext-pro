@@ -3,7 +3,6 @@ using Lion.AbpPro.BasicManagement.Roles;
 using Magicodes.ExporterAndImporter.Core;
 using Magicodes.ExporterAndImporter.Excel;
 using Volo.Abp.Account;
-using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
 using Volo.Abp.FeatureManagement;
@@ -18,7 +17,6 @@ namespace Lion.AbpPro.BasicManagement;
     typeof(BasicManagementApplicationContractsModule),
     typeof(AbpDddApplicationModule),
     typeof(AbpIdentityAspNetCoreModule),
-    typeof(AbpAutoMapperModule),
     typeof(AbpAccountApplicationModule),
     typeof(AbpIdentityApplicationModule),
     typeof(AbpPermissionManagementApplicationModule),
@@ -31,12 +29,6 @@ public class BasicManagementApplicationModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        context.Services.AddAutoMapperObjectMapper<BasicManagementApplicationModule>();
-        Configure<AbpAutoMapperOptions>(options =>
-        {
-            options.AddMaps<BasicManagementApplicationModule>(validate: true);
-        });
-        
         
         Configure<PermissionOptions>(options =>
         {

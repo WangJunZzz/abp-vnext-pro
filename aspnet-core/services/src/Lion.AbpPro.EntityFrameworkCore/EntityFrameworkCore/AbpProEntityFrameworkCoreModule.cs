@@ -1,13 +1,13 @@
 using Lion.AbpPro.FileManagement.EntityFrameworkCore;
 using Lion.AbpPro.LanguageManagement.EntityFrameworkCore;
-using Volo.Abp.Guids;
+using Volo.Abp.EntityFrameworkCore.PostgreSql;
 
 namespace Lion.AbpPro.EntityFrameworkCore
 {
     [DependsOn(
         typeof(AbpProDomainModule),
         typeof(BasicManagementEntityFrameworkCoreModule),
-        typeof(AbpEntityFrameworkCoreMySQLModule),
+        typeof(AbpEntityFrameworkCorePostgreSqlModule),
         typeof(DataDictionaryManagementEntityFrameworkCoreModule),
         typeof(NotificationManagementEntityFrameworkCoreModule),
         typeof(LanguageManagementEntityFrameworkCoreModule),
@@ -18,6 +18,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
             AbpProEfCoreEntityExtensionMappings.Configure();
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
 
         public override void ConfigureServices(ServiceConfigurationContext context)
@@ -35,9 +36,9 @@ namespace Lion.AbpPro.EntityFrameworkCore
                  * See also HayoonKoreaDbContextFactory for EF Core tooling.
                  *  https://github.com/abpframework/abp/issues/21879
                  * */
-                options.UseMySQL(builder =>
+                options.UseNpgsql(builder =>
                 {
-                    builder.TranslateParameterizedCollectionsToConstants();
+                    builder.UseParameterizedCollectionMode(ParameterTranslationMode.MultipleParameters);
                 });
             });
         }

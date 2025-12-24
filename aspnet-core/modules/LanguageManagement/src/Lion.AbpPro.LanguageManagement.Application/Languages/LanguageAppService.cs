@@ -1,3 +1,5 @@
+using Mapster;
+
 namespace Lion.AbpPro.LanguageManagement.Languages;
 
 /// <summary>
@@ -21,8 +23,7 @@ public class LanguageAppService : ApplicationService, ILanguageAppService
     public virtual async Task<List<PageLanguageOutput>> AllListAsync()
     {
         var languages = await _languageManager.ListAsync();
-        var list = ObjectMapper.Map<List<Language>, List<PageLanguageOutput>>(languages);
-        return list.ToList();
+        return  languages.Adapt< List<PageLanguageOutput>>();
     }
 
 
@@ -36,7 +37,7 @@ public class LanguageAppService : ApplicationService, ILanguageAppService
         result.TotalCount = totalCount;
         if (totalCount <= 0) return result;
         var list = await _languageManager.GetListAsync(input.PageSize, input.SkipCount, input.Filter);
-        result.Items = ObjectMapper.Map<List<LanguageDto>, List<PageLanguageOutput>>(list);
+        result.Items =  list.Adapt< List<PageLanguageOutput>>();
         return result;
     }
 

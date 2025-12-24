@@ -1,5 +1,6 @@
 using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
 using Lion.AbpPro.SignalR.Enums;
+using Mapster;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications
 {
@@ -34,7 +35,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             int skipCount = 0)
         {
             var list = await _notificationRepository.GetPagingListAsync(title, content, senderUserId, senderUserName, receiverUserId, receiverUserName, read, startReadTime, endReadTime, messageType, messageLevel, maxResultCount, skipCount);
-            return ObjectMapper.Map<List<Notification>, List<NotificationDto>>(list);
+            return list.Adapt<List<NotificationDto>>();
         }
 
         /// <summary>
@@ -73,13 +74,13 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         {
             var notification = await _notificationRepository.FindAsync(id);
             if (notification == null) throw new NotificationManagementDomainException(NotificationManagementErrorCodes.MessageNotExist);
-            return ObjectMapper.Map<Notification, NotificationDto>(notification);
+            return notification.Adapt<NotificationDto>();
         }
 
         public async Task<List<NotificationDto>> GetListAsync(List<Guid> ids)
         {
             var notifications = await _notificationRepository.GetListAsync(ids);
-            return ObjectMapper.Map<List<Notification>, List<NotificationDto>>(notifications);
+            return notifications.Adapt<List<NotificationDto>>();
         }
 
         public async Task DeleteAsync(Guid id)

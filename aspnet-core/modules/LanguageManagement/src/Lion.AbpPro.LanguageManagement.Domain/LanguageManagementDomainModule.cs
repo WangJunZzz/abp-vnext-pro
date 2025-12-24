@@ -6,7 +6,6 @@ namespace Lion.AbpPro.LanguageManagement
         typeof(AbpDddDomainModule),
         typeof(LanguageManagementDomainSharedModule),
         typeof(AbpCachingModule),
-        typeof(AbpAutoMapperModule),
         typeof(AbpSettingManagementDomainModule)
     )]
     public class LanguageManagementDomainModule : AbpModule
@@ -16,10 +15,6 @@ namespace Lion.AbpPro.LanguageManagement
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.AddDynamicResource();
-            });
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddMaps<LanguageManagementDomainModule>();
             });
         }
     }

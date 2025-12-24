@@ -1,14 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>Lion.AbpPro.DataDictionaryManagement</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Ddd.Domain" />
     <PackageReference Include="Volo.Abp.Caching" />
-    <PackageReference Include="Volo.Abp.AutoMapper" />
     <ProjectReference Include="..\Lion.AbpPro.DataDictionaryManagement.Domain.Shared\Lion.AbpPro.DataDictionaryManagement.Domain.Shared.csproj" />
   </ItemGroup>
 

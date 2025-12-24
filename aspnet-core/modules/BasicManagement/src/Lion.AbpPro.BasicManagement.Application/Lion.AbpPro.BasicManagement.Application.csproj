@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>Lion.AbpPro.BasicManagement</RootNamespace>
+    <NoWarnNuGet>NU1903;NU1902;$(NoWarnNuGet)</NoWarnNuGet>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AutoMapper" />
     <PackageReference Include="Volo.Abp.Ddd.Application" />
     <PackageReference Include="Volo.Abp.Account.Application" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc" />

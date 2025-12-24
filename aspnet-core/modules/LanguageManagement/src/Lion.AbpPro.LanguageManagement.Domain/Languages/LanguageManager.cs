@@ -1,4 +1,6 @@
-﻿namespace Lion.AbpPro.LanguageManagement.Languages;
+﻿using Mapster;
+
+namespace Lion.AbpPro.LanguageManagement.Languages;
 
 public class LanguageManager : LanguageManagementDomainService, ILanguageManager
 {
@@ -24,7 +26,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
     public virtual async Task<List<LanguageDto>> GetListAsync(int maxResultCount = 10, int skipCount = 0, string filter = null)
     {
         var list = await _languageRepository.ListAsync(maxResultCount, skipCount, filter);
-        return ObjectMapper.Map<List<Language>, List<LanguageDto>>(list);
+        return list.Adapt<List<LanguageDto>>();
     }
 
     /// <summary>
@@ -56,7 +58,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
 
         entity = new Language(id, cultureName, uiCultureName, displayName, flagIcon, isEnabled, false, CurrentTenant.Id);
         entity = await _languageRepository.InsertAsync(entity);
-        return ObjectMapper.Map<Language, LanguageDto>(entity);
+        return entity.Adapt<LanguageDto>();
     }
 
     /// <summary>
@@ -75,7 +77,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
         if (entity == null) throw new LanguageManagementDomainException(LanguageManagementErrorCodes.LanguageNotFound);
         entity.Update(cultureName, uiCultureName, displayName, flagIcon, isEnabled);
         entity = await _languageRepository.UpdateAsync(entity);
-        return ObjectMapper.Map<Language, LanguageDto>(entity);
+        return entity.Adapt<LanguageDto>();
     }
 
     /// <summary>
@@ -95,7 +97,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
     {
         var entity = await _languageRepository.FindAsync(id);
         if (entity == null) throw new LanguageManagementDomainException(LanguageManagementErrorCodes.LanguageNotFound);
-        return ObjectMapper.Map<Language, LanguageDto>(entity);
+        return entity.Adapt<LanguageDto>();
     }
 
     /// <summary>
@@ -105,7 +107,7 @@ public class LanguageManager : LanguageManagementDomainService, ILanguageManager
     {
         var entity = await _languageRepository.FindAsync(cultureName);
         if (entity == null) throw new LanguageManagementDomainException(LanguageManagementErrorCodes.LanguageNotFound);
-        return ObjectMapper.Map<Language, LanguageDto>(entity);
+        return entity.Adapt<LanguageDto>();
     }
 
     /// <summary>

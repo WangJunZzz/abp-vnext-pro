@@ -1,26 +1,24 @@
-using Volo.Abp.ObjectMapping;
+using Mapster;
 
 namespace Lion.AbpPro.FileManagement.Files;
 
 public class FileObjectManager : DomainService
 {
     private readonly IFileObjectRepository _fileObjectRepository;
-    private readonly IObjectMapper _objectMapper;
+   
     private readonly ICurrentTenant _currentTenant;
 
     public FileObjectManager(IFileObjectRepository fileObjectRepository,
-        IObjectMapper objectMapper,
         ICurrentTenant currentTenant)
     {
         _fileObjectRepository = fileObjectRepository;
-        _objectMapper = objectMapper;
         _currentTenant = currentTenant;
     }
 
     public async Task<List<FileObjectDto>> GetListAsync(string fileName, DateTime? startDateTime = null, DateTime? endDateTime = null, int maxResultCount = 10, int skipCount = 0)
     {
         var list = await _fileObjectRepository.GetListAsync(fileName, startDateTime, endDateTime, maxResultCount, skipCount);
-        return _objectMapper.Map<List<FileObject>, List<FileObjectDto>>(list);
+        return list.Adapt<List<FileObjectDto>>();
     }
 
     public async Task<long> GetCountAsync(string fileName, DateTime? startDateTime = null, DateTime? endDateTime = null)
@@ -56,8 +54,7 @@ public class FileObjectManager : DomainService
             entity = new FileObject(id, fileName, fileSize, contentType, CurrentTenant?.Id);
             await _fileObjectRepository.InsertAsync(entity);
         }
-
-        return _objectMapper.Map<FileObject, FileObjectDto>(entity);
+        return entity.Adapt<FileObjectDto>();
     }
 
 
@@ -78,6 +75,6 @@ public class FileObjectManager : DomainService
     {
         var entity = await _fileObjectRepository.FindAsync(id);
         if (entity == null) throw new DomainFileManagementException(FileManagementErrorCodes.FileNotFound);
-        return _objectMapper.Map<FileObject, FileObjectDto>(entity);
+        return entity.Adapt<FileObjectDto>();
     }
 }

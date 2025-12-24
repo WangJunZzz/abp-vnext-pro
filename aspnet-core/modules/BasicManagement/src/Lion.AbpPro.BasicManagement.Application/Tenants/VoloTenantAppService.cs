@@ -1,3 +1,4 @@
+using Mapster;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.SettingManagement;
@@ -73,7 +74,7 @@ namespace Lion.AbpPro.BasicManagement.Tenants
 
             result.TotalCount = tenant.ConnectionStrings.Count;
 
-            var items = ObjectMapper.Map<List<TenantConnectionString>, List<PageTenantConnectionStringOutput>>(tenant.ConnectionStrings);
+            var items = tenant.ConnectionStrings.Adapt<List<PageTenantConnectionStringOutput>>();
             if (input.Name.IsNotNullOrWhiteSpace())
             {
                 items = items.Where(e => e.Name.ToLower().Contains(input.Name.ToLower())).ToList();

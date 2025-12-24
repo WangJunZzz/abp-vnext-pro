@@ -75,7 +75,6 @@ public class AbpProApplicationConfigurationAppService : ApplicationService, IAbp
             Clock = GetClockConfig(),
             ObjectExtensions = _cachedObjectExtensionsDtoService.Get()
         };
-
         if (options.IncludeLocalizationResources)
         {
             result.Localization = await GetLocalizationConfigAsync(options);

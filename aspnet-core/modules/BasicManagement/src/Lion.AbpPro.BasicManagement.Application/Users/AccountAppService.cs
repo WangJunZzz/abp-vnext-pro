@@ -1,9 +1,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using IdentityModel;
+using Duende.IdentityModel;
 using Lion.AbpPro.BasicManagement.ConfigurationOptions;
 using Lion.AbpPro.BasicManagement.Users.Dtos;
+using Mapster;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -82,7 +83,7 @@ namespace Lion.AbpPro.BasicManagement.Users
             if (roles == null || roles.Count == 0) throw new AbpAuthorizationException();
             var token = GenerateJwt(user.Id, user.UserName, user.Name, user.Email,
                 user.TenantId.ToString(), roles.ToList());
-            var loginOutput = ObjectMapper.Map<IdentityUser, LoginOutput>(user);
+            var loginOutput = user.Adapt<LoginOutput>();
             loginOutput.Token = token;
             loginOutput.Roles = roles.ToList();
             return loginOutput;

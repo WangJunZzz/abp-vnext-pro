@@ -1,3 +1,5 @@
+using Mapster;
+
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
     public class DataDictionaryManager : DataDictionaryDomainService, IDataDictionaryManager
@@ -31,7 +33,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
                             true,
                             cancellationToken
                         );
-                    return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(entity);
+                    return entity.Adapt<DataDictionaryDto>();
                 },
                 token: cancellationToken
             );
@@ -54,7 +56,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
                             true,
                             cancellationToken
                         );
-                    return ObjectMapper.Map<DataDictionary, DataDictionaryDto>(entity);
+                   return entity.Adapt<DataDictionaryDto>();
                 },
                 token: cancellationToken
             );

@@ -1,3 +1,5 @@
+using Mapster;
+
 namespace Lion.AbpPro.FileManagement.Files;
 
 /// <summary>
@@ -27,7 +29,7 @@ public class FileAppService : ApplicationService, IFileAppService
         result.TotalCount = totalCount;
         if (totalCount <= 0) return result;
         var list = await _fileObjectManager.GetListAsync(input.FileName, input.StartCreationTime, input.EndCreationTime, input.PageSize, input.SkipCount);
-        result.Items = ObjectMapper.Map<List<FileObjectDto>, List<PageFileObjectOutput>>(list);
+        result.Items = list.Adapt<List<PageFileObjectOutput>>();
         return result;
     }
 

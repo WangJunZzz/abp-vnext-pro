@@ -4,7 +4,7 @@ using Lion.AbpPro.AspNetCore.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.IdentityModel.Tokens;
-using Swagger;
+
 using Volo.Abp.AspNetCore.Auditing;
 using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.AntiForgery;
@@ -160,9 +160,9 @@ public static class ServiceCollectionExtensions
             options.MapType<FileContentResult>(() => new OpenApiSchema() { Type = "file" });
             options.SwaggerDoc(name, new OpenApiInfo { Title = name, Version = version });
             options.DocInclusionPredicate((docName, description) => true);
-            options.EnableAnnotations(); // 启用注解
-            options.DocumentFilter<HiddenAbpDefaultApiFilter>();
-            options.SchemaFilter<EnumSchemaFilter>();
+            //options.EnableAnnotations(); // 启用注解
+            //options.DocumentFilter<HiddenAbpDefaultApiFilter>();
+            //options.SchemaFilter<EnumSchemaFilter>();
             // 加载所有xml注释，这里会导致swagger加载有点缓慢
             var xmlPaths = Directory.GetFiles(AppContext.BaseDirectory, "*.xml");
             foreach (var xml in xmlPaths)

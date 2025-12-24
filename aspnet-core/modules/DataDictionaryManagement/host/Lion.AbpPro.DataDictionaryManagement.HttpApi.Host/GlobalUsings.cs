@@ -16,7 +16,6 @@ global using Microsoft.EntityFrameworkCore.Design;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Hosting;
-global using Microsoft.OpenApi.Models;
 global using Serilog;
 global using Serilog.Events;
 global using StackExchange.Redis;

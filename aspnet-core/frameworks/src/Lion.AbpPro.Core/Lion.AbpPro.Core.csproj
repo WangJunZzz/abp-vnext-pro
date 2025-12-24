@@ -1,12 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <AssemblyName>Lion.AbpPro.Core</AssemblyName>
-        <RootNamespace />
+        <RootNamespace/>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Lion.AbpPro.Localization\Lion.AbpPro.Localization.csproj" />
+        <PackageReference Include="Mapster"/>
+        <ProjectReference Include="..\Lion.AbpPro.Localization\Lion.AbpPro.Localization.csproj"/>
     </ItemGroup>
 </Project>

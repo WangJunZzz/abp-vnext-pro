@@ -1,3 +1,5 @@
+using Mapster;
+
 namespace Lion.AbpPro.BasicManagement.Roles;
 
 [Authorize(Policy = IdentityPermissions.Roles.Default)]
@@ -27,8 +29,7 @@ public class RoleAppService : BasicManagementAppService, IRoleAppService
         List<IdentityRole> source =
             await _roleRepository.GetListAsync()
                 .ConfigureAwait(continueOnCapturedContext: false);
-        return new ListResultDto<IdentityRoleDto>(
-            ObjectMapper.Map<List<IdentityRole>, List<IdentityRoleDto>>(source));
+        return new ListResultDto<IdentityRoleDto>(source.Adapt<List<IdentityRoleDto>>());
     }
 
     /// <summary>
@@ -50,7 +51,7 @@ public class RoleAppService : BasicManagementAppService, IRoleAppService
         return new PagedResultDto<IdentityRoleDto>(
             await _roleRepository.GetCountAsync(request.Filter)
                 .ConfigureAwait(continueOnCapturedContext: false),
-            ObjectMapper.Map<List<IdentityRole>, List<IdentityRoleDto>>(list));
+            list.Adapt<List<IdentityRoleDto>>());
     }
 
 

@@ -15,15 +15,6 @@ namespace Lion.AbpPro.NotificationManagement
         /// </summary>
         protected IDistributedEventBus DistributedEventBus =>
             LazyServiceProvider.LazyGetRequiredService<IDistributedEventBus>();
-
-        /// <summary>
-        /// 对象映射器
-        /// </summary>
-        protected IObjectMapper ObjectMapper => LazyServiceProvider.LazyGetService<IObjectMapper>(
-            provider =>
-                ObjectMapperContext == null
-                    ? provider.GetRequiredService<IObjectMapper>()
-                    : (IObjectMapper)provider.GetRequiredService(
-                        typeof(IObjectMapper<>).MakeGenericType(ObjectMapperContext)));
+        
     }
 }

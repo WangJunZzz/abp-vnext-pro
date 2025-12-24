@@ -13,11 +13,4 @@
 )]
 public class BasicManagementDomainModule : AbpModule
 {
-    public override void ConfigureServices(ServiceConfigurationContext context)
-    {
-        Configure<AbpAutoMapperOptions>(options =>
-        {
-            options.AddMaps<BasicManagementDomainModule>();
-        });
-    }
 }

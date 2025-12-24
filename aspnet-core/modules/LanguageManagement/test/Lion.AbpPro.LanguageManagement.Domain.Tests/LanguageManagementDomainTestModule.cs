@@ -9,12 +9,5 @@ namespace Lion.AbpPro.LanguageManagement
         )]
     public class LanguageManagementDomainTestModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
-        {
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddMaps<LanguageManagementDomainModule>(validate: true);
-            });
-        }
     }
 }

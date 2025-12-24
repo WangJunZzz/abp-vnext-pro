@@ -44,11 +44,10 @@ global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Logging.Abstractions;
 global using Microsoft.Extensions.Options;
 global using Microsoft.IdentityModel.Tokens;
-global using Microsoft.OpenApi.Models;
 global using Serilog;
 global using Serilog.Events;
 global using StackExchange.Redis;
-global using Swagger;
+
 global using Swashbuckle.AspNetCore.SwaggerUI;
 global using Volo.Abp;
 global using Volo.Abp.Account.Web;

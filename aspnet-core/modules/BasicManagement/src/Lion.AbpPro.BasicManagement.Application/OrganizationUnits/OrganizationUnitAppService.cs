@@ -1,4 +1,6 @@
-﻿namespace Lion.AbpPro.BasicManagement.OrganizationUnits;
+﻿using Mapster;
+
+namespace Lion.AbpPro.BasicManagement.OrganizationUnits;
 
 [Authorize(Policy = BasicManagementPermissions.SystemManagement.OrganizationUnitManagement.Default)]
 public class OrganizationUnitAppService : BasicManagementAppService, IOrganizationUnitAppService
@@ -20,7 +22,7 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
     public virtual async Task<List<TreeOutput>> GetTreeAsync()
     {
         var organizationUnits = await _organizationUnitRepository.GetListAsync();
-        var organizationUnitDtos = ObjectMapper.Map<List<OrganizationUnit>, List<OrganizationUnitDto>>(organizationUnits);
+        var organizationUnitDtos =organizationUnits.Adapt<List<OrganizationUnitDto>>();
         return ConvertToTree(organizationUnitDtos);
     }
 
@@ -100,7 +102,7 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
                 skipCount: input.SkipCount,
                 filter: input.Filter
             );
-            listResult = ObjectMapper.Map<List<IdentityUser>, List<GetOrganizationUnitUserOutput>>(list);
+            listResult = list.Adapt<List<GetOrganizationUnitUserOutput>>();
         }
 
         return new PagedResultDto<GetOrganizationUnitUserOutput>(count, listResult);
@@ -121,7 +123,7 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
                 skipCount: input.SkipCount,
                 filter: input.Filter
             );
-            listResult = ObjectMapper.Map<List<IdentityUser>, List<GetUnAddUserOutput>>(users);
+            listResult = users.Adapt<List<GetUnAddUserOutput>>();
         }
 
         return new PagedResultDto<GetUnAddUserOutput>(count, listResult);
@@ -137,7 +139,7 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
         if (count > 0)
         {
             var list = await _organizationUnitRepository.GetRolesAsync(organizationUnit, maxResultCount: input.PageSize, skipCount: input.SkipCount);
-            listResult = ObjectMapper.Map<List<IdentityRole>, List<GetOrganizationUnitRoleOutput>>(list);
+            listResult =  list.Adapt<List<GetOrganizationUnitRoleOutput>>();
         }
 
         return new PagedResultDto<GetOrganizationUnitRoleOutput>(count, listResult);
@@ -158,7 +160,7 @@ public class OrganizationUnitAppService : BasicManagementAppService, IOrganizati
                 skipCount: input.SkipCount,
                 filter: input.Filter
             );
-            listResult = ObjectMapper.Map<List<IdentityRole>, List<GetUnAddRoleOutput>>(roles);
+            listResult =  roles.Adapt<List<GetUnAddRoleOutput>>();
         }
 
         return new PagedResultDto<GetUnAddRoleOutput>(count, listResult);

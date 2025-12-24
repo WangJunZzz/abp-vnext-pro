@@ -2,7 +2,7 @@
 
     
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <RootNamespace>Lion.AbpPro</RootNamespace>
     </PropertyGroup>
 
@@ -13,12 +13,14 @@
         <ProjectReference Include="..\..\..\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.EntityFrameworkCore\Lion.AbpPro.NotificationManagement.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\..\..\modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.EntityFrameworkCore\Lion.AbpPro.LanguageManagement.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\Lion.AbpPro.Domain\Lion.AbpPro.Domain.csproj" />
-        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" />
+      
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
             <PrivateAssets>compile; contentFiles; build; buildMultitargeting; buildTransitive; analyzers; native</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.PostgreSql" Version="10.0.1" />
     </ItemGroup>
 </Project>
+ 

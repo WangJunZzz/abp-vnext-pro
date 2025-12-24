@@ -3,13 +3,12 @@
     
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <RootNamespace>Lion.AbpPro.NotificationManagement</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Volo.Abp.Ddd.Domain" />
-     
         <ProjectReference Include="..\Lion.AbpPro.NotificationManagement.Domain.Shared\Lion.AbpPro.NotificationManagement.Domain.Shared.csproj" />
     </ItemGroup>
 

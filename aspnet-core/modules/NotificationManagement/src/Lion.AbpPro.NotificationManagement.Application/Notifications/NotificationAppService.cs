@@ -1,6 +1,7 @@
 using System.Security.Authentication;
 using Lion.AbpPro.SignalR;
 using Lion.AbpPro.SignalR.Enums;
+using Mapster;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications
 {
@@ -119,7 +120,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
             //     item.ReceiveUserId = sub?.ReceiveUserId;
             //     item.ReceiveUserName = sub?.ReceiveUserName;
             // }
-            return new PagedResultDto<PagingNotificationOutput>(totalCount, ObjectMapper.Map<List<NotificationDto>, List<PagingNotificationOutput>>(list));
+            return new PagedResultDto<PagingNotificationOutput>(totalCount,  list.Adapt<List<PagingNotificationOutput>>());
         }
 
         /// <summary>
@@ -129,7 +130,7 @@ namespace Lion.AbpPro.NotificationManagement.Notifications
         {
             var totalCount = await _notificationSubscriptionManager.GetPagingCountAsync(input.NotificationId, input.ReceiverUserId, input.ReceiverUserName, input.StartReadTime, input.EndReadTime);
             var list = await _notificationSubscriptionManager.GetPagingListAsync(input.NotificationId, input.ReceiverUserId, input.ReceiverUserName, input.StartReadTime, input.EndReadTime, input.PageSize, input.SkipCount);
-            var result = new PagedResultDto<PagingNotificationSubscriptionOutput>(totalCount, ObjectMapper.Map<List<NotificationSubscriptionDto>, List<PagingNotificationSubscriptionOutput>>(list));
+            var result = new PagedResultDto<PagingNotificationSubscriptionOutput>(totalCount, list.Adapt<List<PagingNotificationSubscriptionOutput>>());
             // 获取消息内容
             if (totalCount > 0)
             {

@@ -15,9 +15,5 @@ namespace Lion.AbpPro
     )]
     public class AbpProApplicationModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
-        {
-            Configure<AbpAutoMapperOptions>(options => { options.AddMaps<AbpProApplicationModule>(); });
-        }
     }
 }

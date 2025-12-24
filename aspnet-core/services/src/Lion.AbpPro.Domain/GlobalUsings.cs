@@ -16,7 +16,6 @@ global using Lion.AbpPro.Users.Dto;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Logging.Abstractions;
-global using Volo.Abp.AutoMapper;
 global using Volo.Abp.Data;
 global using Volo.Abp.DependencyInjection;
 global using Volo.Abp.Domain.Services;

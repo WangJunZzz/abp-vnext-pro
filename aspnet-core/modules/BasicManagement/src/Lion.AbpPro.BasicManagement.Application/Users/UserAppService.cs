@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Lion.AbpPro.BasicManagement.Users.Dtos;
 using Magicodes.ExporterAndImporter.Excel;
 using Magicodes.ExporterAndImporter.Excel.AspNetCore;
+using Mapster;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
@@ -56,8 +57,7 @@ namespace Lion.AbpPro.BasicManagement.Users
             var source = await _identityUserRepository
                 .GetListAsync(request.Sorting, request.MaxResultCount, request.SkipCount, request.Filter);
 
-            return new PagedResultDto<PageIdentityUserOutput>(count,
-                base.ObjectMapper.Map<List<Volo.Abp.Identity.IdentityUser>, List<PageIdentityUserOutput>>(source));
+            return new PagedResultDto<PageIdentityUserOutput>(count,source.Adapt<List<PageIdentityUserOutput>>());
         }
 
         public async Task<List<IdentityUserDto>> ListAllAsync(PagingUserListInput input)
@@ -73,7 +73,7 @@ namespace Lion.AbpPro.BasicManagement.Users
             var source = await _identityUserRepository
                 .GetListAsync(request.Sorting, request.MaxResultCount, request.SkipCount, request.Filter);
 
-            return ObjectMapper.Map<List<Volo.Abp.Identity.IdentityUser>, List<IdentityUserDto>>(source);
+            return source.Adapt<List<IdentityUserDto>>();
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Lion.AbpPro.BasicManagement.Users
             };
             var source = await _identityUserRepository
                 .GetListAsync(request.Sorting, request.MaxResultCount, request.SkipCount, request.Filter);
-            var result = ObjectMapper.Map<List<Volo.Abp.Identity.IdentityUser>, List<ExportIdentityUserOutput>>(source);
+            var result = source.Adapt<List<ExportIdentityUserOutput>>();
             var bytes = await _excelExporter.ExportAsByteArray<ExportIdentityUserOutput>(result);
             return new XlsxFileResult(bytes: bytes, fileDownloadName: $"用户导出列表{Clock.Now:yyyyMMdd}");
         }
@@ -132,9 +132,7 @@ namespace Lion.AbpPro.BasicManagement.Users
         public virtual async Task<ListResultDto<IdentityRoleDto>> GetRoleByUserId(IdInput input)
         {
             var roles = await _identityUserRepository.GetRolesAsync(input.Id);
-            return new ListResultDto<IdentityRoleDto>(
-                ObjectMapper.Map<List<IdentityRole>, List<IdentityRoleDto>>(roles)
-            );
+            return new ListResultDto<IdentityRoleDto>(roles.Adapt<List<IdentityRoleDto>>());
         }
 
         /// <summary>
@@ -224,7 +222,7 @@ namespace Lion.AbpPro.BasicManagement.Users
                 throw new BusinessException(BasicManagementErrorCodes.UserNotExist);
             }
 
-            return ObjectMapper.Map<Volo.Abp.Identity.IdentityUser, IdentityUserDto>(user);
+            return user.Adapt<IdentityUserDto>();
         }
 
         public virtual async Task<MyProfileOutput> MyProfileAsync()
@@ -234,8 +232,7 @@ namespace Lion.AbpPro.BasicManagement.Users
             {
                 throw new BusinessException(BasicManagementErrorCodes.UserNotExist);
             }
-
-            return ObjectMapper.Map<Volo.Abp.Identity.IdentityUser, MyProfileOutput>(user);
+            return user.Adapt<MyProfileOutput>();
         }
 
         public virtual async Task<NeedChangePasswordOutput> NeedChangePasswordAsync()

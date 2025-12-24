@@ -1,3 +1,5 @@
+using Mapster;
+
 namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 {
     [Authorize(DataDictionaryManagementPermissions.DataDictionaryManagement.Default)]
@@ -32,7 +34,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 
             var entities = await _dataDictionaryRepository.GetPagingListAsync(input.Filter, input.PageSize,
                 input.SkipCount, false);
-            result.Items = ObjectMapper.Map<List<DataDictionary>, List<PagingDataDictionaryOutput>>(entities);
+            result.Items = entities.Adapt<List<PagingDataDictionaryOutput>>();
 
             return result;
         }
@@ -64,7 +66,7 @@ namespace Lion.AbpPro.DataDictionaryManagement.DataDictionaries
 
             return new PagedResultDto<PagingDataDictionaryDetailOutput>(
                 entity.Details.Count,
-                ObjectMapper.Map<List<DataDictionaryDetail>, List<PagingDataDictionaryDetailOutput>>(details));
+                details.Adapt<List<PagingDataDictionaryDetailOutput>>());
         }
 
 

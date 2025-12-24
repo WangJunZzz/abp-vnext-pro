@@ -2,10 +2,11 @@
 
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <RootNamespace>Lion.AbpPro.LanguageManagement</RootNamespace>
         <PreserveCompilationReferences>true</PreserveCompilationReferences>
         <UserSecretsId>Lion.AbpPro.LanguageManagement-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>
+        <NoWarnNuGet>NU1903;NU1902;$(NoWarnNuGet)</NoWarnNuGet>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,4 +1,5 @@
 using Lion.AbpPro.NotificationManagement.Notifications.Dtos;
+using Mapster;
 
 namespace Lion.AbpPro.NotificationManagement.Notifications;
 
@@ -27,19 +28,19 @@ public class NotificationSubscriptionManager : NotificationManagementDomainServi
         CancellationToken cancellationToken = default)
     {
         var list = await _notificationSubscriptionRepository.GetPagingListAsync(notificationId, receiverUserId, receiverUserName, startReadTime, endReadTime, maxResultCount, skipCount, cancellationToken);
-        return ObjectMapper.Map<List<NotificationSubscription>, List<NotificationSubscriptionDto>>(list);
+        return list.Adapt<List<NotificationSubscriptionDto>>();
     }
 
     public async Task<List<NotificationSubscriptionDto>> GetListAsync(List<Guid> notificationId, Guid receiverUserId, CancellationToken cancellationToken = default)
     {
         var list = await _notificationSubscriptionRepository.GetListAsync(notificationId, receiverUserId, cancellationToken);
-        return ObjectMapper.Map<List<NotificationSubscription>, List<NotificationSubscriptionDto>>(list);
+        return list.Adapt<List<NotificationSubscriptionDto>>();
     }
 
     public async Task<NotificationSubscriptionDto> FindAsync(Guid receiveUserId, Guid notificationId, CancellationToken cancellationToken = default)
     {
         var subscription = await _notificationSubscriptionRepository.FindAsync(receiveUserId, notificationId, cancellationToken);
-        return ObjectMapper.Map<NotificationSubscription, NotificationSubscriptionDto>(subscription);
+        return subscription.Adapt<NotificationSubscriptionDto>();
     }
 
     public async Task DeleteAsync(Guid id, CancellationToken cancellationToken = default)

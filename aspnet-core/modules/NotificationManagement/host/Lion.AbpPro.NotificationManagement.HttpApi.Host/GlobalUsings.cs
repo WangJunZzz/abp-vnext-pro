@@ -12,7 +12,6 @@ global using Microsoft.EntityFrameworkCore.Design;
 global using Microsoft.Extensions.Caching.Distributed;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.Hosting;
-global using Microsoft.OpenApi.Models;
 global using Serilog;
 global using StackExchange.Redis;
 global using Swashbuckle.AspNetCore.SwaggerUI;

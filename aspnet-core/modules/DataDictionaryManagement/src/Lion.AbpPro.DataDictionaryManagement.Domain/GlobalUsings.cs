@@ -6,7 +6,6 @@ global using System.ComponentModel.DataAnnotations;
 global using System.Linq;
 global using System.Threading;
 global using System.Threading.Tasks;
-global using AutoMapper;
 global using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
 global using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Dto;
 global using Lion.AbpPro.Core;

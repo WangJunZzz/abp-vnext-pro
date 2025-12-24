@@ -15,7 +15,5 @@ global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.Localization;
 global using Volo.Abp.Application.Services;
-global using Volo.Abp.AutoMapper;
 global using Volo.Abp.DependencyInjection;
 global using Volo.Abp.Modularity;
-global using Profile = AutoMapper.Profile;
