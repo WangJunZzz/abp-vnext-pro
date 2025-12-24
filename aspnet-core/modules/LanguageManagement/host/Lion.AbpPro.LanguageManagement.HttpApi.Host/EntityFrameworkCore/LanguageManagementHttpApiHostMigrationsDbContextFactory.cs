@@ -7,7 +7,7 @@ namespace Lion.AbpPro.LanguageManagement.EntityFrameworkCore
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<LanguageManagementHttpApiHostMigrationsDbContext>()
-                .UseMySQL(configuration.GetConnectionString("Default") ?? string.Empty);
+                .UseNpgsql(configuration.GetConnectionString("Default") ?? string.Empty);
             return new LanguageManagementHttpApiHostMigrationsDbContext(builder.Options);
         }
 

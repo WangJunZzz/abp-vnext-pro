@@ -9,7 +9,7 @@ public class BasicManagementHttpApiHostMigrationsDbContextFactory : IDesignTimeD
     {
         var configuration = BuildConfiguration();
         var builder = new DbContextOptionsBuilder<BasicManagementHttpApiHostMigrationsDbContext>()
-            .UseMySQL(configuration.GetConnectionString("Default") ?? string.Empty);
+            .UseNpgsql(configuration.GetConnectionString("Default") ?? string.Empty);
 
         return new BasicManagementHttpApiHostMigrationsDbContext(builder.Options);
     }

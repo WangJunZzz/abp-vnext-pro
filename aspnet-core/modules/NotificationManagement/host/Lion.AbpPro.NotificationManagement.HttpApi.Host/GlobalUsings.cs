@@ -23,7 +23,6 @@ global using Volo.Abp.Autofac;
 global using Volo.Abp.Caching;
 global using Volo.Abp.Caching.StackExchangeRedis;
 global using Volo.Abp.EntityFrameworkCore;
-global using Volo.Abp.EntityFrameworkCore.MySQL;
 global using Volo.Abp.Localization;
 global using Volo.Abp.Modularity;
 global using Volo.Abp.Swashbuckle;

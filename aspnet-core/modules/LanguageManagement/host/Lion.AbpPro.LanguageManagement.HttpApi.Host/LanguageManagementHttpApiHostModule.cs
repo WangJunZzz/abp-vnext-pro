@@ -1,5 +1,6 @@
 using Lion.AbpPro.AspNetCore;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using Volo.Abp.EntityFrameworkCore.PostgreSql;
 
 namespace Lion.AbpPro.LanguageManagement
 {
@@ -10,7 +11,7 @@ namespace Lion.AbpPro.LanguageManagement
         typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
         typeof(AbpAutofacModule),
         typeof(AbpCachingStackExchangeRedisModule),
-        typeof(AbpEntityFrameworkCoreMySQLModule),
+        typeof(AbpEntityFrameworkCorePostgreSqlModule),
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
@@ -31,7 +32,7 @@ namespace Lion.AbpPro.LanguageManagement
                 .AddAbpProLocalization()
                 .AddAbpProExceptions()
                 .AddAbpProSwagger("LanguageManagement");
-            Configure<AbpDbContextOptions>(options => { options.UseMySQL(); });
+            Configure<AbpDbContextOptions>(options => { options.UseNpgsql(); });
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)

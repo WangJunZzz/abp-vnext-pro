@@ -1,4 +1,5 @@
 using Lion.AbpPro.AspNetCore;
+using Volo.Abp.EntityFrameworkCore.PostgreSql;
 
 namespace Lion.AbpPro.FileManagement;
 
@@ -10,7 +11,7 @@ namespace Lion.AbpPro.FileManagement;
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule),
-    typeof(AbpEntityFrameworkCoreMySQLModule),
+    typeof(AbpEntityFrameworkCorePostgreSqlModule),
     typeof(AbpProAspNetCoreModule)
 )]
 public class FileManagementHttpApiHostModule : AbpModule
@@ -26,7 +27,7 @@ public class FileManagementHttpApiHostModule : AbpModule
             .AddAbpProLocalization()
             .AddAbpProExceptions()
             .AddAbpProSwagger("FileManagement");
-        Configure<AbpDbContextOptions>(options => { options.UseMySQL(); });
+        Configure<AbpDbContextOptions>(options => { options.UseNpgsql(); });
     }
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)

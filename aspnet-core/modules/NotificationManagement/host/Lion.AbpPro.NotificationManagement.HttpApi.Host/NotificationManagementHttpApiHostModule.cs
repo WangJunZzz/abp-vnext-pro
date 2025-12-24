@@ -1,4 +1,5 @@
 using Lion.AbpPro.AspNetCore;
+using Volo.Abp.EntityFrameworkCore.PostgreSql;
 
 namespace Lion.AbpPro.NotificationManagement;
 
@@ -11,7 +12,7 @@ namespace Lion.AbpPro.NotificationManagement;
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule),
     typeof(AbpProCapModule),
-    typeof(AbpEntityFrameworkCoreMySQLModule),
+    typeof(AbpEntityFrameworkCorePostgreSqlModule),
     typeof(AbpProAspNetCoreModule)
 )]
 public class NotificationManagementHttpApiHostModule : AbpModule
@@ -27,7 +28,7 @@ public class NotificationManagementHttpApiHostModule : AbpModule
             .AddAbpProLocalization()
             .AddAbpProExceptions()
             .AddAbpProSwagger("NotificationManagement");
-        Configure<AbpDbContextOptions>(options => { options.UseMySQL(); });
+        Configure<AbpDbContextOptions>(options => { options.UseNpgsql(); });
     }
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)

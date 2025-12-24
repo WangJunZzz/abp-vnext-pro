@@ -5,9 +5,8 @@ public class FileManagementHttpApiHostMigrationsDbContextFactory : IDesignTimeDb
     public FileManagementHttpApiHostMigrationsDbContext CreateDbContext(string[] args)
     {
         var configuration = BuildConfiguration();
-
         var builder = new DbContextOptionsBuilder<FileManagementHttpApiHostMigrationsDbContext>()
-            .UseMySQL(configuration.GetConnectionString("Default") ?? string.Empty);
+            .UseNpgsql(configuration.GetConnectionString("Default") ?? string.Empty);
         return new FileManagementHttpApiHostMigrationsDbContext(builder.Options);
     }
 

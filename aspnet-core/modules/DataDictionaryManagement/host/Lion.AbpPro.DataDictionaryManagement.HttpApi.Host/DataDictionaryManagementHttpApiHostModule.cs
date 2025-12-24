@@ -1,6 +1,7 @@
 using Lion.AbpPro.AspNetCore;
 using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using Volo.Abp.EntityFrameworkCore.PostgreSql;
 
 namespace Lion.AbpPro.DataDictionaryManagement
 {
@@ -11,7 +12,7 @@ namespace Lion.AbpPro.DataDictionaryManagement
         typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
         typeof(AbpAutofacModule),
         typeof(AbpCachingStackExchangeRedisModule),
-        typeof(AbpEntityFrameworkCoreMySQLModule),
+        typeof(AbpEntityFrameworkCorePostgreSqlModule),
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),

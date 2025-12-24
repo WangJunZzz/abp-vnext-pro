@@ -1,3 +1,5 @@
+using Volo.Abp.EntityFrameworkCore.PostgreSql;
+
 namespace Lion.AbpPro.BasicManagement;
 
 [DependsOn(
@@ -7,7 +9,7 @@ namespace Lion.AbpPro.BasicManagement;
     typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
     typeof(AbpAutofacModule),
     typeof(AbpCachingStackExchangeRedisModule),
-    typeof(AbpEntityFrameworkCoreMySQLModule),
+    typeof(AbpEntityFrameworkCorePostgreSqlModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule),
     typeof(AbpProAspNetCoreModule)
@@ -25,7 +27,7 @@ public class BasicManagementHttpApiHostModule : AbpModule
             .AddAbpProLocalization()
             .AddAbpProExceptions()
             .AddAbpProSwagger("BasicManagement");
-        Configure<AbpDbContextOptions>(options => { options.UseMySQL(); });
+        Configure<AbpDbContextOptions>(options => { options.UseNpgsql(); });
     }
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
