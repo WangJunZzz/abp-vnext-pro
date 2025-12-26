@@ -1,5 +1,4 @@
 ﻿using Lion.AbpPro.LanguageManagement.Languages;
-using Mapster;
 
 namespace Lion.AbpPro.LanguageManagement;
 
@@ -8,13 +7,11 @@ public class DatabaseLanguageProvider : ILanguageProvider, ITransientDependency
 {
     private readonly ILanguageManager _languageManager;
     private readonly IDistributedCache<LanguageListCacheItem> _distributedCache;
-    private readonly IObjectMapper _objectMapper;
 
-    public DatabaseLanguageProvider(ILanguageManager languageManager, IDistributedCache<LanguageListCacheItem> distributedCache, IObjectMapper objectMapper)
+    public DatabaseLanguageProvider(ILanguageManager languageManager, IDistributedCache<LanguageListCacheItem> distributedCache)
     {
         _languageManager = languageManager;
         _distributedCache = distributedCache;
-        _objectMapper = objectMapper;
     }
 
     public virtual async Task<IReadOnlyList<LanguageInfo>> GetLanguagesAsync()

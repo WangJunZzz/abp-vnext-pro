@@ -31,6 +31,7 @@
         <!-- FreeSql-->
         <PackageReference Update="FreeSql" Version="3.5.304"/>
         <PackageReference Update="FreeSql.Provider.MysqlConnector" Version="3.5.304"/>
+        <PackageReference Update="FreeSql.Provider.PostgreSQL" Version="3.5.304"/>
         <PackageReference Update="FreeSql.Provider.Sqlite" Version="3.5.304"/>
 
         <!-- 单元测试包-->
@@ -50,6 +51,7 @@
         <PackageReference Update="DotNetCore.CAP" Version="10.0.0"/>
         <PackageReference Update="DotNetCore.CAP.Dashboard" Version="10.0.0"/>
         <PackageReference Update="DotNetCore.CAP.Mysql" Version="10.0.0"/>
+        <PackageReference Update="DotNetCore.CAP.PostgreSql" Version="10.0.0"/>
         <PackageReference Update="DotNetCore.CAP.RabbitMQ" Version="10.0.0"/>
         <PackageReference Update="DotNetCore.CAP.InMemoryStorage" Version="10.0.0"/>
         <PackageReference Update="Savorboard.CAP.InMemoryMessageQueue" Version="8.2.1"/>

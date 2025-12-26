@@ -5,8 +5,7 @@ namespace Lion.AbpPro.DbMigrator
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        typeof(AbpProEntityFrameworkCoreModule),
-        typeof(AbpProApplicationContractsModule)
+        typeof(AbpProEntityFrameworkCoreModule)
         )]
     public class AbpProDbMigratorModule : AbpModule
     {

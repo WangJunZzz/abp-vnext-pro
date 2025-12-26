@@ -7,7 +7,6 @@ global using System.Threading.Tasks;
 global using Lion.AbpPro.BasicManagement;
 global using Lion.AbpPro.DataDictionaryManagement;
 global using Lion.AbpPro.Core;
-global using Lion.AbpPro.FreeSqlRepository;
 global using Lion.AbpPro.LanguageManagement;
 global using Lion.AbpPro.NotificationManagement;
 global using Lion.AbpPro.Permissions;

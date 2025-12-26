@@ -10,7 +10,7 @@ public class AbpProAspNetCoreConsts
     /// <summary>
     /// Cookies名称
     /// </summary>
-    public const string DefaultCookieName = "Lion.AbpPro.Http.Api";
+    public const string DefaultCookieName = "Lion.AbpPro";
 
     /// <summary>
     /// Consul网关配置节名称
@@ -46,4 +46,14 @@ public class AbpProAspNetCoreConsts
     /// token 
     /// </summary>
     public const string Jwt = "Jwt";
+    
+    /// <summary>
+    /// Cookie 
+    /// </summary>
+    public const string Cookie = "Cookie";
+    
+    /// <summary>
+    /// AntiForgery
+    /// </summary>
+    public const string AntiForgery = "AntiForgery";
 }

@@ -4,7 +4,7 @@ using Lion.AbpPro.AspNetCore.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.IdentityModel.Tokens;
-
+using Swagger;
 using Volo.Abp.AspNetCore.Auditing;
 using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.AntiForgery;
@@ -128,7 +128,12 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddAbpProAntiForgery(this IServiceCollection service)
     {
-        service.Configure<AbpAntiForgeryOptions>(options => { options.AutoValidate = false; });
+        var antiForgeryOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProAntiForgeryOptions>>().Value;
+        if (antiForgeryOptions.Enabled)
+        {
+            service.Configure<AbpAntiForgeryOptions>(options => { options.AutoValidate = antiForgeryOptions.Enabled; });
+        }
+        
         return service;
     }
 
@@ -161,8 +166,8 @@ public static class ServiceCollectionExtensions
             options.SwaggerDoc(name, new OpenApiInfo { Title = name, Version = version });
             options.DocInclusionPredicate((docName, description) => true);
             //options.EnableAnnotations(); // 启用注解
-            //options.DocumentFilter<HiddenAbpDefaultApiFilter>();
-            //options.SchemaFilter<EnumSchemaFilter>();
+            options.DocumentFilter<HiddenAbpDefaultApiFilter>();
+            options.SchemaFilter<EnumSchemaFilter>();
             // 加载所有xml注释，这里会导致swagger加载有点缓慢
             var xmlPaths = Directory.GetFiles(AppContext.BaseDirectory, "*.xml");
             foreach (var xml in xmlPaths)
@@ -244,6 +249,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddAbpProAuthentication(this IServiceCollection service)
     {
         var jwtOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProJwtOptions>>().Value;
+        var cookieOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProCookieOptions>>().Value;
         
         service.AddAuthentication(options =>
             {
@@ -295,7 +301,7 @@ public static class ServiceCollectionExtensions
 
                         if (accessToken.IsNullOrWhiteSpace())
                         {
-                            accessToken = currentContext.Request.Cookies[AbpProAspNetCoreConsts.DefaultCookieName];
+                            accessToken = currentContext.Request.Cookies[cookieOptions.Name];
                         }
 
                         currentContext.Token = accessToken;

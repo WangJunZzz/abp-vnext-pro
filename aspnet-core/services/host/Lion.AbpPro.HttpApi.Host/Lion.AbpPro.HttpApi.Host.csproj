@@ -22,7 +22,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis"/>
-        <PackageReference Include="DotNetCore.CAP.MySql"/>
+        <PackageReference Include="DotNetCore.CAP.PostgreSql"/>
         <PackageReference Include="DotNetCore.CAP.RabbitMQ"/>
         <PackageReference Include="DotNetCore.CAP.Dashboard"/>
         <PackageReference Include="DistributedLock.Redis"/>

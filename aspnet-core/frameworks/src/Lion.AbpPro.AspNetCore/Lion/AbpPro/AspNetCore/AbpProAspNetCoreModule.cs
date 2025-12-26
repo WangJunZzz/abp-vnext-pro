@@ -15,5 +15,7 @@ public class AbpProAspNetCoreModule : AbpModule
         context.Services.Configure<AbpProSwaggerOptions>(context.Configuration.GetSection(AbpProAspNetCoreConsts.Swagger));
         context.Services.Configure<AbpProAuditOptions>(context.Configuration.GetSection(AbpProAspNetCoreConsts.Audit));
         context.Services.Configure<AbpProJwtOptions>(context.Configuration.GetSection(AbpProAspNetCoreConsts.Jwt));
+        context.Services.Configure<AbpProCookieOptions>(context.Configuration.GetSection(AbpProAspNetCoreConsts.Cookie));
+        context.Services.Configure<AbpProAntiForgeryOptions>(context.Configuration.GetSection(AbpProAspNetCoreConsts.AntiForgery));
     }
 }

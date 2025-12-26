@@ -14,10 +14,5 @@
         <ProjectReference Include="..\..\..\modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Application.Contracts\Lion.AbpPro.LanguageManagement.Application.Contracts.csproj" />
         <ProjectReference Include="..\Lion.AbpPro.Domain.Shared\Lion.AbpPro.Domain.Shared.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Volo.Abp.ObjectExtending" />
-    </ItemGroup>
-
-
+    
 </Project>

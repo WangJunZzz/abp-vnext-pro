@@ -17,8 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-   
-    <ProjectReference Include="..\Lion.AbpPro.Application.Contracts\Lion.AbpPro.Application.Contracts.csproj" />
     <ProjectReference Include="..\Lion.AbpPro.EntityFrameworkCore\Lion.AbpPro.EntityFrameworkCore.csproj" />
   </ItemGroup>
   
