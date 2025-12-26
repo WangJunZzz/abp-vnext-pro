@@ -11,7 +11,7 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<MyProjectNameDbContext>()
-                .UseMySQL(configuration.GetConnectionString("Default") ?? string.Empty);
+                .UseNpgsql(configuration.GetConnectionString("Default") ?? string.Empty);
 
             return new MyProjectNameDbContext(builder.Options);
         }

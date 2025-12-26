@@ -29,7 +29,7 @@ global using Volo.Abp.BackgroundJobs;
 global using Volo.Abp.Data;
 global using Volo.Abp.DependencyInjection;
 global using Volo.Abp.EntityFrameworkCore;
-global using Volo.Abp.EntityFrameworkCore.MySQL;
+global using Volo.Abp.EntityFrameworkCore.PostgreSql;
 global using Volo.Abp.FeatureManagement;
 global using Volo.Abp.Identity;
 global using Volo.Abp.Modularity;

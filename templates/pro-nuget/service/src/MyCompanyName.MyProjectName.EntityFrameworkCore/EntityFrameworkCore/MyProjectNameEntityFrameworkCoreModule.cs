@@ -4,7 +4,7 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
 {
     [DependsOn(
         typeof(MyProjectNameDomainModule),
-        typeof(AbpEntityFrameworkCoreMySQLModule),
+        typeof(AbpEntityFrameworkCorePostgreSqlModule),
         typeof(BasicManagementEntityFrameworkCoreModule),
         typeof(DataDictionaryManagementEntityFrameworkCoreModule),
         typeof(NotificationManagementEntityFrameworkCoreModule),
@@ -15,6 +15,7 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
             MyProjectNameEfCoreEntityExtensionMappings.Configure();
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
 
         public override void ConfigureServices(ServiceConfigurationContext context)
@@ -31,7 +32,7 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
             });
             Configure<AbpDbContextOptions>(options =>
             {
-                options.UseMySQL(builder =>
+                options.UseNpgsql(builder =>
                 {
                     builder.TranslateParameterizedCollectionsToConstants();
                 });

@@ -10,12 +10,17 @@ namespace MyCompanyName.MyProjectName.MyModuleName;
     typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
     typeof(AbpAutofacModule),
     typeof(AbpCachingStackExchangeRedisModule),
-    typeof(AbpEntityFrameworkCoreMySQLModule),
+    typeof(AbpEntityFrameworkCorePostgreSqlModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule)
 )]
 public class MyModuleNameHttpApiHostModule : AbpModule
 {
+    public override void PreConfigureServices(ServiceConfigurationContext context)
+    {
+         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    }
+
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         context.Services.AddAbpProSwagger("MyProjectName")

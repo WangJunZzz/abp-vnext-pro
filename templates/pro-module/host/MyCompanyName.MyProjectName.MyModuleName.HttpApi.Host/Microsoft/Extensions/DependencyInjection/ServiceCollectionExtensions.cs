@@ -34,7 +34,7 @@ public static class ServiceCollectionExtensions
     
     public static IServiceCollection AddAbpProDbContext(this IServiceCollection service)
     {
-        service.Configure<AbpDbContextOptions>(options => { options.UseMySQL(builder => { builder.TranslateParameterizedCollectionsToConstants(); }); });
+        service.Configure<AbpDbContextOptions>(options => { options.UseNpgsql(builder => { builder.TranslateParameterizedCollectionsToConstants(); }); });
         return service;
     }
 

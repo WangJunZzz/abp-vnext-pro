@@ -6,18 +6,10 @@ namespace MyCompanyName.MyProjectName
         typeof(BasicManagementApplicationModule),
         typeof(NotificationManagementApplicationModule),
         typeof(DataDictionaryManagementApplicationModule),
-        typeof(LanguageManagementApplicationModule),
-        typeof(MyProjectNameFreeSqlModule)
+        typeof(LanguageManagementApplicationModule)
         )]
     public class MyProjectNameApplicationModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
-        {
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddMaps<MyProjectNameApplicationModule>();
-            });
-            
-        }
+      
     }
 }

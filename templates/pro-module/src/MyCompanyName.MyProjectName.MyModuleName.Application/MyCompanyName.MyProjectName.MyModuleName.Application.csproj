@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <RootNamespace>MyCompanyName.MyProjectName.MyModuleName</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.AutoMapper"/>
+        
         <PackageReference Include="Volo.Abp.Ddd.Application"/>
         <ProjectReference Include="..\MyCompanyName.MyProjectName.MyModuleName.Application.Contracts\MyCompanyName.MyProjectName.MyModuleName.Application.Contracts.csproj"/>
         <ProjectReference Include="..\MyCompanyName.MyProjectName.MyModuleName.Domain\MyCompanyName.MyProjectName.MyModuleName.Domain.csproj"/>
