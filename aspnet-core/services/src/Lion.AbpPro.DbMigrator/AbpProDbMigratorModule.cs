@@ -1,11 +1,11 @@
 using Volo.Abp.Localization;
-using Volo.Abp.Settings;
 
 namespace Lion.AbpPro.DbMigrator
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        typeof(AbpProEntityFrameworkCoreModule)
+        typeof(AbpProEntityFrameworkCoreModule),
+        typeof(AbpProApplicationContractsModule)
         )]
     public class AbpProDbMigratorModule : AbpModule
     {

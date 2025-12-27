@@ -16,6 +16,11 @@ namespace Lion.AbpPro.FileManagement;
 )]
 public class FileManagementHttpApiHostModule : AbpModule
 {
+    public override void PreConfigureServices(ServiceConfigurationContext context)
+    {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    }
+
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         context.Services

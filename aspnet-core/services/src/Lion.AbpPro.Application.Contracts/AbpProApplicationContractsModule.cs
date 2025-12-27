@@ -1,3 +1,4 @@
+using Lion.AbpPro.Ddd.Application.Contracts;
 using Lion.AbpPro.FileManagement;
 
 namespace Lion.AbpPro
@@ -9,7 +10,8 @@ namespace Lion.AbpPro
         typeof(DataDictionaryManagementApplicationContractsModule),
         typeof(LanguageManagementApplicationContractsModule),
         typeof(NotificationManagementApplicationContractsModule),
-        typeof(FileManagementApplicationContractsModule)
+        typeof(FileManagementApplicationContractsModule),
+        typeof(AbpProDddApplicationContractsModule)
     )]
     public class AbpProApplicationContractsModule : AbpModule
     {

@@ -6,6 +6,7 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
     {
         public MyProjectNameDbContext CreateDbContext(string[] args)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             MyProjectNameEfCoreEntityExtensionMappings.Configure();
 
             var configuration = BuildConfiguration();

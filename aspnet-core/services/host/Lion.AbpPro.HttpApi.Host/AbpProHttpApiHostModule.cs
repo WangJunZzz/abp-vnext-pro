@@ -21,6 +21,14 @@ namespace Lion.AbpPro;
 )]
 public partial class AbpProHttpApiHostModule : AbpModule
 {
+    public override void PreConfigureServices(ServiceConfigurationContext context)
+    {
+        // 动态配置
+        // PreConfigure<AbpAspNetCoreMvcOptions>(options =>
+        // {
+        //     options.ConventionalControllers.Create(typeof(AbpProApplicationModule).Assembly);
+        // });
+    }
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         context.Services
@@ -41,6 +49,7 @@ public partial class AbpProHttpApiHostModule : AbpModule
             .AddAbpProExceptions()
             .AddAbpProConsul()
             .AddAbpProSwagger("AbpPro");
+        context.Services.AddAlwaysAllowAuthorization();
     }
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)

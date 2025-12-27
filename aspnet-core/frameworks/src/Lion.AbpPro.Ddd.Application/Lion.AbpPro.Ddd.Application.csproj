@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace/>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.Ddd.Application"/>
+        <PackageReference Include="Mapster"/>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Lion.AbpPro.Ddd.Application.Contracts\Lion.AbpPro.Ddd.Application.Contracts.csproj" />
+    </ItemGroup>
+</Project>

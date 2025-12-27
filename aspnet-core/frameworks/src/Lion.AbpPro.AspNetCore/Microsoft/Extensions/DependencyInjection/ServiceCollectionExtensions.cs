@@ -62,7 +62,7 @@ public static class ServiceCollectionExtensions
             // options.TenantResolvers.Add(new QueryStringTenantResolveContributor());
             // options.TenantResolvers.Add(new RouteTenantResolveContributor());
             options.TenantResolvers.Add(new HeaderTenantResolveContributor());
-            options.TenantResolvers.Add(new CookieTenantResolveContributor());
+            //options.TenantResolvers.Add(new CookieTenantResolveContributor());
         });
 
         return service;
@@ -129,11 +129,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddAbpProAntiForgery(this IServiceCollection service)
     {
         var antiForgeryOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProAntiForgeryOptions>>().Value;
-        if (antiForgeryOptions.Enabled)
-        {
-            service.Configure<AbpAntiForgeryOptions>(options => { options.AutoValidate = antiForgeryOptions.Enabled; });
-        }
-        
+        service.Configure<AbpAntiForgeryOptions>(options => { options.AutoValidate = antiForgeryOptions.Enabled; });
         return service;
     }
 

@@ -1,4 +1,5 @@
 using Lion.AbpPro.DataDictionaryManagement.DataDictionaries.Aggregates;
+using Lion.AbpPro.Demo;
 using Lion.AbpPro.FileManagement.EntityFrameworkCore;
 using Lion.AbpPro.FileManagement.Files;
 using Lion.AbpPro.LanguageManagement.EntityFrameworkCore;
@@ -42,7 +43,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
         public DbSet<Language> Languages { get; set; }
         public DbSet<LanguageText> LanguageTexts { get; set; }
         public DbSet<FileObject> FileObjects { get; set; }
-        
+        public DbSet<DemoAggregate> Demos { get; set; }
         public AbpProDbContext(DbContextOptions<AbpProDbContext> options)
             : base(options)
         {
@@ -79,5 +80,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
             // 文件模块
             builder.ConfigureFileManagement();
         }
+
+
     }
 }
