@@ -1,0 +1,153 @@
+<Solution>
+  <Folder Name="/0.Solution Items/">
+    <File Path="../Readme.md" />
+    <File Path=".dockerignore" />
+    <File Path="Directory.Build.Microsoft.targets" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Build.Volo.targets" />
+    <File Path="Dockerfile" />
+    <File Path="NuGet.Config" />
+  </Folder>
+  <Folder Name="/frameworks/" />
+  <Folder Name="/frameworks/src/">
+    <Project Path="frameworks/src/Lion.AbpPro.AspNetCore/Lion.AbpPro.AspNetCore.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.CAP.EntityFrameworkCore/Lion.AbpPro.CAP.EntityFrameworkCore.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.CAP/Lion.AbpPro.CAP.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.Cli.Core/Lion.AbpPro.Cli.Core.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.Cli/Lion.AbpPro.Cli.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.Core/Lion.AbpPro.Core.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.Ddd.Application.Contracts/Lion.AbpPro.Ddd.Application.Contracts.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.Ddd.Application/Lion.AbpPro.Ddd.Application.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.ElasticSearch/Lion.AbpPro.ElasticSearch.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.Hangfire/Lion.AbpPro.Hangfire.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.HttpClient/Lion.AbpPro.HttpClient.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.Localization/Lion.AbpPro.Localization.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.SignalR/Lion.AbpPro.SignalR.csproj" />
+    <Project Path="frameworks/src/Lion.AbpPro.Starter/Lion.AbpPro.Starter.csproj" />
+  </Folder>
+  <Folder Name="/frameworks/test/">
+    <Project Path="frameworks/test/Lion.AbpPro.Core.Tests/Lion.AbpPro.Core.Tests.csproj" />
+    <Project Path="frameworks/test/Lion.AbpPro.ElasticSearch.Tests/Lion.AbpPro.ElasticSearch.Tests.csproj" />
+    <Project Path="frameworks/test/Lion.AbpPro.Localization.Tests/Lion.AbpPro.Localization.Tests.csproj" />
+  </Folder>
+  <Folder Name="/gateways/">
+    <Project Path="gateways/Lion.AbpPro.WebGateway/Lion.AbpPro.WebGateway.csproj" />
+  </Folder>
+  <Folder Name="/modules/" />
+  <Folder Name="/modules/BasicManagement/" />
+  <Folder Name="/modules/BasicManagement/host/">
+    <Project Path="modules/BasicManagement/host/Lion.AbpPro.BasicManagement.HttpApi.Host/Lion.AbpPro.BasicManagement.HttpApi.Host.csproj" />
+  </Folder>
+  <Folder Name="/modules/BasicManagement/src/">
+    <Project Path="modules/BasicManagement/src/Lion.AbpPro.BasicManagement.Application.Contracts/Lion.AbpPro.BasicManagement.Application.Contracts.csproj" />
+    <Project Path="modules/BasicManagement/src/Lion.AbpPro.BasicManagement.Application/Lion.AbpPro.BasicManagement.Application.csproj" />
+    <Project Path="modules/BasicManagement/src/Lion.AbpPro.BasicManagement.Domain.Shared/Lion.AbpPro.BasicManagement.Domain.Shared.csproj" />
+    <Project Path="modules/BasicManagement/src/Lion.AbpPro.BasicManagement.Domain/Lion.AbpPro.BasicManagement.Domain.csproj" />
+    <Project Path="modules/BasicManagement/src/Lion.AbpPro.BasicManagement.EntityFrameworkCore/Lion.AbpPro.BasicManagement.EntityFrameworkCore.csproj" />
+    <Project Path="modules/BasicManagement/src/Lion.AbpPro.BasicManagement.HttpApi.Client/Lion.AbpPro.BasicManagement.HttpApi.Client.csproj" />
+    <Project Path="modules/BasicManagement/src/Lion.AbpPro.BasicManagement.HttpApi/Lion.AbpPro.BasicManagement.HttpApi.csproj" />
+  </Folder>
+  <Folder Name="/modules/BasicManagement/test/">
+    <Project Path="modules/BasicManagement/test/Lion.AbpPro.BasicManagement.Application.Tests/Lion.AbpPro.BasicManagement.Application.Tests.csproj" />
+    <Project Path="modules/BasicManagement/test/Lion.AbpPro.BasicManagement.Domain.Tests/Lion.AbpPro.BasicManagement.Domain.Tests.csproj" />
+    <Project Path="modules/BasicManagement/test/Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests/Lion.AbpPro.BasicManagement.EntityFrameworkCore.Tests.csproj" />
+    <Project Path="modules/BasicManagement/test/Lion.AbpPro.BasicManagement.TestBase/Lion.AbpPro.BasicManagement.TestBase.csproj" />
+  </Folder>
+  <Folder Name="/modules/DataDictionaryManagement/" />
+  <Folder Name="/modules/DataDictionaryManagement/host/">
+    <Project Path="modules/DataDictionaryManagement/host/Lion.AbpPro.DataDictionaryManagement.HttpApi.Host/Lion.AbpPro.DataDictionaryManagement.HttpApi.Host.csproj" />
+  </Folder>
+  <Folder Name="/modules/DataDictionaryManagement/src/">
+    <Project Path="modules/DataDictionaryManagement/src/Lion.AbpPro.DataDictionaryManagement.Application.Contracts/Lion.AbpPro.DataDictionaryManagement.Application.Contracts.csproj" />
+    <Project Path="modules/DataDictionaryManagement/src/Lion.AbpPro.DataDictionaryManagement.Application/Lion.AbpPro.DataDictionaryManagement.Application.csproj" />
+    <Project Path="modules/DataDictionaryManagement/src/Lion.AbpPro.DataDictionaryManagement.Domain.Shared/Lion.AbpPro.DataDictionaryManagement.Domain.Shared.csproj" />
+    <Project Path="modules/DataDictionaryManagement/src/Lion.AbpPro.DataDictionaryManagement.Domain/Lion.AbpPro.DataDictionaryManagement.Domain.csproj" />
+    <Project Path="modules/DataDictionaryManagement/src/Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore/Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.csproj" />
+    <Project Path="modules/DataDictionaryManagement/src/Lion.AbpPro.DataDictionaryManagement.HttpApi.Client/Lion.AbpPro.DataDictionaryManagement.HttpApi.Client.csproj" />
+    <Project Path="modules/DataDictionaryManagement/src/Lion.AbpPro.DataDictionaryManagement.HttpApi/Lion.AbpPro.DataDictionaryManagement.HttpApi.csproj" />
+  </Folder>
+  <Folder Name="/modules/DataDictionaryManagement/test/">
+    <Project Path="modules/DataDictionaryManagement/test/Lion.AbpPro.DataDictionaryManagement.Application.Tests/Lion.AbpPro.DataDictionaryManagement.Application.Tests.csproj" />
+    <Project Path="modules/DataDictionaryManagement/test/Lion.AbpPro.DataDictionaryManagement.Domain.Tests/Lion.AbpPro.DataDictionaryManagement.Domain.Tests.csproj" />
+    <Project Path="modules/DataDictionaryManagement/test/Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.Tests/Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore.Tests.csproj" />
+    <Project Path="modules/DataDictionaryManagement/test/Lion.AbpPro.DataDictionaryManagement.TestBase/Lion.AbpPro.DataDictionaryManagement.TestBase.csproj" />
+  </Folder>
+  <Folder Name="/modules/FileManagement/" />
+  <Folder Name="/modules/FileManagement/host/">
+    <Project Path="modules/FileManagement/host/Lion.AbpPro.FileManagement.HttpApi.Host/Lion.AbpPro.FileManagement.HttpApi.Host.csproj" />
+  </Folder>
+  <Folder Name="/modules/FileManagement/src/">
+    <Project Path="modules/FileManagement/src/Lion.AbpPro.FileManagement.Application.Contracts/Lion.AbpPro.FileManagement.Application.Contracts.csproj" />
+    <Project Path="modules/FileManagement/src/Lion.AbpPro.FileManagement.Application/Lion.AbpPro.FileManagement.Application.csproj" />
+    <Project Path="modules/FileManagement/src/Lion.AbpPro.FileManagement.Domain.Shared/Lion.AbpPro.FileManagement.Domain.Shared.csproj" />
+    <Project Path="modules/FileManagement/src/Lion.AbpPro.FileManagement.Domain/Lion.AbpPro.FileManagement.Domain.csproj" />
+    <Project Path="modules/FileManagement/src/Lion.AbpPro.FileManagement.EntityFrameworkCore/Lion.AbpPro.FileManagement.EntityFrameworkCore.csproj" />
+    <Project Path="modules/FileManagement/src/Lion.AbpPro.FileManagement.HttpApi.Client/Lion.AbpPro.FileManagement.HttpApi.Client.csproj" />
+    <Project Path="modules/FileManagement/src/Lion.AbpPro.FileManagement.HttpApi/Lion.AbpPro.FileManagement.HttpApi.csproj" />
+  </Folder>
+  <Folder Name="/modules/FileManagement/test/">
+    <Project Path="modules/FileManagement/test/Lion.AbpPro.FileManagement.Application.Tests/Lion.AbpPro.FileManagement.Application.Tests.csproj" />
+    <Project Path="modules/FileManagement/test/Lion.AbpPro.FileManagement.Domain.Tests/Lion.AbpPro.FileManagement.Domain.Tests.csproj" />
+    <Project Path="modules/FileManagement/test/Lion.AbpPro.FileManagement.EntityFrameworkCore.Tests/Lion.AbpPro.FileManagement.EntityFrameworkCore.Tests.csproj" />
+    <Project Path="modules/FileManagement/test/Lion.AbpPro.FileManagement.TestBase/Lion.AbpPro.FileManagement.TestBase.csproj" />
+  </Folder>
+  <Folder Name="/modules/LanguageManagement/" />
+  <Folder Name="/modules/LanguageManagement/host/">
+    <Project Path="modules/LanguageManagement/host/Lion.AbpPro.LanguageManagement.HttpApi.Host/Lion.AbpPro.LanguageManagement.HttpApi.Host.csproj" />
+  </Folder>
+  <Folder Name="/modules/LanguageManagement/src/">
+    <Project Path="modules/LanguageManagement/src/Lion.AbpPro.LanguageManagement.Application.Contracts/Lion.AbpPro.LanguageManagement.Application.Contracts.csproj" />
+    <Project Path="modules/LanguageManagement/src/Lion.AbpPro.LanguageManagement.Application/Lion.AbpPro.LanguageManagement.Application.csproj" />
+    <Project Path="modules/LanguageManagement/src/Lion.AbpPro.LanguageManagement.Domain.Shared/Lion.AbpPro.LanguageManagement.Domain.Shared.csproj" />
+    <Project Path="modules/LanguageManagement/src/Lion.AbpPro.LanguageManagement.Domain/Lion.AbpPro.LanguageManagement.Domain.csproj" />
+    <Project Path="modules/LanguageManagement/src/Lion.AbpPro.LanguageManagement.EntityFrameworkCore/Lion.AbpPro.LanguageManagement.EntityFrameworkCore.csproj" />
+    <Project Path="modules/LanguageManagement/src/Lion.AbpPro.LanguageManagement.HttpApi.Client/Lion.AbpPro.LanguageManagement.HttpApi.Client.csproj" />
+    <Project Path="modules/LanguageManagement/src/Lion.AbpPro.LanguageManagement.HttpApi/Lion.AbpPro.LanguageManagement.HttpApi.csproj" />
+  </Folder>
+  <Folder Name="/modules/LanguageManagement/test/">
+    <Project Path="modules/LanguageManagement/test/Lion.AbpPro.LanguageManagement.Application.Tests/Lion.AbpPro.LanguageManagement.Application.Tests.csproj" />
+    <Project Path="modules/LanguageManagement/test/Lion.AbpPro.LanguageManagement.Domain.Tests/Lion.AbpPro.LanguageManagement.Domain.Tests.csproj" />
+    <Project Path="modules/LanguageManagement/test/Lion.AbpPro.LanguageManagement.EntityFrameworkCore.Tests/Lion.AbpPro.LanguageManagement.EntityFrameworkCore.Tests.csproj" />
+    <Project Path="modules/LanguageManagement/test/Lion.AbpPro.LanguageManagement.TestBase/Lion.AbpPro.LanguageManagement.TestBase.csproj" />
+  </Folder>
+  <Folder Name="/modules/NotificationManagement/" />
+  <Folder Name="/modules/NotificationManagement/host/">
+    <Project Path="modules/NotificationManagement/host/Lion.AbpPro.NotificationManagement.HttpApi.Host/Lion.AbpPro.NotificationManagement.HttpApi.Host.csproj" />
+  </Folder>
+  <Folder Name="/modules/NotificationManagement/src/">
+    <Project Path="modules/NotificationManagement/src/Lion.AbpPro.NotificationManagement.Application.Contracts/Lion.AbpPro.NotificationManagement.Application.Contracts.csproj" />
+    <Project Path="modules/NotificationManagement/src/Lion.AbpPro.NotificationManagement.Application/Lion.AbpPro.NotificationManagement.Application.csproj" />
+    <Project Path="modules/NotificationManagement/src/Lion.AbpPro.NotificationManagement.Domain.Shared/Lion.AbpPro.NotificationManagement.Domain.Shared.csproj" />
+    <Project Path="modules/NotificationManagement/src/Lion.AbpPro.NotificationManagement.Domain/Lion.AbpPro.NotificationManagement.Domain.csproj" />
+    <Project Path="modules/NotificationManagement/src/Lion.AbpPro.NotificationManagement.EntityFrameworkCore/Lion.AbpPro.NotificationManagement.EntityFrameworkCore.csproj" />
+    <Project Path="modules/NotificationManagement/src/Lion.AbpPro.NotificationManagement.HttpApi.Client/Lion.AbpPro.NotificationManagement.HttpApi.Client.csproj" />
+    <Project Path="modules/NotificationManagement/src/Lion.AbpPro.NotificationManagement.HttpApi/Lion.AbpPro.NotificationManagement.HttpApi.csproj" />
+  </Folder>
+  <Folder Name="/modules/NotificationManagement/test/">
+    <Project Path="modules/NotificationManagement/test/Lion.AbpPro.NotificationManagement.Application.Tests/Lion.AbpPro.NotificationManagement.Application.Tests.csproj" />
+    <Project Path="modules/NotificationManagement/test/Lion.AbpPro.NotificationManagement.Domain.Tests/Lion.AbpPro.NotificationManagement.Domain.Tests.csproj" />
+    <Project Path="modules/NotificationManagement/test/Lion.AbpPro.NotificationManagement.EntityFrameworkCore.Tests/Lion.AbpPro.NotificationManagement.EntityFrameworkCore.Tests.csproj" />
+    <Project Path="modules/NotificationManagement/test/Lion.AbpPro.NotificationManagement.TestBase/Lion.AbpPro.NotificationManagement.TestBase.csproj" />
+  </Folder>
+  <Folder Name="/services/" />
+  <Folder Name="/services/host/">
+    <Project Path="services/host/Lion.AbpPro.HttpApi.Host/Lion.AbpPro.HttpApi.Host.csproj" />
+  </Folder>
+  <Folder Name="/services/src/">
+    <Project Path="services/src/Lion.AbpPro.Application.Contracts/Lion.AbpPro.Application.Contracts.csproj" />
+    <Project Path="services/src/Lion.AbpPro.Application/Lion.AbpPro.Application.csproj" />
+    <Project Path="services/src/Lion.AbpPro.DbMigrator/Lion.AbpPro.DbMigrator.csproj" />
+    <Project Path="services/src/Lion.AbpPro.Domain.Shared/Lion.AbpPro.Domain.Shared.csproj" />
+    <Project Path="services/src/Lion.AbpPro.Domain/Lion.AbpPro.Domain.csproj" />
+    <Project Path="services/src/Lion.AbpPro.EntityFrameworkCore/Lion.AbpPro.EntityFrameworkCore.csproj" />
+    <Project Path="services/src/Lion.AbpPro.HttpApi.Client/Lion.AbpPro.HttpApi.Client.csproj" />
+    <Project Path="services/src/Lion.AbpPro.HttpApi/Lion.AbpPro.HttpApi.csproj" />
+  </Folder>
+  <Folder Name="/services/test/">
+    <Project Path="services/test/Lion.AbpPro.Application.Tests/Lion.AbpPro.Application.Tests.csproj" />
+    <Project Path="services/test/Lion.AbpPro.Domain.Tests/Lion.AbpPro.Domain.Tests.csproj" />
+    <Project Path="services/test/Lion.AbpPro.EntityFrameworkCore.Tests/Lion.AbpPro.EntityFrameworkCore.Tests.csproj" />
+    <Project Path="services/test/Lion.AbpPro.HttpApi.Client.ConsoleTestApp/Lion.AbpPro.HttpApi.Client.ConsoleTestApp.csproj" />
+    <Project Path="services/test/Lion.AbpPro.TestBase/Lion.AbpPro.TestBase.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,31 @@
+<Solution>
+  <Folder Name="/0.Solution Items/">
+    <File Path="Directory.Build.Lion.targets" />
+    <File Path="Directory.Build.Microsoft.targets" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Build.Volo.targets" />
+    <File Path="NuGet.Config" />
+  </Folder>
+  <Folder Name="/host/">
+    <Project Path="host/MyCompanyName.MyProjectName.HttpApi.Host/MyCompanyName.MyProjectName.HttpApi.Host.csproj" />
+    <Project Path="host/MyCompanyName.MyProjectName.WebGateway/MyCompanyName.MyProjectName.WebGateway.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/MyCompanyName.MyProjectName.Application.Contracts/MyCompanyName.MyProjectName.Application.Contracts.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.Application/MyCompanyName.MyProjectName.Application.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.DbMigrator/MyCompanyName.MyProjectName.DbMigrator.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.Domain.Shared/MyCompanyName.MyProjectName.Domain.Shared.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.Domain/MyCompanyName.MyProjectName.Domain.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.EntityFrameworkCore/MyCompanyName.MyProjectName.EntityFrameworkCore.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.FreeSqlRepository/MyCompanyName.MyProjectName.FreeSqlRepository.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.HttpApi.Client/MyCompanyName.MyProjectName.HttpApi.Client.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.HttpApi/MyCompanyName.MyProjectName.HttpApi.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/MyCompanyName.MyProjectName.Application.Tests/MyCompanyName.MyProjectName.Application.Tests.csproj" />
+    <Project Path="test/MyCompanyName.MyProjectName.Domain.Tests/MyCompanyName.MyProjectName.Domain.Tests.csproj" />
+    <Project Path="test/MyCompanyName.MyProjectName.EntityFrameworkCore.Tests/MyCompanyName.MyProjectName.EntityFrameworkCore.Tests.csproj" />
+    <Project Path="test/MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp/MyCompanyName.MyProjectName.HttpApi.Client.ConsoleTestApp.csproj" />
+    <Project Path="test/MyCompanyName.MyProjectName.TestBase/MyCompanyName.MyProjectName.TestBase.csproj" />
+  </Folder>
+</Solution>

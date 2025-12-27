@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/0.Solution Items/">
+    <File Path="Directory.Build.Lion.targets" />
+    <File Path="Directory.Build.Microsoft.targets" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Build.Volo.targets" />
+  </Folder>
+  <Folder Name="/host/">
+    <Project Path="host/MyCompanyName.MyProjectName.MyModuleName.HttpApi.Host/MyCompanyName.MyProjectName.MyModuleName.HttpApi.Host.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/MyCompanyName.MyProjectName.MyModuleName.Application.Contracts/MyCompanyName.MyProjectName.MyModuleName.Application.Contracts.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.MyModuleName.Application/MyCompanyName.MyProjectName.MyModuleName.Application.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.MyModuleName.Domain.Shared/MyCompanyName.MyProjectName.MyModuleName.Domain.Shared.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.MyModuleName.Domain/MyCompanyName.MyProjectName.MyModuleName.Domain.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore/MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.MyModuleName.HttpApi.Client/MyCompanyName.MyProjectName.MyModuleName.HttpApi.Client.csproj" />
+    <Project Path="src/MyCompanyName.MyProjectName.MyModuleName.HttpApi/MyCompanyName.MyProjectName.MyModuleName.HttpApi.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/MyCompanyName.MyProjectName.MyModuleName.Application.Tests/MyCompanyName.MyProjectName.MyModuleName.Application.Tests.csproj" />
+    <Project Path="test/MyCompanyName.MyProjectName.MyModuleName.Domain.Tests/MyCompanyName.MyProjectName.MyModuleName.Domain.Tests.csproj" />
+    <Project Path="test/MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.Tests/MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore.Tests.csproj" />
+    <Project Path="test/MyCompanyName.MyProjectName.MyModuleName.TestBase/MyCompanyName.MyProjectName.MyModuleName.TestBase.csproj" />
+  </Folder>
+</Solution>
