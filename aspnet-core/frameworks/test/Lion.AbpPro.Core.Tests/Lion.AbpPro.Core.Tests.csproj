@@ -22,6 +22,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\src\Lion.AbpPro.Core\Lion.AbpPro.Core.csproj" />
+      <ProjectReference Include="..\..\src\Lion.AbpPro.IdGenerator\Lion.AbpPro.IdGenerator.csproj" />
     </ItemGroup>
 
 </Project>

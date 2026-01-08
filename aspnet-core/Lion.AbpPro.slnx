@@ -24,6 +24,7 @@
     <Project Path="frameworks/src/Lion.AbpPro.Localization/Lion.AbpPro.Localization.csproj" />
     <Project Path="frameworks/src/Lion.AbpPro.SignalR/Lion.AbpPro.SignalR.csproj" />
     <Project Path="frameworks/src/Lion.AbpPro.Starter/Lion.AbpPro.Starter.csproj" />
+    <Project Path="frameworks\src\Lion.AbpPro.IdGenerator\Lion.AbpPro.IdGenerator.csproj" Type="Classic C#" />
   </Folder>
   <Folder Name="/frameworks/test/">
     <Project Path="frameworks/test/Lion.AbpPro.Core.Tests/Lion.AbpPro.Core.Tests.csproj" />

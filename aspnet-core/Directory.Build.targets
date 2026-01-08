@@ -114,5 +114,6 @@
 
         <PackageReference Update="Mapster" Version="7.4.0" />
 
+        <PackageReference Update="Yitter.IdGenerator" Version="1.0.14" />
     </ItemGroup>
 </Project>
