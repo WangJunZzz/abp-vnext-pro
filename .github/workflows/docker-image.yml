@@ -2,7 +2,7 @@ name: Docker-Images
 on:
   push:
     tags:
-      - "*"
+      - "stop"
 
 jobs:
   api:

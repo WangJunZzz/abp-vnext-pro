@@ -9,17 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Dotnet 8.0.100
+      - name: Install Dotnet 10.0.0
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 9.0.102
+          dotnet-version: 10.0.0
           include-prerelease: True
       - name: Setting Version
         id: vars
         run: echo ::set-output name=tag::${GITHUB_REF:10}
       - name: Build
-        run: dotnet build aspnet-core/Lion.AbpPro.sln
+        run: dotnet build aspnet-core/Lion.AbpPro.slnx
       - name: Pack
-        run: dotnet pack aspnet-core/Lion.AbpPro.sln  --include-source --include-symbols /p:Configuration=Release -p:PackageVersion=${GITHUB_REF:10} --output nupkgs
+        run: dotnet pack aspnet-core/Lion.AbpPro.slnx  --include-source --include-symbols /p:Configuration=Release -p:PackageVersion=${GITHUB_REF:10} --output nupkgs
       - name: Push
         run: dotnet nuget push nupkgs/*.symbols.nupkg -k ${{secrets.NUGET_KEY}} -s https://api.nuget.org/v3/index.json
