@@ -12,7 +12,7 @@ jobs:
       - name: Install Dotnet 10.0.0
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 10.0.0
+          dotnet-version: 10.0.100
           include-prerelease: True
       - name: Setting Version
         id: vars
