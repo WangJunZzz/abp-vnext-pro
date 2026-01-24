@@ -1,5 +1,4 @@
-﻿using Hangfire.Redis.StackExchange;
-using Medallion.Threading;
+﻿using Medallion.Threading;
 using Medallion.Threading.Redis;
 
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -55,32 +54,6 @@ public static class ServiceCollectionExtensions
             .AddSignalR()
             .AddStackExchangeRedis(service.GetConfiguration().GetValue<string>("Redis:Configuration"),
                 options => { options.Configuration.ChannelPrefix = "Lion.AbpPro"; });
-        return service;
-    }
-
-
-    /// <summary>
-    /// 注册hangfire
-    /// </summary>
-    public static IServiceCollection AddAbpProHangfire(this IServiceCollection service)
-    {
-        var redisStorageOptions = new RedisStorageOptions()
-        {
-            Db = service.GetConfiguration().GetValue<int>("Hangfire:Redis:DB")
-        };
-
-        service.Configure<AbpBackgroundJobOptions>(options => { options.IsJobExecutionEnabled = true; });
-
-        service.AddHangfire(config =>
-        {
-            config.UseRedisStorage(service.GetConfiguration().GetValue<string>("Hangfire:Redis:Host"), redisStorageOptions)
-                .WithJobExpirationTimeout(TimeSpan.FromDays(7));
-            var delaysInSeconds = new[] { 10, 60, 60 * 3 }; // 重试时间间隔
-            const int attempts = 3; // 重试次数
-            config.UseFilter(new AutomaticRetryAttribute() { Attempts = 3, DelaysInSeconds = delaysInSeconds });
-            //config.UseFilter(new AutoDeleteAfterSuccessAttribute(TimeSpan.FromDays(7)));
-            //config.UseFilter(new JobRetryLastFilter(attempts));
-        });
         return service;
     }
 }

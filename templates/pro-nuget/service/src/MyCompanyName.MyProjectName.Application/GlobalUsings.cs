@@ -12,7 +12,5 @@ global using MyCompanyName.MyProjectName.Permissions;
 global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.Extensions.Configuration;
 global using Volo.Abp.Application.Services;
-global using Volo.Abp.AutoMapper;
-global using Volo.Abp.BackgroundJobs.Hangfire;
 global using Volo.Abp.DependencyInjection;
 global using Volo.Abp.Modularity;

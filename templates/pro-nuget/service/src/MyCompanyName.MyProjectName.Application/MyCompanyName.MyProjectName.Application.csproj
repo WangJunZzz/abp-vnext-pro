@@ -9,7 +9,6 @@
     <ItemGroup>
         <ProjectReference Include="..\MyCompanyName.MyProjectName.Domain\MyCompanyName.MyProjectName.Domain.csproj"/>
         <ProjectReference Include="..\MyCompanyName.MyProjectName.Application.Contracts\MyCompanyName.MyProjectName.Application.Contracts.csproj"/>
-        <ProjectReference Include="..\MyCompanyName.MyProjectName.FreeSqlRepository\MyCompanyName.MyProjectName.FreeSqlRepository.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -17,10 +16,6 @@
         <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\NotificationManagement\src\Lion.AbpPro.NotificationManagement.Application\Lion.AbpPro.NotificationManagement.Application.csproj"/>
         <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\DataDictionaryManagement\src\Lion.AbpPro.DataDictionaryManagement.Application\Lion.AbpPro.DataDictionaryManagement.Application.csproj"/>
         <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\LanguageManagement\src\Lion.AbpPro.LanguageManagement.Application\Lion.AbpPro.LanguageManagement.Application.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Volo.Abp.BackgroundJobs.HangFire"/>
     </ItemGroup>
 
 </Project>

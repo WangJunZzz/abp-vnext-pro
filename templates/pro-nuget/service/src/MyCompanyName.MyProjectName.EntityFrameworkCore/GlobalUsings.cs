@@ -17,7 +17,6 @@ global using Lion.AbpPro.NotificationManagement;
 global using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
 global using Lion.AbpPro.NotificationManagement.Notifications.Aggregates;
 global using MyCompanyName.MyProjectName.Data;
-global using MyCompanyName.MyProjectName.Users;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Design;
 global using Microsoft.EntityFrameworkCore.Storage;

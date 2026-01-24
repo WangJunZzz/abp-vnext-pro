@@ -17,7 +17,6 @@
     <Project Path="src/MyCompanyName.MyProjectName.Domain.Shared/MyCompanyName.MyProjectName.Domain.Shared.csproj" />
     <Project Path="src/MyCompanyName.MyProjectName.Domain/MyCompanyName.MyProjectName.Domain.csproj" />
     <Project Path="src/MyCompanyName.MyProjectName.EntityFrameworkCore/MyCompanyName.MyProjectName.EntityFrameworkCore.csproj" />
-    <Project Path="src/MyCompanyName.MyProjectName.FreeSqlRepository/MyCompanyName.MyProjectName.FreeSqlRepository.csproj" />
     <Project Path="src/MyCompanyName.MyProjectName.HttpApi.Client/MyCompanyName.MyProjectName.HttpApi.Client.csproj" />
     <Project Path="src/MyCompanyName.MyProjectName.HttpApi/MyCompanyName.MyProjectName.HttpApi.csproj" />
   </Folder>

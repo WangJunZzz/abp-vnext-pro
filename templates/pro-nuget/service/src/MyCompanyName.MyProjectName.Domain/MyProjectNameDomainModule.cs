@@ -9,10 +9,6 @@ namespace MyCompanyName.MyProjectName
     )]
     public class MyProjectNameDomainModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
-        {
-            Configure<AbpMultiTenancyOptions>(options => { options.IsEnabled = MultiTenancyConsts.IsEnabled; });
-            Configure<AbpAutoMapperOptions>(options => { options.AddMaps<MyProjectNameDomainModule>(); });
-        }
+    
     }
 }
