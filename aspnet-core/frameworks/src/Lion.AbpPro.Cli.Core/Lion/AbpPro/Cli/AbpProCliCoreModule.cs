@@ -24,14 +24,14 @@ public class AbpProCliCoreModule : AbpModule
                 new AbpProTemplateOptions("pro", "pro", "源码版本", true)
                 {
                     ExcludeFiles = "templates,docs,.github,LICENSE,.idea,Lion.AbpPro.Cli.sln,Lion.AbpPro.Cli.sln.DotSettings.user",
-                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
+                    ReplaceSuffix = ".slnx,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
                     OldCompanyName = "Lion",
                     OldProjectName = "AbpPro"
                 },
                 new AbpProTemplateOptions("pro-nuget", "pro-nuget", "Nuget完整版本")
                 {
                     ExcludeFiles = "aspnet-core,pro-module,docs,.github,LICENSE,.idea,Lion.AbpPro.Cli.sln,Lion.AbpPro.Cli.sln.DotSettings.user",
-                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
+                    ReplaceSuffix = ".slnx,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
                     OldCompanyName = "MyCompanyName",
                     OldProjectName = "MyProjectName"
                 },
@@ -46,7 +46,7 @@ public class AbpProCliCoreModule : AbpModule
                 new AbpProTemplateOptions("pro-module", "pro-module", "模块")
                 {
                     ExcludeFiles = "aspnet-core,vben28,abp-nuget,docs,.github,LICENSE,.idea,Lion.AbpPro.Cli.sln,Lion.AbpPro.Cli.sln.DotSettings.user",
-                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
+                    ReplaceSuffix = ".slnx,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
                     OldCompanyName = "MyCompanyName",
                     OldProjectName = "MyProjectName",
                     OldModuleName = "MyModuleName",
@@ -63,7 +63,7 @@ public class AbpProCliCoreModule : AbpModule
                 new AbpProTemplateOptions("pro", "pro", "商业版本源码版本")
                 {
                     ExcludeFiles = ".github,LICENSE,Readme.md,.templates,Lion.AbpPro.Cli.sln",
-                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
+                    ReplaceSuffix = ".slnx,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
                     OldCompanyName = "Lion",
                     OldProjectName = "AbpPro",
                     OldModuleName = "",
@@ -71,8 +71,8 @@ public class AbpProCliCoreModule : AbpModule
                 
                 new AbpProTemplateOptions("pro-nuget", "pro-nuget", "商业版本nuget版本")
                 {
-                    ExcludeFiles = ".github,LICENSE,Readme.md,aspnet-core,.idea,gateways,MyCompanyName.MyProjectName.Gateways.sln,MyCompanyName.MyProjectName.Gateways.sln.DotSettings.user",
-                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets,.sln.DotSettings.user",
+                    ExcludeFiles = ".github,LICENSE,Readme.md,aspnet-core,.idea,gateways,MyCompanyName.MyProjectName.Gateways.slnx,MyCompanyName.MyProjectName.Gateways.slnx.DotSettings.user",
+                    ReplaceSuffix = ".slnx,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets,.sln.DotSettings.user",
                     OldCompanyName = "MyCompanyName",
                     OldProjectName = "MyProjectName",
                     OldModuleName = "",
@@ -80,8 +80,8 @@ public class AbpProCliCoreModule : AbpModule
                 
                 new AbpProTemplateOptions("pro-nuget-gateways", "pro-nuget", "商业版本nuget网关版本")
                 {
-                    ExcludeFiles = ".github,LICENSE,Readme.md,aspnet-core,.idea,MyCompanyName.MyProjectName.sln,MyCompanyName.MyProjectName.sln.DotSettings.user,Lion.AbpPro.Cli.sln",
-                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets,.sln.DotSettings.user",
+                    ExcludeFiles = ".github,LICENSE,Readme.md,aspnet-core,.idea,MyCompanyName.MyProjectName.slnx,MyCompanyName.MyProjectName.slnx.DotSettings.user,Lion.AbpPro.Cli.sln",
+                    ReplaceSuffix = ".slnx,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets,.sln.DotSettings.user",
                     OldCompanyName = "MyCompanyName",
                     OldProjectName = "MyProjectName",
                     OldModuleName = "",

@@ -1,7 +1,6 @@
 ﻿<Project>
     <ItemGroup>
         <PackageReference Update="Volo.Abp.Autofac" Version="10.0.1"/>
-        <PackageReference Update="Lion.AbpPro.Localization" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.Threading" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.Json" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.Json.Abstractions" Version="10.0.1"/>
