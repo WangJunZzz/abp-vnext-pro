@@ -8,6 +8,7 @@
 
     <ItemGroup>
         <PackageReference Include="Mapster"/>
+        <PackageReference Include="Volo.Abp.Guids"/>
         <ProjectReference Include="..\Lion.AbpPro.Localization\Lion.AbpPro.Localization.csproj"/>
     </ItemGroup>
 </Project>

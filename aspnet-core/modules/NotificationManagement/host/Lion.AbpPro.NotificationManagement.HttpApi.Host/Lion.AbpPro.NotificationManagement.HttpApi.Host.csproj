@@ -25,7 +25,6 @@
         <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis"/>
         <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy"/>
         <PackageReference Include="Volo.Abp.AspNetCore.Serilog"/>
-        <PackageReference Include="Volo.Abp.Swashbuckle"/>
         <PackageReference Include="Swashbuckle.AspNetCore"/>
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations"/>
     </ItemGroup>

@@ -1,3 +1,5 @@
+using Volo.Abp.AspNetCore.Mvc.ExceptionHandling;
+
 namespace Microsoft.AspNetCore.Mvc.Filters;
 
 [Dependency(ReplaceServices = true)]

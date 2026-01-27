@@ -77,6 +77,5 @@ global using Volo.Abp.Json;
 global using Volo.Abp.Localization;
 global using Volo.Abp.Modularity;
 global using Volo.Abp.MultiTenancy;
-global using Volo.Abp.Swashbuckle;
 global using Volo.Abp.Users;
 global using Volo.Abp.Validation;

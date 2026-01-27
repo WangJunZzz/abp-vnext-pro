@@ -1,9 +1,7 @@
 using Lion.AbpPro.AspNetCore.Options;
-using Volo.Abp.Swashbuckle;
 
 namespace Lion.AbpPro.AspNetCore;
 
-//[DependsOn(typeof(AbpSwashbuckleModule))]
 public class AbpProAspNetCoreModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)

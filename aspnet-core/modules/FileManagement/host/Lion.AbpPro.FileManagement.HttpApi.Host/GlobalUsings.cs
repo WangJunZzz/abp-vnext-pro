@@ -28,5 +28,5 @@ global using Volo.Abp.Caching.StackExchangeRedis;
 global using Volo.Abp.EntityFrameworkCore;
 global using Volo.Abp.Localization;
 global using Volo.Abp.Modularity;
-global using Volo.Abp.Swashbuckle;
+
 global using Volo.Abp.VirtualFileSystem;

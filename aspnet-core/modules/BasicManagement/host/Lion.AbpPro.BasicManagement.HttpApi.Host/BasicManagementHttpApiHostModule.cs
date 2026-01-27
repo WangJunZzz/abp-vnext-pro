@@ -11,7 +11,7 @@ namespace Lion.AbpPro.BasicManagement;
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpEntityFrameworkCorePostgreSqlModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpSwashbuckleModule),
+    
     typeof(AbpProAspNetCoreModule)
 )]
 public class BasicManagementHttpApiHostModule : AbpModule
@@ -50,7 +50,7 @@ public class BasicManagementHttpApiHostModule : AbpModule
         app.UseAbpRequestLocalization();
         app.UseAuthorization();
         app.UseSwagger();
-        app.UseAbpSwaggerUI(options =>
+        app.UseSwaggerUI(options =>
         {
             options.SwaggerEndpoint("/swagger/BasicManagement/swagger.json", "BasicManagement API");
             options.DocExpansion(DocExpansion.None);

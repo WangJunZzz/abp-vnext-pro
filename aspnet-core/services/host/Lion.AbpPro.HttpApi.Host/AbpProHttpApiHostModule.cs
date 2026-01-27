@@ -15,8 +15,7 @@ namespace Lion.AbpPro;
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpDistributedLockingModule),
     typeof(AbpBlobStoringFileSystemModule),
-    typeof(AbpProStarterModule),
-    typeof(AbpSwashbuckleModule)
+    typeof(AbpProStarterModule)
     //typeof(AbpBackgroundJobsHangfireModule)
 )]
 public partial class AbpProHttpApiHostModule : AbpModule
@@ -29,6 +28,7 @@ public partial class AbpProHttpApiHostModule : AbpModule
         //     options.ConventionalControllers.Create(typeof(AbpProApplicationModule).Assembly);
         // });
     }
+
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         context.Services
@@ -64,20 +64,19 @@ public partial class AbpProHttpApiHostModule : AbpModule
         app.UseAuthentication();
         app.UseAbpProMultiTenancy();
         app.UseAuthorization();
-        app.UseAbpProSwaggerUI("/swagger/AbpPro/swagger.json","AbpPro");
+        app.UseAbpProSwaggerUI("/swagger/AbpPro/swagger.json", "AbpPro");
         app.UseAbpProAuditing();
         app.UseAbpSerilogEnrichers();
         app.UseUnitOfWork();
         app.UseConfiguredEndpoints(endpoints =>
         {
-            endpoints.MapHealthChecks("/health"); 
-                
+            endpoints.MapHealthChecks("/health");
+
             // endpoints.MapHangfireDashboard("/hangfire", new DashboardOptions()
             // {
             //     Authorization = new[] { new CustomHangfireAuthorizeFilter() },
             //     IgnoreAntiforgeryToken = true
             // });
-
         });
         app.UseAbpProConsul();
     }

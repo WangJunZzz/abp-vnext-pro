@@ -1,3 +1,6 @@
+using System.Text.Json.Nodes;
+using Microsoft.OpenApi;
+
 namespace Swagger;
 
 /// <summary>
@@ -6,16 +9,17 @@ namespace Swagger;
 /// </summary>
 public class EnumSchemaFilter : ISchemaFilter
 {
-    public void Apply(OpenApiSchema schema, SchemaFilterContext context)
+    public void Apply(IOpenApiSchema schema, SchemaFilterContext context)
     {
-        if (context.Type.IsEnum)
+        if (schema is OpenApiSchema openApiScheme && context.Type.IsEnum)
         {
-            var array = new OpenApiArray();
-            array.AddRange(Enum.GetNames(context.Type).Select(n => new OpenApiString(n)));
-            // NSwag
-            schema.Extensions.Add("x-enumNames", array);
-            // Openapi-generator
-            schema.Extensions.Add("x-enum-varnames", array);
+            openApiScheme.Enum?.Clear();
+            openApiScheme.Type = JsonSchemaType.String;
+            openApiScheme.Format = null;
+            foreach (var name in Enum.GetNames(context.Type))
+            {
+                openApiScheme.Enum?.Add(JsonNode.Parse($"\"{name}\"")!);
+            }
         }
     }
 }

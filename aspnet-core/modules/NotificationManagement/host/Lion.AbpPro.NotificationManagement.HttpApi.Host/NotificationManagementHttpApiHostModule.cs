@@ -10,7 +10,7 @@ namespace Lion.AbpPro.NotificationManagement;
     typeof(AbpAutofacModule),
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpSwashbuckleModule),
+    
     typeof(AbpProCapModule),
     typeof(AbpEntityFrameworkCorePostgreSqlModule),
     typeof(AbpProAspNetCoreModule)
@@ -49,7 +49,7 @@ public class NotificationManagementHttpApiHostModule : AbpModule
         app.UseAbpRequestLocalization();
         app.UseAuthorization();
         app.UseSwagger();
-        app.UseAbpSwaggerUI(options =>
+        app.UseSwaggerUI(options =>
         {
             options.SwaggerEndpoint("/swagger/NotificationManagement/swagger.json", "NotificationManagement API");
             options.DocExpansion(DocExpansion.None);

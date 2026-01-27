@@ -84,7 +84,7 @@ public static class ApplicationBuilderExtensions
         var swaggerOptions = app.ApplicationServices.GetRequiredService<IOptions<AbpProSwaggerOptions>>().Value;
         if (!swaggerOptions.Enabled) return app;
         app.UseSwagger();
-        app.UseAbpSwaggerUI(options =>
+        app.UseSwaggerUI(options =>
         {
             options.SwaggerEndpoint(endpoint, name);
             options.DocExpansion(DocExpansion.None);

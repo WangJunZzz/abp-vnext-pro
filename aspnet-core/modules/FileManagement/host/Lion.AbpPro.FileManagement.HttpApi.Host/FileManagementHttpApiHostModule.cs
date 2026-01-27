@@ -10,7 +10,7 @@ namespace Lion.AbpPro.FileManagement;
     typeof(AbpAutofacModule),
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpSwashbuckleModule),
+    
     typeof(AbpEntityFrameworkCorePostgreSqlModule),
     typeof(AbpProAspNetCoreModule)
 )]
@@ -48,7 +48,7 @@ public class FileManagementHttpApiHostModule : AbpModule
         app.UseAbpRequestLocalization();
         app.UseAuthorization();
         app.UseSwagger();
-        app.UseAbpSwaggerUI(options =>
+        app.UseSwaggerUI(options =>
         {
             options.SwaggerEndpoint("/swagger/FileManagement/swagger.json", "FileManagement API");
             options.DocExpansion(DocExpansion.None);

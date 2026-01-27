@@ -34,7 +34,6 @@
         <PackageReference Update="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.EntityFrameworkCore.PostgreSql" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.AspNetCore.Serilog" Version="10.0.1"/>
-        <PackageReference Update="Volo.Abp.Swashbuckle" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.Ddd.Application" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.Ddd.Application.Contracts" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.Authorization" Version="10.0.1"/>
@@ -94,5 +93,6 @@
         <PackageReference Update="Volo.Abp.EventBus" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.Localization" Version="10.0.1" />
         <PackageReference Update="Volo.Abp.DistributedLocking" Version="10.0.1" />
+        <PackageReference Update="Volo.Abp.Guids" Version="10.0.1" />
     </ItemGroup>
 </Project>

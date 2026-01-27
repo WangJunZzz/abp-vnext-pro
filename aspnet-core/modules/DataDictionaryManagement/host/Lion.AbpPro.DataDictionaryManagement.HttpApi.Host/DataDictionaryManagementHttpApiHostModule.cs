@@ -17,7 +17,6 @@ namespace Lion.AbpPro.DataDictionaryManagement
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreSerilogModule),
-        typeof(AbpSwashbuckleModule),
         typeof(AbpProAspNetCoreModule)
     )]
     public class DataDictionaryManagementHttpApiHostModule : AbpModule
@@ -54,7 +53,7 @@ namespace Lion.AbpPro.DataDictionaryManagement
             app.UseAbpRequestLocalization();
             app.UseAuthorization();
             app.UseSwagger();
-            app.UseAbpSwaggerUI(options =>
+            app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/DataDictionaryManagement/swagger.json", "DataDictionaryManagement API");
                 options.DocExpansion(DocExpansion.None);

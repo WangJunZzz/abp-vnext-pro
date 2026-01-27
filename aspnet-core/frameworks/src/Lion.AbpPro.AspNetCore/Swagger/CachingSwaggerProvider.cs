@@ -1,4 +1,6 @@
-﻿namespace Swagger;
+﻿using Microsoft.OpenApi;
+
+namespace Swagger;
 
 /// <summary>
 /// swagger注释加载慢，把文档添加到缓存

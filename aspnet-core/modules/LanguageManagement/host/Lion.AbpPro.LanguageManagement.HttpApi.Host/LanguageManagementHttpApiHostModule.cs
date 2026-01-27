@@ -16,7 +16,7 @@ namespace Lion.AbpPro.LanguageManagement
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreSerilogModule),
-        typeof(AbpSwashbuckleModule),
+        
         typeof(AbpProAspNetCoreModule)
     )]
     public class LanguageManagementHttpApiHostModule : AbpModule
@@ -53,7 +53,7 @@ namespace Lion.AbpPro.LanguageManagement
             app.UseAbpRequestLocalization();
             app.UseAuthorization();
             app.UseSwagger();
-            app.UseAbpSwaggerUI(options =>
+            app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/LanguageManagement/swagger.json", "LanguageManagement API");
                 options.DocExpansion(DocExpansion.None);

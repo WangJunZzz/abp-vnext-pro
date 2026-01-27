@@ -33,5 +33,5 @@ global using Volo.Abp.Localization;
 global using Volo.Abp.Modularity;
 global using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 global using Volo.Abp.SettingManagement.EntityFrameworkCore;
-global using Volo.Abp.Swashbuckle;
+
 global using Volo.Abp.VirtualFileSystem;

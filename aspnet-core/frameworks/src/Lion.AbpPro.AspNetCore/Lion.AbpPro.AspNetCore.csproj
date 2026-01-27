@@ -12,8 +12,10 @@
         <PackageReference Include="Volo.Abp.AspNetCore" />
         <PackageReference Include="Volo.Abp.Autofac" />
         <PackageReference Include="Volo.Abp.Core" />
-        <PackageReference Include="Volo.Abp.Swashbuckle" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
         <PackageReference Include="Volo.Abp.AspNetCore.MultiTenancy" />
+        <PackageReference Include="Volo.Abp.AspNetCore.Mvc" />
         <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" />
         <PackageReference Include="MiniProfiler.AspNetCore.Mvc" />
         <PackageReference Include="MiniProfiler.EntityFrameworkCore" />

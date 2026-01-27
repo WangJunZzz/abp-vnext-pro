@@ -58,8 +58,8 @@
 
         <!-- Swagger
         <PackageReference Update="Swashbuckle.AspNetCore.SwaggerUI" Version="10.0.0"/> -->
-        <PackageReference Update="Swashbuckle.AspNetCore" Version="9.0.4"/>
-        <PackageReference Update="Swashbuckle.AspNetCore.Annotations" Version="9.0.4"/>
+        <PackageReference Update="Swashbuckle.AspNetCore" Version="10.0.1"/>
+        <PackageReference Update="Swashbuckle.AspNetCore.Annotations" Version="10.0.1"/>
 
         <!-- Serilog 日志-->
         <PackageReference Update="Serilog" Version="4.3.0"/>
