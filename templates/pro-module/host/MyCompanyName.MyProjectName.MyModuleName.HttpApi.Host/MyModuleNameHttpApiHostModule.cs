@@ -11,8 +11,7 @@ namespace MyCompanyName.MyProjectName.MyModuleName;
     typeof(AbpAutofacModule),
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpEntityFrameworkCorePostgreSqlModule),
-    typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpSwashbuckleModule)
+    typeof(AbpAspNetCoreSerilogModule)
 )]
 public class MyModuleNameHttpApiHostModule : AbpModule
 {

@@ -10,8 +10,7 @@ namespace MyCompanyName.MyProjectName
         typeof(AbpAccountWebModule),
         typeof(MyProjectNameApplicationModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-        typeof(AbpCachingStackExchangeRedisModule),
-        typeof(AbpSwashbuckleModule)
+        typeof(AbpCachingStackExchangeRedisModule)
     )]
     public class MyProjectNameHttpApiHostModule : AbpModule
     {
