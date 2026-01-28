@@ -1,7 +1,14 @@
 using Lion.AbpPro.AspNetCore.Options;
+using Volo.Abp.AspNetCore.MultiTenancy;
+using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 
 namespace Lion.AbpPro.AspNetCore;
 
+[DependsOn(
+    typeof(AbpAspNetCoreMultiTenancyModule),
+    typeof(AbpAspNetCoreMvcUiBasicThemeModule)
+    )
+]
 public class AbpProAspNetCoreModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)

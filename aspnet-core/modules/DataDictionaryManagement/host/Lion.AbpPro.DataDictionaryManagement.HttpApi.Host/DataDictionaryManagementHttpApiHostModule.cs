@@ -1,6 +1,7 @@
 using Lion.AbpPro.AspNetCore;
 using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.EntityFrameworkCore.PostgreSql;
 
 namespace Lion.AbpPro.DataDictionaryManagement
@@ -9,7 +10,7 @@ namespace Lion.AbpPro.DataDictionaryManagement
         typeof(DataDictionaryManagementApplicationModule),
         typeof(DataDictionaryManagementEntityFrameworkCoreModule),
         typeof(DataDictionaryManagementHttpApiModule),
-        typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
+        typeof(AbpAspNetCoreMultiTenancyModule),
         typeof(AbpAutofacModule),
         typeof(AbpCachingStackExchangeRedisModule),
         typeof(AbpEntityFrameworkCorePostgreSqlModule),
@@ -30,7 +31,7 @@ namespace Lion.AbpPro.DataDictionaryManagement
         {
             context.Services
                 .AddAbpProAuditLog()
-                .AddAbpProAuthentication()
+                .AddAbpProJwtBearer()
                 .AddAbpProMultiTenancy()
                 .AddAbpProHealthChecks()
                 .AddAbpProTenantResolvers()

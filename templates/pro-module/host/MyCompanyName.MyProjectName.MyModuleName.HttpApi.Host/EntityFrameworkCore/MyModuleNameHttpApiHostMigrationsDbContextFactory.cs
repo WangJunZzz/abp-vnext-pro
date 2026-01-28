@@ -4,6 +4,7 @@ namespace MyCompanyName.MyProjectName.MyModuleName.EntityFrameworkCore
     {
         public MyModuleNameHttpApiHostMigrationsDbContext CreateDbContext(string[] args)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<MyModuleNameHttpApiHostMigrationsDbContext>()

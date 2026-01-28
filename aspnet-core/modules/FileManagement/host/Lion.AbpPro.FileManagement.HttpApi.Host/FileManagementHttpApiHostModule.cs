@@ -25,7 +25,7 @@ public class FileManagementHttpApiHostModule : AbpModule
     {
         context.Services
             .AddAbpProAuditLog()
-            .AddAbpProAuthentication()
+            .AddAbpProJwtBearer()
             .AddAbpProMultiTenancy()
             .AddAbpProHealthChecks()
             .AddAbpProTenantResolvers()

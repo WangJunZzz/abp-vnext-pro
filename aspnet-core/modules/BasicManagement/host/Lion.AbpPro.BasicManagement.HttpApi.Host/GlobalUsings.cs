@@ -12,7 +12,7 @@ global using StackExchange.Redis;
 global using Swashbuckle.AspNetCore.SwaggerUI;
 global using Volo.Abp;
 global using Volo.Abp.AspNetCore.ExceptionHandling;
-global using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
+
 global using Volo.Abp.AspNetCore.Serilog;
 global using Volo.Abp.Autofac;
 global using Volo.Abp.Caching;

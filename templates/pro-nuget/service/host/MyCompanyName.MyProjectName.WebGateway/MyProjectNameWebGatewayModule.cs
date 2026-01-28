@@ -1,10 +1,6 @@
-using Lion.AbpPro.AspNetCore;
-using Volo.Abp.AspNetCore.Mvc;
-
-namespace Lion.AbpPro.WebGateway;
+namespace MyCompanyName.MyProjectName.WebGateway;
 
 [DependsOn(
-    typeof(AbpAspNetCoreMvcModule),
     typeof(AbpProAspNetCoreModule))]
 public class MyProjectNameWebGatewayModule : AbpModule
 {

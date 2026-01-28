@@ -21,8 +21,8 @@ global using Serilog.Events;
 global using StackExchange.Redis;
 global using Volo.Abp;
 global using Volo.Abp.AspNetCore.Mvc;
-global using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
-global using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
+
+
 global using Volo.Abp.AspNetCore.Serilog;
 global using Volo.Abp.AuditLogging.EntityFrameworkCore;
 global using Volo.Abp.Autofac;

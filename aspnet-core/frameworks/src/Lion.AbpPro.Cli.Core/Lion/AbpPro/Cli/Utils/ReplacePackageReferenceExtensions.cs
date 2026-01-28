@@ -15,6 +15,8 @@ public static class ReplacePackageReferenceExtensions
                     "<PackageReference Include=\"Lion.AbpPro.Shared.Hosting.Gateways\"/>")
                 .Replace("<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\frameworks\\src\\Lion.AbpPro.AspNetCore\\Lion.AbpPro.AspNetCore.csproj\"/>",
                     "<PackageReference Include=\"Lion.AbpPro.AspNetCore\"/>")
+                .Replace("<ProjectReference Include=\"..\\..\\..\\..\\aspnet-core\\frameworks\\src\\Lion.AbpPro.AspNetCore\\Lion.AbpPro.AspNetCore.csproj\"/>",
+                    "<PackageReference Include=\"Lion.AbpPro.AspNetCore\"/>")
             ;
     }
 

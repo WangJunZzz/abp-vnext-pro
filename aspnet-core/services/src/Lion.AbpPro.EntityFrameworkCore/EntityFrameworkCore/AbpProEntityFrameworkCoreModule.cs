@@ -36,10 +36,7 @@ namespace Lion.AbpPro.EntityFrameworkCore
                  * See also HayoonKoreaDbContextFactory for EF Core tooling.
                  *  https://github.com/abpframework/abp/issues/21879
                  * */
-                options.UseNpgsql(builder =>
-                {
-                    builder.UseParameterizedCollectionMode(ParameterTranslationMode.MultipleParameters);
-                });
+                options.UseNpgsql();
             });
         }
     }

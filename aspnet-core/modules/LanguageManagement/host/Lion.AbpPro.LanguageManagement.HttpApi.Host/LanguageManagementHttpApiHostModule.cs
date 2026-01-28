@@ -1,5 +1,6 @@
 using Lion.AbpPro.AspNetCore;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.EntityFrameworkCore.PostgreSql;
 
 namespace Lion.AbpPro.LanguageManagement
@@ -8,7 +9,7 @@ namespace Lion.AbpPro.LanguageManagement
         typeof(LanguageManagementApplicationModule),
         typeof(LanguageManagementEntityFrameworkCoreModule),
         typeof(LanguageManagementHttpApiModule),
-        typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
+        typeof(AbpAspNetCoreMultiTenancyModule),
         typeof(AbpAutofacModule),
         typeof(AbpCachingStackExchangeRedisModule),
         typeof(AbpEntityFrameworkCorePostgreSqlModule),
@@ -30,7 +31,7 @@ namespace Lion.AbpPro.LanguageManagement
         {
             context.Services
                 .AddAbpProAuditLog()
-                .AddAbpProAuthentication()
+                .AddAbpProJwtBearer()
                 .AddAbpProMultiTenancy()
                 .AddAbpProHealthChecks()
                 .AddAbpProTenantResolvers()

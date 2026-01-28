@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using MyCompanyName.MyProjectName.MyModuleName;
+﻿using MyCompanyName.MyProjectName.MyModuleName;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 
@@ -7,19 +6,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ServiceCollectionExtensions
 {
-    /// <summary>
-    /// 注册Redis缓存
-    /// </summary>
-    public static IServiceCollection AddAbpProRedis(this IServiceCollection service)
-    {
-        service.Configure<AbpDistributedCacheOptions>(options => { options.KeyPrefix = "AbpPro:"; });
-        var configuration = service.GetConfiguration();
-        var redis = ConnectionMultiplexer.Connect(configuration.GetValue<string>("Redis:Configuration"));
-        service
-            .AddDataProtection()
-            .PersistKeysToStackExchangeRedis(redis, "AbpPro-Protection-Keys");
-        return service;
-    }
+
     /// <summary>
     /// 配置虚拟文件系统
     /// </summary>

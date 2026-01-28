@@ -1,3 +1,4 @@
+using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.EntityFrameworkCore.PostgreSql;
 
 namespace Lion.AbpPro.BasicManagement;
@@ -6,7 +7,7 @@ namespace Lion.AbpPro.BasicManagement;
     typeof(BasicManagementApplicationModule),
     typeof(BasicManagementEntityFrameworkCoreModule),
     typeof(BasicManagementHttpApiModule),
-    typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
+    typeof(AbpAspNetCoreMultiTenancyModule),
     typeof(AbpAutofacModule),
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpEntityFrameworkCorePostgreSqlModule),
@@ -26,7 +27,7 @@ public class BasicManagementHttpApiHostModule : AbpModule
     {
         context.Services
             .AddAbpProAuditLog()
-            .AddAbpProAuthentication()
+            .AddAbpProJwtBearer()
             .AddAbpProMultiTenancy()
             .AddAbpProHealthChecks()
             .AddAbpProTenantResolvers()

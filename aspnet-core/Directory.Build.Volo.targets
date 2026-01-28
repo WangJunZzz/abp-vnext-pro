@@ -27,11 +27,9 @@
         <PackageReference Update="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.FeatureManagement.EntityFrameworkCore" Version="10.0.1"/>
-        <PackageReference Update="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.AspNetCore.Mvc.Contracts" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.Account.Web" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.Caching.StackExchangeRedis" Version="10.0.1"/>
-        <PackageReference Update="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.EntityFrameworkCore.PostgreSql" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.AspNetCore.Serilog" Version="10.0.1"/>
         <PackageReference Update="Volo.Abp.Ddd.Application" Version="10.0.1"/>

@@ -26,7 +26,7 @@ public class NotificationManagementHttpApiHostModule : AbpModule
     {
         context.Services
             .AddAbpProAuditLog()
-            .AddAbpProAuthentication()
+            .AddAbpProJwtBearer()
             .AddAbpProMultiTenancy()
             .AddAbpProHealthChecks()
             .AddAbpProTenantResolvers()

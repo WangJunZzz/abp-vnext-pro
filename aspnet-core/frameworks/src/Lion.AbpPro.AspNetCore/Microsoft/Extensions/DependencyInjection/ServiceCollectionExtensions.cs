@@ -229,7 +229,7 @@ public static class ServiceCollectionExtensions
      /// <summary>
     /// 配置JWT
     /// </summary>
-    public static IServiceCollection AddAbpProAuthentication(this IServiceCollection service)
+    public static IServiceCollection AddAbpProJwtBearer(this IServiceCollection service)
     {
         var jwtOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProJwtOptions>>().Value;
         var cookieOptions = service.BuildServiceProvider().GetRequiredService<IOptions<AbpProCookieOptions>>().Value;

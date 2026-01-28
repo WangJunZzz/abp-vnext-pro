@@ -1,5 +1,3 @@
-using Lion.AbpPro.WebGateway;
-
 namespace MyCompanyName.MyProjectName.WebGateway
 {
     public class Program

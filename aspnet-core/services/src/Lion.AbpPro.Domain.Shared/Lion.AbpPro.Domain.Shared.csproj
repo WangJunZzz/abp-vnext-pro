@@ -10,8 +10,6 @@
     <ItemGroup>
         <EmbeddedResource Include="Localization\AbpPro\*.json" />
         <Content Remove="Localization\AbpPro\*.json" />
-
-
     </ItemGroup>
 
     <ItemGroup>

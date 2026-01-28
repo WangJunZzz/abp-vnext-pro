@@ -32,10 +32,7 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
             });
             Configure<AbpDbContextOptions>(options =>
             {
-                options.UseNpgsql(builder =>
-                {
-                    builder.TranslateParameterizedCollectionsToConstants();
-                });
+                options.UseNpgsql();
             });
         }
     }

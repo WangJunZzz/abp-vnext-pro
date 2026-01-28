@@ -51,7 +51,6 @@
         <!-- CAP 分布式事务-->
         <PackageReference Update="DotNetCore.CAP" Version="10.0.0"/>
         <PackageReference Update="DotNetCore.CAP.Dashboard" Version="10.0.0"/>
-        <PackageReference Update="DotNetCore.CAP.Mysql" Version="10.0.0"/>
         <PackageReference Update="DotNetCore.CAP.PostgreSql" Version="10.0.0"/>
         <PackageReference Update="DotNetCore.CAP.RabbitMQ" Version="10.0.0"/>
         <PackageReference Update="DotNetCore.CAP.InMemoryStorage" Version="10.0.0"/>

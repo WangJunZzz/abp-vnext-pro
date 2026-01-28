@@ -19,6 +19,7 @@
         <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" />
         <PackageReference Include="MiniProfiler.AspNetCore.Mvc" />
         <PackageReference Include="MiniProfiler.EntityFrameworkCore" />
+        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic"/>
     </ItemGroup>
 
     <ItemGroup>

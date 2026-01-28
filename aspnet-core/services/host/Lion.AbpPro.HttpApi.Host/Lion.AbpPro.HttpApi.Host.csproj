@@ -7,25 +7,19 @@
         <UserSecretsId>Lion.AbpPro-4681b4fd-151f-4221-84a4-929d86723e4c</UserSecretsId>
     </PropertyGroup>
 
-
     <ItemGroup>
         <PackageReference Include="Volo.Abp.Account.Web"/>
-        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy"/>
         <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis"/>
         <PackageReference Include="Volo.Abp.AspNetCore.Serilog"/>
-        <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer"/>
-        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic"/>
         <PackageReference Include="Volo.Abp.DistributedLocking"/>
         <PackageReference Include="Volo.Abp.BlobStoring.FileSystem"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis"/>
         <PackageReference Include="DotNetCore.CAP.PostgreSql"/>
         <PackageReference Include="DotNetCore.CAP.RabbitMQ"/>
         <PackageReference Include="DotNetCore.CAP.Dashboard"/>
         <PackageReference Include="DistributedLock.Redis"/>
-        <PackageReference Include="Hangfire.Redis.StackExchange"/>
     </ItemGroup>
 
     <ItemGroup>

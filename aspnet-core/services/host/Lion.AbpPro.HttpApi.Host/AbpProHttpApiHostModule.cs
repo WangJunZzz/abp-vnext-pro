@@ -3,53 +3,35 @@ namespace Lion.AbpPro;
 [DependsOn(
     typeof(AbpProHttpApiModule),
     typeof(AbpProAspNetCoreModule),
-    typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
     typeof(AbpProEntityFrameworkCoreModule),
-    typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpAccountWebModule),
     typeof(AbpProApplicationModule),
-    // typeof(AbpProCapModule),
-    // typeof(AbpProCapEntityFrameworkCoreModule),
-    typeof(AbpAspNetCoreMvcUiBasicThemeModule),
     typeof(AbpCachingStackExchangeRedisModule),
-    typeof(AbpDistributedLockingModule),
     typeof(AbpBlobStoringFileSystemModule),
     typeof(AbpProStarterModule)
-    //typeof(AbpBackgroundJobsHangfireModule)
 )]
 public partial class AbpProHttpApiHostModule : AbpModule
 {
-    public override void PreConfigureServices(ServiceConfigurationContext context)
-    {
-        // 动态配置
-        // PreConfigure<AbpAspNetCoreMvcOptions>(options =>
-        // {
-        //     options.ConventionalControllers.Create(typeof(AbpProApplicationModule).Assembly);
-        // });
-    }
-
+    
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         context.Services
             .AddAbpProAuditLog()
-            .AddAbpProAuthentication()
+            .AddAbpProJwtBearer()
             .AddAbpProMultiTenancy()
             .AddAbpProRedis()
-            .AddAbpProRedisDistributedLocking()
             .AddAbpProMiniProfiler()
             .AddAbpProCors()
             .AddAbpProAntiForgery()
             .AddAbpProIdentity()
-            .AddAbpProBlobStorage()
+            .AddAbpProBlobStorageFileSystem()
             .AddAbpProSignalR()
             .AddAbpProHealthChecks()
             .AddAbpProTenantResolvers()
             .AddAbpProLocalization()
             .AddAbpProExceptions()
-            .AddAbpProConsul()
             .AddAbpProSwagger("AbpPro");
-        context.Services.AddAlwaysAllowAuthorization();
     }
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -71,13 +53,6 @@ public partial class AbpProHttpApiHostModule : AbpModule
         app.UseConfiguredEndpoints(endpoints =>
         {
             endpoints.MapHealthChecks("/health");
-
-            // endpoints.MapHangfireDashboard("/hangfire", new DashboardOptions()
-            // {
-            //     Authorization = new[] { new CustomHangfireAuthorizeFilter() },
-            //     IgnoreAntiforgeryToken = true
-            // });
         });
-        app.UseAbpProConsul();
     }
 }

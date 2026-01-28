@@ -7,9 +7,6 @@ namespace MyCompanyName.MyProjectName.MyModuleName;
     typeof(MyModuleNameApplicationModule),
     typeof(MyModuleNameEntityFrameworkCoreModule),
     typeof(MyModuleNameHttpApiModule),
-    typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
-    typeof(AbpAutofacModule),
-    typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpEntityFrameworkCorePostgreSqlModule),
     typeof(AbpAspNetCoreSerilogModule)
 )]
@@ -23,7 +20,6 @@ public class MyModuleNameHttpApiHostModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         context.Services.AddAbpProSwagger("MyProjectName")
-            .AddAbpProRedis()
             .AddAbpProCors()
             .AddAbpProLocalization()
             .AddAbpProExceptions()

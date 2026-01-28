@@ -7,20 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Serilog.AspNetCore"/>
-        <PackageReference Include="Serilog.Sinks.Async"/>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer"/>
-        <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis"/>
-        <PackageReference Include="Volo.Abp.Autofac"/>
-        <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis"/>
-        <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy"/>
         <PackageReference Include="Volo.Abp.EntityFrameworkCore.PostgreSql"/>
         <PackageReference Include="Volo.Abp.AspNetCore.Serilog"/>
-        
         <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore"/>
         <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore"/>
         <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore"/>
-        <PackageReference Include="Lion.AbpPro.AspNetCore"/>
+        <ProjectReference Include="..\..\..\..\aspnet-core\frameworks\src\Lion.AbpPro.AspNetCore\Lion.AbpPro.AspNetCore.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -42,7 +34,7 @@
             <PrivateAssets>compile; contentFiles; build; buildMultitargeting; buildTransitive; analyzers; native</PrivateAssets>
         </PackageReference>
     </ItemGroup>
-    
+
     <ItemGroup>
         <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*.json"/>
     </ItemGroup>
