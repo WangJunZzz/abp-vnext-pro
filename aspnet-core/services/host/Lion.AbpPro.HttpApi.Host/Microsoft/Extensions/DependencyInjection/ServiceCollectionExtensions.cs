@@ -1,4 +1,3 @@
-using Lion.AbpPro.Hangfire;
 using Microsoft.AspNetCore.SignalR.StackExchangeRedis;
 
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -13,8 +12,8 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddAbpProRedis(this IServiceCollection service, Action<AbpDistributedCacheOptions> configureOptions = null)
     {
         var configuration = service.GetConfiguration();
-        var redisEnabled = configuration["Redis:IsEnabled"];
-        if (!string.IsNullOrEmpty(redisEnabled) && !bool.Parse(redisEnabled)) return service;
+        var redisEnabled = configuration.GetValue<bool>("Redis:IsEnabled");
+        if (!redisEnabled) return service;
 
         if (configureOptions != null)
         {
@@ -36,8 +35,8 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddAbpProRedisDistributedLocking(this IServiceCollection service)
     {
         var configuration = service.GetConfiguration();
-        var redisEnabled = configuration["Redis:IsEnabled"];
-        if (!string.IsNullOrEmpty(redisEnabled) && !bool.Parse(redisEnabled)) return service;
+        var redisEnabled = configuration.GetValue<bool>("Redis:IsEnabled");
+        if (!redisEnabled) return service;
 
         var connectionString = configuration.GetValue<string>("Redis:Configuration");
         service.AddSingleton<IDistributedLockProvider>(sp =>
@@ -63,8 +62,8 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddAbpProSignalR(this IServiceCollection service, Action<RedisOptions> redisOptions = null)
     {
         var configuration = service.GetConfiguration();
-        var redisEnabled = configuration["Redis:IsEnabled"];
-        if (!string.IsNullOrEmpty(redisEnabled) && !bool.Parse(redisEnabled))
+        var redisEnabled = configuration.GetValue<bool>("Redis:IsEnabled");
+        if (redisEnabled)
         {
             if (redisOptions != null)
             {
@@ -97,27 +96,27 @@ public static class ServiceCollectionExtensions
         return service;
     }
 
-    /// <summary>
-    /// 注册cap
-    /// </summary>
-    public static IServiceCollection AddAbpProCap(this IServiceCollection service)
-    {
-        var configuration = service.GetConfiguration();
-        service.AddAbpCap(capOptions =>
-        {
-            capOptions.SetCapDbConnectionString(configuration["ConnectionStrings:Default"]);
-            capOptions.UseEntityFramework<AbpProDbContext>();
-            capOptions.UseRabbitMQ(option =>
-            {
-                option.HostName = configuration.GetValue<string>("Cap:RabbitMq:HostName");
-                option.UserName = configuration.GetValue<string>("Cap:RabbitMq:UserName");
-                option.Password = configuration.GetValue<string>("Cap:RabbitMq:Password");
-                option.Port = configuration.GetValue<int>("Cap:RabbitMq:Port");
-            });
-            capOptions.UseDashboard(options => { options.AuthorizationPolicy = AbpProCapPermissions.CapManagement.Cap; });
-        });
-        return service;
-    }
+    // /// <summary>
+    // /// 注册cap
+    // /// </summary>
+    // public static IServiceCollection AddAbpProCap(this IServiceCollection service)
+    // {
+    //     var configuration = service.GetConfiguration();
+    //     service.AddAbpCap(capOptions =>
+    //     {
+    //         capOptions.SetCapDbConnectionString(configuration["ConnectionStrings:Default"]);
+    //         capOptions.UseEntityFramework<AbpProDbContext>();
+    //         capOptions.UseRabbitMQ(option =>
+    //         {
+    //             option.HostName = configuration.GetValue<string>("Cap:RabbitMq:HostName");
+    //             option.UserName = configuration.GetValue<string>("Cap:RabbitMq:UserName");
+    //             option.Password = configuration.GetValue<string>("Cap:RabbitMq:Password");
+    //             option.Port = configuration.GetValue<int>("Cap:RabbitMq:Port");
+    //         });
+    //         capOptions.UseDashboard(options => { options.AuthorizationPolicy = AbpProCapPermissions.CapManagement.Cap; });
+    //     });
+    //     return service;
+    // }
 
     // /// <summary>
     // /// 注册hangfire

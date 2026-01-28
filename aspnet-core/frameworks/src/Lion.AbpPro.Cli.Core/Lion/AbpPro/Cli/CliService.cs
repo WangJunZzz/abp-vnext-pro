@@ -20,7 +20,7 @@ public class CliService : DomainService
 
     public async Task RunAsync(string[] args)
     {
-        AnsiConsole.MarkupLine("[green]ABP Pro CLI (http://doc.cncore.club/)[/]");
+        AnsiConsole.MarkupLine("[green]ABP Pro CLI (http://docs.chengzhi.online/)[/]");
         AnsiConsole.MarkupLine("[green]请输入lion.abp help 查看所有命令[/]");
         try
         {

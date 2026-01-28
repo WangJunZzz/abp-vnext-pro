@@ -1,4 +1,4 @@
-﻿namespace Lion.AbpPro.Cli.Utils;
+namespace Lion.AbpPro.Cli.Utils;
 
 public static class ReplacePackageReferenceExtensions
 {
@@ -14,8 +14,6 @@ public static class ReplacePackageReferenceExtensions
                 .Replace("<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\shared\\Lion.AbpPro.Shared.Hosting.Gateways\\Lion.AbpPro.Shared.Hosting.Gateways.csproj\"/>",
                     "<PackageReference Include=\"Lion.AbpPro.Shared.Hosting.Gateways\"/>")
                 .Replace("<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\frameworks\\src\\Lion.AbpPro.AspNetCore\\Lion.AbpPro.AspNetCore.csproj\"/>",
-                    "<PackageReference Include=\"Lion.AbpPro.AspNetCore\"/>")
-                .Replace("<ProjectReference Include=\"..\\..\\..\\..\\aspnet-core\\frameworks\\src\\Lion.AbpPro.AspNetCore\\Lion.AbpPro.AspNetCore.csproj\"/>",
                     "<PackageReference Include=\"Lion.AbpPro.AspNetCore\"/>")
             ;
     }
@@ -160,7 +158,7 @@ public static class ReplacePackageReferenceExtensions
                 "<ProjectReference Include=\"..\\..\\..\\..\\..\\aspnet-core\\modules\\NotificationManagement\\src\\Lion.AbpPro.NotificationManagement.HttpApi.Client\\Lion.AbpPro.NotificationManagement.HttpApi.Client.csproj\"/>",
                 "<PackageReference Include=\"Lion.AbpPro.NotificationManagement.HttpApi.Client\"/>");
     }
-
+    
     public static string ReplaceLionPackageVersion(this string context, string version)
     {
         return context.Replace("MyVersion", version);

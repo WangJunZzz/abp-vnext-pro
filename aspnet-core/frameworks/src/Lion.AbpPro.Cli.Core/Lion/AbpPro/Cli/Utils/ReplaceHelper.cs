@@ -11,11 +11,12 @@ public static class ReplaceHelper
         string projectName,
         string moduleName,
         string replaceSuffix,
-        string version)
+        string version,
+        bool vben5)
     {
         try
         {
-            RenameTemplate(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, replaceSuffix, version);
+            RenameTemplate(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, replaceSuffix, version, vben5);
         }
         catch (Exception ex)
         {
@@ -32,10 +33,11 @@ public static class ReplaceHelper
         string projectName,
         string moduleName,
         string replaceSuffix,
-        string version)
+        string version,
+        bool vben5)
     {
-        RenameAllDirectories(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version);
-        RenameAllFileNameAndContent(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, replaceSuffix, version);
+        RenameAllDirectories(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version, vben5);
+        RenameAllFileNameAndContent(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, replaceSuffix, version, vben5);
     }
 
     private static void RenameAllDirectories(
@@ -46,12 +48,13 @@ public static class ReplaceHelper
         string companyName,
         string projectName,
         string moduleName,
-        string version)
+        string version,
+        bool vben5)
     {
         var directories = Directory.GetDirectories(sourcePath);
         foreach (var subDirectory in directories)
         {
-            RenameAllDirectories(subDirectory, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version);
+            RenameAllDirectories(subDirectory, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version, vben5);
 
             var directoryInfo = new DirectoryInfo(subDirectory);
             if (directoryInfo.Name.Contains(oldCompanyName) ||
@@ -59,7 +62,7 @@ public static class ReplaceHelper
                 directoryInfo.Name.Contains(oldModuleName))
             {
                 var oldDirectoryName = directoryInfo.Name;
-                var newDirectoryName = oldDirectoryName.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version);
+                var newDirectoryName = oldDirectoryName.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version, vben5);
 
                 var newDirectoryPath = Path.Combine(directoryInfo.Parent?.FullName, newDirectoryName);
 
@@ -81,7 +84,8 @@ public static class ReplaceHelper
         string projectName,
         string moduleName,
         string replaceSuffix,
-        string version)
+        string version,
+        bool vben5)
     {
         var list = new DirectoryInfo(sourcePath)
             .GetFiles()
@@ -93,7 +97,7 @@ public static class ReplaceHelper
         {
             // 改文件内容
             var oldContents = File.ReadAllText(fileInfo.FullName, encoding);
-            var newContents = oldContents.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version);
+            var newContents = oldContents.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version, vben5);
 
             // 文件名包含模板关键字
             if (fileInfo.Name.Contains(oldCompanyName)
@@ -101,7 +105,7 @@ public static class ReplaceHelper
                 || fileInfo.Name.Contains(oldModuleName))
             {
                 var oldFileName = fileInfo.Name;
-                var newFileName = oldFileName.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version);
+                var newFileName = oldFileName.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version, vben5);
 
                 var newFilePath = Path.Combine(fileInfo.DirectoryName, newFileName);
                 // 无变化才重命名
@@ -118,7 +122,7 @@ public static class ReplaceHelper
 
         foreach (var subDirectory in Directory.GetDirectories(sourcePath))
         {
-            RenameAllFileNameAndContent(subDirectory, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, replaceSuffix, version);
+            RenameAllFileNameAndContent(subDirectory, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, replaceSuffix, version, vben5);
         }
     }
 
@@ -131,15 +135,38 @@ public static class ReplaceHelper
         string companyName,
         string projectName,
         string moduleName,
-        string version)
+        string version,
+        bool vben5)
     {
-        var result = content.ReplacePackageReferenceBasicManagement()
-            .ReplacePackageReferenceLanguageManagement()
-            .ReplacePackageReferenceFileManagement()
-            .ReplacePackageReferenceDataDictionaryManagement()
-            .ReplacePackageReferenceNotificationManagement()
-            .ReplacePackageReferenceCore()
-            .ReplaceLionPackageVersion(version);
+        string result;
+        if (!vben5)
+        {
+            result = content.ReplacePackageReferenceBasicManagement()
+                .ReplacePackageReferenceLanguageManagement()
+                .ReplacePackageReferenceFileManagement()
+                .ReplacePackageReferenceDataDictionaryManagement()
+                .ReplacePackageReferenceNotificationManagement()
+                .ReplacePackageReferenceCore()
+                .ReplaceLionPackageVersion(version);
+        }
+        else
+        {
+            result = content.Vben5ReplacePackageReferenceBasicManagement()
+                .Vben5ReplacePackageReferenceLanguageManagement()
+                .Vben5ReplacePackageReferenceFileManagement()
+                .Vben5ReplacePackageReferenceDataDictionaryManagement()
+                .Vben5ReplacePackageReferenceNotificationManagement()
+                .Vben5ReplacePackageReferenceCodeManagement()
+                .Vben5ReplacePackageReferenceTemplateManagement()
+                .Vben5ReplacePackageReferenceFileManagement()
+                .Vben5ReplacePackageReferenceImportExportManagement()
+                .Vben5ReplacePackageReferenceDynamicMenuManagement()
+                .Vben5ReplacePackageReferenceCacheManagement()
+                .Vben5ReplacePackageReferenceMasterDataManagement()
+                .Vben5ReplacePackageReferenceCore()
+                .Vben5ReplaceLionPackageVersion(version);
+        }
+
 
         if (oldModuleName.IsNullOrWhiteSpace() || oldModuleName.IsNullOrWhiteSpace())
         {

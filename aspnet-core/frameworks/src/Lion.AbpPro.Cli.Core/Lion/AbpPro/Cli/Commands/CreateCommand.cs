@@ -128,7 +128,8 @@ public class CreateCommand : IConsoleCommand, ITransientDependency
             projectName,
             string.Empty,
             templateOptions.ReplaceSuffix,
-            version);
+            version,
+            true);
 
         _logger.LogInformation($"创建模板成功,请查阅----->: {output}");
 
