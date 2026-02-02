@@ -78,6 +78,15 @@ public class AbpProCliCoreModule : AbpModule
                     OldModuleName = "",
                 },
                 
+                new AbpProTemplateOptions("pro-module", "pro-module", "模块")
+                {
+                    ExcludeFiles = "aspnet-core,vben28,abp-nuget,docs,.github,LICENSE,.idea,Lion.AbpPro.Cli.slnx,Lion.AbpPro.slnx.sln.DotSettings.user",
+                    ReplaceSuffix = ".slnx,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
+                    OldCompanyName = "MyCompanyName",
+                    OldProjectName = "MyProjectName",
+                    OldModuleName = "MyModuleName",
+                },
+                
                 new AbpProTemplateOptions("pro-nuget-gateways", "pro-nuget", "商业版本nuget网关版本")
                 {
                     ExcludeFiles = ".github,LICENSE,Readme.md,aspnet-core,.idea,MyCompanyName.MyProjectName.slnx,MyCompanyName.MyProjectName.slnx.DotSettings.user,Lion.AbpPro.Cli.sln",

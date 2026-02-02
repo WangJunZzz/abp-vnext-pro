@@ -68,7 +68,15 @@ public class CreateCommand : IConsoleCommand, ITransientDependency
             GetUsageInfo();
             return;
         }
-
+        
+        //校验是否输入模块名称
+        var moduleName = commandLineArgs.Options.GetOrNull(CommandOptions.Module.Short, CommandOptions.Module.Long);
+        if (templateOptions.Key == "pro-module" && moduleName.IsNullOrWhiteSpace())
+        {
+            _logger.LogError("请输入公司名称lion.abp create -m 模块名称");
+            GetUsageInfo();
+            return;
+        }
         var version = commandLineArgs.Options.GetOrNull(CommandOptions.Version.Short, CommandOptions.Version.Long);
         var output = commandLineArgs.Options.GetOrNull(CommandOptions.Output.Short, CommandOptions.Output.Long);
 
@@ -108,11 +116,11 @@ public class CreateCommand : IConsoleCommand, ITransientDependency
         if (output.IsNullOrWhiteSpace())
         {
             // 复制源码到输出目录
-            output = Path.Combine(CliPaths.Output, $"{companyName}{projectName}{version}"); 
+            output = Path.Combine(CliPaths.Output, $"{companyName}{projectName}-{moduleName}-{version}"); 
         }
         else
         {
-            output = Path.Combine(output, $"{companyName}{projectName}{version}");
+            output = Path.Combine(output, $"{companyName}{projectName}-{moduleName}-{version}");
         }
         
      
@@ -126,7 +134,7 @@ public class CreateCommand : IConsoleCommand, ITransientDependency
             templateOptions.OldModuleName,
             companyName,
             projectName,
-            string.Empty,
+            moduleName,
             templateOptions.ReplaceSuffix,
             version,
             true);
