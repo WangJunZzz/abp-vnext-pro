@@ -1,19 +1,14 @@
-using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.EntityFrameworkCore.PostgreSql;
 
 namespace Lion.AbpPro.BasicManagement;
 
 [DependsOn(
+    typeof(AbpProAspNetCoreModule),
     typeof(BasicManagementApplicationModule),
     typeof(BasicManagementEntityFrameworkCoreModule),
     typeof(BasicManagementHttpApiModule),
-    typeof(AbpAspNetCoreMultiTenancyModule),
-    typeof(AbpAutofacModule),
-    typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpEntityFrameworkCorePostgreSqlModule),
-    typeof(AbpAspNetCoreSerilogModule),
-    
-    typeof(AbpProAspNetCoreModule)
+    typeof(AbpAspNetCoreSerilogModule)
 )]
 public class BasicManagementHttpApiHostModule : AbpModule
 {
@@ -35,12 +30,12 @@ public class BasicManagementHttpApiHostModule : AbpModule
             .AddAbpProExceptions()
             .AddAbpProSwagger("BasicManagement");
         Configure<AbpDbContextOptions>(options => { options.UseNpgsql(); });
+        context.Services.AddAlwaysAllowAuthorization();
     }
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {
         var app = context.GetApplicationBuilder();
-
 
         app.UseCorrelationId();
         app.UseStaticFiles();
@@ -50,13 +45,7 @@ public class BasicManagementHttpApiHostModule : AbpModule
         app.UseMultiTenancy();
         app.UseAbpRequestLocalization();
         app.UseAuthorization();
-        app.UseSwagger();
-        app.UseSwaggerUI(options =>
-        {
-            options.SwaggerEndpoint("/swagger/BasicManagement/swagger.json", "BasicManagement API");
-            options.DocExpansion(DocExpansion.None);
-            options.DefaultModelsExpandDepth(-1);
-        });
+        app.UseAbpProSwaggerUI("/swagger/BasicManagement/swagger.json", "BasicManagement API");
         app.UseAuditing();
         app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints();

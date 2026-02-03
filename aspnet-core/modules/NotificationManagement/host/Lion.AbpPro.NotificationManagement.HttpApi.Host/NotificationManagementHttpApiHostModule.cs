@@ -7,11 +7,7 @@ namespace Lion.AbpPro.NotificationManagement;
     typeof(NotificationManagementApplicationModule),
     typeof(NotificationManagementEntityFrameworkCoreModule),
     typeof(NotificationManagementHttpApiModule),
-    typeof(AbpAutofacModule),
-    typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpAspNetCoreSerilogModule),
-    
-    typeof(AbpProCapModule),
     typeof(AbpEntityFrameworkCorePostgreSqlModule),
     typeof(AbpProAspNetCoreModule)
 )]
@@ -34,6 +30,7 @@ public class NotificationManagementHttpApiHostModule : AbpModule
             .AddAbpProExceptions()
             .AddAbpProSwagger("NotificationManagement");
         Configure<AbpDbContextOptions>(options => { options.UseNpgsql(); });
+        context.Services.AddAlwaysAllowAuthorization();
     }
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -48,13 +45,7 @@ public class NotificationManagementHttpApiHostModule : AbpModule
         app.UseMultiTenancy();
         app.UseAbpRequestLocalization();
         app.UseAuthorization();
-        app.UseSwagger();
-        app.UseSwaggerUI(options =>
-        {
-            options.SwaggerEndpoint("/swagger/NotificationManagement/swagger.json", "NotificationManagement API");
-            options.DocExpansion(DocExpansion.None);
-            options.DefaultModelsExpandDepth(-1);
-        });
+        app.UseAbpProSwaggerUI("/swagger/NotificationManagement/swagger.json", "NotificationManagement API");
         app.UseAuditing();
         app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints();

@@ -10,14 +10,8 @@ namespace Lion.AbpPro.DataDictionaryManagement
         typeof(DataDictionaryManagementApplicationModule),
         typeof(DataDictionaryManagementEntityFrameworkCoreModule),
         typeof(DataDictionaryManagementHttpApiModule),
-        typeof(AbpAspNetCoreMultiTenancyModule),
-        typeof(AbpAutofacModule),
-        typeof(AbpCachingStackExchangeRedisModule),
-        typeof(AbpEntityFrameworkCorePostgreSqlModule),
-        typeof(AbpAuditLoggingEntityFrameworkCoreModule),
-        typeof(AbpPermissionManagementEntityFrameworkCoreModule),
-        typeof(AbpSettingManagementEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreSerilogModule),
+        typeof(AbpEntityFrameworkCorePostgreSqlModule),
         typeof(AbpProAspNetCoreModule)
     )]
     public class DataDictionaryManagementHttpApiHostModule : AbpModule
@@ -38,6 +32,8 @@ namespace Lion.AbpPro.DataDictionaryManagement
                 .AddAbpProLocalization()
                 .AddAbpProExceptions()
                 .AddAbpProSwagger("DataDictionaryManagement");
+            Configure<AbpDbContextOptions>(options => { options.UseNpgsql(); });
+            context.Services.AddAlwaysAllowAuthorization();
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -53,13 +49,7 @@ namespace Lion.AbpPro.DataDictionaryManagement
             app.UseMultiTenancy();
             app.UseAbpRequestLocalization();
             app.UseAuthorization();
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/DataDictionaryManagement/swagger.json", "DataDictionaryManagement API");
-                options.DocExpansion(DocExpansion.None);
-                options.DefaultModelsExpandDepth(-1);
-            });
+            app.UseAbpProSwaggerUI("/swagger/DataDictionaryManagement/swagger.json", "DataDictionaryManagement API");
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints();

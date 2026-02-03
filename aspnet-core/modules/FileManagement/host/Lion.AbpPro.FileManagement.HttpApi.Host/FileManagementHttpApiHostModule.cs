@@ -7,10 +7,7 @@ namespace Lion.AbpPro.FileManagement;
     typeof(FileManagementApplicationModule),
     typeof(FileManagementEntityFrameworkCoreModule),
     typeof(FileManagementHttpApiModule),
-    typeof(AbpAutofacModule),
-    typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpAspNetCoreSerilogModule),
-    
     typeof(AbpEntityFrameworkCorePostgreSqlModule),
     typeof(AbpProAspNetCoreModule)
 )]
@@ -33,6 +30,7 @@ public class FileManagementHttpApiHostModule : AbpModule
             .AddAbpProExceptions()
             .AddAbpProSwagger("FileManagement");
         Configure<AbpDbContextOptions>(options => { options.UseNpgsql(); });
+        context.Services.AddAlwaysAllowAuthorization();
     }
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -47,13 +45,7 @@ public class FileManagementHttpApiHostModule : AbpModule
         app.UseMultiTenancy();
         app.UseAbpRequestLocalization();
         app.UseAuthorization();
-        app.UseSwagger();
-        app.UseSwaggerUI(options =>
-        {
-            options.SwaggerEndpoint("/swagger/FileManagement/swagger.json", "FileManagement API");
-            options.DocExpansion(DocExpansion.None);
-            options.DefaultModelsExpandDepth(-1);
-        });
+        app.UseAbpProSwaggerUI("/swagger/FileManagement/swagger.json", "FileManagement API");
         app.UseAuditing();
         app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints();

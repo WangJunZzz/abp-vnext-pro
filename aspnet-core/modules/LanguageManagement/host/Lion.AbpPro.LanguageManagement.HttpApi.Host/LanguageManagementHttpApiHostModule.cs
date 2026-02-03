@@ -9,15 +9,8 @@ namespace Lion.AbpPro.LanguageManagement
         typeof(LanguageManagementApplicationModule),
         typeof(LanguageManagementEntityFrameworkCoreModule),
         typeof(LanguageManagementHttpApiModule),
-        typeof(AbpAspNetCoreMultiTenancyModule),
-        typeof(AbpAutofacModule),
-        typeof(AbpCachingStackExchangeRedisModule),
-        typeof(AbpEntityFrameworkCorePostgreSqlModule),
-        typeof(AbpAuditLoggingEntityFrameworkCoreModule),
-        typeof(AbpPermissionManagementEntityFrameworkCoreModule),
-        typeof(AbpSettingManagementEntityFrameworkCoreModule),
         typeof(AbpAspNetCoreSerilogModule),
-        
+        typeof(AbpEntityFrameworkCorePostgreSqlModule),
         typeof(AbpProAspNetCoreModule)
     )]
     public class LanguageManagementHttpApiHostModule : AbpModule
@@ -39,6 +32,7 @@ namespace Lion.AbpPro.LanguageManagement
                 .AddAbpProExceptions()
                 .AddAbpProSwagger("LanguageManagement");
             Configure<AbpDbContextOptions>(options => { options.UseNpgsql(); });
+            context.Services.AddAlwaysAllowAuthorization();
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -53,13 +47,7 @@ namespace Lion.AbpPro.LanguageManagement
             app.UseMultiTenancy();
             app.UseAbpRequestLocalization();
             app.UseAuthorization();
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/LanguageManagement/swagger.json", "LanguageManagement API");
-                options.DocExpansion(DocExpansion.None);
-                options.DefaultModelsExpandDepth(-1);
-            });
+            app.UseAbpProSwaggerUI("/swagger/LanguageManagement/swagger.json", "LanguageManagement API");
             app.UseAuditing();
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints();

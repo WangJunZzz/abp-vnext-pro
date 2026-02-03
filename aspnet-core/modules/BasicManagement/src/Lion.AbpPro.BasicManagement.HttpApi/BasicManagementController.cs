@@ -3,7 +3,7 @@ using Volo.Abp.AspNetCore.Mvc;
 
 namespace Lion.AbpPro.BasicManagement;
 
-public abstract class BasicManagementController : AbpControllerBase
+public abstract class BasicManagementController : AbpController
 {
     protected BasicManagementController()
     {
