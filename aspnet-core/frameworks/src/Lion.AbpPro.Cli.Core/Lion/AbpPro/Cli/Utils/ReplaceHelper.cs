@@ -1,4 +1,4 @@
-﻿namespace Lion.AbpPro.Cli.Utils;
+namespace Lion.AbpPro.Cli.Utils;
 
 public static class ReplaceHelper
 {
@@ -51,25 +51,63 @@ public static class ReplaceHelper
         string version,
         bool vben5)
     {
+        // 先收集所有需要重命名的目录，按深度排序（深的先处理）
+        var directoriesToRename = new List<(DirectoryInfo DirectoryInfo, string NewDirectoryPath)>();
+        CollectDirectoriesToRename(sourcePath, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version, vben5, directoriesToRename);
+
+        // 按路径深度降序排序，确保先处理深层目录，再处理父目录
+        var sortedDirectories = directoriesToRename
+            .OrderByDescending(d => d.DirectoryInfo.FullName.Count(c => c == Path.DirectorySeparatorChar || c == Path.AltDirectorySeparatorChar))
+            .ToList();
+
+        foreach (var (directoryInfo, newDirectoryPath) in sortedDirectories)
+        {
+            if (directoryInfo.FullName != newDirectoryPath)
+            {
+                try
+                {
+                    directoryInfo.MoveTo(newDirectoryPath);
+                }
+                catch (IOException ex)
+                {
+                    // 如果目录被占用，等待重试
+                    Thread.Sleep(100);
+                    directoryInfo.MoveTo(newDirectoryPath);
+                }
+            }
+        }
+    }
+
+    private static void CollectDirectoriesToRename(
+        string sourcePath,
+        string oldCompanyName,
+        string oldProjectName,
+        string oldModuleName,
+        string companyName,
+        string projectName,
+        string moduleName,
+        string version,
+        bool vben5,
+        List<(DirectoryInfo DirectoryInfo, string NewDirectoryPath)> directoriesToRename)
+    {
         var directories = Directory.GetDirectories(sourcePath);
         foreach (var subDirectory in directories)
         {
-            RenameAllDirectories(subDirectory, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version, vben5);
-
             var directoryInfo = new DirectoryInfo(subDirectory);
+
+            // 先递归收集子目录
+            CollectDirectoriesToRename(subDirectory, oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version, vben5, directoriesToRename);
+
+            // 检查当前目录是否需要重命名
             if (directoryInfo.Name.Contains(oldCompanyName) ||
                 directoryInfo.Name.Contains(oldProjectName) ||
                 directoryInfo.Name.Contains(oldModuleName))
             {
                 var oldDirectoryName = directoryInfo.Name;
                 var newDirectoryName = oldDirectoryName.CustomReplace(oldCompanyName, oldProjectName, oldModuleName, companyName, projectName, moduleName, version, vben5);
-
                 var newDirectoryPath = Path.Combine(directoryInfo.Parent?.FullName, newDirectoryName);
 
-                if (directoryInfo.FullName != newDirectoryPath)
-                {
-                    directoryInfo.MoveTo(newDirectoryPath);
-                }
+                directoriesToRename.Add((directoryInfo, newDirectoryPath));
             }
         }
     }
