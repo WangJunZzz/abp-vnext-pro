@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Lion.AbpPro.Migrations
 {
     /// <inheritdoc />
-    public partial class _100 : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -233,8 +233,10 @@ namespace Lion.AbpPro.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    GroupName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    GroupName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
                     Name = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    ResourceName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    ManagementPermissionName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
                     ParentName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
                     DisplayName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
                     IsEnabled = table.Column<bool>(type: "boolean", nullable: false),
@@ -429,6 +431,23 @@ namespace Lion.AbpPro.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AbpResourcePermissionGrants",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    TenantId = table.Column<Guid>(type: "uuid", nullable: true),
+                    Name = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    ProviderName = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
+                    ProviderKey = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
+                    ResourceName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    ResourceKey = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbpResourcePermissionGrants", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AbpRoles",
                 columns: table => new
                 {
@@ -595,6 +614,8 @@ namespace Lion.AbpPro.Migrations
                     ShouldChangePasswordOnNextLogin = table.Column<bool>(type: "boolean", nullable: false),
                     EntityVersion = table.Column<int>(type: "integer", nullable: false),
                     LastPasswordChangeTime = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
+                    LastSignInTime = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
+                    Leaved = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
                     ExtraProperties = table.Column<string>(type: "text", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
@@ -646,7 +667,7 @@ namespace Lion.AbpPro.Migrations
                     ChangeType = table.Column<byte>(type: "smallint", nullable: false),
                     EntityTenantId = table.Column<Guid>(type: "uuid", nullable: true),
                     EntityId = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
-                    EntityTypeFullName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    EntityTypeFullName = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: false),
                     ExtraProperties = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -824,6 +845,46 @@ namespace Lion.AbpPro.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AbpUserPasskeys",
+                columns: table => new
+                {
+                    CredentialId = table.Column<byte[]>(type: "bytea", maxLength: 1024, nullable: false),
+                    TenantId = table.Column<Guid>(type: "uuid", nullable: true),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Data = table.Column<string>(type: "jsonb", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbpUserPasskeys", x => x.CredentialId);
+                    table.ForeignKey(
+                        name: "FK_AbpUserPasskeys_AbpUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AbpUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AbpUserPasswordHistories",
+                columns: table => new
+                {
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Password = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    TenantId = table.Column<Guid>(type: "uuid", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbpUserPasswordHistories", x => new { x.UserId, x.Password });
+                    table.ForeignKey(
+                        name: "FK_AbpUserPasswordHistories_AbpUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AbpUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AbpUserRoles",
                 columns: table => new
                 {
@@ -879,7 +940,7 @@ namespace Lion.AbpPro.Migrations
                     NewValue = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
                     OriginalValue = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
                     PropertyName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
-                    PropertyTypeFullName = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false)
+                    PropertyTypeFullName = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -994,9 +1055,9 @@ namespace Lion.AbpPro.Migrations
                 column: "GroupName");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AbpPermissions_Name",
+                name: "IX_AbpPermissions_ResourceName_Name",
                 table: "AbpPermissions",
-                column: "Name",
+                columns: new[] { "ResourceName", "Name" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -1028,6 +1089,12 @@ namespace Lion.AbpPro.Migrations
                 name: "IX_AbpProNotificationSubscriptions_ReceiveUserId",
                 table: "AbpProNotificationSubscriptions",
                 column: "ReceiveUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AbpResourcePermissionGrants_TenantId_Name_ResourceName_Reso~",
+                table: "AbpResourcePermissionGrants",
+                columns: new[] { "TenantId", "Name", "ResourceName", "ResourceKey", "ProviderName", "ProviderKey" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpRoleClaims_RoleId",
@@ -1110,6 +1177,11 @@ namespace Lion.AbpPro.Migrations
                 name: "IX_AbpUserOrganizationUnits_UserId_OrganizationUnitId",
                 table: "AbpUserOrganizationUnits",
                 columns: new[] { "UserId", "OrganizationUnitId" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AbpUserPasskeys_UserId",
+                table: "AbpUserPasskeys",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpUserRoles_RoleId_UserId",
@@ -1201,6 +1273,9 @@ namespace Lion.AbpPro.Migrations
                 name: "AbpProNotificationSubscriptions");
 
             migrationBuilder.DropTable(
+                name: "AbpResourcePermissionGrants");
+
+            migrationBuilder.DropTable(
                 name: "AbpRoleClaims");
 
             migrationBuilder.DropTable(
@@ -1229,6 +1304,12 @@ namespace Lion.AbpPro.Migrations
 
             migrationBuilder.DropTable(
                 name: "AbpUserOrganizationUnits");
+
+            migrationBuilder.DropTable(
+                name: "AbpUserPasskeys");
+
+            migrationBuilder.DropTable(
+                name: "AbpUserPasswordHistories");
 
             migrationBuilder.DropTable(
                 name: "AbpUserRoles");
