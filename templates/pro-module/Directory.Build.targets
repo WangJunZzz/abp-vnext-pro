@@ -2,8 +2,7 @@
 
     <Import Project="Directory.Build.Microsoft.targets"/>
     <Import Project="Directory.Build.Volo.targets"/>
-	<Import Project="Directory.Build.Lion.targets"/>
-	
+
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <Version>1.0.0</Version>
@@ -115,5 +114,9 @@
 
         <PackageReference Update="Mapster" Version="7.4.0" />
 
+        <PackageReference Update="Yitter.IdGenerator" Version="1.0.14" />
+
+        <PackageReference Update="nacos-sdk-csharp.AspNetCore" Version="1.3.10" />
+        <PackageReference Update="nacos-sdk-csharp.Extensions.Configuration" Version="1.3.10" />
     </ItemGroup>
 </Project>
