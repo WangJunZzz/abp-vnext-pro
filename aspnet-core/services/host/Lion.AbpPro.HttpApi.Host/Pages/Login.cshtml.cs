@@ -20,6 +20,8 @@ namespace Lion.AbpPro.Pages
         private readonly AbpAspNetCoreMultiTenancyOptions _abpAspNetCoreMultiTenancyOptions;
         private readonly IVoloTenantAppService _voloTenantAppService;
         private readonly AbpProMultiTenancyOptions _abpProMultiTenancyOptions;
+        private readonly ICurrentTenant _currentTenant;
+        private readonly AbpProCookieOptions _abpProCookieOptions;
         public Login(IAccountAppService accountAppService,
             ILogger<Login> logger,
             IHostEnvironment hostEnvironment,
@@ -27,13 +29,17 @@ namespace Lion.AbpPro.Pages
             IClock clock,
             IOptions<AbpAspNetCoreMultiTenancyOptions> abpAspNetCoreMultiTenancyOptions, 
             IVoloTenantAppService voloTenantAppService, 
-            IOptions<AbpProMultiTenancyOptions> abpProMultiTenancyOptions)
+            IOptions<AbpProMultiTenancyOptions> abpProMultiTenancyOptions,
+            ICurrentTenant currentTenant, 
+            IOptions<AbpProCookieOptions> abpProCookieOptions)
         {
             _accountAppService = accountAppService;
             _logger = logger;
             _hostEnvironment = hostEnvironment;
             _clock = clock;
             _voloTenantAppService = voloTenantAppService;
+            _currentTenant = currentTenant;
+            _abpProCookieOptions = abpProCookieOptions.Value;
             _abpProMultiTenancyOptions = abpProMultiTenancyOptions.Value;
             _abpAspNetCoreMultiTenancyOptions = abpAspNetCoreMultiTenancyOptions.Value;
             _jwtOptions = jwtOptions.Value;
@@ -83,14 +89,16 @@ namespace Lion.AbpPro.Pages
                     SameSite = SameSiteMode.Unspecified,
                 };
 
-                var result = await _accountAppService.LoginAsync(new LoginInput() { Name = userName, Password = password });
-                
-                // 清除现有的认证 cookies
-                Response.Cookies.Delete(AbpProAspNetCoreConsts.DefaultCookieName);
-                Response.Cookies.Append(AbpProAspNetCoreConsts.DefaultCookieName, result.Token, options);
-                if (tenantId.HasValue)
+                using (_currentTenant.Change(tenantId))
                 {
-                    Response.Cookies.Append(_abpAspNetCoreMultiTenancyOptions.TenantKey, tenantId.ToString(), options);
+                    var result = await _accountAppService.LoginAsync(new LoginInput() { Name = userName, Password = password });
+                    // 清除现有的认证 cookies
+                    Response.Cookies.Delete(_abpProCookieOptions.Name);
+                    Response.Cookies.Append(_abpProCookieOptions.Name, result.Token, options);
+                    if (tenantId.HasValue)
+                    {
+                        Response.Cookies.Append(_abpAspNetCoreMultiTenancyOptions.TenantKey, tenantId.ToString(), options);
+                    }
                 }
                 
             }
