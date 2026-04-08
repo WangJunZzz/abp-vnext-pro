@@ -54,10 +54,11 @@ public class AbpProAuditLogInfoToAuditLogConverter : AuditLogInfoToAuditLogConve
         }
         catch
         {
-            location = new IpInfo() { Province = ipAddr, City = "未知地区" };
+            location = new IpInfo() { IpAddress  = ipAddr, Province = string.Empty, City = "未知地区" };
         }
 
-        return location.Province + "-" + location.City;
+
+        return string.Format($"{location.IpAddress}({location.Province}{location.City})");
     }
 
     /// <summary>

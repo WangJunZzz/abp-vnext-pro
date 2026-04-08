@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using MyCSharp.HttpUserAgentParser.Providers;
+using System.Net;
 using Volo.Abp.AspNetCore.WebClientInfo;
 
 namespace Lion.AbpPro.AspNetCore;
@@ -10,7 +11,6 @@ namespace Lion.AbpPro.AspNetCore;
 public class RealIpHttpContextWebClientInfoProvider : HttpContextWebClientInfoProvider
 {
     private const string XForwardedForHeader = "X-Forwarded-For";
-
 
     public RealIpHttpContextWebClientInfoProvider(
         ILogger<HttpContextWebClientInfoProvider> logger,
@@ -30,22 +30,35 @@ public class RealIpHttpContextWebClientInfoProvider : HttpContextWebClientInfoPr
         {
             var httpContext = HttpContextAccessor.HttpContext;
             if (httpContext == null)
-            {
                 return null;
+
+            string realIp = null;
+
+            // 1. 优先从 X-Forwarded-For 获取真实IP
+            if (httpContext.Request.Headers.TryGetValue(XForwardedForHeader, out var forwardedIps))
+            {
+                realIp = forwardedIps.FirstOrDefault()?.Split(',', StringSplitOptions.RemoveEmptyEntries).FirstOrDefault()?.Trim();
             }
 
-            var headers = httpContext.Request?.Headers;
-            if (headers != null && headers.ContainsKey(XForwardedForHeader))
+            // 2. 取不到就用默认 RemoteIpAddress
+            if (string.IsNullOrEmpty(realIp))
             {
-                // 从X-Forwarded-For获取真实客户端IP
-                var forwardedIp = headers[XForwardedForHeader].FirstOrDefault();
-                if (!string.IsNullOrEmpty(forwardedIp))
+                realIp = httpContext.Connection.RemoteIpAddress?.ToString();
+            }
+
+            if (string.IsNullOrEmpty(realIp))
+                return null;
+
+            // 3. 关键：处理 ::ffff:192.168.1.1 这种格式
+            if (IPAddress.TryParse(realIp, out var ipAddress))
+            {
+                if (ipAddress.IsIPv4MappedToIPv6)
                 {
-                    httpContext.Connection.RemoteIpAddress = IPAddress.Parse(forwardedIp);
+                    realIp = ipAddress.MapToIPv4().ToString();
                 }
             }
 
-            return httpContext.Connection?.RemoteIpAddress?.ToString();
+            return realIp;
         }
         catch (Exception ex)
         {
