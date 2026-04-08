@@ -11,7 +11,7 @@ public class Program
 
         try
         {
-            Log.Information("Lion.AbpPro.HttpApi.Host.");
+            Log.Information("Lion.AbpPro启动成功");
             var builder = WebApplication.CreateBuilder(args);
             builder.Host
                 .AddAppSettingsSecretsJson()
@@ -30,12 +30,11 @@ public class Program
         }
         catch (Exception ex)
         {
+            Log.Fatal(ex, "Lion.AbpPro启动失败");
             if (ex is HostAbortedException)
             {
                 throw;
             }
-
-            Log.Fatal(ex, "Host terminated unexpectedly!");
             return 1;
         }
         finally
