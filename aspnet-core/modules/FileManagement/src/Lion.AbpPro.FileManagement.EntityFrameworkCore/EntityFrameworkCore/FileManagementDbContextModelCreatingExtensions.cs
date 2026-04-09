@@ -12,7 +12,7 @@ public static class FileManagementDbContextModelCreatingExtensions
         {
             b.ToTable(FileManagementDbProperties.DbTablePrefix + "FileObjects");
             b.Property(e => e.FileSize).HasComment("文件大小");
-            b.Property(e => e.ContentType).IsRequired().HasMaxLength(128).HasComment("文件名称");
+            b.Property(e => e.ContentType).IsRequired().HasMaxLength(128).HasComment("文件类型");
             b.Property(e => e.FileName).IsRequired().HasMaxLength(128).HasComment("文件名称");
             b.HasIndex(e => e.FileName);
             b.ConfigureByConvention();

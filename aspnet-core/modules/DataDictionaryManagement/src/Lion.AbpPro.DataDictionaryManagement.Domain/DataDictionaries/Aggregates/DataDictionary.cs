@@ -13,23 +13,17 @@ public class DataDictionary : FullAuditedAggregateRoot<Guid>, IMultiTenant
     /// <summary>
     /// 字典编码
     /// </summary>
-    [Required]
-    [MaxLength(DataDictionaryMaxLengths.Code)]
     public string Code { get; private set; }
 
     /// <summary>
     /// 显示名
     /// </summary>
-    [Required]
-    [MaxLength(DataDictionaryMaxLengths.DisplayText)]
     public string DisplayText { get; private set; }
 
 
     /// <summary>
     /// 描述
     /// </summary>
-    [Required]
-    [MaxLength(DataDictionaryMaxLengths.Description)]
     public string Description { get; private set; }
 
     /// <summary>
