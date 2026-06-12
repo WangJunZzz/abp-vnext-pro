@@ -14,9 +14,13 @@ public class AbpProResultFilter : IResultFilter, ITransientDependency
         
         context.HttpContext.Response.StatusCode = 200;
         var result = new WrapResult<object>();
-        if (context.Result is not EmptyResult)
+        if (context.Result is ObjectResult objectResult)
         {
-            result.SetSuccess(((ObjectResult)context.Result).Value);
+            result.SetSuccess(objectResult.Value);
+        }
+        else if (context.Result is not EmptyResult)
+        {
+            return;
         }
 
         var jsonSerializer = context.GetRequiredService<IJsonSerializer>();

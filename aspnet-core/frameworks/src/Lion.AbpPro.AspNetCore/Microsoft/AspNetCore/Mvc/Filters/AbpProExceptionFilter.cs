@@ -13,21 +13,19 @@ public class AbpProExceptionFilter : AbpExceptionFilter
 
     protected override async Task HandleAndWrapException(ExceptionContext context)
     {
+        if (!IsWrapResult(context))
+        {
+            await base.HandleAndWrapException(context);
+            return;
+        }
+
         LoggerException(context);
-        if (WrapResultHandler(context)) return;
-        await DefaultHandlerAsync(context);
+        WrapResultHandler(context);
+        context.ExceptionHandled = true;
     }
 
     private void LoggerException(ExceptionContext context)
     {
-        var exceptionHandlingOptions = context.GetRequiredService<IOptions<AbpExceptionHandlingOptions>>().Value;
-        var exceptionToErrorInfoConverter = context.GetRequiredService<IExceptionToErrorInfoConverter>();
-        var remoteServiceErrorInfo = exceptionToErrorInfoConverter.Convert(context.Exception, options =>
-        {
-            options.SendExceptionsDetailsToClients = exceptionHandlingOptions.SendExceptionsDetailsToClients;
-            options.SendStackTraceToClients = exceptionHandlingOptions.SendStackTraceToClients;
-        });
-
         var logger = context.GetService<ILogger<AbpExceptionFilter>>(NullLogger<AbpExceptionFilter>.Instance)!;
         var logLevel = context.Exception.GetLogLevel();
         logger.LogException(context.Exception, logLevel);
@@ -36,45 +34,20 @@ public class AbpProExceptionFilter : AbpExceptionFilter
     /// <summary>
     /// webapi有WrapResult特性标签处理逻辑
     /// </summary>
-    private bool WrapResultHandler(ExceptionContext context)
+    private void WrapResultHandler(ExceptionContext context)
     {
-        if (!IsWrapResult(context)) return false;
-
         context.HttpContext.Response.StatusCode = 200;
         var result = SimplifyMessage(context);
         context.Result = new ObjectResult(result);
-        return true;
-    }
-
-    /// <summary>
-    /// 默认异常处理逻辑
-    /// </summary>
-    private async Task DefaultHandlerAsync(ExceptionContext context)
-    {
-        var exceptionHandlingOptions = context.GetRequiredService<IOptions<AbpExceptionHandlingOptions>>().Value;
-        var exceptionToErrorInfoConverter = context.GetRequiredService<IExceptionToErrorInfoConverter>();
-        var remoteServiceErrorInfo = exceptionToErrorInfoConverter.Convert(context.Exception, options =>
-        {
-            options.SendExceptionsDetailsToClients = exceptionHandlingOptions.SendExceptionsDetailsToClients;
-            options.SendStackTraceToClients = exceptionHandlingOptions.SendStackTraceToClients;
-        });
-
-        if (context.Exception is AbpAuthorizationException)
-        {
-            await context.HttpContext.RequestServices.GetRequiredService<IAbpAuthorizationExceptionHandler>()
-                .HandleAsync(context.Exception.As<AbpAuthorizationException>(), context.HttpContext);
-        }
-        else
-        {
-            context.HttpContext.Response.StatusCode = (int)context
-                .GetRequiredService<IHttpExceptionStatusCodeFinder>()
-                .GetStatusCode(context.HttpContext, context.Exception);
-            context.Result = new ObjectResult(new RemoteServiceErrorResponse(remoteServiceErrorInfo));
-        }
     }
 
     private bool IsWrapResult(ExceptionContext context)
     {
+        if (!context.ActionDescriptor.IsControllerAction())
+        {
+            return false;
+        }
+
         if (context.ActionDescriptor.AsControllerActionDescriptor().ControllerTypeInfo.GetCustomAttributes(typeof(WrapResultAttribute), true).Any())
         {
             return true;
