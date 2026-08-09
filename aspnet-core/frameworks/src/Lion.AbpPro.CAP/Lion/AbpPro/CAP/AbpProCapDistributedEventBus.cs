@@ -8,6 +8,7 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
     //TODO: Accessing to the List<IEventHandlerFactory> may not be thread-safe!
     protected ConcurrentDictionary<Type, List<IEventHandlerFactory>> HandlerFactories { get; }
     protected ConcurrentDictionary<string, Type> EventTypes { get; }
+    protected ConcurrentDictionary<string, List<IEventHandlerFactory>> DynamicEventHandlerFactories { get; }
 
     public AbpProCapDistributedEventBus(IServiceScopeFactory serviceScopeFactory,
         IOptions<AbpDistributedEventBusOptions> distributedEventBusOptions,
@@ -21,12 +22,26 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
         AbpDistributedEventBusOptions = distributedEventBusOptions.Value;
         HandlerFactories = new ConcurrentDictionary<Type, List<IEventHandlerFactory>>();
         EventTypes = new ConcurrentDictionary<string, Type>();
+        DynamicEventHandlerFactories = new ConcurrentDictionary<string, List<IEventHandlerFactory>>();
     }
 
     public override IDisposable Subscribe(Type eventType, IEventHandlerFactory factory)
     {
         //This is handled by CAP ConsumerServiceSelector
         throw new NotImplementedException();
+    }
+
+    public override IDisposable Subscribe(string eventName, IEventHandlerFactory factory)
+    {
+        GetOrCreateDynamicHandlerFactories(eventName).Locking(factories =>
+        {
+            if (!factory.IsInFactories(factories))
+            {
+                factories.Add(factory);
+            }
+        });
+
+        return new DynamicEventHandlerFactoryUnregistrar(this, eventName, factory);
     }
 
     public override void Unsubscribe<TEvent>(Func<TEvent, Task> action)
@@ -74,9 +89,30 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
         GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Remove(factory));
     }
 
+    public override void Unsubscribe(string eventName, IEventHandlerFactory factory)
+    {
+        GetOrCreateDynamicHandlerFactories(eventName).Locking(factories => factories.Remove(factory));
+    }
+
+    public override void Unsubscribe(string eventName, IEventHandler handler)
+    {
+        GetOrCreateDynamicHandlerFactories(eventName)
+            .Locking(factories =>
+            {
+                factories.RemoveAll(
+                    factory => factory is SingleInstanceHandlerFactory singleFactory &&
+                               singleFactory.HandlerInstance == handler);
+            });
+    }
+
     public override void UnsubscribeAll(Type eventType)
     {
         GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Clear());
+    }
+
+    public override void UnsubscribeAll(string eventName)
+    {
+        GetOrCreateDynamicHandlerFactories(eventName).Locking(factories => factories.Clear());
     }
 
     public IDisposable Subscribe<TEvent>(IDistributedEventHandler<TEvent> handler) where TEvent : class
@@ -84,10 +120,32 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
         return Subscribe(typeof(TEvent), handler);
     }
 
+    public IDisposable Subscribe(string eventName, IDistributedEventHandler<DynamicEventData> handler)
+    {
+        return Subscribe(eventName, (IEventHandler)handler);
+    }
+
     public virtual Task PublishAsync<TEvent>(TEvent eventData, bool onUnitOfWorkComplete = true,
         bool useOutbox = true) where TEvent : class
     {
         return PublishAsync(typeof(TEvent), eventData, onUnitOfWorkComplete, useOutbox);
+    }
+
+    public override Task PublishAsync(string eventName, object eventData, bool onUnitOfWorkComplete = true)
+    {
+        return PublishAsync(eventName, eventData, onUnitOfWorkComplete, useOutbox: true);
+    }
+
+    public virtual Task PublishAsync(string eventName, object eventData, bool onUnitOfWorkComplete = true,
+        bool useOutbox = true)
+    {
+        var eventType = EventTypes.GetOrDefault(eventName);
+        var dynamicEventData = eventData as DynamicEventData ?? new DynamicEventData(eventName, eventData);
+
+        return eventType != null
+            ? PublishAsync(eventType, ConvertDynamicEventData(dynamicEventData.Data, eventType), onUnitOfWorkComplete,
+                useOutbox)
+            : PublishAsync(typeof(DynamicEventData), dynamicEventData, onUnitOfWorkComplete, useOutbox);
     }
 
     public virtual async Task PublishAsync(Type eventType, object eventData, bool onUnitOfWorkComplete = true,
@@ -128,12 +186,15 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
 
     protected override async Task PublishToEventBusAsync(Type eventType, object eventData)
     {
-        var eventName = EventNameAttribute.GetNameOrDefault(eventType);
+        var dynamicEventData = eventData as DynamicEventData;
+        var eventName = dynamicEventData != null
+            ? dynamicEventData.EventName
+            : EventNameAttribute.GetNameOrDefault(eventType);
         var header = new Dictionary<string, string>
         {
             { AbpProCapConsts.Tenant, CurrentTenant.Id?.ToString() ?? string.Empty },
         };
-        await CapPublisher.PublishAsync(eventName, eventData, header);
+        await CapPublisher.PublishAsync(eventName, dynamicEventData?.Data ?? eventData, header);
     }
 
     protected override void AddToUnitOfWork(IUnitOfWork unitOfWork, UnitOfWorkEventRecord eventRecord)
@@ -155,6 +216,26 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
         return handlerFactoryList.ToArray();
     }
 
+    protected override IEnumerable<EventTypeWithEventHandlerFactories> GetDynamicHandlerFactories(string eventName)
+    {
+        var eventType = EventTypes.GetOrDefault(eventName);
+        if (eventType != null)
+        {
+            return GetHandlerFactories(eventType);
+        }
+
+        return GetOrCreateDynamicHandlerFactories(eventName)
+            .Select(factory => new EventTypeWithEventHandlerFactories(
+                typeof(DynamicEventData),
+                new List<IEventHandlerFactory> { factory }))
+            .ToArray();
+    }
+
+    protected override Type GetEventTypeByEventName(string eventName)
+    {
+        return EventTypes.GetOrDefault(eventName);
+    }
+
     private List<IEventHandlerFactory> GetOrCreateHandlerFactories(Type eventType)
     {
         return HandlerFactories.GetOrAdd(
@@ -166,6 +247,11 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
                 return new List<IEventHandlerFactory>();
             }
         );
+    }
+
+    private List<IEventHandlerFactory> GetOrCreateDynamicHandlerFactories(string eventName)
+    {
+        return DynamicEventHandlerFactories.GetOrAdd(eventName, _ => new List<IEventHandlerFactory>());
     }
 
     private static bool ShouldTriggerEventForHandler(Type targetEventType, Type handlerEventType)

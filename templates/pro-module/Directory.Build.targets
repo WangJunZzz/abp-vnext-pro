@@ -44,6 +44,7 @@
         <PackageReference Update="coverlet.collector" Version="6.0.4"/>
         <PackageReference Update="JunitXml.TestLogger" Version="6.1.0"/>
         <PackageReference Update="AutoFixture.Xunit2" Version="4.18.1"/>
+        <PackageReference Update="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.12"/>
 
         <!-- Hangfire 后台任务-->
         <PackageReference Update="Hangfire.Redis.StackExchange" Version="1.12.0"/>
@@ -60,7 +61,7 @@
         <!-- Swagger
         <PackageReference Update="Swashbuckle.AspNetCore.SwaggerUI" Version="10.0.0"/> -->
         <PackageReference Update="Swashbuckle.AspNetCore" Version="10.0.1"/>
-        <PackageReference Update="Swashbuckle.AspNetCore.Annotations" Version="10.0.1"/>
+        <PackageReference Update="Swashbuckle.AspNetCore.Annotations" Version="10.2.3"/>
 
         <!-- Serilog 日志-->
         <PackageReference Update="Serilog" Version="4.3.0"/>

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Lion.AbpPro.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class _100100 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -73,6 +73,7 @@ namespace Lion.AbpPro.Migrations
                     NextTryTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     LastTryTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     IsAbandoned = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
+                    CompletionTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     Priority = table.Column<byte>(type: "smallint", nullable: false, defaultValue: (byte)15),
                     ExtraProperties = table.Column<string>(type: "text", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false)
@@ -255,10 +256,10 @@ namespace Lion.AbpPro.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    TenantId = table.Column<Guid>(type: "uuid", nullable: true),
-                    Code = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
-                    DisplayText = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
-                    Description = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
+                    TenantId = table.Column<Guid>(type: "uuid", nullable: true, comment: "租户id"),
+                    Code = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false, comment: "字典编码"),
+                    DisplayText = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false, comment: "显示名"),
+                    Description = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false, comment: "描述"),
                     ExtraProperties = table.Column<string>(type: "text", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
@@ -305,7 +306,7 @@ namespace Lion.AbpPro.Migrations
                     TenantId = table.Column<Guid>(type: "uuid", nullable: true),
                     FileName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false, comment: "文件名称"),
                     FileSize = table.Column<long>(type: "bigint", nullable: false, comment: "文件大小"),
-                    ContentType = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false, comment: "文件名称"),
+                    ContentType = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false, comment: "文件类型"),
                     ExtraProperties = table.Column<string>(type: "text", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
@@ -378,17 +379,17 @@ namespace Lion.AbpPro.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    TenantId = table.Column<Guid>(type: "uuid", nullable: true),
-                    Title = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
-                    Content = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
-                    MessageType = table.Column<int>(type: "integer", nullable: false),
-                    MessageLevel = table.Column<int>(type: "integer", nullable: false),
-                    SenderUserId = table.Column<Guid>(type: "uuid", nullable: false),
-                    SenderUserName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
-                    ReceiveUserId = table.Column<Guid>(type: "uuid", nullable: true),
-                    ReceiveUserName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
-                    Read = table.Column<bool>(type: "boolean", nullable: false),
-                    ReadTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    TenantId = table.Column<Guid>(type: "uuid", nullable: true, comment: "租户id"),
+                    Title = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false, comment: "消息标题"),
+                    Content = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false, comment: "消息内容"),
+                    MessageType = table.Column<int>(type: "integer", nullable: false, comment: "消息类型"),
+                    MessageLevel = table.Column<int>(type: "integer", nullable: false, comment: "消息等级"),
+                    SenderUserId = table.Column<Guid>(type: "uuid", nullable: false, comment: "发送人用户Id"),
+                    SenderUserName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false, comment: "发送人用户名"),
+                    ReceiveUserId = table.Column<Guid>(type: "uuid", nullable: true, comment: "接收人用户Id"),
+                    ReceiveUserName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true, comment: "接收人用户名"),
+                    Read = table.Column<bool>(type: "boolean", nullable: false, comment: "是否已读"),
+                    ReadTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true, comment: "已读时间"),
                     ExtraProperties = table.Column<string>(type: "text", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
@@ -409,12 +410,12 @@ namespace Lion.AbpPro.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    TenantId = table.Column<Guid>(type: "uuid", nullable: true),
-                    NotificationId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ReceiveUserId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ReceiveUserName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
-                    Read = table.Column<bool>(type: "boolean", nullable: false),
-                    ReadTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    TenantId = table.Column<Guid>(type: "uuid", nullable: true, comment: "租户id"),
+                    NotificationId = table.Column<Guid>(type: "uuid", nullable: false, comment: "消息Id"),
+                    ReceiveUserId = table.Column<Guid>(type: "uuid", nullable: false, comment: "接收人用户Id"),
+                    ReceiveUserName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true, comment: "接收人用户名"),
+                    Read = table.Column<bool>(type: "boolean", nullable: false, comment: "是否已读"),
+                    ReadTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, comment: "已读时间"),
                     ExtraProperties = table.Column<string>(type: "text", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
@@ -686,12 +687,12 @@ namespace Lion.AbpPro.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    DataDictionaryId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Code = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: true),
-                    Order = table.Column<int>(type: "integer", nullable: false),
-                    DisplayText = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: true),
-                    Description = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: true),
-                    IsEnabled = table.Column<bool>(type: "boolean", nullable: false),
+                    DataDictionaryId = table.Column<Guid>(type: "uuid", nullable: false, comment: "所属字典Id"),
+                    Code = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: true, comment: "字典明细编码"),
+                    Order = table.Column<int>(type: "integer", nullable: false, comment: "展现列表时排序用"),
+                    DisplayText = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: true, comment: "英文显示名"),
+                    Description = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: true, comment: "描述"),
+                    IsEnabled = table.Column<bool>(type: "boolean", nullable: false, comment: "启/停用(默认启用)"),
                     CreationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     CreatorId = table.Column<Guid>(type: "uuid", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
@@ -974,9 +975,9 @@ namespace Lion.AbpPro.Migrations
                 columns: new[] { "TenantId", "UserId", "ExecutionTime" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AbpBackgroundJobs_IsAbandoned_NextTryTime",
+                name: "IX_AbpBackgroundJobs_ApplicationName_CompletionTime_IsAbandone~",
                 table: "AbpBackgroundJobs",
-                columns: new[] { "IsAbandoned", "NextTryTime" });
+                columns: new[] { "ApplicationName", "CompletionTime", "IsAbandoned", "NextTryTime" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpEntityChanges_AuditLogId",
