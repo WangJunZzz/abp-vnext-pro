@@ -13,8 +13,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Lion.AbpPro.Migrations
 {
     [DbContext(typeof(AbpProDbContext))]
-    [Migration("20260403021818_Init")]
-    partial class Init
+    [Migration("20260809134853_1.0.0.100")]
+    partial class _100100
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,7 +22,7 @@ namespace Lion.AbpPro.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("_Abp_DatabaseProvider", EfCoreDatabaseProvider.PostgreSql)
-                .HasAnnotation("ProductVersion", "10.0.2")
+                .HasAnnotation("ProductVersion", "10.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -35,7 +35,8 @@ namespace Lion.AbpPro.Migrations
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("character varying(64)");
+                        .HasColumnType("character varying(64)")
+                        .HasComment("字典编码");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -63,12 +64,14 @@ namespace Lion.AbpPro.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(1024)
-                        .HasColumnType("character varying(1024)");
+                        .HasColumnType("character varying(1024)")
+                        .HasComment("描述");
 
                     b.Property<string>("DisplayText")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("character varying(64)");
+                        .HasColumnType("character varying(64)")
+                        .HasComment("显示名");
 
                     b.Property<string>("ExtraProperties")
                         .IsRequired()
@@ -91,7 +94,8 @@ namespace Lion.AbpPro.Migrations
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("uuid")
-                        .HasColumnName("TenantId");
+                        .HasColumnName("TenantId")
+                        .HasComment("租户id");
 
                     b.HasKey("Id");
 
@@ -105,7 +109,8 @@ namespace Lion.AbpPro.Migrations
 
                     b.Property<string>("Code")
                         .HasMaxLength(64)
-                        .HasColumnType("character varying(64)");
+                        .HasColumnType("character varying(64)")
+                        .HasComment("字典明细编码");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp without time zone")
@@ -116,18 +121,22 @@ namespace Lion.AbpPro.Migrations
                         .HasColumnName("CreatorId");
 
                     b.Property<Guid>("DataDictionaryId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasComment("所属字典Id");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1024)
-                        .HasColumnType("character varying(1024)");
+                        .HasColumnType("character varying(1024)")
+                        .HasComment("描述");
 
                     b.Property<string>("DisplayText")
                         .HasMaxLength(64)
-                        .HasColumnType("character varying(64)");
+                        .HasColumnType("character varying(64)")
+                        .HasComment("英文显示名");
 
                     b.Property<bool>("IsEnabled")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasComment("启/停用(默认启用)");
 
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("timestamp without time zone")
@@ -138,7 +147,8 @@ namespace Lion.AbpPro.Migrations
                         .HasColumnName("LastModifierId");
 
                     b.Property<int>("Order")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasComment("展现列表时排序用");
 
                     b.HasKey("Id");
 
@@ -225,7 +235,7 @@ namespace Lion.AbpPro.Migrations
                         .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("character varying(128)")
-                        .HasComment("文件名称");
+                        .HasComment("文件类型");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp without time zone")
@@ -467,7 +477,8 @@ namespace Lion.AbpPro.Migrations
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasMaxLength(1024)
-                        .HasColumnType("character varying(1024)");
+                        .HasColumnType("character varying(1024)")
+                        .HasComment("消息内容");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp without time zone")
@@ -505,40 +516,50 @@ namespace Lion.AbpPro.Migrations
                         .HasColumnName("LastModifierId");
 
                     b.Property<int>("MessageLevel")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasComment("消息等级");
 
                     b.Property<int>("MessageType")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasComment("消息类型");
 
                     b.Property<bool>("Read")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasComment("是否已读");
 
                     b.Property<DateTime?>("ReadTime")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasComment("已读时间");
 
                     b.Property<Guid?>("ReceiveUserId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasComment("接收人用户Id");
 
                     b.Property<string>("ReceiveUserName")
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
+                        .HasColumnType("character varying(128)")
+                        .HasComment("接收人用户名");
 
                     b.Property<Guid>("SenderUserId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasComment("发送人用户Id");
 
                     b.Property<string>("SenderUserName")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
+                        .HasColumnType("character varying(128)")
+                        .HasComment("发送人用户名");
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("uuid")
-                        .HasColumnName("TenantId");
+                        .HasColumnName("TenantId")
+                        .HasComment("租户id");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
+                        .HasColumnType("character varying(128)")
+                        .HasComment("消息标题");
 
                     b.HasKey("Id");
 
@@ -593,24 +614,30 @@ namespace Lion.AbpPro.Migrations
                         .HasColumnName("LastModifierId");
 
                     b.Property<Guid>("NotificationId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasComment("消息Id");
 
                     b.Property<bool>("Read")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasComment("是否已读");
 
                     b.Property<DateTime>("ReadTime")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasComment("已读时间");
 
                     b.Property<Guid>("ReceiveUserId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasComment("接收人用户Id");
 
                     b.Property<string>("ReceiveUserName")
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
+                        .HasColumnType("character varying(128)")
+                        .HasComment("接收人用户名");
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("uuid")
-                        .HasColumnName("TenantId");
+                        .HasColumnName("TenantId")
+                        .HasComment("租户id");
 
                     b.HasKey("Id");
 
@@ -916,6 +943,9 @@ namespace Lion.AbpPro.Migrations
                         .HasMaxLength(96)
                         .HasColumnType("character varying(96)");
 
+                    b.Property<DateTime?>("CompletionTime")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .IsRequired()
@@ -965,7 +995,7 @@ namespace Lion.AbpPro.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IsAbandoned", "NextTryTime");
+                    b.HasIndex("ApplicationName", "CompletionTime", "IsAbandoned", "NextTryTime");
 
                     b.ToTable("AbpBackgroundJobs", (string)null);
                 });

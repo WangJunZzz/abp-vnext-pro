@@ -13,6 +13,7 @@
         <ProjectReference Include="..\..\src\Lion.AbpPro.FileManagement.EntityFrameworkCore\Lion.AbpPro.FileManagement.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\Lion.AbpPro.FileManagement.TestBase\Lion.AbpPro.FileManagement.TestBase.csproj" />
         <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" />
+        <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" />
     </ItemGroup>
 
 </Project>
