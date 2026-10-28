@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Lion.AbpPro.Migrations
 {
     /// <inheritdoc />
-    public partial class _100100 : Migration
+    public partial class _10701 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
