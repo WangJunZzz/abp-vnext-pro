@@ -1,4 +1,4 @@
-﻿<Project>
+<Project>
 
     <Import Project="Directory.Build.Microsoft.targets"/>
     <Import Project="Directory.Build.Volo.targets"/>
@@ -38,7 +38,7 @@
         <!-- 单元测试包-->
         <PackageReference Update="xunit" Version="2.9.3"/>
         <PackageReference Update="xunit.extensibility.execution" Version="2.9.3"/>
-        <PackageReference Update="xunit.runner.visualstudio" Version="3.1.1"/>
+        <PackageReference Update="xunit.runner.visualstudio" Version="3.1.4"/>
         <PackageReference Update="NSubstitute" Version="5.3.0"/>
         <PackageReference Update="Shouldly" Version="4.3.0"/>
         <PackageReference Update="coverlet.collector" Version="6.0.4"/>
@@ -59,7 +59,7 @@
 
         <!-- Swagger
         <PackageReference Update="Swashbuckle.AspNetCore.SwaggerUI" Version="10.0.0"/> -->
-        <PackageReference Update="Swashbuckle.AspNetCore" Version="10.0.1"/>
+        <PackageReference Update="Swashbuckle.AspNetCore" Version="10.2.3"/>
         <PackageReference Update="Swashbuckle.AspNetCore.Annotations" Version="10.0.1"/>
 
         <!-- Serilog 日志-->
@@ -85,7 +85,7 @@
         <PackageReference Update="MiniProfiler.Shared" Version="4.5.4"/>
 
         <!-- Polly 重试机制-->
-        <PackageReference Update="Polly" Version="8.6.5"/>
+        <PackageReference Update="Polly" Version="8.6.3"/>
 
         <!-- Octokit 邮件-->
         <PackageReference Update="Octokit" Version="14.0.0"/>
@@ -99,9 +99,9 @@
         <PackageReference Update="WebApiClientCore" Version="2.1.5" />
         
         <!-- redis分布式锁-->
-        <PackageReference Update="DistributedLock.Redis" Version="1.1.1" />
+        <PackageReference Update="DistributedLock.Redis" Version="1.1.0"/>
         
-        <PackageReference Update="Scriban" Version="6.5.2" />
+        <PackageReference Update="Scriban" Version="7.2.5"/>
 		
 		<PackageReference Update="Otp.NET" Version="1.4.0" />
 		<PackageReference Update="QRCoder" Version="1.6.0" />
