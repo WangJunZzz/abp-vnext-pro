@@ -96,13 +96,9 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
 
     public override void Unsubscribe(string eventName, IEventHandler handler)
     {
-        GetOrCreateDynamicHandlerFactories(eventName)
-            .Locking(factories =>
-            {
-                factories.RemoveAll(
-                    factory => factory is SingleInstanceHandlerFactory singleFactory &&
-                               singleFactory.HandlerInstance == handler);
-            });
+        GetOrCreateDynamicHandlerFactories(eventName).Locking(factories =>
+            factories.RemoveAll(factory => factory is SingleInstanceHandlerFactory singleFactory &&
+                                           singleFactory.HandlerInstance == handler));
     }
 
     public override void UnsubscribeAll(Type eventType)
@@ -133,7 +129,7 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
 
     public override Task PublishAsync(string eventName, object eventData, bool onUnitOfWorkComplete = true)
     {
-        return PublishAsync(eventName, eventData, onUnitOfWorkComplete, useOutbox: true);
+        return PublishAsync(eventName, eventData, onUnitOfWorkComplete, true);
     }
 
     public virtual Task PublishAsync(string eventName, object eventData, bool onUnitOfWorkComplete = true,
@@ -143,8 +139,7 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
         var dynamicEventData = eventData as DynamicEventData ?? new DynamicEventData(eventName, eventData);
 
         return eventType != null
-            ? PublishAsync(eventType, ConvertDynamicEventData(dynamicEventData.Data, eventType), onUnitOfWorkComplete,
-                useOutbox)
+            ? PublishAsync(eventType, ConvertDynamicEventData(dynamicEventData.Data, eventType), onUnitOfWorkComplete, useOutbox)
             : PublishAsync(typeof(DynamicEventData), dynamicEventData, onUnitOfWorkComplete, useOutbox);
     }
 
@@ -187,9 +182,7 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
     protected override async Task PublishToEventBusAsync(Type eventType, object eventData)
     {
         var dynamicEventData = eventData as DynamicEventData;
-        var eventName = dynamicEventData != null
-            ? dynamicEventData.EventName
-            : EventNameAttribute.GetNameOrDefault(eventType);
+        var eventName = dynamicEventData?.EventName ?? EventNameAttribute.GetNameOrDefault(eventType);
         var header = new Dictionary<string, string>
         {
             { AbpProCapConsts.Tenant, CurrentTenant.Id?.ToString() ?? string.Empty },
@@ -226,8 +219,7 @@ public class AbpProCapDistributedEventBus : EventBusBase, IDistributedEventBus, 
 
         return GetOrCreateDynamicHandlerFactories(eventName)
             .Select(factory => new EventTypeWithEventHandlerFactories(
-                typeof(DynamicEventData),
-                new List<IEventHandlerFactory> { factory }))
+                typeof(DynamicEventData), new List<IEventHandlerFactory> { factory }))
             .ToArray();
     }
 
